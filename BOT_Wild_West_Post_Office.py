@@ -33,14 +33,15 @@ async def on_ready():                        #GOTOWY
 @client.command()
 @has_permissions(manage_messages=True)
 async def cytaty(ctx):
+        channel  = ctx
         now = datetime.now()
         today = date.today()
         current_day = today.strftime("%d/%m/%Y")
         current_time = now.strftime("%H:%M:%S")
         print("\nCytaty has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
 
-    channel  = ctx
-    embed = discord.Embed(
+    
+        embed = discord.Embed(
         title="Czasy rewolwerowców i bandytów dobiegły końca. \nDziki zachód stał się legendą, a za istnieniem legend zawsze kryją się niezapomniane słowa. Aby je poznać musisz skorzystać ze zwoju na poczcie",
         description="   Po naciśnięciu reakcji, zostanie wysłany jeden z wielu cytatów z gier: \n   Red Dead Redemption, Red Dead Redemption 2 oraz Red Dead Online",
         color=0x0000ff,
