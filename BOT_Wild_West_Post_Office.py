@@ -33,15 +33,9 @@ async def on_ready():                        #GOTOWY
 @client.command()
 @has_permissions(manage_messages=True)
 async def cytaty(ctx):
-        channel  = ctx
-        now = datetime.now()
-        today = date.today()
-        current_day = today.strftime("%d/%m/%Y")
-        current_time = now.strftime("%H:%M:%S")
-        print("\nCytaty has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-
-    
-        embed = discord.Embed(
+    print(" \nCytaty command has been used by member on:")
+    channel  = ctx
+    embed = discord.Embed(
         title="Czasy rewolwerowców i bandytów dobiegły końca. \nDziki zachód stał się legendą, a za istnieniem legend zawsze kryją się niezapomniane słowa. Aby je poznać musisz skorzystać ze zwoju na poczcie",
         description="   Po naciśnięciu reakcji, zostanie wysłany jeden z wielu cytatów z gier: \n   Red Dead Redemption, Red Dead Redemption 2 oraz Red Dead Online",
         color=0x0000ff,
@@ -54,17 +48,6 @@ async def cytaty(ctx):
     #await ctx.message.add_reaction('📜')                                                    Emoji do wysłanej wiadomości przez użytkownika
     #await ctx.send(' >>> Ta opcja niedługo będzie działać :scroll:')                         Zwykła wiadomość jako cytat
 
-@cytaty.error
-async def cytaty_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        now = datetime.now()
-        today = date.today()
-        current_day = today.strftime("%d/%m/%Y")
-        current_time = now.strftime("%H:%M:%S")
-        print("\n Cytaty has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-        print(" Reason: \"not enough permissions \"")
-        await ctx.channel.purge(limit = 1)
-        
 @client.command()
 @has_permissions(manage_messages=True)
 async def embed(ctx):
