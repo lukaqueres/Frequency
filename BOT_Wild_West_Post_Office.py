@@ -23,6 +23,7 @@ async def on_ready():                        #GOTOWY
  
 @commands.has_permissions(manage_messages=True)
 
+@client.event
 async def on_message(message):
     if (message.author == self.user):
       return
