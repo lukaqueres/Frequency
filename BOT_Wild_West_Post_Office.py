@@ -23,7 +23,17 @@ async def on_ready():                        #GOTOWY
  
 @commands.has_permissions(manage_messages=True)
 
-
+async def on_message(message):
+  {
+    if message.author == client.user:
+    {
+      return
+    }
+    if ((('discord' in msg.content ) or ('discord' in msg.content )) and (('free' in msg.content ) or ('free' in msg.content )) and ('http' in msg.content )):
+    {
+      await.ctx.send: xd
+    }
+  }
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
