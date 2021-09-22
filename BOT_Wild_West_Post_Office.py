@@ -24,7 +24,8 @@ async def on_ready():                        #GOTOWY
 @commands.has_permissions(manage_messages=True)
 
 @client.event
-async def on_message(message):
+async def on_message(message, ctx):
+    msg = message
     if (message.author == client.user):
       return
     if ((('discord' in msg.content ) or ('discord' in msg.content )) and (('Free' in msg.content ) or ('free' in msg.content )) and ('http' in msg.content )):
