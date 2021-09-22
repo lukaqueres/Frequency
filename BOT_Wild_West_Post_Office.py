@@ -24,8 +24,8 @@ async def on_ready():                        #GOTOWY
 @commands.has_permissions(manage_messages=True)
 
 async def on_message(message):
-    #if (message.author == client.user):
-      #return
+    if (message.author == self.user):
+      return
     if 'free' in message.content:                                        #((('discord' in msg.content ) or ('discord' in msg.content )) and (('Free' in msg.content ) or ('free' in msg.content )) and ('http' in msg.content )):
       message.channel.send("zawiera free")
       print( "scam link!" )
