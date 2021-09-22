@@ -26,8 +26,8 @@ async def on_ready():                        #GOTOWY
 async def on_message(message):
     #if (message.author == client.user):
       #return
-    if 'free' in msg.content:                                        #((('discord' in msg.content ) or ('discord' in msg.content )) and (('Free' in msg.content ) or ('free' in msg.content )) and ('http' in msg.content )):
-      await message.channel.send("xd")
+    if 'free' in message.content:                                        #((('discord' in msg.content ) or ('discord' in msg.content )) and (('Free' in msg.content ) or ('free' in msg.content )) and ('http' in msg.content )):
+      message.channel.send(‘zawiera free’)
       print( "scam link!" )
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
