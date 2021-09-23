@@ -24,7 +24,7 @@ async def on_ready():                        #GOTOWY
 @commands.has_permissions(manage_messages=True)
 
 @client.event
-async def on_message(ctx, message):
+async def on_message(message):
     if (message.author == client.user):
       return
     if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
