@@ -37,7 +37,7 @@ async def on_message(message):
       user = await client.fetch_user("429949201254842369")
       embed = discord.Embed(
         title="Możliwy scam",
-        description="Posible scam by: {message.author}" 
+        description="Posible scam by: {message.author}" ,
         color=0x0000ff,
         )
       #await user.send(embed=embed)
