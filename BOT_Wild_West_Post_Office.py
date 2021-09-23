@@ -39,7 +39,7 @@ async def on_message(ctx, message):
       user = client.get_user(429949201254842369)
       embed = discord.Embed(
         title="Możliwy scam",
-        description="Posible scam by: " {ctx.message.author} " on: " ctx.message.channel " channel in: " ctx.message.guild " guild on " current_time current_day ".",
+        description="Posible scam by: " (ctx.message.author) " on: " ctx.message.channel " channel in: " ctx.message.guild " guild on " current_time current_day ".",
         color=0x0000ff,
         )
       await user.send(embed=embed)
