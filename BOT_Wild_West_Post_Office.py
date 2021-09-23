@@ -34,7 +34,7 @@ async def on_message(message):
       today = date.today()
       current_day = today.strftime("%d/%m/%Y")
       current_time = now.strftime("%H:%M:%S")
-      print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+      print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
 
       user = client.get_user(429949201254842369)
       embed = discord.Embed(
