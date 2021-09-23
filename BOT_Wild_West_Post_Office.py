@@ -37,10 +37,9 @@ async def on_message(ctx, message):
       print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
 
       user = client.get_user(429949201254842369)
-      text=(Posible scam by: ctx.message.author)
       embed = discord.Embed(
         title="Możliwy scam",
-        description=text
+        description="Posible scam by: ctx.message.author"
         color=0x0000ff,
         )
       await user.send(embed=embed)
