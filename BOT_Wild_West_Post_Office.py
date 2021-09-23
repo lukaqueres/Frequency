@@ -43,7 +43,7 @@ async def on_message(ctx, message):
         #color=0x0000ff,
         #)
       #await user.send(embed=embed)
-      await user.send(Posible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day)")
+      await user.send(Posible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \"  \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild )") #current_time, current_day
       
       #channel = client.get_channel(889937132637011970)
       #await channel.send('scam')
