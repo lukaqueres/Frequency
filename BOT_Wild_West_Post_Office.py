@@ -30,6 +30,15 @@ async def on_message(message):
     if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
       await message.channel.send("scam")
       print( "scam link! message.channel: {}" .format(message.channel ))
+      now = datetime.now()
+      today = date.today()
+      current_day = today.strftime("%d/%m/%Y")
+      current_time = now.strftime("%H:%M:%S")
+      print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+
+      user = client.get_user(429949201254842369)
+      await user.send(""\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
