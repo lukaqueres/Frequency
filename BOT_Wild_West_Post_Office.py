@@ -27,7 +27,7 @@ async def on_ready():                        #GOTOWY
 async def on_message(message):
     if (message.author == client.user):
       return
-    if ((('discord' in message.content ) or ('Discord' in message.content )) and (('Free' in message.content ) or ('free' in message.content )) and ('http' in message.content )):
+    if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
       await message.channel.send("scam")
       print( "scam link!" )
 
