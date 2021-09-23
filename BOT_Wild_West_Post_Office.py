@@ -42,7 +42,8 @@ async def on_message(message):
         description="Posible scam by: message.author",
         color=0x0000ff,
         )
-      await user.send(embed=embed)
+      #await user.send(embed=embed)
+      await user.send("scam")
       
       #channel = client.get_channel(889937132637011970)
       #await channel.send('scam')
