@@ -37,12 +37,13 @@ async def on_message(ctx, message):
       print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
 
       user = client.get_user(429949201254842369)
-      embed = discord.Embed(
-        title="Możliwy scam",
-        description="Posible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day)"
-        color=0x0000ff,
-        )
-      await user.send(embed=embed)
+      #embed = discord.Embed(
+        #title="Możliwy scam",
+        #description="Posible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day)"
+        #color=0x0000ff,
+        #)
+      #await user.send(embed=embed)
+      await user.send(Posible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day)")
       
       #channel = client.get_channel(889937132637011970)
       #await channel.send('scam')
