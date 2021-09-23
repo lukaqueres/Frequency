@@ -38,7 +38,9 @@ async def on_message(message):
 
       user = client.get_user(429949201254842369)
       await user.send(""\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-
+      
+      #channel = client.get_channel(889937132637011970)
+      #await channel.send('scam')
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
