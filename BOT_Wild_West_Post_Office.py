@@ -9,6 +9,7 @@ from discord.ext import commands
 from discord.ext import tasks
 from discord import member
 from discord.ext import tasks
+from discord import DMChannel
 from discord.ext.commands import has_permissions, MissingPermissions
 
 client = discord.Client()
@@ -36,14 +37,14 @@ async def on_message(message):
       current_time = now.strftime("%H:%M:%S")
       print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
 
-      user = client.get_user(429949201254842369)
+      user = await client.fetch_user("429949201254842369")
       embed = discord.Embed(
         title="Możliwy scam",
         description="Posible scam by: message.author",
         color=0x0000ff,
         )
       #await user.send(embed=embed)
-      await user.send("scam")
+      await DMChannel.send(user, "scam")
       
       #channel = client.get_channel(889937132637011970)
       #await channel.send('scam')
