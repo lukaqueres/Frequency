@@ -41,7 +41,7 @@ async def on_message(message):
         color=0x0000ff,
         )
       #await user.send(embed=embed)
-      await DMChannel.send(user, "scam")
+      await DMChannel.send(user, embed)
       
       #channel = client.get_channel(889937132637011970)
       #await channel.send('scam')
