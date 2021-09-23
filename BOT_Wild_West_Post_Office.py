@@ -5,11 +5,8 @@ import typing
 import requests
 from os import getenv
 from datetime import datetime, date
-from discord.ext import commands
-from discord.ext import tasks
-from discord import member
-from discord.ext import tasks
-from discord import DMChannel
+from discord import member, DMChannel
+from discord.ext import tasks, commands
 from discord.ext.commands import has_permissions, MissingPermissions
 
 client = discord.Client()
