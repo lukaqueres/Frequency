@@ -24,7 +24,7 @@ async def on_ready():                        #GOTOWY
 @commands.has_permissions(manage_messages=True)
 
 @client.event
-async def on_message(message):
+async def on_message(ctx, message):
     if (message.author == client.user):
       return
     if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
@@ -37,7 +37,12 @@ async def on_message(message):
       print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
 
       user = client.get_user(429949201254842369)
-      await user.send(""Posible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+      embed = discord.Embed(
+        title="Możliwy scam",
+        description="Posible scam by: " ctx.message.author " on: " ctx.message.channel " channel in: " ctx.message.guild " guild on " current_time current_day ".",
+        color=0x0000ff,
+        )
+      await user.send(embed=embed)
       
       #channel = client.get_channel(889937132637011970)
       #await channel.send('scam')
