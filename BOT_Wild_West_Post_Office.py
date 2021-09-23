@@ -38,7 +38,7 @@ async def on_message(message):
       embed = discord.Embed(
         title="Możliwy scam",
         description="Posible scam by: {message.author}" ,
-        embed.add_field(name="Nazwa", value={message.author}, inline: True)
+        embed.add_field(name="Nazwa", value={message.author}, inline:True)
         color=0x0000ff,
         )
       #await user.send(embed=embed)
