@@ -57,7 +57,7 @@ async def on_message(message):
         await message.delete()
         await DMChannel.send(user, embed=embed)
         await channel.send(embed=embed)
-        await message.author.add_roles(role)
+        await client.add_roles( message.author, role)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
