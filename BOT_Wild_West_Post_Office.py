@@ -49,6 +49,7 @@ async def on_message(message):
       embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
       
       user = await client.fetch_user("429949201254842369")
+      author = message.author
       role = get(message.guild.roles, id=889936948834238525)
       channel = client.get_channel(887604610972409906)
       
