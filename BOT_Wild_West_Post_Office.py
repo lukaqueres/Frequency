@@ -53,12 +53,12 @@ async def on_message(message):
       channel = client.get_channel(889937132637011970)
       
       if role in message.author.roles:
-        await message.delete(message)
+        await message.delete()
         await DMChannel.send(user, embed=embed)
         await channel.send(embed=embed)
         await message.author.add_roles(role)
       else:
-        await message.delete(message)
+        await message.delete()
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
