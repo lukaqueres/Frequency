@@ -38,9 +38,9 @@ async def on_message(message):
       embed = discord.Embed(
         title="Możliwy scam",
         description="Posible scam by:" + message.author ,
-        embed.add_field(name="Nazwa", value=message.author, inline=True),
         color=0x0000ff,
         )
+      embed.add_field(name="Nazwa", value=message.author, inline=True),
       #await user.send(embed=embed)
       await DMChannel.send(user, embed=embed)
       
