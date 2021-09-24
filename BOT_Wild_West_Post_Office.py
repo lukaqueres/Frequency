@@ -46,10 +46,17 @@ async def on_message(message):
       embed.add_field(name="Data:", value=current_day, inline=True),
       embed.add_field(name="Godzina:", value=current_time, inline=True),
       embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
+      
       user = await client.fetch_user("429949201254842369")
-      await DMChannel.send(user, embed=embed)
+      role = client.get_role(889936948834238525)
       channel = client.get_channel(889937132637011970)
-      await channel.send(embed=embed)
+      
+      if ( message.author has.role(role) )
+        await message.delete(message)
+        await DMChannel.send(user, embed=embed)
+        await channel.send(embed=embed)
+      else
+        await message.delete(message)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
