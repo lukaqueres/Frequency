@@ -30,7 +30,7 @@ async def on_message(message):
     if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
       await message.channel.send("scam")
       print( "scam link! message.channel: {}" .format(message.channel ))
-      now = local_time.now()
+      now = datetime.now()
       today = date.today()
       current_day = today.strftime("%d/%m/%Y")
       current_time = now.strftime("%H:%M:%S")
@@ -80,7 +80,7 @@ async def cytaty(ctx):
 @client.command()
 @has_permissions(manage_messages=True)
 async def embed(ctx):
-    now = localtime.now()
+    now = datetime.now()
     today = date.today()
     current_day = today.strftime("%d/%m/%Y")
     current_time = now.strftime("%H:%M:%S")
@@ -105,7 +105,7 @@ async def embed(ctx):
 @embed.error
 async def embed_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
-        now = localtime.now()
+        now = datetime.now()
         today = date.today()
         current_day = today.strftime("%d/%m/%Y")
         current_time = now.strftime("%H:%M:%S")
@@ -116,7 +116,7 @@ async def embed_error(ctx, error):
 @client.command()
 @has_permissions(manage_messages=True)
 async def purge(ctx):
-    now = localtime.now()
+    now = datetime.now()
     today = date.today()
     current_day = today.strftime("%d/%m/%Y")
     current_time = now.strftime("%H:%M:%S")
@@ -126,7 +126,7 @@ async def purge(ctx):
 @purge.error
 async def purge_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        now = localtime.now()
+        now = datetime.now()
         today = date.today()
         current_day = today.strftime("%d/%m/%Y")
         current_time = now.strftime("%H:%M:%S")
