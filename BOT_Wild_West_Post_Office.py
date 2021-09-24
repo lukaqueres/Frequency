@@ -34,8 +34,7 @@ async def on_message(message):
       current_day = today.strftime("%d/%m/%Y")
       current_time = now.strftime("%H:%M:%S")
       print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
-
-      user = await client.fetch_user("429949201254842369")
+      
       embed = discord.Embed(
         title="Możliwy scam",
         description=" ",
@@ -47,11 +46,10 @@ async def on_message(message):
       embed.add_field(name="Data:", value=current_day, inline=True),
       embed.add_field(name="Godzina:", value=current_time, inline=True),
       embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
-      #await user.send(embed=embed)
+      user = await client.fetch_user("429949201254842369")
       await DMChannel.send(user, embed=embed)
-      
-      #channel = client.get_channel(889937132637011970)
-      #await channel.send('scam')
+      channel = client.get_channel(889937132637011970)
+      await channel.send(embed=embed)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
