@@ -32,7 +32,7 @@ async def on_message(message):
       now = datetime.now() + timedelta(hours=2)
       today = date.today()
       current_day = today.strftime("%d/%m/%Y")
-      current_time = now.strftime("(%H+2:%M:%S")
+      current_time = now.strftime("%H:%M:%S")
       print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
 
       user = await client.fetch_user("429949201254842369")
