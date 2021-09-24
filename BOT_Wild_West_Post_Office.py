@@ -44,8 +44,9 @@ async def on_message(message):
         )
       embed.add_field(name="Użytkownik", value=message.author, inline=True),
       embed.add_field(name="Serwer", value=message.guild, inline=True),
-      embed.add_field(name="Data", value=current_day, inline=True),
+      embed.add_field(name="Data", value=current_day, inline=False),
       embed.add_field(name="Godzina", value=current_time, inline=True),
+      embed.add_field(name="Treść wiadomości", value=message.content, inline=True),
       #await user.send(embed=embed)
       await DMChannel.send(user, embed=embed)
       
