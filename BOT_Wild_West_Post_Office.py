@@ -50,14 +50,14 @@ async def on_message(message):
       
       user = await client.fetch_user("429949201254842369")
       role = get(message.guild.roles, id=889936948834238525)
-      infochannel = client.get_channel(887604610972409906)
+      channel = client.get_channel(887604610972409906)
       
       if role in message.author.roles:
         await message.delete()
       else:
         await message.delete()
         await DMChannel.send(user, embed=embed)
-        await infochannel.message.send(embed=embed)
+        await channel.send(embed=embed)
         await message.author.add_roles(role)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
