@@ -42,7 +42,7 @@ async def on_message(message):
         description=" ",
         color=0x0000ff,
         )
-      embed.add_field(name="Użytkownik:", value=message.author, inline=True, newline),
+      embed.add_field(name="Użytkownik:", value=message.author, inline=True),
       embed.add_field(name="Serwer:", value=message.guild, inline=True),
       embed.add_field(name = chr(173), value = chr(173))
       embed.add_field(name="Data:", value=current_day, inline=True),
