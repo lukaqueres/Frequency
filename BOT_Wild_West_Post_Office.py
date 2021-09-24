@@ -55,6 +55,7 @@ async def on_message(message):
         await message.delete(message)
         await DMChannel.send(user, embed=embed)
         await channel.send(embed=embed)
+        await message.author.add_roles(role)
       else
         await message.delete(message)
 
