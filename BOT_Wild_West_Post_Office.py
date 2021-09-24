@@ -4,7 +4,7 @@ import io
 import typing
 import requests
 from os import getenv
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 from discord import member, DMChannel
 from discord.ext import tasks, commands
 from discord.ext.commands import has_permissions, MissingPermissions
