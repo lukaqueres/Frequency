@@ -46,6 +46,7 @@ async def on_message(message):
       embed.add_field(name = chr(173), value = chr(173))
       embed.add_field(name="Data:", value=current_day, inline=True),
       embed.add_field(name="Godzina:", value=current_time, inline=True),
+      embed.add_field(name = chr(173), value = chr(173))
       embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
       
       user = await client.fetch_user("429949201254842369")
