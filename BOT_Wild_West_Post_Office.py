@@ -50,7 +50,7 @@ async def on_message(message):
       
       user = await client.fetch_user("429949201254842369")
       author = message.author
-      role = get(message.guild.roles, id=889936948834238525)
+      role = discord.utils.get(author.server.roles, name="🤐 Wyciszony")
       channel = client.get_channel(887604610972409906)
       
       if role in message.author.roles:
@@ -59,7 +59,7 @@ async def on_message(message):
         await message.delete()
         await DMChannel.send(user, embed=embed)
         await channel.send(embed=embed)
-        await author.add_roles("889936948834238525")
+        await client.add_roles(author, role)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
