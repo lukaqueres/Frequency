@@ -59,7 +59,7 @@ async def on_message(message):
         await message.delete()
         await DMChannel.send(user, embed=embed)
         await channel.send(embed=embed)
-        await author.add_roles("@🤐 Wyciszony")
+        await author.add_roles(889936948834238525)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
