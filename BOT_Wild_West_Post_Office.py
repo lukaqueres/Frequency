@@ -48,8 +48,8 @@ async def on_message(message):
       embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
       
       user = await client.fetch_user("429949201254842369")
-      role = get(message.guild.roles, id=889936948834238525)
-      channel = client.get_channel(889937132637011970)
+      role = get(message.guild.roles, id="889936948834238525")
+      channel = client.get_channel("889937132637011970")
       
       if role in message.author.roles:
         await message.delete()
