@@ -29,7 +29,6 @@ async def on_message(message):
       return
     
     if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
-      await message.channel.send("scam")
       now = datetime.now() + timedelta(hours=2)
       today = date.today()
       current_day = today.strftime("%d/%m/%Y")
