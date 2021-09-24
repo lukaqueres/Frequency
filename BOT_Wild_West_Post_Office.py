@@ -12,6 +12,7 @@ from discord.ext.commands import has_permissions, MissingPermissions
 
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
+bot.remove.command("help")
 
 
 @client.event
@@ -49,7 +50,7 @@ async def on_message(message):
       
       user = await client.fetch_user("429949201254842369")
       role = get(message.guild.roles, id=889936948834238525)
-      infochannel = client.get_channel(889937132637011970)
+      infochannel = client.get_channel(887604610972409906)
       
       if role in message.author.roles:
         await message.delete()
