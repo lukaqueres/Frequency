@@ -23,8 +23,10 @@ async def on_ready():                        #GOTOWY
 
 @client.event
 async def on_message(message):
+  
     if (message.author == client.user):
       return
+    
     if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
       await message.channel.send("scam")
       print( "scam link! message.channel: {}" .format(message.channel ))
@@ -37,10 +39,13 @@ async def on_message(message):
       user = await client.fetch_user("429949201254842369")
       embed = discord.Embed(
         title="Możliwy scam",
-        description=message.author,
+        description=" ",
         color=0x0000ff,
         )
-      embed.add_field(name="Nazwa", value=message.author, inline=True),
+      embed.add_field(name="Użytkownik", value=message.author, inline=True),
+      embed.add_field(name="Serwer", value=message.guild, inline=True),
+      embed.add_field(name="Data", value=current_day, inline=True),
+      embed.add_field(name="Godzina", value=current_time, inline=True),
       #await user.send(embed=embed)
       await DMChannel.send(user, embed=embed)
       
