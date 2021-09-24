@@ -50,7 +50,7 @@ async def on_message(message):
       
       user = await client.fetch_user("429949201254842369")
       author = message.author
-      role = discord.utils.get(author.server.roles, name="🤐 Wyciszony")
+      role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
       channel = client.get_channel(887604610972409906)
       
       if role in message.author.roles:
