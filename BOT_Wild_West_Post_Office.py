@@ -32,7 +32,7 @@ async def status_change():
     status = random.choice(statuses)
     await client.change_presence(activity=discord.Game(name=status))
     sleep_time = random.randint(1800,3600)
-    print("Activity has been changed to: {}, and will be changed again after: {} seconds." .format(status, sleep_time))
+    print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
     await asyncio.sleep(sleep_time)
 client.loop.create_task(status_change())
 
