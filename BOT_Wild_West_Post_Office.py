@@ -60,7 +60,7 @@ async def on_message(message):
       else:
         await message.delete()
         await DMChannel.send(user, embed=embed)
-        await client.add_roles(author, role)
+        #await client.add_roles(author, role)
         if message.guild == RDPguild:
           await RDPchannel.send(embed=embed)
 
