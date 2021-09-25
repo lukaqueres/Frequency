@@ -24,7 +24,7 @@ async def on_ready():
   
 async def status_change():
   await client.wait_until_ready()
-  statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolwer" ]
+  statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
   while not client.is_closed():
     sleep_time = random.randint(1800,3600)
     status = random.choice(statuses)
