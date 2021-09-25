@@ -27,7 +27,7 @@ async def status_change():
   while not client.is_closed():
     status = random.choice(statuses)
     await client.change_presence(activity=discord.Game(name=status))
-    print("Activity has been changed to: {}" .format(status)
+    print("Activity has been changed to: {}" .format(status))
     await asyncio.sleep(10)
 client.loop.create_task(status_change())
 
