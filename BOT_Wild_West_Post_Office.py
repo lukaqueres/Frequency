@@ -26,10 +26,10 @@ async def status_change():
   statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolwer" ]
   while not client.is_closed():
     status = random.choice(statuses)
-    await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
+    await client.change_presence(activity=discord.Game(name=status))
     await asyncio.sleep(10)
 client.loop.create_task(status_change())
-client.run()
+
 @client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
 async def on_message(message):
   
