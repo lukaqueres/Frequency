@@ -28,7 +28,7 @@ async def status_change():
     status = random.choice(statuses)
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
     await asyncio.sleep(10)
-client.loop.create_task(change_status())
+client.loop.create_task(status_change())
 client.run()
 @client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
 async def on_message(message):
