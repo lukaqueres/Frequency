@@ -1,4 +1,4 @@
-import discord, json, io, typing, requests
+import discord, json, io, typing, requests, random, asyncio
 from os import getenv
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel
@@ -9,24 +9,28 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
 #client.remove.command("help")
+@commands.has_permissions(manage_messages=True)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
-current_day = today.strftime("%d/%m/%Y")
-current_time = now.strftime("%H:%M:%S")
+current_day = today.strftime("%d/%m/%Y")   #global current_day
+current_time = now.strftime("%H:%M:%S")    #global current_time
 
-#global current_day
-#global current_time
-
-@client.event
-async def on_ready():                        #GOTOWY
-  #status_gracza = ['Życie Bota', 'Red Dead Redemption 2', 'Red Dead Redemption', 'Red Dead Online', 'Cytaty', 'Ciekawe ciekawostki']
+@client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
+async def on_ready():
   await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
-  print('Bot successfully logged in')
- 
-@commands.has_permissions(manage_messages=True)
-
-@client.event
+  print('Bot successfully logged in with status:')
+  
+async def status_change():
+  await client.wait_until_ready()
+    statuses = [Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolwer" ]
+    while not client.is_closed():
+      status = random.choice(statuses)
+      await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
+      await asyncio.sleep(10)
+client.loop.create_task(change_status())
+client.run()
+@client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
 async def on_message(message):
   
   global current_day
@@ -69,7 +73,8 @@ async def on_message(message):
       #await client.add_roles(author, role)
       if message.guild == RDPguild:
         await RDPchannel.send(embed=embed)
-  await client.process_commands(message)
+  await client.process_commands(message)  #---ANTY PHISHING-------------------------------------------------------------------------------------------------
+  
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
