@@ -9,7 +9,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
 #client.remove.command("help")
-@commands.has_permissions(manage_messages=True)
+#@commands.has_permissions(manage_messages=True)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
