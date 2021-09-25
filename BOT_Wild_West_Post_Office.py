@@ -72,7 +72,7 @@ async def on_message(message):
       #await client.add_roles(author, role)
       if message.guild == RDPguild:
         await RDPchannel.send(embed=embed)
-    await bot.process_commands(message)
+bot.process_commands(message)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
