@@ -15,8 +15,6 @@ today = date.today()
 current_day = today.strftime("%d/%m/%Y")
 current_time = now.strftime("%H:%M:%S")
 
-#global now
-#global today
 #global current_day
 #global current_time
 
@@ -31,8 +29,6 @@ async def on_ready():                        #GOTOWY
 @client.event
 async def on_message(message):
   
-  global now
-  global today
   global current_day
   global current_time
   
