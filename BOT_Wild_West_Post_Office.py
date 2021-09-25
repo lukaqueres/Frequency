@@ -29,7 +29,7 @@ async def status_change():
     change = random.randint(0,1)
     sleep_time = random.randint(1800,3600)
     if change == 0:
-      await client.change_presence(status=discord.Status.online)
+      await client.change_presence(activity=none)
       print("Activity has been changed to: nothing, and next change will be again after: {} seconds." .format(sleep_time))
     else:
       status = random.choice(statuses)
