@@ -30,6 +30,7 @@ async def on_ready():                        #GOTOWY
 
 @client.event
 async def on_message(message):
+  
   global now
   global today
   global current_day
@@ -72,7 +73,7 @@ async def on_message(message):
       #await client.add_roles(author, role)
       if message.guild == RDPguild:
         await RDPchannel.send(embed=embed)
-bot.process_commands(message)
+  await client.process_commands(message)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
