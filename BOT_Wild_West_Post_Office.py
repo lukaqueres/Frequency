@@ -10,10 +10,10 @@ client = discord.Client()
 client = commands.Bot(command_prefix = '$')
 #client.remove.command("help")
 
-global now = datetime.now() + timedelta(hours=2)
-global today = date.today()
-global current_day = today.strftime("%d/%m/%Y")
-global current_time = now.strftime("%H:%M:%S")
+now = datetime.now() + timedelta(hours=2)
+today = date.today()
+current_day = today.strftime("%d/%m/%Y")
+current_time = now.strftime("%H:%M:%S")
 
 #global now
 #global today
