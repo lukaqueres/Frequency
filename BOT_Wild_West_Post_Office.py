@@ -23,7 +23,7 @@ async def on_ready():
   
 async def status_change():
   await client.wait_until_ready()
-  statuses = [Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolwer" ]
+  statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolwer" ]
   while not client.is_closed():
     status = random.choice(statuses)
     await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
