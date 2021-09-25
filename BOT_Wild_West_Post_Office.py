@@ -20,7 +20,7 @@ current_time = now.strftime("%H:%M:%S")    #global current_time
 @client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
 async def on_ready():
   await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
-  print('Bot successfully logged in with status:')
+  print('Bot successfully logged in')
   
 async def status_change():
   await client.wait_until_ready()
