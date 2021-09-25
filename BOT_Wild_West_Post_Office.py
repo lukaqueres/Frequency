@@ -1,4 +1,8 @@
-import discord, json, io, typing, requests
+import discord
+import json 
+import io 
+import typing
+import requests
 from os import getenv
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel
