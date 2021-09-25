@@ -52,15 +52,17 @@ async def on_message(message):
       user = await client.fetch_user("429949201254842369")
       author = message.author
       role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
-      channel = client.get_channel(887604610972409906)
+      RDPchannel = client.get_channel(887604610972409906)
+      RDPguild = client.get_guild(640181649463705650)
       
       if role in message.author.roles:
         await message.delete()
       else:
         await message.delete()
         await DMChannel.send(user, embed=embed)
-        await channel.send(embed=embed)
         await client.add_roles(author, role)
+        if message.guild == RDPguild:
+          await RDPchannel.send(embed=embed)
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
