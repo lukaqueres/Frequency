@@ -1,63 +1,83 @@
-import discord
-import json
-import io
-import typing
-import requests
+import discord, json, io, typing, requests, random, asyncio
 from os import getenv
+from random import randrange, randint
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel
 from discord.ext import tasks, commands
-from discord.ext.commands import has_permissions, MissingPermissions
+from discord.utils import get
+from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
+#client.remove.command("help")
+#@commands.has_permissions(manage_messages=True)
 
+now = datetime.now() + timedelta(hours=2)
+today = date.today()
+current_day = today.strftime("%d/%m/%Y")   #global current_day
+current_time = now.strftime("%H:%M:%S")    #global current_time
 
-@client.event
-async def on_ready():                        #GOTOWY
-  #status_gracza = ['Życie Bota', 'Red Dead Redemption 2', 'Red Dead Redemption', 'Red Dead Online', 'Cytaty', 'Ciekawe ciekawostki']
-  await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline
+@client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
+async def on_ready():
+  await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
   print('Bot successfully logged in')
- 
-@commands.has_permissions(manage_messages=True)
+  
+async def status_change():
+  await client.wait_until_ready()
+  statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
+  while not client.is_closed():
+    sleep_time = random.randint(1800,3600)
+    status = random.choice(statuses)
+    await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
+    print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
+    await asyncio.sleep(sleep_time)
+client.loop.create_task(status_change())
 
-@client.event
+@client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
 async def on_message(message):
   
-    if (message.author == client.user):
-      return
+  global current_day
+  global current_time
+  
+  if (message.author == client.user):
+    return
     
-    if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
-      await message.channel.send("scam")
-      now = datetime.now() + timedelta(hours=2)
-      today = date.today()
-      current_day = today.strftime("%d/%m/%Y")
-      current_time = now.strftime("%H:%M:%S")
-      print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
+  if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
+    now = datetime.now() + timedelta(hours=2)
+    today = date.today()
+    current_day = today.strftime("%d/%m/%Y")
+    current_time = now.strftime("%H:%M:%S")
+    print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
       
-      embed = discord.Embed(
-        title="Możliwy scam",
-        description=" ",
-        color=0x0000ff,
-        )
-      embed.add_field(name="Użytkownik:", value=message.author, inline=True),
-      embed.add_field(name="Serwer:", value=message.guild, inline=True),
-      embed.add_field(name = chr(173), value = chr(173))
-      embed.add_field(name="Data:", value=current_day, inline=True),
-      embed.add_field(name="Godzina:", value=current_time, inline=True),
-      embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
+    embed = discord.Embed(
+      title="Możliwy scam",
+      description=" ",
+      color=0x0000ff,
+      )
+    embed.add_field(name="Użytkownik:", value=message.author, inline=True),
+    embed.add_field(name="Serwer:", value=message.guild, inline=True),
+    embed.add_field(name = chr(173), value = chr(173))
+    embed.add_field(name="Data:", value=current_day, inline=True),
+    embed.add_field(name="Godzina:", value=current_time, inline=True),
+    embed.add_field(name = chr(173), value = chr(173))
+    embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
       
-      user = await client.fetch_user("429949201254842369")
-      role = client.get_role(889936948834238525)
-      channel = client.get_channel(889937132637011970)
+    user = await client.fetch_user("429949201254842369")
+    author = message.author
+    role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
+    RDPchannel = client.get_channel(887604610972409906)
+    RDPguild = client.get_guild(640181649463705650)
       
-      if ( message.author has.role(role) )
-        await message.delete(message)
-        await DMChannel.send(user, embed=embed)
-        await channel.send(embed=embed)
-        await message.author.add_roles(role)
-      else
-        await message.delete(message)
+    if role in message.author.roles:
+      await message.delete()
+    else:
+      await message.delete()
+      await DMChannel.send(user, embed=embed)
+      #await client.add_roles(author, role)
+      if message.guild == RDPguild:
+        await RDPchannel.send(embed=embed)
+  await client.process_commands(message)  #---ANTY PHISHING-------------------------------------------------------------------------------------------------
+  
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
