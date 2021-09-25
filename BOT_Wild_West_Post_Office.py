@@ -1,8 +1,4 @@
-import discord
-import json
-import io
-import typing
-import requests
+import discord, json, io, typing, requests
 from os import getenv
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel
@@ -18,7 +14,7 @@ client = commands.Bot(command_prefix = '$')
 @client.event
 async def on_ready():                        #GOTOWY
   #status_gracza = ['Życie Bota', 'Red Dead Redemption 2', 'Red Dead Redemption', 'Red Dead Online', 'Cytaty', 'Ciekawe ciekawostki']
-  await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline
+  await client.change_presence(status=discord.Status.online)          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
   print('Bot successfully logged in')
  
 @commands.has_permissions(manage_messages=True)
