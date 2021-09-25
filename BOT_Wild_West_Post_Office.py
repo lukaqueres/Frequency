@@ -1,5 +1,6 @@
 import discord, json, io, typing, requests, random, asyncio
 from os import getenv
+from random import randrange, randint
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel
 from discord.ext import tasks, commands
@@ -25,10 +26,14 @@ async def status_change():
   await client.wait_until_ready()
   statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolwer" ]
   while not client.is_closed():
+    change = random.randint(0,1)
+    if change == 0:
+      await client.change_presence(status=discord.Status.online)
     status = random.choice(statuses)
     await client.change_presence(activity=discord.Game(name=status))
-    print("Activity has been changed to: {}" .format(status))
-    await asyncio.sleep(10)
+    sleep_time = random.randint(1800,3600)
+    print("Activity has been changed to: {}, and will be changed again after: {} seconds." .format(status, sleep_time))
+    await asyncio.sleep(sleep_time)
 client.loop.create_task(status_change())
 
 @client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
