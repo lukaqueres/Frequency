@@ -47,7 +47,7 @@ async def on_message(message):
     for x in black_listed:
       if (x in message.content):
         black_listed_words_number_detected += 1
-        if (black_listed-words_number-detected == 2):
+        if (black_listed_words_number_detected == 2):
           print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
           embed = discord.Embed(
             title="Możliwy scam",
