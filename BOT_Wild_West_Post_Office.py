@@ -46,7 +46,7 @@ async def on_message(message):
   if (('http' in message.content ) or ('https' in message.content)):
     for x in black_listed:
       if (x in message.content):
-        black_listed-words_number-detected = black_listed-words_number-detected + 1
+        black_listed_words_number_detected += 1
         if (black_listed-words_number-detected = 2):
           print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
           embed = discord.Embed(
