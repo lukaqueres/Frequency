@@ -38,44 +38,44 @@ async def on_message(message):
   
   global current_day
   global current_time
-  
+  black_listed = ['Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
+  black_listed-length = len(black_listed)
+  black_listed-words_number-detected = 0
   if (message.author == client.user):
     return
-    
-  if ((('Nitro' in message.content ) or ('nitro' in message.content )) and (('Free' in message.content ) or ('free' in message.content ) or ('discord' in message.content ) or ('Discord' in message.content ) or ('giveaway' in message.content ) or ('Giveaway' in message.content )) and (('http' in message.content ) or ('https' in message.content))):
-    now = datetime.now() + timedelta(hours=2)
-    today = date.today()
-    current_day = today.strftime("%d/%m/%Y")
-    current_time = now.strftime("%H:%M:%S")
-    print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
-      
-    embed = discord.Embed(
-      title="Możliwy scam",
-      description=" ",
-      color=0x0000ff,
-      )
-    embed.add_field(name="Użytkownik:", value=message.author, inline=True),
-    embed.add_field(name="Serwer:", value=message.guild, inline=True),
-    embed.add_field(name = chr(173), value = chr(173))
-    embed.add_field(name="Data:", value=current_day, inline=True),
-    embed.add_field(name="Godzina:", value=current_time, inline=True),
-    embed.add_field(name = chr(173), value = chr(173))
-    embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
-      
-    user = await client.fetch_user("429949201254842369")
-    author = message.author
-    role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
-    RDPchannel = client.get_channel(887604610972409906)
-    RDPguild = client.get_guild(640181649463705650)
-      
-    if role in message.author.roles:
-      await message.delete()
-    else:
-      await message.delete()
-      await DMChannel.send(user, embed=embed)
-      #await client.add_roles(author, role)
-      if message.guild == RDPguild:
-        await RDPchannel.send(embed=embed)
+  if (('http' in message.content ) or ('https' in message.content)):
+    for x in black_listed:
+      if (x in message.content):
+        black_listed-words_number-detected = black_listed-words_number-detected + 1
+        if (black_listed-words_number-detected = 2):
+          print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
+          embed = discord.Embed(
+            title="Możliwy scam",
+            description=" ",
+            color=0x0000ff,
+          )
+          embed.add_field(name="Użytkownik:", value=message.author, inline=True),
+          embed.add_field(name="Serwer:", value=message.guild, inline=True),
+          embed.add_field(name = chr(173), value = chr(173))
+          embed.add_field(name="Data:", value=current_day, inline=True),
+          embed.add_field(name="Godzina:", value=current_time, inline=True),
+          embed.add_field(name = chr(173), value = chr(173))
+          embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
+          user = await client.fetch_user("429949201254842369")
+          author = message.author
+          role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
+          RDPchannel = client.get_channel(887604610972409906)
+          RDPguild = client.get_guild(640181649463705650)
+          if role in message.author.roles:
+            await message.delete()
+          else:
+            await message.delete()
+            await DMChannel.send(user, embed=embed)
+            await client.add_roles(author, role)
+            if message.guild == RDPguild:
+              await RDPchannel.send(embed=embed)
+  else:
+    return
   await client.process_commands(message)  #---ANTY PHISHING-------------------------------------------------------------------------------------------------
   
 
@@ -120,7 +120,8 @@ async def embed(ctx):
     embed.add_field(name="Zniżki:", value="**-** 5 sztabek na licencję łowcy nagród \n**-** 30% zniżki na broszury ról \n**-** 40% zniżki na konie bretońskie\n**-** 40% zniżki na pasy na broń ról\n**-** 40% na amunicję i strzemiona\n**-** 50% na ostrogi", inline=True)
     embed.add_field(name="Aktualności", value="W tym tygodniu wydarzenia w grze swobodnej oraz tryb do broni przynosi 2 razy więcej dochodów jak i PD. W trakcie przestępstw krwawej forsy można zdobyć więcej *kapitali* niż zwykle. W tym tygodniu jest również dostępna odzież z poprzednich przepustek bandyty.", inline=True)
     embed.add_field(name="Witamy 3 odsłonę Klubu Rewolwerowca", value="\nCena wynosi 25 sztabek złota które zwracają się po osiągnęciu 25, maksymalnego poziomu. Możemy w niej zdobyć m. in. Nową kamizelkę, nóż, kurtkę, maskę czy końską grzywę.\nJest dostępna do 4 października 2021 ", inline=False)
-    embed.add_field(name="Więcej", value="**W tym tygodniu:**\n- Za dowolną modyfikację broni można zarobić 25 nabojów zapalających do strzelby jak i 200 nabojów express do rewolweru\n- Wszyscy gracze RDO którzy zalogują się w tym tygodniu dostaną 3 specjalne oleje z węża i 3 silne serum w ciągu 72 godzin.\n\nPosiadacze 2 poprzednich odsłon Klubu Rewolwerowca którzy zakupią tą (3) odsłonę otrzymają 25 not kapitałowych i 10 darmowych szybkich podróży w ciągu 72 godzin od zakupu. \nPrzypominamy że posiadanie wszystkich 4 odsłon zapewni darmową hallowienową przepustkę.  ", inline=False)
+    embed.add_field(name="Więcej", value="**W tym tygodniu:**\n- Za dowolną modyfikację broni można zarobić 25 nabojów zapalających do strzelby jak i 200 nabojów express do rewolweru\n- Wszyscy gracze RDO którzy zalogują się w tym tygodniu dostaną 3 specjalne oleje z węża i 3 silne serum w ciągu 72 godzin.
+                    \n\nPosiadacze 2 poprzednich odsłon Klubu Rewolwerowca którzy zakupią tą (3) odsłonę otrzymają 25 not kapitałowych i 10 darmowych szybkich podróży w ciągu 72 godzin od zakupu. \nPrzypominamy że posiadanie wszystkich 4 odsłon zapewni darmową hallowienową przepustkę.  ", inline=False)
     embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
     embed.set_thumbnail(url="https://prod.cloud.rockstargames.com/global/Events/23152/171b3f1d-4598-4415-9151-957aa943388a.jpg")
     embed.set_footer(text="Miłej gry")
