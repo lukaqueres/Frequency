@@ -38,8 +38,8 @@ async def on_message(message):
   
   global current_day
   global current_time
-  black_listed = ['Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
-  black_listed-length = len(black_listed)
+  black_listed=['Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
+  black_listed-length = (len(black_listed))
   black_listed-words_number-detected = 0
   if (message.author == client.user):
     return
