@@ -76,13 +76,13 @@ async def on_message(message):
               await RDPchannel.send(embed=embed)
   else:
     return
-await client.process_commands(message)  #---ANTY PHISHING-------------------------------------------------------------------------------------------------
+client.process_commands(message)  #---ANTY PHISHING-------------------------------------------------------------------------------------------------
   
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
 @client.command()
-async def music(ctx, url : str):
+async def play(ctx, url : str):
   voice_channel = ctx.member.voice
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
 
