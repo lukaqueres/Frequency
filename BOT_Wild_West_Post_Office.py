@@ -77,12 +77,12 @@ async def on_message(message):
               await RDPchannel.send(embed=embed)
   else:
     return
-  client.process_commands(message)  #---ANTY PHISHING-------------------------------------------------------------------------------------------------
+#---ANTY PHISHING-------------------------------------------------------------------------------------------------
   
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
-@client.command()
+@client.command(pass_context=True)
 async def play(ctx, url : str):
   global current_day
   global current_time
@@ -95,7 +95,7 @@ async def play(ctx, url : str):
   player = await voice_client.create_ytdl_payer(url)
   player.start()
     
-@client.command()
+@client.command(pass_context=True)
 async def leave(ctx):
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
   if voice.is_connected():
@@ -104,7 +104,7 @@ async def leave(ctx):
       await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
   
   
-@client.command()
+@client.command(pass_context=True)
 async def pause(ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     if voice.is_playing():
@@ -113,7 +113,7 @@ async def pause(ctx):
         await ctx.send('"Obecnie nic nie jest odtwarzane."')
 
 
-@client.command()
+@client.command(pass_context=True)
 async def resume(ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     if voice.is_paused():
@@ -121,7 +121,7 @@ async def resume(ctx):
     else:
         await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
-@client.command()
+@client.command(pass_context=True)
 async def stop(ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     voice.stop()
