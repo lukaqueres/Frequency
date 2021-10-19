@@ -93,7 +93,7 @@ async def play(ctx, url : str):
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
   guild = ctx.message.guild
   voice_client = guild.voice_client
-  await client.join_voice_channel(voice_channel)
+  await voice_channel.connect()
   player = await voice_client.create_ytdl_player(url)
   players[guild.id] = player
   player.start()
