@@ -87,6 +87,14 @@ async def play(ctx, url : str):
   global current_day
   global current_time
   print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+  song_there = os.path.isfile("song.mp3")
+  try:
+    if song_there:
+      os.remove("song.mp3")
+    except PermissionError:
+        await ctx.send("Poczekaj na koniec obecnej piosenki lub użyj komendy 'stop'.")
+        return
+  
   voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
 
@@ -94,6 +102,21 @@ async def play(ctx, url : str):
     return await ctx.send('"Musisz być na kanale głosowym, jeżeli chcesz skorzystać z tej komendy."')
   else:
     await voice_channel.connect()
+    
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    for file in os.listdir("./"):
+        if file.endswith(".mp3"):
+            os.rename(file, "song.mp3")
+    voice.play(discord.FFmpegPCMAudio("song.mp3"))
     
     
     
