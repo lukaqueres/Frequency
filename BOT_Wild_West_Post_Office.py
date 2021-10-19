@@ -91,8 +91,9 @@ async def play(ctx, url : str):
   server = ctx.message.guild
   voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
-  voice_client = client.voice_client_in(server)
-  player = await voice_client.create_ytdl_payer(url)
+  #voice_client = client.voice_client_in(server)
+  #player = await voice_client.create_ytdl_player(url)
+  player = await voice_channel.create_ytdl_player(url)
   player.start()
     
 @client.command(pass_context=True)
