@@ -84,6 +84,7 @@ async def on_message(message):
 
 @client.command()
 async def play(ctx, url : str):
+  print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
   voice_channel = ctx.member.voice
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
 
