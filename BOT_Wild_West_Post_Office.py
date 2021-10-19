@@ -96,7 +96,7 @@ async def play(ctx, url : str):
       return
   
   voice_channel = ctx.author.voice.channel
-  voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+  voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
 
   if voice_channel is None:
     return await ctx.send('"Musisz być na kanale głosowym, jeżeli chcesz skorzystać z tej komendy."')
