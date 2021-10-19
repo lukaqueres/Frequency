@@ -35,6 +35,7 @@ client.loop.create_task(status_change())
 
 @client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
 async def on_message(message):
+await client.process_commands(message)
   
   global current_day
   global current_time
