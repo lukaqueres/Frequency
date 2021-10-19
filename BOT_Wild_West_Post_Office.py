@@ -3,9 +3,10 @@ from os import getenv
 from dotenv import load_dotenv
 from random import randrange, randint
 from datetime import datetime, date, timedelta
-from discord import member, DMChannel
-from discord.ext import tasks, commands
+from discord import member, DMChannel, FFmpegPCMAudio
+from discord.ext import tasks, commands, TextChannel
 from discord.utils import get
+from youtube_dl import YoutubeDL
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 client = discord.Client()
@@ -82,45 +83,7 @@ async def on_message(message):
   
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
-
-youtube_dl.utils.bug_reports_message = lambda: ''
-
-ytdl_format_options = {
-    'format': 'bestaudio/best',
-    'restrictfilenames': True,
-    'noplaylist': True,
-    'nocheckcertificate': True,
-    'ignoreerrors': False,
-    'logtostderr': False,
-    'quiet': True,
-    'no_warnings': True,
-    'default_search': 'auto',
-    'source_address': '0.0.0.0' # bind to ipv4 since ipv6 addresses cause issues sometimes
-}
-
-ffmpeg_options = {
-    'options': '-vn'
-}
-
-ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
-
-class YTDLSource(discord.PCMVolumeTransformer):
-    def __init__(self, source, *, data, volume=0.5):
-        super().__init__(source, volume)
-        self.data = data
-        self.title = data.get('title')
-        self.url = ""
-
-    @classmethod
-    async def from_url(cls, url, *, loop=None, stream=False):
-        loop = loop or asyncio.get_event_loop()
-        data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=not stream))
-        if 'entries' in data:
-            # take first item from a playlist
-            data = data['entries'][0]
-        filename = data['title'] if stream else ytdl.prepare_filename(data)
-        return filename
-      
+load_dotenv()
 players = {}
 
 @client.command(pass_context=True)
@@ -134,11 +97,24 @@ async def play(ctx, url : str):
   guild = ctx.message.guild
   voice_client = guild.voice_client
   await voice_channel.connect()
+  
+  YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
+  FFMPEG_OPTIONS = {
+    'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+  voice = get(client.voice_clients, guild=ctx.guild)
+
+  if not voice.is_playing():
+     with YoutubeDL(YDL_OPTIONS) as ydl:
+      info = ydl.extract_info(url, download=False)
+     URL = info['url']
+     voice.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
+     voice.is_playing()
+        
   #player = await voice_client.create_ytdl_player(url)
-  filename = await YTDLSource.from_url(url, loop=bot.loop)
-  voice_channel.play(discord.FFmpegPCMAudio(executable="ffmpeg.exe", source=filename))
-  players[guild.id] = player
-  player.start()
+  #filename = await YTDLSource.from_url(url, loop=bot.loop)
+  #voice_channel.play(discord.FFmpegPCMAudio(executable="ffmpeg.exe", source=filename))
+  #players[guild.id] = player
+  #player.start()
     
 @client.command(pass_context=True)
 async def leave(ctx):
