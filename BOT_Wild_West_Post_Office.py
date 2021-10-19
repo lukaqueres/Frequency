@@ -1,4 +1,4 @@
-import discord, json, io, typing, requests, random, asyncio
+import discord, json, io, typing, requests, random, asyncio, youtube_dl
 from os import getenv
 from random import randrange, randint
 from datetime import datetime, date, timedelta
@@ -81,9 +81,57 @@ async def on_message(message):
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
+@client.command()
+async def play(ctx, url : str):
+  voice_channel = ctx.member.voice
+  voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+
+  if voice_state is None:
+    return await ctx.send('"Musisz być na kanale głosowym, jeżeli chcesz skorzystać z tej komendy."')
+  if not voice.is_connected():
+    await voiceChannel.connect()
+    
+    
+    
+@client.command()
+async def leave(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    if voice.is_connected():
+        await voice.disconnect()
+    else:
+        await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
+  
+@client.command()
+async def pause(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    if voice.is_playing():
+        voice.pause()
+    else:
+        await ctx.send('"Obecnie nic nie jest odtwarzane."')
 
 
+@client.command()
+async def resume(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    if voice.is_paused():
+        voice.resume()
+    else:
+        await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
+@client.command()
+async def stop(ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice.stop()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 @client.command()
 @has_permissions(manage_messages=True)
 async def cytaty(ctx):
