@@ -87,7 +87,7 @@ async def play(ctx, url : str):
   global current_day
   global current_time
   print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-  voice_channel = ctx.message.author.voice.voice_channel 
+  voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
 
   if voice_channel is None:
