@@ -82,7 +82,7 @@ async def on_message(message):
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
 @client.command()
-async def play(ctx, url : str):
+async def music(ctx, url : str):
   voice_channel = ctx.member.voice
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
 
