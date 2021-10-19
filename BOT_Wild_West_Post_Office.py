@@ -198,7 +198,7 @@ async def purge(ctx, number : int ):
     today = date.today()
     current_day = today.strftime("%d/%m/%Y")
     current_time = now.strftime("%H:%M:%S")
-    print("\n Purge has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+    print("\n Purge with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
     await ctx.channel.purge(limit = number)
 
 @purge.error
