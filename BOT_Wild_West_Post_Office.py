@@ -190,13 +190,13 @@ async def embed_error(ctx, error):
 
 @client.command()
 @has_permissions(manage_messages=True)
-async def purge(ctx):
+async def purge(ctx, number : int ):
     now = datetime.now()
     today = date.today()
     current_day = today.strftime("%d/%m/%Y")
     current_time = now.strftime("%H:%M:%S")
     print("\n Purge has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-    await ctx.channel.purge(limit = 100)
+    await ctx.channel.purge(limit = number)
 
 @purge.error
 async def purge_error(error, ctx):
