@@ -84,7 +84,9 @@ async def on_message(message):
 
 @client.command()
 async def play(ctx, url : str):
-  print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
+  global current_day
+  global current_time
+  print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
   voice_channel = ctx.member.voice
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
 
@@ -97,11 +99,11 @@ async def play(ctx, url : str):
     
 @client.command()
 async def leave(ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    if voice.is_connected():
-        await voice.disconnect()
-    else:
-        await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
+  voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+  if voice.is_connected():
+      await voice.disconnect()
+  else:
+      await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
   
 @client.command()
 async def pause(ctx):
