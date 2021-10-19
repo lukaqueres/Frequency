@@ -91,7 +91,7 @@ async def play(ctx, url : str):
   try:
     if song_there:
       os.remove("song.mp3")
-    except PermissionError:
+   except PermissionError:
         await ctx.send("Poczekaj na koniec obecnej piosenki lub użyj komendy 'stop'.")
         return
   
