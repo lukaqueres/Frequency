@@ -91,9 +91,9 @@ async def play(ctx, url : str):
   try:
     if song_there:
       os.remove("song.mp3")
-   except PermissionError:
-    await ctx.send("Poczekaj na koniec obecnej piosenki lub użyj komendy 'stop'.")
-    return
+   #except PermissionError:
+    #await ctx.send("Poczekaj na koniec obecnej piosenki lub użyj komendy 'stop'.")
+    #return
   
   voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
