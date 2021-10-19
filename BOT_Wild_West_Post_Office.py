@@ -92,8 +92,8 @@ async def play(ctx, url : str):
 
   if voice_channel is None:
     return await ctx.send('"Musisz być na kanale głosowym, jeżeli chcesz skorzystać z tej komendy."')
-  if not voice.is_connected():
-    await voicechannel.connect()
+  else:
+    await voice_channel.connect()
     
     
     
