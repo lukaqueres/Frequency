@@ -88,9 +88,10 @@ async def play(ctx, url : str):
   global current_time
   print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
   
+  server = ctx.message.guild
   voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
-
+  voice_client = client.voice_client_in(server)
   player = await voice_client.create_ytdl_payer(url)
   player.start()
     
