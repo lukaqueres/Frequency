@@ -90,15 +90,7 @@ async def play(ctx, url : str):
   
   voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
-  
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
-    }   
+
   player = await voice_client.create_ytdl_payer(url)
   player.start()
     
