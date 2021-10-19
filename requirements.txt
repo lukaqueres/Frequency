@@ -3,4 +3,3 @@ requests
 youtube_dl
 ffmpeg
 PyNaCl
-avconv
