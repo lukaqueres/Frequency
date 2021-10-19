@@ -6,6 +6,7 @@ from discord import member, DMChannel
 from discord.ext import tasks, commands
 from discord.utils import get
 from discord.ext.commands import has_permissions, MissingPermissions, bot
+from ffmpeg import avconv
 
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
