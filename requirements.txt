@@ -2,3 +2,4 @@ discord.py==1.7.3
 requests
 youtube_dl
 ffmpeg
+PyNaCl
