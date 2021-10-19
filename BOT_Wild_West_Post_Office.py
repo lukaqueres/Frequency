@@ -87,13 +87,13 @@ async def play(ctx, url : str):
   global current_day
   global current_time
   print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-  song_there = os.path.isfile("song.mp3")
-  try:
-    if song_there:
-      os.remove("song.mp3")
-   #except PermissionError:
-    #await ctx.send("Poczekaj na koniec obecnej piosenki lub użyj komendy 'stop'.")
-    #return
+    song_there = os.path.isfile("song.mp3")
+    try:
+        if song_there:
+            os.remove("song.mp3")
+    except PermissionError:
+        await ctx.send("Wait for the current playing music to end or use the 'stop' command")
+        return
   
   voice_channel = ctx.author.voice.channel
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
