@@ -1,5 +1,6 @@
 import discord, json, io, os, typing, requests, random, asyncio, youtube_dl
 from os import getenv
+from dotenv import load_dotenv
 from random import randrange, randint
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel
