@@ -213,32 +213,26 @@ async def embed(ctx):
 @embed.error
 async def embed_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
-        now = datetime.now()
-        today = date.today()
-        current_day = today.strftime("%d/%m/%Y")
-        current_time = now.strftime("%H:%M:%S")
+        global current_day
+        global current_time
         print("\n Embed has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
         print(" Reason: \"not enough permissions \"")
         await ctx.channel.purge(limit = 1)
 
 @client.command()
 @has_permissions(manage_messages=True)
-async def purge(ctx, number : int ):
-    now = datetime.now()
-    today = date.today()
-    current_day = today.strftime("%d/%m/%Y")
-    current_time = now.strftime("%H:%M:%S")
-    print("\n Purge with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+async def clear(ctx, number : int ):
+    global current_day
+    global current_time
+    print("\n Clear with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
     await ctx.channel.purge(limit = number)
 
-@purge.error
-async def purge_error(error, ctx):
+@clear.error
+async def clear_error(error, ctx):
     if isinstance(error, MissingPermissions):
-        now = datetime.now()
-        today = date.today()
-        current_day = today.strftime("%d/%m/%Y")
-        current_time = now.strftime("%H:%M:%S")
-        print("\n Purge has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+        global current_day
+        global current_time
+        print("\n Clear has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
         print(" Reason: \" not enough permissions \"")
         await ctx.channel.purge(limit = 1)
 
