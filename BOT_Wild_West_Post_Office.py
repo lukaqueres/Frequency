@@ -98,7 +98,11 @@ async def play(ctx, url : str):
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
   guild = ctx.message.guild
   voice_client = guild.voice_client
-  await voice_channel.connect()
+  #await voice_channel.connect()
+  if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
   
   YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
   FFMPEG_OPTIONS = {
