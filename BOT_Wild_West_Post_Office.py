@@ -111,6 +111,10 @@ async def play(ctx, url : str):
      URL = info['url']
      voice.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
      voice.is_playing()
+  # check if the bot is already playing
+  else:
+    await ctx.send("Bot już gra")
+    return
         
   #player = await voice_client.create_ytdl_player(url)
   #filename = await YTDLSource.from_url(url, loop=bot.loop)
