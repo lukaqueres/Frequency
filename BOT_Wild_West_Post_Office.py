@@ -8,7 +8,7 @@ from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import YoutubeDL
 from discord.ext.commands import has_permissions, MissingPermissions, bot
-#from ffmpeg import *
+from ffmpeg import *
 
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
@@ -113,7 +113,7 @@ async def play(ctx, url : str):
         
   #player = await voice_client.create_ytdl_player(url)
   #filename = await YTDLSource.from_url(url, loop=bot.loop)
-  #voice_channel.play(discord.FFmpegPCMAudio(source=filename))  #(executable="ffmpeg.exe", source=filename))
+  #voice_channel.play(executable="ffmpeg.exe", source=filename))  #
   #players[guild.id] = player
   #player.start()
     
