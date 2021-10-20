@@ -100,9 +100,9 @@ async def play(ctx, url : str):
   voice_client = guild.voice_client
   #await voice_channel.connect()
   if voice and voice.is_connected():
-    await voice.move_to(channel)
+    await voice.move_to(voice_channel)
   else:
-    voice = await channel.connect()
+    voice = await voice_channel.connect()
   
   YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
   FFMPEG_OPTIONS = {
