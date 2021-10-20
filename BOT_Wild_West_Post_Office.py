@@ -1,6 +1,7 @@
 import discord, json, io, os, typing, requests, random, asyncio, youtube_dl
 from os import getenv
 from dotenv import load_dotenv
+from ffmpeg import *
 from random import randrange, randint
 from datetime import datetime, date, timedelta
 from discord import member, DMChannel, FFmpegPCMAudio, TextChannel
@@ -8,7 +9,7 @@ from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import YoutubeDL
 from discord.ext.commands import has_permissions, MissingPermissions, bot
-from ffmpeg import *
+
 
 client = discord.Client()
 client = commands.Bot(command_prefix = '$')
