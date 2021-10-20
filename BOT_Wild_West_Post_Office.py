@@ -7,7 +7,7 @@ from datetime import datetime, date, timedelta
 from discord import member, DMChannel, FFmpegPCMAudio, TextChannel
 from discord.ext import tasks, commands
 from discord.utils import get
-from youtube-dl import *
+from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 
