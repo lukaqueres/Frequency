@@ -22,7 +22,7 @@ class Music(commands.Cog):
     
   @commands.Cog.listener(pass_context=True)
   async def on_ready(self):
-    print('Music module loaded")
+    print('Music module loaded')
           
   @commands.command(pass_context=True)
   async def play(self, ctx, url : str):
