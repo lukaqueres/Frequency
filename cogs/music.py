@@ -28,8 +28,8 @@ class Music(commands.Cog):
     print('Music module loaded')
           
   @commands.command(pass_context=True)
-  await bot.process_commands(message)
   async def play(self, ctx, url : str):
+    await bot.process_commands(message)
     global current_day
     global current_time
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
