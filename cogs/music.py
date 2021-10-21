@@ -46,7 +46,7 @@ class Music(commands.Cog):
     YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
     FFMPEG_OPTIONS = {
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
-    voice = get(client.voice_clients, guild=ctx.guild)
+    #voice = get(client.voice_clients, guild=ctx.guild)
 
     if not voice.is_playing():
       with YoutubeDL(YDL_OPTIONS) as ydl:
