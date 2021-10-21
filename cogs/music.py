@@ -19,7 +19,6 @@ load_dotenv()
 players = {}
 
 class Music(commands.Cog):
-  
   def __init__(self, client):
     self.client = client
     
@@ -58,36 +57,36 @@ class Music(commands.Cog):
     else:
       await ctx.send("Bot już gra")
     
-@commands.command()
-async def leave(self, ctx):
-  voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-  if voice.is_connected():
-      await voice.disconnect()
-  else:
-      await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
+  @commands.command()
+  async def leave(self, ctx):
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    if voice.is_connected():
+        await voice.disconnect()
+    else:
+        await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
   
-@commands.command()
-async def pause(self, ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    if voice.is_playing():
-        voice.pause()
-    else:
-        await ctx.send('"Obecnie nic nie jest odtwarzane."')
+  @commands.command()
+  async def pause(self, ctx):
+      voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+      if voice.is_playing():
+          voice.pause()
+      else:
+          await ctx.send('"Obecnie nic nie jest odtwarzane."')
 
 
-@commands.command()
-async def resume(self, ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    if voice.is_paused():
-        voice.resume()
-    else:
-        await ctx.send('"Obecnie nic nie jest zatrzymane."')
+  @commands.command()
+  async def resume(self, ctx):
+      voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+      if voice.is_paused():
+          voice.resume()
+      else:
+          await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
-@commands.command()
-async def stop(self, ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-    voice.stop()
+  @commands.command()
+  async def stop(self, ctx):
+      voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+      voice.stop()
     
 def setup(client):
-  client.add_cog(Music(client))
+client.add_cog(Music(client))
     
