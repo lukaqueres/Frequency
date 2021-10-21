@@ -246,7 +246,7 @@ async def clear_error(error, ctx):
 @has_permissions(manage_messages=True)
 async def ping(ctx):
 	await ctx.send(f'Ping: {round(client.latency * 1000)} ms')
-	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000)), ctx.message.guild)
+	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild)
 
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
