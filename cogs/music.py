@@ -27,7 +27,7 @@ class Music(commands.Cog):
   async def on_ready(self):
     print('Music module loaded')
           
-  @commands.command(pass_context=True)
+  @commands.command()
   async def play(self, ctx, url : str):
     global current_day
     global current_time
