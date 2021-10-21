@@ -20,11 +20,11 @@ class Music(commands.Cog):
   def __init__(self, client):
     self.client = client
     
-  @commands.Cog.listener(pass_context=True)
+  @commands.Cog.listener()
   async def on_ready(self):
     print('Music module loaded')
           
-  @commands.command(pass_context=True)
+  @commands.command()
   async def play(self, ctx, url : str):
     global current_day
     global current_time
@@ -62,7 +62,7 @@ class Music(commands.Cog):
     #players[guild.id] = player
     #player.start()
     
-@commands.command(pass_context=True)
+@commands.command()
 async def leave(self, ctx):
   voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
   if voice.is_connected():
@@ -70,7 +70,7 @@ async def leave(self, ctx):
   else:
       await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
   
-@commands.command(pass_context=True)
+@commands.command()
 async def pause(self, ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     if voice.is_playing():
@@ -79,7 +79,7 @@ async def pause(self, ctx):
         await ctx.send('"Obecnie nic nie jest odtwarzane."')
 
 
-@commands.command(pass_context=True)
+@commands.command()
 async def resume(self, ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     if voice.is_paused():
@@ -87,7 +87,7 @@ async def resume(self, ctx):
     else:
         await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
-@commands.command(pass_context=True)
+@commands.command()
 async def stop(self, ctx):
     voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     voice.stop()
