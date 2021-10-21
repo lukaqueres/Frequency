@@ -20,6 +20,10 @@ class Music(commands.Cog):
   def __init__(self, client):
     self.client = client
     
+  @commands.Cog.listener(pass_context=True)
+  async def on_ready(self):
+    print('Music module loaded")
+          
   @commands.command(pass_context=True)
   async def play(self, ctx, url : str):
     global current_day
