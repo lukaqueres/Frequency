@@ -88,5 +88,5 @@ class Music(commands.Cog):
       voice.stop()
     
 def setup(client):
-client.add_cog(Music(client))
+  client.add_cog(Music(client))
     
