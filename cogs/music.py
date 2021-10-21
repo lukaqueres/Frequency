@@ -28,6 +28,7 @@ class Music(commands.Cog):
     print('Music module loaded')
           
   @commands.command(pass_context=True)
+  await bot.process_commands(message)
   async def play(self, ctx, url : str):
     global current_day
     global current_time
