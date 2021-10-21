@@ -67,7 +67,7 @@ class Music(commands.Cog):
   
   @commands.command()
   async def pause(self, ctx):
-      voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+      voice = discord.utils.get(client.voice_clients, guild=ctx.guild) #ctx.guild.voice_channels
       if voice.is_playing():
           voice.pause()
       else:
@@ -76,7 +76,7 @@ class Music(commands.Cog):
 
   @commands.command()
   async def resume(self, ctx):
-      voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+      voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
       if voice.is_paused():
           voice.resume()
       else:
