@@ -57,13 +57,6 @@ class Music(commands.Cog):
       #check if the bot is already playing
     else:
       await ctx.send("Bot już gra")
-      return
-        
-    #player = await voice_client.create_ytdl_player(url)
-    #filename = await YTDLSource.from_url(url, loop=bot.loop)
-    #voice_channel.play(source=filename))  #(executable="ffmpeg.exe", source=filename))
-    #players[guild.id] = player
-    #player.start()
     
 @commands.command()
 async def leave(self, ctx):
