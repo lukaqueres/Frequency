@@ -242,15 +242,10 @@ async def clear_error(error, ctx):
 
 
 
-
-
-@client.command()
-async def load(ctx, extension):
-  client.load_extension(f'cogs.{extension}')
-  
-@client.command()
-async def unload(ctx, extension):
-  client.unload_extension(f'cogs.{extension}')
+@client.command() 
+@has_permissions(manage_messages=True)
+async def ping(self, ctx):
+	await ctx.send(f'Pong! {round(self.bot.latency * 1000)}')
 
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
