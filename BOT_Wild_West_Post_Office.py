@@ -244,8 +244,8 @@ async def clear_error(error, ctx):
 
 @client.command() 
 @has_permissions(manage_messages=True)
-async def ping(self, ctx):
-	await ctx.send(f'Pong! {round(self.bot.latency * 1000)}')
+async def ping(ctx):
+	await ctx.send(f'Pong! {round(client.latency * 1000)}')
 
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
