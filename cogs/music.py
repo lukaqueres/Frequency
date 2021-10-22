@@ -32,7 +32,6 @@ class Music(commands.Cog):
     global current_time
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
   
-    voice_channel = ctx.author.voice.channel
     voice = get(client.voice_clients, guild=ctx.guild) 
     guild = ctx.message.guild
     voice_client = guild.voice_client
@@ -40,10 +39,10 @@ class Music(commands.Cog):
       await ctx.send("Nie można było znaleźć kanału. Użytkownik nie jest połączony z kanałem głosowym!")
       return
     else:
-      channel = ctx.message.author.voice.channel
-      await ctx.send(f'Połączono z ``{channel}``')
+      voice_channel = ctx.message.author.voice.channel
+      await ctx.send(f'Połączono z ``{voice_channel}``')
 
-    await channel.connect()
+    await voice_channel.connect()
   
     YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
     FFMPEG_OPTIONS = {
