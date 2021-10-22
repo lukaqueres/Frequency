@@ -33,7 +33,7 @@ class Music(commands.Cog):
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
   
     voice_channel = ctx.author.voice.channel
-    voice = get(self.bot.voice_clients, guild=ctx.guild) 
+    voice = get(client.voice_clients, guild=ctx.guild) 
     guild = ctx.message.guild
     voice_client = guild.voice_client
     #await voice_channel.connect()
