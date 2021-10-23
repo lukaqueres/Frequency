@@ -19,7 +19,7 @@ load_dotenv()
 
 class Setup(commands.Cog):
   def __init__(self, client):
-    self.client = client
+  	self.client = client
     
   @commands.Cog.listener()
   async def on_ready(self):
@@ -31,9 +31,9 @@ class Setup(commands.Cog):
     global current_time
     print("\n Bot joined in guild: \" {} \" guild on \" {} {} \".".format(guild, current_time, current_day))
     with open('data.json', 'r') as f:
-	prefixes = json.load(f)
+			prefixes = json.load(f)
       
-	prefixes[str(guild.id)] = '$'
+			prefixes[str(guild.id)] = '$'
     
     with open('data.json','w') as f:
       json.dump(prefixes, f, indent=4)
@@ -44,9 +44,9 @@ class Setup(commands.Cog):
     global current_time
     print("\n Bot removed from guild: \" {} \" guild on \" {} {} \".".format(guild, current_time, current_day))
     with open('data.json', 'r') as f:
-	prefixes = json.load(f)
+			prefixes = json.load(f)
       
-	prefixes.pop(str(guild.id))
+			prefixes.pop(str(guild.id))
     
     with open('data.json','w') as f:
       json.dump(prefixes, f, indent=4)
@@ -57,9 +57,9 @@ class Setup(commands.Cog):
     global current_time
     print("\n Prefix changed in guild: \" {} \" guild on \" {} {} \".".format(ctx.message.guild, current_time, current_day))
     with open('data.json', 'r') as f:
-	prefixes = json.load(f)
+			prefixes = json.load(f)
       
-	prefixes[str(ctx.message.guild.id)] = prefix
+			prefixes[str(ctx.message.guild.id)] = prefix
     
     with open('data.json','w') as f:
       json.dump(prefixes, f, indent=4)
