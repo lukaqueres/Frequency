@@ -11,10 +11,13 @@ from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 
-client = discord.Client()
-client = commands.Bot(command_prefix = '$')
-#client.remove.command("help")
-#@commands.has_permissions(manage_messages=True)
+def get_prefix(client, message):
+	with open('data.json', 'r') as f:
+		prefixes = json.load(f)
+		
+	return prefixes[str(message.guild.id)]
+
+client = commands.Bot(command_prefix = get_prefix)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
