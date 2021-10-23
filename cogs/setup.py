@@ -52,9 +52,10 @@ class Setup(commands.Cog):
       json.dump(prefixes, f, indent=4)
     
   @commands.command()
-  async def change_prefix(self, ctx, prefix):
+  async def prefixchange(self, ctx, prefix):
     global current_day
     global current_time
+    await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
     print("\n Prefix changed in guild: \" {} \" guild on \" {} {} \".".format(ctx.message.guild, current_time, current_day))
     with open('data.json', 'r') as f:
       prefixes = json.load(f)
