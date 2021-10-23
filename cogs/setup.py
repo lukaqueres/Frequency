@@ -56,7 +56,7 @@ class Setup(commands.Cog):
     global current_day
     global current_time
     await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
-    print("\n Prefix changed in guild: \" {} \" guild on \" {} {} \".".format(ctx.message.guild, current_time, current_day))
+    print("\n Prefix changed in guild: \" {} \" guild to \"{}\" on \" {} {} \".".format(ctx.message.guild, prefix, current_time, current_day))
     with open('data.json', 'r') as f:
       prefixes = json.load(f)
       
