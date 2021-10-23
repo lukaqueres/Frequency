@@ -52,7 +52,7 @@ class Setup(commands.Cog):
       json.dump(prefixes, f, indent=4)
     
   @commands.command()
-  async def prefixchange(self, ctx, prefix):
+  async def prefix_change(self, ctx, prefix):
     global current_day
     global current_time
     await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
