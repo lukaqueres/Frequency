@@ -31,7 +31,7 @@ class Setup(commands.Cog):
     global current_time
     print("\n Bot joined in guild: \" {} \" guild on \" {} {} \".".format(guild, current_time, current_day))
     with open('data.json', 'r') as f:
-		  prefixes = json.load(f)
+		prefixes = json.load(f)
       
 		prefixes[str(guild.id)] = '$'
     
@@ -44,7 +44,7 @@ class Setup(commands.Cog):
     global current_time
     print("\n Bot removed from guild: \" {} \" guild on \" {} {} \".".format(guild, current_time, current_day))
     with open('data.json', 'r') as f:
-		  prefixes = json.load(f)
+		prefixes = json.load(f)
       
 		prefixes.pop(str(guild.id))
     
@@ -57,7 +57,7 @@ class Setup(commands.Cog):
     global current_time
     print("\n Prefix changed in guild: \" {} \" guild on \" {} {} \".".format(ctx.message.guild, current_time, current_day))
     with open('data.json', 'r') as f:
-		  prefixes = json.load(f)
+		prefixes = json.load(f)
       
 		prefixes[str(ctx.message.guild.id)] = prefix
     
