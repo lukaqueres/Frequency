@@ -31,7 +31,7 @@ class Error_handling(commands.Cog):
     global current_time
     if isinstance(error, commands.CommandNotFound):
       print("\n User used unspecified command: \" {} \" used \'{}\' on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.content, ctx.message.channel, ctx.message.guild, current_time, current_day))
-      await ctx.send("``Nie rozpoznano komendy *{ctx.message.content}*, /n użyj *$help* w celu uzyskania pomocy.``")
+      await ctx.send('``Nie rozpoznano komendy "{}", użyj $help w celu uzyskania pomocy.``'.format(ctx.message.content))
     
     
 def setup(client):
