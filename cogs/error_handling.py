@@ -10,4 +10,23 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-def error_handling( command_name, ctx, error
+now = datetime.now() + timedelta(hours=2)
+today = date.today()
+current_day = today.strftime("%d/%m/%Y")   #global current_day
+current_time = now.strftime("%H:%M:%S")    #global current_time
+
+load_dotenv()
+
+class Error_handling(commands.Cog):
+  def __init__(self, client):
+  	self.client = client
+    
+  @commands.Cog.listener()
+  async def on_ready(self):
+    print('Error handling module loaded')
+    
+    
+    
+    
+def setup(client):
+  client.add_cog(Setup(client))
