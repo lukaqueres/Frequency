@@ -25,7 +25,11 @@ class Error_handling(commands.Cog):
   async def on_ready(self):
     print('Error handling module loaded')
     
-    
+  @client.event
+  async def on_command_error(self, ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+      print("\n User used unspecified command: \" {} \" used \'{}\' on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message, ctx.message.channel, ctx.message.guild, current_time, current_day))
+      await ctx.send('Komenda nie rozpoznana')
     
     
 def setup(client):
