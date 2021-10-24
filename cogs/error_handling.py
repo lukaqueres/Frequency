@@ -25,7 +25,7 @@ class Error_handling(commands.Cog):
   async def on_ready(self):
     print('Error handling module loaded')
     
-  @client.event
+  @commands.Cog.listener()
   async def on_command_error(self, ctx, error):
     global current_day
     global current_time
