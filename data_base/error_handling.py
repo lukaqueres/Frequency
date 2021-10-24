@@ -9,3 +9,5 @@ from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
+
+def error_handling( command_name, ctx, error
