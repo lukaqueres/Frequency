@@ -29,4 +29,4 @@ class Error_handling(commands.Cog):
     
     
 def setup(client):
-  client.add_cog(Setup(client))
+  client.add_cog(Error_handling(client))
