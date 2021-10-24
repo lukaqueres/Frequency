@@ -14,7 +14,7 @@ now = datetime.now() + timedelta(hours=2)
 today = date.today()
 current_day = today.strftime("%d/%m/%Y")   #global current_day
 current_time = now.strftime("%H:%M:%S")    #global current_time
-
+client = discord.Client()
 load_dotenv()
 
 class Error_handling(commands.Cog):
@@ -27,6 +27,8 @@ class Error_handling(commands.Cog):
     
   @client.event
   async def on_command_error(self, ctx, error):
+    global current_day
+    global current_time
     if isinstance(error, commands.CommandNotFound):
       print("\n User used unspecified command: \" {} \" used \'{}\' on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message, ctx.message.channel, ctx.message.guild, current_time, current_day))
       await ctx.send('Komenda nie rozpoznana')
