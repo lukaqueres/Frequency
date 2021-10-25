@@ -31,15 +31,16 @@ class Music(commands.Cog):
     global current_day
     global current_time
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-
+    guild = ctx.message.author.guild
     voice_state = ctx.author.voice
     guild = ctx.message.guild
     voice_client = guild.voice_client
-    if voice_channel is None:
+    if voice_state is None:
       await ctx.send("Nie można było znaleźć kanału. Użytkownik nie jest połączony z kanałem głosowym!")
       return
     else:
       voice_channel = ctx.message.author.voice.channel
+      voice_client = client.voice_client_in(guild)
       await ctx.send(f'Połączono z ``{voice_channel}``')
       await voice_channel.connect()
   
@@ -47,8 +48,11 @@ class Music(commands.Cog):
     FFMPEG_OPTIONS = {
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     #voice = get(client.voice_clients, guild=ctx.guild)
-
-    if not voice_channel.is_playing():
+    
+    player = await voice_client_in(guild)
+    players[guild.id] = player
+    player.start()
+    """if not voice_channel.is_playing():
       with YoutubeDL(YDL_OPTIONS) as ydl:
         info = ydl.extract_info(url, download=False)
       URL = info['url']
@@ -56,7 +60,7 @@ class Music(commands.Cog):
       voice_channel.is_playing()
       #check if the bot is already playing
     else:
-      await ctx.send("Bot już gra")
+      await ctx.send("Bot już gra")"""
     
   @commands.command()
   async def leave(self, ctx):
