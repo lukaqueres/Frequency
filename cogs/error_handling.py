@@ -30,8 +30,13 @@ class Error_handling(commands.Cog):
     global current_day
     global current_time
     if isinstance(error, commands.CommandNotFound):
-      print("\n User used unspecified command: \" {} \" used \'{}\' on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.content, ctx.message.channel, ctx.message.guild, current_time, current_day))
+      print("\n Command: \" {} \" used \'{}\' on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.content, ctx.message.channel, ctx.message.guild, current_time, current_day))
       await ctx.send('``Nie rozpoznano komendy "{}", użyj $help w celu uzyskania pomocy.``'.format(ctx.message.content))
+      interaction.response.send_message("Text", ephemeral=True)
+    if isinstance(error, MissingPermissions):
+      print("\n User used unspecified command: \" {} \" used \'{}\' on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.content, ctx.message.channel, ctx.message.guild, current_time, current_day))
+      print(" Reason: \" not enough permissions \"")
+      await ctx.channel.purge(limit = 1)
     
     
 def setup(client):
