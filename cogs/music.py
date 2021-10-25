@@ -32,7 +32,7 @@ class Music(commands.Cog):
     global current_time
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
 
-    voice_channel = ctx.message.author.voice.channel
+    voice_channel = ctx.author.voice.channel
     guild = ctx.message.guild
     voice_client = guild.voice_client
     if voice_channel is None:
