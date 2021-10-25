@@ -35,11 +35,11 @@ class Error_handling(commands.Cog):
     if isinstance(error, commands.CommandNotFound):
       await ctx.channel.purge(limit = 1)
       print("\n Command Error: \'{}\': {} used  on: \" {} \" channel in: \" {} \" guild on \" {} {} \". Error: Command not found.".format(ctx.message.content, ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-      await ctx.send('``Nie rozpoznano komendy "{}", użyj $help w celu uzyskania pomocy.``'.format(ctx.message.content))
+      await ctx.send('``Nie rozpoznano komendy: "{}", użyj $help w celu uzyskania pomocy.``'.format(ctx.message.content))
     if isinstance(error, MissingPermissions):
       await ctx.channel.purge(limit = 1)
       print("\n Command Error: \'{}\': {} used  on: \" {} \" channel in: \" {} \" guild on \" {} {} \". Error: Missing Permissions.".format(ctx.message.content, ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-      await ctx.send('``Brakujące uprawnienia "{}", użyj $help w celu uzyskania pomocy.``'.format(ctx.message.content))
+      await ctx.send('``Brakujące uprawnienia do użycia: "{}", użyj $help w celu uzyskania pomocy.``'.format(ctx.message.content))
     
     
 def setup(client):
