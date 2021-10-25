@@ -83,6 +83,7 @@ class Music(commands.Cog):
       await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
   @commands.command()
+  async def stop(self, ctx):
   voice_channel = ctx.message.author.voice.channel
   async def stop(self, ctx):
       voice_channel.stop()
