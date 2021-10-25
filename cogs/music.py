@@ -68,10 +68,10 @@ class Music(commands.Cog):
   @commands.command()
   async def pause(self, ctx):
     voice_channel = ctx.message.author.voice.channel
-      if voice_channel.is_playing():
-          voice_channel.pause()
-      else:
-          await ctx.send('"Obecnie nic nie jest odtwarzane."')
+    if voice_channel.is_playing():
+      voice_channel.pause()
+    else:
+      await ctx.send('"Obecnie nic nie jest odtwarzane."')
 
 
   @commands.command()
