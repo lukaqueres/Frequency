@@ -213,15 +213,6 @@ async def embed(ctx):
     msg = await ctx.send(embed=embed)
     await msg.add_reaction('🏷️')
 
-@embed.error
-async def embed_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        global current_day
-        global current_time
-        print("\n Embed has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-        print(" Reason: \"not enough permissions \"")
-        await ctx.channel.purge(limit = 1)
-
 @client.command()
 @has_permissions(manage_messages=True)
 async def clear(ctx, number : int ):
