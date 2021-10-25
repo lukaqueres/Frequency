@@ -31,63 +31,61 @@ class Music(commands.Cog):
     global current_day
     global current_time
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
-  
-    voice = get(client.voice_clients, guild=ctx.guild) 
+
+    voice_channel = ctx.message.author.voice.channel
     guild = ctx.message.guild
     voice_client = guild.voice_client
-    if not ctx.message.author.voice:
+    if voice_channel is None:
       await ctx.send("Nie można było znaleźć kanału. Użytkownik nie jest połączony z kanałem głosowym!")
       return
     else:
-      voice_channel = ctx.message.author.voice.channel
       await ctx.send(f'Połączono z ``{voice_channel}``')
-
-    await voice_channel.connect()
+      await voice_channel.connect()
   
     YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
     FFMPEG_OPTIONS = {
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     #voice = get(client.voice_clients, guild=ctx.guild)
 
-    if not voice.is_playing():
+    if not voice_channel.is_playing():
       with YoutubeDL(YDL_OPTIONS) as ydl:
         info = ydl.extract_info(url, download=False)
       URL = info['url']
-      voice.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
-      voice.is_playing()
+      voice_channel.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
+      voice_channel.is_playing()
       #check if the bot is already playing
     else:
       await ctx.send("Bot już gra")
     
   @commands.command()
   async def leave(self, ctx):
-    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
+    voice_channel = ctx.message.author.voice.channel
     if voice.is_connected():
-        await voice.disconnect()
+        await voice_channel.disconnect()
     else:
         await ctx.send('"Bot nie jest połączony z żadnym kanałem głosowym."')
   
   @commands.command()
   async def pause(self, ctx):
-      voice = discord.utils.get(client.voice_clients, guild=ctx.guild) #ctx.guild.voice_channels
-      if voice.is_playing():
-          voice.pause()
+    voice_channel = ctx.message.author.voice.channel
+      if voice_channel.is_playing():
+          voice_channel.pause()
       else:
           await ctx.send('"Obecnie nic nie jest odtwarzane."')
 
 
   @commands.command()
   async def resume(self, ctx):
-      voice = discord.utils.get(client.voice_clients, guild=ctx.guild) 
-      if voice.is_paused():
-          voice.resume()
+    voice_channel = ctx.message.author.voice.channel
+      if voice_channel.is_paused():
+          voice_channel.resume()
       else:
           await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
   @commands.command()
+  voice_channel = ctx.message.author.voice.channel
   async def stop(self, ctx):
-      voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
-      voice.stop()
+      voice_channel.stop()
     
 def setup(client):
   client.add_cog(Music(client))
