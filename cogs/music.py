@@ -77,10 +77,10 @@ class Music(commands.Cog):
   @commands.command()
   async def resume(self, ctx):
     voice_channel = ctx.message.author.voice.channel
-      if voice_channel.is_paused():
-          voice_channel.resume()
-      else:
-          await ctx.send('"Obecnie nic nie jest zatrzymane."')
+    if voice_channel.is_paused():
+      voice_channel.resume()
+    else:
+      await ctx.send('"Obecnie nic nie jest zatrzymane."')
 
   @commands.command()
   voice_channel = ctx.message.author.voice.channel
