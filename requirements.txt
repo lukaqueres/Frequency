@@ -1,6 +1,6 @@
 discord.py==1.7.3
 requests
-youtube_dl==2021.6.6
+youtube_dl
 YouTube-dl
 ffmpeg
 PyNaCl
