@@ -1,10 +1,10 @@
-import discord, json, io, os, typing, requests, random, asyncio
+import discord, json, io, os, typing, requests, random, asyncio, pafy
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
 from random import randrange, randint
 from datetime import datetime, date, timedelta
-from discord import member, DMChannel, FFmpegPCMAudio, TextChannel
+from discord import member, DMChannel, FFmpegPCMAudio, TextChannel, PCMVolumeTransformer
 from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import *
@@ -45,9 +45,10 @@ class Music(commands.Cog):
     voice_channel = ctx.message.author.voice.channel
     
   
-    YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
+    YDL_OPTIONS = {'noplaylist': 'True'} #YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
     FFMPEG_OPTIONS = {
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
+    ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
     with YoutubeDL(YDL_OPTIONS) as ydl:
       info = ydl.extract_info(url, download=False)
     URL = info['url']
