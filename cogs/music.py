@@ -44,8 +44,7 @@ class Music(commands.Cog):
       await ctx.send(f'Połączono z ``{channel}``')
     voice_channel = ctx.message.author.voice.channel
     
-  
-    YDL_OPTIONS = {'noplaylist': 'True'} #YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
+    YDL_OPTIONS = {'noplaylist': 'True'}  #YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
     FFMPEG_OPTIONS = {
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
