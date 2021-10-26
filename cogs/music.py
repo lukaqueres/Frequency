@@ -41,7 +41,7 @@ class Music(commands.Cog):
     else:
       channel = ctx.message.author.voice.channel
       await channel.connect()
-      await ctx.send(f'Połączono z ``{voice_channel}``')
+      await ctx.send(f'Połączono z ``{channel}``')
     voice_channel = ctx.message.author.voice.channel
     
   
