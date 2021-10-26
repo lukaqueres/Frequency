@@ -40,11 +40,10 @@ class Music(commands.Cog):
       return
     else:
       channel = ctx.message.author.voice.channel
-    await channel.connect()
+      await channel.connect()
+      await ctx.send(f'Połączono z ``{voice_channel}``')
     voice_channel = ctx.message.author.voice.channel
-    voice_client = client.voice_client_in(guild)
-    await ctx.send(f'Połączono z ``{voice_channel}``')
-    await voice_channel.connect()
+    
   
     YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist': 'True'}
     FFMPEG_OPTIONS = {
