@@ -50,7 +50,7 @@ class Music(commands.Cog):
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
     with YoutubeDL(YTDL_OPTIONS) as ytdl:
       URL = ytdl.extract_info(url, download=False)
-    player = bot.voice_clients[0]
+    player = client.voice_clients[0]
     players[guild.id] = player
     player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
     """if not voice_channel.is_playing():
