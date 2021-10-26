@@ -17,6 +17,7 @@ current_time = now.strftime("%H:%M:%S")    #global current_time
 client = discord.Client()
 load_dotenv()
 players = {}
+voice_clients = {}
 
 class Music(commands.Cog):
   def __init__(self, client):
@@ -53,6 +54,7 @@ class Music(commands.Cog):
     player = client.voice_clients[0]
     players[guild.id] = player
     player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
+    
     """if not voice_channel.is_playing():
       with YoutubeDL(YDL_OPTIONS) as ydl:
         info = ydl.extract_info(url, download=False)
