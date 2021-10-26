@@ -48,8 +48,8 @@ class Music(commands.Cog):
     FFMPEG_OPTIONS = {
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
-    with YoutubeDL(YDL_OPTIONS) as ydl:
-      info = ydl.extract_info(url, download=False)
+    with YoutubeDL(YTDL_OPTIONS) as ytdl:
+      info = ytdl.extract_info(url, download=False)
     URL = info['url']
     player = bot.voice_clients[0]
     players[guild.id] = player
