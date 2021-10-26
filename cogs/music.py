@@ -49,8 +49,7 @@ class Music(commands.Cog):
       'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn'}
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
     with YoutubeDL(YTDL_OPTIONS) as ytdl:
-      info = ytdl.extract_info(url, download=False)
-    URL = info[url]
+      URL = ytdl.extract_info(url, download=False)
     player = bot.voice_clients[0]
     players[guild.id] = player
     player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
