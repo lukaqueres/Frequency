@@ -14,6 +14,7 @@ now = datetime.now() + timedelta(hours=2)
 today = date.today()
 current_day = today.strftime("%d/%m/%Y")   #global current_day
 current_time = now.strftime("%H:%M:%S")    #global current_time
+client = discord.Client()
 
 load_dotenv()
 
