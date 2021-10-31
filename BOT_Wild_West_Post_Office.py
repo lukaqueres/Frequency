@@ -27,7 +27,7 @@ current_time = now.strftime("%H:%M:%S")    #global current_time
 @client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
 async def on_ready():
   await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
-  print('Bot successfully logged in')
+  print('Bot logged in with:')
   
 async def status_change():
   await client.wait_until_ready()
@@ -40,7 +40,7 @@ async def status_change():
     await asyncio.sleep(sleep_time)
 client.loop.create_task(status_change())
 
-@client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
+"""@client.event #----------------------------------ANTY PHISHING-------------------------------------------------------------------------------------------------
 async def on_message(message):
   await client.process_commands(message)
   
@@ -84,7 +84,7 @@ async def on_message(message):
               await RDPchannel.send(embed=embed)
   else:
     return
-#---ANTY PHISHING-------------------------------------------------------------------------------------------------
+#---ANTY PHISHING-------------------------------------------------------------------------------------------------"""
   
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
