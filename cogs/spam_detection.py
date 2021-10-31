@@ -71,7 +71,7 @@ class Spam_detection(commands.Cog):
             else:
               await message.delete()
               #await DMChannel.send(user, embed=embed)
-              await client.add_roles(author, role)
+              #await client.add_roles(author, role)
               if message.guild == RDPguild:
                 await RDPchannel.send(embed=embed)
     else: 
