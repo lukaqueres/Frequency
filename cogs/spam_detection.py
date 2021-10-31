@@ -25,5 +25,49 @@ class Spam_detection(commands.Cog):
   async def on_ready(self):
     print('Spam detection module loaded')
     
+  @commands.Cog.listener()
+  async def on_message(message):
+    await client.process_commands(message)
+    global current_day
+    global current_time
+    black_listed = ['Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
+    black_listed_length = (len(black_listed))
+    black_listed_words_number_detected = 0
+    if (message.author == client.user):
+      return
+    if (('http' in message.content ) or ('https' in message.content)):
+      for x in black_listed:
+        if (x in message.content):
+          black_listed_words_number_detected += 1
+          if (black_listed_words_number_detected == 2):
+            print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
+            embed = discord.Embed(
+              title="Możliwy scam",
+              description=" ",
+              color=0x0000ff,
+            )
+            embed.add_field(name="Użytkownik:", value=message.author, inline=True),
+            embed.add_field(name="Serwer:", value=message.guild, inline=True),
+            embed.add_field(name = chr(173), value = chr(173))
+            embed.add_field(name="Data:", value=current_day, inline=True),
+            embed.add_field(name="Godzina:", value=current_time, inline=True),
+            embed.add_field(name = chr(173), value = chr(173))
+            embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
+            user = await client.fetch_user("429949201254842369")
+            author = message.author
+            role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
+            RDPchannel = client.get_channel(887604610972409906)
+            RDPguild = client.get_guild(640181649463705650)
+            if role in message.author.roles:
+              await message.delete()
+            else:
+              await message.delete()
+              await DMChannel.send(user, embed=embed)
+              await client.add_roles(author, role)
+             if message.guild == RDPguild:
+                await RDPchannel.send(embed=embed)
+    else: 
+      return
+    
 def setup(client):
   client.add_cog(Spam_detection(client))
