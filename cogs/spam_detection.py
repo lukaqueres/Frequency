@@ -54,7 +54,7 @@ class Spam_detection(commands.Cog):
             embed.add_field(name="Godzina:", value=current_time, inline=True),
             embed.add_field(name = chr(173), value = chr(173))
             embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
-            user = await client.fetch_user("429949201254842369")
+            #user = await client.fetch_user("429949201254842369")
             author = message.author
             role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
             RDPchannel = client.get_channel(887604610972409906)
@@ -63,7 +63,7 @@ class Spam_detection(commands.Cog):
               await message.delete()
             else:
               await message.delete()
-              await DMChannel.send(user, embed=embed)
+              #await DMChannel.send(user, embed=embed)
               await client.add_roles(author, role)
               if message.guild == RDPguild:
                 await RDPchannel.send(embed=embed)
