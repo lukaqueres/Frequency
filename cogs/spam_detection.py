@@ -26,7 +26,7 @@ class Spam_detection(commands.Cog):
     print('Spam detection module loaded')
     
   @commands.Cog.listener()
-  async def on_message(message):
+  async def on_message(self, message):
     await client.process_commands(message)
     global current_day
     global current_time
