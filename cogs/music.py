@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from doable import *
+from functions/doable import *
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
