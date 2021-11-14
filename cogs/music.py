@@ -35,6 +35,7 @@ class Music(commands.Cog):
     guild = ctx.message.author.guild
     voice_state = ctx.author.voice
     guild = ctx.message.guild
+    voice = discord.utils.get(client.voice_clients, guild=ctx.guild)
     voice_client = guild.voice_client
     if not ctx.message.author.voice:
       await ctx.send("``Musisz się znajdować na kanale głosowym``")
@@ -51,9 +52,10 @@ class Music(commands.Cog):
     ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
     with YoutubeDL(YTDL_OPTIONS) as ytdl:
       URL = ytdl.extract_info(url, download=False)
-    player = client.voice_clients[0]
-    players[guild.id] = player
-    player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
+    #player = client.voice_clients[0]
+    #players[guild.id] = player
+    #player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
+    voice.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
     
     """if not voice_channel.is_playing():
       with YoutubeDL(YDL_OPTIONS) as ydl:
