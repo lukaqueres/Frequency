@@ -52,6 +52,7 @@ class Setup(commands.Cog):
       json.dump(prefixes, f, indent=4)
     
   @commands.command()
+  @has_permissions(manage_messages=True)
   async def prefix_change(self, ctx, prefix):
     global current_day
     global current_time
