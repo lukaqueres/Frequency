@@ -24,7 +24,7 @@ def get_time(mode):
 	if (mode == time):
 		time = str(current_time)
 		return str(time)
-	else if (mode == date):
+	elif (mode == date):
 		date = str(current_day)
 		return str(date)
 	else:
