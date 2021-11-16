@@ -73,16 +73,7 @@ class Music(commands.Cog):
         await channel.connect()
 
     @commands.command()
-    async def play(self, ctx, *, query):
-        """Plays a file from the local filesystem"""
-
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
-        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
-
-        await ctx.send(f'Now playing: {query}')
-
-    @commands.command()
-    async def yt(self, ctx, *, url):
+    async def play(self, ctx, *, url):
         """Plays from a url (almost anything youtube_dl supports)"""
 
         async with ctx.typing():
