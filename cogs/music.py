@@ -97,7 +97,7 @@ class Music(commands.Cog):
     #players[guild.id] = player
     #player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
     #ctx.voice_client.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
-    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
+    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(url))
     ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
 
     
