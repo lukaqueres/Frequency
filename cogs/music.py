@@ -35,7 +35,7 @@ class Music(commands.Cog):
 
     voice = discord.utils.get(ctx.guild.voice_channels, name=channel.name)
 
-    voice_client = discord.utils.get(self.client.voice_clients, guild=ctx.guild
+    voice_client = discord.utils.get(self.client.voice_clients, guild=ctx.guild)
     if not ctx.message.author.voice:
       await ctx.send("``Musisz się znajdować na kanale głosowym``")
       return
