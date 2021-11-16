@@ -10,12 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-
-def get_prefix(client, message):
-	with open('data.json', 'r') as f:
-		prefixes = json.load(f)
-		
-	return prefixes[str(message.guild.id)]
+from functions import get_prefix
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
