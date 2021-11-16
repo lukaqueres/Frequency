@@ -73,7 +73,7 @@ class Music(commands.Cog):
         else:
             await ctx.send("You are not connected to a voice channel.")
 
-        await channel.connect()
+        await ctx.author.voice.channel.connect()
 
     @commands.command()
     async def play(self, ctx, *, url):
