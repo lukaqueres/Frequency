@@ -21,14 +21,7 @@ def get_time(mode):
 	today = date.today()
 	current_day = today.strftime("%d/%m/%Y")   #global current_day
 	current_time = now.strftime("%H:%M:%S")    #global current_time
-	if (mode == time):
-		time = str(current_time)
-		return str(time)
-	elif (mode == date):
-		date = str(current_day)
-		return str(date)
-	else:
-		datetime = str(current_time) + " , " + str(current_day)
-		return str(datetime)
+	datetime = str(current_time) + " , " + str(current_day)
+	return str(datetime)
 		
 	
