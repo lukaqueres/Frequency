@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
-from functions import get_prefix
+from functions import get_prefix, get_time
 
 client = commands.Bot(command_prefix = get_prefix)
 
