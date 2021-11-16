@@ -12,7 +12,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 from functions import get_prefix, get_time
 
-# Suppress noise about console usage from errors
+#Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 
