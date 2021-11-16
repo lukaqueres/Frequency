@@ -10,10 +10,6 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-now = datetime.now() + timedelta(hours=2)
-today = date.today()
-current_day = today.strftime("%d/%m/%Y")   #global current_day
-current_time = now.strftime("%H:%M:%S")    #global current_time
 
 load_dotenv()
 
@@ -27,8 +23,6 @@ class Setup(commands.Cog):
 
   @commands.Cog.listener()
   async def on_guild_join(self, guild):
-    global current_day
-    global current_time
     print("\n Bot joined in guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
     with open('data.json', 'r') as f:
       prefixes = json.load(f)
@@ -40,9 +34,7 @@ class Setup(commands.Cog):
       
   @commands.Cog.listener()
   async def on_guild_remove(self, guild):
-    global current_day
-    global current_time
-    print("\n Bot removed from guild: \" {} \" guild on \" {} {} \".".format(guild, current_time, current_day))
+    print("\n Bot removed from guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
     with open('data.json', 'r') as f:
       prefixes = json.load(f) 
       
@@ -54,10 +46,8 @@ class Setup(commands.Cog):
   @commands.command()
   @has_permissions(manage_messages=True)
   async def prefix_change(self, ctx, prefix):
-    global current_day
-    global current_time
     await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
-    print("\n Prefix changed in guild: \" {} \" guild to \"{}\" on \" {} {} \".".format(ctx.message.guild, prefix, current_time, current_day))
+    print("\n Prefix changed in guild: \" {} \" guild to \"{}\" on \" {} \".".format(ctx.message.guild, prefix, get_time()))
     with open('data.json', 'r') as f:
       prefixes = json.load(f)
       
