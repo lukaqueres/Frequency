@@ -12,7 +12,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 from functions import get_prefix, get_time
 
-client = commands.Bot(command_prefix = get_prefix)
+client = commands.Bot(command_prefix = get_prefix())
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
