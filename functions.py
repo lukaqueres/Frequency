@@ -17,11 +17,20 @@ def get_prefix(client, message):
 	return prefixes[str(message.guild.id)]
 
 def get_time():
-	now = datetime.now() + timedelta(hours=2)
+	wintertime = True
+	summertime = False
+	if (wintertime == True):
+		now = datetime.now() + timedelta(hours=1)
+		
+		
+	else:
+		now = datetime.now() + timedelta(hours=2)
+	
 	today = date.today()
 	current_day = today.strftime("%d/%m/%Y")   #global current_day
 	current_time = now.strftime("%H:%M:%S")    #global current_time
 	dateandtime = str(current_time) + " , " + str(current_day)
+	
 	return str(dateandtime)
 		
 	
