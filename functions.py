@@ -21,7 +21,7 @@ def get_time():
 	today = date.today()
 	current_day = today.strftime("%d/%m/%Y")   #global current_day
 	current_time = now.strftime("%H:%M:%S")    #global current_time
-	datetime = str(current_time) + " , " + str(current_day)
-	return str(datetime)
+	dateandtime = str(current_time) + " , " + str(current_day)
+	return str(dateandtime)
 		
 	
