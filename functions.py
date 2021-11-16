@@ -23,4 +23,4 @@ def get_time():
 	current_time = now.strftime("%H:%M:%S")    #global current_time
 	time = [ str(current_day) + ":" + str(current_time) ]
 		
-	return time[str(time)]
+	return str(time)
