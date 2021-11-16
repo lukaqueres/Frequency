@@ -12,7 +12,8 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 from functions import get_prefix, get_time
 
-client = commands.Bot(command_prefix = get_prefix)
+#client = commands.Bot(command_prefix = get_prefix)
+client = discord.client
 load_dotenv()
 players = {}
 voice_clients = {}
