@@ -43,7 +43,7 @@ class Spam_detection(commands.Cog):
         if (x in message.content):
           black_listed_words_number_detected += 1
           if (black_listed_words_number_detected == 2):
-            print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, current_time, current_day))
+            print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(message.author, message.channel, message.guild, get_time()))
             embed = discord.Embed(
               title="Możliwy scam",
               description=" ",
