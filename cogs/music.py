@@ -99,7 +99,11 @@ class Music(commands.Cog):
     #player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
     #ctx.voice_client.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
     source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
-    ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+    async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop)
+            ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+
+    await ctx.send(f'Now playing: {player.title}')
 
     
     """if not voice_channel.is_playing():
