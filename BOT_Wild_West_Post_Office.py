@@ -168,7 +168,7 @@ async def embed(ctx):
 async def clear(ctx, number : int ):
     global current_day
     global current_time
-    print("\n Clear with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+    print("\n Clear with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
     await ctx.channel.purge(limit = number)
 
 @clear.error
@@ -176,7 +176,7 @@ async def clear_error(error, ctx):
     if isinstance(error, MissingPermissions):
         global current_day
         global current_time
-        print("\n Clear has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+        print("\n Clear has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
         print(" Reason: \" not enough permissions \"")
         await ctx.channel.purge(limit = 1)
 
@@ -191,8 +191,6 @@ async def clear_error(error, ctx):
 async def ping(ctx):
 	await ctx.send(f'Ping: {round(client.latency * 1000)} ms')
 	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild))
-	time = get_time()
-	print( time )
 
 for filename in os.listdir('./cogs'):
   if filename.endswith('.py'):
