@@ -109,7 +109,6 @@ class Music(commands.Cog):
         await ctx.voice_client.disconnect()
 
     @play.before_invoke
-    @yt.before_invoke
     @stream.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
