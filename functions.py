@@ -16,7 +16,7 @@ def get_prefix(client, message):
 		
 	return prefixes[str(message.guild.id)]
 
-def get_time(mode):
+def get_time():
 	now = datetime.now() + timedelta(hours=2)
 	today = date.today()
 	current_day = today.strftime("%d/%m/%Y")   #global current_day
