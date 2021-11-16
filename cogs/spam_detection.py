@@ -27,8 +27,6 @@ class Spam_detection(commands.Cog):
   @commands.Cog.listener()
   async def on_message(self, message):
     #await client.process_commands(message)
-    global current_day
-    global current_time
     black_listed = ['Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
     black_listed_length = (len(black_listed))
     black_listed_words_number_detected = 0
