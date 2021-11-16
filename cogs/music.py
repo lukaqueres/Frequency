@@ -12,10 +12,6 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 from functions import get_prefix
 
-now = datetime.now() + timedelta(hours=2)
-today = date.today()
-current_day = today.strftime("%d/%m/%Y")   #global current_day
-current_time = now.strftime("%H:%M:%S")    #global current_time
 client = commands.Bot(command_prefix = get_prefix)
 load_dotenv()
 players = {}
@@ -33,7 +29,7 @@ class Music(commands.Cog):
   async def play(self, ctx, url : str):
     global current_day
     global current_time
-    print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+    print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
     guild = ctx.message.author.guild
     voice_state = ctx.author.voice
     guild = ctx.message.guild
