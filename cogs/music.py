@@ -23,7 +23,7 @@ ytdl_format_options = {
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
     'restrictfilenames': True,
     'noplaylist': True,
-    'nocheckcertificate': True,
+    'nocheckcertificate': True, 
     'ignoreerrors': False,
     'logtostderr': False,
     'quiet': True,
