@@ -97,8 +97,9 @@ class Music(commands.Cog):
     #players[guild.id] = player
     #player.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
     #ctx.voice_client.play(FFmpegPCMAudio(URL, **FFMPEG_OPTIONS))
-    player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
-    ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
+    ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}') if e else None)
+
     
     """if not voice_channel.is_playing():
       with YoutubeDL(YDL_OPTIONS) as ydl:
