@@ -69,6 +69,7 @@ class Music(commands.Cog):
           
   @commands.command()
   async def play(self, ctx, query): #async def play(self, ctx, url : str, query):
+    url = query
     print("\n User used play command: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
     guild = ctx.message.author.guild
     voice_state = ctx.author.voice
