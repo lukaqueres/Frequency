@@ -29,7 +29,7 @@ class Setup(commands.Cog):
   async def on_guild_join(self, guild):
     global current_day
     global current_time
-    print("\n Bot joined in guild: \" {} \" guild on \" {} {} \".".format(guild, current_time, current_day))
+    print("\n Bot joined in guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
     with open('data.json', 'r') as f:
       prefixes = json.load(f)
       
