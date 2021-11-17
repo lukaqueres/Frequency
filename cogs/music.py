@@ -88,8 +88,8 @@ class Music(commands.Cog):
     @commands.command()
     async def play(self, ctx, *, url):
         """Streams from a url (same as yt, but doesn't predownload)"""
+        player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
         try:
-            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
             async with ctx.typing():
                 ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
             print( f'Now playing: {player.title} on: {ctx.guild} guild.')
