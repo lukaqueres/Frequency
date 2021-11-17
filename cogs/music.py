@@ -62,6 +62,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
 class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+    @commands.Cog.listener()
+    async def on_ready(self):
+    print('Setup module loaded')
 
     @commands.command()
     async def join(self, ctx):
