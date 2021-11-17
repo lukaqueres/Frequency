@@ -65,7 +65,7 @@ class Music(commands.Cog):
         
     @commands.Cog.listener()
     async def on_ready(self):
-    print('Setup module loaded')
+        print('Setup module loaded')
 
     @commands.command()
     async def join(self, ctx):
