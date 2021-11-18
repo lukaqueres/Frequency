@@ -88,15 +88,15 @@ async def embed(ctx):
 @client.command()
 @has_permissions(manage_messages=True)
 async def clear(ctx, number : int ):
-    	global current_day
-    	global current_time
+	global current_day
+	global current_time
 	number = number + 1
-    	print("\n Clear with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
-    	await ctx.channel.purge(limit = number)
+	print("\n Clear with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
+	await ctx.channel.purge(limit = number)
 
 @clear.error
 async def clear_error(error, ctx):
-    	if isinstance(error, MissingPermissions):
+	if isinstance(error, MissingPermissions):
         	global current_day
         	global current_time
         	print("\n Clear has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
@@ -116,7 +116,7 @@ async def ping(ctx):
 	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild))
 
 for filename in os.listdir('./cogs'):
-  	if filename.endswith('.py'):
+	if filename.endswith('.py'):
 		client.load_extension(f'cogs.{filename[:-3]}')
 
 client.run('ODc1MjcxOTk1NjQ0ODQyMDA0.YRTGkQ.52s28D_CmdNtZm3g4_llDs4AV9E')
