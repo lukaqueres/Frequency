@@ -23,13 +23,13 @@ client.remove_command('help')
 
 @client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
 async def on_ready():
-  	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
-  	print('Bot logged in with:')
+	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
+	print('Bot logged in with:')
   
 async def status_change():
-  	await client.wait_until_ready()
-  	statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
-  	while not client.is_closed():
+	await client.wait_until_ready()
+	statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
+	while not client.is_closed():
     		sleep_time = random.randint(1800,3600)
     		status = random.choice(statuses)
     		await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
