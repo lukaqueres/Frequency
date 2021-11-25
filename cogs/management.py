@@ -26,7 +26,7 @@ class Management(commands.Cog):
   @commands.has_permissions(ban_members = True)
   async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
-    print("Member {member} banned on {ctx.guild} guild on {get_time()} ."
+    print("Member {member} banned on {ctx.guild} guild on {get_time()} .")
 
   @commands.command()
   @commands.has_permissions(ban_members = True)
@@ -39,7 +39,7 @@ class Management(commands.Cog):
 
         if (user.name, user.discriminator) == (member_name, member_discriminator):
           await ctx.guild.unban(user)
-          print("Member {member} unbanned on {ctx.guild} guild on {get_time()} ."
+          print("Member {member} unbanned on {ctx.guild} guild on {get_time()} .")
           await ctx.send(f'Unbanned {user.mention}')
           return
     
