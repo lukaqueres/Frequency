@@ -59,7 +59,7 @@ class Setup(commands.Cog):
       
   @commands.command()
   async def help(self, ctx):
-    message = ctx.message.author
+    message = ctx.message
     embed=discord.Embed(title="Help", description="Pomoc - znajdziesz tu listę oraz informacje dotyczące komend których możesz użyć na tym serwerze", color=0x0000ff)
     embed.add_field(name="$join", value="Dołącza do kanału na którym znajduje się użytkownik.", inline=False)
     embed.add_field(name="$play [ url / słowa kluczowe ]", value="Odtwarza muzykę na kanle głosowym na podstawie adresu url, lub słów kluczowych. Wymaga aby użytkownik znajdował się na kanale głosowym.", inline=False)
