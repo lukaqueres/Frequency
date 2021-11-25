@@ -56,6 +56,23 @@ class Setup(commands.Cog):
     
     with open('data.json','w') as f:
       json.dump(prefixes, f, indent=4)
+      
+  @commands.command()
+  async def help(self, ctx):
+    embed=discord.Embed(title="Help", description="Pomoc - znajdziesz tu listę oraz informacje dotyczące komend których możesz użyć na tym serwerze", color=0x0000ff)
+    embed.add_field(name="$join", value="Dołącza do kanału na którym znajduje się użytkownik.", inline=False)
+    embed.add_field(name="$play [ url / słowa kluczowe ]", value="Odtwarza muzykę na kanle głosowym na podstawie adresu url, lub słów kluczowych. Wymaga aby użytkownik znajdował się na kanale głosowym.", inline=False)
+    embed.add_field(name="$stop", value="Zatrzymuje odtwarzanie oraz wychodzi z kanału głosowego.", inline=True)
+    embed.add_field(name="$volume [ liczba ]", value="Zmienia głośność odtwarzania muzyki na kanale głosowym na określony procent ( domyślnie 50% ).", inline=True)
+    if (message.author.guild_permissions.ban_members):
+      embed.add_field(name="Zarządzanie użytkownikami", value="Dostępne jedynie dla użytkowników z odpowiednimi uprawnieniami.", inline=False)
+      embed.add_field(name="$ban [ użytkownik ]", value="Nakłada bana na użytkownika.", inline=True)
+      embed.add_field(name="$unban [ użytkownik ]", value="Usuwa bana z użytkownika, jeżeli go posiada.", inline=True)
+    if (message.author.guild_permissions.administrator):
+      embed.add_field(name="Zarządzanie serwerem", value="Dostępne jedynie dla użytkowników z uprawnieniami administratora.", inline=False)
+      embed.add_field(name="$prefix_change [ prefix]", value="Zmienia prefiks serwera z którego korzysta bot. **UWAGA** działa jedynie przez krótki okres.", inline=False)
+    await ctx.send(embed=embed)
+    await msg.add_reaction(':ballot_box_with_check:')
     
 def setup(client):
   client.add_cog(Setup(client))
