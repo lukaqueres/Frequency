@@ -62,7 +62,7 @@ class Setup(commands.Cog):
     message = ctx.message
     embed=discord.Embed(title="Help", description="Pomoc - znajdziesz tu listę oraz informacje dotyczące komend których możesz użyć na tym serwerze", color=0x0000ff)
     embed.add_field(name="$join", value="Dołącza do kanału na którym znajduje się użytkownik.", inline=False)
-    embed.add_field(name="$play [ url / słowa kluczowe ]", value="Odtwarza muzykę na kanle głosowym na podstawie adresu url, lub słów kluczowych. Wymaga aby użytkownik znajdował się na kanale głosowym.", inline=False)
+    embed.add_field(name="$play [ url / słowa kluczowe ]", value="Odtwarza muzykę na kanale głosowym na podstawie adresu url, lub słów kluczowych. Wymaga aby użytkownik znajdował się na kanale głosowym.", inline=False)
     embed.add_field(name="$stop", value="Zatrzymuje odtwarzanie oraz wychodzi z kanału głosowego.", inline=True)
     embed.add_field(name="$volume [ liczba ]", value="Zmienia głośność odtwarzania muzyki na kanale głosowym na określony procent ( domyślnie 50% ).", inline=True)
     if (message.author.guild_permissions.manage_messages):
