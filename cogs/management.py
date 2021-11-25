@@ -37,11 +37,11 @@ class Management(commands.Cog):
     for ban_entry in banned_users:
       user = ban_entry.user
 
-        if (user.name, user.discriminator) == (member_name, member_discriminator):
-          await ctx.guild.unban(user)
-          print("Member {member} unbanned on {ctx.guild} guild on {get_time()} .")
-          await ctx.send(f'Unbanned {user.mention}')
-          return
+      if (user.name, user.discriminator) == (member_name, member_discriminator):
+        await ctx.guild.unban(user)
+        print("Member {member} unbanned on {ctx.guild} guild on {get_time()} .")
+        await ctx.send(f'Unbanned {user.mention}')
+        return
     
 def setup(client):
   client.add_cog(Management(client))
