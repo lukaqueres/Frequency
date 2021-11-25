@@ -22,5 +22,26 @@ class Management(commands.Cog):
   async def on_ready(self):
     print('Management module loaded')
     
+  @commands.command()
+  @commands.has_permissions(ban_members = True)
+  async def ban(ctx, member : discord.Member, *, reason = None):
+    await member.ban(reason = reason)
+    print("Member {member} banned on {ctx.guild} guild on {get_time()} ."
+
+  @commands.command()
+  @commands.has_permissions(ban_members = True)
+  async def unban(ctx, *, member):
+    banned_users = await ctx.guild.bans()
+    member_name, member_discriminator = member.split("#")
+
+    for ban_entry in banned_users:
+      user = ban_entry.user
+
+        if (user.name, user.discriminator) == (member_name, member_discriminator):
+          await ctx.guild.unban(user)
+          print("Member {member} unbanned on {ctx.guild} guild on {get_time()} ."
+          await ctx.send(f'Unbanned {user.mention}')
+          return
+    
 def setup(client):
   client.add_cog(Management(client))
