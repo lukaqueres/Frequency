@@ -38,6 +38,7 @@ class Spam_detection(commands.Cog):
           black_listed_words_number_detected += 1
           if (black_listed_words_number_detected == 2):
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(message.author, message.channel, message.guild, get_time()))
+            await message.delete()
             embed = discord.Embed(
               title="Możliwy scam",
               description=" ",
@@ -56,9 +57,8 @@ class Spam_detection(commands.Cog):
             RDPchannel = client.get_channel(887604610972409906)
             RDPguild = client.get_guild(640181649463705650)
             if role in message.author.roles:
-              await message.delete()
+              author = message.author
             else:
-              await message.delete()
               #await DMChannel.send(user, embed=embed)
               #await client.add_roles(author, role)
               if message.guild == RDPguild:
