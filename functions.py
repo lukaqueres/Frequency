@@ -17,7 +17,7 @@ def get_prefix(client, message):
 		
 	if prefixes[str(message.guild.id)] is None:
 		return default
-	else
+	else:
 		return prefixes[str(message.guild.id)]
 
 def get_time():
