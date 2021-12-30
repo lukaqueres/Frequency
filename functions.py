@@ -11,10 +11,14 @@ from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 def get_prefix(client, message):
+	default = '$'
 	with open('data.json', 'r') as f:
 		prefixes = json.load(f)
 		
-	return prefixes[str(message.guild.id)]
+	if prefixes[str(message.guild.id)] is None:
+		return default
+	else
+		return prefixes[str(message.guild.id)]
 
 def get_time():
 	wintertime = True
