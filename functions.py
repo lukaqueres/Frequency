@@ -17,7 +17,7 @@ def get_prefix(client, message):
 		prefix = prefixes[str(message.guild.id)]
 	try:
 		if prefix is None:
-			print("Forced default prefix on {}." .format(ctx.guild)
+			print("Forced default prefix on {}." .format(ctx.guild))
 			return default
 		else:
 			return prefix
