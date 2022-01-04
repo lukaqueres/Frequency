@@ -21,8 +21,7 @@ def get_prefix(client, message):
 			return default
 		else:
 			return prefix
-	else:
-		return prefix
+	return prefix
 
 def get_time():
 	wintertime = True
