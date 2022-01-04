@@ -76,7 +76,7 @@ class Setup(commands.Cog):
       embed.add_field(name="Zarządzanie serwerem", value="Dostępne jedynie dla użytkowników z uprawnieniami administratora.", inline=False)
       embed.add_field(name="$prefix_change [ prefix]", value="Zmienia prefiks serwera z którego korzysta bot. **UWAGA** działa jedynie przez krótki okres.", inline=False)
     msg = await ctx.send(embed=embed)
-    await msg.add_reaction(':ballot_box_with_check:')
+    #await msg.add_reaction(':ballot_box_with_check:')
     
 def setup(client):
   client.add_cog(Setup(client))
