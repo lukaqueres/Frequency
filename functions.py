@@ -23,7 +23,7 @@ def get_prefix(client, message):
 		print("Forced default prefix on {}." .format(ctx.guild))
 		return default
 	else:
-		return prefix
+		return prefixes[str(message.guild.id)]
 
 def get_time():
 	wintertime = True
