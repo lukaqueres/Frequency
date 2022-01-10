@@ -19,11 +19,12 @@ def get_prefix(client, message):
 	with open('data.json', 'r') as f:
 		prefixes = json.load(f)
 		#prefix = prefixes[str(message.guild.id)]
-	if prefixes[str(message.guild.id)] is None:
-		print("Forced default prefix on {}." .format(ctx.guild))
-		return default
-	else:
-		return prefixes[str(message.guild.id)]
+	#if prefixes[str(message.guild.id)] is None:
+	#	print("Forced default prefix on {}." .format(ctx.guild))
+	#	return default
+	#else:
+	#	return prefixes[str(message.guild.id)]
+	return prefixes[str(message.guild.id)]
 
 def get_time():
 	wintertime = True
