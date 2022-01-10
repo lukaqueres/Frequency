@@ -10,6 +10,10 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
+DATABASE_URL = os.environ['https://data.heroku.com/datastores/32b203de-0866-4825-80b1-2706bd239a23']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
 def get_prefix(client, message):
 	default = '$'
 	with open('data.json', 'r') as f:
