@@ -18,8 +18,8 @@ def get_prefix(client, message):
 	default = '$'
 	with open('data.json', 'r') as f:
 		prefixes = json.load(f)
-		prefix = prefixes[str(message.guild.id)]
-	if prefix is None:
+		#prefix = prefixes[str(message.guild.id)]
+	if prefixes[str(message.guild.id)] is None:
 		print("Forced default prefix on {}." .format(ctx.guild))
 		return default
 	else:
