@@ -17,7 +17,7 @@ con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
 def get_prefix(client, message):
-	cur.execute("SELECT guild_id, guild_prefix from SERVERS_PROPERTIES WHERE guild_id = message.guild.id")
+	cur.execute("SELECT guild_id, guild_prefix from SERVERS_PROPERTIES WHERE guild_id=message.guild.id")
 	prefix = cur.fetchall()
 	
 	print("Prefix downloaded succesfully as {}".format( prefix ))
