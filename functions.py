@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio, psycopg2
+import discord, json, io, os, typing, requests, random, asyncio, psycopg2, urlparse
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
@@ -12,7 +12,12 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 #DATABASE_URL = os.environ['https://data.heroku.com/datastores/32b203de-0866-4825-80b1-2706bd239a23']
 
-#conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+DATABASE_URL = os.environ.get(‘DATABASE_URL’)
+con = psycopg2.connect(DATABASE_URL)
+cur = con.cursor()
+
+urlparse.uses_netloc.append('postgres')
+url = urlparse.urlparse(os.environ['DATABASE_URL'])
 
 def get_prefix(client, message):
 	default = '$'
