@@ -32,7 +32,7 @@ class Setup(commands.Cog):
   @commands.Cog.listener()
   async def on_guild_join(self, guild):
     print("\n Bot joined in guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
-    default_prefix = "$"
+    default_prefix = '$'
     cur.execute("INSERT INTO SERVER_PROPERTIES (GUILD_ID,DATE_OF_JOIN,GUILD_PREFIX,NUMBER_OF_USERS,ANTY_SPAM_FEATURE,ECONOMY,MUSIC,UPDATES) VALUES ({}, {}, {}, {}, {}, {}, {}, {})".format(guild.id, get_time("DD"), default_prefix, guild.member_count, "NO", "NO", "YES", "NO"));
     con.commit()
 #
