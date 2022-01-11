@@ -22,17 +22,17 @@ class Setup(commands.Cog):
   async def on_ready(self):
     print('Setup module loaded')
 
+#
+#<----------> On Bot join to guild <----------------------------------------------------------------->
+#
   @commands.Cog.listener()
   async def on_guild_join(self, guild):
     print("\n Bot joined in guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
-    with open('data.json', 'r') as f:
-      prefixes = json.load(f)
-      
-      prefixes[str(guild.id)] = '$'
-    
-    with open('data.json','w') as f:
-      json.dump(prefixes, f, indent=4)
-      
+    cur.execute("INSERT INTO SERVER_PROPERTIES (GUILD_ID,DATE_OF_JOIN,GUILD_PREFIX,NUMBER_OF_USERS,ANTY_SPAM_FEATURE,ECONOMY,MUSIC,UPDATES) VALUES ({}, {}, {}, {}, {}, {}, {}, {}, {})".format(guild.id, get_time(DD), "$", guild.member_count, "NO", "NO", "YES", "NO");
+    con.commit()
+#
+#<----------> On Bot remove from guild <----------------------------------------------------------------->
+#
   @commands.Cog.listener()
   async def on_guild_remove(self, guild):
     print("\n Bot removed from guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
