@@ -20,7 +20,7 @@ def get_prefix(client, message):
 	cur.execute("SELECT guild_prefix from SERVERS_PROPERTIES WHERE guild_id={}".format(message.guild.id))
 	prefix = cur.fetchone()
 	
-	print("Prefix downloaded succesfully as {} on {} guild.".format(prefix, message.guild))
+	print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
 	con.commit()
 	return prefix
 
