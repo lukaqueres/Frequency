@@ -58,7 +58,7 @@ def get_time( specify = "DT" ):
 	if( specify == "TT" ):
 		return str(current_time)
 	elif( specify == "DD" ):
-		return str(current_date)
+		return str(current_day)
 	else:
 		return str(dateandtime)
 		
