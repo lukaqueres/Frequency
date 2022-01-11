@@ -12,7 +12,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 
 #DATABASE_URL = os.environ['https://data.heroku.com/datastores/32b203de-0866-4825-80b1-2706bd239a23']
 
-DATABASE_URL = os.environ.get(‘DATABASE_URL’)
+DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
