@@ -13,7 +13,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 from functions import get_prefix, get_time
 
 try:
-	DATABASE_URL = os.environ.get(‘DATABASE_URL’)
+	DATABASE_URL = os.environ.get('DATABASE_URL')
 	con = psycopg2.connect(DATABASE_URL)
 	cur = con.cursor()
 	print("Database opened successfully")
