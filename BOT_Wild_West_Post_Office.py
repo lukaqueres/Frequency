@@ -17,7 +17,7 @@ try:
 	con = psycopg2.connect(DATABASE_URL)
 	cur = con.cursor()
 	print("Database opened successfully")
-else:
+except:
 	print("Failed to open database")
 	
 client = commands.Bot(command_prefix = get_prefix)
