@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio, psycopg2, urlparse
+import discord, json, io, os, typing, requests, random, asyncio, psycopg2
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
@@ -15,9 +15,6 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
-
-urlparse.uses_netloc.append('postgres')
-url = urlparse.urlparse(os.environ['DATABASE_URL'])
 
 def get_prefix(client, message):
 	default = '$'
