@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio
+import discord, json, io, os, typing, requests, random, asyncio, psycopg2, urlparse
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
@@ -12,6 +12,14 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 from functions import get_prefix, get_time
 
+try:
+	DATABASE_URL = os.environ.get(‘DATABASE_URL’)
+	con = psycopg2.connect(DATABASE_URL)
+	cur = con.cursor()
+	print("Database opened successfully")
+else:
+	print("Failed to open database")
+	
 client = commands.Bot(command_prefix = get_prefix)
 
 now = datetime.now() + timedelta(hours=2)
