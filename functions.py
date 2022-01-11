@@ -41,7 +41,7 @@ def get_prefix(client, message):
 	return prefixes[str(message.guild.id)]
 """
 
-def get_time():
+def get_time( specify = "DT" ):
 	wintertime = True
 	summertime = False
 	if (wintertime == True):
@@ -55,7 +55,11 @@ def get_time():
 	current_day = today.strftime("%d/%m/%Y")   #global current_day
 	current_time = now.strftime("%H:%M:%S")    #global current_time
 	dateandtime = str(current_time) + " , " + str(current_day)
-	
-	return str(dateandtime)
+	if( specify == "TT" ):
+		return str(current_time)
+	else if( specify == "DD" ):
+		return str(current_date)
+	else:
+		return str(dateandtime)
 		
 	
