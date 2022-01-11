@@ -16,7 +16,7 @@ try:
 	DATABASE_URL = os.environ.get('DATABASE_URL')
 	con = psycopg2.connect(DATABASE_URL)
 	cur = con.cursor()
-	print("Database opened successfully")
+	print("Bot database opened successfully")
 except:
 	print("Failed to open database")
 	
