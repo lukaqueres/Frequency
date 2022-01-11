@@ -14,6 +14,10 @@ from functions import get_prefix, get_time
 
 load_dotenv()
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+con = psycopg2.connect(DATABASE_URL)
+cur = con.cursor()
+
 class Setup(commands.Cog):
   def __init__(self, client):
   	self.client = client
