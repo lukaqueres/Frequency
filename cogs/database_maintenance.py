@@ -14,6 +14,9 @@ from functions import get_prefix, get_time
 
 load_dotenv()
 
+intents = discord.Intents.default()
+intents.members = True
+
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
