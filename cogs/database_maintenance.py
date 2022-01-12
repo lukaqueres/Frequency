@@ -57,7 +57,7 @@ class Database_maintenance(commands.Cog):
   async def on_member_join(self, member):
     guild = member.guild.id
     print("\n Member joined: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
-    cur.execute("UPDATE SERVERS_PROPRTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(member.guild.member_count, guild))
+    cur.execute("UPDATE SERVERS_PROPERTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(member.guild.member_count, guild))
     con.commit()
 
 #
@@ -67,7 +67,7 @@ class Database_maintenance(commands.Cog):
   async def on_member_remove(self, member):
     guild = member.guild.id
     print("\n Member left: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
-    cur.execute("UPDATE SERVERS_PROPRTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(member.guild.member_count, guild))
+    cur.execute("UPDATE SERVERS_PROPERTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(member.guild.member_count, guild))
     con.commit()
 
     
