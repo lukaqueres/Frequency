@@ -20,7 +20,7 @@ try:
 except:
 	print("Failed to open database")
 	
-client = commands.Bot(command_prefix = get_prefix)
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
