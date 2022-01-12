@@ -27,7 +27,7 @@ class Database_maintenance(commands.Cog):
     print('Database maintenance module loaded')
     
 #
-#<----------> On Bot join to guild <----------------------------------------------------------------->
+#<----------> On Bot join to guild <-------------------------------------------------------------------->
 #
   @commands.Cog.listener()
   async def on_guild_join(self, guild):
@@ -42,13 +42,10 @@ class Database_maintenance(commands.Cog):
   @commands.Cog.listener()
   async def on_guild_remove(self, guild):
     print("\n Bot removed from guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
-    with open('data.json', 'r') as f:
-      prefixes = json.load(f) 
-      
-      prefixes.pop(str(guild.id))
-    
-    with open('data.json','w') as f:
-      json.dump(prefixes, f, indent=4)
+    sql = "DELETE FROM SERVERS_PROPERTIES WHERE GUILD_ID = %s"
+    guild = (guild.id, )
+    cur.execute(sql, guild)
+    con.commit()
     
 def setup(client):
   client.add_cog(Database_maintenance(client))
