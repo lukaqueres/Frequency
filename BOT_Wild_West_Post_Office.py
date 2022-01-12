@@ -19,7 +19,10 @@ try:
 	print("Bot database opened successfully")
 except:
 	print("Failed to open database")
-	
+
+intents = discord.Intents.default()
+intents.members = True
+
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 now = datetime.now() + timedelta(hours=2)
