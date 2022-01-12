@@ -47,5 +47,20 @@ class Database_maintenance(commands.Cog):
     cur.execute(sql, guild)
     con.commit()
     
+#
+#<----------> On User join to guild <-------------------------------------------------------------------->
+#
+  async def on_member_join(member, guild):
+    cur.execute("UPDATE SERVERS_PROPRTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(guild.id, guild.member_count))
+    con.commit()
+
+#
+#<----------> On User leave from guild <----------------------------------------------------------------->
+#
+  async def on_member_remove(member, guild):
+    cur.execute("UPDATE SERVERS_PROPRTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(guild.id, guild.member_count))
+    con.commit()
+
+    
 def setup(client):
   client.add_cog(Database_maintenance(client))
