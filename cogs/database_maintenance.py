@@ -33,7 +33,8 @@ class Database_maintenance(commands.Cog):
   async def on_guild_join(self, guild):
     print("\n Bot joined in guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
     default_prefix = '$'
-    cur.execute("INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES) VALUES ('{}', '{}', '/{{}/}', '{}', '{}', '{}', '{}', '{}', '{}')".format(guild.id, guild.name, get_time("DD"), default_prefix, guild.member_count, "NO", "NO", "YES", "NO"));
+    date_of_join = str("{") + get_time("DD") + str("}")
+    cur.execute("INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES) VALUES ('{}', '{}', '/{{}/}', '{}', '{}', '{}', '{}', '{}', '{}')".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO"));
     con.commit()
 #
 #<----------> On Bot remove from guild <----------------------------------------------------------------->
