@@ -57,7 +57,7 @@ class Database_maintenance(commands.Cog):
   @commands.Cog.listener()
   async def on_member_join(self, member):
     guild = member.guild.id
-    members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
+    members_count = len([m for m in member.guild.members if not m.bot]) # doesn't include bots
     print("\n Member joined: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
     cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(member.guild.member_count, members_count, guild))
     con.commit()
@@ -68,7 +68,7 @@ class Database_maintenance(commands.Cog):
   @commands.Cog.listener()
   async def on_member_remove(self, member):
     guild = member.guild.id
-    members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
+    members_count = len([m for m in member.guild.members if not m.bot]) # doesn't include bots
     print("\n Member left: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
     cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(member.guild.member_count, members_count, guild))
     con.commit()
