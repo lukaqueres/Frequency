@@ -38,7 +38,7 @@ class Database_maintenance(commands.Cog):
     default_prefix = '$'
     members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
     date_of_join = str("{") + get_time("DD") + str("}")
-    cur.execute("SET datestyle = dmy; INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count));
+    cur.execute("SET datestyle = dmy; INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(guild.id, guild.name, date_of_join, default_prefix, members_count, "NO", "NO", "YES", "NO", guild.member_count));
     con.commit()
 #
 #<----------> On Bot remove from guild <----------------------------------------------------------------->
@@ -57,8 +57,9 @@ class Database_maintenance(commands.Cog):
   @commands.Cog.listener()
   async def on_member_join(self, member):
     guild = member.guild.id
+    members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
     #print("\n Member joined: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
-    cur.execute("UPDATE SERVERS_PROPERTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(member.guild.member_count, guild))
+    cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(member.guild.member_count, members_count, guild))
     con.commit()
 
 #
@@ -67,8 +68,9 @@ class Database_maintenance(commands.Cog):
   @commands.Cog.listener()
   async def on_member_remove(self, member):
     guild = member.guild.id
+    members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
     #print("\n Member left: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
-    cur.execute("UPDATE SERVERS_PROPERTIES SET NUMBER_OF_USERS = '{}' WHERE GUILD_ID = '{}'".format(member.guild.member_count, guild))
+    cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(member.guild.member_count, members_count, guild))
     con.commit()
 
     
