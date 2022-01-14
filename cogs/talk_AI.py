@@ -31,6 +31,7 @@ class Talk_AI(commands.Cog):
 	
   @commands.Cog.listener()
   async def on_message(self, message):
+    xd = 10
     #do nothin'
 		
 def setup(client):
