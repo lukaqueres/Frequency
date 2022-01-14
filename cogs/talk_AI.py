@@ -27,12 +27,11 @@ class Talk_AI(commands.Cog):
 	
   @commands.Cog.listener()
   async def on_ready(self):
-    print('Database maintenance module loaded')
+    print('Talk AI module loaded')
 	
   @commands.Cog.listener()
   async def on_message(self, message):
-		
-    break
+    #do nothin'
 		
 def setup(client):
   client.add_cog(Talk_AI(client))
