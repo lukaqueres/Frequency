@@ -21,13 +21,13 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
-class Talk_AI(commands.Cog):
+class Neurolinguistic_AI(commands.Cog):
   def __init__(self, client):
   	self.client = client
 	
   @commands.Cog.listener()
   async def on_ready(self):
-    print('Talk AI module loaded')
+    print('Neurolinguistic  AI module loaded')
 	
   @commands.Cog.listener()
   async def on_message(self, message):
@@ -35,4 +35,4 @@ class Talk_AI(commands.Cog):
     #do nothin'
 		
 def setup(client):
-  client.add_cog(Talk_AI(client))
+  client.add_cog(Neurolinguistic_AI(client))
