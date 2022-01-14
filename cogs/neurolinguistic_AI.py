@@ -27,7 +27,7 @@ class Neurolinguistic_AI(commands.Cog):
 	
   @commands.Cog.listener()
   async def on_ready(self):
-    print('Neurolinguistic  AI module loaded')
+    print('Neurolinguistic AI module loaded')
 	
   @commands.Cog.listener()
   async def on_message(self, message):
