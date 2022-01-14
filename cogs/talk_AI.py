@@ -24,6 +24,15 @@ cur = con.cursor()
 class Talk_AI(commands.Cog):
   def __init__(self, client):
   	self.client = client
+	
+  @commands.Cog.listener()
+  async def on_ready(self):
+    print('Database maintenance module loaded')
+	
+  @commands.Cog.listener()
+  async def on_message(self, message):
+		
+    break
 		
 def setup(client):
   client.add_cog(Talk_AI(client))
