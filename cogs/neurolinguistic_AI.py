@@ -53,7 +53,7 @@ class Neurolinguistic_AI(commands.Cog):
         # tagger or POS-tagger.
         tagged = nltk.pos_tag(wordsList)
         print(tagged)
-    #do nothin'
+    #do nothin'g
 		
 def setup(client):
   client.add_cog(Neurolinguistic_AI(client))
