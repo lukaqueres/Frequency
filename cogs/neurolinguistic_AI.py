@@ -24,8 +24,8 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
-nltk.download('punkt')
-nltk.download('averaged_perceptron_tagger')
+#nltk.download('punkt')
+#nltk.download('averaged_perceptron_tagger')
 
 stop_words = set(stopwords.words('english'))
 
