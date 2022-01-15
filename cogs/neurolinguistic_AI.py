@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio, psycopg2
+import discord, json, io, os, typing, requests, random, asyncio, psycopg2, nltk
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
