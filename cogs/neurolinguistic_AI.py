@@ -42,7 +42,7 @@ class Neurolinguistic_AI(commands.Cog):
     text = message.content
     # sent_tokenize is one of instances of
     # PunktSentenceTokenizer from the nltk.tokenize.punkt module
-    tokenized = sent_tokenize(txt)
+    tokenized = sent_tokenize(text)
     for i in tokenized:
         # Word tokenizers is used to find the words
         # and punctuation in a string
