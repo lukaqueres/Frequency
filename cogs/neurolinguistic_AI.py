@@ -27,7 +27,7 @@ cur = con.cursor()
 #nltk.download('punkt')
 #nltk.download('averaged_perceptron_tagger')
 
-stop_words = set(stopwords.words('english'))
+#stop_words = set(stopwords.words('english'))
 
 class Neurolinguistic_AI(commands.Cog):
   def __init__(self, client):
