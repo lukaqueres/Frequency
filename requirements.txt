@@ -7,3 +7,4 @@ PyNaCl
 python-dotenv==0.15.0
 discord==1.0.1
 psycopg2
+nltk
