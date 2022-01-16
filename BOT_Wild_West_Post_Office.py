@@ -126,14 +126,19 @@ async def ping(ctx):
 	await ctx.send(f'Ping: {round(client.latency * 1000)} ms')
 	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild))
 
-#install nltk packages:
+#>------------------------------------------->INSTALLING ALL THIS USELESS' SHIT<--------------------------------------------------------------------------------------<
+	
+#>install nltk packages:
 packages = { 'averaged_perceptron_tagger', 'wordnet', 'pros_cons', 'reuters', 'hmm_treebank_pos_tagger', 'maxent_treebank_pos_tagger', 'universal_tagset', 'punkt', 'averaged_perceptron_tagger_ru', 'snowball_data', 'rslp', 'porter_test', 'vader_lexicon', 'treebank', 'dependency_treebank', 'stopwords' }
 for package in packages:
 	nltk.download(package)
 	print("{} NLTK package downloaded.".format(package))
 
+#>install all cogs:
 for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
 		client.load_extension(f'cogs.{filename[:-3]}')
-
+		
+#>just say it's over ( installing of course )
+print("All modules, packages installed")
 client.run('ODc1MjcxOTk1NjQ0ODQyMDA0.YRTGkQ.52s28D_CmdNtZm3g4_llDs4AV9E')
