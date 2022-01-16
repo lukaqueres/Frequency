@@ -127,7 +127,7 @@ async def ping(ctx):
 	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild))
 
 #install nltk packages:
-packages = { 'averaged_perceptron_tagger', 'wordnet', 'pros_cons', 'reuters', 'hmm_treebank_pos_tagger', 'maxent_treebank_pos_tagger', 'universal_tagset', 'punkt', 'averaged_perceptron_tagger_ru', 'snowball_data', 'rslp', 'porter_test', 'vader_lexicon', 'treebank', 'dependency_treebank' }
+packages = { 'averaged_perceptron_tagger', 'wordnet', 'pros_cons', 'reuters', 'hmm_treebank_pos_tagger', 'maxent_treebank_pos_tagger', 'universal_tagset', 'punkt', 'averaged_perceptron_tagger_ru', 'snowball_data', 'rslp', 'porter_test', 'vader_lexicon', 'treebank', 'dependency_treebank', 'stopwords' }
 for package in packages:
 	nltk.download(package)
 	print("{} NLTK package downloaded.".format(package))
