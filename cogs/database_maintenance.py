@@ -39,13 +39,13 @@ def check_database():
   for guild in client.guilds:
     members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
     guilds_id.append(guild.id)
+    print('Database Check: Guild {} check.'.format( guild ))
     cur.execute("""IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
                    INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
                    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
                    IF EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
                    INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
                    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language ));
-    print('Database Check: Guild {} check.'.format( guild ))
     con.commit()
 
 if check_database_on_startup == 'TRUE':
