@@ -31,6 +31,7 @@ check_database_on_startup = 'TRUE'
 #
 
 def check_database():
+  print('Database check start:')
   guilds_id = []
   default_prefix = '$'
   default_language = 'ENG'
@@ -47,7 +48,7 @@ def check_database():
     print('Database Check: Guild {} check.'.format( guild ))
     con.commit()
 
-if check_database_on_startup:
+if check_database_on_startup == 'TRUE':
   check_database()
 #
 #<=========> Cog start <===============================================================================>
