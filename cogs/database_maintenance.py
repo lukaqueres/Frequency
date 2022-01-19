@@ -41,6 +41,7 @@ def check_database():
                    IF EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
                    INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
                    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language ));
+    print('Database Check: Guild {} check.'.format( guild ))
     con.commit()
 
 if check_database_on_startupe:
