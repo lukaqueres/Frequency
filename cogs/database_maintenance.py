@@ -14,10 +14,10 @@ from functions import get_prefix, get_time
 
 load_dotenv()
 
-client = commands.Bot(command_prefix = get_prefix, intents=intents)
-
 intents = discord.Intents.default()
 intents.members = True
+
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
