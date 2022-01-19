@@ -45,7 +45,7 @@ def check_database():
     print('Database Check: Guild {} check.'.format( guild ))
     con.commit()
 
-if check_database_on_startupe:
+if check_database_on_startup:
   check_database()
 #
 #<=========> Cog start <===============================================================================>
