@@ -32,9 +32,9 @@ def check_database():
   guilds_id = []
   default_prefix = '$'
   default_language = 'ENG'
-  members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
   date_of_join = str("{") + get_time("DD") + str("}")
   for guild in client.guilds:
+    members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
     guilds_id.append(guild.id)
     cur.execute("""IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
                    INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
