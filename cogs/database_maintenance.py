@@ -21,7 +21,8 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
-global check_database_on_startup = 'TRUE'
+global check_database_on_startup
+check_database_on_startup = 'TRUE'
 
 #
 #<----------> Check database <------------------------------------------------------------------------>
