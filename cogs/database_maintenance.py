@@ -17,7 +17,7 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 
-client = discord.Client
+client = Bot
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
