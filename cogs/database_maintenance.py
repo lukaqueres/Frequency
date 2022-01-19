@@ -32,6 +32,7 @@ check_database_on_startup = 'TRUE'
 
 def check_database():
   print('Database check start:')
+  print('Checking guilds: {} '.format( client.guilds ))
   guilds_id = []
   default_prefix = '$'
   default_language = 'ENG'
