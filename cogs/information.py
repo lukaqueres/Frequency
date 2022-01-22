@@ -44,7 +44,7 @@ class Information(commands.Cog):
 			user = value
       
 		embed = Embed(title="User information",
-			colour = user.colour,
+			colour = ctx.author.colour,
 			timestamp=datetime.get_time())
     
 		embed.set_thumbnail(url=target.avatar_url)
