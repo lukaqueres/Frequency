@@ -29,16 +29,16 @@ class Information(commands.Cog):
 
     
 	@commands.command()
-	async def info(self, ctx, value = 'default', secondary_value = 'default'):
+	async def info(self, ctx, value = 'default', secondary_value = member : discord.Member=None):
 		if value == 'default': # You can't pick nothin' do ya? 
 			await ctx.send("You have to specify what kind of information you want!")
 			return 0
 		if value == 'user': # If user type information picked
-			if (secondary_value != 'default') and (secondary_value != ctx.message.author):
+			if (secondary_value != None) and (secondary_value != ctx.message.author):
 				if ( not ctx.message.author.guild_permissions.manage_roles): # Check if user have permissions to show info about other user
 					await ctx.send("You can't check info about other user than you!")
 					return 0
-		if (secondary_value != 'default'):
+		if (secondary_value != None):
 			user = secondary_value
 		else:
 			user = ctx.author
