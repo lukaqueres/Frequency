@@ -47,7 +47,7 @@ class Information(commands.Cog):
 			colour = ctx.author.colour,
 			#timestamp=get_time()
 			)
-		embed.set_thumbnail(url=target.avatar_url)
+		#embed.set_thumbnail(url=user.avatar_url)
       
 		embed.add_field( name="Name", value=str(user), inline=True),
 		embed.add_field( name="ID", value=user.id, inline=True),
