@@ -61,5 +61,25 @@ class Setup(commands.Cog):
     msg = await ctx.send(embed=embed)
     #await msg.add_reaction(':ballot_box_with_check:')
     
+#
+#<----------> 'set' command - set channels and some settings <------------------------------------------------------------------------>
+#
+
+  @commands.command()
+  async def set(self, ctx, task = 'default', value = 'default'):
+    guild = ctx.guild.id
+    value_length = len(value)
+    if (task == prefix): #>-------------------------------------------< Task - prefix
+      if (value == 'default'): # If value wasn't changed
+        await ctx.send("You must specify new prefix!")
+        return 0
+      else if (value_length > 2) # If value was too long
+        await ctx.send("New prefix length must be long 2 characters max!")
+        return 0
+      cur.execute("UPDATE servers_properties SET (guild_prefix) = ('{}') WHERE GUILD_ID = '{}'".format(value, guild))
+      con.commit()
+      
+        
+    
 def setup(client):
   client.add_cog(Setup(client))
