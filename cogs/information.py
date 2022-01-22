@@ -29,7 +29,7 @@ class Information(commands.Cog):
 
     
 	@commands.command()
-	async def info(self, ctx, value = 'default', secondary_value = member : discord.Member=None):
+	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None):
 		if value == 'default': # You can't pick nothin' do ya? 
 			await ctx.send("You have to specify what kind of information you want!")
 			return 0
