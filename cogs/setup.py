@@ -74,13 +74,13 @@ class Setup(commands.Cog):
       if (value == 'default'): # If value wasn't changed
         await ctx.send("You must specify new prefix!")
         return 0
-      elif (value_length > 2): # If value was too long
+      elif (value_length > 2): # If value is too long
         await ctx.send("New prefix length must be long 2 characters max!")
         return 0
       else: # If value seems legit
-        cur.execute("UPDATE SERVERS_PROPERTIES SET (guild_prefix) = ('{}') WHERE guild_id = '{}'".format(value, guild_id))
+        cur.execute("UPDATE servers_properties SET guild_prefix = '{}' WHERE guild_id = '{}';".format(value, guild_id))
         con.commit()
-        await ctx.send("For this guild prefix changed for: '{}'.".format( value ))
+        await ctx.send("This guild prefix changed for: '{}'.".format( value ))
         
     
 def setup(client):
