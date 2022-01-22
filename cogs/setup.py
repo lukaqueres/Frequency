@@ -92,7 +92,7 @@ class Setup(commands.Cog):
       if (value == 'default'): # If value wasn't changed
         await ctx.send("You must specify language!")
         return 0
-      elif (value != 'English') or (value != 'Polish') or (value != 'english') or (value != 'polish'): # If value is too long
+      elif (value != 'English') and (value != 'Polish') and (value != 'english') and (value != 'polish'): # If value is too long
         await ctx.send("Unknown language, check help command!")
         return 0
       else: # If value seems legit
