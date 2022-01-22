@@ -97,12 +97,14 @@ class Setup(commands.Cog):
         return 0
       else: # If value seems legit
         if ( value == 'English') or (value == 'english' ): # If value looks like English
+          language_name = 'English'
           language = 'ENG'
         elif ( value == 'Polish') or (value == 'polish' ): # If value looks like Polish
+          language_name = 'Polish'
           language = 'POL'
         cur.execute("UPDATE servers_properties SET guild_language = '{}' WHERE guild_id = '{}';".format(language, guild_id))
         con.commit()
-        await ctx.send("Guild language changed for: '{}'.".format( language ))
+        await ctx.send("Guild language changed for: '{}'.".format( language_name ))
     else: #>-------------------------------------------------------------< Task - none, inform about it
       await ctx.send("Unknown task, please check if command is properly written or *help* for full guide.")
       return 0
