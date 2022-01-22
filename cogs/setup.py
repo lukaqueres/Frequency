@@ -71,6 +71,9 @@ class Setup(commands.Cog):
     guild_id = guild.id
     value_length = len(value)
     if (task == 'prefix'): #>-------------------------------------------< Task - prefix
+      if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
+        await ctx.send("You don't have permissions to do this!")
+        return 0
       if (value == 'default'): # If value wasn't changed
         await ctx.send("You must specify new prefix!")
         return 0
