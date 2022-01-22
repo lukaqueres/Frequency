@@ -92,14 +92,14 @@ class Setup(commands.Cog):
       if (value == 'default'): # If value wasn't changed
         await ctx.send("You must specify language!")
         return 0
-      elif (value != English or value != Polish or value != english or value != polish): # If value is too long
+      elif (value != 'English' or value != 'Polish' or value != 'english' or value != 'polish'): # If value is too long
         await ctx.send("Unknown language, check help command!")
         return 0
       else: # If value seems legit
-        if ( value == English or value == english ): # If value looks like English
-          language = ENG
-        elif ( value == Polish or value == polish ): # If value looks like Polish
-          language = POL
+        if ( value == 'English' or value == 'english' ): # If value looks like English
+          language = 'ENG'
+        elif ( value == 'Polish' or value == 'polish' ): # If value looks like Polish
+          language = 'POL'
         cur.execute("UPDATE servers_properties SET guild_language = '{}' WHERE guild_id = '{}';".format(language, guild_id))
         con.commit()
         await ctx.send("Guild language changed for: '{}'.".format( language ))
