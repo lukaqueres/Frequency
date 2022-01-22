@@ -17,8 +17,8 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.members = True
 
-#client = commands.Bot(command_prefix = get_prefix, intents=intents)
-client = discord.Client
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
+#client = discord.Client
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
@@ -33,7 +33,7 @@ check_database_on_startup = 'TRUE'
 
 def check_database():
   print('Database check start:')
-  print('Checking guilds: {} '.format( client.guilds ))
+  print('Checking guilds: {} '.format( str(client.guilds)) ))
   guilds_id = []
   default_prefix = '$'
   default_language = 'ENG'
