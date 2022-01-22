@@ -78,7 +78,7 @@ class Setup(commands.Cog):
         await ctx.send("New prefix length must be long 2 characters max!")
         return 0
       else: # If value seems legit
-        cur.execute("INSERT INTO servers_properties (guild_prefix) VALUES ('{}') WHERE GUILD_ID = '{}'".format(value, guild_id))
+        cur.execute("UPDATE SERVERS_PROPERTIES SET (guild_prefix) = ('{}') WHERE guild_id = '{}'".format(value, guild_id))
         con.commit()
         await ctx.send("For this guild prefix changed for: '{}'.".format( value ))
         
