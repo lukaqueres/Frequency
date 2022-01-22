@@ -67,6 +67,7 @@ class Setup(commands.Cog):
 
   @commands.command()
   async def set(self, ctx, task = 'default', value = 'default'):
+    message = ctx.message
     guild = ctx.guild
     guild_id = guild.id
     value_length = len(value)
@@ -84,6 +85,9 @@ class Setup(commands.Cog):
         cur.execute("UPDATE servers_properties SET guild_prefix = '{}' WHERE guild_id = '{}';".format(value, guild_id))
         con.commit()
         await ctx.send("This guild prefix changed for: '{}'.".format( value ))
+    else:
+      await ctx.send("Unknown task, please check if command is properly written or *$help* for full guide.")
+      return 0
         
     
 def setup(client):
