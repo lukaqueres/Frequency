@@ -30,28 +30,37 @@ class Information(commands.Cog):
     
   @commands.command()
   @has_permissions(manage_messages=True)
-  async def info(self, ctx, value = 'default', secondary_value: Optional[Member]):
+  async def info(self, ctx, value = 'default', secondary_value = 'default'):
     if value == 'default': # You can't pick nothin' do ya? 
       await ctx.send("You have to specify what kind of information you want!")
       return 0
     if value == 'user': # If user type information picked
-      user = secondary_value or ctx.author
-      embed = Embed(title="User information",
-		    colour = user.colour,
-			  timestamp=datetime.get_time())
-      embed.set_thumbnail(url=target.avatar_url)
+	if (secondary_value != 'default') and (secondary_value != ctx.message.author):
+		if ( not message.author.guild_permissions.manage_roles): # Check if user have permissions to show info about other user
+      await ctx.send("You can't check info about other user than you!")
+      return 0
+    if (secondary_value != 'default'):
+      user = secondary_value
+    else:
+      user = value
       
-      embed.add_field( name="Name", value=str(user), inline=True),
-			embed.add_field( name="ID", value=user.id, inline=True),
-			embed.add_field( name="Bot?", value=user.bot, inline=True),
-			embed.add_field( name="Top role", value=user.top_role.mention, inline=True),
-			embed.add_field( name="Status", value=str(user.status).title(), inline=True),
-			embed.add_field( name="Activity", value=f"{str(user.activity.type).split('.')[-1].title() if target.activity else 'N/A'} {target.activity.name if target.activity else ''}", inline=True),
-			embed.add_field( name="Created at", value=user.created_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
-			embed.add_field( name="Joined at", value=user.joined_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
-			embed.add_field( name="Boosted", value=bool(user.premium_since), inline=True)]
+    embed = Embed(title="User information",
+		  colour = user.colour,
+			timestamp=datetime.get_time())
+    
+    embed.set_thumbnail(url=target.avatar_url)
       
-      await ctx.send(embed=embed)
+    embed.add_field( name="Name", value=str(user), inline=True),
+	  embed.add_field( name="ID", value=user.id, inline=True),
+		embed.add_field( name="Bot?", value=user.bot, inline=True),
+		embed.add_field( name="Top role", value=user.top_role.mention, inline=True),
+		embed.add_field( name="Status", value=str(user.status).title(), inline=True),
+		embed.add_field( name="Activity", value=f"{str(user.activity.type).split('.')[-1].title() if target.activity else 'N/A'} {target.activity.name if target.activity else ''}", inline=True),
+		embed.add_field( name="Created at", value=user.created_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
+		embed.add_field( name="Joined at", value=user.joined_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
+		embed.add_field( name="Boosted", value=bool(user.premium_since), inline=True)]
+      
+    await ctx.send(embed=embed)
     
 def setup(client):
   client.add_cog(Information(client))
