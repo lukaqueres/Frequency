@@ -35,7 +35,7 @@ class Information(commands.Cog):
       await ctx.send("You have to specify what kind of information you want!")
       return 0
     if value == 'user': # If user type information picked
-	if (secondary_value != 'default') and (secondary_value != ctx.message.author):
+    if (secondary_value != 'default') and (secondary_value != ctx.message.author):
 		if ( not message.author.guild_permissions.manage_roles): # Check if user have permissions to show info about other user
       await ctx.send("You can't check info about other user than you!")
       return 0
