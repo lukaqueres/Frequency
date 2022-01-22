@@ -57,7 +57,7 @@ class Information(commands.Cog):
 		embed.add_field( name="Activity", value=f"{str(user.activity.type).split('.')[-1].title() if target.activity else 'N/A'} {target.activity.name if target.activity else ''}", inline=True),
 		embed.add_field( name="Created at", value=user.created_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
 		embed.add_field( name="Joined at", value=user.joined_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
-		embed.add_field( name="Boosted", value=bool(user.premium_since), inline=True)]
+		embed.add_field( name="Boosted", value=bool(user.premium_since), inline=True)
 
 		await ctx.send(embed=embed)
     
