@@ -41,13 +41,13 @@ class Information(commands.Cog):
 		if (secondary_value != 'default'):
 			user = secondary_value
 		else:
-			user = value
+			user = ctx.author
       
 		embed = Embed(title="User information",
 			colour = ctx.author.colour,
 			#timestamp=get_time()
 			)
-		#embed.set_thumbnail(url=user.avatar_url)
+		embed.set_thumbnail(url=user.avatar_url)
       
 		embed.add_field( name="Name", value=str(user), inline=True),
 		embed.add_field( name="ID", value=user.id, inline=True),
