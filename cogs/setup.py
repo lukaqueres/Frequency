@@ -85,8 +85,26 @@ class Setup(commands.Cog):
         cur.execute("UPDATE servers_properties SET guild_prefix = '{}' WHERE guild_id = '{}';".format(value, guild_id))
         con.commit()
         await ctx.send("This guild prefix changed for: '{}'.".format( value ))
-    else:
-      await ctx.send("Unknown task, please check if command is properly written or *$help* for full guide.")
+    elif (task == 'language'): #>-------------------------------------------< Task - language
+      if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
+        await ctx.send("You don't have permissions to do this!")
+        return 0
+      if (value == 'default'): # If value wasn't changed
+        await ctx.send("You must specify language!")
+        return 0
+      elif (value != English or value != Polish or value != english or value != polish): # If value is too long
+        await ctx.send("Unknown language, check help command!")
+        return 0
+      else: # If value seems legit
+        if ( value == English or value == english ): # If value looks like English
+          language = ENG
+        elif ( value == Polish or value == polish ): # If value looks like Polish
+          language = POL
+        cur.execute("UPDATE servers_properties SET guild_language = '{}' WHERE guild_id = '{}';".format(language, guild_id))
+        con.commit()
+        await ctx.send("Guild language changed for: '{}'.".format( language ))
+    else: #>-------------------------------------------------------------< Task - none, inform about it
+      await ctx.send("Unknown task, please check if command is properly written or *help* for full guide.")
       return 0
         
     
