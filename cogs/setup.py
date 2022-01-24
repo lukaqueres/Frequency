@@ -115,7 +115,7 @@ class Setup(commands.Cog):
 			if channel_type == 'spam_info': # setting channel type spam info
 				if value_two != 'default':
 					channel = value_two
-				cur.execute("UPDATE servers_data SET (anty_spam_channel_id) = ('{}') WHERE guild_id = '{}'".format(channel_id, guild_id))
+				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Channel set up succesfuly!")
 			elif channel_type == 'updates': #setting channel type updates about bot
