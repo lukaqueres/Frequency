@@ -66,7 +66,7 @@ class Setup(commands.Cog):
 #
 
 	@commands.command()
-	async def set(self, ctx, task = 'default', value = 'default', value_two = 'default'):
+	async def set(self, ctx, task = 'default', value = 'default', value_two : Channel=None):
 		message = ctx.message
 		guild = ctx.guild
 		guild_id = guild.id
@@ -113,14 +113,14 @@ class Setup(commands.Cog):
 				return 0
 			channel_type = value
 			if channel_type == 'spam_info': # setting channel type spam info
-				if value_two != 'default':
+				if value_two != None:
 					channel = value_two
 					channel_id - channel.id
 				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Channel set up succesfuly!")
 			elif channel_type == 'updates': #setting channel type updates about bot
-				if value_two != 'default':
+				if value_two != None:
 					channel = value_two
 					channel_id - channel.id
 				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
