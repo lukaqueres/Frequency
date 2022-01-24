@@ -13,6 +13,8 @@ from typing import Optional
 
 from functions import get_prefix, get_time
 
+client = commands.Bot(command_prefix = get_prefix, intents=discord.Intents.all())
+
 load_dotenv()
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
