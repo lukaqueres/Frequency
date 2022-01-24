@@ -30,7 +30,8 @@ class Information(commands.Cog):
 	@commands.command()
 	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None): # secondary_value : discord.Member=None <- for specified type of input
 		if secondary_value.isnumeric():
-			secondary_value = ( "<@" + secondary_value + ">" )
+			#secondary_value = ( "<@" + secondary_value + ">" )
+			secondary_value = await bot.fetch_member(secondary_value)
 		if value == 'default': # You can't pick nothin' do ya? 
 			await ctx.send("You have to specify what kind of information you want!")
 			return 0
