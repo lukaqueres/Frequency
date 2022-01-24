@@ -27,7 +27,10 @@ class Information(commands.Cog):
 	async def on_ready(self):
 		print('Information module loaded')
 
-    
+	@commands.event()
+	async def on_command_error(ctx, error):
+    		pass
+
 	@commands.command()
 	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None):
 		if value == 'default': # You can't pick nothin' do ya? 
@@ -62,11 +65,10 @@ class Information(commands.Cog):
 		await ctx.send(embed=embed)
 	@info.error
 	async def info_error(self, error, ctx, message):
-		channel = message.channel
 		if isinstance(error, commands.errors.MemberNotFound):
-			await channel.send("Member not found!")
+			await ctx.send("Member not found!")
 		else: 
-			await channel.send("There was an error with executing command!")
+			await ctx.send("There was an error with executing command!")
     
 def setup(client):
 	client.add_cog(Information(client))
