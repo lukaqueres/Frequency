@@ -28,7 +28,7 @@ class Information(commands.Cog):
 		print('Information module loaded')
 
 	@commands.command()
-	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None or secondary_value : number):
+	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None):
 		if not secondary_value.isnumeric():
 			secondary_value = ( "<@" + secondary_value + ">" )
 		if value == 'default': # You can't pick nothin' do ya? 
