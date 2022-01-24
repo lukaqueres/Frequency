@@ -63,7 +63,7 @@ class Information(commands.Cog):
 			#embed.add_field( name="Boosted:", value=bool(user.premium_since), inline=True)
 
 			await ctx.send(embed=embed)
-		if value == 'server':
+		if (value == 'server') or (value == 'guild'):
 			guild = ctx.guild
 			live_members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
