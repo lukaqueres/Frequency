@@ -66,7 +66,7 @@ class Setup(commands.Cog):
 #
 
 	@commands.command()
-	async def set(self, ctx, task = 'default', value = 'default', value_two : Channel=None):
+	async def set(self, ctx, task = 'default', value = 'default', value_two : discord.Channel=None):
 		message = ctx.message
 		guild = ctx.guild
 		guild_id = guild.id
