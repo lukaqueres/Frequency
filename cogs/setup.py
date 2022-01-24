@@ -114,7 +114,9 @@ class Setup(commands.Cog):
 			channel_type = value
 			if channel_type == 'spam_info': # setting channel type spam info
 				if value_two != None:
-					value_two = string.replace("<@>", "") 
+					for_delete = [ '<', '#', '@', '>' ]
+					for i in for_delete:
+						value_two = value_two.replace(i, "") 
 					channel = client.get_channel(int(value_two))
 					channel_id - channel.id
 				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
