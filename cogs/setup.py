@@ -122,7 +122,9 @@ class Setup(commands.Cog):
 				await ctx.send("Channel set up succesfuly!")
 			elif channel_type == 'updates': #setting channel type updates about bot
 				if value_two != None:
-					value_two = string.replace("<@>", "") 
+					for_delete = [ '<', '#', '@', '>' ]
+					for n in for_delete:
+						value_two = value_two.replace(n, "") 
 					channel = client.get_channel(int(value_two))
 					channel_id - channel.id
 				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
