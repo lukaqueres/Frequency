@@ -123,14 +123,8 @@ class Setup(commands.Cog):
 					for_delete = [ '<', '#', '@', '>' ]
 					for i in for_delete:
 						value_two = value_two.replace(i, "")
-					
-					for channel in ctx.guild.channels:
-						if channel.id == value_two:
-							find = '1'
-							channel_id = channel.id
-					if find != '1':
-						await ctx.send("Channel not find!")
-						return 0
+						
+					channel = discord.utils.get(guild.channels, id="value_two", type="ChannelType.text") 
 					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = ctx.get_channel(value_two)
 					#channel_id = channel.id
