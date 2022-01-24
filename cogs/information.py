@@ -61,8 +61,8 @@ class Information(commands.Cog):
 
 		await ctx.send(embed=embed)
 	@info.error
-	async def info_error(self, error, ctx):
-		channel = ctx.message.channel
+	async def info_error(self, error, ctx, message):
+		channel = message.channel
 		if isinstance(error, commands.errors.MemberNotFound):
 			await channel.send("Member not found!")
 		else: 
