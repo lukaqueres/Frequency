@@ -123,8 +123,8 @@ class Setup(commands.Cog):
 					for_delete = [ '<', '#', '@', '>' ]
 					for i in for_delete:
 						value_two = value_two.replace(i, "")
-					channel = discord.utils.get(ctx.guild.channels, id=value_two)
-					#channel = client.get_channel(value_two)
+					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
+					channel = ctx.get_channel(value_two)
 					channel_id = channel.id
 				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
