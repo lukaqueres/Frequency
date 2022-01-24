@@ -25,7 +25,7 @@ con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
 global check_database_on_startup
-check_database_on_startup = 'TRUE'
+check_database_on_startup = 'FALSE'
 
 #
 #<----------> Check database <------------------------------------------------------------------------>
@@ -76,8 +76,8 @@ class Database_maintenance(commands.Cog):
     date_of_join = str("{") + get_time("DD") + str("}")
     cur.execute("""SET datestyle = dmy; INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')
                    INSERT INTO servers_data ( guild_id, guild_name ) VALUES ( '{}', '{}' )""".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.name));
-    con.commit()
-#
+    print("Succesful data base registration.")
+    #
 #<----------> On Bot remove from guild <----------------------------------------------------------------->
 #
   @commands.Cog.listener()
@@ -88,6 +88,7 @@ class Database_maintenance(commands.Cog):
     guild = (guild.id, guild.id)
     cur.execute(sql, guild)
     con.commit()
+    print("Succesful data base registration.")
     
 #
 #<----------> On User join to guild <-------------------------------------------------------------------->
