@@ -32,8 +32,8 @@ class Setup(commands.Cog):
 	async def prefix_change(self, ctx, prefix):
 		await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
 		print("\n Prefix changed in guild: \" {} \" guild to \"{}\" on \" {} \".".format(ctx.message.guild, prefix, get_time()))
-			with open('data.json', 'r') as f:
-				prefixes = json.load(f)
+		with open('data.json', 'r') as f:
+			prefixes = json.load(f)
       
 	prefixes[str(ctx.message.guild.id)] = prefix
     
