@@ -62,10 +62,11 @@ class Information(commands.Cog):
 		await ctx.send(embed=embed)
 	@info.error
 	async def info_error(self, error, ctx):
+		channel = ctx.message.channel
 		if isinstance(error, commands.errors.MemberNotFound):
-			await ctx.send("Member not found!")
+			await channel.send("Member not found!")
 		else: 
-			await ctx.send("There was an error with executing command!")
+			await channel.send("There was an error with executing command!")
     
 def setup(client):
 	client.add_cog(Information(client))
