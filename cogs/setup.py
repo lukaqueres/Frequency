@@ -66,7 +66,7 @@ class Setup(commands.Cog):
 #
 
   @commands.command()
-  async def set(self, ctx, task = 'default', value = 'default'):
+  async def set(self, ctx, task = 'default', value = 'default', value_two = 'default'):
     message = ctx.message
     guild = ctx.guild
     guild_id = guild.id
@@ -105,6 +105,25 @@ class Setup(commands.Cog):
         cur.execute("UPDATE servers_properties SET guild_language = '{}' WHERE guild_id = '{}';".format(language, guild_id))
         con.commit()
         await ctx.send("Guild language changed for: '{}'.".format( language_name ))
+    elif (task == 'channel'): #>-------------------------------------------< Task - channel set-up
+			if ( not ctx.message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
+        await ctx.send("You don't have permissions to do this!")
+        return 0
+			channel_type = value
+			channel = ctx.channel
+			if channel_type == 'spam_info': # setting channel type spam info
+				if value_two != 'default':
+					channel = value_two
+				channel_id = channel.id
+				cur.execute("UPDATE servers_data SET (anty_spam_channel_id) = ('{}') WHERE guild_id = '{}'".format(channel_id, guild))
+    		con.commit()
+				await ctx.send("Channel set up succesfuly!")
+			elif channel_type == 'updates': #setting channel type updates about bot
+				if value_two != 'default':
+					channel = value_two
+				
+			else:
+				 await ctx.send("Unknown channel type, please check if command is properly written or *help* for full guide.")
     else: #>-------------------------------------------------------------< Task - none, inform about it
       await ctx.send("Unknown task, please check if command is properly written or *help* for full guide.")
       return 0
