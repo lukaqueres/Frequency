@@ -84,15 +84,18 @@ class Information(commands.Cog):
 			embed.set_thumbnail(url=guild.icon_url)
 			
 			embed.add_field(name='Guild Name:', value=guild.name)
-			embed.add_field(name='Owner:', value=guild.owner, inline=False)
+			embed.add_field(name='Owner:', value=guild.owner)
+			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field(name='Members:', value=guild.member_count)
 			embed.add_field(name='Users:', value=live_members_count)
 			embed.add_field(name='Bots:', value=bot_members_count)
-			embed.add_field(name='Currently Online:', value=users_online)
+			embed.add_field(name = chr(173), value = chr(173), inline=False)
+			#embed.add_field(name='Currently Online:', value=users_online) <- FIX IT
 			embed.add_field(name='Text Channels:', value=str(channels_number))
 			embed.add_field(name='Region:', value=guild.region)
 			embed.add_field(name='Verification Level:', value=str(guild.verification_level))
-			#embed.add_field(name='Highest role:', value=guild.role_hierarchy[0])
+			embed.add_field(name = chr(173), value = chr(173), inline=False)
+			#embed.add_field(name='Highest role:', value=guild.role_hierarchy[0]) <- FIX IT
 			embed.add_field(name='Number of roles:', value=str(roles_number))
 			embed.add_field(name='Number of emotes:', value=str(emojis_number))
 			embed.add_field(name='Created At:', value=guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'))
