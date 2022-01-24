@@ -70,6 +70,8 @@ class Setup(commands.Cog):
 		message = ctx.message
 		guild = ctx.guild
 		guild_id = guild.id
+		channel = ctx.channel
+		channel_id = channel.id
 		value_length = len(value)
 		if (task == 'prefix'): #>-------------------------------------------< Task - prefix
 			if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
@@ -110,12 +112,10 @@ class Setup(commands.Cog):
 				await ctx.send("You don't have permissions to do this!")
 				return 0
 			channel_type = value
-			channel = ctx.channel
 			if channel_type == 'spam_info': # setting channel type spam info
 				if value_two != 'default':
 					channel = value_two
-				channel_id = channel.id
-				cur.execute("UPDATE servers_data SET (anty_spam_channel_id) = ('{}') WHERE guild_id = '{}'".format(channel_id, guild))
+				cur.execute("UPDATE servers_data SET (anty_spam_channel_id) = ('{}') WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Channel set up succesfuly!")
 			elif channel_type == 'updates': #setting channel type updates about bot
