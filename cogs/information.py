@@ -27,7 +27,7 @@ class Information(commands.Cog):
 	async def on_ready(self):
 		print('Information module loaded')
 
-	@commands.event()
+	@commands.Cog.listener()
 	async def on_command_error(ctx, error):
     		pass
 
