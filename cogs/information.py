@@ -52,9 +52,9 @@ class Information(commands.Cog):
       
 			embed.add_field( name="Name:", value=str(user), inline=True),
 			embed.add_field( name="ID:", value=user.id, inline=True),
-			embed.add_field( name="Bot:", value=user.bot, inline=True),
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="Top role:", value=user.top_role.mention, inline=True),
+			embed.add_field( name="Bot:", value=user.bot, inline=True),
 			#embed.add_field( name="Status", value=str(user.status).title(), inline=True), <- FIX IT
 			#embed.add_field( name="Activity", value=f"{str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}", inline=True), <- FIX IT
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
@@ -92,7 +92,7 @@ class Information(commands.Cog):
 			embed.add_field(name='Text Channels:', value=str(channels_number))
 			embed.add_field(name='Region:', value=guild.region)
 			embed.add_field(name='Verification Level:', value=str(guild.verification_level))
-			embed.add_field(name='Highest role:', value=guild.role_hierarchy[0])
+			#embed.add_field(name='Highest role:', value=guild.role_hierarchy[0])
 			embed.add_field(name='Number of roles:', value=str(roles_number))
 			embed.add_field(name='Number of emotes:', value=str(emojis_number))
 			embed.add_field(name='Created At:', value=guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'))
