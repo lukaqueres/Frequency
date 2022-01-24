@@ -27,7 +27,7 @@ class Setup(commands.Cog):
 		print('Setup module loaded')
 
     
-	@commands.command()
+	"""@commands.command()
 	@has_permissions(manage_messages=True)
 	async def prefix_change(self, ctx, prefix):
 		await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
@@ -38,7 +38,7 @@ class Setup(commands.Cog):
 	prefixes[str(ctx.message.guild.id)] = prefix
     
 	with open('data.json','w') as f:
-		json.dump(prefixes, f, indent=4)
+		json.dump(prefixes, f, indent=4)"""
       
 	@commands.command()
 	async def help(self, ctx):
