@@ -119,6 +119,7 @@ class Setup(commands.Cog):
 			channel_type = value
 			if channel_type == 'spam_info': # setting channel type spam info
 				if value_two != None:
+					print(value_two)
 					for_delete = [ '<', '#', '@', '>' ]
 					for i in for_delete:
 						value_two = value_two.replace(i, "") 
