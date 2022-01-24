@@ -14,6 +14,7 @@ from functions import get_prefix, get_time
 
 load_dotenv()
 
+intents = discord.Intents().all()
 intents = discord.Intents.default()
 intents.members = True
 
@@ -121,7 +122,7 @@ class Setup(commands.Cog):
 				if value_two != None:
 					for_delete = [ '<', '#', '@', '>' ]
 					for i in for_delete:
-						value_two = value_two.replace(i, "") 
+						value_two = value_two.replace(i, "")
 					channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = client.get_channel(value_two)
 					channel_id - channel.id
