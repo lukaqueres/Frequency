@@ -125,7 +125,7 @@ class Setup(commands.Cog):
 						value_two = value_two.replace(i, "")
 					channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = client.get_channel(value_two)
-					channel_id - channel.id
+					channel_id = channel.id
 				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Channel set up succesfuly!")
@@ -135,7 +135,7 @@ class Setup(commands.Cog):
 					for n in for_delete:
 						value_two = value_two.replace(n, "") 
 					channel = client.get_channel(int(value_two))
-					channel_id - channel.id
+					channel_id = channel.id
 				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Channel set up succesfuly!")
