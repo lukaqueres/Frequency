@@ -27,10 +27,6 @@ class Information(commands.Cog):
 	async def on_ready(self):
 		print('Information module loaded')
 
-	@commands.Cog.listener()
-	async def on_command_error(ctx, error):
-    		pass
-
 	@commands.command()
 	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None):
 		if value == 'default': # You can't pick nothin' do ya? 
