@@ -66,14 +66,14 @@ class Information(commands.Cog):
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
 			guild = ctx.guild
 			users_online = 0
-            		for i in guild.members:
-                		if str(i.status) == 'online' or str(i.status) == 'idle' or str(i.status) == 'dnd':
-                    			users_online += 1
+			for i in guild.members:
+				if str(i.status) == 'online' or str(i.status) == 'idle' or str(i.status) == 'dnd':
+					users_online += 1
 
-            		channels_number = len([x for x in server.channels if type(x) == discord.channel.TextChannel])
+			channels_number = len([x for x in server.channels if type(x) == discord.channel.TextChannel])
 
-            		roles_number = len(server.roles)
-            		emojis_number = len(server.emojis)
+			roles_number = len(server.roles)
+			emojis_number = len(server.emojis)
 			
 			embed = Embed(title="Server information",
 				colour = ctx.author.colour,
@@ -81,22 +81,22 @@ class Information(commands.Cog):
 				)
 			embed.set_thumbnail(url=guild.icon_url)
 			
-                	embed.add_field(name='Guild Name:', value=guild.name)
-                	embed.add_field(name='Owner:', value=guild.owner, inline=False)
-                	embed.add_field(name='Members:', value=guild.member_count)
+			embed.add_field(name='Guild Name:', value=guild.name)
+			embed.add_field(name='Owner:', value=guild.owner, inline=False)
+			embed.add_field(name='Members:', value=guild.member_count)
 			embed.add_field(name='Users:', value=live_members_count)
 			embed.add_field(name='Bots:', value=bot_members_count)
-                	embed.add_field(name='Currently Online', value=users_online)
-                	embed.add_field(name='Text Channels', value=str(channels_number))
-                	embed.add_field(name='Region', value=guild.region)
-                	embed.add_field(name='Verification Level', value=str(guild.verification_level))
-                	embed.add_field(name='Highest role', value=guild.role_hierarchy[0])
-                	embed.add_field(name='Number of roles', value=str(roles_number))
-                	embed.add_field(name='Number of emotes', value=str(emojis_number))
-                	embed.add_field(name='Created At:', value=guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'))
-                	embed.set_footer(text='Server ID: %s' % guild.id)
+			embed.add_field(name='Currently Online', value=users_online)
+			embed.add_field(name='Text Channels', value=str(channels_number))
+			embed.add_field(name='Region', value=guild.region)
+			embed.add_field(name='Verification Level', value=str(guild.verification_level))
+			embed.add_field(name='Highest role', value=guild.role_hierarchy[0])
+			embed.add_field(name='Number of roles', value=str(roles_number))
+			embed.add_field(name='Number of emotes', value=str(emojis_number))
+			embed.add_field(name='Created At:', value=guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'))
+			embed.set_footer(text='Server ID: %s' % guild.id)
 			
-                	await ctx.send(embed=embed)
+			await ctx.send(embed=embed)
 		
 	"""@info.error
 	async def info_error(self, ctx: commands.Context, error):
