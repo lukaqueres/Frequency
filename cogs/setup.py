@@ -125,7 +125,7 @@ class Setup(commands.Cog):
 						value_two = value_two.replace(i, "")
 					
 					for channel in ctx.guild.channels:
-        					if channel.id == value_two:
+						if channel.id == value_two:
 							find = '1'
             						channel_id = channel.id
 					if find != '1':
