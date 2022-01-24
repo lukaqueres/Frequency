@@ -62,9 +62,9 @@ class Information(commands.Cog):
 
 			await ctx.send(embed=embed)
 		if value == 'server':
+			guild = ctx.guild
 			live_members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
-			guild = ctx.guild
 			users_online = 0
 			for i in guild.members:
 				if str(i.status) == 'online' or str(i.status) == 'idle' or str(i.status) == 'dnd':
