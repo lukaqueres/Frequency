@@ -121,7 +121,9 @@ class Setup(commands.Cog):
 			elif channel_type == 'updates': #setting channel type updates about bot
 				if value_two != 'default':
 					channel = value_two
-				
+				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
+				con.commit()
+				await ctx.send("Channel set up succesfuly!")
 			else:
 				await ctx.send("Unknown channel type, please check if command is properly written or *help* for full guide.")
 		else: #>-------------------------------------------------------------< Task - none, inform about it
