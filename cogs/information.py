@@ -60,6 +60,10 @@ class Information(commands.Cog):
 		embed.add_field( name="Boosted", value=bool(user.premium_since), inline=True)
 
 		await ctx.send(embed=embed)
+	@info.error
+	async def info_error(self, error, ctx):
+    	if isinstance(error, commands.errors.MemberNotFound):
+		await ctx.send("Member not found!")
     
 def setup(client):
 	client.add_cog(Information(client))
