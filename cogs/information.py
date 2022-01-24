@@ -52,13 +52,15 @@ class Information(commands.Cog):
       
 			embed.add_field( name="Name:", value=str(user), inline=True),
 			embed.add_field( name="ID:", value=user.id, inline=True),
-			embed.add_field( name="Bot:", value=user.bot, inline=False),
+			embed.add_field( name="Bot:", value=user.bot, inline=True),
+			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="Top role:", value=user.top_role.mention, inline=True),
 			#embed.add_field( name="Status", value=str(user.status).title(), inline=True), <- FIX IT
 			#embed.add_field( name="Activity", value=f"{str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}", inline=True), <- FIX IT
-			embed.add_field( name="Created at:", value=user.created_at.strftime("%d/%m/%Y %H:%M:%S"), inline=False),
+			embed.add_field(name = chr(173), value = chr(173), inline=False)
+			embed.add_field( name="Created at:", value=user.created_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
 			embed.add_field( name="Joined at:", value=user.joined_at.strftime("%d/%m/%Y %H:%M:%S"), inline=True),
-			embed.add_field( name="Boosted:", value=bool(user.premium_since), inline=True)
+			#embed.add_field( name="Boosted:", value=bool(user.premium_since), inline=True)
 
 			await ctx.send(embed=embed)
 		if value == 'server':
@@ -72,8 +74,8 @@ class Information(commands.Cog):
 
 			channels_number = len([x for x in guild.channels if type(x) == discord.channel.TextChannel])
 
-			roles_number = len(server.roles)
-			emojis_number = len(server.emojis)
+			roles_number = len(guild.roles)
+			emojis_number = len(guild.emojis)
 			
 			embed = Embed(title="Server information",
 				colour = ctx.author.colour,
