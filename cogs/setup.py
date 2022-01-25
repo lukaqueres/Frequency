@@ -140,8 +140,8 @@ class Setup(commands.Cog):
 			return 0
         
     
-	@setup.error
-	async def setup_error(self, ctx: commands.Context, error):
+	@set.error
+	async def set_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		elif isinstance(error, commands.errors.ChannelNotFound):
