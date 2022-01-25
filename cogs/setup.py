@@ -125,7 +125,7 @@ class Setup(commands.Cog):
 						value_two = value_two.replace(i, "")
 						
 					channel = discord.utils.get(guild.channels, id=value_two, type="ChannelType.text") 
-					if (ctx.guild.channel(value_two).exists):
+					if (ctx.guild.channels(value_two).exists):
 						print('It exists')
 					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = ctx.get_channel(value_two)
