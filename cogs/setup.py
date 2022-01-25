@@ -125,7 +125,7 @@ class Setup(commands.Cog):
 						value_two = value_two.replace(i, "")
 					print("ID: {}".format(value_two))
 					channel = discord.utils.get(guild.channels, id=value_two, type="ChannelType.text") 
-					channel = client.get_channel(value_two)
+					#channel = client.get_channel(value_two)
 					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = ctx.get_channel(value_two)
 					print("Channel: {}".format(channel))
