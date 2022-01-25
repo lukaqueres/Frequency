@@ -132,7 +132,7 @@ class Setup(commands.Cog):
 					channel_id = channel.id
 				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
-				await ctx.send("Channel set up succesfuly!")
+				await ctx.send("Information set up succesfuly on channel: {}!".format( channel ))
 			else:
 				await ctx.send("Unknown channel type, please check if command is properly written or *help* for full guide.")
 		else: #>-------------------------------------------------------------< Task - none, inform about it
