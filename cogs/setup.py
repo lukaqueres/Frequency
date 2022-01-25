@@ -148,5 +148,12 @@ class Setup(commands.Cog):
 			await ctx.channel.send("Channel not found!")
 		else: 
 			await ctx.channel.send("There was an error with executing command!")
+			
+	@commands.command()
+	async def toggle(self, ctx, task = None , value = None ):
+		if (task == 'Music') or (task == 'music'):
+			#xd
+			print("test")
+		
 def setup(client):
 	client.add_cog(Setup(client))
