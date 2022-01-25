@@ -22,6 +22,7 @@ except:
 
 intents = discord.Intents.default()
 intents.members = True
+fetch_offline_members = True
 
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
