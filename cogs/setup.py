@@ -125,12 +125,14 @@ class Setup(commands.Cog):
 						value_two = value_two.replace(i, "")
 						
 					channel = discord.utils.get(guild.channels, id=value_two, type="ChannelType.text") 
+					if (ctx.guild.channel(value_two).exists):
+						print('It exists')
 					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = ctx.get_channel(value_two)
-					channel_id = channel.id
+					#channel_id = channel.id
 				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
-				await ctx.send("Channel set up succesfuly!")
+				await ctx.send("Information set up succesfuly on channel: {}!".format( channel ))
 			elif channel_type == 'updates': #setting channel type updates about bot
 				if value_two != None:
 					for_delete = [ '<', '#', '@', '>' ]
