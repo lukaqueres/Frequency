@@ -128,6 +128,7 @@ class Setup(commands.Cog):
 					channel = client.get_channel(value_two)
 					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = ctx.get_channel(value_two)
+					print("Channel: {}".format(channel))
 					if ( channel in ctx.guild.channels):
 						print('It exists')
 					channel_id = channel.id
