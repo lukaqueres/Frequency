@@ -121,17 +121,18 @@ class Setup(commands.Cog):
 			channel_type = value
 			if channel_type == 'spam_info': # setting channel type spam info
 				if value_two != None:
-					for_delete = [ '<', '#', '@', '>' ]
-					for i in for_delete:
-						value_two = value_two.replace(i, "")
-					print("ID: {}".format(value_two))
-					value_two = (int(value_two))
-					channel = self.bot.get_channel(value_two)
+					#for_delete = [ '<', '#', '@', '>' ]
+					#for i in for_delete:
+					#	value_two = value_two.replace(i, "")
+					#print("ID: {}".format(value_two))
+					#value_two = (int(value_two))
+					#channel = self.bot.get_channel(value_two)
 					#channel = discord.utils.get(guild.channels, id=value_two, type="ChannelType.text") 
 					#channel = self.bot.get_channel(value_two)
 					#channel = client.get_channel(value_two)
 					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
 					#channel = ctx.get_channel(value_two)
+					channel = value_two
 					print("Channel: {}".format(channel))
 					if ( channel in ctx.guild.channels):
 						print('It exists')
