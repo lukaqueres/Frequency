@@ -121,31 +121,14 @@ class Setup(commands.Cog):
 			channel_type = value
 			if channel_type == 'spam_info': # setting channel type spam info
 				if value_two != None:
-					#for_delete = [ '<', '#', '@', '>' ]
-					#for i in for_delete:
-					#	value_two = value_two.replace(i, "")
-					#print("ID: {}".format(value_two))
-					#value_two = (int(value_two))
-					#channel = self.bot.get_channel(value_two)
-					#channel = discord.utils.get(guild.channels, id=value_two, type="ChannelType.text") 
-					#channel = self.bot.get_channel(value_two)
-					#channel = client.get_channel(value_two)
-					#channel = discord.utils.get(ctx.guild.channels, id=value_two)
-					#channel = ctx.get_channel(value_two)
 					channel = value_two
-					print("Channel: {}".format(channel))
-					if ( channel in ctx.guild.channels):
-						print('It exists')
 					channel_id = channel.id
 				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Information set up succesfuly on channel: {}!".format( channel ))
 			elif channel_type == 'updates': #setting channel type updates about bot
 				if value_two != None:
-					for_delete = [ '<', '#', '@', '>' ]
-					for n in for_delete:
-						value_two = value_two.replace(n, "") 
-					channel = client.get_channels(int(value_two))
+					channel = value_two
 					channel_id = channel.id
 				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
@@ -157,5 +140,13 @@ class Setup(commands.Cog):
 			return 0
         
     
+	@setup.error
+	async def setup_error(self, ctx: commands.Context, error):
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+		elif isinstance(error, commands.errors.ChannelNotFound):
+			await ctx.channel.send("Channel not found!")
+		else: 
+			await ctx.channel.send("There was an error with executing command!")
 def setup(client):
 	client.add_cog(Setup(client))
