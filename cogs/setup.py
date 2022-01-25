@@ -27,6 +27,7 @@ cur = con.cursor()
 class Setup(commands.Cog):
 	def __init__(self, client):
 		self.client = client
+		self.bot = bot
     
 	@commands.Cog.listener()
 	async def on_ready(self):
@@ -72,7 +73,7 @@ class Setup(commands.Cog):
 #
 
 	@commands.command()
-	async def set(self, ctx, task = 'default', value = 'default', value_two = None):
+	async def set(self, ctx, task = 'default', value = 'default', value_two : discord.Channel = None):
 		message = ctx.message
 		guild = ctx.guild
 		guild_id = guild.id
