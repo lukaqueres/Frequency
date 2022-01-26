@@ -42,7 +42,7 @@ class Neurolinguistic_AI(commands.Cog):
 	
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		mention = f'<@!{client.user.id}>'
+		mention = '<@875271995644842004>'
 		print(mention)
 		if message.content.startswith(mention):
 			text = message.content
