@@ -22,6 +22,13 @@ def get_prefix(client, message):
 	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
 	return prefix
 
+def get_database_data(database, column, condition):
+	cur.execute("SELECT {} from {} WHERE guild_id={}".format(column, database, condition))
+	row = cur.fetchone()
+	value = row[0]
+	con.commit()
+	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
+	return value
 """
 <---------->CODE USE JSON WHEN NEEDED <---------------------------------------------------------------------------------------->
 
