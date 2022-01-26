@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_database_data
 
 load_dotenv()
 
@@ -151,9 +151,27 @@ class Setup(commands.Cog):
 			
 	@commands.command()
 	async def toggle(self, ctx, task = None , value = None ):
+		guild = ctx.guild
+		guild_id = guild.id
 		if (task == 'Music') or (task == 'music'):
-			#xd
-			print("test")
-		
+			database_record = get_database_data('servers_properties', 'music', guild_id)
+			if (value == None) and (database_record == 'YES'):
+				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Music setting is now OFF!")
+			elif (value == None) and (database_record == 'NO'):
+				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Music setting is now ON!")
+			elif (value == 'ON"):
+				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Music setting is now ON!")
+			elif (value == 'OFF"):
+				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Music setting is now OFF!")
+			else:
+			      await ctx.channel.send("There was an error while changing music setting state!")
 def setup(client):
 	client.add_cog(Setup(client))
