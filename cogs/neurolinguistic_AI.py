@@ -17,8 +17,11 @@ from functions import get_prefix, get_time
 
 load_dotenv()
 
+intents = discord.Intents().all()
 intents = discord.Intents.default()
 intents.members = True
+
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 DATABASE_URL = os.environ.get('DATABASE_URL') 
 con = psycopg2.connect(DATABASE_URL)
@@ -39,7 +42,7 @@ class Neurolinguistic_AI(commands.Cog):
 	
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		mention = f'<@!{bot.user.id}>'
+		mention = f'<@!{client.user.id}>'
 		print(mention)
 		if message.content.startswith(mention):
 			text = message.content
