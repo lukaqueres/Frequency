@@ -79,7 +79,7 @@ class Music(commands.Cog):
 
 	@commands.command()
 	async def downloadnplay(self, ctx, *, url):
-        """Plays from a url (almost anything youtube_dl supports)"""
+	"""Plays from a url (almost anything youtube_dl supports)"""
 
 		async with ctx.typing():
 			player = await YTDLSource.from_url(url, loop=self.bot.loop)
