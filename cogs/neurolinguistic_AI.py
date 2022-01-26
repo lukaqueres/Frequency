@@ -30,30 +30,30 @@ cur = con.cursor()
 stop_words = set(stopwords.words('english'))
 
 class Neurolinguistic_AI(commands.Cog):
-  def __init__(self, client):
-  	self.client = client
+	def __init__(self, client):
+		self.client = client
 	
-  @commands.Cog.listener()
-  async def on_ready(self):
-    print('Neurolinguistic AI module loaded')
+	@commands.Cog.listener()
+	async def on_ready(self):
+		print('Neurolinguistic AI module loaded')
 	
-  @commands.Cog.listener()
-  async def on_message(self, message):
-    text = message.content
-    # sent_tokenize is one of instances of
-    # PunktSentenceTokenizer from the nltk.tokenize.punkt module
-    tokenized = sent_tokenize(text)
-    for i in tokenized:
-        # Word tokenizers is used to find the words
-        # and punctuation in a string
-        wordsList = nltk.word_tokenize(i)
-        # removing stop words from wordList
-        wordsList = [w for w in wordsList if not w in stop_words]
-        # Using a Tagger. Which is part-of-speech
-        # tagger or POS-tagger.
-        tagged = nltk.pos_tag(wordsList)
-        print(tagged)
-    #do nothin'g
+	@commands.Cog.listener()
+	async def on_message(self, message):
+		if message.content.startswith('<#875271995644842004>'):
+			text = message.content
+			# sent_tokenize is one of instances of
+			# PunktSentenceTokenizer from the nltk.tokenize.punkt module
+			for i in tokenized:
+				# Word tokenizers is used to find the words
+				# and punctuation in a string
+				wordsList = nltk.word_tokenize(i)
+				# removing stop words from wordList
+				wordsList = [w for w in wordsList if not w in stop_words]
+				# Using a Tagger. Which is part-of-speech
+				# tagger or POS-tagger.
+				tagged = nltk.pos_tag(wordsList)
+				print(tagged)
+			#do nothin'g
 		
 def setup(client):
-  client.add_cog(Neurolinguistic_AI(client))
+	client.add_cog(Neurolinguistic_AI(client))
