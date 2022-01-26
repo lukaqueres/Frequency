@@ -159,19 +159,30 @@ class Setup(commands.Cog):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
+				return 0
 			elif (value == None) and (database_record == 'NO'):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
-			elif (value == 'ON'):
+				return 0
+			elif (value == 'ON') and (database_record == 'NO'):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
-			elif (value == 'OFF'):
+				return 0
+			elif (value == 'OFF') and (database_record == 'YES'):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'NO'):
+				await ctx.channel.send("Music setting is already OFF!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'NO'):
+				await ctx.channel.send("Music setting is already OFF!")
+				return 0
 			else:
-			      await ctx.channel.send("There was an error while changing music setting state!")
+				await ctx.channel.send("There was an error while changing music setting state!")
+				return 0
 def setup(client):
 	client.add_cog(Setup(client))
