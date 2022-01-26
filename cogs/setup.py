@@ -163,11 +163,11 @@ class Setup(commands.Cog):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
-			elif (value == 'ON"):
+			elif (value == 'ON'):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
-			elif (value == 'OFF"):
+			elif (value == 'OFF'):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
