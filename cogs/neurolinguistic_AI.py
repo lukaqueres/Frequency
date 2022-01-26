@@ -44,6 +44,7 @@ class Neurolinguistic_AI(commands.Cog):
 	async def on_message(self, message):
 		if '875271995644842004' in message.content:
 			text = message.content
+			tokenized = sent_tokenize(text)
 			# sent_tokenize is one of instances of
 			# PunktSentenceTokenizer from the nltk.tokenize.punkt module
 			for i in tokenized:
