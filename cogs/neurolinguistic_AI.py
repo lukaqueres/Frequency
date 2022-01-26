@@ -43,7 +43,7 @@ class Neurolinguistic_AI(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		#if '875271995644842004' in message.content:
-		if message.content.starts_with('<@!875271995644842004>'):
+		if message.content.startswith('<@!875271995644842004>'):
 			text = message.content
 			tokenized = sent_tokenize(text)
 			# sent_tokenize is one of instances of
