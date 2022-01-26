@@ -178,8 +178,8 @@ class Setup(commands.Cog):
 			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
 				await ctx.channel.send("Music setting is already OFF!")
 				return 0
-			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
-				await ctx.channel.send("Music setting is already OFF!")
+			elif (value == 'ON') and (database_record == 'YES'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Music setting is already ON!")
 				return 0
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing music setting state!")
@@ -209,8 +209,8 @@ class Setup(commands.Cog):
 			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
 				await ctx.channel.send("Updates setting is already OFF!")
 				return 0
-			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
-				await ctx.channel.send("Updates setting is already OFF!")
+			elif (value == 'ON') and (database_record == 'YES'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Updates setting is already ON!")
 				return 0
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing updates setting state!")
