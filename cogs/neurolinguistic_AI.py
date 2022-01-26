@@ -39,7 +39,9 @@ class Neurolinguistic_AI(commands.Cog):
 	
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		if message.content.startswith('<#875271995644842004>'):
+		mention = f'<@!{bot.user.id}>'
+		print(mention)
+		if message.content.startswith(mention):
 			text = message.content
 			# sent_tokenize is one of instances of
 			# PunktSentenceTokenizer from the nltk.tokenize.punkt module
