@@ -153,36 +153,67 @@ class Setup(commands.Cog):
 	async def toggle(self, ctx, task = None , value = None ):
 		guild = ctx.guild
 		guild_id = guild.id
-		if (task == 'Music') or (task == 'music'):
+		if (task == 'Music') or (task == 'music'): #>-------------------------------------------< Task - toggle Music
 			database_record = get_database_data('servers_properties', 'music', guild_id)
-			if (value == None) and (database_record == 'YES'):
+			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
 				return 0
-			elif (value == None) and (database_record == 'NO'):
+			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
 				return 0
-			elif (value == 'ON') and (database_record == 'NO'):
+			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
 				return 0
-			elif (value == 'OFF') and (database_record == 'YES'):
+			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
 				return 0
-			elif (value == 'OFF') and (database_record == 'NO'):
+			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
 				await ctx.channel.send("Music setting is already OFF!")
 				return 0
-			elif (value == 'OFF') and (database_record == 'NO'):
+			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
 				await ctx.channel.send("Music setting is already OFF!")
 				return 0
-			else:
+			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing music setting state!")
+				return 0
+		if (task == 'Updates') or (task == 'update'): #>-------------------------------------------< Task - toggle Updates
+			database_record = get_database_data('servers_properties', 'updates', guild_id)
+			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
+				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Updates setting is now OFF!")
+				return 0
+			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
+				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Updates setting is now ON!")
+				return 0
+			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
+				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Updates setting is now ON!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
+				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Updates setting is now OFF!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Updates setting is already OFF!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Updates setting is already OFF!")
+				return 0
+			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
+				await ctx.channel.send("There was an error while changing updates setting state!")
 				return 0
 def setup(client):
 	client.add_cog(Setup(client))
