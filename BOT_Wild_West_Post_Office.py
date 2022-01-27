@@ -142,4 +142,5 @@ for filename in os.listdir('./cogs'):
 		
 #>just say it's over ( installing of course )
 print("All modules, packages installed")
-client.run('ODc1MjcxOTk1NjQ0ODQyMDA0.YRTGkQ.52s28D_CmdNtZm3g4_llDs4AV9E')
+TOKEN = os.environ.get('TOKEN')
+client.run(TOKEN)
