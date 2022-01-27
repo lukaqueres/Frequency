@@ -178,6 +178,9 @@ class Music(commands.Cog):
 	@play.before_invoke
 	@downloadnplay.before_invoke
 	async def ensure_voice(self, ctx):
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == 'NO':
+			return await ctx.send("Music is OFF on this guild!")
 		if ctx.voice_client is None:
 			if ctx.author.voice:
 				await ctx.author.voice.channel.connect()
