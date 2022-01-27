@@ -66,7 +66,9 @@ class Music(commands.Cog):
 	@commands.Cog.listener()
 	async def on_ready(self):
 		print('Music module loaded')
-
+#
+#<----------> 'join' command - just 'n only join the channel <------------------------------------------------------------------------>
+#
 	@commands.command()
 	async def join(self, ctx):
 		if ctx.author.voice:
@@ -76,17 +78,19 @@ class Music(commands.Cog):
 			await ctx.send("You are not connected to a voice channel.")
 
 		await ctx.author.voice.channel.connect()
-
+#
+#<----------> 'downloadnplay' command - download before playing - more technick <------------------------------------------------------------------------>
+#
 	@commands.command()
-	async def downloadnplay(self, ctx, *, url):
-	"""Plays from a url (almost anything youtube_dl supports)"""
-
+	async def downloadnplay(self, ctx, *, url): 
 		async with ctx.typing():
 			player = await YTDLSource.from_url(url, loop=self.bot.loop)
 			ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
 
 		await ctx.send(f'Now playing: {player.title}')
-
+#
+#<----------> 'play' command - play music on channel without pre-downloading <------------------------------------------------------------------------>
+#
 	@commands.command()
 	async def play(self, ctx, *, url):
 		"""Streams from a url (same as yt, but doesn't predownload)"""
@@ -101,7 +105,9 @@ class Music(commands.Cog):
 		except:
 			print( f'Error while playing: {player.title} on: {ctx.guild} guild.')
 			await ctx.send(f'There was some trouble to play: {player.title}. This can be program error, or this video may be inappropriate for some users.')
-
+#
+#<----------> 'volume' command - change volume of music that is playing <------------------------------------------------------------------------>
+#
 	@commands.command()
 	async def volume(self, ctx, volume: int):
 		if ctx.voice_client is None:
@@ -115,13 +121,18 @@ class Music(commands.Cog):
 		con.commit()
 		ctx.voice_client.source.volume = volume / 100
 		await ctx.send(f"Changed volume to {volume}%")
-
+#
+#<----------> 'stop' command - leave from channel <------------------------------------------------------------------------>
+#
 	@commands.command()
 	async def stop(self, ctx):
 		"""Stops and disconnects the bot from voice"""
 
 		await ctx.voice_client.disconnect()
 
+#
+#<----------> before invoke - check if user is on channel <------------------------------------------------------------------------>
+#
 	@play.before_invoke
 	@downloadnplay.before_invoke
 	async def ensure_voice(self, ctx):
