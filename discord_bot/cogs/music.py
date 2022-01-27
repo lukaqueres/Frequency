@@ -190,7 +190,7 @@ class Music(commands.Cog):
 	__slots__ = ('bot', 'players')
 	
 	def __init__(self, client):
-		self.bot = bot
+		#self.bot = bot
 		self.client = client
 		self.players = {}
 
