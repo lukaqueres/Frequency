@@ -154,8 +154,6 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def stop(self, ctx):
-		"""Stops and disconnects the bot from voice"""
-
 		await ctx.voice_client.disconnect()
 
 #
@@ -172,6 +170,16 @@ class Music(commands.Cog):
 				raise commands.CommandError("Author not connected to a voice channel.")
 		elif ctx.voice_client.is_playing():
 			ctx.voice_client.stop()
+	@play.before_invoke
+	@downloadnplay.before_invoke
+	@volume.before_invoke
+	@stop.before_invoke
+	@downloadnplay.before_invoke
+	@join.before_invoke
+	async def ensure_ON(self, ctx):
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == NO:
+			return await ctx.send("Music is OFF on this guild!")
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(get_prefix))
     
