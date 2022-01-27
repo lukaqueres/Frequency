@@ -27,8 +27,8 @@ ytdl_format_options = {
 	'quiet': True,
 	'no_warnings': True,
 	'default_search': 'auto',
-	'source_address': '0.0.0.0' # bind to ipv4 since ipv6 addresses cause issues sometimes
-	'force-ipv4': True,
+	'source_address': '0.0.0.0', # bind to ipv4 since ipv6 addresses cause issues sometimes
+	'force-ipv4': True
 }
 
 ffmpeg_options = {
