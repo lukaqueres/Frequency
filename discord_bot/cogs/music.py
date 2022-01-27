@@ -20,7 +20,7 @@ ytdl_format_options = {
 	'format': 'bestaudio/best',
 	'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
-	'noplaylist': False,
+	'noplaylist': True,
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
