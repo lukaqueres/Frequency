@@ -91,6 +91,18 @@ class Music(commands.Cog):
 			ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
 
 		await ctx.send(f'Now playing: {player.title}')
+		
+	@downloadnplay.error
+	async def downloadnplay_error(self, ctx: commands.Context, error):
+		print(error)
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+		elif isinstance(error, commands.errors.ChannelNotFound):
+			await ctx.channel.send("Channel not found!")
+		elif isinstance (error, youtube_dl.utils.ExtractorError):
+			await ctx.channel.send("Error with wideo download!")
+		else: 
+			await ctx.channel.send("There was an error with executing command!")
 #
 #<----------> 'play' command - play music on channel without pre-downloading <------------------------------------------------------------------------>
 #
@@ -109,6 +121,7 @@ class Music(commands.Cog):
 			await ctx.send(f'There was some trouble to play: {player.title}. This can be program error, or this video may be inappropriate for some users.')
 	@play.error
 	async def play_error(self, ctx: commands.Context, error):
+		print(error)
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		elif isinstance(error, commands.errors.ChannelNotFound):
