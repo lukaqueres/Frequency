@@ -159,6 +159,9 @@ class Setup(commands.Cog):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
+				if ctx.voice_client != None:
+					await ctx.voice_client.disconnect()
+					await ctx.send("Bot left voice channel due to Music setting OFF.")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
@@ -174,6 +177,9 @@ class Setup(commands.Cog):
 				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
+				if ctx.voice_client != None:
+					await ctx.voice_client.disconnect()
+					await ctx.send("Bot left voice channel due to Music setting OFF.")
 				return 0
 			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
 				await ctx.channel.send("Music setting is already OFF!")
