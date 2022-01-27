@@ -41,7 +41,20 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
+"""
+def get_queue(guild_id):
+	with open('data.json', 'r') as f:
+		queues = json.load(f)
+	return queue[str(guild_id)]
 
+def update_queue(guild_id):
+	with open('data.json', 'r') as f:
+			queues = json.load(f)
+      queues[str(guild_id)] = queue
+    
+	with open('data.json','w') as f:
+		json.dump(prefixes, f, indent=4)
+"""
 class YTDLSource(discord.PCMVolumeTransformer):
 	def __init__(self, source, *, data, volume=0.5):
 		super().__init__(source, volume)
