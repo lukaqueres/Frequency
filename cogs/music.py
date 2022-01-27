@@ -178,7 +178,7 @@ class Music(commands.Cog):
 	@join.before_invoke
 	async def ensure_ON(self, ctx):
 		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
-		if database_record == NO:
+		if database_record == 'NO':
 			return await ctx.send("Music is OFF on this guild!")
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(get_prefix))
