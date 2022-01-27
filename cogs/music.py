@@ -74,6 +74,9 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def join(self, ctx):
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == 'NO':
+			return await ctx.send("Music is OFF on this guild!")
 		if ctx.author.voice:
 			if ctx.voice_client is not None:
 				return await ctx.voice_client.move_to(ctx.author.voice.channel)
@@ -86,6 +89,9 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def downloadnplay(self, ctx, *, url): 
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == 'NO':
+			return await ctx.send("Music is OFF on this guild!")
 		async with ctx.typing():
 			player = await YTDLSource.from_url(url, loop=self.bot.loop)
 			ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
@@ -108,6 +114,9 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def play(self, ctx, *, url):
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == 'NO':
+			return await ctx.send("Music is OFF on this guild!")
 		volume = get_database_data('servers_data', 'music_volume', ctx.guild.id)
 		player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
 		try:
@@ -135,6 +144,9 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def volume(self, ctx, volume: int):
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == 'NO':
+			return await ctx.send("Music is OFF on this guild!")
 		if ctx.voice_client is None:
 			return await ctx.send("Bot is not connected to a voice channel.")
 		if not volume <= 150:
@@ -154,7 +166,11 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def stop(self, ctx):
+		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
+		if database_record == 'NO':
+			return await ctx.send("Music is OFF on this guild!")
 		await ctx.voice_client.disconnect()
+		await ctx.send("Bot left voice channel.")
 
 #
 #<----------> before invoke - check if user is on channel <------------------------------------------------------------------------>
@@ -170,16 +186,6 @@ class Music(commands.Cog):
 				raise commands.CommandError("Author not connected to a voice channel.")
 		elif ctx.voice_client.is_playing():
 			ctx.voice_client.stop()
-	@play.before_invoke
-	@downloadnplay.before_invoke
-	@volume.before_invoke
-	@stop.before_invoke
-	@downloadnplay.before_invoke
-	@join.before_invoke
-	async def ensure_ON(self, ctx):
-		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
-		if database_record == 'NO':
-			return await ctx.send("Music is OFF on this guild!")
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(get_prefix))
     
