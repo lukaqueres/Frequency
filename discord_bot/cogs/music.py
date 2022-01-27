@@ -20,7 +20,7 @@ ytdl_format_options = {
 	'format': 'bestaudio/best',
 	'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
-	'noplaylist': True,
+	'noplaylist': False,
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
@@ -67,7 +67,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 	@classmethod
 	async def from_url(cls, url, *, loop=None, stream=False):
 		loop = loop or asyncio.get_event_loop()
-		data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=not stream))
+		data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=stream)) #not stream
 
 		if 'entries' in data:
 			# take first item from a playlist
