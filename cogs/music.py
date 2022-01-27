@@ -121,7 +121,7 @@ class Music(commands.Cog):
 		database_record = get_database_data('servers_data', 'music_volume', ctx.guild.id)
 		if volume == database_record:
 			return await ctx.send(f"Volume already set to: {volume}%.")
-		cur.execute("UPDATE servers_data SET music_volume = '{}' WHERE guild_id = '{}';".format(volume, guild_id))
+		cur.execute("UPDATE servers_data SET music_volume = '{}' WHERE guild_id = '{}';".format(volume, ctx.guild.id))
 		con.commit()
 		ctx.voice_client.source.volume = volume / 100
 		await ctx.send(f"Changed volume to {volume}%")
