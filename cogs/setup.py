@@ -184,7 +184,7 @@ class Setup(commands.Cog):
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing music setting state!")
 				return 0
-		if (task == 'Updates') or (task == 'updates') or (task == 'Update') or (task == 'update'): #>-------------------------------------------< Task - toggle Updates
+		elif (task == 'Updates') or (task == 'updates') or (task == 'Update') or (task == 'update'): #>-------------------------------------------< Task - toggle Updates
 			database_record = get_database_data('servers_properties', 'updates', guild_id)
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
@@ -215,5 +215,69 @@ class Setup(commands.Cog):
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing updates setting state!")
 				return 0
+		elif (task == 'Economy') or (task == 'economy'): #>-------------------------------------------< Task - toggle Economy
+			database_record = get_database_data('servers_properties', 'economy', guild_id)
+			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
+				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Economy setting is now OFF!")
+				return 0
+			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
+				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Economy setting is now ON!")
+				return 0
+			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
+				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Economy setting is now ON!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
+				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Economy setting is now OFF!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Economy setting is already OFF!")
+				return 0
+			elif (value == 'ON') and (database_record == 'YES'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Economy setting is already ON!")
+				return 0
+			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
+				await ctx.channel.send("There was an error while changing updates setting state!")
+				return 0
+		elif (task == 'Spam_check') or (task == 'spam_check'): #>-------------------------------------------< Task - toggle Spam check
+			database_record = get_database_data('servers_properties', 'anty_spam_feature', guild_id)
+			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
+				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Anty spam feature setting is now OFF!")
+				return 0
+			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
+				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Anty spam feature setting is now ON!")
+				return 0
+			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
+				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				con.commit()
+				await ctx.channel.send("Anty spam feature setting is now ON!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
+				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				con.commit()
+				await ctx.channel.send("Anty spam feature setting is now OFF!")
+				return 0
+			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Anty spam feature setting is already OFF!")
+				return 0
+			elif (value == 'ON') and (database_record == 'YES'): # If user request is already active setting tell him so n' do nothin'
+				await ctx.channel.send("Anty spam feature setting is already ON!")
+				return 0
+			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
+				await ctx.channel.send("There was an error while changing updates setting state!")
+				return 0
+		else:
+			await ctx.channel.send("You must choose what to change!")
 def setup(client):
 	client.add_cog(Setup(client))
