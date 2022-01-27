@@ -20,7 +20,7 @@ ytdl_format_options = {
 	'format': 'bestaudio/best',
 	'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
-	'noplaylist': True,
+	'noplaylist': False,
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
@@ -28,7 +28,9 @@ ytdl_format_options = {
 	'no_warnings': True,
 	'default_search': 'auto',
 	'source_address': '0.0.0.0', # bind to ipv4 since ipv6 addresses cause issues sometimes
-	'force-ipv4': True
+	'force-ipv4': True,
+	'extract_flat': True, 
+	'skip_download': True
 }
 
 ffmpeg_options = {
