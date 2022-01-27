@@ -184,7 +184,7 @@ class Setup(commands.Cog):
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing music setting state!")
 				return 0
-		if (task == 'Updates') or (task == 'update'): #>-------------------------------------------< Task - toggle Updates
+		if (task == 'Updates') or (task == 'updates') or (task == 'Update') or (task == 'update'): #>-------------------------------------------< Task - toggle Updates
 			database_record = get_database_data('servers_properties', 'updates', guild_id)
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
