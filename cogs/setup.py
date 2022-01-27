@@ -151,6 +151,9 @@ class Setup(commands.Cog):
 			
 	@commands.command()
 	async def toggle(self, ctx, task = None , value = None ):
+		if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
+			await ctx.send("You don't have permissions to do this!")
+			return 0
 		guild = ctx.guild
 		guild_id = guild.id
 		if (task == 'Music') or (task == 'music'): #>-------------------------------------------< Task - toggle Music
