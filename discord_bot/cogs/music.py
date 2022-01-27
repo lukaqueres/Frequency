@@ -175,14 +175,6 @@ class MusicPlayer:
 		"""Disconnect and cleanup the player."""
 		return self.bot.loop.create_task(self._cog.cleanup(guild))
 
-
-class Music(commands.Cog):
-	
-	__slots__ = ('bot', 'players')
-	
-	def __init__(self, client):
-		self.client = client
-		self.players = {}
 #class Music:
 """Music related commands."""
 
@@ -191,6 +183,15 @@ class Music(commands.Cog):
 	#def __init__(self, bot):
 		#self.bot = bot
 		#self.players = {}
+
+
+class Music(commands.Cog):
+	
+	__slots__ = ('bot', 'players')
+	
+	def __init__(self, client):
+		self.client = client
+		self.players = {}
 
 	async def cleanup(self, guild):
 		try:
