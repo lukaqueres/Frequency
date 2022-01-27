@@ -225,6 +225,10 @@ class Music:
             self.players[ctx.guild.id] = player
 
         return player
+    
+    @commands.Cog.listener()
+	async def on_ready(self):
+		print('Music module loaded')
 
     @commands.command(name='connect', aliases=['join'])
     async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
@@ -405,5 +409,5 @@ class Music:
         await self.cleanup(ctx.guild)
 
 
-def setup(bot):
-    bot.add_cog(Music(bot))
+def setup(client):
+    bot.add_cog(Music(client))
