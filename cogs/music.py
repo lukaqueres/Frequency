@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_database_data
 
 #Suppress noise about console usage from errors
 youtube_dl.utils.bug_reports_message = lambda: ''
@@ -111,7 +111,7 @@ class Music(commands.Cog):
 	@commands.command()
 	async def volume(self, ctx, volume: int):
 		if ctx.voice_client is None:
-			return await ctx.send("Not connected to a voice channel.")
+			return await ctx.send("Bot is not connected to a voice channel.")
 		if not volume <= 150:
 			return await ctx.send("Sorry! There is a limit of 150.")
 		database_record = get_database_data('servers_data', 'music_volume', ctx.guild.id)
