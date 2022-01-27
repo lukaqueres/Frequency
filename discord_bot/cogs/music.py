@@ -205,7 +205,7 @@ class Music(commands.Cog):
 			ctx.voice_client.stop()
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or(get_prefix))
-    
+
 def setup(client):
 	client.add_cog(Music(client))
     
