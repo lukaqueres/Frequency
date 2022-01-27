@@ -129,6 +129,8 @@ class Music(commands.Cog):
 		database_record = get_database_data('servers_properties', 'music', ctx.guild.id)
 		if database_record == 'NO':
 			return await ctx.send("Music is OFF on this guild!")
+		if url == 'url':
+			return await ctx.send("You can't search for 'url'. NOTE: You can still search for example 'urla'!")
 		volume = get_database_data('servers_data', 'music_volume', ctx.guild.id)
 		player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
 		try:
