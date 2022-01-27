@@ -95,8 +95,7 @@ class Music(commands.Cog):
 				return await ctx.voice_client.move_to(ctx.author.voice.channel)
 		else:
 			await ctx.send("You are not connected to a voice channel.")
-
-		await ctx.author.voice.channel.connect()
+			await ctx.author.voice.channel.connect()
 #
 #<----------> 'downloadnplay' command - download before playing - more technick <------------------------------------------------------------------------>
 #
