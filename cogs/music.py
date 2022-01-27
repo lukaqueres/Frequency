@@ -44,9 +44,7 @@ cur = con.cursor()
 class YTDLSource(discord.PCMVolumeTransformer):
 	def __init__(self, source, *, data, volume=0.5):
 		super().__init__(source, volume)
-
 		self.data = data
-
 		self.title = data.get('title')
 		self.url = data.get('url')
 
@@ -97,7 +95,6 @@ class Music(commands.Cog):
 #
 	@commands.command()
 	async def play(self, ctx, *, url):
-		"""Streams from a url (same as yt, but doesn't predownload)"""
 		volume = get_database_data('servers_data', 'music_volume', ctx.guild.id)
 		player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
 		try:
@@ -109,6 +106,16 @@ class Music(commands.Cog):
 		except:
 			print( f'Error while playing: {player.title} on: {ctx.guild} guild.')
 			await ctx.send(f'There was some trouble to play: {player.title}. This can be program error, or this video may be inappropriate for some users.')
+	@play.error
+	async def play_error(self, ctx: commands.Context, error):
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+		elif isinstance(error, commands.errors.ChannelNotFound):
+			await ctx.channel.send("Channel not found!")
+		elif isinstance (error, youtube_dl.utils.ExtractorError):
+			await ctx.channel.send("Error with wideo download!")
+		else: 
+			await ctx.channel.send("There was an error with executing command!")
 #
 #<----------> 'volume' command - change volume of music that is playing <------------------------------------------------------------------------>
 #
