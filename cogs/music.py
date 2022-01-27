@@ -122,9 +122,9 @@ class Music(commands.Cog):
 		try:
 			async with ctx.typing():
 				ctx.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+				ctx.voice_client.source.volume = volume / 100
 				print( f'Now playing: {player.title} on: {ctx.guild} guild.')
 			await ctx.send(f'Now playing: {player.title}')
-			ctx.voice_client.source.volume = volume / 100
 		except:
 			print( f'Error while playing: {player.title} on: {ctx.guild} guild.')
 			await ctx.send(f'There was some trouble to play: {player.title}. This can be program error, or this video may be inappropriate for some users.')
