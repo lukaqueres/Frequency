@@ -136,7 +136,7 @@ for package in packages:
 	print("{} NLTK package downloaded.".format(package))
 
 #>install all cogs:
-for filename in os.listdir('./cogs'):
+for filename in os.listdir('./discord_bot/cogs'):
 	if filename.endswith('.py'):
 		client.load_extension(f'cogs.{filename[:-3]}')
 		
