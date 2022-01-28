@@ -97,7 +97,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		if 'entries' in data:
 			# take first item from a playlist
 			for item in data['entries']:
-    				print(item[0])
+    				print(item[id])
 			data = data['entries'][0]
 
 		await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
