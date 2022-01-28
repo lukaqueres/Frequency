@@ -92,7 +92,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
 		to_run = partial(ytdl.extract_info, url=search, download=download)
 		data = await loop.run_in_executor(None, to_run)
-
+		print(f'Data: {data}' )
 		if 'entries' in data:
 			# take first item from a playlist
 			data = data['entries'][0]
