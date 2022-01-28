@@ -97,18 +97,21 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		if 'entries' in data:
 			# take first item from a playlist
 			id_list = []
+			data = []
+			iteration = 0
 			for item in data['entries']:
 				id_list.append(item['id'])
+				data = data['entries'][iteration]
 			print(f"Liczba id: {len(id_list)}")
 			print(f"Lista id: {id_list}")
-			data = data['entries'][0]
+			
 		
-		await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
+			await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
 
-		if download:
-			source = ytdl.prepare_filename(data)
-		else:
-			return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title']}
+			if download:
+				source = ytdl.prepare_filename(data)
+			else:
+				return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title']}
 		
 		return cls(discord.FFmpegPCMAudio(source), data=data, requester=ctx.author)
 
