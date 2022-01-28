@@ -41,8 +41,8 @@ class Spam_detection(commands.Cog):
             try:
               await message.delete()
               print("Message deleted")
-            else:
-              print("Message didn't deleted")
+            except:
+              print("Message not deleted")
             embed = discord.Embed(
               title="Możliwy scam",
               description=" ",
@@ -62,7 +62,7 @@ class Spam_detection(commands.Cog):
             RDPguild = client.get_guild(640181649463705650)
             if role in message.author.roles:
               author = message.author
-            except:
+            else:
               #await DMChannel.send(user, embed=embed)
               #await client.add_roles(author, role)
               if message.guild.id == RDPguild:
