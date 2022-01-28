@@ -92,10 +92,12 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
 		to_run = partial(ytdl.extract_info, url=search, download=download)
 		data = await loop.run_in_executor(None, to_run)
-		print(f'To_run: {to_run}')
-		print(f'Data: {data}' )
+		#print(f'To_run: {to_run}')
+		#print(f'Data: {data}' )
 		if 'entries' in data:
 			# take first item from a playlist
+			for item in data['entries']:
+    				print(item[0])
 			data = data['entries'][0]
 
 		await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
@@ -289,6 +291,31 @@ class Music(commands.Cog):
 
 	@commands.command(name='play', aliases=['sing'])
 	async def play_(self, ctx, *, search: str):
+		"""Request a song and add it to the queue.
+		This command attempts to join a valid voice channel if the bot is not already in one.
+		Uses YTDL to automatically search and retrieve a song.
+		Parameters
+		------------
+		search: str [Required]
+			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
+		"""
+		await ctx.trigger_typing()
+
+		vc = ctx.voice_client
+
+		if not vc:
+			await ctx.invoke(self.connect_)
+
+		player = self.get_player(ctx)
+
+		# If download is False, source will be a dict which will be used later to regather the stream.
+		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
+		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
+
+		await player.queue.put(source)
+		
+	@commands.command(name='playlist', aliases=['sing'])
+	async def playlist_(self, ctx, *, search: str):
 		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
 		Uses YTDL to automatically search and retrieve a song.
