@@ -99,11 +99,10 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			id_list = []
 			for item in data['entries']:
 				id_list.append(item['id'])
-				play(ctx, item['id'])
 			print(f"Liczba id: {len(id_list)}")
 			print(f"Lista id: {id_list}")
 			data = data['entries'][0]
-
+		
 		await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
 
 		if download:
