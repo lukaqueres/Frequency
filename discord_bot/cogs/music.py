@@ -19,9 +19,12 @@ import asyncio
 import itertools
 import sys
 import traceback
+import psycopg2
 from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
+
+from functions import get_prefix, get_time, get_database_data
 
 intents = discord.Intents.default()
 intents.members = True
