@@ -32,6 +32,10 @@ intents.members = True
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 bot = commands.Bot(command_prefix = get_prefix, intents=intents)
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+con = psycopg2.connect(DATABASE_URL)
+cur = con.cursor()
+
 ytdlopts = {
 	'format': 'bestaudio/best',
 	'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
@@ -198,7 +202,7 @@ class Music(commands.Cog):
 	__slots__ = ('bot', 'players')
 	
 	def __init__(self, client):
-		#self.bot = bot
+		self.bot = bot
 		self.client = client
 		self.players = {}
 
