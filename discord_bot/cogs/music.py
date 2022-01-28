@@ -98,7 +98,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			# take first item from a playlist
 			id_list = []
 			for item in data['entries']:
-    				id_list.append(item['id'])
+				id_list.append(item['id'])
 				play(ctx, item['id'])
 			print(f"Liczba id: {len(id_list)}")
 			print(f"Lista id: {id_list}")
