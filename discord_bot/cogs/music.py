@@ -20,6 +20,7 @@ import itertools
 import sys
 import traceback
 import psycopg2
+import os
 from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
