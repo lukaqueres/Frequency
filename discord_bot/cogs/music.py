@@ -23,6 +23,11 @@ from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
 
+intents = discord.Intents.default()
+intents.members = True
+
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
+bot = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 ytdlopts = {
 	'format': 'bestaudio/best',
