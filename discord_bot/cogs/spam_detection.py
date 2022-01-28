@@ -62,7 +62,7 @@ class Spam_detection(commands.Cog):
             RDPguild = client.get_guild(640181649463705650)
             if role in message.author.roles:
               author = message.author
-            else:
+            except:
               #await DMChannel.send(user, embed=embed)
               #await client.add_roles(author, role)
               if message.guild.id == RDPguild:
