@@ -314,7 +314,7 @@ class Music(commands.Cog):
 
 		await player.queue.put(source)
 		
-	@commands.command(name='playlist', aliases=['sing'])
+	@commands.command(name='playlist', aliases=['sing_playlist'])
 	async def playlist_(self, ctx, *, search: str):
 		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
