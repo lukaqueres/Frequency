@@ -37,12 +37,17 @@ class Spam_detection(commands.Cog):
         if (x in message.content):
           black_listed_words_number_detected += 1
           if (black_listed_words_number_detected == 2):
-            print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(message.author, message.channel, message.guild, get_time()))
+            message_state = 'Define'
             try:
               await message.delete()
-              print("Message deleted")
+              message_state = 'deleted'
+              #print("Message deleted")
+            except commands.errors.MessageNotFound:
+              message_state = 'not found'
             except:
               print("Message not deleted")
+              message_state = 'not deleted'
+            print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
             embed = discord.Embed(
               title="Możliwy scam",
               description=" ",
