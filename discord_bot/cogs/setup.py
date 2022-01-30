@@ -195,6 +195,9 @@ class Setup(commands.Cog):
 				return 0
 		elif (task == 'Updates') or (task == 'updates') or (task == 'Update') or (task == 'update'): #>-------------------------------------------< Task - toggle Updates
 			database_record = get_database_data('servers_properties', 'updates', guild_id)
+			database_record_two = get_database_data('servers_data', 'updates_channel_id', guild_id)
+			if ((database_record_two == None) and (value == 'YES')) or ((database_record_two == None) and (database_record == 'NO')):
+				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
@@ -257,6 +260,9 @@ class Setup(commands.Cog):
 				return 0
 		elif (task == 'Spam_check') or (task == 'spam_check'): #>-------------------------------------------< Task - toggle Spam check
 			database_record = get_database_data('servers_properties', 'anty_spam_feature', guild_id)
+			database_record_two = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
+			if ((database_record_two == None) and (value == 'YES')) or ((database_record_two == None) and (database_record == 'NO')):
+				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
