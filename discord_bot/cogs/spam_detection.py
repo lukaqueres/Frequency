@@ -35,7 +35,8 @@ class Spam_detection(commands.Cog):
     if database_record == 'NO':
       return 0
     alert_channel_id = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
-    alert_channel = convert_txt_channel(alert_channel_id)
+    #alert_channel = convert_txt_channel(alert_channel_id)
+    alert_channel = client.get_channel( alert_channel_id )
     if (message.author == client.user):
       return
     if (('http' in message.content ) or ('https' in message.content)):
