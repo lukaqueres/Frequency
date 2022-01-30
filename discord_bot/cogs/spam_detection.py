@@ -62,7 +62,7 @@ class Spam_detection(commands.Cog):
             nolinks = 0
             for i in message_words:
               if  ( 'http://' in i ) or ( 'https://' in i ):
-                nolinks =+ 1
+                nolinks = nolinks + 1
                 if nolinks == 1:
                   link[0] = ('||`' + i + '`||')
                 else:
