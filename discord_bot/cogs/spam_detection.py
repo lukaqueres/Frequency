@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_database_data
 
 client = commands.Bot(command_prefix = get_prefix)
 
@@ -27,9 +27,13 @@ class Spam_detection(commands.Cog):
   @commands.Cog.listener()
   async def on_message(self, message):
     #await client.process_commands(message)
+    database_record = get_database_data('servers_properties', 'anty_spam_feature', guild_id)
     black_listed = ['Gift', 'gift', 'Steam', 'steam', 'Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
     black_listed_length = (len(black_listed))
     black_listed_words_number_detected = 0
+    if database_recod == 'NO'
+      return 0
+    alert_channel = get_database_data('servers_data', 'anty_spam_channel_id', guild_id): commands.TextChannelConverter
     if (message.author == client.user):
       return
     if (('http' in message.content ) or ('https' in message.content)):
@@ -45,7 +49,7 @@ class Spam_detection(commands.Cog):
             except commands.errors.MessageNotFound:
               message_state = 'not found'
             except:
-              print("Message not deleted")
+              #print("Message not deleted")
               message_state = 'not deleted'
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
             embed = discord.Embed(
@@ -61,17 +65,19 @@ class Spam_detection(commands.Cog):
             embed.add_field(name = chr(173), value = chr(173))
             embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
             #user = await client.fetch_user("429949201254842369")
-            author = message.author
-            role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
-            RDPchannel = client.get_channel(887604610972409906)
-            RDPguild = client.get_guild(640181649463705650)
-            if role in message.author.roles:
-              author = message.author
-            else:
+            #author = message.author
+            #role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
+            #RDPchannel = client.get_channel(887604610972409906)
+            #RDPguild = client.get_guild(640181649463705650)
+            
+            await alert_channel.sned(embed=embed)
+            #if role in message.author.roles:
+              #author = message.author
+            #else:
               #await DMChannel.send(user, embed=embed)
               #await client.add_roles(author, role)
-              if message.guild.id == RDPguild:
-                await RDPchannel.send(embed=embed)
+              #if message.guild.id == RDPguild:
+                #await RDPchannel.send(embed=embed)
     else: 
       return
     
