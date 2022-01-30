@@ -38,7 +38,7 @@ class Spam_detection(commands.Cog):
     alert_channel = self.client.get_channel( id = alert_channel_id )
     if (message.author == client.user):
       return
-    if (('http' in message.content ) or ('https' in message.content)):
+    if (('http://' in message.content ) or ('https://' in message.content)):
       for x in black_listed:
         if (x in message.content):
           black_listed_words_number_detected += 1
@@ -77,7 +77,7 @@ class Spam_detection(commands.Cog):
             embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
             embed.add_field(name= chr(173), value=chr(173), inline=False),
             embed.add_field(name="Message content:", value=message_content, inline=True),
-            if nolinks <= 1:
+            if nolinks == 1:
               embed.add_field(name="Link:", value=link[0], inline=True),
             else:
               links = *link, sep=', '
