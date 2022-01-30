@@ -56,7 +56,8 @@ class Spam_detection(commands.Cog):
               message_state = 'not deleted'
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
             message_state = message_state.capitalize()
-            embed = discord.Embed(
+            message_content = ('||' + message.content + '||')
+            embed = discord.Embed( 
               title="Message flagged",
               description=" ",
               color=0x0000ff,
@@ -67,7 +68,7 @@ class Spam_detection(commands.Cog):
             #embed.add_field(name="Data:", value=current_day, inline=True),
             #embed.add_field(name="Godzina:", value=current_time, inline=True),
             embed.add_field(name = chr(173), value = chr(173))
-            embed.add_field(name="Message content:", value=( '||' + message.content + '||', inline=True),
+            embed.add_field(name="Message content:", value=message_content, inline=True),
             embed.add_field(name="Message status:", value=message_state, inline=True),
             await alert_channel.send(embed=embed)
     else: 
