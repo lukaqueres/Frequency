@@ -63,7 +63,7 @@ class Spam_detection(commands.Cog):
             for i in message_words:
               if 'http' in i:
                 nolinks =+ 1
-                if nolinks =< 1:
+                if nolinks <= 1:
                   link[0] = ('||`' + i + '`||')
                 else:
                   link.append = ('||`' + i + '`||')
@@ -77,7 +77,7 @@ class Spam_detection(commands.Cog):
             embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
             embed.add_field(name= chr(173), value=chr(173), inline=False),
             embed.add_field(name="Message content:", value=message_content, inline=True),
-            if nolinks =< 1:
+            if nolinks <= 1:
               embed.add_field(name="Link:", value=link[0], inline=True),
             else:
               embed.add_field(name="Links:", value=(*link, sep=', '), inline=True),
