@@ -61,15 +61,13 @@ class Spam_detection(commands.Cog):
               title="Message flagged",
               description=" ",
               color=0x0000ff,
+              timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
             )
-            embed.add_field(name="Member:", value=message.author, inline=True),
-            embed.add_field(name="Guild:", value=message.guild, inline=True),
+            embed.add_field(name= chr(173), value=f"**User**: {message.author} \n**User ID**: {message.author.id}", inline=False),
+            embed.add_field(name= chr(173), value=f"**Channel: {message.channel} \n**Channel ID**: {message.channel.id}", inline=False),
             embed.add_field(name = chr(173), value = chr(173), inline = False)
-            #embed.add_field(name="Data:", value=current_day, inline=True),
-            #embed.add_field(name="Godzina:", value=current_time, inline=True),
-            embed.add_field(name = chr(173), value = chr(173))
-            embed.add_field(name="Message content:", value=message_content, inline=True),
-            embed.add_field(name="Message status:", value=message_state, inline=True),
+            embed.add_field(name="Message content:", value=message_content, inline=False),
+            embed.add_field(name=chr(173), value=f"**Message status**: {message_state}", inline=False),
             await alert_channel.send(embed=embed)
     else: 
       return
