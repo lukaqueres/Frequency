@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time, get_database_data, convert_txt_channel
+from functions import get_prefix, get_time, get_database_data
 
 client = commands.Bot(command_prefix = get_prefix)
 
@@ -35,7 +35,6 @@ class Spam_detection(commands.Cog):
     if database_record == 'NO':
       return 0
     alert_channel_id = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
-    #alert_channel = convert_txt_channel(alert_channel_id)
     alert_channel = self.client.get_channel( id = alert_channel_id )
     if (message.author == client.user):
       return
