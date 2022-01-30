@@ -44,17 +44,17 @@ class Spam_detection(commands.Cog):
           black_listed_words_number_detected += 1
           if (black_listed_words_number_detected == 2):
             message_state = 'Define'
-            #try:
-            await message.delete()
-              #message_state = 'deleted'
-              #print("Message deleted")
-            #except commands.errors.MessageNotFound:
-              #message_state = 'not found'
-            #except discord.Forbidden:
-              #message_state = 'not deleted due to not enough permissions'
-            #except:
-              #print("Message not deleted")
-              #message_state = 'not deleted'
+            try:
+              await message.delete()
+              message_state = 'deleted'
+              print("Message deleted")
+            except commands.errors.MessageNotFound:
+              message_state = 'not found'
+            except discord.Forbidden:
+              message_state = 'not deleted due to not enough permissions'
+            except:
+              print("Message not deleted")
+              message_state = 'not deleted'
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
             message_state = message_state.capitalize()
             message_content = ('`' + message.content + '`')
