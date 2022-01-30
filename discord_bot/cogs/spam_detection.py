@@ -55,7 +55,13 @@ class Spam_detection(commands.Cog):
               message_state = 'not deleted'
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
             message_state = message_state.capitalize()
-            message_content = ('||' + message.content + '||')
+            message_content = ('`' + message.content + '`')
+            message_words = []
+            message_words = message.content.split() 
+            link = ['No links']
+            for i in message_words:
+              if 'http' in i:
+                link = i
             embed = discord.Embed( 
               title="Message flagged",
               description=" ",
@@ -64,7 +70,8 @@ class Spam_detection(commands.Cog):
             )
             embed.add_field(name= chr(173), value=f"**User**: {message.author} \n**User ID**: {message.author.id}", inline=True),
             embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
-            embed.add_field(name="Message content:", value=message_content, inline=False),
+            embed.add_field(name="Message content:", value=message_content, inline=True),
+            embed.add_field(name="Link:", value=link, inline=True),
             embed.add_field(name=chr(173), value=f"**Message status**: {message_state}", inline=False),
             await alert_channel.send(embed=embed)
     else: 
