@@ -60,11 +60,10 @@ class Spam_detection(commands.Cog):
               title="Message flagged",
               description=" ",
               color=0x0000ff,
-              timestamp=datetime.utcnow() + timedelta( hours = 1 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+              timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
             )
-            embed.add_field(name= chr(173), value=f"**User**: {message.author} \n**User ID**: {message.author.id}", inline=False),
-            embed.add_field(name= chr(173), value=f"**Channel: {message.channel} \n**Channel ID**: {message.channel.id}", inline=False),
-            embed.add_field(name = chr(173), value = chr(173), inline = False)
+            embed.add_field(name= chr(173), value=f"**User**: {message.author} \n**User ID**: {message.author.id}", inline=True),
+            embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
             embed.add_field(name="Message content:", value=message_content, inline=False),
             embed.add_field(name=chr(173), value=f"**Message status**: {message_state}", inline=False),
             await alert_channel.send(embed=embed)
