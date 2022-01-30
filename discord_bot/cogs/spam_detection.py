@@ -78,7 +78,7 @@ class Spam_detection(commands.Cog):
             if nolinks == 1:
               embed.add_field(name="Link:", value=link[0], inline=True),
             else:
-              links = ''.join(str(x) for x in link)
+              links = ''.join(str(x + ', ') for x in link)
               embed.add_field(name="Links:", value=links, inline=True),
             embed.add_field(name=chr(173), value=f"**Message status**: {message_state}", inline=False),
             embed.set_footer(text="Provided by Wild West Post Office")
