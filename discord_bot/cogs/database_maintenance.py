@@ -128,7 +128,7 @@ class Database_maintenance(commands.Cog):
 			cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
 			con.commit()
 		elif (channel_id == database_record_channel_two):
-			cur.execute("UPDATE servers_data SET updates_channel_id = {} WHERE GUILD_ID = '{}'".format(None, guild_id))
+			cur.execute("UPDATE servers_data SET updates_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
 			con.commit()
 			cur.execute("UPDATE servers_properties SET updates = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
 			con.commit()
