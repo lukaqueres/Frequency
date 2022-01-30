@@ -61,12 +61,12 @@ class Spam_detection(commands.Cog):
             link = ['No links']
             nolinks = 0
             for i in message_words:
-              if 'http' in i:
+              if  ( 'http://' in i ) or ( 'https://' in i ):
                 nolinks =+ 1
-                if nolinks <= 1:
+                if nolinks == 1:
                   link[0] = ('||`' + i + '`||')
                 else:
-                  link.append = ('||`' + i + '`||')
+                  link.append('||`' + i + '`||')
             embed = discord.Embed( 
               title="Message flagged",
               description=" ",
