@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time, get_database_data
+from functions import get_prefix, get_time, get_database_data, convert_txt_channel
 
 client = commands.Bot(command_prefix = get_prefix)
 
@@ -33,7 +33,8 @@ class Spam_detection(commands.Cog):
     black_listed_words_number_detected = 0
     if database_recod == 'NO':
       return 0
-    alert_channel = get_database_data('servers_data', 'anty_spam_channel_id', guild_id): commands.TextChannelConverter
+    alert_channel_id = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
+    alert_channel = convert_txt_channel(alert_channel_id)
     if (message.author == client.user):
       return
     if (('http' in message.content ) or ('https' in message.content)):
@@ -70,7 +71,7 @@ class Spam_detection(commands.Cog):
             #RDPchannel = client.get_channel(887604610972409906)
             #RDPguild = client.get_guild(640181649463705650)
             
-            await alert_channel.sned(embed=embed)
+            await alert_channel.send(embed=embed)
             #if role in message.author.roles:
               #author = message.author
             #else:
