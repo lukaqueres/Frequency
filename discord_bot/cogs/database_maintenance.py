@@ -122,12 +122,13 @@ class Database_maintenance(commands.Cog):
 		database_record_channel_one = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
 		database_record_channel_two = get_database_data('servers_data', 'updates_channel_id', guild_id)
 		if (channel_id == database_record_channel_one):
-			cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE GUILD_ID = '{}'".format('null', guild_id))
+			cur.execute("DELETE FROM servers_data anty_spam_channel_id WHERE GUILD_ID = '{}'".format(guild_id))
 			con.commit()
 			cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
 			con.commit()
 		elif (channel_id == database_record_channel_two):
-			cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE GUILD_ID = '{}'".format('null', guild_id))
+			cur.execute("DELETE FROM servers_data anty_spam_channel_id WHERE GUILD_ID = '{}'".format(guild_id))
+			#cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE GUILD_ID = '{}'".format('null', guild_id))
 			con.commit()
 			cur.execute("UPDATE servers_properties SET updates = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
 			con.commit()
