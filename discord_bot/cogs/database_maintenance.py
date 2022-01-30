@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_database_data
 
 load_dotenv()
 
@@ -112,7 +112,27 @@ class Database_maintenance(commands.Cog):
     #print("\n Member left: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
     cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(members_count, member.guild.member_count, guild))
     con.commit()
+    
 
+	@commands.Cog.listener()
+	async def on_channel_delete(self, channel):
+		guild = channel.guild
+		guild_id = guild.id
+		channel_id = channel.id
+		database_record_channel_one = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
+		database_record_channel_two = get_database_data('servers_data', 'updates_channel_id', guild_id)
+		if (channel_id == database_record_channel_one):
+			cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE GUILD_ID = '{}'".format(None, guild_id))
+    	con.commit()
+			cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
+    	con.commit()
+		elif (channel_id == database_record_channel_two):
+			cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE GUILD_ID = '{}'".format(None, guild_id))
+    	con.commit()
+			cur.execute("UPDATE servers_properties SET updates = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
+    	con.commit()
+		else:
+			return 0
     
 def setup(client):
   client.add_cog(Database_maintenance(client))
