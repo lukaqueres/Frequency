@@ -58,7 +58,7 @@ class Spam_detection(commands.Cog):
             message_content = ('`' + message.content + '`')
             message_words = []
             message_words = message.content.split() 
-            link = ['No links']
+            link = ['No links',]
             nolinks = 0
             for i in message_words:
               if  ( 'http://' in i ) or ( 'https://' in i ):
@@ -80,8 +80,8 @@ class Spam_detection(commands.Cog):
             if nolinks == 1:
               embed.add_field(name="Link:", value=link[0], inline=True),
             else:
-              #links = *link, sep=', '
-              embed.add_field(name="Links:", value=link, inline=True),
+              links = *link, sep=', '
+              embed.add_field(name="Links:", value=links, inline=True),
             embed.add_field(name=chr(173), value=f"**Message status**: {message_state}", inline=False),
             embed.set_footer(text="Provided by Wild West Post Office")
             await alert_channel.send(embed=embed)
