@@ -58,13 +58,14 @@ class Spam_detection(commands.Cog):
             message_content = ('`' + message.content + '`')
             message_words = []
             message_words = message.content.split() 
-            link = ['No links',]
+            link = []
             nolinks = 0
             for i in message_words:
               if  ( 'http://' in i ) or ( 'https://' in i ):
                 nolinks = nolinks + 1
                 if nolinks == 1:
                   link[0] = ('||`' + i + '`||')
+                  print(f"link0: {link[0]}")
                 else:
                   link.append('||`' + i + '`||')
             embed = discord.Embed( 
