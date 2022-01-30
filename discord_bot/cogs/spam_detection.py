@@ -60,7 +60,7 @@ class Spam_detection(commands.Cog):
               title="Message flagged",
               description=" ",
               color=0x0000ff,
-              timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+              timestamp=datetime.utcnow() + timedelta( hours = 1 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
             )
             embed.add_field(name= chr(173), value=f"**User**: {message.author} \n**User ID**: {message.author.id}", inline=False),
             embed.add_field(name= chr(173), value=f"**Channel: {message.channel} \n**Channel ID**: {message.channel.id}", inline=False),
