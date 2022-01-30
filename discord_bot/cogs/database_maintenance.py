@@ -115,7 +115,7 @@ class Database_maintenance(commands.Cog):
     
 
 	@commands.Cog.listener()
-	async def on_channel_delete(self, channel):
+	async def on_guild_channel_delete(self, channel):
 		guild = channel.guild
 		guild_id = guild.id
 		channel_id = channel.id
