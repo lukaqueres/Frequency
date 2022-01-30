@@ -31,7 +31,7 @@ class Spam_detection(commands.Cog):
     black_listed = ['Gift', 'gift', 'Steam', 'steam', 'Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
     black_listed_length = (len(black_listed))
     black_listed_words_number_detected = 0
-    if database_recod == 'NO'
+    if database_recod == 'NO':
       return 0
     alert_channel = get_database_data('servers_data', 'anty_spam_channel_id', guild_id): commands.TextChannelConverter
     if (message.author == client.user):
