@@ -29,8 +29,6 @@ def get_database_data(database, column, condition):
 	con.commit()
 	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
 	return value
-def convert_txt_channel(channel: commands.TextChannelConverter):
-	return channel
 """
 <---------->CODE USE JSON WHEN NEEDED <---------------------------------------------------------------------------------------->
 
