@@ -66,11 +66,11 @@ async def clear(ctx, number : int ):
 @clear.error
 async def clear_error(error, ctx):
 	if isinstance(error, MissingPermissions):
-        	global current_day
-        	global current_time
+		global current_day
+		global current_time
 		return await ctx.send("Sorry, you can't use that command.")
-        	print("\n Clear has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
-        	print(" Reason: \" not enough permissions \"")
+		print("\n Clear has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
+		print(" Reason: \" not enough permissions \"")
 
 @client.command() 
 #@has_permissions(manage_messages=True)
