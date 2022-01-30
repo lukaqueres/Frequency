@@ -50,9 +50,11 @@ class Spam_detection(commands.Cog):
               #print("Message deleted")
             except commands.errors.MessageNotFound:
               message_state = 'not found'
-            except:
+            except discord.Forbidden:
+              message_state = 'not deleted due to not enough permissions'
+            #except:
               #print("Message not deleted")
-              message_state = 'not deleted'
+              #message_state = 'not deleted'
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
             message_state = message_state.capitalize()
             message_content = ('`' + message.content + '`')
