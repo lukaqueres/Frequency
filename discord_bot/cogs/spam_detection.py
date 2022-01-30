@@ -55,32 +55,21 @@ class Spam_detection(commands.Cog):
               #print("Message not deleted")
               message_state = 'not deleted'
             print("\nPosible scam by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \". Message {}.".format(message.author, message.channel, message.guild, get_time(), message_state))
+            message_state = message_state.capitalize()
             embed = discord.Embed(
-              title="Możliwy scam",
+              title="Message flagged",
               description=" ",
               color=0x0000ff,
             )
-            embed.add_field(name="Użytkownik:", value=message.author, inline=True),
-            embed.add_field(name="Serwer:", value=message.guild, inline=True),
-            embed.add_field(name = chr(173), value = chr(173))
+            embed.add_field(name="Member:", value=message.author, inline=True),
+            embed.add_field(name="Guild:", value=message.guild, inline=True),
+            embed.add_field(name = chr(173), value = chr(173), inline = False)
             #embed.add_field(name="Data:", value=current_day, inline=True),
             #embed.add_field(name="Godzina:", value=current_time, inline=True),
             embed.add_field(name = chr(173), value = chr(173))
-            embed.add_field(name="Treść wiadomości:", value=message.content, inline=False),
-            #user = await client.fetch_user("429949201254842369")
-            #author = message.author
-            #role = discord.utils.get(author.guild.roles, name="🤐 Wyciszony")
-            #RDPchannel = client.get_channel(887604610972409906)
-            #RDPguild = client.get_guild(640181649463705650)
-            
+            embed.add_field(name="Message content:", value=( '||' + message.content + '||', inline=True),
+            embed.add_field(name="Message status:", value=message_state, inline=True),
             await alert_channel.send(embed=embed)
-            #if role in message.author.roles:
-              #author = message.author
-            #else:
-              #await DMChannel.send(user, embed=embed)
-              #await client.add_roles(author, role)
-              #if message.guild.id == RDPguild:
-                #await RDPchannel.send(embed=embed)
     else: 
       return
     
