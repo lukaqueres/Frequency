@@ -266,31 +266,31 @@ class Setup(commands.Cog):
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
-				await ctx.channel.send("Anty spam feature setting is now OFF!")
+				await ctx.channel.send("Message check feature setting is now OFF!")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
-				await ctx.channel.send("Anty spam feature setting is now ON!")
+				await ctx.channel.send("Message check feature setting is now ON!")
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
 				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
-				await ctx.channel.send("Anty spam feature setting is now ON!")
+				await ctx.channel.send("Message check feature setting is now ON!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
 				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
-				await ctx.channel.send("Anty spam feature setting is now OFF!")
+				await ctx.channel.send("Message check feature setting is now OFF!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'NO'): # If user request is already active setting tell him so n' do nothin'
-				await ctx.channel.send("Anty spam feature setting is already OFF!")
+				await ctx.channel.send("Message check feature setting is already OFF!")
 				return 0
 			elif (value == 'ON') and (database_record == 'YES'): # If user request is already active setting tell him so n' do nothin'
-				await ctx.channel.send("Anty spam feature setting is already ON!")
+				await ctx.channel.send("Message check feature setting is already ON!")
 				return 0
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
-				await ctx.channel.send("There was an error while changing updates setting state!")
+				await ctx.channel.send("There was an error while changing message check setting state!")
 				return 0
 		else:
 			await ctx.channel.send("You must choose what to change!")
