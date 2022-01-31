@@ -79,6 +79,8 @@ class Information(commands.Cog):
 			guild = ctx.guild
 			live_members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
+			rolelist = [r.mention for r in guild.roles if r != ctx.guild.default_role]
+			roles = " | ".join(reversed(rolelist))
 			users_online = 0
 			for i in guild.members:
 				if str(i.status) == 'online' or str(i.status) == 'idle' or str(i.status) == 'dnd':
@@ -95,33 +97,33 @@ class Information(commands.Cog):
 				)
 			embed.set_thumbnail(url=guild.icon_url)
 			
-			embed.add_field(name='Guild Name:', value=guild.name)
-			embed.add_field(name='Owner:', value=guild.owner)
-			embed.add_field(name = chr(173), value = chr(173), inline=False)
-			embed.add_field(name='Members:', value=guild.member_count)
-			embed.add_field(name='Users:', value=live_members_count)
-			embed.add_field(name='Bots:', value=bot_members_count)
+			embed.add_field(name=chr(173), value=f"**Guld name**: {guild.name}\n**Guild ID**: {guild.id}\n**Guild owner**: {guild.owner}", inline=True)
+			#embed.add_field(name='Owner:', value=guild.owner)
+			#embed.add_field(name = chr(173), value = chr(173), inline=False)
+			embed.add_field(name=chr(173), value=f"**Members**: {guild.member_count}\n**Users**: {live_members_count}\n**Bots**: {bot_members_count}", inline=True)
+			#embed.add_field(name='Users:', value=live_members_count)
+			#embed.add_field(name='Bots:', value=bot_members_count)
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			#embed.add_field(name='Currently Online:', value=users_online) <- FIX IT
-			embed.add_field(name='Text Channels:', value=str(channels_number))
-			embed.add_field(name='Region:', value=guild.region)
-			embed.add_field(name='Verification Level:', value=str(guild.verification_level))
-			embed.add_field(name = chr(173), value = chr(173), inline=False)
+			embed.add_field(name=chr(173), value=f"**Number of text channels**: {str(channels_number)}\n**Number of roles**: {str(roles_number)}\n**Number of emotes**: {str(emojis_number)}", inline=True)
+			#embed.add_field(name='Region:', value=guild.region)
+			embed.add_field(name=chr(173), value=f"**Veryfication level**: {str(guild.verification_level)}\n**Created**:{guild.created_at.strftime("%d/%m/%Y %H:%M:%S")}", inline=True)
+			#embed.add_field(name = chr(173), value = chr(173), inline=False)
 			#embed.add_field(name='Highest role:', value=guild.role_hierarchy[0]) <- FIX IT
-			embed.add_field(name='Number of roles:', value=str(roles_number))
-			embed.add_field(name='Number of emotes:', value=str(emojis_number))
-			embed.add_field(name='Created At:', value=guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'))
-			embed.set_footer(text='Server ID: %s' % guild.id)
-			
+			#embed.add_field(name='Number of roles:', value=str(roles_number))
+			#embed.add_field(name='Number of emotes:', value=str(emojis_number))
+			#embed.add_field(name='Created At:', value=guild.created_at.strftime("%d/%m/%Y %H:%M:%S") #.__format__('%A, %d. %B %Y %H:%M:%S'))
+			embed.add_field(name='Server roles:', value=roles, inline=False)
+			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		
-	"""@info.error
+	@info.error
 	async def info_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")"""
+			await ctx.channel.send("There was an error with executing command!")
     
 def setup(client):
 	client.add_cog(Information(client))
