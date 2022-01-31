@@ -16,6 +16,12 @@ client = commands.Bot(command_prefix = get_prefix)
 
 load_dotenv()
 
+class Message_processing:
+  def __init__(self, ctx):
+		self.bot = ctx.bot
+		self._guild = ctx.guild
+		self._channel = ctx.channel
+
 class Spam_detection(commands.Cog):
   def __init__(self, client):
   	self.client = client
@@ -28,13 +34,13 @@ class Spam_detection(commands.Cog):
   async def on_message(self, message):
     #await client.process_commands(message)
     guild_id = message.guild.id
-    database_record = get_database_data('servers_properties', 'anty_spam_feature', guild_id)
+    database_record = get_database_data('servers_properties', 'message_check_feature', guild_id)
     black_listed = ['Gift', 'gift', 'Steam', 'steam', 'Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
     black_listed_length = (len(black_listed))
     black_listed_words_number_detected = 0
     if database_record == 'NO':
       return 0
-    alert_channel_id = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
+    alert_channel_id = get_database_data('servers_data', 'message_check_channel_id', guild_id)
     alert_channel = self.client.get_channel( id = alert_channel_id )
     if (message.author == client.user):
       return
