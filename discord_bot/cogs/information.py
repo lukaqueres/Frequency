@@ -13,7 +13,7 @@ from typing import Optional
 
 from functions import get_prefix, get_time
 
-intents = discord.Intents().all()
+intents = discord.Intents.all()
 intents.presences = True
 intents.members = True
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
