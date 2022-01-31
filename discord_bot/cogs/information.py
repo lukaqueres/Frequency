@@ -90,6 +90,7 @@ class Information(commands.Cog):
 
 			roles_number = len(guild.roles)
 			emojis_number = len(guild.emojis)
+			created_at = guild.created_at.strftime("%d/%m/%Y %H:%M:%S")
 			
 			embed = Embed(title="Server information",
 				colour = ctx.author.colour,
@@ -107,7 +108,7 @@ class Information(commands.Cog):
 			#embed.add_field(name='Currently Online:', value=users_online) <- FIX IT
 			embed.add_field(name=chr(173), value=f"**Number of text channels**: {str(channels_number)}\n**Number of roles**: {str(roles_number)}\n**Number of emotes**: {str(emojis_number)}", inline=True)
 			#embed.add_field(name='Region:', value=guild.region)
-			embed.add_field(name=chr(173), value=f"**Veryfication level**: {str(guild.verification_level)}\n**Created**:{guild.created_at.strftime("%d/%m/%Y %H:%M:%S")}", inline=True)
+			embed.add_field(name=chr(173), value=f"**Veryfication level**: {str(guild.verification_level)}\n**Created**:{created_at}", inline=True)
 			#embed.add_field(name = chr(173), value = chr(173), inline=False)
 			#embed.add_field(name='Highest role:', value=guild.role_hierarchy[0]) <- FIX IT
 			#embed.add_field(name='Number of roles:', value=str(roles_number))
