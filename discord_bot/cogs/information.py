@@ -13,7 +13,10 @@ from typing import Optional
 
 from functions import get_prefix, get_time
 
-client = commands.Bot(command_prefix = get_prefix, intents=discord.Intents.all())
+intents = discord.Intents.default()
+intents.presences = True
+intents.members = True
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 load_dotenv()
 
