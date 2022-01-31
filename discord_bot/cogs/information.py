@@ -104,7 +104,7 @@ class Information(commands.Cog):
 			embed.add_field(name=chr(173), value=f"**Members**: {guild.member_count}\n**Users**: {live_members_count}\n**Bots**: {bot_members_count}", inline=True)
 			#embed.add_field(name='Users:', value=live_members_count)
 			#embed.add_field(name='Bots:', value=bot_members_count)
-			embed.add_field(name = chr(173), value = chr(173), inline=False)
+			embed.add_field(name='Server roles:', value=roles, inline=False)
 			#embed.add_field(name='Currently Online:', value=users_online) <- FIX IT
 			embed.add_field(name=chr(173), value=f"**Number of text channels**: {str(channels_number)}\n**Number of roles**: {str(roles_number)}\n**Number of emotes**: {str(emojis_number)}", inline=True)
 			#embed.add_field(name='Region:', value=guild.region)
@@ -114,7 +114,6 @@ class Information(commands.Cog):
 			#embed.add_field(name='Number of roles:', value=str(roles_number))
 			#embed.add_field(name='Number of emotes:', value=str(emojis_number))
 			#embed.add_field(name='Created At:', value=guild.created_at.strftime("%d/%m/%Y %H:%M:%S") #.__format__('%A, %d. %B %Y %H:%M:%S'))
-			embed.add_field(name='Server roles:', value=roles, inline=False)
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		
