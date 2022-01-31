@@ -15,6 +15,7 @@ from functions import get_prefix, get_time
 
 intents = discord.Intents.all()
 intents.presences = True
+intents.guild_presences = True
 intents.members = True
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
@@ -49,6 +50,7 @@ class Information(commands.Cog):
 			
 			rolelist = [r.mention for r in user.roles if r != ctx.guild.default_role]
 			roles = ", ".join(rolelist)
+			print(f"status: {user.status}, activity: {user.activity.type}")
 			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
 			guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 			embed = Embed(title="User information",
