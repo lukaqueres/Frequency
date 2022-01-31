@@ -120,6 +120,7 @@ class Information(commands.Cog):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		else: 
+			print(error)
 			await ctx.channel.send("There was an error with executing command!")
     
 def setup(client):
