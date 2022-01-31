@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from ffmpeg import *
 from random import randrange, randint
 from datetime import datetime, date, timedelta
-from discord import member, DMChannel, FFmpegPCMAudio, TextChannel
+from discord import member, DMChannel, FFmpegPCMAudio, TextChannel, Intents
 from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import *
