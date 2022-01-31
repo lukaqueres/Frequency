@@ -49,7 +49,7 @@ class Information(commands.Cog):
 			
 			rolelist = [r.mention for r in user.roles if r != ctx.guild.default_role]
 			roles = ", ".join(rolelist)
-			print(f"status: {user.status}, activity: {user.activity.type}")
+			print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
 			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
 			guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 			embed = Embed(title="User information",
