@@ -43,7 +43,7 @@ def check_database():
 		guilds_id.append(guild.id)
 		print('Database Check: Guild {} check.'.format( guild ))
 		cur.execute("""IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
-                   INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
+                   INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
                    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
                    IF EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
                    INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
@@ -74,7 +74,7 @@ class Database_maintenance(commands.Cog):
 		default_language = 'ENG'
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
 		date_of_join = str("{") + get_time("DD") + str("}")
-		cur.execute("""SET datestyle = dmy; INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, ANTY_SPAM_FEATURE, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
+		cur.execute("""SET datestyle = dmy; INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
                    INSERT INTO servers_data ( guild_id, guild_name ) VALUES ( '{}', '{}' )""".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.name));
 		con.commit()
 		print("Succesful data base registration.")
@@ -119,13 +119,13 @@ class Database_maintenance(commands.Cog):
 		guild = channel.guild
 		guild_id = guild.id
 		channel_id = channel.id
-		database_record_channel_one = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
+		database_record_channel_one = get_database_data('servers_data', 'message_check_channel_id', guild_id)
 		database_record_channel_two = get_database_data('servers_data', 'updates_channel_id', guild_id)
 		null = 'NULL'
 		if (channel_id == database_record_channel_one):
-			cur.execute("UPDATE servers_data SET updates_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
+			cur.execute("UPDATE servers_data SET message_check_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
 			con.commit()
-			cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
+			cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
 			con.commit()
 		elif (channel_id == database_record_channel_two):
 			cur.execute("UPDATE servers_data SET updates_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
