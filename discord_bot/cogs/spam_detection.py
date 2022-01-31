@@ -91,8 +91,8 @@ class Spam_detection(commands.Cog):
 				embed.add_field(name=chr(173), value=f"**Message status**: {message_state}", inline=False),
 				embed.set_footer(text="Provided by Wild West Post Office")
 				await alert_channel.send(embed=embed)
-	else: 
-      return 0
+		else: 
+			return 0
     
 def setup(client):
 	client.add_cog(Spam_detection(client))
