@@ -58,7 +58,7 @@ class Information(commands.Cog):
 			embed.add_field( name=chr(173), value=f"**Created**:{account_created}\n**Joined**: {guild_join}", inline=True),
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field(name = chr(173), value = f"**Status**:{str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {user.bot}", inline=True),
-			embed.add_field( name="Top role:", value=user.top_role.mention, inline=True),
+			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.mention}", inline=True),
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="All roles:", value=roles, inline=True),
 			#embed.add_field( name="Bot:", value=user.bot, inline=True),
