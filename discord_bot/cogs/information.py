@@ -48,7 +48,7 @@ class Information(commands.Cog):
 				user = ctx.author
 			
 			rolelist = [r.mention for r in user.roles if r != ctx.guild.default_role]
-			roles = " | ".join(rolelist)
+			roles = " | ".join(reversed(rolelist))
 			print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
 			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
 			guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
@@ -62,7 +62,7 @@ class Information(commands.Cog):
 			embed.add_field( name=chr(173), value=f"**Created**:{account_created}\n**Joined**: {guild_join}", inline=True),
 			#embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="All roles:", value=roles, inline=False),
-			embed.add_field(name = chr(173), value = f"**Status**:{str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {"NO" if not user.bot else "YES"}", inline=True),
+			embed.add_field(name = chr(173), value = f"**Status**:{str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.mention}\n**Number of roles**: {len(rolelist)}", inline=True),
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			#embed.add_field( name="Bot:", value=user.bot, inline=True),
