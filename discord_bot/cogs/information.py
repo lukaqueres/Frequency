@@ -46,6 +46,8 @@ class Information(commands.Cog):
 			
 			rolelist = [r.mention for r in user.roles if r != ctx.guild.default_role]
 			roles = ", ".join(rolelist)
+			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
+			guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 			embed = Embed(title="User information",
 				colour = ctx.author.colour,
 				#timestamp=get_time()
@@ -54,7 +56,7 @@ class Information(commands.Cog):
       
 			embed.add_field( name=chr(173), value=f"**User**:{str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field(name = chr(173), value = f"**Status**:{str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}", inline=True),
-			embed.add_field( name=chr(173), value=f"**Created**:{user.created_at.strftime("%d/%m/%Y %H:%M:%S")}\n**Joined**: {user.joined_at.strftime("%d/%m/%Y %H:%M:%S")}", inline=True),
+			embed.add_field( name=chr(173), value=f"**Created**:{account_created}\n**Joined**: {guild_join}", inline=True),
 			embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="Top role:", value=user.top_role.mention, inline=True),
 			embed.add_field( name="All roles:", value=roles, inline=True),
