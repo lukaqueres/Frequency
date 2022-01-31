@@ -48,7 +48,7 @@ class Spam_detection(commands.Cog):
 			for x in black_listed:
 				if (x in message.content):
 					black_listed_words_number_detected += 1
-			if (black_listed_words_number_detected == 2):
+			if (black_listed_words_number_detected >= 2):
 				message_state = 'Define'
 				try:
 					await message.delete()
