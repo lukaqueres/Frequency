@@ -119,13 +119,13 @@ class Setup(commands.Cog):
 				await ctx.send("You don't have permissions to do this!")
 				return 0
 			channel_type = value
-			if channel_type == 'spam_info': # setting channel type spam info
+			if channel_type == 'message_check': # setting channel type spam info
 				if value_two != None:
 					channel = value_two
 					channel_id = channel.id
-				cur.execute("UPDATE servers_data SET anty_spam_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
+				cur.execute("UPDATE servers_data SET message_check_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
-				await ctx.send("Information set up succesfuly on channel: {}!".format( channel ))
+				await ctx.send("Alerts set up succesfuly on channel: {}!".format( channel ))
 			elif channel_type == 'updates': #setting channel type updates about bot
 				if value_two != None:
 					channel = value_two
@@ -258,28 +258,28 @@ class Setup(commands.Cog):
 			else: # Just to have some nice error information ( It's like base, yes? ) and have hope to never show that message.
 				await ctx.channel.send("There was an error while changing updates setting state!")
 				return 0
-		elif (task == 'Spam_check') or (task == 'spam_check'): #>-------------------------------------------< Task - toggle Spam check
-			database_record = get_database_data('servers_properties', 'anty_spam_feature', guild_id)
-			database_record_two = get_database_data('servers_data', 'anty_spam_channel_id', guild_id)
+		elif (task == 'Message_check') or (task == 'message_check'): #>-------------------------------------------< Task - toggle Spam check
+			database_record = get_database_data('servers_properties', 'message_check_feature', guild_id)
+			database_record_two = get_database_data('servers_data', 'message_check_channel_id', guild_id)
 			if ((database_record_two == None) and (value == 'YES')) or ((database_record_two == None) and (database_record == 'NO')):
 				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
-				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Anty spam feature setting is now OFF!")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
-				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Anty spam feature setting is now ON!")
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
-				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
 				con.commit()
 				await ctx.channel.send("Anty spam feature setting is now ON!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
-				cur.execute("UPDATE servers_properties SET anty_spam_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
 				con.commit()
 				await ctx.channel.send("Anty spam feature setting is now OFF!")
 				return 0
