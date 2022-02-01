@@ -11,7 +11,7 @@ from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 from typing import Optional
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_database_data
 
 intents = discord.Intents.all()
 intents.presences = True
@@ -23,7 +23,7 @@ load_dotenv()
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
-
+"""
 #(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None)
 class Extract: 
 	def __init__(self, ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
@@ -55,7 +55,7 @@ class Extract:
 			try:
 				setattr(self, name, value)
 			except:
-				print(f"Failed: {name}")
+				print(f"Failed: {name}")"""
 
 class Information(commands.Cog):
 	def __init__(self, client):
@@ -77,7 +77,7 @@ class Information(commands.Cog):
 					return 0
 			
 			user = member or ctx.author
-			_user = Extract(ctx, user)
+			#_user = Extract(ctx, user)
 			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
 			#print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
@@ -108,7 +108,7 @@ class Information(commands.Cog):
 			await ctx.send(embed=embed)
 		if (value == 'server') or (value == 'guild'):
 			guild = ctx.guild
-			_guild = Extract(ctx, guild)
+			#_guild = Extract(ctx, guild)
 			live_members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
 			rolelist = [r.name for r in guild.roles if r != ctx.guild.default_role]
@@ -149,13 +149,34 @@ class Information(commands.Cog):
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		
-	"""@info.error
+	@info.error
 	async def info_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")"""
+			await ctx.channel.send("There was an error with executing command!")
+	
+	@commands.Cog.listener()
+	async def on_message_remove(self, message):
+		guild_id = message.guild.id
+		database_record = get_database_data('servers_data', 'logs_msg_remove_channel_id', guild_id)
+		if database_record == None:
+			return 0
+		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
+        		deleter = entry.user
+		channel = self.client.get_channel( id = database_record )
+		embed = discord.Embed( 
+			title="Message deleted",
+			description=" ",
+			color= message.author.colour,
+			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+		)
+		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter} \n**Deleter ID**: {deleter.id}", inline=True),
+		embed.add_field(name= 'Message content:', value=message.content, inline=True),
+		embed.set_footer(text="Provided by Wild West Post Office")
+		await channel.send(embed=embed)
     
 def setup(client):
 	client.add_cog(Information(client))
