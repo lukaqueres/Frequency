@@ -54,7 +54,7 @@ class Extract:
 		for name, value in defines:
 			try:
 				setattr(self, name, value)
-			else:
+			except:
 				print{f"Failed: {name}")
 
 class Information(commands.Cog):
