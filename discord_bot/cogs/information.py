@@ -28,11 +28,31 @@ cur = con.cursor()
 class Extract: 
 	def __init__(self, ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
 		object_type = user or guild
-		defines = [( '_name', user.name or guild.name)]
+		rolelist = [r.name for r in user.roles if r != ctx.guild.default_role] or [r.name for r in guild.roles if r != ctx.guild.default_role]
+		roles = " | ".join(reversed(rolelist))
+		defines = [( '_name', user or guild ),
+			   ( '_id', user.id or guild.id ),
+			   ( '_created', user.created_at.strftime("%d/%m/%Y %H:%M:%S") or guild.created_at.strftime("%d/%m/%Y %H:%M:%S") ),
+			   ( '_joined', user.joined_at.strftime("%d/%m/%Y %H:%M:%S") or None ),
+			   ( '_roles', roles ),
+			   ( '_status', str(user.status).title() or None ),
+			   ( '_activity', (str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A') + (user.activity.name if user.activity else '') or None ),
+			   ( '_isBot', ('NO' if not user.bot else 'YES') or None ),
+			   ( '_topRole', user.top_role.name or None ),
+			   ( '_numOfRoles', len(rolelist) ),
+			   ( '_hasNitro', ('Yes' if bool(user.premium_since) else 'No') or None ),
+			   ( '_owner', guild.owner or None ),
+			   ( '_numOfLives', (len([m for m in guild.members if not m.bot])) or None ),
+			   ( '_numOfBots', len([m for m in guild.members if m.bot]) or None ),
+			   ( '_numOfTxtChannels', len([x for x in guild.channels if type(x) == discord.channel.TextChannel]) or None ),
+			   ( '_numOfRoles', len(guild.roles) or None ),
+			   ( '_numOfEmois', len(guild.emojis) or None ),
+			   ( '_verLevel', str(guild.verification_level) or None ),
+			   ( '_highestRole', guild.role_hierarchy[0] or None )]
+					
 		self.client = client
 		for name, value in defines:
 			setattr(self, name, value)
-		print(self._name)
 
 class Information(commands.Cog):
 	def __init__(self, client):
