@@ -137,7 +137,7 @@ class Setup(commands.Cog):
 				if value_two != None:
 					channel = value_two
 					channel_id = channel.id
-				cur.execute("UPDATE servers_data SET (logs_msg_remove_channel_id, logs_msg_edit_channel_id) = ('{}', '{}') WHERE guild_id = '{}'".format(channel_id, channel_id, guild_id))
+				cur.execute("UPDATE servers_data SET (logs_msg_delete_channel_id, logs_msg_edit_channel_id) = ('{}', '{}') WHERE guild_id = '{}'".format(channel_id, channel_id, guild_id))
 				con.commit()
 				await ctx.send("Logs set up succesfuly on channel: {}!".format( channel ))
 			else:
