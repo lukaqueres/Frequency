@@ -105,7 +105,7 @@ class Information(commands.Cog):
 			await ctx.send(embed=embed)
 		if (value == 'server') or (value == 'guild'):
 			guild = ctx.guild
-			extract(ctx, guild)
+			_guild = Extract(ctx, guild)
 			live_members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
 			rolelist = [r.name for r in guild.roles if r != ctx.guild.default_role]
@@ -146,13 +146,13 @@ class Information(commands.Cog):
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		
-	@info.error
+	"""@info.error
 	async def info_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")
+			await ctx.channel.send("There was an error with executing command!")"""
     
 def setup(client):
 	client.add_cog(Information(client))
