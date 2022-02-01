@@ -26,7 +26,8 @@ cur = con.cursor()
 
 def extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
 	object_type = user or guild
-	print(object_type)
+	properties = []
+	#print(object_type)
 	return 0
 
 class Information(commands.Cog):
@@ -52,7 +53,7 @@ class Information(commands.Cog):
 			extract(ctx, user)
 			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
-			print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
+			#print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
 			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
 			guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 			embed = Embed(title="User information",
