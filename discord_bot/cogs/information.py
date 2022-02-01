@@ -36,21 +36,18 @@ class Information(commands.Cog):
 		print('Information module loaded')
 
 	@commands.command()
-	async def info(self, ctx, value = 'default', secondary_value : discord.Member=None): # secondary_value : discord.Member=None <- for specified type of input
+	async def info(self, ctx, value = 'default', member : discord.Member=None): # secondary_value : discord.Member=None <- for specified type of input
 		if value == 'default': # You can't pick nothin' do ya? 
 			await ctx.send("You have to specify what kind of information you want!")
 			return 0
 		if value == 'user': # If user type information picked
-			if (secondary_value != None) and (secondary_value != ctx.message.author):
+			if (member != None) and (member != ctx.message.author):
 				if ( not ctx.message.author.guild_permissions.manage_roles): # Check if user have permissions to show info about other user
 					await ctx.send("You can't check info about other user than you!")
 					return 0
-			if (secondary_value != None):
-				user = secondary_value
-			else:
-				user = ctx.author
-			
-			rolelist = [r.mention for r in user.roles if r != ctx.guild.default_role]
+				
+			user = member or ctx.author
+			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
 			print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
 			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
