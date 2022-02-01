@@ -24,12 +24,15 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
-def extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
-	object_type = user or guild
-	user_properties = []
-	guild_properties = []
-	#print(object_type)
-	return 0
+#(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None)
+class Extract: 
+	def __init__(self, ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
+		object_type = user or guild
+		defines = [( _name, user.name or guild.name)
+  		self.client = client
+		for value, definition in defines:
+			self.{value} = definition
+		print(self._name)
 
 class Information(commands.Cog):
 	def __init__(self, client):
