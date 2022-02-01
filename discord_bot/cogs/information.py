@@ -24,7 +24,7 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
-def extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild):
+def extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
 	object_type = user or guild
 	print(object_type)
 	return 0
