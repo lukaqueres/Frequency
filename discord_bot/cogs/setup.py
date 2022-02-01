@@ -154,6 +154,7 @@ class Setup(commands.Cog):
 		elif isinstance(error, commands.errors.ChannelNotFound):
 			await ctx.channel.send("Channel not found!")
 		else: 
+			print(error)
 			await ctx.channel.send("There was an error with executing command!")
 			
 	@commands.command()
