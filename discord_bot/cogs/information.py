@@ -28,12 +28,12 @@ cur = con.cursor()
 class Extract: 
 	def __init__(self, ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
 		object_type = user or guild
-		rolelist = [r.name for r in user.roles if r != ctx.guild.default_role] or [r.name for r in guild.roles if r != ctx.guild.default_role]
+		rolelist = [r.name for r in object_type.roles if r != ctx.guild.default_role] #or [r.name for r in guild.roles if r != ctx.guild.default_role]
 		roles = " | ".join(reversed(rolelist))
-		defines = [( '_name', user or guild ),
-			   ( '_id', user.id or guild.id ),
-			   ( '_created', user.created_at.strftime("%d/%m/%Y %H:%M:%S") or guild.created_at.strftime("%d/%m/%Y %H:%M:%S") ),
-			   ( '_joined', (user.joined_at.strftime("%d/%m/%Y %H:%M:%S")) or (None) ),
+		defines = [( '_name', object_type ),
+			   ( '_id', object_type.id ),
+			   ( '_created', object_type.created_at.strftime("%d/%m/%Y %H:%M:%S") ),
+			   ( '_joined', user.joined_at.strftime("%d/%m/%Y %H:%M:%S") or None ),
 			   ( '_roles', roles ),
 			   ( '_status', str(user.status).title() or None ),
 			   ( '_activity', (str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A') + (user.activity.name if user.activity else '') or None ),
@@ -52,7 +52,10 @@ class Extract:
 					
 		self.client = client
 		for name, value in defines:
-			setattr(self, name, value)
+			try:
+				setattr(self, name, value)
+			else:
+				print{f"Failed: {name}")
 
 class Information(commands.Cog):
 	def __init__(self, client):
