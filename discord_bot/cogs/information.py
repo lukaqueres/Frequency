@@ -54,7 +54,7 @@ class Information(commands.Cog):
 					return 0
 			
 			user = member or ctx.author
-			extract(ctx, user)
+			_user = Extract(ctx, user)
 			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
 			#print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
