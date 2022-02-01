@@ -133,6 +133,13 @@ class Setup(commands.Cog):
 				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Information set up succesfuly on channel: {}!".format( channel ))
+			elif channel_type == 'logs': #setting channel type updates about bot
+				if value_two != None:
+					channel = value_two
+					channel_id = channel.id
+				cur.execute("UPDATE servers_data SET (logs_msg_remove_channel_id, logs_msg_edit_channel_id) = ('{}', '{}') WHERE guild_id = '{}'".format(channel_id, channel_id, guild_id))
+				con.commit()
+				await ctx.send("Logs set up succesfuly on channel: {}!".format( channel ))
 			else:
 				await ctx.send("Unknown channel type, please check if command is properly written or *help* for full guide.")
 		else: #>-------------------------------------------------------------< Task - none, inform about it
