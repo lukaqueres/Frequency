@@ -30,8 +30,8 @@ class Extract:
 		object_type = user or guild
 		defines = [( _name, user.name or guild.name)]
 		self.client = client
-		for value, definition in defines:
-			self.{value} = definition
+		for name, value in defines:
+			setattr(self, name, value)
 		print(self._name)
 
 class Information(commands.Cog):
