@@ -55,7 +55,7 @@ class Extract:
 			try:
 				setattr(self, name, value)
 			except:
-				print{f"Failed: {name}")
+				print(f"Failed: {name}")
 
 class Information(commands.Cog):
 	def __init__(self, client):
