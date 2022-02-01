@@ -26,7 +26,8 @@ cur = con.cursor()
 
 def extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
 	object_type = user or guild
-	properties = []
+	user_properties = []
+	guild_properties = []
 	#print(object_type)
 	return 0
 
