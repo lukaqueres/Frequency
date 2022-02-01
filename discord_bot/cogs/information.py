@@ -28,7 +28,7 @@ cur = con.cursor()
 class Extract: 
 	def __init__(self, ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild = None):
 		object_type = user or guild
-		defines = [( _name, user.name or guild.name)
+		defines = [( _name, user.name or guild.name)]
   		self.client = client
 		for value, definition in defines:
 			self.{value} = definition
