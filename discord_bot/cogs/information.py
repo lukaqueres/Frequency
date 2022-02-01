@@ -24,8 +24,10 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
-def Extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild):
-	pass
+def extract(ctx, user: typing.Optional[discord.Member] = None, *, guild: discord.Guild):
+	object_type = user or guild
+	print(object_type)
+	return 0
 
 class Information(commands.Cog):
 	def __init__(self, client):
@@ -45,8 +47,9 @@ class Information(commands.Cog):
 				if ( not ctx.message.author.guild_permissions.manage_roles): # Check if user have permissions to show info about other user
 					await ctx.send("You can't check info about other user than you!")
 					return 0
-				
+			
 			user = member or ctx.author
+			extract(ctx, user)
 			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
 			print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
@@ -63,7 +66,7 @@ class Information(commands.Cog):
 			#embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="All roles:", value=roles, inline=False),
 			embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
-			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.mention}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
+			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
 			#embed.add_field(name = chr(173), value = chr(173), inline=False)
 			#embed.add_field( name="Bot:", value=user.bot, inline=True),
 			#embed.add_field( name="Status", value=str(user.status).title(), inline=True), <- FIX IT
@@ -77,9 +80,10 @@ class Information(commands.Cog):
 			await ctx.send(embed=embed)
 		if (value == 'server') or (value == 'guild'):
 			guild = ctx.guild
+			extract(ctx, guild)
 			live_members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 			bot_members_count = len([m for m in guild.members if m.bot]) # only bots 
-			rolelist = [r.mention for r in guild.roles if r != ctx.guild.default_role]
+			rolelist = [r.name for r in guild.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
 			users_online = 0
 			for i in guild.members:
