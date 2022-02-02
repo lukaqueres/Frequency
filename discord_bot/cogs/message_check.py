@@ -17,10 +17,20 @@ client = commands.Bot(command_prefix = get_prefix)
 load_dotenv()
 
 class Message_processing:
+	
 	def __init__(self, ctx):
 		self.bot = ctx.bot
+		self.client = ctx.client
+		self._author = ctx.message.author
 		self._guild = ctx.guild
 		self._channel = ctx.channel
+		self._content = ctx.message.content
+		self._wordList = ctx.message.content.split()
+		
+	@classmethod
+	async def check_for_urls(self, ctx):
+		pass
+		
 
 class Message_check(commands.Cog):
 	def __init__(self, client):
@@ -28,7 +38,7 @@ class Message_check(commands.Cog):
     
 	@commands.Cog.listener()
 	async def on_ready(self):
-		print('Spam detection module loaded')
+		print('Message check module loaded')
     
 	@commands.Cog.listener()
 	async def on_message(self, message):
