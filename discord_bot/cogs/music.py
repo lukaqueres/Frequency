@@ -469,9 +469,9 @@ class Music(commands.Cog):
 	async def ensure_voice_state(self, ctx: commands.Context):
 		if not ctx.author.voice or not ctx.author.voice.channel:
 			raise commands.CommandError('You are not connected to any voice channel.')
-			return await ctx.send('You are not connected to voice channel.'
+			return await ctx.send('You are not connected to voice channel.')
 
-		if ctx.voice_client != None:
+		if ctx.voice_client:
 			if ctx.voice_client.channel != ctx.author.voice.channel:
 				raise commands.CommandError('Bot is already in a voice channel.')
 				return await ctx.send('Bot is already in voice channel.'
