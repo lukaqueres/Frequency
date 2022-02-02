@@ -177,6 +177,6 @@ class Information(commands.Cog):
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
-    
+
 def setup(client):
 	client.add_cog(Information(client))
