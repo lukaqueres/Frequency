@@ -464,7 +464,7 @@ class Music(commands.Cog):
 
 		await self.cleanup(ctx.guild)
 
-	@connect_.before_invok
+	@connect_.before_invoke
 	@play_.before_invoke
 	async def ensure_voice_state(self, ctx: commands.Context):
 		if not ctx.author.voice or not ctx.author.voice.channel:
