@@ -22,7 +22,7 @@ class Message_processing:
 		self._guild = ctx.guild
 		self._channel = ctx.channel
 
-class Spam_detection(commands.Cog):
+class Message_check(commands.Cog):
 	def __init__(self, client):
 		self.client = client
     
@@ -96,4 +96,4 @@ class Spam_detection(commands.Cog):
 			return 0
     
 def setup(client):
-	client.add_cog(Spam_detection(client))
+	client.add_cog(Message_check(client))
