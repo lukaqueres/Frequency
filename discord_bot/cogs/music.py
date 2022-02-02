@@ -464,6 +464,15 @@ class Music(commands.Cog):
 
 		await self.cleanup(ctx.guild)
 
+	@join_.before_invok
+	@play_before_invoke
+	async def ensure_voice_state(self, ctx: commands.Context):
+		if not ctx.author.voice or not ctx.author.voice.channel:
+			raise commands.CommandError('You are not connected to any voice channel.')
+
+		if ctx.voice_client:
+			if ctx.voice_client.channel != ctx.author.voice.channel:
+				raise commands.CommandError('Bot is already in a voice channel.')
 
 def setup(client):
 	client.add_cog(Music(client))
