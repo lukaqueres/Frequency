@@ -464,8 +464,8 @@ class Music(commands.Cog):
 
 		await self.cleanup(ctx.guild)
 
-	@join_.before_invok
-	@play_before_invoke
+	@connect_.before_invok
+	@play_.before_invoke
 	async def ensure_voice_state(self, ctx: commands.Context):
 		if not ctx.author.voice or not ctx.author.voice.channel:
 			raise commands.CommandError('You are not connected to any voice channel.')
