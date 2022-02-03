@@ -111,12 +111,15 @@ class Message_check(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message_delete(self, message):
 		#print("Message deleted")
+		modDeleted = False
 		guild_id = message.guild.id
 		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		if database_record == None:
 			return 0
 		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
-        		deleter = entry.user
+			if entry.created_at.now(timezone(utc)) == datetime.utcnow():
+        			deleter = entry.user
+				modDeleted = True
 		channel = self.client.get_channel( id = database_record )
 		embed = discord.Embed( 
 			title="Message deleted",
@@ -126,7 +129,7 @@ class Message_check(commands.Cog):
 		)
 		embed.set_thumbnail(url=deleter.icon_url)
 		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter} \n**Deleter ID**: {deleter.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter if modDeleted else message.author} \n**Deleter ID**: {deleter.id if modDeleted else message.author,id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
