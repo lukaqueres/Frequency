@@ -260,8 +260,8 @@ class Music(commands.Cog):
 		self.client = client
 		self.players = {}
 
-	#@classmethod
-	"""def parse_duration(duration: int):
+	@staticmethod
+	def parse_duration(duration: int):
 		minutes, seconds = divmod(duration, 60)
 		hours, minutes = divmod(minutes, 60)
 		days, hours = divmod(hours, 24)
@@ -276,7 +276,7 @@ class Music(commands.Cog):
 		if seconds > 0:
 			duration.append('{} seconds'.format(seconds))
 
-		return ', '.join(duration)"""
+		return ', '.join(duration)
 	
 	
 	async def cleanup(self, guild):
