@@ -126,7 +126,7 @@ class Message_check(commands.Cog):
 		channel = self.client.get_channel( id = database_record )
 		embed = discord.Embed( 
 			title="Message deleted",
-			description=" ",
+			description="Deleted by moderator" if modDeleted else "Deleted by user",
 			color= message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
