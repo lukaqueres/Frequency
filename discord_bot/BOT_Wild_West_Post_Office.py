@@ -80,7 +80,7 @@ async def ping(ctx):
 	
 @client.command()
 @commands.is_owner()
-async def say(ctx, message):
+async def say(ctx, *, message):
 	await ctx.message.delete()
 	await ctx.send(message)
 	
