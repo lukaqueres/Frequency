@@ -124,6 +124,7 @@ class Message_check(commands.Cog):
 			color= message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
+		embed.set_thumbnail(url=deleter.icon_url)
 		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter} \n**Deleter ID**: {deleter.id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
@@ -145,6 +146,7 @@ class Message_check(commands.Cog):
 			color= message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
+		embed.set_thumbnail(url=message.author.icon_url)
 		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
 		embed.add_field(name= 'Message content before:', value=message_before.content, inline=False),
