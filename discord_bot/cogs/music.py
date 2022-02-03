@@ -86,7 +86,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		self.thumbnail = data.get('thumbnail')
 		self.description = data.get('description')
 		if len(self.description) > 800:
-			self.description = self.description[:75] + '...'
+			self.description = self.description[:800] + '...'
 		self.duration = self.parse_duration(int(data.get('duration')))
 		self.tags = data.get('tags')
 		self.url = data.get('webpage_url')
@@ -450,21 +450,23 @@ class Music(commands.Cog):
 		upcoming = list(itertools.islice(player.queue._queue, 0, 9))
 		total_duration = 0
 		#for _ in upcoming:
-		#	total_duration = total_duration + int(_["duration"])
-		fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
+		#	total_duration = total_duration + int(_['duration'])
+		#fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
 		embed = Embed(title="Queue",
 			      description = 'List of next songs in queue',
 			      colour = 0x0000ff,
 			      timestamp=datetime.utcnow()
 		)
-		embed.set_thumbnail(url=ctx.author.avatar_url)
+		_ = upcoming[0]
+		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
 			title = _["title"]
-			#duration = _["duration"]
+			#duration = parse_duration(int(_.get('duration')))
+			duration = _.duration
 			requester = _["requester"]
-			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {'duration'}\n**Requester**: {requester}", inline=True),
+			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {duration}\n**Requester**: {requester}", inline=True),
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
