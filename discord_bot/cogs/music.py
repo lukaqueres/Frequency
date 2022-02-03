@@ -27,6 +27,7 @@ import random
 from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
+from discord import member, DMChannel, FFmpegPCMAudio, TextChannel, Embed, Intents
 from datetime import datetime, date, timedelta
 
 from functions import get_prefix, get_time, get_database_data
@@ -451,13 +452,13 @@ class Music(commands.Cog):
 		#for _ in upcoming:
 		#	total_duration = total_duration + int(_["duration"])
 		fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
-		embed = Embed(title="Queue",
+		embed = embed(title="Queue",
 			      description = 'List of next songs in queue',
 			      colour = 0x0000ff,
 			      timestamp=datetime.utcnow()
 		)
 		embed.set_thumbnail(url=ctx.author.avatar_url)
-		embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
+		#embed = discord.embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
 			title = _["title"]
