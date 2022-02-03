@@ -154,7 +154,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		if download:
 			source = ytdl.prepare_filename(data)
 		else:
-			return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : int(data.get('duration')), 'thumbnail' : data.get('thumbnail')}
+			return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : parse_duration(int(data.get('duration'))), 'thumbnail' : data.get('thumbnail')}
 		
 		return cls(discord.FFmpegPCMAudio(source), data=data, requester=ctx.author)
 
@@ -450,7 +450,8 @@ class Music(commands.Cog):
 		upcoming = list(itertools.islice(player.queue._queue, 0, 9))
 		total_duration = 0
 		for _ in upcoming:
-			total_duration = total_duration + _['duration']
+			total_duration = total_duration + int(_['duration'])
+		total_duration = parse_duration(total_duration)
 		#fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
 		embed = Embed(title="Queue",
 			      description = 'List of next songs in queue',
