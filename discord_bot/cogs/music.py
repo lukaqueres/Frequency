@@ -139,7 +139,15 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			print(f"Lista id: {id_list}")
 			data = data['entries'][0]
 		
-		await ctx.send(f'```ini\n[Added {data["title"]} to the Queue.]\n```', delete_after=15)
+		embed = discord.Embed( 
+			title="Added to queue",
+			description="You can always check queue with *queue* command",
+			color= message.author.colour,
+			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+		)
+		embed.add_field(name= "Title:", value=data["title"], inline=True),
+		embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
+		await ctx.send(embed = embed, delete_after=15)
 
 		if download:
 			source = ytdl.prepare_filename(data)
