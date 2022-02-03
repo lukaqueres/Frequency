@@ -22,8 +22,11 @@ class Message_processing:
 		self.bot = ctx.bot
 		self.client = ctx.client
 		self._author = ctx.message.author
+		self._authorId = ctx.message.author.id
 		self._guild = ctx.guild
+		self._guildId = ctx.guild.id
 		self._channel = ctx.channel
+		self._channelId = ctx.channel.id
 		self._content = ctx.message.content
 		self._wordList = ctx.message.content.split()
 		
@@ -106,7 +109,7 @@ class Message_check(commands.Cog):
 			return 0
 		
 	@commands.Cog.listener()
-	async def on_message_delete(self, message):
+	async def on_message_delete(self, ctx, message):
 		guild_id = message.guild.id
 		database_record = get_database_data('servers_data', 'logs_msg_remove_channel_id', guild_id)
 		if database_record == None:
