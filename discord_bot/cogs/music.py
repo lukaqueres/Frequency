@@ -142,7 +142,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		embed = discord.Embed( 
 			title="Added to queue",
 			description="You can always check queue with *queue* command",
-			color= message.author.colour,
+			color= ctx.message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.add_field(name= "Title:", value=data["title"], inline=True),
