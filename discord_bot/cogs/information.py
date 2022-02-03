@@ -16,6 +16,8 @@ from functions import get_prefix, get_time, get_database_data
 intents = discord.Intents.all()
 intents.presences = True
 intents.members = True
+intents.guilds = True
+intents.messages = True
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
 load_dotenv()
