@@ -121,8 +121,7 @@ class Database_maintenance(commands.Cog):
 		channel_id = channel.id
 		database_record_channel_one = get_database_data('servers_data', 'message_check_channel_id', guild_id)
 		database_record_channel_two = get_database_data('servers_data', 'updates_channel_id', guild_id)
-		database_record_channel_three = get_database_data('servers_data', 'logs_msg_remove_channel_id', guild_id)
-		database_record_channel_four = get_database_data('servers_data', 'logs_msg_edit_channel_id', guild_id)
+		database_record_channel_three = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		null = 'NULL'
 		if (channel_id == database_record_channel_one):
 			cur.execute("UPDATE servers_data SET message_check_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
@@ -135,10 +134,7 @@ class Database_maintenance(commands.Cog):
 			cur.execute("UPDATE servers_properties SET updates = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
 			con.commit()
 		elif (channel_id == database_record_channel_three):
-			cur.execute("UPDATE servers_data SET logs_msg_remove_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
-			con.commit()
-		elif (channel_id == database_record_channel_four):
-			cur.execute("UPDATE servers_data SET logs_msg_edit_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
+			cur.execute("UPDATE servers_data SET logs_msg_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
 			con.commit()
 		else:
 			return 0
