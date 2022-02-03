@@ -110,6 +110,7 @@ class Message_check(commands.Cog):
 		
 	@commands.Cog.listener()
 	async def on_message_delete(self, ctx, message):
+		print("Message deleted")
 		guild_id = message.guild.id
 		database_record = get_database_data('servers_data', 'logs_msg_remove_channel_id', guild_id)
 		if database_record == None:
