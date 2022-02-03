@@ -116,6 +116,7 @@ class Message_check(commands.Cog):
 		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		if database_record == None:
 			return 0
+		deleter = None
 		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
 			if entry.created_at.now() == datetime.utcnow():
 				deleter = entry.user
