@@ -464,7 +464,7 @@ class Music(commands.Cog):
 		embed = discord.Embed( 
 			title="Now playing",
 			description="Information about now playing song",
-			color= message.author.colour,
+			color= ctx.message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.set_thumbnail(url=vc.source.thumbnail)
