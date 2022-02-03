@@ -145,6 +145,8 @@ class Message_check(commands.Cog):
 		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		if database_record == None:
 			return 0
+		if message_before.content == message_after.content:
+			return 0
 		channel = self.client.get_channel( id = database_record )
 		embed = discord.Embed( 
 			title="Message edited",
