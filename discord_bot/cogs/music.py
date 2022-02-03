@@ -79,7 +79,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 	def __init__(self, source, *, data, requester):
 		super().__init__(source)
 		self.requester = requester
-		date = data.get('upload_date')
+		date = data.get('upload_date') 
 
 		self.title = data.get('title')
 		self.web_url = data.get('webpage_url')
