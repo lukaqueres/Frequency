@@ -77,6 +77,19 @@ async def clear_error(error, ctx):
 async def ping(ctx):
 	await ctx.send(f'Ping: {round(client.latency * 1000)} ms')
 	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild))
+	
+@client.command()
+@commands.is_owner()
+async def say(ctx, message):
+	await ctx.message.delete()
+	await ctx.send(message)
+	
+@say.error
+async def say_error(error, ctx):
+	if isinstance(error, MissingPermissions):
+		global current_day
+		global current_time
+		print("\n Say has been triggered and didn't work by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
 
 #>------------------------------------------->INSTALLING ALL THIS USELESS' SHIT<--------------------------------------------------------------------------------------<
 	
