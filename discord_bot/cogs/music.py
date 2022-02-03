@@ -458,10 +458,11 @@ class Music(commands.Cog):
 			      timestamp=datetime.utcnow()
 		)
 		_ = upcoming[0]
-		embed.set_thumbnail(url= _["thumbnail"])
+		#embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
+			print{f"_ : {_}")
 			title = _["title"]
 			#duration = parse_duration(int(_.get('duration')))
 			duration = _.duration
