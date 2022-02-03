@@ -125,6 +125,7 @@ class Message_check(commands.Cog):
 		)
 		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter} \n**Deleter ID**: {deleter.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
