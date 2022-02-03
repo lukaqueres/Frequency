@@ -21,6 +21,9 @@ import sys
 import traceback
 import psycopg2
 import os
+import functools
+import math
+import random
 from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
