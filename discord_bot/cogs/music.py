@@ -445,6 +445,7 @@ class Music(commands.Cog):
 	@commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
 	async def now_playing_(self, ctx):
 		"""Display information about the currently playing song."""
+		
 		vc = ctx.voice_client
 
 		if not vc or not vc.is_connected():
@@ -460,9 +461,23 @@ class Music(commands.Cog):
 		except discord.HTTPException:
 			pass
 		
+		embed = discord.Embed( 
+			title="Now playing",
+			description="Information about now playing song",
+			color= message.author.colour,
+			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+		)
+		embed.set_thumbnail(url=vc.source.thumbnail)
+		embed.add_field(name= chr(173), value=f"**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Views**: {vc.source.views} \n**Likes**: {vc.source.likes}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Views**: {vc.source.views} \n**Likes**: {vc.source.likes}", inline=True),
+		embed.add_field(name= '**Description**:', value=vc.source.description, inline=False),
+		embed.add_field(name= '**Url**:', value=vc.source.url, inline=False),
+		embed.add_field(name= chr(173), value=f"**Uploader**: {vc.source.uploader} \n**Upload date**: {vc.source.upload_date}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Tags**: {vc.source.tags} \n**Requested by**: {vc.source.requester}", inline=True),
+		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.message.add_reaction('✅')
-		player.np = await ctx.send(f'**Now Playing:** `{vc.source.title}` **With view count**: {vc.source.views}'
-								f'requested by `{vc.source.requester}`')
+		player.np = await ctx.send(embed = embed)
 
 	@commands.command(name='volume', aliases=['vol'])
 	async def change_volume(self, ctx, *, vol: float):
