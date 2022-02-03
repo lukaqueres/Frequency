@@ -119,6 +119,8 @@ class Message_check(commands.Cog):
 		deleter = None
 		if (message.author.bot):
 			return 0
+		if message.content.startswith('$say'):
+			return 0
 		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
 			if entry.created_at.now() == datetime.utcnow():
 				deleter = entry.user
