@@ -76,10 +76,37 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
 		self.title = data.get('title')
 		self.web_url = data.get('webpage_url')
+		self.thumbnail = data.get('thumbnail')
+        	self.description = data.get('description')
+        	self.duration = self.parse_duration(int(data.get('duration')))
+        	self.tags = data.get('tags')
+        	self.url = data.get('webpage_url')
+        	self.views = data.get('view_count')
+		self.likes = data.get('like_count')
+		self.uploader = data.get('uploader')
+		self.upload_date = date[6:8] + '.' + date[4:6] + '.' + date[0:4]
 
 		# YTDL info dicts (data) have other useful information you might want
 		# https://github.com/rg3/youtube-dl/blob/master/README.md
 
+	@staticmethod
+	def parse_duration(duration: int):
+		minutes, seconds = divmod(duration, 60)
+		hours, minutes = divmod(minutes, 60)
+		days, hours = divmod(hours, 24)
+
+		duration = []
+		if days > 0:
+			duration.append('{} days'.format(days))
+		if hours > 0:
+			duration.append('{} hours'.format(hours))
+		if minutes > 0:
+			duration.append('{} minutes'.format(minutes))
+		if seconds > 0:
+			duration.append('{} seconds'.format(seconds))
+
+		return ', '.join(duration)
+	
 	def __getitem__(self, item: str):
 		"""Allows us to access attributes similar to a dict.
 		This is only useful when you are NOT downloading.
@@ -430,7 +457,7 @@ class Music(commands.Cog):
 			pass
 		
 		await ctx.message.add_reaction('✅')
-		player.np = await ctx.send(f'**Now Playing:** `{vc.source.title}` '
+		player.np = await ctx.send(f'**Now Playing:** `{vc.source.title}` **With view count**: {vc.source.views}'
 								f'requested by `{vc.source.requester}`')
 
 	@commands.command(name='volume', aliases=['vol'])
