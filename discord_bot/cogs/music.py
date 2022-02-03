@@ -471,8 +471,7 @@ class Music(commands.Cog):
 		embed.set_thumbnail(url=vc.source.thumbnail)
 		embed.add_field(name= chr(173), value=f"**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Views**: {vc.source.views} \n**Likes**: {vc.source.likes}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Views**: {vc.source.views} \n**Likes**: {vc.source.likes}", inline=True),
-		embed.add_field(name= '**Description**:', value=vc.source.description, inline=False),
+		embed.add_field(name= '**Description**:', value=f"```{vc.source.description}```", inline=False),
 		embed.add_field(name= '**Url**:', value=vc.source.url, inline=False),
 		embed.add_field(name= chr(173), value=f"**Uploader**: {vc.source.uploader} \n**Upload date**: {vc.source.upload_date}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Tags**: {vc.source.tags} \n**Requested by**: {vc.source.requester}", inline=True),
