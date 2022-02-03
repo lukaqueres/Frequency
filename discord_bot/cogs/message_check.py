@@ -112,7 +112,7 @@ class Message_check(commands.Cog):
 	async def on_message_delete(self, message):
 		print("Message deleted")
 		guild_id = message.guild.id
-		database_record = get_database_data('servers_data', 'logs_msg_remove_channel_id', guild_id)
+		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		if database_record == None:
 			return 0
 		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
