@@ -130,7 +130,7 @@ class Message_check(commands.Cog):
 		)
 		embed.set_thumbnail(url=deleter.icon_url if modDeleted else message.author.avatar_url)
 		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter if modDeleted else message.author} \n**Deleter ID**: {deleter.id if modDeleted else message.author,id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter if modDeleted else message.author} \n**Deleter ID**: {deleter.id if modDeleted else message.author.id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
