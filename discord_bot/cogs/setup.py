@@ -130,6 +130,11 @@ class Setup(commands.Cog):
 				if value_two != None:
 					channel = value_two
 					channel_id = channel.id
+				database_data = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
+				if channel_id = database_data:
+					cur.execute("UPDATE servers_data SET logs_msg_channel_id = {} WHERE guild_id = '{}'".format(None, guild_id))
+					con.commit()
+					return await ctx.send("Message logs cleared up succesfuly on channel: {}!".format( channel ))
 				cur.execute("UPDATE servers_data SET logs_msg_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
 				con.commit()
 				await ctx.send("Message logs set up succesfuly on channel: {}!".format( channel ))
@@ -295,5 +300,6 @@ class Setup(commands.Cog):
 				return 0
 		else:
 			await ctx.channel.send("You must choose what to change!")
+			
 def setup(client):
 	client.add_cog(Setup(client))
