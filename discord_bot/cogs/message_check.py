@@ -110,7 +110,7 @@ class Message_check(commands.Cog):
 		
 	@commands.Cog.listener()
 	async def on_message_delete(self, message):
-		print("Message deleted")
+		#print("Message deleted")
 		guild_id = message.guild.id
 		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		if database_record == None:
@@ -131,6 +131,26 @@ class Message_check(commands.Cog):
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
 		
+	@commands.Cog.listener()
+	async def on_message_edit(self,message_before, message_after):
+		message = message_after
+		guild_id = message.guild.id
+		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
+		if database_record == None:
+			return 0
+		channel = self.client.get_channel( id = database_record )
+		embed = discord.Embed( 
+			title="Message edited",
+			description=" ",
+			color= message.author.colour,
+			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+		)
+		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
+		embed.add_field(name= 'Message content before:', value=message_before.content, inline=False),
+		embed.add_field(name= 'Message content after:', value=message_after.content, inline=False),
+		embed.set_footer(text="Provided by Wild West Post Office")
+		await channel.send(embed=embed)
 		
 def setup(client):
 	client.add_cog(Message_check(client))
