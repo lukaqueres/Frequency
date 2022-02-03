@@ -83,6 +83,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		self.web_url = data.get('webpage_url')
 		self.thumbnail = data.get('thumbnail')
 		self.description = data.get('description')
+		if len(self.description.clean_content) > 800:
+			self.description = self.description[:75] + '...'
 		self.duration = self.parse_duration(int(data.get('duration')))
 		self.tags = data.get('tags')
 		self.url = data.get('webpage_url')
