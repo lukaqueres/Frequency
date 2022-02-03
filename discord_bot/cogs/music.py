@@ -292,6 +292,7 @@ class Music(commands.Cog):
 			except asyncio.TimeoutError:
 				raise VoiceConnectionError(f'Connecting to channel: <{channel}> timed out.')
 
+		await ctx.message.add_reaction('✅')
 		await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
 	@commands.command(name='play', aliases=['sing'])
@@ -316,7 +317,7 @@ class Music(commands.Cog):
 		# If download is False, source will be a dict which will be used later to regather the stream.
 		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
 		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
-
+		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
 	"""	
 	@commands.command(name='playlist', aliases=['sing_playlist'])
@@ -355,6 +356,7 @@ class Music(commands.Cog):
 			return
 
 		vc.pause()
+		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Paused the song!')
 
 	@commands.command(name='resume')
@@ -368,6 +370,7 @@ class Music(commands.Cog):
 			return
 
 		vc.resume()
+		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Resumed the song!')
 
 	@commands.command(name='skip')
@@ -384,6 +387,7 @@ class Music(commands.Cog):
 			return
 
 		vc.stop()
+		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Skipped the song!')
 
 	@commands.command(name='queue', aliases=['q', 'playlist'])
@@ -403,7 +407,8 @@ class Music(commands.Cog):
 
 		fmt = '\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
 		embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
-
+		
+		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
 	@commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
@@ -423,7 +428,8 @@ class Music(commands.Cog):
 			await player.np.delete()
 		except discord.HTTPException:
 			pass
-
+		
+		await ctx.message.add_reaction('✅')
 		player.np = await ctx.send(f'**Now Playing:** `{vc.source.title}` '
 								f'requested by `{vc.source.requester}`')
 
@@ -449,6 +455,7 @@ class Music(commands.Cog):
 			vc.source.volume = vol / 100
 
 		player.volume = vol / 100
+		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Set the volume to **{vol}%**')
 
 	@commands.command(name='stop')
@@ -461,10 +468,11 @@ class Music(commands.Cog):
 
 		if not vc or not vc.is_connected():
 			return await ctx.send('I am not currently playing anything!', delete_after=20)
-
+		
+		await ctx.message.add_reaction('✅')
 		await self.cleanup(ctx.guild)
 
-	@connect_.before_invoke
+	"""@connect_.before_invoke
 	@play_.before_invoke
 	async def ensure_voice_state(self, ctx: commands.Context):
 		if not ctx.author.voice or not ctx.author.voice.channel:
@@ -474,7 +482,7 @@ class Music(commands.Cog):
 		if ctx.voice_client:
 			if ctx.voice_client.channel != ctx.author.voice.channel:
 				raise commands.CommandError('Bot is already in a voice channel.')
-				return await ctx.send('Bot is already in voice channel.')
+				return await ctx.send('Bot is already in voice channel.')"""
 
 def setup(client):
 	client.add_cog(Music(client))
