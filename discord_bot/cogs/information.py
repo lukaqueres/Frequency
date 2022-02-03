@@ -158,27 +158,6 @@ class Information(commands.Cog):
 		else: 
 			print(error)
 			await ctx.channel.send("There was an error with executing command!")
-	
-	@commands.Cog.listener()
-	async def on_message_remove(self, message):
-		guild_id = message.guild.id
-		database_record = get_database_data('servers_data', 'logs_msg_remove_channel_id', guild_id)
-		if database_record == None:
-			return 0
-		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
-        		deleter = entry.user
-		channel = self.client.get_channel( id = database_record )
-		embed = discord.Embed( 
-			title="Message deleted",
-			description=" ",
-			color= message.author.colour,
-			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
-		)
-		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter} \n**Deleter ID**: {deleter.id}", inline=True),
-		embed.add_field(name= 'Message content:', value=message.content, inline=True),
-		embed.set_footer(text="Provided by Wild West Post Office")
-		await channel.send(embed=embed)
 
 def setup(client):
 	client.add_cog(Information(client))
