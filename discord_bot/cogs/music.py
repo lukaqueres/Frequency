@@ -445,12 +445,22 @@ class Music(commands.Cog):
 		if player.queue.empty():
 			return await ctx.send('There are currently no more queued songs.')
 
-		# Grab up to 5 entries from the queue...
-		upcoming = list(itertools.islice(player.queue._queue, 0, 5))
-
+		# Grab up to 9 entries from the queue...
+		upcoming = list(itertools.islice(player.queue._queue, 0, 9))
+		duration = 0
+		for x in upcoming:
+			duration = duration + x["duration"]
 		fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
+		embed = Embed(title="Queue",
+			      description = 'List of songs in queue',
+			      colour = 0x0000ff,
+			      timestamp=datetime.utcnow()
+		)
+		embed.set_thumbnail(url=user.avatar_url)
 		embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
-		
+		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {duration}", inline=False),
+		for x in upcoming:
+			embed.add_field(name= chr(173), value=f"**Title**: {x["title"]} \n**Duration**: {x["duration"]}\n**Requester**: {x["requester"]}", inline=True),
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
