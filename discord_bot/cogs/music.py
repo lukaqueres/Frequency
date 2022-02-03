@@ -460,7 +460,10 @@ class Music(commands.Cog):
 		embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {duration}", inline=False),
 		for x in upcoming:
-			embed.add_field(name= chr(173), value=f"**Title**: {x["title"]} \n**Duration**: {x["duration"]}\n**Requester**: {x["requester"]}", inline=True),
+			title = x["title"]
+			duration = x["duration"]
+			requester = x["requester"]
+			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {duration}\n**Requester**: {requester}", inline=True),
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
