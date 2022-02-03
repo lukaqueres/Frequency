@@ -80,10 +80,9 @@ class Setup(commands.Cog):
 		channel = ctx.channel
 		channel_id = channel.id
 		value_length = len(value)
+		if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
+			return await ctx.send("You don't have permissions to do this!")
 		if (task == 'prefix'): #>-------------------------------------------< Task - prefix
-			if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
-				await ctx.send("You don't have permissions to do this!")
-				return 0
 			if (value == 'default'): # If value wasn't changed
 				await ctx.send("You must specify new prefix!")
 				return 0
@@ -95,9 +94,6 @@ class Setup(commands.Cog):
 				con.commit()
 				await ctx.send("This guild prefix changed for: '{}'.".format( value ))
 		elif (task == 'language'): #>-------------------------------------------< Task - language
-			if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
-				await ctx.send("You don't have permissions to do this!")
-				return 0
 			if (value == 'default'): # If value wasn't changed
 				await ctx.send("You must specify language!")
 				return 0
@@ -115,9 +111,6 @@ class Setup(commands.Cog):
 				con.commit()
 				await ctx.send("Guild language changed for: '{}'.".format( language_name ))
 		elif (task == 'channel'): #>-------------------------------------------< Task - channel set-up
-			if ( not ctx.message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
-				await ctx.send("You don't have permissions to do this!")
-				return 0
 			channel_type = value
 			if channel_type == 'message_check': # setting channel type spam info
 				if value_two != None:
