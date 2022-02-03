@@ -448,8 +448,8 @@ class Music(commands.Cog):
 		# Grab up to 9 entries from the queue...
 		upcoming = list(itertools.islice(player.queue._queue, 0, 9))
 		total_duration = 0
-		for x in upcoming:
-			total_duration = total_duration + int(x["duration"])
+		for _ in upcoming:
+			total_duration = total_duration + int(_["duration"])
 		fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
 		embed = Embed(title="Queue",
 			      description = 'List of songs in queue',
@@ -459,10 +459,10 @@ class Music(commands.Cog):
 		embed.set_thumbnail(url=user.avatar_url)
 		embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
-		for x in upcoming:
-			title = x["title"]
-			duration = x["duration"]
-			requester = x["requester"]
+		for _ in upcoming:
+			title = _["title"]
+			duration = _["duration"]
+			requester = _["requester"]
 			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {duration}\n**Requester**: {requester}", inline=True),
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
