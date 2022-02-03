@@ -154,7 +154,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		if download:
 			source = ytdl.prepare_filename(data)
 		else:
-			return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title']}
+			return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : int(data.get('duration')), 'thumbnail' : data.get('thumbnail')}
 		
 		return cls(discord.FFmpegPCMAudio(source), data=data, requester=ctx.author)
 
@@ -449,8 +449,8 @@ class Music(commands.Cog):
 		# Grab up to 9 entries from the queue...
 		upcoming = list(itertools.islice(player.queue._queue, 0, 9))
 		total_duration = 0
-		#for _ in upcoming:
-		#	total_duration = total_duration + int(_['duration'])
+		for _ in upcoming:
+			total_duration = total_duration + _['duration']
 		#fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
 		embed = Embed(title="Queue",
 			      description = 'List of next songs in queue',
@@ -458,14 +458,13 @@ class Music(commands.Cog):
 			      timestamp=datetime.utcnow()
 		)
 		_ = upcoming[0]
-		#embed.set_thumbnail(url= _["thumbnail"])
+		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
 			print(f"_ : {_}")
 			title = _["title"]
-			#duration = parse_duration(int(_.get('duration')))
-			duration = _.duration
+			duration = _["duration"]
 			requester = _["requester"]
 			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {duration}\n**Requester**: {requester}", inline=True),
 		await ctx.message.add_reaction('✅')
