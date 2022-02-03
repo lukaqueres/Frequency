@@ -549,7 +549,7 @@ class Music(commands.Cog):
 	"""@connect_.before_invoke
 	@play_.before_invoke
 	async def ensure_voice_state(self, ctx: commands.Context):
-		if not ctx.author.voice or not ctx.author.voice.channel:
+		if not ctx.author.voice or not ctx.author.voice.channel: 
 			raise commands.CommandError('You are not connected to any voice channel.')
 			return await ctx.send('You are not connected to voice channel.')
 
