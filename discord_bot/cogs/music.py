@@ -452,13 +452,13 @@ class Music(commands.Cog):
 		#for _ in upcoming:
 		#	total_duration = total_duration + int(_["duration"])
 		fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
-		embed = embed(title="Queue",
+		embed = Embed(title="Queue",
 			      description = 'List of next songs in queue',
 			      colour = 0x0000ff,
 			      timestamp=datetime.utcnow()
 		)
 		embed.set_thumbnail(url=ctx.author.avatar_url)
-		#embed = discord.embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
+		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
 			title = _["title"]
