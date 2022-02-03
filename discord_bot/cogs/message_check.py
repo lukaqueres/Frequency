@@ -117,7 +117,7 @@ class Message_check(commands.Cog):
 		if database_record == None:
 			return 0
 		async for entry in message.guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
-			if entry.created_at.now(timezone(utc)) == datetime.utcnow():
+			if entry.created_at.datetime.now() == datetime.utcnow():
 				deleter = entry.user
 				modDeleted = True
 		channel = self.client.get_channel( id = database_record )
