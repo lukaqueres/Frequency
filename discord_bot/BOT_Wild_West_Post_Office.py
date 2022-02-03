@@ -82,7 +82,9 @@ async def ping(ctx):
 @commands.is_owner()
 async def say(ctx, *, message):
 	await ctx.message.delete()
-	await ctx.send(message)
+	if ctx.message.reference:
+		message_reference = await ctx.channel.fetch_message(ctx.message.reference.message_id)
+	await ctx.send(message, reference = message_reference)
 	
 @say.error
 async def say_error(error, ctx):
