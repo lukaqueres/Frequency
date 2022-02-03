@@ -84,7 +84,8 @@ async def say(ctx, *, message):
 	await ctx.message.delete()
 	if ctx.message.reference:
 		message_reference = await ctx.channel.fetch_message(ctx.message.reference.message_id)
-	await ctx.send(message, reference = message_reference)
+		await ctx.send(message, reference = message_reference)
+	await ctx.send(message)
 	
 @say.error
 async def say_error(error, ctx):
