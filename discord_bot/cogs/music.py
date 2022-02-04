@@ -463,7 +463,8 @@ class Music(commands.Cog):
 			return await ctx.send('There are currently no more queued songs.')
 
 		# Grab up to 9 entries from the queue...
-		upcoming = list(itertools.islice(player.queue._queue, 0, 100)) # 100 = 9
+		upcoming = list(itertools.islice(player.queue._queue, 0, 9)) # 100 = 9
+		total_queue_length = len(list(itertools.islice(player.queue._queue))
 		total_duration = 0
 		for _ in upcoming:
 			total_duration = total_duration + int(_['duration'])
@@ -477,7 +478,7 @@ class Music(commands.Cog):
 		_ = upcoming[0]
 		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
-		embed.add_field(name= "Info:", value=f"**Number of songs in queue**: {len(upcoming)}\n**Total duration**: {total_duration}", inline=False),
+		embed.add_field(name= "Info:", value=f"**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
 			print(f"_ : {_}")
 			title = _["title"]
