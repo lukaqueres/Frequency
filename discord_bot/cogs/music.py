@@ -463,8 +463,12 @@ class Music(commands.Cog):
 			return await ctx.send('There are currently no more queued songs.')
 
 		# Grab up to 9 entries from the queue...
-		upcoming = list(itertools.islice(player.queue._queue, 0, 9))
+		upcoming = list(itertools.islice(player.queue._queue, 0, 100)) # 100 = 9
 		total_duration = 0
+		items_per_page = 9
+		pages = math.ceil(len(player.queue._queue) / items_per_page)
+		start = (page - 1) * items_per_page
+		end = start + items_per_page
 		for _ in upcoming:
 			total_duration = total_duration + int(_['duration'])
 		total_duration = parse_duration(total_duration)
@@ -483,7 +487,8 @@ class Music(commands.Cog):
 			title = _["title"]
 			duration = _["duration"]
 			requester = _["requester"]
-			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {duration}\n**Requester**: {requester}", inline=True),
+			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+			embed.set_footer(text='Viewing page {}/{}'.format(page, pages)))
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
