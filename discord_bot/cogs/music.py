@@ -488,7 +488,7 @@ class Music(commands.Cog):
 			duration = _["duration"]
 			requester = _["requester"]
 			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
-			embed.set_footer(text='Viewing page {}/{}'.format(page, pages)))
+			embed.set_footer(text='Viewing page {}/{}'.format(page, pages))
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
