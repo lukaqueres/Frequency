@@ -260,7 +260,7 @@ class Music(commands.Cog):
 		self.client = client
 		self.players = {}
 
-	@staticmethod
+	#@classmethod
 	def parse_duration(duration: int):
 		minutes, seconds = divmod(duration, 60)
 		hours, minutes = divmod(minutes, 60)
