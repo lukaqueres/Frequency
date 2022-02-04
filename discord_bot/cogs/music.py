@@ -65,6 +65,22 @@ ffmpegopts = {
 
 ytdl = YoutubeDL(ytdlopts)
 
+def parse_duration(duration: int):
+	minutes, seconds = divmod(duration, 60)
+	hours, minutes = divmod(minutes, 60)
+	days, hours = divmod(hours, 24)
+
+	duration = []
+	if days > 0:
+		duration.append('{} days'.format(days))
+	if hours > 0:
+		duration.append('{} hours'.format(hours))
+	if minutes > 0:
+		duration.append('{} minutes'.format(minutes))
+	if seconds > 0:
+		duration.append('{} seconds'.format(seconds))
+
+	return ', '.join(duration)
 
 class VoiceConnectionError(commands.CommandError):
 	"""Custom Exception class for connection errors."""
@@ -259,25 +275,6 @@ class Music(commands.Cog):
 		self.bot = bot
 		self.client = client
 		self.players = {}
-
-	#@classmethod
-	def parse_duration(duration: int):
-		minutes, seconds = divmod(duration, 60)
-		hours, minutes = divmod(minutes, 60)
-		days, hours = divmod(hours, 24)
-
-		duration = []
-		if days > 0:
-			duration.append('{} days'.format(days))
-		if hours > 0:
-			duration.append('{} hours'.format(hours))
-		if minutes > 0:
-			duration.append('{} minutes'.format(minutes))
-		if seconds > 0:
-			duration.append('{} seconds'.format(seconds))
-
-		return ', '.join(duration)
-	
 	
 	async def cleanup(self, guild):
 		try:
