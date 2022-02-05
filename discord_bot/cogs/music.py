@@ -175,6 +175,54 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		return cls(discord.FFmpegPCMAudio(source), data=data, requester=ctx.author)
 
 	@classmethod
+	async def add_to_queue(cls, ctx, directory):
+		player = cls.get_player(ctx)
+
+		await player.queue.put(directory)
+		data = directory
+		embed = discord.Embed( 
+			title="Added to queue",
+			description="You can always check queue with *queue* command",
+			color= ctx.message.author.colour,
+			timestamp=datetime.utcnow() + timedelta( hours = 0 )
+		)
+		embed.add_field(name= "Title:", value=data["title"], inline=True),
+		embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
+		await ctx.send(embed = embed, delete_after=15)
+
+	@classmethod
+	async def create_source_from_playlist(cls, ctx, search: str, *, loop, download=False):
+		loop = loop or asyncio.get_event_loop()
+
+		to_run = partial(ytdl.extract_info, url=search, download=download)
+		data = await loop.run_in_executor(None, to_run)
+		#print(f'To_run: {to_run}')
+		#print(f'Data: {data}' )
+		if 'entries' in data:
+			# take first item from a playlist
+			entries_list = []
+			#data = []
+			#iteration = 0
+			for item in data['entries']:
+				entries_list.append(item)
+			for entry in entries_list:
+				data = entry
+				directory = {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : int(data.get('duration')), 'thumbnail' : data.get('thumbnail')}
+				cls.add_to_queue(ctx, directory)
+
+			print(f"Lista entries: {entries_list}")
+			print(f"Liczba entries: {len(entries_list)}")
+				return 0
+
+			data = data['entries'][0]
+
+		if download:
+			source = ytdl.prepare_filename(data)
+			return cls(discord.FFmpegPCMAudio(source), data=data, requester=ctx.author)
+		else:
+			return {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : int(data.get('duration')), 'thumbnail' : data.get('thumbnail')}
+		
+	@classmethod
 	async def regather_stream(cls, data, *, loop):
 		"""Used for preparing a stream, instead of downloading.
 		Since Youtube Streaming links expire."""
@@ -379,31 +427,26 @@ class Music(commands.Cog):
 		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
-	"""	
+	
 	@commands.command(name='playlist', aliases=['sing_playlist'])
 	async def playlist_(self, ctx, *, search: str):
-		""""""Request a song and add it to the queue.
+		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
 		Uses YTDL to automatically search and retrieve a song.
 		Parameters
 		------------
 		search: str [Required]
 			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
-		""""""
+		"""
 		await ctx.trigger_typing()
 
 		vc = ctx.voice_client
 
 		if not vc:
 			await ctx.invoke(self.connect_)
-
-		player = self.get_player(ctx)
-
 		# If download is False, source will be a dict which will be used later to regather the stream.
 		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
-		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
-
-		await player.queue.put(source)"""
+		source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False)
 
 	@commands.command(name='pause')
 	async def pause_(self, ctx):
