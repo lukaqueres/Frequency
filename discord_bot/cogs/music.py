@@ -520,9 +520,10 @@ class Music(commands.Cog):
 
 		# Grab up to 9 entries from the queue...
 		upcoming = list(itertools.islice(player.queue._queue, 0, 9)) # 100 = 9
+		total_queue = list(player.queue._queue)
 		total_queue_length = len(list(player.queue._queue))
 		total_duration = 0
-		for _ in upcoming:
+		for _ in total_queue:
 			total_duration = total_duration + int(_['duration'])
 		total_duration = parse_duration(total_duration)
 		#fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
@@ -535,12 +536,32 @@ class Music(commands.Cog):
 		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
-		for _ in upcoming:
-			title = _["title"]
-			duration = _["duration"]
-			requester = _["requester"]
-			embed.add_field(name= chr(173), value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
-			embed.set_footer(text="Provided by Wild West Post Office")
+		iteration = 0
+		if total_queue_length < 10:
+			for _ in upcoming:
+				iteration = iteration + 1
+				title = _["title"]
+				duration = _["duration"]
+				requester = _["requester"]
+				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+		
+		if total_queue_length > 9:
+			upcoming = list(itertools.islice(player.queue._queue, 0, 8))
+			rest_number = total_queue_length - len(upcoming)
+			rest_list = list(itertools.islice(player.queue._queue, len(upcoming), total_queue_length)) #, 8
+			rest_duration = 0
+			for item in rest_list:
+				rest_duration = rest_duration + int(item["duration"])
+			rest_duration = parse_duration(rest_duration)
+			for _ in upcoming:
+				iteration = iteration + 1
+				title = _["title"]
+				duration = _["duration"]
+				requester = _["requester"]
+				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+			embed.add_field(name= f"And: {rest_number} more", value=f"**Duration**: {rest_duration}", inline=True),
+		
+		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
