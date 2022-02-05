@@ -46,7 +46,7 @@ ytdlopts = {
 	'format': 'bestaudio/best',
 	'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
-	'noplaylist': False, #True
+	'no': False, #True
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
@@ -428,7 +428,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
 	
-	@commands.command(name='playlist', aliases=['sing_playlist'])
+	@commands.command(name='play_list', aliases=['sing_playlist'])
 	async def playlist_(self, ctx, *, search: str):
 		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
