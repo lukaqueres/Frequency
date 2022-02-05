@@ -153,6 +153,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			#iteration = 0
 			for item in data['entries']:
 				id_list.append(item['id'])
+				if len(id_list) > 1:
+					return "type_playlist" # return playlist type
 			print(f"Liczba id: {len(id_list)}")
 			print(f"Lista id: {id_list}")
 			data = data['entries'][0]
@@ -438,6 +440,8 @@ class Music(commands.Cog):
 		# If download is False, source will be a dict which will be used later to regather the stream.
 		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
 		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
+		if source == "type_playlist":
+			source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
 	
