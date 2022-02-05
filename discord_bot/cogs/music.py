@@ -208,7 +208,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			for entry in entries_list:
 				data = entry
 				directory = {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : int(data.get('duration')), 'thumbnail' : data.get('thumbnail')}
-				cls.add_to_queue(ctx, directory)
+				await cls.add_to_queue(ctx, directory)
 
 			#print(f"Lista entries: {entries_list}")
 			print(f"Liczba entries: {len(entries_list)}")
