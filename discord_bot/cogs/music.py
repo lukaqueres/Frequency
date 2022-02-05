@@ -214,7 +214,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			#print(f"Liczba entries: {len(entries_list)}")
 			total_duration = 0
 			for _ in entries_list:
-				total_duration =+ int(_['duration'])
+				total_duration = total_duration + int(_['duration'])
 			total_duration = parse_duration(total_duration)
 			embed = discord.Embed( 
 			title="Added to queue",
