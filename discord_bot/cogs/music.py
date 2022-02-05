@@ -146,6 +146,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		data = await loop.run_in_executor(None, to_run)
 		#print(f'To_run: {to_run}')
 		#print(f'Data: {data}' )
+		if not data:
+			return "type_playlist"
 		if 'entries' in data:
 			# take first item from a playlist
 			id_list = []
@@ -200,7 +202,9 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		data = await loop.run_in_executor(None, to_run)
 		#print(f'To_run: {to_run}')
 		#print(f'Data: {data}' )
-		if 'entries' in data:
+		#if 'entries' in data:
+		status = True
+		if status:
 			# take first item from a playlist
 			entries_list = []
 			#data = []
