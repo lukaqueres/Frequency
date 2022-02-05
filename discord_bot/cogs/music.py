@@ -155,8 +155,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 				id_list.append(item['id'])
 				if len(id_list) > 1:
 					return "type_playlist" # return playlist type
-			print(f"Liczba id: {len(id_list)}")
-			print(f"Lista id: {id_list}")
+			#print(f"Liczba id: {len(id_list)}")
+			#print(f"Lista id: {id_list}")
 			data = data['entries'][0]
 		
 		embed = discord.Embed( 
@@ -219,7 +219,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 				total_duration = total_duration + int(_['duration'])
 			total_duration = parse_duration(total_duration)
 			embed = discord.Embed( 
-			title="Added to queue",
+			title="Playlis songs added to queue",
 			description="You can always check queue with *queue* command",
 			color= ctx.message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 )
@@ -442,19 +442,21 @@ class Music(commands.Cog):
 		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
 		if source == "type_playlist":
 			source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)
+			return 0
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
 	
-	@commands.command(name='play_list', aliases=['sing_playlist'])
+	"""@commands.command(name='play_list', aliases=['sing_playlist'])
 	async def playlist_(self, ctx, *, search: str):
-		"""Request a song and add it to the queue.
-		This command attempts to join a valid voice channel if the bot is not already in one.
-		Uses YTDL to automatically search and retrieve a song.
-		Parameters
-		------------
-		search: str [Required]
-			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
-		"""
+		#Request a song and add it to the queue.
+		#This command attempts to join a valid voice channel if the bot is not already in one.
+		#Uses YTDL to automatically search and retrieve a song.
+		#Parameters
+		#------------
+		#search: str [Required]
+		#	The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
+		#
+		
 		await ctx.trigger_typing()
 		player = self.get_player(ctx)
 		vc = ctx.voice_client
@@ -463,7 +465,7 @@ class Music(commands.Cog):
 			await ctx.invoke(self.connect_)
 		# If download is False, source will be a dict which will be used later to regather the stream.
 		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
-		source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)
+		source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)"""
 
 	@commands.command(name='pause')
 	async def pause_(self, ctx):
