@@ -464,7 +464,7 @@ class Music(commands.Cog):
 
 		# Grab up to 9 entries from the queue...
 		upcoming = list(itertools.islice(player.queue._queue, 0, 9)) # 100 = 9
-		total_queue_length = len(list(itertools.islice(player.queue._queue)))
+		total_queue_length = len(list(player.queue._queue))
 		total_duration = 0
 		for _ in upcoming:
 			total_duration = total_duration + int(_['duration'])
