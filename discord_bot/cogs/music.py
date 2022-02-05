@@ -180,7 +180,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
 		await player.queue.put(directory)
 		data = directory
-		embed = discord.Embed( 
+		"""embed = discord.Embed( 
 			title="Added to queue",
 			description="You can always check queue with *queue* command",
 			color= ctx.message.author.colour,
@@ -188,7 +188,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		)
 		embed.add_field(name= "Title:", value=data["title"], inline=True),
 		embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
-		await ctx.send(embed = embed, delete_after=15)
+		await ctx.send(embed = embed, delete_after=15)"""
 
 	@classmethod
 	async def create_source_from_playlist(cls, ctx, search: str, *, loop, download=False, player):
@@ -211,7 +211,20 @@ class YTDLSource(discord.PCMVolumeTransformer):
 				await cls.add_to_queue(ctx, directory, player)
 
 			#print(f"Lista entries: {entries_list}")
-			print(f"Liczba entries: {len(entries_list)}")
+			#print(f"Liczba entries: {len(entries_list)}")
+			total_duration = 0
+			for _ in entries_list:
+				total_duration =+ int(_['duration'])
+			total_duration = parse_duration(total_duration)
+			embed = discord.Embed( 
+			title="Added to queue",
+			description="You can always check queue with *queue* command",
+			color= ctx.message.author.colour,
+			timestamp=datetime.utcnow() + timedelta( hours = 0 )
+			)
+			embed.add_field(name= chr(173), value=f"**Number of songs**: {len(entries_list)}\n**Total duration**: {total_duration}", inline=True),
+			embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
+			await ctx.send(embed = embed, delete_after=15)
 			return 0
 
 			data = data['entries'][0]
