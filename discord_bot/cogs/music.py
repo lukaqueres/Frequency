@@ -175,8 +175,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		return cls(discord.FFmpegPCMAudio(source), data=data, requester=ctx.author)
 
 	@classmethod
-	async def add_to_queue(cls, ctx, directory):
-		player = Music.get_player(ctx = ctx)
+	async def add_to_queue(cls, ctx, directory, player):
+		#player = Music.get_player(ctx = ctx)
 
 		await player.queue.put(directory)
 		data = directory
@@ -191,7 +191,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		await ctx.send(embed = embed, delete_after=15)
 
 	@classmethod
-	async def create_source_from_playlist(cls, ctx, search: str, *, loop, download=False):
+	async def create_source_from_playlist(cls, ctx, search: str, *, loop, download=False, player):
 		loop = loop or asyncio.get_event_loop()
 
 		to_run = partial(ytdl.extract_info, url=search, download=download)
@@ -208,7 +208,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			for entry in entries_list:
 				data = entry
 				directory = {'webpage_url': data['webpage_url'], 'requester': ctx.author, 'title': data['title'], 'duration' : int(data.get('duration')), 'thumbnail' : data.get('thumbnail')}
-				await cls.add_to_queue(ctx, directory)
+				await cls.add_to_queue(ctx, directory, player)
 
 			#print(f"Lista entries: {entries_list}")
 			print(f"Liczba entries: {len(entries_list)}")
@@ -439,14 +439,14 @@ class Music(commands.Cog):
 			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
 		"""
 		await ctx.trigger_typing()
-
+		player = self.get_player(ctx)
 		vc = ctx.voice_client
 
 		if not vc:
 			await ctx.invoke(self.connect_)
 		# If download is False, source will be a dict which will be used later to regather the stream.
 		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
-		source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False)
+		source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)
 
 	@commands.command(name='pause')
 	async def pause_(self, ctx):
