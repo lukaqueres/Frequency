@@ -176,7 +176,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 
 	@classmethod
 	async def add_to_queue(cls, ctx, directory):
-		player = Music.get_player(self, ctx)
+		player = Music.get_player(ctx = ctx)
 
 		await player.queue.put(directory)
 		data = directory
