@@ -480,7 +480,6 @@ class Music(commands.Cog):
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Info:", value=f"**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
 		for _ in upcoming:
-			print(f"_ : {_}")
 			title = _["title"]
 			duration = _["duration"]
 			requester = _["requester"]
