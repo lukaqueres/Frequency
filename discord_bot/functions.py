@@ -29,6 +29,19 @@ def get_database_data(database, column, condition):
 	con.commit()
 	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
 	return value
+
+def write_database_data(database, column, condition, value):
+	cur.execute("UPDATE {} SET {} = '{}' WHERE guild_id = '{}';".format(database, column, value, condition))
+	con.commit()
+	return 1
+
+def get_language(condition):
+	cur.execute("SELECT guild_language from SERVERS_PROPERTIES WHERE guild_id={}".format(condition))
+	row = cur.fetchone()
+	language = row[0]
+	con.commit()
+	#print("Language downloaded succesfully as '{}' on '{}' guild.".format(prefix, condition))
+	return language
 """
 <---------->CODE USE JSON WHEN NEEDED <---------------------------------------------------------------------------------------->
 
