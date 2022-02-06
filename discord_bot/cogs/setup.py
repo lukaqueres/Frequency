@@ -66,7 +66,6 @@ class Process:
 			
 		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction):
 			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			await ctx.channel.send("There was an error while connecting to database")
 			
 		elif isinstance(error, commands.NoPrivateMessage):
