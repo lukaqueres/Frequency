@@ -64,6 +64,11 @@ class Process:
 		elif isinstance(error, commands.MissingRequiredArgument):
 			await ctx.channel.send(error)
 			
+		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction):
+			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			await ctx.channel.send("There was an error while connecting to database")
+			
 		elif isinstance(error, commands.NoPrivateMessage):
 			try:
 				return await ctx.send('This command can not be used in Private Messages.')
@@ -110,10 +115,7 @@ class Process:
 		
 		if task in toggleables.keys():        #again we are working on tasks from toggle command and as everything was checked in check_tasks ( I hope so ) we just execute it
 			set_value = settings[value]
-			if isinstance(toggleables[task], list): # column in db to save in to : set to index 0 in list, or simply translate if not list
-				column = toggleables[task][0]  
-			else: 
-				column = toggleables[task] 
+			column = toggleables[task][0] if isinstance(toggleables[task], list) else column = toggleables[task] # column in db to save in to : set to index 0 in list, or simply translate if not list
 			write_database_data('servers_properties', column, ctx.guild.id, set_value)
 			return f'Success! {task.capitalize()} has been set to {value.upper()}'
 			
