@@ -29,12 +29,15 @@ values = { 'language' : ( 'english', 'polish', 'angielski', 'polski' ), 'channel
 column = { 'prefix' : 'guild_prefix', 'language' : 'guild_language', 'channel' : { 'message_check' : 'message_check_channel_id', 'updates' : 'updates_channel_id', 'message_logs' : 'logs_msg_channel_id' }}
 languages = { 'english' : 'ENG', 'polish' : 'POL' }
 
-toggle = {  # 'KEY-WORD used' : 'It's name in database' OR ( It's name in database, Required channel id set do activate )
+                 # This dictionary is used to store toggle tasks, and easly add new if needed
+toggleables = {  # 'KEY-WORD used' : 'proper column name in database' OR ( proper column name in database, Required channel id set to activate )
 	'music' : 'music',
 	'updates' : ( 'updates', 'updates_channel_id' ),
 	'message_check' : ( 'message_check_feature', 'message_check_channel_id' ),
 	'economy' : 'economy'
 	 }
+
+settings = { 'off' : 'NO', 'on' : 'YES', 'YES' : 'ON', 'NO' : 'OFF' } # This dictionary is only for saving YES/NO type information in to database, and converting it to/from nice 'ON' and 'OFF'
 
 class Process:
 	def __init__(self, task, value_one, value_two, channel : typing.Optional[commands.TextChannelConverter]):
@@ -48,8 +51,22 @@ class Process:
 	
 	@staticmethod
 	def check_tasks(ctx, task, value):
-		if ( not ctx.message.author.guild_permissions.administrator): 
+		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
 			raise MissingPermissions('You can not use this command')
+		
+		if task in toggleables.keys:                                                                           # It means toggle command was called WITH propper task name
+			if settings[value] == get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id):          # In case value is the same
+				raise commands.BadArgument(f'{task.capitalize()} is already set to {settings[value]}')
+			if  not isinstance(toggleables[task], list):                                                   # If it don't need any other setting ( channel )
+				return 1
+			elif isinstance(toggleables[task], list):                                                      # If it is list, so it require setting ( channel )
+				if  get_database_data('servers_properties', toggleables[task][1], ctx.guild.id):       # Check if required setting ( channel ) is set
+					return 1
+				else:                                                                                  # When required setting ( channel ) is not set
+					raise commands.BadArgument(f'{task.capitalize()} require special channel to be set before.')
+			else:                                                                                          # I don't really have any idea when it is called
+				raise commands.BadArgument(f'There was error with checking {task} requirements.')
+			                                                      # \/ update it to be more flexible \/ 'n used with set command
 		if task == 'prefix' and len(value) <= 2:
 			return 1
 		if task not in tasks or value == None:
@@ -65,7 +82,14 @@ class Process:
 		return 0
 	
 	@staticmethod
-	def execute(ctx, task, value, channel):
+	def execute(ctx, task, value, channel = None):
+		
+		if task in toggleables.keys:        #again we are working on tasks from toggle command and as everything was checked in check_tasks ( I hope so ) we just execute it
+			set_value = settings[value]
+			column = toggleables[task][0] if isinstance(toggleables[task], list) else toggleables[task] # column in db to save in to : set to index 0 in list, or simply translate if not list
+			write_database_data('servers_properties', column, guild_id, set_value)
+			return f'Success! {task.capitalize()} has been set to {value.upper()}' }
+			
 		guild_id = ctx.guild.id
 		channel = channel or ctx.channel
 		channel_id = channel.id or ctx.channel.id
@@ -95,20 +119,29 @@ class Setup(commands.Cog):
 	async def on_ready(self):
 		print('Setup module loaded')
 
-    
-	"""@commands.command()
-	@has_permissions(manage_messages=True)
-	async def prefix_change(self, ctx, prefix):
-		await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
-		print("\n Prefix changed in guild: \" {} \" guild to \"{}\" on \" {} \".".format(ctx.message.guild, prefix, get_time()))
-		with open('data.json', 'r') as f:
-			prefixes = json.load(f)
-      
-	prefixes[str(ctx.message.guild.id)] = prefix
-    
-	with open('data.json','w') as f:
-		json.dump(prefixes, f, indent=4)"""
-    
+
+	async def __error(self, ctx, error):
+		"""A local error handler for all errors arising from commands in this cog."""
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+			
+		elif isinstance(error, commands.errors.ChannelNotFound):
+			await ctx.channel.send("Channel not found!")
+			
+		elif isinstance(error, commands.BadArgument):
+			await ctx.channel.send(error)
+			
+		elif isinstance(error, commands.MissingRequiredArgument):
+			await ctx.channel.send(error)
+			
+		elif isinstance(error, commands.NoPrivateMessage):
+			try:
+				return await ctx.send('This command can not be used in Private Messages.')
+			except discord.HTTPException:
+				pass
+		else:
+			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 #
 #<----------> 'set' command - set channels and some settings <------------------------------------------------------------------------>
 #
@@ -127,7 +160,7 @@ class Setup(commands.Cog):
 		else:
 			pass
 		
-	@set.error
+	"""@set.error
 	async def set_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
@@ -139,13 +172,29 @@ class Setup(commands.Cog):
 			await ctx.channel.send(error)
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")
+			await ctx.channel.send("There was an error with executing command!")"""
 			
 	@commands.command()
-	async def toggle(self, ctx, task = None , value = None ):
-		if ( not ctx.message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
-			await ctx.send("You don't have permissions to do this!")
+	async def toggle(self, ctx, task, value = None ):
+		task = task.lower()
+		if value == None:
+			dbvalue = get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id)
+			if dbvalue == 'YES':
+				value = 'off'
+			else: 
+				value = 'on'
+		else:
+			value = value.lower()
+		if Process.check_tasks(ctx, task, value):
+			pass
+		else:
 			return 0
+		returning_string = Process.execute(ctx, task, value)
+		if returning_string:
+			return await ctx.send(returning_string)
+		else:
+			pass
+		
 		guild = ctx.guild
 		guild_id = guild.id
 		if (task == 'Music') or (task == 'music'): #>-------------------------------------------< Task - toggle Music
