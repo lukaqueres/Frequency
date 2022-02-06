@@ -54,7 +54,7 @@ class Process:
 		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
 			raise MissingPermissions('You can not use this command')
 		
-		if task in toggleables.keys:                                                                           # It means toggle command was called WITH propper task name
+		if task in toggleables.keys():                                                                           # It means toggle command was called WITH propper task name
 			if settings[value] == get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id):          # In case value is the same
 				raise commands.BadArgument(f'{task.capitalize()} is already set to {settings[value]}')
 			if  not isinstance(toggleables[task], list):                                                   # If it don't need any other setting ( channel )
@@ -84,7 +84,7 @@ class Process:
 	@staticmethod
 	def execute(ctx, task, value, channel = None):
 		
-		if task in toggleables.keys:        #again we are working on tasks from toggle command and as everything was checked in check_tasks ( I hope so ) we just execute it
+		if task in toggleables.keys():        #again we are working on tasks from toggle command and as everything was checked in check_tasks ( I hope so ) we just execute it
 			set_value = settings[value]
 			column = toggleables[task][0] if isinstance(toggleables[task], list) else toggleables[task] # column in db to save in to : set to index 0 in list, or simply translate if not list
 			write_database_data('servers_properties', column, guild_id, set_value)
