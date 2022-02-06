@@ -64,7 +64,7 @@ ffmpegopts = {
 }
 
 ytdl = YoutubeDL(ytdlopts)
-
+"""
 def parse_duration(duration: int):
 	minutes, seconds = divmod(duration, 60)
 	hours, minutes = divmod(minutes, 60)
@@ -80,7 +80,7 @@ def parse_duration(duration: int):
 	if seconds > 0:
 		duration.append('{} seconds'.format(seconds))
 
-	return ', '.join(duration)
+	return ', '.join(duration)"""
 
 class VoiceConnectionError(commands.CommandError):
 	"""Custom Exception class for connection errors."""
@@ -221,7 +221,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			total_duration = 0
 			for _ in entries_list:
 				total_duration = total_duration + int(_['duration'])
-			total_duration = parse_duration(total_duration)
+			total_duration = YTDLSource.parse_duration(total_duration)
 			embed = discord.Embed( 
 			title="Playlis songs added to queue",
 			description="You can always check queue with *queue* command",
@@ -535,7 +535,7 @@ class Music(commands.Cog):
 		total_duration = 0
 		for _ in total_queue:
 			total_duration = total_duration + int(_['duration'])
-		total_duration = parse_duration(total_duration)
+		total_duration = YTDLSource.parse_duration(total_duration)
 		#fmt = '\n\n'.join(f'**`{_["title"]}`**' for _ in upcoming)
 		embed = Embed(title="Queue",
 			      description = 'List of next songs in queue',
@@ -553,7 +553,7 @@ class Music(commands.Cog):
 				title = _["title"]
 				duration = _["duration"]
 				requester = _["requester"]
-				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}", inline=True),
 		
 		if total_queue_length > 9:
 			upcoming = list(itertools.islice(player.queue._queue, 0, 8))
@@ -562,13 +562,13 @@ class Music(commands.Cog):
 			rest_duration = 0
 			for item in rest_list:
 				rest_duration = rest_duration + int(item["duration"])
-			rest_duration = parse_duration(rest_duration)
+			rest_duration = YTDLSource.parse_duration(rest_duration)
 			for _ in upcoming:
 				iteration = iteration + 1
 				title = _["title"]
 				duration = _["duration"]
 				requester = _["requester"]
-				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}", inline=True),
 			embed.add_field(name= f"And: {rest_number} more", value=f"**Duration**: {rest_duration}", inline=True),
 		
 		embed.set_footer(text="Provided by Wild West Post Office")
