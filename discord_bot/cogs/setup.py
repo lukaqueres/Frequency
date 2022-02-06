@@ -135,7 +135,7 @@ class Setup(commands.Cog):
 			return 0
 		returning_string = Process.execute(ctx, task, value, channel)
 		if returning_string:
-			return await ctx.say(returning_string)
+			return await ctx.send(returning_string)
 		else:
 			pass
 		message = ctx.message
