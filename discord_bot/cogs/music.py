@@ -46,7 +46,8 @@ ytdlopts = {
 	'format': 'bestaudio/best',
 	'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
-	'noplaylist': False, #True
+	'yesplaylist': True, #True
+	#'playlistrandom' : True
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
@@ -182,12 +183,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		loop = loop or asyncio.get_event_loop()
 		to_run = partial(ytdl.extract_info, url=search, download=download)
 		data = await loop.run_in_executor(None, to_run)
-		if data == None:
-			o_run = partial(ytdl.extract_info, url=search, download=download)
-			data = await loop.run_in_executor(None, to_run)
-			print("Retry of data extraction")
-		#print(f'To_run: {to_run}')
-		#print(f'Data: {data}' )
+		print(f'To_run: {to_run}')
+		print(f'Data: {data}' )
 		#if 'entries' in data:
 		status = True
 		if status:
