@@ -46,7 +46,7 @@ class Process:
 		if task == 'prefix' and len(value) <= 2:
 			return 1
 		if task not in tasks or value == None:
-			raise commands.errors.InvalidAttribute
+			raise commands.errors.InvalidAttribute('Invalid attribute given')
 		elif task == 'prefix' and len(value) > 2:
 			raise commands.errors.InvalidAttribute('Prefix can be maximum 2 characters long')
 		elif value not in values[task] and task != 'prefix':
@@ -140,84 +140,18 @@ class Setup(commands.Cog):
 			return await ctx.send(returning_string)
 		else:
 			pass
-		message = ctx.message
-		guild = ctx.guild
-		guild_id = guild.id
-		channel = ctx.channel
-		channel_id = channel.id
-		value_length = len(value)
-		if (task == 'prefix'): #>-------------------------------------------< Task - prefix
-			if (value == 'default'): # If value wasn't changed
-				await ctx.send("You must specify new prefix!")
-				return 0
-			elif (value_length > 2): # If value is too long
-				await ctx.send("New prefix length must be long 2 characters max!")
-				return 0
-			else: # If value seems legit
-				cur.execute("UPDATE servers_properties SET guild_prefix = '{}' WHERE guild_id = '{}';".format(value, guild_id))
-				con.commit()
-				await ctx.send("This guild prefix changed for: '{}'.".format( value ))
-		elif (task == 'language'): #>-------------------------------------------< Task - language
-			if (value == 'default'): # If value wasn't changed
-				await ctx.send("You must specify language!")
-				return 0
-			elif (value != 'English') and (value != 'Polish') and (value != 'english') and (value != 'polish'): # If value is too long
-				await ctx.send("Unknown language, check help command!")
-				return 0
-			else: # If value seems legit
-				if ( value == 'English') or (value == 'english' ): # If value looks like English
-					language_name = 'English'
-					language = 'ENG'
-				elif ( value == 'Polish') or (value == 'polish' ): # If value looks like Polish
-					language_name = 'Polish'
-					language = 'POL'
-				cur.execute("UPDATE servers_properties SET guild_language = '{}' WHERE guild_id = '{}';".format(language, guild_id))
-				con.commit()
-				await ctx.send("Guild language changed for: '{}'.".format( language_name ))
-		elif (task == 'channel'): #>-------------------------------------------< Task - channel set-up
-			channel_type = value
-			if channel_type == 'message_check': # setting channel type spam info
-				if value_two != None:
-					channel = value_two
-					channel_id = channel.id
-				cur.execute("UPDATE servers_data SET message_check_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
-				con.commit()
-				await ctx.send("Alerts set up succesfuly on channel: {}!".format( channel ))
-			elif channel_type == 'updates': #setting channel type updates about bot
-				if value_two != None:
-					channel = value_two
-					channel_id = channel.id
-				cur.execute("UPDATE servers_data SET updates_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
-				con.commit()
-				await ctx.send("Information set up succesfuly on channel: {}!".format( channel ))
-			elif channel_type == 'message_logs': #setting channel type updates about bot
-				if value_two != None:
-					channel = value_two
-					channel_id = channel.id
-				database_data = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
-				if channel_id == database_data:
-					cur.execute("UPDATE servers_data SET logs_msg_channel_id = {} WHERE guild_id = '{}'".format('NULL', guild_id))
-					con.commit()
-					return await ctx.send("Message logs cleared up succesfuly on channel: {}!".format( channel ))
-				cur.execute("UPDATE servers_data SET logs_msg_channel_id = '{}' WHERE guild_id = '{}'".format(channel_id, guild_id))
-				con.commit()
-				await ctx.send("Message logs set up succesfuly on channel: {}!".format( channel ))
-			else:
-				await ctx.send("Unknown channel type, please check if command is properly written or *help* for full guide.")
-		else: #>-------------------------------------------------------------< Task - none, inform about it
-			await ctx.send("Unknown task, please check if command is properly written or *help* for full guide.")
-			return 0
-        
-    
-	"""@set.error
+		
+	@set.error
 	async def set_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		elif isinstance(error, commands.errors.ChannelNotFound):
 			await ctx.channel.send("Channel not found!")
+		elif isinstance(error, commands.errors.InvalidAttribute):
+			await ctx.channel.send(error)
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")"""
+			await ctx.channel.send("There was an error with executing command!")
 			
 	@commands.command()
 	async def toggle(self, ctx, task = None , value = None ):
