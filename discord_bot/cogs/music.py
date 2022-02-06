@@ -182,7 +182,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		loop = loop or asyncio.get_event_loop()
 		to_run = partial(ytdl.extract_info, url=search, download=download)
 		data = await loop.run_in_executor(None, to_run)
-		if data = None:
+		if data == None:
 			o_run = partial(ytdl.extract_info, url=search, download=download)
 			data = await loop.run_in_executor(None, to_run)
 			print("Retry of data extraction")
