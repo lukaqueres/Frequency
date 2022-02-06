@@ -43,6 +43,8 @@ class Process:
 	def check_tasks(ctx, task, value):
 		if ( not ctx.message.author.guild_permissions.administrator): 
 			raise MissingPermissions('You can not use this command')
+		if task == 'prefix' and len(value) =< 2:
+			return 1
 		if task not in tasks or value == None:
 			raise commands.errors.InvalidAttribute
 		elif task == 'prefix' and len(value) > 2:
@@ -132,7 +134,7 @@ class Setup(commands.Cog):
 		else:
 			return 0
 		returning_string = Process.execute(ctx, task, value, channel)
-		if retuning_string:
+		if returning_string:
 			return await ctx.say(returning_string)
 		else:
 			pass
