@@ -29,6 +29,13 @@ values = { 'language' : ( 'english', 'polish', 'angielski', 'polski' ), 'channel
 column = { 'prefix' : 'guild_prefix', 'language' : 'guild_language', 'channel' : { 'message_check' : 'message_check_channel_id', 'updates' : 'updates_channel_id', 'message_logs' : 'logs_msg_channel_id' }}
 languages = { 'english' : 'ENG', 'polish' : 'POL' }
 
+toggle = {  # 'KEY-WORD used' : 'It's name in database' OR ( It's name in database, Required channel id set do activate )
+	'music' : 'music',
+	'updates' : ( 'updates', 'updates_channel_id' ),
+	'message_check' : ( 'message_check_feature', 'message_check_channel_id' ),
+	'economy' : 'economy'
+	 }
+
 class Process:
 	def __init__(self, task, value_one, value_two, channel : typing.Optional[commands.TextChannelConverter]):
 		self.client = client
@@ -101,27 +108,6 @@ class Setup(commands.Cog):
     
 	with open('data.json','w') as f:
 		json.dump(prefixes, f, indent=4)"""
-      
-	@commands.command()
-	async def help(self, ctx):
-		message = ctx.message
-		embed=discord.Embed(title="Help", description="Pomoc - znajdziesz tu listę oraz informacje dotyczące komend których możesz użyć na tym serwerze", color=0x0000ff)
-		embed.add_field(name="$join", value="Dołącza do kanału na którym znajduje się użytkownik.", inline=False)
-		embed.add_field(name="$play [ url / słowa kluczowe ]", value="Odtwarza muzykę na kanale głosowym na podstawie adresu url, lub słów kluczowych. Wymaga aby użytkownik znajdował się na kanale głosowym.", inline=False)
-		embed.add_field(name="$stop", value="Zatrzymuje odtwarzanie oraz wychodzi z kanału głosowego.", inline=True)
-		embed.add_field(name="$volume [ liczba ]", value="Zmienia głośność odtwarzania muzyki na kanale głosowym na określony procent ( domyślnie 50% ).", inline=True)
-		if (message.author.guild_permissions.manage_messages):
-			embed.add_field(name="Zarządzanie wiadomościami", value="Dostępne jedynie dla użytkowników z uprawnieniem zarządzania wiadomościami.", inline=False)
-			embed.add_field(name="$clear [ liczba ]", value="Usuwa określoną liczbę wiadomości z kanału ( nie licząc wiadomości z komendą ).", inline=True)
-		if (message.author.guild_permissions.ban_members):
-			embed.add_field(name="Zarządzanie użytkownikami", value="Dostępne jedynie dla użytkowników z odpowiednimi uprawnieniami.", inline=False)
-			embed.add_field(name="$ban [ użytkownik ]", value="Nakłada bana na użytkownika.", inline=True)
-			embed.add_field(name="$unban [ użytkownik ]", value="Usuwa bana z użytkownika, jeżeli go posiada.", inline=True)
-		if (message.author.guild_permissions.administrator):
-			embed.add_field(name="Zarządzanie serwerem", value="Dostępne jedynie dla użytkowników z uprawnieniami administratora.", inline=False)
-			embed.add_field(name="$prefix_change [ prefix]", value="Zmienia prefiks serwera z którego korzysta bot. **UWAGA** działa jedynie przez krótki okres.", inline=False)
-		msg = await ctx.send(embed=embed)
-		#await msg.add_reaction(':ballot_box_with_check:')
     
 #
 #<----------> 'set' command - set channels and some settings <------------------------------------------------------------------------>
