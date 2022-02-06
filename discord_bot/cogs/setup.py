@@ -43,7 +43,7 @@ class Process:
 	def check_tasks(ctx, task, value):
 		if ( not ctx.message.author.guild_permissions.administrator): 
 			raise MissingPermissions('You can not use this command')
-		if task == 'prefix' and len(value) =< 2:
+		if task == 'prefix' and len(value) <= 2:
 			return 1
 		if task not in tasks or value == None:
 			raise commands.errors.InvalidAttribute
