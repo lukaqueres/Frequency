@@ -415,10 +415,10 @@ class Music(commands.Cog):
 		search: str [Required]
 			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
 		"""
-		if random != None:
-			ytdlopts['playlistrandom'] = True
-		else:
-			ytdlopts['playlistrandom'] = False
+		#if random != None:
+			#ytdlopts['playlistrandom'] = True
+		#else:
+			#ytdlopts['playlistrandom'] = False
 		async with ctx.typing():
 
 			vc = ctx.voice_client
