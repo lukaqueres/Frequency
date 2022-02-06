@@ -110,9 +110,7 @@ class Process:
 		
 		if task in toggleables.keys():        #again we are working on tasks from toggle command and as everything was checked in check_tasks ( I hope so ) we just execute it
 			set_value = settings[value]
-			print(f"toggleables[task][0]: {toggleables[task][0]}")
-			column = toggleables[task][0] if isinstance(toggleables[task], list) else toggleables[task] # column in db to save in to : set to index 0 in list, or simply translate if not list
-			print(f"column: {column}")
+			column = if isinstance(toggleables[task], list) toggleables[task][0] else toggleables[task] # column in db to save in to : set to index 0 in list, or simply translate if not list
 			write_database_data('servers_properties', column, ctx.guild.id, set_value)
 			return f'Success! {task.capitalize()} has been set to {value.upper()}'
 			
