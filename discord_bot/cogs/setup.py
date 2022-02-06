@@ -46,7 +46,7 @@ class Process:
 		if task == 'prefix' and len(value) <= 2:
 			return 1
 		if task not in tasks or value == None:
-			raise commands.MissingRequiredArgument('No valid attribute given')
+			raise commands.MissingRequiredArgument('Required attribute missing')
 		elif task == 'prefix' and len(value) > 2:
 			raise commands.BadArgument('Prefix can be maximum 2 characters long')
 		elif value not in values[task] and task != 'prefix':
@@ -148,6 +148,8 @@ class Setup(commands.Cog):
 		elif isinstance(error, commands.errors.ChannelNotFound):
 			await ctx.channel.send("Channel not found!")
 		elif isinstance(error, commands.BadArgument):
+			await ctx.channel.send(error)
+		elif isinstance(error, commands.MissingRequiredArgument):
 			await ctx.channel.send(error)
 		else: 
 			print(error)
