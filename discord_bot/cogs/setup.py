@@ -83,7 +83,7 @@ class Process:
 			raise MissingPermissions('You can not use this command')
 		
 		if task in toggleables.keys():                                                                           # It means toggle command was called WITH propper task name
-			if settings[value] == get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id):      # In case value is the same
+			if settings[value] == get_database_data('servers_properties', toggleables[task][0] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id):      # In case value is the same
 				raise commands.BadArgument(f'{task.capitalize()} is already set to {settings[value]}')
 			if  not isinstance(toggleables[task], list):                                                   # If it don't need any other setting ( channel )
 				return 1
