@@ -27,7 +27,7 @@ cur = con.cursor()
 tasks = [ 'prefix', 'language', 'channel' ]
 values = { 'language' : ( 'english', 'polish', 'angielski', 'polski' ), 'channel' : ( 'updates', 'message_check', 'message_logs' ) }
 column = { 'prefix' : 'guild_prefix', 'language' : 'guild_language', 'channel' : { 'message_check' : 'message_check_channel_id', 'updates' : 'updates_channel_id', 'message_logs' : 'logs_msg_channel_id' }}
-languages = { ( 'english', 'angielski' ) : 'ENG', ( 'polish', 'polski' ) : 'POL' }
+languages = { 'english' : 'ENG', 'polish' : 'POL' }
 
 class Process:
 	def __init__(self, task, value_one, value_two, channel : typing.Optional[commands.TextChannelConverter]):
@@ -129,6 +129,8 @@ class Setup(commands.Cog):
 
 	@commands.command()
 	async def set(self, ctx, task, value, channel: typing.Optional[commands.TextChannelConverter] = None):
+		task = task.lower()
+		value = value.lower()
 		if Process.check_tasks(ctx, task, value):
 			pass
 		else:
