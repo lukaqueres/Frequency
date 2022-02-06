@@ -406,7 +406,7 @@ class Music(commands.Cog):
 		await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
 	@commands.command(name='play', aliases=['sing'])
-	async def play_(self, ctx, *, search: str):
+	async def play_(self, ctx, *, search: str, random = None):
 		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
 		Uses YTDL to automatically search and retrieve a song.
@@ -415,7 +415,11 @@ class Music(commands.Cog):
 		search: str [Required]
 			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
 		"""
-		async with ctx.typing()
+		if random != None:
+			ytdlopts['playlistrandom'] = True
+		else:
+			ytdlopts['playlistrandom'] = False
+		async with ctx.typing():
 
 			await vc = ctx.voice_client
 
