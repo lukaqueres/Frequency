@@ -46,7 +46,7 @@ ytdlopts = {
 	'format': 'bestaudio/best',
 	'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
-	'no': False, #True
+	'noplaylist': False, #True
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
