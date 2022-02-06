@@ -26,15 +26,15 @@ con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
 tasks = [ 'prefix', 'language', 'channel' ]
-values = { 'language' : ( 'english', 'polish', 'angielski', 'polski' ), 'channel' : ( 'updates', 'message_check', 'message_logs' ) }
+values = { 'language' : [ 'english', 'polish', 'angielski', 'polski' ], 'channel' : [ 'updates', 'message_check', 'message_logs' ] }
 column = { 'prefix' : 'guild_prefix', 'language' : 'guild_language', 'channel' : { 'message_check' : 'message_check_channel_id', 'updates' : 'updates_channel_id', 'message_logs' : 'logs_msg_channel_id' }}
 languages = { 'english' : 'ENG', 'polish' : 'POL' }
 
                  # This dictionary is used to store toggle tasks, and easly add new if needed
 toggleables = {  # 'KEY-WORD used' : 'proper column name in database' OR ( proper column name in database, Required channel id set to activate )
 	'music' : 'music',
-	'updates' : ( 'updates', 'updates_channel_id' ),
-	'message_check' : ( 'message_check_feature', 'message_check_channel_id' ),
+	'updates' : [ 'updates', 'updates_channel_id' ],
+	'message_check' : [ 'message_check_feature', 'message_check_channel_id' ],
 	'economy' : 'economy'
 	 }
 
@@ -65,7 +65,7 @@ class Process:
 			await ctx.channel.send(error)
 			
 		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction):
-			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			print('Ignoring exception in command {}: {}'.format(ctx.command, error))
 			await ctx.channel.send("There was an error while connecting to database")
 			
 		elif isinstance(error, commands.NoPrivateMessage):
