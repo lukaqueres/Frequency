@@ -49,6 +49,29 @@ class Process:
 		self._valueTwo = valu_two
 		self._channel = channel
 	
+	async def __error(self, ctx, error):
+		"""A local error handler for all errors arising from commands in this cog."""
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+			
+		elif isinstance(error, commands.errors.ChannelNotFound):
+			await ctx.channel.send("Channel not found!")
+			
+		elif isinstance(error, commands.BadArgument):
+			await ctx.channel.send(error)
+			
+		elif isinstance(error, commands.MissingRequiredArgument):
+			await ctx.channel.send(error)
+			
+		elif isinstance(error, commands.NoPrivateMessage):
+			try:
+				return await ctx.send('This command can not be used in Private Messages.')
+			except discord.HTTPException:
+				pass
+		else:
+			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			
 	@staticmethod
 	def check_tasks(ctx, task, value):
 		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
@@ -119,29 +142,6 @@ class Setup(commands.Cog):
 	async def on_ready(self):
 		print('Setup module loaded')
 
-
-	async def __error(self, ctx, error):
-		"""A local error handler for all errors arising from commands in this cog."""
-		if isinstance(error, commands.errors.MemberNotFound):
-			await ctx.channel.send("Member not found!")
-			
-		elif isinstance(error, commands.errors.ChannelNotFound):
-			await ctx.channel.send("Channel not found!")
-			
-		elif isinstance(error, commands.BadArgument):
-			await ctx.channel.send(error)
-			
-		elif isinstance(error, commands.MissingRequiredArgument):
-			await ctx.channel.send(error)
-			
-		elif isinstance(error, commands.NoPrivateMessage):
-			try:
-				return await ctx.send('This command can not be used in Private Messages.')
-			except discord.HTTPException:
-				pass
-		else:
-			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 #
 #<----------> 'set' command - set channels and some settings <------------------------------------------------------------------------>
 #
