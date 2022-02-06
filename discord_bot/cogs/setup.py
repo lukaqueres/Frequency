@@ -64,9 +64,9 @@ class Process:
 		elif isinstance(error, commands.MissingRequiredArgument):
 			await ctx.channel.send(error)
 			
-		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction):
+		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction) or isinstance(error, psycopg2.errors.UndefinedColumn):
 			print('Ignoring exception in command {}: {}'.format(ctx.command, error))
-			await ctx.channel.send("There was an error while connecting to database")
+			await ctx.channel.send("There was an error while connecting and using the database")
 			
 		elif isinstance(error, commands.NoPrivateMessage):
 			try:
@@ -83,12 +83,12 @@ class Process:
 			raise MissingPermissions('You can not use this command')
 		
 		if task in toggleables.keys():                                                                           # It means toggle command was called WITH propper task name
-			if settings[value] == get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id):          # In case value is the same
+			if settings[value] == get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id):      # In case value is the same
 				raise commands.BadArgument(f'{task.capitalize()} is already set to {settings[value]}')
 			if  not isinstance(toggleables[task], list):                                                   # If it don't need any other setting ( channel )
 				return 1
 			elif isinstance(toggleables[task], list):                                                      # If it is list, so it require setting ( channel )
-				if  get_database_data('servers_properties', toggleables[task][1], ctx.guild.id):       # Check if required setting ( channel ) is set
+				if  get_database_data('servers_data', toggleables[task][1], ctx.guild.id):       # Check if required setting ( channel ) is set
 					return 1
 				else:                                                                                  # When required setting ( channel ) is not set
 					raise commands.BadArgument(f'{task.capitalize()} require special channel to be set before.')
@@ -205,7 +205,7 @@ class Setup(commands.Cog):
 	async def toggle(self, ctx, task, value = None ):
 		task = task.lower()
 		if value == None:
-			dbvalue = get_database_data('servers_properties', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id)
+			dbvalue = get_database_data('servers_data', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id)
 			if dbvalue == 'YES':
 				value = 'off'
 			else: 
