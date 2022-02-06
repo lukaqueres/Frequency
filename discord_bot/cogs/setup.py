@@ -73,7 +73,7 @@ class Process:
 			return f'Prefix set to {value}'
 		elif task == 'language':
 			language = languages[value]
-			write_database_data('servers_properties', column_name, guild_id, languge)
+			write_database_data('servers_properties', column_name, guild_id, language)
 			value = value.capitalize()
 			return f"Language set to {value}."
 		else:
