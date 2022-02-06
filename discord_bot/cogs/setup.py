@@ -204,7 +204,7 @@ class Setup(commands.Cog):
 			return 0
         
     
-	@set.error
+	"""@set.error
 	async def set_error(self, ctx: commands.Context, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
@@ -212,7 +212,7 @@ class Setup(commands.Cog):
 			await ctx.channel.send("Channel not found!")
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")
+			await ctx.channel.send("There was an error with executing command!")"""
 			
 	@commands.command()
 	async def toggle(self, ctx, task = None , value = None ):
