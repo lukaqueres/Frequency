@@ -41,7 +41,7 @@ class Process:
 	
 	@staticmethod
 	def check_tasks(ctx, task, value):
-		if ( not message.author.guild_permissions.administrator): 
+		if ( not ctx.message.author.guild_permissions.administrator): 
 			raise MissingPermissions('You can not use this command')
 		if task not in tasks or value == None:
 			raise commands.errors.InvalidAttribute
