@@ -24,6 +24,58 @@ DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
+tasks = [ 'prefix', 'language', 'channel' ]
+values = { 'language' : ( 'english', 'polish', 'angielski', 'polski' ), 'channel' : ( 'updates', 'message_check', 'message_logs' ) }
+column = { 'prefix' : 'guild_prefix', 'language' : 'guild_language', 'channel' : { 'message_check' : 'message_check_channel_id', 'updates' : 'updates_channel_id', 'message_logs' : 'logs_msg_channel_id' }}
+languages = { ( 'english', 'angielski' ) : 'ENG', ( 'polish', 'polski' ) : 'POL' }
+
+class Process:
+	def __init__(self, task, value_one, value_two, channel : typing.Optional[commands.TextChannelConverter]):
+		self.client = client
+		self._author = ctx.message.author
+		self._authorPerimissions = message.author.guild_permissions
+		self._task = task
+		self._value = value_one
+		self._valueTwo = valu_two
+		self._channel = channel
+	
+	@staticmethod
+	def check_tasks(ctx, task, value):
+		if ( not message.author.guild_permissions.administrator): 
+			raise MissingPermissions('You can not use this command')
+		if task not in tasks or value = None:
+			raise commands.errors.InvalidAttribute
+		elif task == 'prefix' and len(value) > 2:
+			raise commands.errors.InvalidAttribute('Prefix can be maximum 2 characters long')
+		elif value not in values[task] and task != 'prefix':
+			raise commands.errors.InvalidAttribute('Invalid value given')
+		elif task == 'language' and not languages[value]:
+			raise commands.errors.InvalidAttribute('Invalid value given')
+		else:
+			return 1
+		return 0
+	
+	@staticmethod
+	def execute(ctx, task, value, channel):
+		guild_id = ctx.guild.id
+		channel_id = channel.id or ctx.channel.id
+		channel_name = channel.name or ctx.channel.name
+		column_name = column[task]
+		if task == 'channel':
+			column_name = column_name[value]
+			await write_database_data('servers_data', column_name, guild_id, channel_id)
+			return f'Channel with {value} tag set up succesfully on {channel_name} channel."
+		elif task == 'prefix':
+			await write_database_data('servers_data', column_name, guild_id, value)
+			return f'Prefix set to {value}'
+		elif task == 'language':
+			language = languages[value]
+			await write_database_data('servers_data', column_name, guild_id, languge)
+			value = value.capitalize()
+			return f"Language set to {value}."
+		else:
+			return 0
+			
 class Setup(commands.Cog):
 	def __init__(self, client):
 		self.client = client
@@ -73,15 +125,22 @@ class Setup(commands.Cog):
 #
 
 	@commands.command()
-	async def set(self, ctx, task = 'default', value = 'default', value_two: commands.TextChannelConverter = None):
+	async def set(self, ctx, task, value, channel: typing.Optional[commands.TextChannelConverter] = None):
+		if Process.check_tasks(ctx, task, value):
+			pass
+		else:
+			return 0
+		returning_string = Process.execute(ctx, task, value, channel)
+		if retuning_string:
+			return await ctx.say(returning_string)
+		else:
+			pass
 		message = ctx.message
 		guild = ctx.guild
 		guild_id = guild.id
 		channel = ctx.channel
 		channel_id = channel.id
 		value_length = len(value)
-		if ( not message.author.guild_permissions.administrator): # If somebody doesn't have permissions to screw with ya'
-			return await ctx.send("You don't have permissions to do this!")
 		if (task == 'prefix'): #>-------------------------------------------< Task - prefix
 			if (value == 'default'): # If value wasn't changed
 				await ctx.send("You must specify new prefix!")
