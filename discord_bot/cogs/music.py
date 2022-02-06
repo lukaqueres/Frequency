@@ -421,12 +421,12 @@ class Music(commands.Cog):
 			ytdlopts['playlistrandom'] = False
 		async with ctx.typing():
 
-			await vc = ctx.voice_client
+			vc = ctx.voice_client
 
 			if not vc:
 				await ctx.invoke(self.connect_)
 
-			await player = self.get_player(ctx)
+			player = self.get_player(ctx)
 			# If download is False, source will be a dict which will be used later to regather the stream.
 			# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
 			source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
