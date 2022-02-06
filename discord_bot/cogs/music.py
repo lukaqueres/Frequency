@@ -64,23 +64,6 @@ ffmpegopts = {
 }
 
 ytdl = YoutubeDL(ytdlopts)
-"""
-def parse_duration(duration: int):
-	minutes, seconds = divmod(duration, 60)
-	hours, minutes = divmod(minutes, 60)
-	days, hours = divmod(hours, 24)
-
-	duration = []
-	if days > 0:
-		duration.append('{} days'.format(days))
-	if hours > 0:
-		duration.append('{} hours'.format(hours))
-	if minutes > 0:
-		duration.append('{} minutes'.format(minutes))
-	if seconds > 0:
-		duration.append('{} seconds'.format(seconds))
-
-	return ', '.join(duration)"""
 
 class VoiceConnectionError(commands.CommandError):
 	"""Custom Exception class for connection errors."""
@@ -197,9 +180,12 @@ class YTDLSource(discord.PCMVolumeTransformer):
 	@classmethod
 	async def create_source_from_playlist(cls, ctx, search: str, *, loop, download=False, player):
 		loop = loop or asyncio.get_event_loop()
-
 		to_run = partial(ytdl.extract_info, url=search, download=download)
 		data = await loop.run_in_executor(None, to_run)
+		if data = None:
+			o_run = partial(ytdl.extract_info, url=search, download=download)
+			data = await loop.run_in_executor(None, to_run)
+			print("Retry of data extraction")
 		#print(f'To_run: {to_run}')
 		#print(f'Data: {data}' )
 		#if 'entries' in data:
@@ -223,7 +209,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 				total_duration = total_duration + int(_['duration'])
 			total_duration = YTDLSource.parse_duration(total_duration)
 			embed = discord.Embed( 
-			title="Playlis songs added to queue",
+			title="Playlist songs added to queue",
 			description="You can always check queue with *queue* command",
 			color= ctx.message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 )
@@ -445,7 +431,7 @@ class Music(commands.Cog):
 		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
 		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
 		if source == "type_playlist":
-			source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)
+			source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player=player)
 			return 0
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
