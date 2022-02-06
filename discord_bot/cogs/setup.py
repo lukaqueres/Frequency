@@ -186,26 +186,12 @@ class Setup(commands.Cog):
 			return await ctx.send(returning_string)
 		else:
 			pass
-		
-	"""@set.error
-	async def set_error(self, ctx: commands.Context, error):
-		if isinstance(error, commands.errors.MemberNotFound):
-			await ctx.channel.send("Member not found!")
-		elif isinstance(error, commands.errors.ChannelNotFound):
-			await ctx.channel.send("Channel not found!")
-		elif isinstance(error, commands.BadArgument):
-			await ctx.channel.send(error)
-		elif isinstance(error, commands.MissingRequiredArgument):
-			await ctx.channel.send(error)
-		else: 
-			print(error)
-			await ctx.channel.send("There was an error with executing command!")"""
 			
 	@commands.command()
 	async def toggle(self, ctx, task, value = None ):
 		task = task.lower()
 		if value == None:
-			dbvalue = get_database_data('servers_data', toggleables[task][1] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id)
+			dbvalue = get_database_data('servers_properties', toggleables[task][0] if isinstance(toggleables[task], list) else toggleables[task], ctx.guild.id)
 			if dbvalue == 'YES':
 				value = 'off'
 			else: 
