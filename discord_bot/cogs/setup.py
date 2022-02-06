@@ -10,7 +10,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time, get_database_data
+from functions import get_prefix, get_time, get_database_data, write_database_data
 
 load_dotenv()
 
@@ -58,6 +58,7 @@ class Process:
 	@staticmethod
 	def execute(ctx, task, value, channel):
 		guild_id = ctx.guild.id
+		channel = channel or ctx.channel
 		channel_id = channel.id or ctx.channel.id
 		channel_name = channel.name or ctx.channel.name
 		column_name = column[task]
