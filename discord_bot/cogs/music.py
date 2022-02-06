@@ -183,8 +183,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		loop = loop or asyncio.get_event_loop()
 		to_run = partial(ytdl.extract_info, url=search, download=download)
 		data = await loop.run_in_executor(None, to_run)
-		print(f'To_run: {to_run}')
-		print(f'Data: {data}' )
+		#print(f'To_run: {to_run}')
+		#print(f'Data: {data}' )
 		#if 'entries' in data:
 		status = True
 		if status:
