@@ -63,14 +63,14 @@ class Process:
 		column_name = column[task]
 		if task == 'channel':
 			column_name = column_name[value]
-			await write_database_data('servers_data', column_name, guild_id, channel_id)
+			write_database_data('servers_data', column_name, guild_id, channel_id)
 			return f'Channel with {value} tag set up succesfully on {channel_name} channel.'
 		elif task == 'prefix':
-			await write_database_data('server_properties', column_name, guild_id, value)
+			write_database_data('server_properties', column_name, guild_id, value)
 			return f'Prefix set to {value}'
 		elif task == 'language':
 			language = languages[value]
-			await write_database_data('server_properties', column_name, guild_id, languge)
+			write_database_data('server_properties', column_name, guild_id, languge)
 			value = value.capitalize()
 			return f"Language set to {value}."
 		else:
