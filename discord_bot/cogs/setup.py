@@ -112,6 +112,7 @@ class Process:
 			set_value = settings[value]
 			print(f"toggleables[task][0]: {toggleables[task][0]}")
 			column = toggleables[task][0] if isinstance(toggleables[task], list) else toggleables[task] # column in db to save in to : set to index 0 in list, or simply translate if not list
+			print(f"column: {column}")
 			write_database_data('servers_properties', column, ctx.guild.id, set_value)
 			return f'Success! {task.capitalize()} has been set to {value.upper()}'
 			
