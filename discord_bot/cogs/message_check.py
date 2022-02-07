@@ -47,7 +47,7 @@ class Processing:
 		self._wordList = ctx.message.content.split()
 		
 	@staticmethod
-	async def msg_process_check(self, ctx, task, number : int, value):
+	async def msg_process_check(self, ctx, task, number, value):
 		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
 			raise MissingPermissions('You can not use this command')
 		
