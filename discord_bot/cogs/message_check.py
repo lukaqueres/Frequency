@@ -144,9 +144,9 @@ class Message_check(commands.Cog):
 				return await ctx.send('This command can not be used in Private Messages.')
 			except discord.HTTPException:
 				pass
-		else:
-			print('Ignoring exception in command {}:'.format(ctx.command))
-			print(error)
+		#else:
+			#print('Ignoring exception in command {}:'.format(ctx.command))
+			#print(error)
 			
 	@commands.command()
 	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value):
