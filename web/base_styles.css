@@ -13,7 +13,6 @@
 
 .clearlink
 {
-   right: 0%;
    font-size: 15px;
    font-weight: 700;
    color: black;
@@ -23,6 +22,7 @@
 }
 .circle 
 {
+   right: 75px;
    position: fixed;
    height: 500px;
    width: 500px;
