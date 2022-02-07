@@ -20,7 +20,8 @@ load_dotenv()
 tasks = {          # 'name' : [ 'ammount', 'max words count', 'name of column', 'name of required column' ]
 	'key_words' : [ None, None, 'key_words_check', 'key_words' ],
 	'set_key_words' : [ 6, 20, 'key_words', None ],
-	'links' : [ None, None, 'link_check', None ]
+	'links' : [ None, None, 'link_check', None ],
+	'set_key_words_limit' : [ None, 6, 'key_words_limit', None ],
 	}
 
 message_links = [] # defined when processing messages, stores links found in message
@@ -144,8 +145,8 @@ class Message_check(commands.Cog):
 			except discord.HTTPException:
 				pass
 		else:
-			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			print('Ignoring exception in command {}:'.format(ctx.command))
+			print(error)
 			
 	@commands.command()
 	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value):
