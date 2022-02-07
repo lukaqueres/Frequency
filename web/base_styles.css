@@ -17,8 +17,6 @@
    font-weight: 700;
    color: black;
    text-align: center;
-   top: 50%;
-   left: 50%;
    vertical-align: central;
    text-decoration: none;
    padding: 20px 25px;
@@ -27,6 +25,8 @@
 {
   height: 500px;
   width: 500px;
+  top: 50%;
+  left: 50%;
   background-color: blue;
   border-radius: 50%;
 }
