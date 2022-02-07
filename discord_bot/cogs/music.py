@@ -21,6 +21,7 @@ import sys
 import traceback
 import psycopg2
 import os
+import re
 import functools
 import math
 import random
@@ -211,6 +212,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			color= ctx.message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 )
 			)
+			embed.add_field(name= 'Title:', value= data["title"], inline=False
 			embed.add_field(name= chr(173), value=f"**Number of songs**: {len(entries_list)}\n**Total duration**: {total_duration}", inline=True),
 			embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
 			await ctx.send(embed = embed, delete_after=15)
@@ -306,16 +308,6 @@ class MusicPlayer:
 	def destroy(self, guild):
 		"""Disconnect and cleanup the player."""
 		return self.bot.loop.create_task(self._cog.cleanup(guild))
-
-#class Music:
-"""Music related commands."""
-
-	#__slots__ = ('bot', 'players')
-
-	#def __init__(self, bot):
-		#self.bot = bot
-		#self.players = {}
-
 
 class Music(commands.Cog):
 	
@@ -435,27 +427,6 @@ class Music(commands.Cog):
 				return 0
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
-	
-	"""@commands.command(name='play_list', aliases=['sing_playlist'])
-	async def playlist_(self, ctx, *, search: str):
-		#Request a song and add it to the queue.
-		#This command attempts to join a valid voice channel if the bot is not already in one.
-		#Uses YTDL to automatically search and retrieve a song.
-		#Parameters
-		#------------
-		#search: str [Required]
-		#	The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
-		#
-		
-		await ctx.trigger_typing()
-		player = self.get_player(ctx)
-		vc = ctx.voice_client
-
-		if not vc:
-			await ctx.invoke(self.connect_)
-		# If download is False, source will be a dict which will be used later to regather the stream.
-		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
-		source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player = player)"""
 
 	@commands.command(name='pause')
 	async def pause_(self, ctx):
@@ -531,7 +502,8 @@ class Music(commands.Cog):
 		_ = upcoming[0]
 		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
-		embed.add_field(name= "Info:", value=f"**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
+		embed.add_field(name= "Now playing:", value=f"`**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}\n**Requester**: {vc.source.requester}`", inline=False),
+		embed.add_field(name= "Info:", value=f"`**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}`", inline=False),
 		iteration = 0
 		if total_queue_length < 10:
 			for _ in upcoming:
@@ -539,7 +511,7 @@ class Music(commands.Cog):
 				title = _["title"]
 				duration = _["duration"]
 				requester = _["requester"]
-				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+				embed.add_field(name= f"`Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}`", inline=True),
 		
 		if total_queue_length > 9:
 			upcoming = list(itertools.islice(player.queue._queue, 0, 8))
@@ -554,7 +526,7 @@ class Music(commands.Cog):
 				title = _["title"]
 				duration = _["duration"]
 				requester = _["requester"]
-				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}", inline=True),
+				embed.add_field(name= f"Position: {iteration}", value=f"`**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}`", inline=True),
 			embed.add_field(name= f"And: {rest_number} more", value=f"**Duration**: {rest_duration}", inline=True),
 		
 		embed.set_footer(text="Provided by Wild West Post Office")
@@ -580,6 +552,19 @@ class Music(commands.Cog):
 		except discord.HTTPException:
 			pass
 		
+		views = print(re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.views))
+		likes = print(re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.likes))
+		
+		tags = []
+		full_tags = list(vc.source.tags)
+		wanted_tags = list(vc.source.tags)
+		missed_tags = 0
+		if len(full_tags) > 10:
+			not_full_tags = list(itertools.islice(vc.source.tags, 0, 10)) # 100 = 9
+			wanted_tags = list(itertools.islice(vc.source.tags, 0, 10)) # 100 = 9
+			missed_tags = len(full_tags) - len(not_full_tags)
+		tags = " | ".join(wanted_tags)
+		tags = (tags + f"\n**And {missed_tags} tags more**.")
 		embed = discord.Embed( 
 			title="Now playing",
 			description="Information about now playing song",
@@ -587,12 +572,12 @@ class Music(commands.Cog):
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.set_thumbnail(url=vc.source.thumbnail)
-		embed.add_field(name= chr(173), value=f"**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Views**: {vc.source.views} \n**Likes**: {vc.source.likes}", inline=True),
+		embed.add_field(name= chr(173), value=f"`**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}`", inline=True),
+		embed.add_field(name= chr(173), value=f"**Views**: {views} \n**Likes**: {likes}`", inline=True),
 		embed.add_field(name= '**Description**:', value=f"```{vc.source.description}```", inline=False),
 		embed.add_field(name= '**Url**:', value=vc.source.url, inline=False),
-		embed.add_field(name= chr(173), value=f"**Uploader**: {vc.source.uploader} \n**Upload date**: {vc.source.upload_date}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Tags**: {vc.source.tags} \n**Requested by**: {vc.source.requester}", inline=True),
+		embed.add_field(name= chr(173), value=f"`**Uploader**: {vc.source.uploader} \n**Upload date**: {vc.source.upload_date}`", inline=True),
+		embed.add_field(name= chr(173), value=f"`**Tags**: {tags} \n**Requested by**: {vc.source.requester}`", inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.message.add_reaction('✅')
 		player.np = await ctx.send(embed = embed)
