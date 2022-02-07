@@ -11,7 +11,8 @@
     }
 }
 
-.upperfooter {
+.upperfooter 
+{
    position: fixed;
    left: 0;
    top: 0;
@@ -22,6 +23,10 @@
    border-bottom-style: solid;
 }
 
+.container
+{
+   top: 0;
+}
 .clearlink
 {
    font-size: 15px;
