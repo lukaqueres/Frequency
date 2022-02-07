@@ -1,1 +1,20 @@
+@media all 
+{
+    * 
+   {
+       font-family: "Bahnschrift", "Arial";
+       position: relative;
+    }
 
+    body {
+        background-color: white; /*#cdd1ff*/
+    }
+}
+
+.circle 
+{
+  height: 50px;
+  width: 50px;
+  background-color: blue;
+  border-radius: 50%;
+}
