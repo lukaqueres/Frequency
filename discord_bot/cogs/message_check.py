@@ -48,7 +48,7 @@ class Processing:
 		self._wordList = ctx.message.content.split()
 		
 	@staticmethod
-	async def msg_process_check(self, ctx, task, number, value):
+	async def msg_process_check(ctx, task, number, value):
 		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
 			raise MissingPermissions('You can not use this command')
 		
@@ -70,7 +70,7 @@ class Processing:
 			raise commands.BadArgument(f'Unknown task {task}.')
 	
 	@staticmethod
-	async def msg_process_execute(self, ctx, task, number : int, value):
+	async def msg_process_execute(ctx, task, number : int, value):
 		if value == 'off' or value == 'on':
 			set_value = settings[value]
 		column = tasks[task][2]
@@ -153,11 +153,11 @@ class Message_check(commands.Cog):
 		task = task.lower()
 		value = value.lower()
 		print(f"Task: {task}\nNumber: {number}\nValue: {value}")
-		if Processing.msg_process_check(self, ctx, task, number, value):
+		if Processing.msg_process_check(ctx, task, number, value):
 			pass
 		else:
 			return 0
-		returning_string = Processing.msg_process_execute(self, ctx, task, number, value)
+		returning_string = Processing.msg_process_execute(ctx, task, number, value)
 		if returning_string:
 			return await ctx.send(returning_string)
 		else:
