@@ -16,13 +16,13 @@
    font-size: 15px;
    font-weight: 700;
    color: black;
-   text-align: center;
    text-decoration: none;
    padding: 20px 25px;
 }
+
 .circle 
 {
-   right: 75px;
+   right: -250px;
    position: fixed;
    height: 500px;
    width: 500px;
