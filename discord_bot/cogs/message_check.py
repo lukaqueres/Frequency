@@ -153,11 +153,11 @@ class Message_check(commands.Cog):
 		task = task.lower()
 		value = value.lower()
 		print(f"Task: {task}\nNumber: {number}\nValue: {value}")
-		if Processing.msg_process_check(ctx, task, number, value):
+		if await Processing.msg_process_check(ctx, task, number, value):
 			pass
 		else:
 			return 0
-		returning_string = Processing.msg_process_execute(ctx, task, number, value)
+		await returning_string = Processing.msg_process_execute(ctx, task, number, value)
 		if returning_string:
 			return ctx.send(returning_string)
 		else:
