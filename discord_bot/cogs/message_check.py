@@ -54,7 +54,7 @@ class Processing:
 		
 		if task in tasks.keys():
 			if not tasks[task][1]:
-				if value != 'off' or value != 'on':
+				if value != 'off' and value != 'on':
 					raise commands.BadArgument(f'{task.capitalize()} require ON/OFF type value')
 			if tasks[task][0]:
 				if number > tasks[task][0] or number == 0:
