@@ -151,6 +151,7 @@ class Message_check(commands.Cog):
 	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value):
 		task = task.lower()
 		value = value.lower()
+		print(f"Task: {task}\nNumber: {number}\nValue: {value}")
 		if Processing.msg_process_check(ctx, task, number, value):
 			pass
 		else:
