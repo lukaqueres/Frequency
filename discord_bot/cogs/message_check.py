@@ -1,4 +1,5 @@
 import discord, json, io, os, typing, requests, random, asyncio
+import sys
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
@@ -16,7 +17,22 @@ client = commands.Bot(command_prefix = get_prefix)
 
 load_dotenv()
 
-class Message_processing:
+tasks = {          # 'name' : [ 'ammount', 'max words count', 'name of column', 'name of required column' ]
+	'key_words' : [ None, None, 'key_words_check', 'key_words' ],
+	'set_key_words' : [ 6, 20, 'key_words', None ],
+	'links' : [ None, None, 'link_check', None ]
+	}
+
+message_links = [] # defined when processing messages, stores links found in message
+message_links_mark = {} # defined when processing urls in message, stroes information about each link
+
+white_listed_links = [] # pre-defined links marked as a 100% legit no scam
+black_listed_links = [] # pre-defined links marked as a hell in a link form
+black_listed_words = [] # pre-defined words that are used in scam links
+
+settings = { 'off' : 'NO', 'on' : 'YES', 'YES' : 'ON', 'NO' : 'OFF' } # This dictionary is only for saving YES/NO type information in to database, and converting it to/from nice 'ON' and 'OFF'
+
+class Processing:
 	
 	def __init__(self, ctx):
 		self.bot = ctx.bot
@@ -30,10 +46,75 @@ class Message_processing:
 		self._content = ctx.message.content
 		self._wordList = ctx.message.content.split()
 		
-	@classmethod
-	async def check_for_urls(self, ctx):
-		pass
+	@staticmethod
+	async def msg_process_check(self, ctx, task, number : int, value):
+		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
+			raise MissingPermissions('You can not use this command')
 		
+		if task in tasks.keys():
+			if not tasks[task][1]:
+				if value != 'off' or value != 'on':
+					raise commands.BadArgument(f'{task.capitalize()} require ON/OFF type value')
+			if tasks[task][0]:
+				if number > tasks[task][0] or number == 0:
+					raise commands.BadArgument(f'{task.capitalize()} can set count to maximum {tasks[task][0]} and minimum 1')
+			if tasks[task][1]:
+				if value.split() > tasks[task][1]:
+					raise commands.BadArgument(f'Maximum number of {task + 's'} is {tasks[task][1]}')
+			if tasks[task][3]:
+				if get_database_data('servers_msg_process', tasks[task][3], ctx.guild.id):
+					raise commands.BadArgument(f'You have to set {tasks[task][3]} before.')
+			return 1
+		else:
+			raise commands.BadArgument(f'Unknown task {task}.')
+	
+	@staticmethod
+	async def msg_process_execute(self, ctx, task, number : int, value):
+		if value == 'off' or value == 'on':
+			set_value = settings[value]
+		column = tasks[task][2]
+		write_database_data('servers_msg_process', column, ctx.guild.id, set_value)
+		return f'Success! {task.capitalize()} has been set to {value.upper()}'
+	
+	@staticmethod
+	async def check_for_urls(self, ctx):
+		message_links = []
+		if (('http://' in ctx.message.content ) or ('https://' in ctx.message.content)):
+			for i in ctx.message.content.split():
+				if  ( 'http://' in i ) or ( 'https://' in i ):
+					message_links.append(i)
+			return message_links
+		else:
+			return 0
+	
+	@staticmethod
+	async def check_for_keys(self, ctx, guild_keys):
+		message_keys = []
+		for key in guild_keys:
+			if ( key in ctx.message.content ):
+				for i in ctx.message.content.split():
+					if  ( key in i ):
+						message_keys.append(i)
+		return message_keys
+
+	@staticmethod
+	async def process_urls(self, ctx, message_urls):
+		message_links_mark = {}
+		for url in message_urls:
+			message_links_mark[url] = 'whiteword'
+			for white_link in white_listed_links: # check if link starts with whitelisted url
+				if url.startswith(white_link):
+					message_links_mark[url] = 'whitelink'
+					continue
+			for black_link in black_listed_links: # check if link starts with blacklisted url
+				if url.startswith(black_link): 
+					message_links_mark[url] = 'blacklink'
+					continue
+			for black_word in black_listed_words: # check if black listed word in link
+				if black_word in url.content: 
+					message_links_mark[url] = 'blackword'
+					continue
+		return message_links_mark
 
 class Message_check(commands.Cog):
 	def __init__(self, client):
@@ -43,6 +124,47 @@ class Message_check(commands.Cog):
 	async def on_ready(self):
 		print('Message check module loaded')
     
+	async def cog_command_error(self, ctx, error):
+		"""A local error handler for all errors arising from commands in this cog."""
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+			
+		elif isinstance(error, commands.errors.ChannelNotFound):
+			await ctx.channel.send("Channel not found!")
+			
+		elif isinstance(error, commands.BadArgument):
+			await ctx.channel.send(error)
+			
+		elif isinstance(error, commands.MissingRequiredArgument):
+			await ctx.channel.send(error)
+			
+		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction) or isinstance(error, psycopg2.errors.UndefinedColumn):
+			print('Ignoring exception in command {}: {}'.format(ctx.command, error))
+			await ctx.channel.send("There was an error while connecting and using the database")
+			
+		elif isinstance(error, commands.NoPrivateMessage):
+			try:
+				return await ctx.send('This command can not be used in Private Messages.')
+			except discord.HTTPException:
+				pass
+		else:
+			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			
+	@commands.command()
+	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value):
+		task = task.lower()
+		value = value.lower()
+		if msg_process_check(ctx, task, number : int, value):
+			pass
+		else:
+			return 0
+		returning_string = Processing.msg_process_execute(ctx, task, number, value)
+		if returning_string:
+			return await ctx.send(returning_string)
+		else:
+			pass
+	
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		#await client.process_commands(message)
