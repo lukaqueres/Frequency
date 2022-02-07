@@ -7,7 +7,7 @@
     }
 
     body {
-        background-color: white; /*#cdd1ff*/
+        background-color: #4E4E56; /*#cdd1ff*/
     }
 }
 
@@ -23,8 +23,10 @@
 }
 .circle 
 {
-  height: 500px;
-  width: 500px;
-  background-color: blue;
-  border-radius: 50%;
+   position: fixed;
+   right: 0%;
+   height: 500px;
+   width: 500px;
+   background-color: #2A2B2E;
+   border-radius: 50%;
 }
