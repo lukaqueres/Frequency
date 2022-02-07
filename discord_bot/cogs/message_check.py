@@ -138,10 +138,6 @@ class Message_check(commands.Cog):
 		elif isinstance(error, commands.MissingRequiredArgument):
 			await ctx.channel.send(error)
 			
-		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction) or isinstance(error, psycopg2.errors.UndefinedColumn):
-			print('Ignoring exception in command {}: {}'.format(ctx.command, error))
-			await ctx.channel.send("There was an error while connecting and using the database")
-			
 		elif isinstance(error, commands.NoPrivateMessage):
 			try:
 				return await ctx.send('This command can not be used in Private Messages.')
@@ -155,7 +151,7 @@ class Message_check(commands.Cog):
 	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value):
 		task = task.lower()
 		value = value.lower()
-		if msg_process_check(ctx, task, number, value):
+		if Processing.msg_process_check(ctx, task, number, value):
 			pass
 		else:
 			return 0
