@@ -502,7 +502,7 @@ class Music(commands.Cog):
 		_ = upcoming[0]
 		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
-		embed.add_field(name= "Now playing:", value=f"`**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}\n**Requester**: {vc.source.requester}`", inline=False),
+		embed.add_field(name= "Now playing:", value=f"**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}\n**Requester**: {vc.source.requester}", inline=False),
 		embed.add_field(name= "Info:", value=f"`**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
 		iteration = 0
 		if total_queue_length < 10:
