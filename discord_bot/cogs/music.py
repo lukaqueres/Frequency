@@ -552,8 +552,8 @@ class Music(commands.Cog):
 		except discord.HTTPException:
 			pass
 		
-		views = print(re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.views))
-		likes = print(re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.likes))
+		views = re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.views)
+		likes = re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.likes)
 		
 		tags = []
 		full_tags = list(vc.source.tags)
