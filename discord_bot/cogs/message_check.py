@@ -159,7 +159,7 @@ class Message_check(commands.Cog):
 			return 0
 		returning_string = Processing.msg_process_execute(ctx, task, number, value)
 		if returning_string:
-			return await ctx.send(returning_string)
+			return ctx.send(returning_string)
 		else:
 			pass
 	
