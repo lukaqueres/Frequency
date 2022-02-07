@@ -47,7 +47,7 @@ ytdlopts = {
 	'outtmpl': 'downloads/%(extractor)s-%(id)s-%(title)s.%(ext)s',
 	'restrictfilenames': True,
 	'yesplaylist': True, #True
-	#'playlistrandom' : True
+	'playlistrandom' : True,
 	'nocheckcertificate': True,
 	'ignoreerrors': False,
 	'logtostderr': False,
