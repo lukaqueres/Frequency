@@ -19,7 +19,7 @@ load_dotenv()
 
 tasks = {          # 'name' : [ 'ammount', 'max words count', 'name of column', 'name of required column' ]
 	'key_words' : [ None, None, 'key_words_check', 'key_words' ],
-	'set_key_words' : [ 6, 20, 'key_words', None ],
+	'set_key_words' : [ None, 20, 'key_words', None ],
 	'links' : [ None, None, 'link_check', None ],
 	'set_key_words_limit' : [ None, 6, 'key_words_limit', None ],
 	}
@@ -149,7 +149,7 @@ class Message_check(commands.Cog):
 			#print(error)
 			
 	@commands.command()
-	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value):
+	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
 		task = task.lower()
 		value = value.lower()
 		print(f"Task: {task}\nNumber: {number}\nValue: {value}")
