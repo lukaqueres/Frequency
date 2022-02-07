@@ -503,7 +503,7 @@ class Music(commands.Cog):
 		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Now playing:", value=f"`**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}\n**Requester**: {vc.source.requester}`", inline=False),
-		embed.add_field(name= "Info:", value=f"`**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}`", inline=False),
+		embed.add_field(name= "Info:", value=f"`**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
 		iteration = 0
 		if total_queue_length < 10:
 			for _ in upcoming:
@@ -511,7 +511,7 @@ class Music(commands.Cog):
 				title = _["title"]
 				duration = _["duration"]
 				requester = _["requester"]
-				embed.add_field(name= f"`Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}`", inline=True),
+				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}", inline=True),
 		
 		if total_queue_length > 9:
 			upcoming = list(itertools.islice(player.queue._queue, 0, 8))
@@ -552,8 +552,8 @@ class Music(commands.Cog):
 		except discord.HTTPException:
 			pass
 		
-		views = re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.views))
-		likes = re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', int(vc.source.likes))
+		views = re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', str(vc.source.views))
+		likes = re.sub(r'(?<!^)(?=(\d{3})+$)', r'.', str(vc.source.likes))
 		
 		tags = []
 		full_tags = list(vc.source.tags)
@@ -572,12 +572,12 @@ class Music(commands.Cog):
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.set_thumbnail(url=vc.source.thumbnail)
-		embed.add_field(name= chr(173), value=f"`**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}`", inline=True),
-		embed.add_field(name= chr(173), value=f"**Views**: {views} \n**Likes**: {likes}`", inline=True),
+		embed.add_field(name= chr(173), value=f"**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Views**: {views} \n**Likes**: {likes}", inline=True),
 		embed.add_field(name= '**Description**:', value=f"```{vc.source.description}```", inline=False),
 		embed.add_field(name= '**Url**:', value=vc.source.url, inline=False),
-		embed.add_field(name= chr(173), value=f"`**Uploader**: {vc.source.uploader} \n**Upload date**: {vc.source.upload_date}`", inline=True),
-		embed.add_field(name= chr(173), value=f"`**Tags**: {tags} \n**Requested by**: {vc.source.requester}`", inline=True),
+		embed.add_field(name= chr(173), value=f"**Uploader**: {vc.source.uploader} \n**Upload date**: {vc.source.upload_date}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Tags**: {tags} \n**Requested by**: {vc.source.requester}", inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.message.add_reaction('✅')
 		player.np = await ctx.send(embed = embed)
