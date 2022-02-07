@@ -49,33 +49,6 @@ class Process:
 		self._value = value_one
 		self._valueTwo = valu_two
 		self._channel = channel
-	
-	async def cog_command_error(self, ctx, error):
-		"""A local error handler for all errors arising from commands in this cog."""
-		if isinstance(error, commands.errors.MemberNotFound):
-			await ctx.channel.send("Member not found!")
-			
-		elif isinstance(error, commands.errors.ChannelNotFound):
-			await ctx.channel.send("Channel not found!")
-			
-		elif isinstance(error, commands.BadArgument):
-			await ctx.channel.send(error)
-			
-		elif isinstance(error, commands.MissingRequiredArgument):
-			await ctx.channel.send(error)
-			
-		elif isinstance(error, psycopg2.errors.InFailedSqlTransaction) or isinstance(error, psycopg2.errors.UndefinedColumn):
-			print('Ignoring exception in command {}: {}'.format(ctx.command, error))
-			await ctx.channel.send("There was an error while connecting and using the database")
-			
-		elif isinstance(error, commands.NoPrivateMessage):
-			try:
-				return await ctx.send('This command can not be used in Private Messages.')
-			except discord.HTTPException:
-				pass
-		else:
-			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
 	@staticmethod
 	def check_tasks(ctx, task, value):
