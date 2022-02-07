@@ -60,7 +60,7 @@ class Processing:
 					raise commands.BadArgument(f'{task.capitalize()} can set count to maximum {tasks[task][0]} and minimum 1')
 			if tasks[task][1]:
 				if value.split() > tasks[task][1]:
-					raise commands.BadArgument(f'Maximum number of {task + 's'} is {tasks[task][1]}')
+					raise commands.BadArgument(f'Maximum number of {task}s is {tasks[task][1]}')
 			if tasks[task][3]:
 				if get_database_data('servers_msg_process', tasks[task][3], ctx.guild.id):
 					raise commands.BadArgument(f'You have to set {tasks[task][3]} before.')
