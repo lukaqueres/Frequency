@@ -11,6 +11,17 @@
     }
 }
 
+.upperfooter {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   background-color: 2A2B2E;
+   color: white;
+   text-align: center;
+   border-bottom-style: solid;
+}
+
 .clearlink
 {
    font-size: 15px;
