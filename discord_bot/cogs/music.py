@@ -212,7 +212,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			color= ctx.message.author.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 )
 			)
-			embed.add_field(name= 'Title:', value= data["title"], inline=False
+			embed.add_field(name= 'Title:', value= data["title"], inline=False),
 			embed.add_field(name= chr(173), value=f"**Number of songs**: {len(entries_list)}\n**Total duration**: {total_duration}", inline=True),
 			embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
 			await ctx.send(embed = embed, delete_after=15)
