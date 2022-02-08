@@ -155,8 +155,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.add_field(name= "Title:", value=data["title"], inline=True),
-		embed.add_field(name= "Url:", value=data['webpage_url'], inline=True),
 		embed.add_field(name= "Duration:", value=duration, inline=True),
+		embed.add_field(name= "Url:", value=data['webpage_url'], inline=False),
 		embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
 		await ctx.send(embed = embed, delete_after=15)
 
@@ -193,7 +193,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		#if 'entries' in data:
 		status = True
 		list_title = data['title']
-		list_thumbnail = data.get('thumbnail')
+		#list_thumbnail = data.get('thumbnail')
 		if status:
 			# take first item from a playlist
 			entries_list = []
@@ -218,7 +218,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 				color= ctx.message.author.colour,
 				timestamp=datetime.utcnow() + timedelta( hours = 0 )
 			)
-			embed.set_thumbnail(url= list_thumbnail)
+			#embed.set_thumbnail(url= list_thumbnail)
 			embed.add_field(name= 'Title:', value= list_title, inline=False),
 			embed.add_field(name= chr(173), value=f"**Number of songs**: {len(entries_list)}\n**Total duration**: {total_duration}", inline=True),
 			embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
