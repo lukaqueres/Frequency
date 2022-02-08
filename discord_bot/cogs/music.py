@@ -345,7 +345,7 @@ class Music(commands.Cog):
 		elif isinstance(error, InvalidVoiceChannel):
 			await ctx.send('Error connecting to Voice Channel. '
 							'Please make sure you are in a valid channel or provide me with one')
-		elif isinstance(erroe, youtube_dl.utils.RegexNotFoundError):
+		elif isinstance(error, youtube_dl.utils.RegexNotFoundError):
 			await ctx.send('There was error while downloading song, you can try again.')
 
 		print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
