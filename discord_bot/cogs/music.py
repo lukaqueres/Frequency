@@ -145,6 +145,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			#print(f"Liczba id: {len(id_list)}")
 			#print(f"Lista id: {id_list}")
 			data = data['entries'][0]
+		duration = int(data['duration'])
+		duration = YTDLSource.parse_duration(duration)
 		
 		embed = discord.Embed( 
 			title="Added to queue",
@@ -153,6 +155,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.add_field(name= "Title:", value=data["title"], inline=True),
+		embed.add_field(name= "Url:", value=data['webpage_url'], inline=True),
+		embed.add_field(name= "Duration:", value=duration, inline=True),
 		embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
 		await ctx.send(embed = embed, delete_after=15)
 
@@ -188,6 +192,8 @@ class YTDLSource(discord.PCMVolumeTransformer):
 		#print(f'Data: {data}' )
 		#if 'entries' in data:
 		status = True
+		list_title = data['title']
+		list_thumbnail = data.get('thumbnail')
 		if status:
 			# take first item from a playlist
 			entries_list = []
@@ -207,12 +213,13 @@ class YTDLSource(discord.PCMVolumeTransformer):
 				total_duration = total_duration + int(_['duration'])
 			total_duration = YTDLSource.parse_duration(total_duration)
 			embed = discord.Embed( 
-			title="Playlist songs added to queue",
-			description="You can always check queue with *queue* command",
-			color= ctx.message.author.colour,
-			timestamp=datetime.utcnow() + timedelta( hours = 0 )
+				title="Playlist songs added to queue",
+				description="You can always check queue with *queue* command",
+				color= ctx.message.author.colour,
+				timestamp=datetime.utcnow() + timedelta( hours = 0 )
 			)
-			embed.add_field(name= 'Title:', value= data["title"], inline=False),
+			embed.set_thumbnail(url= list_thumbnail)
+			embed.add_field(name= 'Title:', value= list_title, inline=False),
 			embed.add_field(name= chr(173), value=f"**Number of songs**: {len(entries_list)}\n**Total duration**: {total_duration}", inline=True),
 			embed.add_field(name= "Requested by:", value=ctx.author, inline=True),
 			await ctx.send(embed = embed, delete_after=15)
@@ -347,6 +354,7 @@ class Music(commands.Cog):
 							'Please make sure you are in a valid channel or provide me with one')
 		elif isinstance(error, youtube_dl.utils.RegexNotFoundError):
 			await ctx.send('There was error while downloading song, you can try again.')
+			print(error)
 
 		print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
 		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
@@ -470,10 +478,10 @@ class Music(commands.Cog):
 			pass
 		elif not vc.is_playing():
 			return
-
+		title = vc.source.title
 		vc.stop()
 		await ctx.message.add_reaction('✅')
-		await ctx.send(f'**`{ctx.author}`**: Skipped the song!')
+		await ctx.send(f'**`{ctx.author}`**: Skipped: {title}')
 
 	@commands.command(name='queue', aliases=['q', 'playlist'])
 	async def queue_info(self, ctx):
@@ -505,7 +513,7 @@ class Music(commands.Cog):
 		embed.set_thumbnail(url= _["thumbnail"])
 		#embed = discord.Embed(title=f'Upcoming - Next {len(upcoming)}', description=fmt)
 		embed.add_field(name= "Now playing:", value=f"**Title**: {vc.source.title} \n**Duration**: {vc.source.duration}\n**Requester**: {vc.source.requester}", inline=False),
-		embed.add_field(name= "Info:", value=f"`**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
+		embed.add_field(name= "Info:", value=f"**Total number of songs in queue**: {total_queue_length}\n**Total duration**: {total_duration}", inline=False),
 		iteration = 0
 		if total_queue_length < 10:
 			for _ in upcoming:
@@ -528,7 +536,7 @@ class Music(commands.Cog):
 				title = _["title"]
 				duration = _["duration"]
 				requester = _["requester"]
-				embed.add_field(name= f"Position: {iteration}", value=f"`**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}`", inline=True),
+				embed.add_field(name= f"Position: {iteration}", value=f"**Title**: {title} \n**Duration**: {YTDLSource.parse_duration(duration)}\n**Requester**: {requester}", inline=True),
 			embed.add_field(name= f"And: {rest_number} more", value=f"**Duration**: {rest_duration}", inline=True),
 		
 		embed.set_footer(text="Provided by Wild West Post Office")
