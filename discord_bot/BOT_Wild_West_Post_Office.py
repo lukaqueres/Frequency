@@ -27,29 +27,6 @@ intents = discord.Intents.default()
 intents.members = True
 fetch_offline_members = True
 
-client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
-bot = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
-
-now = datetime.now() + timedelta(hours=2)
-today = date.today()
-current_day = today.strftime("%d/%m/%Y")   #global current_day
-current_time = now.strftime("%H:%M:%S")    #global current_time
-
-@client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
-async def on_ready():
-	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
-	print('Bot logged in with:')
-  
-async def status_change():
-	await client.wait_until_ready()
-	statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
-	while not client.is_closed():
-    		sleep_time = random.randint(1800,3600)
-    		status = random.choice(statuses)
-    		await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
-    		print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
-    		await asyncio.sleep(sleep_time)
-	client.loop.create_task(status_change())
 
 class HelpEmbed(discord.Embed): # Our embed with some preset attributes to avoid setting it multiple times
     def __init__(self, **kwargs):
@@ -145,6 +122,29 @@ class MyHelp(commands.HelpCommand):
 
 bot.help_command = MyHelp()
 
+client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
+bot = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
+
+now = datetime.now() + timedelta(hours=2)
+today = date.today()
+current_day = today.strftime("%d/%m/%Y")   #global current_day
+current_time = now.strftime("%H:%M:%S")    #global current_time
+
+@client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
+async def on_ready():
+	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
+	print('Bot logged in with:')
+  
+async def status_change():
+	await client.wait_until_ready()
+	statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
+	while not client.is_closed():
+    		sleep_time = random.randint(1800,3600)
+    		status = random.choice(statuses)
+    		await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
+    		print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
+    		await asyncio.sleep(sleep_time)
+	client.loop.create_task(status_change())
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
