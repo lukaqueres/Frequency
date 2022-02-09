@@ -47,6 +47,7 @@ class Processing:
 		self._content = ctx.message.content
 		self._wordList = ctx.message.content.split()
 		
+	"""
 	@staticmethod
 	async def msg_process_check(ctx, task, number, value):
 		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
@@ -76,6 +77,7 @@ class Processing:
 		column = tasks[task][2]
 		write_database_data('servers_msg_process', column, ctx.guild.id, set_value)
 		return f'Success! {task.capitalize()} has been set to {value.upper()}'
+	"""
 	
 	@staticmethod
 	async def check_for_urls(self, ctx):
