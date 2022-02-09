@@ -27,8 +27,8 @@ intents = discord.Intents.default()
 intents.members = True
 fetch_offline_members = True
 
-client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp()))
-bot = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp()))
+client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
+bot = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
