@@ -32,8 +32,6 @@ today = date.today()
 current_day = today.strftime("%d/%m/%Y")   #global current_day
 current_time = now.strftime("%H:%M:%S")    #global current_time
 
-client.remove_command('help')
-
 @client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
 async def on_ready():
 	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
