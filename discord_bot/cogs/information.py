@@ -67,6 +67,7 @@ class Information(commands.Cog):
 	async def on_ready(self):
 		print('Information module loaded')
 
+	"""
 	@commands.command()
 	async def help(self, ctx):
 		message = ctx.message
@@ -88,6 +89,7 @@ class Information(commands.Cog):
 		msg = await ctx.send(embed=embed)
 		#await msg.add_reaction(':ballot_box_with_check:')	
 	
+	"""
 	@commands.command()
 	async def info(self, ctx, value = 'default', member : discord.Member=None): # secondary_value : discord.Member=None <- for specified type of input
 		if value == 'default': # You can't pick nothin' do ya? 
