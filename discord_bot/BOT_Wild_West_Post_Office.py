@@ -12,6 +12,7 @@ from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 from functions import get_prefix, get_time
+
 load_dotenv()
 
 try:
@@ -26,8 +27,8 @@ intents = discord.Intents.default()
 intents.members = True
 fetch_offline_members = True
 
-client = commands.Bot(command_prefix = get_prefix, intents=intents)
-bot = commands.Bot(command_prefix = get_prefix, intents=intents)
+client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp()))
+bot = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp()))
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
