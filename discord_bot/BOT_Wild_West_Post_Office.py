@@ -123,7 +123,7 @@ class MyHelp(commands.HelpCommand):
 bot.help_command = MyHelp()
 
 client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
-bot = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
+bot = client
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
@@ -174,7 +174,7 @@ async def ping(ctx):
 	await ctx.send(f'Ping: {round(client.latency * 1000)} ms')
 	print("Ping: {} ms on guild: {}" .format(round(client.latency * 1000), ctx.message.guild))
 	
-@client.command()
+@client.command(hidden = True)
 @commands.is_owner()
 async def say(ctx, *, message):
 	await ctx.message.delete()
