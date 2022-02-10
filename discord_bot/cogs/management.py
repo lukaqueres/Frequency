@@ -17,18 +17,19 @@ load_dotenv()
 class Management(commands.Cog):
   def __init__(self, client):
   	self.client = client
+    """Commands related for administrators and moderators to help with guild aministration"""
     
   @commands.Cog.listener()
   async def on_ready(self):
     print('Management module loaded')
-    
-  @commands.command()
+  
+  @commands.command(name='ban', brief='Ban specified user.', description='Bans selected member. It is possible to ban without reason, but you can still provide it.'))
   @commands.has_permissions(ban_members = True)
   async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     print("Member {member} banned on {ctx.guild} guild on {get_time()} .")
 
-  @commands.command()
+  @commands.command(name='ban', brief='Clear ban specified user.', description='Un-bans selected member. Remember that you can\'t un-ban nto banned user.'))
   @commands.has_permissions(ban_members = True)
   async def unban(ctx, *, member):
     banned_users = await ctx.guild.bans()
