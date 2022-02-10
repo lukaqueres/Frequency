@@ -67,7 +67,7 @@ class MyHelp(commands.HelpCommand):
                     name = cog.qualified_name
                     description = cog.description or "No description"
                 else:
-                    name = "No Category"
+                    name = "Other"
                     description = "Commands with no category"
 
                 embed.add_field(name=f"{name} Category [{amount_commands}]", value=description)
@@ -79,7 +79,7 @@ class MyHelp(commands.HelpCommand):
     async def send_command_help(self, command):
         """triggers when a `<prefix>help <command>` is called"""
         signature = self.get_command_signature(command) # get_command_signature gets the signature of a command in <required> [optional]
-        embed = HelpEmbed(title=signature, description=command.help or "No help found...")
+        embed = HelpEmbed(title=signature, description=command.description or "No description found...") #help
 
         if cog := command.cog:
             embed.add_field(name="Category", value=cog.qualified_name)
