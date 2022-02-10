@@ -317,7 +317,7 @@ class MusicPlayer:
 		return self.bot.loop.create_task(self._cog.cleanup(guild))
 
 class Music(commands.Cog):
-	
+	"""Commands for playing music, and its managing"""
 	__slots__ = ('bot', 'players')
 	
 	def __init__(self, client):
@@ -373,7 +373,7 @@ class Music(commands.Cog):
 	async def on_ready(self):
 		print('Music module loaded')
 
-	@commands.command(name='connect', aliases=['join'])
+	@commands.command(name='connect', brief='Connects bot to user channel or the specified one', aliases=['join'])
 	async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
 		"""Connect to voice.
 		Parameters
