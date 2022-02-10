@@ -100,7 +100,7 @@ class MyHelp(commands.HelpCommand):
 
         await self.send(embed=embed)
 
-    async def send_help_embed(self, title, description, commands): # a helper function to add commands to an embed
+    async def send_help_embed(self, title, brief, commands): # a helper function to add commands to an embed
         embed = HelpEmbed(title=title, description=description or "No help found...")
 
         if filtered_commands := await self.filter_commands(commands):
