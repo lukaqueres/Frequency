@@ -373,7 +373,7 @@ class Music(commands.Cog):
 	async def on_ready(self):
 		print('Music module loaded')
 
-	@commands.command(name='connect', brief='Connects bot to user channel or the specified one', aliases=['join'])
+	@commands.command(name='connect', brief='Connects bot to user channel or the specified one', description='Connects bot to user channel or to specified.\nUsage is: ``` connect [channel]```', aliases=['join'])
 	async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
 		"""Connect to voice.
 		Parameters
