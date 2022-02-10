@@ -15,9 +15,10 @@ from functions import get_prefix, get_time
 load_dotenv()
 
 class Management(commands.Cog):
+  """Commands related for administrators and moderators to help with guild aministration"""
+  
   def __init__(self, client):
-  	self.client = client
-    """Commands related for administrators and moderators to help with guild aministration"""
+  	self.client = client 
     
   @commands.Cog.listener()
   async def on_ready(self):
