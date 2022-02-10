@@ -24,7 +24,7 @@ class Management(commands.Cog):
   async def on_ready(self):
     print('Management module loaded')
   
-  @commands.command(name='ban', brief='Ban specified user.', description='Bans selected member. It is possible to ban without reason, but you can still provide it.')
+  @commands.command(name='ban', signature='ban <member> [reason]', brief='Ban specified user.', description='Bans selected member. It is possible to ban without reason, but you can still provide it.')
   @commands.has_permissions(ban_members = True)
   async def ban(ctx, member : discord.Member, *, reason = None):
     await member.ban(reason = reason)
