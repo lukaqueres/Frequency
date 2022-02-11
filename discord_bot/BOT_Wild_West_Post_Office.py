@@ -82,16 +82,16 @@ class MyHelp(commands.HelpCommand):
 		signature = command.signature
 		embed = HelpEmbed(title=signature, description=command.description or "No description found...") #help
 
-	if cog := command.cog:
-		embed.add_field(name="Category", value=cog.qualified_name)
+		if cog := command.cog:
+			embed.add_field(name="Category", value=cog.qualified_name)
 
-	can_run = "No"
-	# command.can_run to test if the cog is usable
-	with contextlib.suppress(commands.CommandError):
-		if await command.can_run(self.context):
-			can_run = "Yes"
+		can_run = "No"
+		# command.can_run to test if the cog is usable
+		with contextlib.suppress(commands.CommandError):
+			if await command.can_run(self.context):
+				can_run = "Yes"
             
-	embed.add_field(name="Usable", value=can_run)
+		embed.add_field(name="Usable", value=can_run)
 
 	if command._buckets and (cooldown := command._buckets._cooldown): # use of internals to get the cooldown of the command
 		embed.add_field(
