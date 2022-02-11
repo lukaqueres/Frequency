@@ -79,7 +79,7 @@ class MyHelp(commands.HelpCommand):
 	async def send_command_help(self, command):
 		"""triggers when a `<prefix>help <command>` is called"""
 		#signature = self.get_command_signature(command) # get_command_signature gets the signature of a command in <required> [optional]
-		signature = ( str(get_prefix(client, self.message)) + command.usage )
+		signature = ( str(self.prefix) + command.usage )
 		embed = HelpEmbed(title=signature, description=f'Also can be used as ( aliaces ): {command.aliases}' if command.aliases else "No aliases available for this command.") #help
 		embed.add_field(name="Description", value=command.description or "No description found...", inline=False)
 		if cog := command.cog:
