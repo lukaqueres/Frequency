@@ -373,7 +373,7 @@ class Music(commands.Cog):
 	async def on_ready(self):
 		print('Music module loaded')
 
-	@commands.command(name='connect', brief='Connects bot to user channel or the specified one', description='Connects bot to user channel or to specified.\nUsage is: ``` connect [channel]```', aliases=['join'])
+	@commands.command(name='connect', usage='connect [channel]', brief='Connects bot to user channel or the specified one', description='Connects bot to user channel or to specified.\nUsage is: ``` connect [channel]```', aliases=['join'])
 	async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
 		"""Connect to voice.
 		Parameters
@@ -407,7 +407,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
-	@commands.command(name='play', aliases=['sing'])
+	@commands.command(name='play', usage='play [ url/key-words/id ]', brief='Play specified song or playlist.', description='If needed joins channel and stream provided song or playlist.\nCan play from warious of services.', aliases=['sing', 'p'])
 	async def play_(self, ctx, *, search: str, random = None):
 		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
