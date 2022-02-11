@@ -84,7 +84,7 @@ class MyHelp(commands.HelpCommand):
 		aliases = command.aliases
 		nice_aliases=[]
 		for alias in aliases:
-			nice_aliases.append('*' + alias + '*')
+			nice_aliases.append('***' + alias + '***')
 		aliases = roles = " | ".join(nice_aliases)
 		embed = HelpEmbed(title=signature, description=f'Also can be used as ( aliaces ): {aliases}' if command.aliases else "No aliases available for this command.") #help
 		embed.add_field(name="Description", value=command.description or "No description found...", inline=False)
