@@ -81,6 +81,7 @@ class MyHelp(commands.HelpCommand):
 		#signature = self.get_command_signature(command) # get_command_signature gets the signature of a command in <required> [optional]
 		prefix = self.get_command_signature(command)[0]
 		signature = ( str(prefix) + command.usage )
+		aliases = roles = " | ".join('*' + command.aliases + '*')
 		embed = HelpEmbed(title=signature, description=f'Also can be used as ( aliaces ): {command.aliases}' if command.aliases else "No aliases available for this command.") #help
 		embed.add_field(name="Description", value=command.description or "No description found...", inline=False)
 		if cog := command.cog:
