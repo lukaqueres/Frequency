@@ -26,13 +26,13 @@ class Management(commands.Cog):
   
   @commands.command(name='ban', signature='ban <member> [reason]', brief='Ban specified user.', description='Bans selected member. It is possible to ban without reason, but you can still provide it.')
   @commands.has_permissions(ban_members = True)
-  async def ban(ctx, member : discord.Member, *, reason = None):
+  async def ban(ctx, user : discord.Member, *, reason = None):
     await member.ban(reason = reason)
     print("Member {member} banned on {ctx.guild} guild on {get_time()} .")
 
   @commands.command(name='unban', signature='ban <member> [reason]', brief='Clear ban specified user.', description='Un-bans selected member. Remember that you can\'t un-ban nto banned user.')
   @commands.has_permissions(ban_members = True)
-  async def unban(ctx, *, member):
+  async def unban(ctx, user : discord.Member):
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split("#")
 
