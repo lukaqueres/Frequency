@@ -93,13 +93,13 @@ class MyHelp(commands.HelpCommand):
             
 		embed.add_field(name="Usable", value=can_run)
 
-	if command._buckets and (cooldown := command._buckets._cooldown): # use of internals to get the cooldown of the command
-		embed.add_field(
-			name="Cooldown",
-			value=f"{cooldown.rate} per {cooldown.per:.0f} seconds",
-		)
+		if command._buckets and (cooldown := command._buckets._cooldown): # use of internals to get the cooldown of the command
+			embed.add_field(
+				name="Cooldown",
+				value=f"{cooldown.rate} per {cooldown.per:.0f} seconds",
+			)
 
-		await self.send(embed=embed)
+			await self.send(embed=embed)
 
 	async def send_help_embed(self, title, description, commands): # a helper function to add commands to an embed
 		embed = HelpEmbed(title=title, description=description or "No description found...")
