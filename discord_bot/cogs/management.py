@@ -112,6 +112,7 @@ class Process:
 			return 0
 			
 class Management(commands.Cog):
+	"""Commands for setting up, and configuring bot"""
 	def __init__(self, client):
 		self.client = client
 		self.bot = bot
