@@ -99,7 +99,7 @@ class MyHelp(commands.HelpCommand):
 				value=f"{cooldown.rate} per {cooldown.per:.0f} seconds",
 			)
 
-			await self.send(embed=embed)
+		await self.send(embed=embed)
 
 	async def send_help_embed(self, title, description, commands): # a helper function to add commands to an embed
 		embed = HelpEmbed(title=title, description=description or "No description found...")
