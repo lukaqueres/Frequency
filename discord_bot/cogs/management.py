@@ -111,14 +111,14 @@ class Process:
 		else:
 			return 0
 			
-class Setup(commands.Cog):
+class Management(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 		self.bot = bot
     
 	@commands.Cog.listener()
 	async def on_ready(self):
-		print('Setup module loaded')
+		print('Management module loaded')
 
 	async def cog_command_error(self, ctx, error):
 		"""A local error handler for all errors arising from commands in this cog."""
@@ -323,4 +323,4 @@ class Setup(commands.Cog):
 			await ctx.channel.send("You must choose what to change!")
 			
 def setup(client):
-	client.add_cog(Setup(client))
+	client.add_cog(Management(client))
