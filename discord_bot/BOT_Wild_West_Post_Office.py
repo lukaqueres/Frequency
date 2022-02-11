@@ -79,7 +79,7 @@ class MyHelp(commands.HelpCommand):
 	async def send_command_help(self, command):
 		"""triggers when a `<prefix>help <command>` is called"""
 		#signature = self.get_command_signature(command) # get_command_signature gets the signature of a command in <required> [optional]
-		signature = command.signature
+		signature = command.usage
 		embed = HelpEmbed(title=signature, description=command.description or "No description found...") #help
 
 		if cog := command.cog:
