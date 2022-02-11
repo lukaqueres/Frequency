@@ -82,6 +82,7 @@ class MyHelp(commands.HelpCommand):
 		prefix = self.get_command_signature(command)[0]
 		signature = ( str(prefix) + command.usage )
 		aliases = command.aliases
+		nice_aliases=[]
 		for alias in aliases:
 			nice_aliases.append('*' + alias + '*')
 		aliases = roles = " | ".join(nice_aliases)
