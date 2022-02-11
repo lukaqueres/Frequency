@@ -14,7 +14,7 @@ from functions import get_prefix, get_time
 
 load_dotenv()
 
-class Management(commands.Cog):
+class Administration(commands.Cog):
   """Commands related for administrators and moderators to help with guild aministration"""
   
   def __init__(self, client):
@@ -46,4 +46,4 @@ class Management(commands.Cog):
         return
     
 def setup(client):
-  client.add_cog(Management(client))
+  client.add_cog(Administration(client))
