@@ -22,7 +22,7 @@ class Administration(commands.Cog):
     
   @commands.Cog.listener()
   async def on_ready(self):
-    print('Management module loaded')
+    print('Administration module loaded')
   
   @commands.command(name='ban', usage='ban <member> [reason]', brief='Ban specified user.', description='Bans selected member. It is possible to ban without reason, but you can still provide it.')
   @commands.has_permissions(ban_members = True)
