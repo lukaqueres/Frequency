@@ -120,7 +120,7 @@ class Message_check(commands.Cog):
 	async def key_words(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
 		task = task.lower()
 		value = value.lower()
-		if task = 'set':
+		if task == 'set':
 			if len(value.split) > 20:
 				return ctx.send("Total number of key-words must be less or equal 20")
 			elif len(value) < 1:
@@ -140,7 +140,7 @@ class Message_check(commands.Cog):
 				write_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id, number)
 				return ctx.send(f"New key words set as: {key_words}. With apperance limit: {number}")
 			
-		elif task = 'limit':
+		elif task == 'limit':
 			if number == 0:
 				return ctx.send(f"Number can't be 0")
 			else:
@@ -149,10 +149,10 @@ class Message_check(commands.Cog):
 				write_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id, number)
 				return ctx.send(f"Apperance limit set to: {number}")
 			
-		elif task = 'penalty':
+		elif task == 'penalty':
+			pass
 			
-			
-		elif task = 'show':
+		elif task == 'show':
 			key_words=get_database_data('servers_msg_process', 'key_words', ctx.guild.id)
 			limit=get_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id)
 			check=get_database_data('servers_msg_process', 'key_words_check', ctx.guild.id) or '***No***'
