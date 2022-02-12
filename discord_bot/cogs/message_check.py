@@ -111,9 +111,9 @@ class Message_check(commands.Cog):
 				return await ctx.send('This command can not be used in Private Messages.')
 			except discord.HTTPException:
 				pass
-		#else:
-			#print('Ignoring exception in command {}:'.format(ctx.command))
-			#print(error)
+		else:
+			print('Ignoring exception in command {}:'.format(ctx.command))
+			print(error)
 	
 	@commands.command()
 	@commands.has_permissions(administrator=True)
