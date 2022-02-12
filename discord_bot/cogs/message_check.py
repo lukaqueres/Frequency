@@ -280,9 +280,9 @@ class Message_check(commands.Cog):
 			if urls:
 				url_dict = Processing.process_urls(message, urls)
 		if check_key_words:
-			detected_key_words = Processing.check_for_keys(ctx, get_database_data('servers_msg_process', 'key_words', message.guild.id))
+			detected_key_words = Processing.check_for_keys(message, get_database_data('servers_msg_process', 'key_words', message.guild.id))
 		
-		message_content = ('`' + ctx.message.content + '`')
+		message_content = ('`' + message.content + '`')
 		
 		embed = Embed(title="Message flagged",
 			      colour = message.author.colour,
