@@ -289,8 +289,8 @@ class Message_check(commands.Cog):
 			      timestamp=datetime.utcnow()
 		)
 		embed.set_thumbnail(url=message.author.avatar_url)
-		embed.add_field(name= chr(173), value=f"**User**: {message.message.author} \n**User ID**: {message.message.author.id}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Channel**: {message.message.channel} \n**Channel ID**: {message.message.channel.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**User**: {message.author} \n**User ID**: {message.author.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
 		embed.add_field(name="Message content:", value=message_content, inline=False),
 		if urls:
 			embed.add_field(name='Links flagged:', value= f'There were {len(uls)} links in message.' , inline=False),
