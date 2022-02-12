@@ -163,7 +163,7 @@ class Message_check(commands.Cog):
 			for x in value:
 				if x == penalty and x != 'pass':
 					continue
-				if ((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)):
+				if (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and x != 'pass'):
 					continue
 				if x in message_penalties:
 					penalty += x
@@ -213,7 +213,7 @@ class Message_check(commands.Cog):
 			for x in value:
 				if x == penalty and x != 'pass':
 					continue
-				if ((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)):
+				if (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and x != 'pass'):
 					continue
 				if x in message_penalties:
 					penalty += x
