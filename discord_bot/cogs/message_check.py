@@ -280,7 +280,7 @@ class Message_check(commands.Cog):
 			if urls:
 				url_dict = Processing.process_urls(ctx, urls)
 		if check_key_words:
-			detected_key_words = Processing.check_for_keys(ctx, get_database_data('servers_msg_process', 'key_words', ctx.guild.id)
+			detected_key_words = Processing.check_for_keys(ctx, get_database_data('servers_msg_process', 'key_words', ctx.guild.id))
 		
 		message_content = ('`' + ctx.message.content + '`')
 		
