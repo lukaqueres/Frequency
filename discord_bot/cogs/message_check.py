@@ -117,18 +117,18 @@ class Message_check(commands.Cog):
 	
 	@commands.command()
 	@commands.has_permissions(administrator=True)
-	async def key_words(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
+	async def key_words(self, ctx, task, number : typing.Optional[int] = 0,  *, key_value: typing.Optional[str] = None):
 		task = task.lower()
-		value = value.lower()
+		key_value = key_value.lower()
 		if task == 'set':
-			key_words = value.split
+			key_words = key_value.split
 			if len(key_words) > 20:
 				return ctx.send("Total number of key-words must be less or equal 20")
 			elif len(value) < 1:
 				return ctx.send("Total number of key-words must be more than 0")
 			else:
 				pass
-			write_database_data('servers_msg_process', 'key_words', ctx.guild.id, value)
+			write_database_data('servers_msg_process', 'key_words', ctx.guild.id, key_value)
 			x=[]
 			for y in value.split:
 				x.append('***' + y + '***')
