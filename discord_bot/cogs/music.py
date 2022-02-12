@@ -321,6 +321,12 @@ class Music(commands.Cog):
 	__slots__ = ('bot', 'players')
 	
 	def __init__(self, client):
+		super().__init__( # create our class with some aliases and cooldown
+			cog_attrs={
+				"brief": "Commands related with music",
+				"description": "Commands made for playing, and managing music. Can play from URLs, key-words or IDs"
+			}
+		)
 		self.bot = bot
 		self.client = client
 		self.players = {}
