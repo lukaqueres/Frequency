@@ -56,7 +56,7 @@ class Processing:
 					message_links.append(i)
 			return message_links
 		else:
-			return 0
+			return False
 	
 	@staticmethod
 	async def check_for_keys(message, guild_keys):
