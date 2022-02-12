@@ -131,7 +131,7 @@ class Message_check(commands.Cog):
 				pass
 			write_database_data('servers_msg_process', 'key_words', ctx.guild.id, key_value)
 			x=[]
-			for y in key_value.split:
+			for y in key_value.split():
 				x.append('***' + y + '***')
 			key_words = " | ".join(x)
 			if number == 0:
