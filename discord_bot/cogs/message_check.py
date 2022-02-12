@@ -134,13 +134,13 @@ class Message_check(commands.Cog):
 			for y in key_value.split():
 				x.append('***' + y + '***')
 			key_words = " | ".join(x)
-			if number == 0:
-				return ctx.send(f"New key words set as: {key_words}.")
+			if number <= 0:
+				return await ctx.send(f"New key words set as: {key_words}.")
 			else:
 				if number > 7:
-					return ctx.send(f"Key words set as {key_words}, without limit set. Limit must be less than 7")
+					return await ctx.send(f"Key words set as {key_words}, without limit set. Limit must be less than 7")
 				write_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id, number)
-				return ctx.send(f"New key words set as: {key_words}. With apperance limit: {number}")
+				return await ctx.send(f"New key words set as: {key_words}. With apperance limit: {number}")
 			
 		elif task == 'limit':
 			if number == 0:
