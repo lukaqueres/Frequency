@@ -278,7 +278,7 @@ class Message_check(commands.Cog):
 		if check_links:
 			urls = Processing.check_for_urls(message)
 			if urls:
-				url_dict = Processing.process_urls(message, urls)
+				await url_dict = Processing.process_urls(message, urls)
 		if check_key_words:
 			detected_key_words = Processing.check_for_keys(message, get_database_data('servers_msg_process', 'key_words', message.guild.id))
 		
@@ -293,7 +293,7 @@ class Message_check(commands.Cog):
 		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
 		embed.add_field(name="Message content:", value=message_content, inline=False),
 		if urls:
-			embed.add_field(name='Links flagged:', value= f'There were {len(uls)} links in message.' , inline=False),
+			embed.add_field(name='Links flagged:', value= f'There were {len(urls)} links in message.' , inline=False),
 		iterate = 0
 		for u in url_dict:
 			iterate += 1
