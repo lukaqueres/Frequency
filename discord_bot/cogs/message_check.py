@@ -47,8 +47,8 @@ class Processing:
 		self._content = ctx.message.content
 		self._wordList = ctx.message.content.split()
 	
-	@classmethod
-	async def check_for_urls(self, ctx):
+	@staticmethod
+	async def check_for_urls(ctx):
 		message_links = []
 		if (('http://' in ctx.message.content ) or ('https://' in ctx.message.content)):
 			for i in ctx.message.content.split():
@@ -69,7 +69,7 @@ class Processing:
 		return message_keys
 
 	@staticmethod
-	async def process_urls(self, ctx, message_urls):
+	async def process_urls(ctx, message_urls):
 		message_links_mark = {}
 		for url in message_urls:
 			message_links_mark[url] = 'whiteword'
@@ -239,8 +239,8 @@ class Message_check(commands.Cog):
 					#penalty += 'pass'
 			if penalty[0] == ' ':
 				penalty = penalty[1:]
-			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
-			return await ctx.send(f"Key words penalty set to: {penalty}")
+			write_database_data('servers_msg_process', 'links_penalty', ctx.guild.id, penalty)
+			return await ctx.send(f"Links penalty set to: {penalty}")
 		else:
 			return await ctx.send("Unknown task")
 	
@@ -263,6 +263,49 @@ class Message_check(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		#await client.process_commands(message)
+		if get_database_data('servers_properties', 'message_check_feature', ctx.guild.id) == 'NO':
+			return 0
+		
+		if get_database_data('servers_msg_process', 'key_words_check', ctx.guild.id) == 'YES':
+			check_links = True
+		else:
+			check_links = False
+		if get_database_data('servers_msg_process', 'link_check', ctx.guild.id) == 'YES':
+			check_key_words = True
+		else:
+			check_key_words = False
+			
+		if check_links:
+			urls = Processing.check_for_urls(ctx)
+			if urls:
+				url_dict = Processing.process_urls(ctx, urls)
+		if check_key_words:
+			detected_key_words = Processing.check_for_keys(ctx, get_database_data('servers_msg_process', 'key_words', ctx.guild.id)
+		
+		message_content = ('`' + ctx.message.content + '`')
+		
+		embed = Embed(title="Message flagged",
+			      colour = ctx.author.colour,
+			      timestamp=datetime.utcnow()
+		)
+		embed.set_thumbnail(url=ctx.me.avatar_url)
+		embed.add_field(name= chr(173), value=f"**User**: {ctx.message.author} \n**User ID**: {ctx.message.author.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Channel**: {ctx.message.channel} \n**Channel ID**: {ctx.message.channel.id}", inline=True),
+		embed.add_field(name="Message content:", value=message_content, inline=False),
+		if urls:
+			embed.add_field(name='Links flagged:', value= f'There were {len(uls)} links in message.' , inline=False),
+		iterate = 0
+		for u in url_dict:
+			iterate += 1
+			embed.add_field(name=f'{iterate} Link:', value= f'{url_dict[url[iterate-1]]}' , inline=False),
+		if detected_key_words:
+			embed.add_field(name='Key words detected:', value= f'{detected_key_words}' , inline=False),
+			#embed.add_field(name=chr(173), value=f"**Key words appaerance limit**: {limit}\n**Key words check**: {check}", inline=False),
+		alerts_channel = alert_channel = self.client.get_channel( id = get_database_data('servers_data', 'message_check_channel_id', guild_id) )
+		await ctx.send(embed = embed)
+								       
+		
+		return 0 # clear after tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		guild_id = message.guild.id
 		database_record = get_database_data('servers_properties', 'message_check_feature', guild_id)
 		black_listed = ['Gift', 'gift', 'Steam', 'steam', 'Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
