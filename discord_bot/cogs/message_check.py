@@ -11,9 +11,9 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix, get_time, get_database_data
+from functions import get_prefix, get_time, get_database_data, write_database_data
 
-client = commands.Bot(command_prefix = get_prefix)
+#client = commands.Bot(command_prefix = get_prefix)
 
 load_dotenv()
 
@@ -39,47 +39,12 @@ class Processing:
 		self.bot = ctx.bot
 		self.client = ctx.client
 		self._author = ctx.message.author
-		self._authorId = ctx.message.author.id
 		self._guild = ctx.guild
-		self._guildId = ctx.guild.id
 		self._channel = ctx.channel
-		self._channelId = ctx.channel.id
 		self._content = ctx.message.content
 		self._wordList = ctx.message.content.split()
-		
-	"""
-	@staticmethod
-	async def msg_process_check(ctx, task, number, value):
-		if ( not ctx.message.author.guild_permissions.administrator ): # Whell, it checks if caller has required permissions ( for setup commands it is ALWAYS administrator )
-			raise MissingPermissions('You can not use this command')
-		
-		if task in tasks.keys():
-			if not tasks[task][1]:
-				if value != 'off' and value != 'on':
-					raise commands.BadArgument(f'{task.capitalize()} require ON/OFF type value')
-			if tasks[task][0]:
-				if number > tasks[task][0] or number == 0:
-					raise commands.BadArgument(f'{task.capitalize()} can set count to maximum {tasks[task][0]} and minimum 1')
-			if tasks[task][1]:
-				if value.split() > tasks[task][1]:
-					raise commands.BadArgument(f'Maximum number of {task}s is {tasks[task][1]}')
-			if tasks[task][3]:
-				if get_database_data('servers_msg_process', tasks[task][3], ctx.guild.id):
-					raise commands.BadArgument(f'You have to set {tasks[task][3]} before.')
-			return 1
-		else:
-			raise commands.BadArgument(f'Unknown task {task}.')
 	
-	@staticmethod
-	async def msg_process_execute(ctx, task, number : int, value):
-		if value == 'off' or value == 'on':
-			set_value = settings[value]
-		column = tasks[task][2]
-		write_database_data('servers_msg_process', column, ctx.guild.id, set_value)
-		return f'Success! {task.capitalize()} has been set to {value.upper()}'
-	"""
-	
-	@staticmethod
+	@classmethod
 	async def check_for_urls(self, ctx):
 		message_links = []
 		if (('http://' in ctx.message.content ) or ('https://' in ctx.message.content)):
@@ -91,7 +56,7 @@ class Processing:
 			return 0
 	
 	@staticmethod
-	async def check_for_keys(self, ctx, guild_keys):
+	async def check_for_keys(ctx, guild_keys):
 		message_keys = []
 		for key in guild_keys:
 			if ( key in ctx.message.content ):
@@ -149,7 +114,69 @@ class Message_check(commands.Cog):
 		#else:
 			#print('Ignoring exception in command {}:'.format(ctx.command))
 			#print(error)
+	
+	@commands.command()
+	@has_permissions(administrator=True)
+	async def key_words(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
+		task = task.lower()
+		value = value.lower()
+		if task = 'set':
+			if len(value.split) > 20:
+				return ctx.send("Total number of key-words must be less or equal 20")
+			elif len(value) < 1:
+				return ctx.send("Total number of key-words must be more than 0")
+			else:
+				pass
+			write_database_data('servers_msg_process', 'key_words', ctx.guild.id, value)
+			x=[]
+			for y in value.split:
+				x.append('***' + y + '***')
+			key_words = " | ".join(x)
+			if number == 0:
+				return ctx.send(f"New key words set as: {key_words}.")
+			else:
+				if number > 7:
+					return ctx.send(f"Key words set as {key_words}, without limit set. Limit must be less than 7")
+				write_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id, number)
+				return ctx.send(f"New key words set as: {key_words}. With apperance limit: {number}")
 			
+		elif task = 'limit':
+			if number == 0:
+				return ctx.send(f"Number can't be 0")
+			else:
+				if number > 7:
+					return ctx.send(f"Limit must be less than 7")
+				write_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id, number)
+				return ctx.send(f"Apperance limit set to: {number}")
+			
+		elif task = 'penalty':
+			
+			
+		elif task = 'show':
+			key_words=get_database_data('servers_msg_process', 'key_words', ctx.guild.id)
+			limit=get_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id)
+			check=get_database_data('servers_msg_process', 'key_words_check', ctx.guild.id) or '***No***'
+			if key_words:
+				x=[]
+				for y in key_words.split:
+					x.append('***' + y + '***')
+				key_words = " | ".join(x)
+			else:
+				key_words = '***None***'
+			if not limit:
+				limit = '***None***'
+			embed = Embed(title="Detection configuration",
+				colour = ctx.author.colour,
+				#timestamp=get_time()
+				)
+			embed.set_thumbnail(url=ctx.author.avatar_url)
+			embed.add_field( name='Key words:', value=key_words , inline=True),
+			embed.add_field( name=chr(173), value=f"**Key words appaerance limit**: {limit}\n**Key words check**: {check}", inline=False),
+			
+		else:
+			return ctx.send("Unknown task provided")
+	
+	
 	@commands.command()
 	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
 		task = task.lower()
