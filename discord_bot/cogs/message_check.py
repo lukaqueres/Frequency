@@ -154,7 +154,20 @@ class Message_check(commands.Cog):
 				return await ctx.send(f"Apperance limit set to: {number}")
 			
 		elif task == 'penalty':
-			pass
+			message_penalties = [ 'delete', 'pass' ]
+			user_penalties = , [ 'ban', 'kick', 'pass' ]
+			penalty = ''
+			value = key_value.split()
+			for x in value:
+				if x in message_penalties:
+					penalty += x
+				elif x in user_penalties:
+					penalty += x
+				else:
+					return await ctx.send(f"Unknown penalty {x}")
+					#penalty += 'pass'
+			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
+			return await ctx.send(f"Key words penalty set to: {penalty}")
 			
 		elif task == 'show':
 			key_words=get_database_data('servers_msg_process', 'key_words', ctx.guild.id)
@@ -173,7 +186,7 @@ class Message_check(commands.Cog):
 				colour = ctx.author.colour,
 				#timestamp=get_time()
 				)
-			embed.set_thumbnail(url=ctx.author.avatar_url)
+			embed.set_thumbnail(url=ctx.me.avatar_url)
 			embed.add_field( name='Key words:', value=key_words , inline=True),
 			embed.add_field( name=chr(173), value=f"**Key words appaerance limit**: {limit}\n**Key words check**: {check}", inline=False),
 			await ctx.send(embed = embed)
