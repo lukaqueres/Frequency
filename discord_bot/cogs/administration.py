@@ -30,7 +30,7 @@ class Administration(commands.Cog):
     await member.ban(reason = reason)
     print("Member {member} banned on {ctx.guild} guild on {get_time()} .")
 
-  @commands.command(name='unban', usage='ban <member> [reason]', brief='Clear ban specified user.', description='Un-bans selected member. Remember that you can\'t un-ban nto banned user.')
+  @commands.command(name='unban', usage='ban <member>', brief='Clear ban specified user.', description='Un-bans selected member. Remember that you can\'t un-ban nto banned user.')
   @commands.has_permissions(ban_members = True)
   async def unban(ctx, user : discord.Member):
     banned_users = await ctx.guild.bans()
