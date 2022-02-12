@@ -162,11 +162,11 @@ class Message_check(commands.Cog):
 				return await ctx.send(f"There can be max. 2 penalties")
 			for x in value:
 				if x in message_penalties:
-					if x = penalty:
+					if x == penalty:
 						continue
 					penalty += x
 				elif x in user_penalties:
-					if x = penalty:
+					if x == penalty:
 						continue
 					penalty += x
 				else:
@@ -200,6 +200,32 @@ class Message_check(commands.Cog):
 		else:
 			return await ctx.send("Unknown task provided")
 	
+	@commands.command()
+	@commands.has_permissions(administrator=True)
+	async def links(self, ctx, task,  *, key_value: typing.Optional[str] = None):
+		if task == 'penalty':
+			message_penalties = [ 'delete', 'pass' ]
+			user_penalties = [ 'ban', 'kick', 'pass' ]
+			penalty = ''
+			value = key_value.split()
+			if len(value) > 2:
+				return await ctx.send(f"There can be max. 2 penalties")
+			for x in value:
+				if x in message_penalties:
+					if x == penalty:
+						continue
+					penalty += x
+				elif x in user_penalties:
+					if x == penalty:
+						continue
+					penalty += x
+				else:
+					return await ctx.send(f"Unknown penalty {x}")
+					#penalty += 'pass'
+			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
+			return await ctx.send(f"Key words penalty set to: {penalty}")
+		else:
+			return await ctx.send("Unknown task")
 	
 	@commands.command()
 	async def msg_process(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
