@@ -66,7 +66,7 @@ class MyHelp(commands.HelpCommand):
 				usable += amount_commands
 				if cog: # getting attributes dependent on if a cog exists or not
 					name = cog.qualified_name
-					description = cog.description or "No description"
+					description = cog.brief or "No brief"
 				else:
 					name = "Other"
 					description = "Commands with no category"
