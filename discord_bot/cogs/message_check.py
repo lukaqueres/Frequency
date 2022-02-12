@@ -161,7 +161,7 @@ class Message_check(commands.Cog):
 			if len(value) > 2:
 				return await ctx.send(f"There can be max. 2 penalties")
 			for x in value:
-				if x == penalty:
+				if x == penalty and x != 'pass':
 					continue
 				if ((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)):
 					continue
@@ -211,7 +211,7 @@ class Message_check(commands.Cog):
 			if len(value) > 2:
 				return await ctx.send(f"There can be max. 2 penalties")
 			for x in value:
-				if x == penalty:
+				if x == penalty and x != 'pass':
 					continue
 				if ((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)):
 					continue
