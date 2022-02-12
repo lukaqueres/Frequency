@@ -278,7 +278,7 @@ class Message_check(commands.Cog):
 		if check_links:
 			urls = Processing.check_for_urls(message)
 			if urls:
-				await url_dict = Processing.process_urls(message, urls)
+				url_dict = Processing.process_urls(message, urls)
 		if check_key_words:
 			detected_key_words = Processing.check_for_keys(message, get_database_data('servers_msg_process', 'key_words', message.guild.id))
 		
