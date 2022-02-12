@@ -31,6 +31,9 @@ white_listed_links = [] # pre-defined links marked as a 100% legit no scam
 black_listed_links = [] # pre-defined links marked as a hell in a link form
 black_listed_words = [] # pre-defined words that are used in scam links
 
+message_penalties = [ 'delete', 'pass' ]
+user_penalties = [ 'ban', 'kick', 'pass' ]
+
 settings = { 'off' : 'NO', 'on' : 'YES', 'YES' : 'ON', 'NO' : 'OFF' } # This dictionary is only for saving YES/NO type information in to database, and converting it to/from nice 'ON' and 'OFF'
 
 class Processing:
@@ -154,8 +157,6 @@ class Message_check(commands.Cog):
 				return await ctx.send(f"Apperance limit set to: {number}")
 			
 		elif task == 'penalty':
-			message_penalties = [ 'delete', 'pass' ]
-			user_penalties = [ 'ban', 'kick', 'pass' ]
 			penalty = ''
 			value = key_value.split()
 			if (len(value) != 2):
@@ -172,6 +173,8 @@ class Message_check(commands.Cog):
 				else:
 					return await ctx.send(f"Unknown penalty {x}")
 					#penalty += 'pass'
+			if penalty[0] == ' ':
+				penalty = [1:]
 			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
 			return await ctx.send(f"Key words penalty set to: {penalty}")
 			
@@ -204,24 +207,24 @@ class Message_check(commands.Cog):
 	@commands.has_permissions(administrator=True)
 	async def links(self, ctx, task,  *, key_value: typing.Optional[str] = None):
 		if task == 'penalty':
-			message_penalties = [ 'delete', 'pass' ]
-			user_penalties = [ 'ban', 'kick', 'pass' ]
 			penalty = ''
 			value = key_value.split()
 			if len(value) != 2:
 				return await ctx.send(f"There can be max. 2 penalties")
 			for x in value:
-				if x == penalty and x != 'pass':
+				if x == penalty and not (x == 'pass' or penalty =='pass'):
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
 				if ((x in message_penalties and penalty in message_penalties and not (x == 'pass' or penalty == 'pass')) or (x in user_penalties and penalty in user_penalties and not (x == 'pass' or penalty == 'pass'))):
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
 				if x in message_penalties:
-					penalty = (penalty , x )
+					penalty = penalty + f' {x}' 
 				elif x in user_penalties:
-					penalty = (penalty , x )
+					penalty = penalty + f' {x}' 
 				else:
 					return await ctx.send(f"Unknown penalty {x}")
 					#penalty += 'pass'
+			if penalty[0] == ' ':
+				penalty = [1:]
 			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
 			return await ctx.send(f"Key words penalty set to: {penalty}")
 		else:
