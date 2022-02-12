@@ -93,7 +93,6 @@ class Message_check(commands.Cog):
 		print('Message check module loaded')
     
 	"""async def cog_command_error(self, ctx, error):
-		"""A local error handler for all errors arising from commands in this cog."""
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 			
