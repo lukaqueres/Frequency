@@ -48,10 +48,10 @@ class Processing:
 		self._wordList = ctx.message.content.split()
 	
 	@staticmethod
-	async def check_for_urls(ctx):
+	async def check_for_urls(message):
 		message_links = []
-		if (('http://' in ctx.message.content ) or ('https://' in ctx.message.content)):
-			for i in ctx.message.content.split():
+		if (('http://' in message.content ) or ('https://' in message.content)):
+			for i in message.content.split():
 				if  ( 'http://' in i ) or ( 'https://' in i ):
 					message_links.append(i)
 			return message_links
@@ -59,7 +59,7 @@ class Processing:
 			return 0
 	
 	@staticmethod
-	async def check_for_keys(ctx, guild_keys):
+	async def check_for_keys(message, guild_keys):
 		message_keys = []
 		for key in guild_keys:
 			if ( key in ctx.message.content ):
@@ -69,7 +69,7 @@ class Processing:
 		return message_keys
 
 	@staticmethod
-	async def process_urls(ctx, message_urls):
+	async def process_urls(message, message_urls):
 		message_links_mark = {}
 		for url in message_urls:
 			message_links_mark[url] = 'whiteword'
@@ -263,34 +263,34 @@ class Message_check(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		#await client.process_commands(message)
-		if get_database_data('servers_properties', 'message_check_feature', ctx.guild.id) == 'NO':
+		if get_database_data('servers_properties', 'message_check_feature', message.guild.id) == 'NO':
 			return 0
 		
-		if get_database_data('servers_msg_process', 'key_words_check', ctx.guild.id) == 'YES':
+		if get_database_data('servers_msg_process', 'key_words_check', message.guild.id) == 'YES':
 			check_links = True
 		else:
 			check_links = False
-		if get_database_data('servers_msg_process', 'link_check', ctx.guild.id) == 'YES':
+		if get_database_data('servers_msg_process', 'link_check', message.guild.id) == 'YES':
 			check_key_words = True
 		else:
 			check_key_words = False
 			
 		if check_links:
-			urls = Processing.check_for_urls(ctx)
+			urls = Processing.check_for_urls(message)
 			if urls:
-				url_dict = Processing.process_urls(ctx, urls)
+				url_dict = Processing.process_urls(message, urls)
 		if check_key_words:
-			detected_key_words = Processing.check_for_keys(ctx, get_database_data('servers_msg_process', 'key_words', ctx.guild.id))
+			detected_key_words = Processing.check_for_keys(ctx, get_database_data('servers_msg_process', 'key_words', message.guild.id))
 		
 		message_content = ('`' + ctx.message.content + '`')
 		
 		embed = Embed(title="Message flagged",
-			      colour = ctx.author.colour,
+			      colour = message.author.colour,
 			      timestamp=datetime.utcnow()
 		)
-		embed.set_thumbnail(url=ctx.me.avatar_url)
-		embed.add_field(name= chr(173), value=f"**User**: {ctx.message.author} \n**User ID**: {ctx.message.author.id}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Channel**: {ctx.message.channel} \n**Channel ID**: {ctx.message.channel.id}", inline=True),
+		embed.set_thumbnail(url=message.author.avatar_url)
+		embed.add_field(name= chr(173), value=f"**User**: {message.message.author} \n**User ID**: {message.message.author.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Channel**: {message.message.channel} \n**Channel ID**: {message.message.channel.id}", inline=True),
 		embed.add_field(name="Message content:", value=message_content, inline=False),
 		if urls:
 			embed.add_field(name='Links flagged:', value= f'There were {len(uls)} links in message.' , inline=False),
@@ -302,7 +302,7 @@ class Message_check(commands.Cog):
 			embed.add_field(name='Key words detected:', value= f'{detected_key_words}' , inline=False),
 			#embed.add_field(name=chr(173), value=f"**Key words appaerance limit**: {limit}\n**Key words check**: {check}", inline=False),
 		alerts_channel = alert_channel = self.client.get_channel( id = get_database_data('servers_data', 'message_check_channel_id', guild_id) )
-		await ctx.send(embed = embed)
+		await alerts_channel.send(embed = embed)
 								       
 		
 		return 0 # clear after tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
