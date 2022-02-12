@@ -114,8 +114,12 @@ class MyHelp(commands.HelpCommand):
 		if filtered_commands := await self.filter_commands(commands):
 			for command in filtered_commands:
 				prefix = self.get_command_signature(command)[0]
-				signature = ( str(prefix) + command.usage )
-				embed.add_field(name=signature or self.get_command_signature(command), value=command.brief or "No command brief found") # brief = help
+				signature=''
+				if command.usage:
+					signature = ( str(prefix) + command.usage )
+				else:
+					signature = self.get_command_signature(command)
+				embed.add_field(name=signature, value=command.brief or "No command brief found") # brief = help
            
 		await self.send(embed=embed)
 
