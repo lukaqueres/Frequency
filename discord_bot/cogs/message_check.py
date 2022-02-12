@@ -174,7 +174,7 @@ class Message_check(commands.Cog):
 					return await ctx.send(f"Unknown penalty {x}")
 					#penalty += 'pass'
 			if penalty[0] == ' ':
-				penalty = [1:]
+				penalty = penalty[1:]
 			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
 			return await ctx.send(f"Key words penalty set to: {penalty}")
 			
@@ -224,7 +224,7 @@ class Message_check(commands.Cog):
 					return await ctx.send(f"Unknown penalty {x}")
 					#penalty += 'pass'
 			if penalty[0] == ' ':
-				penalty = [1:]
+				penalty = penalty[1:]
 			write_database_data('servers_msg_process', 'key_words_penalty', ctx.guild.id, penalty)
 			return await ctx.send(f"Key words penalty set to: {penalty}")
 		else:
