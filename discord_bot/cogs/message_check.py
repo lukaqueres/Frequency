@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from ffmpeg import *
 from random import randrange, randint
 from datetime import datetime, date, timedelta
-from discord import member, DMChannel, FFmpegPCMAudio, TextChannel
+from discord import member, DMChannel, FFmpegPCMAudio, TextChannel, Embed, Intents
 from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import *
@@ -169,7 +169,7 @@ class Message_check(commands.Cog):
 				key_words = '***None***'
 			if not limit:
 				limit = '***None***'
-			embed = embed(title="Detection configuration",
+			embed = Embed(title="Detection configuration",
 				colour = ctx.author.colour,
 				#timestamp=get_time()
 				)
