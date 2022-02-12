@@ -92,7 +92,7 @@ class Message_check(commands.Cog):
 	async def on_ready(self):
 		print('Message check module loaded')
     
-	async def cog_command_error(self, ctx, error):
+	"""async def cog_command_error(self, ctx, error):
 		"""A local error handler for all errors arising from commands in this cog."""
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
@@ -113,7 +113,7 @@ class Message_check(commands.Cog):
 				pass
 		else:
 			print('Ignoring exception in command {}:'.format(ctx.command))
-			print(error)
+			print(error)"""
 	
 	@commands.command()
 	@commands.has_permissions(administrator=True)
