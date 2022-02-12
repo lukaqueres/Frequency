@@ -124,6 +124,12 @@ class Message_check(commands.Cog):
 			task = task.lower()
 		if key_value:
 			key_value = key_value.lower()
+		if task == 'on' or task == 'off':
+			if task == 'on':
+				value = 'YES'
+			else:
+				value = 'NO'
+			write_database_data('servers_msg_process', 'key_words_check', ctx.guild.id, vaule)
 		if task == 'set':
 			key_words = key_value.split()
 			#print(f'Key-words: {key_words}')
@@ -206,6 +212,12 @@ class Message_check(commands.Cog):
 	@commands.command()
 	@commands.has_permissions(administrator=True)
 	async def links(self, ctx, task,  *, key_value: typing.Optional[str] = None):
+		if task == 'on' or task == 'off':
+			if task == 'on':
+				value = 'YES'
+			else:
+				value = 'NO'
+			write_database_data('servers_msg_process', 'link_check', ctx.guild.id, vaule)
 		if task == 'penalty':
 			penalty = ''
 			value = key_value.split()
