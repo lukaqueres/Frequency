@@ -262,6 +262,7 @@ class Message_check(commands.Cog):
 	
 	@commands.Cog.listener()
 	async def on_message(self, message):
+		"""
 		#await client.process_commands(message)
 		if get_database_data('servers_properties', 'message_check_feature', message.guild.id) == 'NO':
 			return 0
@@ -308,6 +309,7 @@ class Message_check(commands.Cog):
 								       
 		
 		return 0 # clear after tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	"""
 		guild_id = message.guild.id
 		database_record = get_database_data('servers_properties', 'message_check_feature', guild_id)
 		black_listed = ['Gift', 'gift', 'Steam', 'steam', 'Free', 'free', 'Nitro', 'nitro', 'Discord', 'discord', 'giveaway', 'Giveaway', 'Skin', 'skin', 'CS:GO', 'Counter-Strike: Global Offensive', 'CS']
