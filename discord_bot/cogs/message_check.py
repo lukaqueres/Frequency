@@ -284,6 +284,8 @@ class Message_check(commands.Cog):
 		
 		message_content = ('`' + message.content + '`')
 		
+		print(f"urls: {urls}\nurl_disct: {url_dict}\nKey_words: {detected_key_words}")
+		
 		embed = Embed(title="Message flagged",
 			      colour = message.author.colour,
 			      timestamp=datetime.utcnow()
