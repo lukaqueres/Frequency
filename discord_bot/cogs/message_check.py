@@ -168,7 +168,7 @@ class Message_check(commands.Cog):
 				if x in message_penalties:
 					penalty = penalty + f' {x}' 
 				elif x in user_penalties:
-					penalty = penalty ,  f' {x}' 
+					penalty = penalty + f' {x}' 
 				else:
 					return await ctx.send(f"Unknown penalty {x}")
 					#penalty += 'pass'
