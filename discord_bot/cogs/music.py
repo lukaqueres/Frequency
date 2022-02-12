@@ -592,7 +592,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		player.np = await ctx.send(embed = embed)
 
-	@commands.command(name='volume', usage='volume', brief='Changes volume of songs', description='Change volume in %. Must estimate beetwen 1 and 100.', aliases=['vol'])
+	@commands.command(name='volume', usage='volume < ammount >', brief='Changes volume of songs', description='Change volume in %. Must estimate beetwen 1 and 100.', aliases=['vol'])
 	async def change_volume(self, ctx, *, vol: float):
 		"""Change the player volume.
 		Parameters
