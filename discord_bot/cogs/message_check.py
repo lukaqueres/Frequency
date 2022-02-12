@@ -161,9 +161,9 @@ class Message_check(commands.Cog):
 			if (len(value) != 2):
 				return await ctx.send(f"There must be 2 penalties")
 			for x in value:
-				if x == penalty and x != 'pass':
+				if x == penalty and not (x == 'pass' or penalty =='pass'):
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
-				if ((((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and (x != 'pass')) or (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and (x != 'pass'))):
+				if ((x in message_penalties and penalty in message_penalties and not (x == 'pass' or penalty == 'pass')) or (x in user_penalties and penalty in user_penalties and not (x == 'pass' or penalty == 'pass'))):
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
 				if x in message_penalties:
 					penalty += x
@@ -213,7 +213,7 @@ class Message_check(commands.Cog):
 			for x in value:
 				if x == penalty and x != 'pass':
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
-				if ((((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and (x != 'pass')) or (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and (x != 'pass'))):
+				if ((x in message_penalties and penalty in message_penalties and not (x == 'pass' or penalty == 'pass')) or (x in user_penalties and penalty in user_penalties and not (x == 'pass' or penalty == 'pass'))):
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
 				if x in message_penalties:
 					penalty += x
