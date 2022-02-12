@@ -407,7 +407,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(f'Connected to: **{channel}**', delete_after=20)
 
-	@commands.command(name='play', usage='play [ url/key-words/id ]', brief='Play specified song or playlist.', description='If needed joins channel and stream provided song or playlist.\nCan play from warious of services.', aliases=['sing', 'p'])
+	@commands.command(name='play', usage='play < url/key-words/id >', brief='Play specified song or playlist.', description='If needed joins channel and stream provided song or playlist.\nCan play from warious of services.', aliases=['sing', 'p'])
 	async def play_(self, ctx, *, search: str, random = None):
 		"""Request a song and add it to the queue.
 		This command attempts to join a valid voice channel if the bot is not already in one.
@@ -438,7 +438,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await player.queue.put(source)
 
-	@commands.command(name='pause')
+	@commands.command(name='pause', usage='pause', brief='Pause currently song', description='Pause playing songs, and wait til resume command invoke. Only used when anything is playing, and isn\'t paused yet')
 	async def pause_(self, ctx):
 		"""Pause the currently playing song."""
 		vc = ctx.voice_client
@@ -452,7 +452,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Paused the song!')
 
-	@commands.command(name='resume')
+	@commands.command(name='resume', usage='resume', brief='Resume paused song', description='Resume playing songs if paused.')
 	async def resume_(self, ctx):
 		"""Resume the currently paused song."""
 		vc = ctx.voice_client
@@ -466,7 +466,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Resumed the song!')
 
-	@commands.command(name='skip')
+	@commands.command(name='skip', usage='skip', brief='Skip now playing song', description='Skip currently playing song, if queue is empty it will skip and wait for more songs to play.')
 	async def skip_(self, ctx):
 		"""Skip the song."""
 		vc = ctx.voice_client
@@ -483,7 +483,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Skipped: {title}')
 
-	@commands.command(name='queue', aliases=['q', 'playlist'])
+	@commands.command(name='queue', usage='queue', brief='Displays info about queue', description='Send an embed with total duration of queue, basic info about now playing song and next 1-9 songs.', aliases=['q', 'playlist'])
 	async def queue_info(self, ctx):
 		"""Retrieve a basic queue of upcoming songs."""
 		vc = ctx.voice_client
@@ -543,7 +543,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(embed=embed)
 
-	@commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
+	@commands.command(name='now_playing', usage='now_playing', brief='Send embed with many useful information about currently playing song', description='Displays information about uploader, upload date, views, likes, tags, url, etc.', aliases=['np', 'current', 'currentsong', 'playing'])
 	async def now_playing_(self, ctx):
 		"""Display information about the currently playing song."""
 		
@@ -592,7 +592,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		player.np = await ctx.send(embed = embed)
 
-	@commands.command(name='volume', aliases=['vol'])
+	@commands.command(name='volume', usage='volume', brief='Changes volume of songs', description='Change volume in %. Must estimate beetwen 1 and 100.', aliases=['vol'])
 	async def change_volume(self, ctx, *, vol: float):
 		"""Change the player volume.
 		Parameters
@@ -617,7 +617,7 @@ class Music(commands.Cog):
 		await ctx.message.add_reaction('✅')
 		await ctx.send(f'**`{ctx.author}`**: Set the volume to **{vol}%**')
 
-	@commands.command(name='stop')
+	@commands.command(name='stop', usage='stop', brief='Stops playing, and quit voice channel', description='When invoked clears queue, now playing song and quits channel.')
 	async def stop_(self, ctx):
 		"""Stop the currently playing song and destroy the player.
 		!Warning!
