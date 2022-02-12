@@ -125,7 +125,7 @@ class Message_check(commands.Cog):
 			#print(f'Key-value: {key_value}')
 			if len(key_words) > 20:
 				return ctx.send("Total number of key-words must be less or equal 20")
-			elif len(value) < 1:
+			elif len(key_value) < 1:
 				return ctx.send("Total number of key-words must be more than 0")
 			else:
 				pass
