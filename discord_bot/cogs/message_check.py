@@ -158,12 +158,12 @@ class Message_check(commands.Cog):
 			user_penalties = [ 'ban', 'kick', 'pass' ]
 			penalty = ''
 			value = key_value.split()
-			if len(value) > 2:
-				return await ctx.send(f"There can be max. 2 penalties")
+			if len(value) = 2:
+				return await ctx.send(f"There must be 2 penalties")
 			for x in value:
 				if x == penalty and x != 'pass':
 					continue
-				if (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and x != 'pass'):
+				if (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and (x != 'pass' or penalty != 'pass')):
 					continue
 				if x in message_penalties:
 					penalty += x
@@ -213,7 +213,7 @@ class Message_check(commands.Cog):
 			for x in value:
 				if x == penalty and x != 'pass':
 					continue
-				if (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and x != 'pass'):
+				if (((x in message_penalties and penalty in message_penalties) or (x in user_penalties and penalty in user_penalties)) and (x != 'pass' or penalty != 'pass')):
 					continue
 				if x in message_penalties:
 					penalty += x
