@@ -122,6 +122,7 @@ class Message_check(commands.Cog):
 		if task == 'set':
 			key_words = key_value.split
 			print(f'Key-words: {key_words}')
+			print(f'Key-value: {key_value}')
 			if len(key_words) > 20:
 				return ctx.send("Total number of key-words must be less or equal 20")
 			elif len(value) < 1:
