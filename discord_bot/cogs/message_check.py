@@ -121,7 +121,8 @@ class Message_check(commands.Cog):
 		task = task.lower()
 		value = value.lower()
 		if task == 'set':
-			if len(value.split) > 20:
+			key_words = value.split
+			if len(key_words) > 20:
 				return ctx.send("Total number of key-words must be less or equal 20")
 			elif len(value) < 1:
 				return ctx.send("Total number of key-words must be more than 0")
