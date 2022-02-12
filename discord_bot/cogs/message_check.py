@@ -166,9 +166,9 @@ class Message_check(commands.Cog):
 				if ((x in message_penalties and penalty in message_penalties and not (x == 'pass' or penalty == 'pass')) or (x in user_penalties and penalty in user_penalties and not (x == 'pass' or penalty == 'pass'))):
 					return await ctx.send(f"Wrong penalty, there can be 1 penalty for message, and 1 for user")
 				if x in message_penalties:
-					penalty = (penalty , x )
+					penalty = (penalty + f' {x}' )
 				elif x in user_penalties:
-					penalty = (penalty , x )
+					penalty = (penalty ,  f' {x}' )
 				else:
 					return await ctx.send(f"Unknown penalty {x}")
 					#penalty += 'pass'
