@@ -169,7 +169,7 @@ class Message_check(commands.Cog):
 				key_words = '***None***'
 			if not limit:
 				limit = '***None***'
-			embed = Embed(title="Detection configuration",
+			embed = embed(title="Detection configuration",
 				colour = ctx.author.colour,
 				#timestamp=get_time()
 				)
