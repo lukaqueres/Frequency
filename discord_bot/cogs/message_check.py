@@ -124,9 +124,9 @@ class Message_check(commands.Cog):
 			#print(f'Key-words: {key_words}')
 			#print(f'Key-value: {key_value}')
 			if len(key_words) > 20:
-				return ctx.send("Total number of key-words must be less or equal 20")
+				return await ctx.send("Total number of key-words must be less or equal 20")
 			elif len(key_value) < 1:
-				return ctx.send("Total number of key-words must be more than 0")
+				return await ctx.send("Total number of key-words must be more than 0")
 			else:
 				pass
 			write_database_data('servers_msg_process', 'key_words', ctx.guild.id, key_value)
@@ -144,12 +144,12 @@ class Message_check(commands.Cog):
 			
 		elif task == 'limit':
 			if number == 0:
-				return ctx.send(f"Number can't be 0")
+				return await ctx.send(f"Number can't be 0")
 			else:
 				if number > 7:
-					return ctx.send(f"Limit must be less than 7")
+					return await ctx.send(f"Limit must be less than 7")
 				write_database_data('servers_msg_process', 'key_words_limit', ctx.guild.id, number)
-				return ctx.send(f"Apperance limit set to: {number}")
+				return await ctx.send(f"Apperance limit set to: {number}")
 			
 		elif task == 'penalty':
 			pass
@@ -174,9 +174,10 @@ class Message_check(commands.Cog):
 			embed.set_thumbnail(url=ctx.author.avatar_url)
 			embed.add_field( name='Key words:', value=key_words , inline=True),
 			embed.add_field( name=chr(173), value=f"**Key words appaerance limit**: {limit}\n**Key words check**: {check}", inline=False),
+			await ctx.send(embed = embed)
 			
 		else:
-			return ctx.send("Unknown task provided")
+			return await ctx.send("Unknown task provided")
 	
 	
 	@commands.command()
