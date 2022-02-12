@@ -129,7 +129,7 @@ class Message_check(commands.Cog):
 				value = 'YES'
 			else:
 				value = 'NO'
-			write_database_data('servers_msg_process', 'key_words_check', ctx.guild.id, vaule)
+			write_database_data('servers_msg_process', 'key_words_check', ctx.guild.id, value)
 			return await ctx.send(f"Key word check set to {task}")
 		if task == 'set':
 			key_words = key_value.split()
@@ -219,7 +219,7 @@ class Message_check(commands.Cog):
 			else:
 				value = 'NO'
 			write_database_data('servers_msg_process', 'link_check', ctx.guild.id, value)
-			return await ctx.send(f"Key word check set to {task}")
+			return await ctx.send(f"Links check set to {task}")
 		if task == 'penalty':
 			penalty = ''
 			value = key_value.split()
