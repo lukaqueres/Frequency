@@ -116,7 +116,7 @@ class Message_check(commands.Cog):
 			#print(error)
 	
 	@commands.command()
-	@has_permissions(administrator=True)
+	@commands.has_permissions(administrator=True)
 	async def key_words(self, ctx, task, number : typing.Optional[int] = 0,  *, value: typing.Optional[str] = None):
 		task = task.lower()
 		value = value.lower()
