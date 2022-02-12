@@ -117,8 +117,10 @@ class Message_check(commands.Cog):
 	@commands.command()
 	@commands.has_permissions(administrator=True)
 	async def key_words(self, ctx, task, number : typing.Optional[int] = 0,  *, key_value: typing.Optional[str] = None):
-		task = task.lower()
-		key_value = key_value.lower()
+		if task:
+			task = task.lower()
+		if key_value:
+			key_value = key_value.lower()
 		if task == 'set':
 			key_words = key_value.split()
 			#print(f'Key-words: {key_words}')
@@ -160,7 +162,7 @@ class Message_check(commands.Cog):
 			check=get_database_data('servers_msg_process', 'key_words_check', ctx.guild.id) or '***No***'
 			if key_words:
 				x=[]
-				for y in key_words.split:
+				for y in key_words.split():
 					x.append('***' + y + '***')
 				key_words = " | ".join(x)
 			else:
