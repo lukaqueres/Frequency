@@ -155,13 +155,19 @@ class Message_check(commands.Cog):
 			
 		elif task == 'penalty':
 			message_penalties = [ 'delete', 'pass' ]
-			user_penalties = , [ 'ban', 'kick', 'pass' ]
+			user_penalties = [ 'ban', 'kick', 'pass' ]
 			penalty = ''
 			value = key_value.split()
+			if len(value) > 2:
+				return await ctx.send(f"There can be max. 2 penalties")
 			for x in value:
 				if x in message_penalties:
+					if x = penalty:
+						continue
 					penalty += x
 				elif x in user_penalties:
+					if x = penalty:
+						continue
 					penalty += x
 				else:
 					return await ctx.send(f"Unknown penalty {x}")
