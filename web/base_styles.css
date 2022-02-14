@@ -70,7 +70,7 @@
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
+  background-color: black; /* Set a background color */
   color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
@@ -86,13 +86,12 @@
       
 }
 
-#panel:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
-}
-
 #panel_up_btn
 {
-   
+   padding: 15px;
+   background-color: white; /* Set a background color */
+   color: black; /* Text color */
+   border-radius: 10px 0px 0px 10px; /* Rounded corners */
 }
 
 #panel_more_btn
