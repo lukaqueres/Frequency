@@ -31,6 +31,7 @@
    outline: none; /* Remove outline */
    text-decoration: none;
    color: white;
+   border-color: white;
    border-style: none;
    border-width: 1px;
 }
