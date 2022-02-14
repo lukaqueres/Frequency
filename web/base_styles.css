@@ -11,7 +11,7 @@
     }
 }
 
-.upperfooter 
+.upfooter 
 {
    height: 50px;
    position: fixed;
@@ -19,7 +19,7 @@
    top: 0;
    width: 100%;
    background-color: black;
-   color: black;
+   color: white;
    text-align: center;
    /*border-bottom-style: solid;
    border-width: 1px;*/
