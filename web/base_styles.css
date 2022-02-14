@@ -38,7 +38,6 @@
 .animation.hide
 {
    opacity: 0;
-   tranzition: all 1s ease 0ms;
 }
 
 .clearlink
