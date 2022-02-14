@@ -13,7 +13,7 @@ function topFunction() {
 } 
 
 function animate(id) {
-    var x = document.getElementById(id);
+    x = id
     if (x.classList.contains("hide")) {
       x.classList.remove("hide");
     } else {
