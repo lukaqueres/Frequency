@@ -62,7 +62,7 @@
 #panel {
   opacity: 1;
    height: 100px;
-   width: 25px;
+   width: 15px;
   display: block; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
@@ -72,8 +72,7 @@
   outline: none; /* Remove outline */
   background-color: black; /* Set a background color */
   color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
+  padding: 5px; /* Some padding */
   border-radius: 10px 0px 0px 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
   transition: all 0.5s linear;
@@ -96,7 +95,7 @@
    cursor: pointer; /* Add a mouse pointer on hover */
    background-color: white; /* Set a background color */
    color: black; /* Text color */
-   border-radius: 10px 10px 0px 0px; /* Rounded corners */
+   border-radius: 5px 0px 0px 0px; /* Rounded corners */
    font-weight: 1000;
 }
 
@@ -113,6 +112,6 @@
   padding: 15px;
   background-color: white; /* Set a background color */
   color: black; /* Text color */
-  border-radius: 0px 0px 10px 10px; /* Rounded corners */
+  border-radius: 5px 0px 0px 0px; /* Rounded corners */
 }
-}
+
