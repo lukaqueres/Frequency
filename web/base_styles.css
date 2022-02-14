@@ -61,7 +61,7 @@
 
 #panel {
   opacity: 1;
-   height: 100px;
+   height: 200px;
    width: 15px;
   display: block; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
@@ -72,7 +72,7 @@
   outline: none; /* Remove outline */
   background-color: black; /* Set a background color */
   color: white; /* Text color */
-  padding: 5px; /* Some padding */
+  /*padding: 5px; Some padding */
   border-radius: 10px 0px 0px 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
   transition: all 0.5s linear;
