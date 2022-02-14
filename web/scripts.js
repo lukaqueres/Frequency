@@ -1,9 +1,10 @@
 function scrollFunction(mybutton) {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-     mybutton.style.display = "block";
+     //mybutton.style.display = "block";
+     animate(mybutton)
   } else {
      animate(mybutton)
-     mybutton.style.display = "none";
+     //mybutton.style.display = "none";
   }
 }
 
