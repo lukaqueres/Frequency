@@ -64,7 +64,7 @@
   /*padding: 5px; Some padding */
   border-radius: 10px 0px 0px 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
-  transition: all 0.5s linear;
+  all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 #panel.hide
@@ -90,7 +90,7 @@
    color: black; /* Text color */
    border-radius: 5px 0px 0px 0px; /* Rounded corners */
    font-weight: 1000;
-   transition: all 0.5s linear;
+   all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 
@@ -113,7 +113,7 @@
   background-color: white; /* Set a background color */
   color: black; /* Text color */
   border-radius: 5px 0px 0px 0px; /* Rounded corners */
-  transition: all 0.5s linear;
+  all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 #panel_more_btn:hover
