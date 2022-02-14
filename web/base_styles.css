@@ -99,6 +99,12 @@
    font-weight: 1000;
 }
 
+
+#panel_up_btn:hover
+{
+   background-color: grey;
+}
+
 #panel_more_btn
 {
    /*width: 100%;
@@ -115,3 +121,7 @@
   border-radius: 5px 0px 0px 0px; /* Rounded corners */
 }
 
+#panel_more_btn:hover
+{
+   background-color: grey;
+}
