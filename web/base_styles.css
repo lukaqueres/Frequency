@@ -60,6 +60,7 @@
 }
 
 #myBtn {
+   opacity: 1;
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
@@ -74,6 +75,11 @@
   border-radius: 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
    animation: animate-left 1s cubic-bezier(1,1.02,0,.97);
+}
+
+#myBtn.hide
+{
+   opacity: 0;
 }
 
 #myBtn:hover {
