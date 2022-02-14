@@ -35,6 +35,7 @@
    border-style: none;
    border-width: 1px;
    transition: all 0.25s cubic-bezier(.77,0,.18,1);
+   top: 120px;
 }
 
 .footerlink:hover
