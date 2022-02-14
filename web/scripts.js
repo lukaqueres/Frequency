@@ -1,13 +1,13 @@
 function scrollFunction(panel) {
-  panel.classList.toggle('hide');
+  //panel.classList.toggle('hide');
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
      //panel.classList.toggle('hide');
      //panel.style.display = "block";
-     //panel.classList.remove("hide");
+     panel.classList.remove("hide");
      //animate(mybutton)
   } else {
      //panel.classList.toggle('hide');
-     //panel.classList.remove("hide");
+     panel.classList.add("hide");
      //animate(mybutton)
      //panel.style.display = "none";
   }
