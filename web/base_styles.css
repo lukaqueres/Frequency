@@ -82,7 +82,11 @@
 {
    opacity: 0;
    display: none:
-      
+}
+
+#panel.expand
+{
+   right: -200px:
 }
 
 #panel_up_btn
