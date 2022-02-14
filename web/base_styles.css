@@ -97,6 +97,7 @@
    color: black; /* Text color */
    border-radius: 5px 0px 0px 0px; /* Rounded corners */
    font-weight: 1000;
+   transition: all 0.5s linear;
 }
 
 
@@ -119,6 +120,7 @@
   background-color: white; /* Set a background color */
   color: black; /* Text color */
   border-radius: 5px 0px 0px 0px; /* Rounded corners */
+  transition: all 0.5s linear;
 }
 
 #panel_more_btn:hover
