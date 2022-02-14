@@ -55,7 +55,7 @@
   display: block; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20%;
-  right: 0px;
+  right: -285px;
   z-index: 99; /* Make sure it does not overlap */
   border: solid; /* Remove borders */
    border-width: 1px;
@@ -77,7 +77,7 @@
 
 #panel.expand
 {
-   right: 300px;
+   right: 0px;
 }
 
 #panel_up_btn
@@ -133,7 +133,6 @@
 #panel_content
 {
    height: 100%;
-   width: 100%;
    left: 15px;
    top: -100%;
    background-color: black;
