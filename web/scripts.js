@@ -19,6 +19,10 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 } 
 
+function moveFunction(panel) {
+  panel.classList.toggle("expand");
+} 
+
 function animate(mybutton) {
     var x = mybutton
     //mybutton.classList.toggle('hide')
