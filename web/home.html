@@ -17,8 +17,26 @@
     <a class="clearlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot"><div class="circle" style=" bottom: 250px;"><h1 style="top: 220px; left: 55px; ">INVITE ME!</h1></div></a>
     <?php
       echo "Wild West Post Office!";
-      echo "Want to invite me? Hit ";
     ?>
+       <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button> 
+      mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
     </div>
   </body>
 </html> 
