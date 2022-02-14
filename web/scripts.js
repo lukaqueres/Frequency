@@ -1,8 +1,8 @@
-function scrollFunction(mybutton, id) {
+function scrollFunction(mybutton) {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    animate(id)
+     mybutton.style.display = "block";
   } else {
-    animate(id)
+     mybutton.style.display = "none";
   }
 }
 
@@ -12,11 +12,3 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 } 
 
-function animate(id) {
-    var x = id
-    if (x.classList.contains("hide")) {
-      x.classList.remove("hide");
-    } else {
-      x.classList.add("hide");
-    }
-}
