@@ -61,8 +61,8 @@
 
 #panel {
   opacity: 1;
-   height: 70px;
-   
+   height: 100px;
+   width: 25px;
   display: block; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
