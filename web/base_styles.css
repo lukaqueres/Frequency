@@ -91,7 +91,7 @@
    width: 100%;
    border: none; /* Remove borders */
    outline: none; /* Remove outline */
-   padding: 15px;
+   /*padding: 15px;*/
    cursor: pointer; /* Add a mouse pointer on hover */
    background-color: white; /* Set a background color */
    color: black; /* Text color */
