@@ -44,7 +44,7 @@
    display: inline-flex;
    padding-left: 10px;
    padding-right: 10px;
-   background-image: linear-gradient(to right, #000 33%,transparent 33% 66%,#000 66%);
+   background-image: linear-gradient(to right, white 33%,transparent 33% 66%,#000 66%);
    background-position: right bottom;
    background-size: 300% 2px;
    background-repeat: no-repeat;
