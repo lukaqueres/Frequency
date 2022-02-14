@@ -75,13 +75,7 @@
 
 #panel.expand
 {
-   height: 205px;
-   width: 300px;
-   left: 15px;
-   position: relative;
-   top: -102%;
-   color: black;
-   z-index: 99;
+   right: 300px;
 }
 
 #panel_up_btn
@@ -129,7 +123,10 @@
 
 #panel_content
 {
-   height: 200px;
+   height: 205px;
    width: 300px;
    left: 15px;
+   top: -102%;
+   color: black;
+   z-index: 99;
 }
