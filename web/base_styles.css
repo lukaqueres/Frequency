@@ -59,13 +59,13 @@
   z-index: 99; /* Make sure it does not overlap */
   border: solid; /* Remove borders */
    border-width: 1px;
-   border-color: white;
+   border-color: black;
   outline: none; /* Remove outline */
   background-color: black; /* Set a background color */
   color: white; /* Text color */
-  /*padding: 5px; Some padding */
   border-radius: 5px 0px 0px 5px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
+   border-right-style: none;
   transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
@@ -99,7 +99,8 @@
 
 #panel_up_btn:hover
 {
-   background-color: grey;
+   background-color: white;
+   color: black;
 }
 
 #panel_more_btn
@@ -121,7 +122,8 @@
 
 #panel_more_btn:hover
 {
-   background-color: grey;
+   background-color: white;
+   color: black;
 }
 
 #rotated_text
@@ -139,4 +141,7 @@
    background-color: black;
    z-index: 99;
    display: inline-block;
+   border-left-style: solid;
+   border-color: white;
+   border-width: 1px;
 }
