@@ -29,17 +29,6 @@
    top: 0;
 }
 
-.animation
-{
-   opacity: 1;
-   tranzition: all 1s ease 0ms;
-}
-
-.animation.hide
-{
-   opacity: 0;
-}
-
 .clearlink
 {
    font-size: 15px;
@@ -86,7 +75,8 @@
 
 #panel.expand
 {
-   right: -200px:
+   right: -200px;
+   color: black;
 }
 
 #panel_up_btn
