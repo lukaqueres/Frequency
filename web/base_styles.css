@@ -72,6 +72,7 @@
 #panel.hide
 {
    opacity: 0;
+   right: -300px;
    display: none:
 }
 
