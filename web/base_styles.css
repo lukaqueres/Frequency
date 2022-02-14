@@ -127,6 +127,6 @@
    width: 300px;
    left: 15px;
    top: -102%;
-   color: black;
+   background-color: black;
    z-index: 99;
 }
