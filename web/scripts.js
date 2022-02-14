@@ -1,8 +1,8 @@
-function scrollFunction(mybutton) {
+function scrollFunction(mybutton, id) {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
+    animate(id)
   } else {
-    mybutton.style.display = "none";
+    animate(id)
   }
 }
 
