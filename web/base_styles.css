@@ -89,3 +89,15 @@
 #panel:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
+
+#panel_up_btn
+{
+   
+}
+
+#panel_more_btn
+{
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
