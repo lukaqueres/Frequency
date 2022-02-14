@@ -13,15 +13,31 @@
 
 .upperfooter 
 {
+   height: 50px;
    position: fixed;
    left: 0;
    top: 0;
    width: 100%;
-   background-color: 2A2B2E;
+   background-color: black;
    color: black;
    text-align: center;
-   border-bottom-style: solid;
+   /*border-bottom-style: solid;
+   border-width: 1px;*/
+}
+
+.footerlink
+{
+   border: none; /* Remove borders */
+   outline: none; /* Remove outline */
+   text-decoration: none;
+   color: white;
+   border-style: none;
    border-width: 1px;
+}
+
+.footerlink:hover
+{
+   border-bottom-style: solid;
 }
 
 .container
