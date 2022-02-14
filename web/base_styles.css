@@ -61,6 +61,7 @@
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
+   animation: animate-left 1s cubic-bezier(1,1.02,0,.97);
 }
 
 #myBtn:hover {
