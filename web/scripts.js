@@ -15,8 +15,9 @@ function topFunction() {
 } 
 
 function animate(mybutton) {
-    var x = mybutton
-    x.MyBtn.toggle('hide')
+    //var x = mybutton
+    mybutton.classList.toggle('hide')
+    //x.MyBtn.toggle('hide')
     /*
     if (x.classList.contains("hide")) {
       x.classList.remove("hide");
