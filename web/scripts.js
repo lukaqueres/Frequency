@@ -1,4 +1,5 @@
 function scrollFunction(panel) {
+  panel.classList.toggle('hide');
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
      panel.style.display = "block";
      //panel.classList.remove("hide");
