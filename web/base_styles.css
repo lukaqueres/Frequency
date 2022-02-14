@@ -121,3 +121,10 @@
 {
    background-color: grey;
 }
+
+#panel_content
+{
+   height: 200px;
+   width: 300px;
+   left: 15px;
+}
