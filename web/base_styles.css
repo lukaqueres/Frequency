@@ -59,11 +59,12 @@
   z-index: 99; /* Make sure it does not overlap */
   border: solid; /* Remove borders */
    border-width: 1px;
+   border-color: black;
   outline: none; /* Remove outline */
   background-color: black; /* Set a background color */
   color: white; /* Text color */
   /*padding: 5px; Some padding */
-  border-radius: 10px 0px 0px 10px; /* Rounded corners */
+  border-radius: 5px 0px 0px 5px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
   transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
