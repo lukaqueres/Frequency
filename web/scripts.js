@@ -16,9 +16,9 @@ function topFunction() {
 
 function animate(mybutton) {
     var x = mybutton
-    if (x.classList.contains("hide")) {
-      x.classList.remove("hide");
+    if (x.idList.contains("hide")) {
+      x.idList.remove("hide");
     } else {
-      x.classList.add("hide");
+      x.idList.add("hide");
     }
 }
