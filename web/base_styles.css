@@ -88,15 +88,26 @@
 
 #panel_up_btn
 {
+   border: none; /* Remove borders */
+   outline: none; /* Remove outline */
    padding: 15px;
+   cursor: pointer; /* Add a mouse pointer on hover */
    background-color: white; /* Set a background color */
    color: black; /* Text color */
-   border-radius: 10px 0px 0px 10px; /* Rounded corners */
+   border-radius: 10px 10px 0px 0px; /* Rounded corners */
 }
 
 #panel_more_btn
 {
+  cursor: pointer; /* Add a mouse pointer on hover */
   -ms-transform: rotate(90deg); /* IE 9 */
   -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   transform: rotate(90deg);
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  padding: 15px;
+  background-color: white; /* Set a background color */
+  color: black; /* Text color */
+  border-radius: 0px 0px 10px 10px; /* Rounded corners */
+}
 }
