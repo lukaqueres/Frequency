@@ -20,11 +20,15 @@
    width: 100%;
    background-color: black;
    color: white;
-   /*text-align: center;
-   border-bottom-style: solid;
+   text-align: left;
+   /*border-bottom-style: solid;
    border-width: 1px;*/
 }
 
+.footerlinksdiv
+{
+   text-align: right;
+}
 .footerlink
 {
    border: none; /* Remove borders */
