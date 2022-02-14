@@ -1,12 +1,12 @@
 function scrollFunction(panel) {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-     //mybutton.style.display = "block";
-     panel.classList.remove("hide");
+     panel.style.display = "block";
+     //panel.classList.remove("hide");
      //animate(mybutton)
   } else {
-     panel.classList.remove("hide");
+     //panel.classList.remove("hide");
      //animate(mybutton)
-     //mybutton.style.display = "none";
+     panel.style.display = "none";
   }
 }
 
