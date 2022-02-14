@@ -13,7 +13,7 @@
 
 .upfooter 
 {
-   height: 50px;
+   height: 70px;
    position: fixed;
    left: 0;
    top: 0;
@@ -35,7 +35,8 @@
    border-style: none;
    border-width: 1px;
    transition: all 0.25s cubic-bezier(.77,0,.18,1);
-   top: 120px;
+   top: 75px;
+   display: inline-flex;
 }
 
 .footerlink:hover
