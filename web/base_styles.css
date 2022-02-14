@@ -57,7 +57,8 @@
   bottom: 20px; /* Place the button at the bottom of the page */
   right: 0px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
+  border: solid; /* Remove borders */
+   border-width: 1px;
   outline: none; /* Remove outline */
   background-color: black; /* Set a background color */
   color: white; /* Text color */
