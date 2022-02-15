@@ -45,7 +45,7 @@
       <div>
         <?php
           $number = pg_query($pg_conn, "SELECT COUNT(*) FROM servers_properties");
-          $row = pg_fetchone($number);
+          $row = pg_fetch_result($number);
           echo "Number of guilds bot is in: $row";
           ?>
       </div>
