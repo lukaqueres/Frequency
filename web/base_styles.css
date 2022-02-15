@@ -28,8 +28,6 @@
 .footerlinksdiv
 {
    text-align: right;
-   border-top-style: solid;
-   border-width: 1px;
 }
 .footerlink
 {
@@ -48,7 +46,7 @@
    padding-right: 10px;
    background-image: linear-gradient(to right, white 33%,transparent 33% 66%,#000 66%);
    background-position: right bottom;
-   background-size: 300% 2px;
+   background-size: 300% 1px;
    background-repeat: no-repeat;
 }
 
