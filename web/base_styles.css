@@ -28,6 +28,8 @@
 .footerlinksdiv
 {
    text-align: right;
+   border-top-style: solid;
+   border-width: 1px;
 }
 .footerlink
 {
