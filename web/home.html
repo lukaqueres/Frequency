@@ -10,6 +10,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
+  <body>
   <?php
     // This function reads your DATABASE_URL config var and returns a connection[
     // string suitable for pg_connect. Put this in your app.
@@ -21,7 +22,6 @@
     // Here we establish the connection. Yes, that's all.
     $pg_conn = pg_connect(pg_connection_string_from_database_url());
   ?>
-  <body>
     <div class="container">
       <div class="upfooter">
         <h1 style="top: -10px; left: 5%;"> Wild West Post Office </h1>
