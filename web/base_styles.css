@@ -50,6 +50,18 @@
    background-repeat: no-repeat;
 }
 
+.footerbtn
+{
+   text-decoration: none;
+   color: black;
+   background-color: white;
+   transition: all 0.25s cubic-bezier(.77,0,.18,1);
+   border-width: 1px;
+   border-style: solid;
+   border-radius: 5px 0px 0px 5px;
+   text-align: right;
+}
+
 .footerlink:hover
 {
    /*border-bottom-style: solid;*/
