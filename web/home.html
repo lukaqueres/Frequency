@@ -48,9 +48,9 @@
           $row = pg_fetch_row($number);
           echo "Number of guilds bot is in: $row[0]";
           echo "<br />\n";
-          $members = pg_query($pg_conn, "SELECT SUM(number_of_memebers) FROM servers_properties");
-          //$row = pg_fetch_row($members);
-          echo "Number of members in guilds bot is in: $members";
+          $members = pg_query($pg_conn, "SELECT SUM(number_of_memebers) AS total FROM servers_properties");
+          $row = pg_fetch_row($members);
+          echo "Number of members in guilds bot is in: $members[0]";
           ?>
       </div>
     </div>
