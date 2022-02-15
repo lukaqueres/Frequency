@@ -50,7 +50,7 @@
           echo "<br />\n";
           $members = pg_query($pg_conn, "SELECT SUM(number_of_members) AS total FROM servers_properties");
           $row = pg_fetch_row($members);
-          echo "Number of members in guilds bot is in: $members[0]";
+          echo "Number of members in guilds bot is in: $members";
           ?>
       </div>
     </div>
