@@ -50,7 +50,7 @@
 
           $members = pg_query($pg_conn, "SELECT SUM(number_of_members) as total FROM servers_properties");
           $numberOfMembers = pg_fetch_assoc($members);
-          echo '<span style="font-size: 150px;font-weight: 600;"> ' . $numberOfGuilds[0] . '</span><span style="font-size: 100px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . $numberOfMembers['total'] . '</span><span style="font-size: 100px;font-weight: 500;"> Members</span>';
+          echo '<span style="font-size: 150px;font-weight: 600;"> ' . $numberOfGuilds[0] . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . $numberOfMembers['total'] . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
           ?>
       </div>
     </div>
