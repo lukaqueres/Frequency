@@ -44,13 +44,16 @@
       </div>
       <div>
         <?php
-          $number = pg_query($pg_conn, "SELECT COUNT(*) FROM servers_properties");
-          $row = pg_fetch_row($number);
-          echo "Number of guilds bot is in: $row[0]";
-          echo "<br />\n";
+
+          $result = pg_query($pg_conn, "SELECT COUNT(*) FROM servers_properties");
+          $numberOfGuilds = pg_fetch_row($result);
+
           $members = pg_query($pg_conn, "SELECT SUM(number_of_members) as total FROM servers_properties");
-          $row = pg_fetch_assoc($members);
-          echo "Number of members in guilds bot is in: $row[total]";
+          $numberOfMembers = pg_fetch_assoc($members);
+          <span style="font-size: 100px;">
+            echo "Number of guilds bot is in: $numberOfMembers[0]";
+            echo "<br />\n";
+            echo "Number of members in guilds bot is in: $numberOfGuilds[total]";
           ?>
       </div>
     </div>
