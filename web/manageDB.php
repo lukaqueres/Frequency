@@ -27,5 +27,5 @@ class DatabaseManager {
       $numberOfGuilds = pg_fetch_row($result);
       return $result[0];
     }
-  
+}
 ?>
