@@ -107,6 +107,13 @@ padding: 5px 10px 5px 10px;
    border-radius: 50%;
 }
 
+.window
+{
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 5px;
+}
+
 #panel {
   opacity: 1;
    height: 200px;
@@ -224,3 +231,5 @@ padding: 5px 10px 5px 10px;
    flex-wrap: nowrap;              /* default value; can be omitted */
    justify-content: space-between; /* switched from default (flex-start, see below) */
 }
+
+
