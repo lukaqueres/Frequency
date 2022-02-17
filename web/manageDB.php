@@ -19,9 +19,10 @@ class DatabaseManager {
   
   function get_dbguilds($pg_conn)
     {
-      $result = pg_query($pg_conn, "SELECT COUNT(*) FROM servers_properties");
-      $numberOfGuilds = pg_fetch_row($result);
-      return $result['0'];
+      $guilds = pg_query($pg_conn, "SELECT COUNT(*) as number FROM servers_properties");
+      //$result = pg_fetch_row($guilds);
+      $result = pg_fetch_assoc($guilds);
+      return $result['number'];
     }
 }
 ?>
