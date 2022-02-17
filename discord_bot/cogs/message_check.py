@@ -371,7 +371,7 @@ class Message_check(commands.Cog):
 				await alert_channel.send(embed=embed)
 		else: 
 			return 0
-	"""
+	
 	@commands.Cog.listener()
 	async def on_message_delete(self, message):
 		modDeleted = False
@@ -402,7 +402,7 @@ class Message_check(commands.Cog):
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
-	"""
+	
 	@commands.Cog.listener()
 	async def on_raw_message_delete(self, payload):
 		message = payload.cached_message
@@ -410,23 +410,24 @@ class Message_check(commands.Cog):
 		message_guild = self.client.get_guild(payload.guild_id)
 		message_channel_id = payload.channel_id
 		guild_id = payload.guild_id
-		msg = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
-		author = msg.author
-		print(author.display_name)
+		#msg = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		#author = msg.author
+		#print(author.display_name)
 		#print("Message deleted")
 		modDeleted = False
 		database_record = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		if database_record == None:
 			return 0
 		deleter = None
-		if (author.bot):
-			return 0
+		#if (author.bot):
+		#	return 0
 		if message.content.startswith('$say'):
 			return 0
 		async for entry in message_guild.audit_logs(limit=1,action=discord.AuditLogAction.message_delete):
 			if entry.created_at.now() == datetime.utcnow():
 				deleter = entry.user
-				modDeleted = True
+				#modDeleted = True
+		modDeleted = True
 		channel = self.client.get_channel( id = database_record )
 		embed = discord.Embed( 
 			title="Message deleted",
