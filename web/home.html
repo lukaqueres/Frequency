@@ -11,6 +11,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
+  <?php
+    // Here we establish the connection. Yes, that is all.
+    $pg_conn = pg_connect(pg_connection_string_from_database_url());
+  ?>
   <body>
     <div class="container">
       <div class="upfooter">
@@ -35,7 +39,7 @@
       <div id="main_up">
         <?php
           $dbm = new DatabaseManager();
-          echo '<span style="font-size: 150px;font-weight: 600;"> ' . $dbm->get_dbguilds() . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . $dbm->get_dbmembers() . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
+          echo '<span style="font-size: 150px;font-weight: 600;"> ' . $dbm->get_dbguilds($pg_conn) . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . $dbm->get_dbmembers($pg_conn) . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
           ?>
       </div>
     </div>
