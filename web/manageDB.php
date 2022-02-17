@@ -17,7 +17,7 @@ class DatabaseManager {
       $members = pg_query($pg_conn, "SELECT SUM(number_of_members) as members FROM servers_properties");
       $result = pg_fetch_assoc($members);
       
-      $result = add_zeros($result['members'], 5)
+      $result = add_zeros($result['members'], 5);
       return $result;
     }
   
