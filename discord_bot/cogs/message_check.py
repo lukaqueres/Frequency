@@ -371,9 +371,13 @@ class Message_check(commands.Cog):
 				await alert_channel.send(embed=embed)
 		else: 
 			return 0
-		
+	"""
 	@commands.Cog.listener()
 	async def on_message_delete(self, message):
+	"""
+	@commands.Cog.listener()
+	async def on_raw_message_delete(self, payload):
+    		message = payload.cached_message
 		#print("Message deleted")
 		modDeleted = False
 		guild_id = message.guild.id
