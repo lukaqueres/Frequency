@@ -217,4 +217,8 @@ padding: 5px 10px 5px 10px;
 #main
 {
    top: 70px;
+   display: flex;                  /* establish flex container */
+   flex-direction: row;            /* default value; can be omitted */
+   flex-wrap: nowrap;              /* default value; can be omitted */
+   justify-content: space-between; /* switched from default (flex-start, see below) */
 }
