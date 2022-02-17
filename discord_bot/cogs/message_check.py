@@ -405,6 +405,7 @@ class Message_check(commands.Cog):
 	
 	@commands.Cog.listener()
 	async def on_raw_message_delete(self, payload):
+		print(f"PAYLOAD: {payload}")
 		message = payload.cached_message
 		message_channel = self.client.get_channel(payload.channel_id)
 		message_guild = self.client.get_guild(payload.guild_id)
