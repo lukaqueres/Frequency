@@ -48,7 +48,7 @@ function add_zeros($string, $number)
   {
     $string = '0' . $string;
   }
-  $string = substr($string, 0, $number);
+  $string = substr($string, $number, 0);
   
   return $string;
   }
