@@ -41,12 +41,16 @@
       <div id="main">
         <div style="text-align: right;" id="main_up_left">
           <?php
-           echo '<span style="font-size: 50px;font-weight: 500;"> Members</span></br><span style="font-size: 250px;font-weight: 600;"> ' . $dbm->get_dbmembers($pg_conn) . '</span>';
+           echo '<span style="font-size: 250px;font-weight: 600;"> ' . $dbm->get_dbmembers($pg_conn) . '</span>
+                 </br>
+                 <span style="font-size: 50px;font-weight: 500;"> Members</span>';
           ?>
         </div>
         <div style="border-left-style: none;" id="main_up_right">
           <?php
-            echo '<span style="font-size: 250px;font-weight: 600;"> ' . $dbm->get_dbguilds($pg_conn) . '</span></br><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span>';
+            echo '<span style="font-size: 250px;font-weight: 600;"> ' . $dbm->get_dbguilds($pg_conn) . '</span>
+                  </br>
+                  <span style="font-size: 50px;font-weight: 500;"> Guilds </br></span>';
           ?>
         </div>
       </div
