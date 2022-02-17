@@ -49,7 +49,7 @@ function add_zeros($string, $number)
     $string = '0' . $string;
   }
   $length = strlen(string $string): int;
-  $length -= $number 
+  $length -= $number;
   $string = substr($string, $lenght, $number);
   
   return $string;
