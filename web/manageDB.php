@@ -50,7 +50,7 @@ function add_zeros($string, $number)
   }
   //$length = strlen($string);
   //$length -= $number;
-  $number = -1 * abs($number)
+  $number = -1 * abs($number);
   $string = substr($string, $number);
   
   return $string;
