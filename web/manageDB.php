@@ -29,16 +29,7 @@ class DatabaseManager {
       $result = add_zeros($result['guilds'], 5);
       return $result;
     }
-  
-  function add_zeros($string, $number)
-  {
-    for ($i = 0; $i < $number; $i++) 
-    {
-      $string .= '0';
-    }
-    $string = substr($string, 0, $number);
-    return $string;
-  }
+ 
 }
 
 function append_string ($str1, $str2) {
@@ -50,4 +41,15 @@ function append_string ($str1, $str2) {
     // Returning the result 
     return $str1;
 }
+
+function add_zeros($string, $number)
+{
+  for ($i = 0; $i < $number; $i++) 
+  {
+    $string .= '0';
+  }
+  $string = substr($string, 0, $number);
+  
+  return $string;
+  }
 ?>
