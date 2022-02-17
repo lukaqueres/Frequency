@@ -26,7 +26,7 @@ class DatabaseManager {
       $guilds = pg_query($pg_conn, "SELECT COUNT(*) as guilds FROM servers_properties");
       $result = pg_fetch_assoc($guilds);
       
-      $result = add_zeros($result['guilds'], 6);
+      $result = add_zeros($result['guilds'], 5);
       return $result;
     }
  
