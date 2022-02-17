@@ -402,7 +402,7 @@ class Message_check(commands.Cog):
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
-	
+	"""
 	@commands.Cog.listener()
 	async def on_raw_message_delete(self, payload):
 		print(f"PAYLOAD: {payload}")
@@ -433,7 +433,7 @@ class Message_check(commands.Cog):
 		embed = discord.Embed( 
 			title="Message deleted",
 			description="Deleted by moderator" if modDeleted else "Deleted by user",
-			color= author.colour,
+			color= deleter.colour,
 			timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 		)
 		embed.set_thumbnail(url=deleter.icon_url if modDeleted else message.author.avatar_url)
@@ -443,6 +443,7 @@ class Message_check(commands.Cog):
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
+	"""
 		
 	@commands.Cog.listener()
 	async def on_message_edit(self,message_before, message_after):
