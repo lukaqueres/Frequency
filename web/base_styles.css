@@ -209,4 +209,9 @@ padding: 5px 10px 5px 10px;
    margin-left: auto;
    margin-right: auto;
    color: black;
+   float: left;
+}
+#main
+{
+   top: 70px;
 }
