@@ -406,7 +406,7 @@ class Message_check(commands.Cog):
 	@commands.Cog.listener()
 	async def on_raw_message_delete(self, payload):
 		message = payload.cached_message
-		channel = self.bot.get_channel(payload.channel_id)
+		message.channel = self.client.get_channel(payload.channel_id)
 		guild_id = payload.guild_id
 		#print("Message deleted")
 		modDeleted = False
