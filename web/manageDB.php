@@ -21,7 +21,7 @@ class DatabaseManager {
     {
       $result = pg_query($pg_conn, "SELECT COUNT(*) FROM servers_properties");
       $numberOfGuilds = pg_fetch_row($result);
-      return $result;
+      return $result['0'];
     }
 }
 ?>
