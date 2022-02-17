@@ -4,6 +4,7 @@
     <title> Wild West Post Office | Main</title>
     <link rel="stylesheet" type="text/css" href="base_styles.css" />
     <script type="text/javascript" src="scripts.js"></script>
+    <?php include("manageDB.php"); ?>
     <meta name="description" content="Main site featuring Discord multi-task bot Wild West Post Office!" />
     <meta name="keywords" content="discord, bot" />
     <meta name="author" content="Lukas" />
@@ -11,17 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-  <?php
-    // This function reads your DATABASE_URL config var and returns a connection[
-    // string suitable for pg_connect. Put this in your app.
-    function pg_connection_string_from_database_url() {
-      extract(parse_url($_ENV["DATABASE_URL"]));
-      return "user=$user password=$pass sslmode=require host=$host dbname=" . substr($path, 1); # <- you may want to add sslmode=require there too
-    }
-
-    // Here we establish the connection. Yes, that's all.
-    $pg_conn = pg_connect(pg_connection_string_from_database_url());
-  ?>
     <div class="container">
       <div class="upfooter">
         <h1 style="top: -10px; left: 5%;"> Wild West Post Office </h1>
@@ -44,13 +34,7 @@
       </div>
       <div id="main_up">
         <?php
-
-          $result = pg_query($pg_conn, "SELECT COUNT(*) FROM servers_properties");
-          $numberOfGuilds = pg_fetch_row($result);
-
-          $members = pg_query($pg_conn, "SELECT SUM(number_of_members) as total FROM servers_properties");
-          $numberOfMembers = pg_fetch_assoc($members);
-          echo '<span style="font-size: 150px;font-weight: 600;"> ' . $numberOfGuilds[0] . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . $numberOfMembers['total'] . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
+          echo '<span style="font-size: 150px;font-weight: 600;"> ' . get_dbguilds() . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . get_dbmembers() . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
           ?>
       </div>
     </div>
