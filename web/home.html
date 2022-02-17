@@ -34,7 +34,8 @@
       </div>
       <div id="main_up">
         <?php
-          echo '<span style="font-size: 150px;font-weight: 600;"> ' . get_dbguilds() . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . get_dbmembers() . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
+          $dbm = new DatabaseManager();
+          echo '<span style="font-size: 150px;font-weight: 600;"> ' . $dbm->get_dbguilds() . '</span><span style="font-size: 50px;font-weight: 500;"> Guilds </br></span><span style="font-size: 150px;font-weight: 600;"> ' . $dbm->get_dbmembers() . '</span><span style="font-size: 50px;font-weight: 500;"> Members</span>';
           ?>
       </div>
     </div>
