@@ -406,7 +406,8 @@ class Message_check(commands.Cog):
 	@commands.Cog.listener()
 	async def on_raw_message_delete(self, payload):
 		message = payload.cached_message
-		message.channel = self.client.get_channel(payload.channel_id)
+		message_channel = self.client.get_channel(payload.channel_id)
+		message_channel_id = payload.channel_id
 		guild_id = payload.guild_id
 		#print("Message deleted")
 		modDeleted = False
@@ -432,7 +433,7 @@ class Message_check(commands.Cog):
 		embed.set_thumbnail(url=deleter.icon_url if modDeleted else message.author.avatar_url)
 		embed.add_field(name= chr(173), value=f"**Message author**: {message.author} \n**Message author ID**: {message.author.id}", inline=True),
 		embed.add_field(name= chr(173), value=f"**Deleter**: {deleter if modDeleted else message.author} \n**Deleter ID**: {deleter.id if modDeleted else message.author.id}", inline=True),
-		embed.add_field(name= chr(173), value=f"**Channel**: {message.channel} \n**Channel ID**: {message.channel.id}", inline=True),
+		embed.add_field(name= chr(173), value=f"**Channel**: {message_channel} \n**Channel ID**: {message_channel_id}", inline=True),
 		embed.add_field(name= 'Message content:', value=message.content, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await channel.send(embed=embed)
