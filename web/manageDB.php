@@ -46,7 +46,7 @@ function add_zeros($string, $number)
 {
   for ($i = 0; $i < $number; $i++) 
   {
-    $string .= '0';
+    $string = '0' . $string;
   }
   $string = substr($string, 0, $number);
   
