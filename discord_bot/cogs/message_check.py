@@ -410,7 +410,7 @@ class Message_check(commands.Cog):
 		message_guild = self.client.get_guild(payload.guild_id)
 		message_channel_id = payload.channel_id
 		guild_id = payload.guild_id
-		msg = await client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+		msg = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
 		author = msg.author
 		print(author.display_name)
 		#print("Message deleted")
