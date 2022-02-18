@@ -225,7 +225,7 @@ padding: 5px 10px 5px 10px;
 }
 #main
 {
-   top: 79px;
+   top: 150px;
    display: flex;                  /* establish flex container */
    flex-direction: row;            /* default value; can be omitted */
    flex-wrap: nowrap;              /* default value; can be omitted */
@@ -235,4 +235,5 @@ padding: 5px 10px 5px 10px;
 #top
 {
    text-align: central;
+   top: 100px;
 }
