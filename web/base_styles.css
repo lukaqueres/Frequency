@@ -23,6 +23,7 @@
    background-color: black;
    color: white;
    text-align: left;
+   z-index: 99;
    /*border-bottom-style: solid;
    border-width: 1px;*/
 }
@@ -235,6 +236,11 @@ padding: 5px 10px 5px 10px;
 
 #top
 {
-   text-align: center;
    top: 79px;
+}
+
+#up
+{
+   text-align: center;
+   
 }
