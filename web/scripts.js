@@ -33,3 +33,7 @@ function animate(mybutton) {
       x.classList.add("hide");
     }
 }
+
+function showtopmorePanel(panel) {
+  panel.classList.toggle("show");
+} 
