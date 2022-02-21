@@ -23,8 +23,8 @@
         <h6 style="top: -45px; left: 18%; border-bottom-style: solid; padding-left: 10px;border-width: 1px;"> by Wild West Post Office </h6>
         <div style="right: 7%; top: 23px; display:flex; flex-direction: row;position: fixed;">
           <a class="footerbtn" target="_blank" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot" style="width: 44px;border-radius: 5px 0px 0px 0px;">Log in</a>
-          <div class="footerbtn" style="width: 10px;height: 20px;right: -98px;border-radius: 0px 5px 0px 0px;">
-            <button onclick="showtopmorePanel()">
+          <div class="footerbtn" id="topmore" style="width: 10px;height: 20px;right: -98px;border-radius: 0px 5px 0px 0px;">
+            <button onclick="callshowtopmorePanel()">
               <p style="transform: /*rotate(90deg)*/scale(1.75, 1.75) translateX(-1px) translateY(-11px);"><!--&#x27A4;-->&#x21a8;</p>
             </button
         </div>
@@ -91,6 +91,11 @@
 </html> 
     
 <script>
+  function callshowtopmorePanel()
+  {
+    panel = document.getElementById("topmore");
+    showtopmorePanel(panel)
+  }
   panel = document.getElementById("panel");
   // When the user scrolls down 20px from the top of the document, show the button
   window.onscroll = function() {scrollFunction(panel)};
