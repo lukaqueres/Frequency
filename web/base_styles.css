@@ -249,6 +249,7 @@ padding: 5px 10px 5px 10px;
    width: 100px;
    height: 200px;
    transition: all 0.25s cubic-bezier(.77,0,.18,1);
+   position: fixed;
 }
 
 #topPanel.show
