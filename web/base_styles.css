@@ -51,6 +51,7 @@
    background-position: right bottom;
    background-size: 300% 1px;
    background-repeat: no-repeat;
+   
 }
 
 .footerlink:hover
@@ -73,6 +74,7 @@ text-align: right;
 position: absolute;
 border-color: white;
 padding: 5px 10px 5px 10px;
+   cursor: pointer;
 }
 
 .footerbtn:hover
@@ -252,18 +254,20 @@ padding: 5px 10px 5px 10px;
    border-top-color: black;
    border-radius: 0px 0px 5px 5px;
    top: -200px;
-   width: 98px;
+   width: 98px; /*98px*/
    height: 200px;
    transition: all 0.25s cubic-bezier(.77,0,.18,1);
    position: fixed;
-   z-index: 99;
-   right: 35px;
+   z-index: 1;
+   right: 34px;
+   text-align: center;
 }
 
 #topPanel.show
 {
    opacity: 1;
-   top: 55px;
+   top: 54px;
+   z-index: 99;
 }
 
 #topPanel.expand
