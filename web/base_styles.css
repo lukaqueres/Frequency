@@ -248,19 +248,22 @@ padding: 5px 10px 5px 10px;
    background-color: white;
    color: black;
    border-width: 1px;
+   border-style: solid;
+   border-top-color: black;
    border-radius: 0px 0px 5px 5px;
    top: -100px;
-   width: 100px;
+   width: 98px;
    height: 200px;
    transition: all 0.25s cubic-bezier(.77,0,.18,1);
    position: fixed;
    z-index: 99;
+   right: 35px;
 }
 
 #topPanel.show
 {
    opacity: 1;
-   top: 0px;
+   top: 55px;
 }
 
 #topPanel.expand
