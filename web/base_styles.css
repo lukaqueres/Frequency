@@ -246,6 +246,9 @@ padding: 5px 10px 5px 10px;
 {
    display: none;
    top: -100px;
+   width: 100px;
+   height: 200px;
+   transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 #topPanel.show
