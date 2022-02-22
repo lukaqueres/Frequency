@@ -14,9 +14,11 @@ body {
 	height: 70px;
 	color: white;
 	background-color: #000010;
+	position: fixed;
 }
 
 #aside_menu {
+	position: fixed;
 	left: 0px;
 	top: 0px;
 	width: 20%;
@@ -24,12 +26,12 @@ body {
 	height: 100%;
 	background-color: #000010;
 	color: white;
-	display: inline-block;
+	float: right;
 }
 
 #main_content {
 	width: 80%;
-	display: inline-block;
+	float: right;
 }
 
 .logo {
