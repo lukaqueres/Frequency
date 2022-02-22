@@ -46,6 +46,7 @@ require __DIR__ . "/config.php";
 	<div id="aside_menu">
 		Menu
 	</div>
+	<div>
 	<h1 style="text-align: center;">A Simple Working Demo of the Script </h2>
 		<?php
 		if (!isset($_SESSION['user'])) {
@@ -115,6 +116,7 @@ require __DIR__ . "/config.php";
 		<div class="response-block">
 			<p> <?php echo json_encode($_SESSION['connections']); ?></p>
 		</div>
+	</div>
 </body>
 
 </html>
