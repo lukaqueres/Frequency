@@ -63,7 +63,7 @@
    transition: background-position 0.5s;
 }
 
-.footerbtn
+.headerbtn
 {
 text-decoration: none;
 color: black;
@@ -79,10 +79,10 @@ padding: 0px 15px 0px 15px;
    cursor: pointer;
 }
 
-.footerbtn:hover
+.headerbtn:hover
 {
-   border-color: white;
-   background-color: black;
+   border-color: darkblue;
+   background-color: darkblue;
    color: white;
 }
 
