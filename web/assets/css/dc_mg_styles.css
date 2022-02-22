@@ -21,6 +21,12 @@ body {
 	height: 100%;
 	background-color: #000030;
 	color: white;
+	display: inline-block;
+}
+
+#main_content {
+	width: 70%;
+	display: inline-block;
 }
 
 .logo {
