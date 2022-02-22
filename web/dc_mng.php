@@ -41,6 +41,7 @@ require __DIR__ . "/config.php";
 			}
 			?>
 		</span>
+		<a href="https://web-plan-it.herokuapp.com/"> Main</a>
 	</header>
 	<h1 style="text-align: center;">A Simple Working Demo of the Script </h2>
 		<?php
