@@ -73,6 +73,7 @@ body {
 	height: 40px;
 	border-radius: 5px;
 	border: None;
+	text-align: center;
 }
 
 .log-in:hover {
