@@ -67,7 +67,7 @@
 .headerbtn
 {
   text-decoration: none;
-  color: black;
+  color: #0000C0;
   background-color: white;
   transition: all 0.25s cubic-bezier(.77,0,.18,1);
   border-width: 1px;
