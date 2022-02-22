@@ -32,7 +32,7 @@ require __DIR__ . "/config.php";
 <body>
 	<div id="header"> <span class="logo">Wild West Post Office</span>
 		<span class="menu">
-			<a class="log-in" href="https://web-plan-it.herokuapp.com/"> Main</a>
+			<a class="log-in" href="https://web-plan-it.herokuapp.com/">Main</a>
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
 			if (isset($_SESSION['user'])) {
