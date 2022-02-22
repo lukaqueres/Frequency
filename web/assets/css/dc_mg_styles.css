@@ -34,10 +34,8 @@ body {
 #main_content {
 	width: 80%;
 	float: right;
-	border-style: solid;
-	border-color: #000010;
 	border-radius: 10px 0px 0px 0px;
-	background-color: #000060;
+	background-color: #000010;
 }
 
 .logo {
