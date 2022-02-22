@@ -17,15 +17,18 @@
     $dbm = new DatabaseManager();
 
     require __DIR__ . "/config.php";
+    
   ?>
   <body>
     <div class="header">
         <h1 style="top: -17px; left: 5%;"> Wild West Post Office </h1>
         <h6 style="top: -53px; left: 18%; /*! border-bottom-style: solid; */ padding-left: 10px;border-width: 1px;"> by Wild West Post Office </h6>
-        
-        <a class="headerbtn" target="_blank" href="$auth_url" style="/*! width: 60px; */border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;">
-          Authorize
-        </a>
+        <?php
+          $auth_url = url($client_id, $redirect_url, $scopes);
+          echo '<a class="headerbtn" target="_blank" href="$auth_url" style="/*! width: 60px; */border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;">
+            Authorize
+          </a>';
+        ?>
       <div style="top: -109px; right: 10%; /*! width: 100%; */" class="footerlinksdiv">
         <a class="headerlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&amp;permissions=8&amp;scope=bot">Main</a>
         <a class="headerlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&amp;permissions=8&amp;scope=bot">Commands &amp; Modules</a>
