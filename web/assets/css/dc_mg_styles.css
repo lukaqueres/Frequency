@@ -18,15 +18,16 @@ body {
 #aside_menu {
 	left: 0px;
 	top: 0px;
-	width: 20%;
+	width: 20vh;
+	min-width: 200px;
 	height: 100%;
-	background-color: #000030;
+	background-color: #000010;
 	color: white;
 	display: inline-block;
 }
 
 #main_content {
-	width: 80%;
+	width: 80vh;
 	display: inline-block;
 }
 
