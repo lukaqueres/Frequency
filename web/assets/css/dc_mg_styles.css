@@ -16,8 +16,8 @@ body {
 	background-color: #000010;
 	position: fixed;
 	z-index: 99;
-	border-style: solid;
-	border-color: black;
+	border-style: none none solid none;
+	border-color: white;
 	border-width: 1px;
 }
 
