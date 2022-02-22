@@ -21,7 +21,6 @@ body {
 #aside_menu {
 	position: fixed;
 	left: 0px;
-	top: 0px;
 	width: 20%;
 	min-width: 200px;
 	height: 100%;
@@ -29,12 +28,13 @@ body {
 	color: white;
 	float: right;
 	z-index: 98;
+	top: 80px;
 }
 
 #main_content {
+	top: 80px;
 	width: 80%;
 	float: right;
-	border-radius: 10px 0px 0px 0px;
 	background-color: #000010;
 }
 
