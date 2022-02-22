@@ -30,7 +30,7 @@ require __DIR__ . "/config.php";
 </head>
 
 <body>
-	<header> <span class="logo">Demo - Discord Oauth</span>
+	<div id="header"> <span class="logo">Demo - Discord Oauth</span>
 		<span class="menu">
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
@@ -42,7 +42,10 @@ require __DIR__ . "/config.php";
 			?>
 		</span>
 		<a href="https://web-plan-it.herokuapp.com/"> Main</a>
-	</header>
+	</div>
+	<div id="aside_menu">
+		Menu
+	</div>
 	<h1 style="text-align: center;">A Simple Working Demo of the Script </h2>
 		<?php
 		if (!isset($_SESSION['user'])) {
