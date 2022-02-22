@@ -46,7 +46,7 @@ require __DIR__ . "/config.php";
 	<div id="aside_menu">
 		Menu
 	</div>
-	<div>
+	<div id="main_content">
 	<h1 style="text-align: center;">A Simple Working Demo of the Script </h2>
 		<?php
 		if (!isset($_SESSION['user'])) {
