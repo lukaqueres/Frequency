@@ -30,7 +30,7 @@ require __DIR__ . "/config.php";
 </head>
 
 <body>
-	<div id="header"> <span class="logo">Demo - Discord Oauth</span>
+	<div id="header"> <span class="logo">Wild West Post Office</span>
 		<span class="menu">
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
