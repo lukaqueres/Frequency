@@ -36,9 +36,9 @@ require __DIR__ . "/config.php";
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
 			if (isset($_SESSION['user'])) {
-				echo '<a href="includes/logout.php"><button class="log-in">LOGOUT</button></a>';
+				echo '<a href="includes/logout.php"><button class="log-in">Logout</button></a>';
 			} else {
-				echo "<a href='$auth_url'><button class='log-in'>LOGIN</button></a>";
+				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
 			}
 			?>
 		</span>
