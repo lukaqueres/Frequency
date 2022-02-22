@@ -4,7 +4,7 @@
 }
 
 body {
-	background: #000060;
+	background: #000010;
 	color: white;
 	margin: 0px;
 }
@@ -15,6 +15,7 @@ body {
 	color: white;
 	background-color: #000010;
 	position: fixed;
+	z-index: 99;
 }
 
 #aside_menu {
@@ -27,11 +28,16 @@ body {
 	background-color: #000010;
 	color: white;
 	float: right;
+	z-index: 98;
 }
 
 #main_content {
 	width: 80%;
 	float: right;
+	border-style: solid;
+	border-color: #000010;
+	border-radius: 10px 0px 0px 0px;
+	background-color: #000060;
 }
 
 .logo {
