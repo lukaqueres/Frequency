@@ -28,14 +28,14 @@
         <?php
           if (isset($_SESSION['user'])) 
           {
-            echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng.php' style='/*! width: 60px; */border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
+            echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng.php' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
               Manage
             </a>";
           }
           else
           {
             $auth_url = url($client_id, $redirect_url, $scopes);
-            echo "<a class='headerbtn' href='$auth_url' style='/*! width: 60px; */border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
+            echo "<a class='headerbtn' href='$auth_url' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
               Authorize
             </a>";
           }
