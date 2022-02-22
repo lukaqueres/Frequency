@@ -14,7 +14,7 @@ $scopes = "identify email guilds connections";
 # REDIRECT URL
 # example: https://mydomain.com/includes/login.php
 # example: https://mydomain.com/test/includes/login.php
-$redirect_url = "https://web-plan-it.herokuapp.com/includes/login.php";
+$redirect_url = "https://web-plan-it.herokuapp.com/dc_mng.php";
 
 # IMPORTANT READ THIS:
 # - Set the `$bot_token` to your bot token if you want to use guilds.join scope to add a member to your server
@@ -22,4 +22,4 @@ $redirect_url = "https://web-plan-it.herokuapp.com/includes/login.php";
 # - Leave it as it is if you do not want to use 'guilds.join' scope.
 
 # https://i.imgur.com/2tlOI4t.png (screenshot)
-$bot_token = null;
+$bot_token = $_ENV["TOKEN"];
