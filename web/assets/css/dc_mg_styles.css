@@ -32,6 +32,7 @@ body {
 	float: right;
 	z-index: 98;
 	top: 80px;
+	text-align: center;
 }
 
 #main_content {
