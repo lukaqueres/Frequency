@@ -68,15 +68,18 @@ body {
 .log-in {
 	font-size: 14px;
 	color: white;
-	background-color: #0000C0;
+	background-color: transparent;
 	width: 80px;
 	height: 40px;
 	border-radius: 5px;
-	border: None;
+	border-style: solid;
+	border-color: #0000C0;
+	border-width: 1px;
 	text-align: center;
 }
 
 .log-in:hover {
+	background-color: #0000C0;
 	cursor: pointer;
 }
 
