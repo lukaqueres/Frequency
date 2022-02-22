@@ -26,7 +26,7 @@ require __DIR__ . "/config.php";
 
 <head>
 	<title>Wild West Post Office | Manage</title>
-	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/dc_mg_styles.css">
 </head>
 
 <body>
