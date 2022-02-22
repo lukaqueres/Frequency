@@ -47,7 +47,7 @@
    display: inline-flex;
    padding-left: 10px;
    padding-right: 10px;
-   background-image: linear-gradient(to right, black 33%,transparent 33% 66%,#fff 66%);
+   background-image: linear-gradient(to right, #0000C0 33%,transparent 33% 66%,#fff 66%);
    background-position: right bottom;
    background-size: 300% 1px;
    background-repeat: no-repeat;
@@ -61,7 +61,7 @@
   /*border-bottom-style: solid;*/
   background-position: left bottom;
   transition: background-position 0.5s;
-  color: #000080;
+  color: #0000C0;
 }
 
 .headerbtn
