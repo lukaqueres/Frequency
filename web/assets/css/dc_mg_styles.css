@@ -76,6 +76,7 @@ body {
 	border-color: #0000C0;
 	border-width: 1px;
 	text-align: center;
+	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 .log-in:hover {
