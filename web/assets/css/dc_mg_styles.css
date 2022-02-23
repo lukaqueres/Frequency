@@ -102,3 +102,11 @@ body {
 	float: left;
 	padding: 10px;
 }
+
+#user-info {
+	display: inline-block;
+}
+
+#user-info.hide {
+	display: none;
+}
