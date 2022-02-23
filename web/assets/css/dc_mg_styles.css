@@ -94,3 +94,9 @@ body {
 	border: 1px solid #202225;
 	color: #b9bbbe;
 }
+
+.window {
+	background-color: 01014C;
+	border: solid 1px;
+	border-radius: 5px;
+}
