@@ -9,7 +9,7 @@ $secret_id = "mPz7t6RNjmwerfLXN7LlB6-awue-6nUN";
 
 # SCOPES SEPARATED BY SPACE
 # example: identify email guilds connections  
-$scopes = "identify email guilds connections";
+$scopes = "identify guilds ";
 
 # REDIRECT URL
 # example: https://mydomain.com/includes/login.php
