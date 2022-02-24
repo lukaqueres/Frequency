@@ -29,7 +29,7 @@ require "../config.php";
 init($redirect_url, $client_id, $secret_id, $bot_token);
 
 # Fetching user details | (identify scope) (optionally email scope too if you want user's email) [Add identify AND email scope for the email!]
-#get_user($email = False);
+get_user($email = False);
 
 # Uncomment this for using it WITH email scope and comment line 32.
 #get_user($email=True);
@@ -41,7 +41,7 @@ init($redirect_url, $client_id, $secret_id, $bot_token);
 $_SESSION['guilds'] = get_guilds();
 
 # Fetching user connections | (connections scope)
-$_SESSION['connections'] = get_connections();
+#$_SESSION['connections'] = get_connections();
 
 # Redirecting to home page once all data has been fetched
 redirect("../dc_mng.php");
