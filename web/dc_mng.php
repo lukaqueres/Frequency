@@ -58,11 +58,6 @@ require __DIR__ . "/config.php";
 		<h2> User Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
-		<?php
-		if (isset($_SESSION['email'])) {
-			echo '<p> Email: ' . $_SESSION['email'] . '</p>';
-		}
-		?>
 
 			<p> Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
 			echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p>
@@ -73,6 +68,7 @@ require __DIR__ . "/config.php";
 			<p><?php echo json_encode($_SESSION['user']); ?></p>
 		</div>
 		<br>
+		<div class="window" id="user-info">
 		<h2> User Guilds :</h2>
 		<table border="1">
 			<tr>
@@ -113,11 +109,9 @@ require __DIR__ . "/config.php";
 			}
 			?>
 		</table>
+		</div>
 		<br>
 		<h2> User Connections Response :</h2>
-		<div class="response-block">
-			<p> <?php echo json_encode($_SESSION['connections']); ?></p>
-		</div>
 	</div>
 </body>
 
