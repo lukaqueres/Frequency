@@ -98,8 +98,7 @@ body {
 .window {
 	background-color: #000010;
 	color: white;
-	border-color: #01014C;
-	border: solid 1px;
+	border: solid 1px #01014C;
 	border-radius: 5px;
 	float: left;
 	padding: 10px;
