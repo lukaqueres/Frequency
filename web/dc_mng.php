@@ -62,8 +62,8 @@ require __DIR__ . "/config.php";
 			echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p>
 		</div>	
 		<br>
-		<h2>User Response :</h2>
-		<!--<div class="response-block">
+		<!--<h2>User Response :</h2>
+		<div class="response-block">
 			<p><#?php echo json_encode($_SESSION['user']); ?></p>
 		</div>-->
 		<br>
