@@ -47,10 +47,9 @@ require __DIR__ . "/config.php";
 		Menu
 	</div>
 	<div id="main_content">
-	<h1 style="text-align: center;">A Simple Working Demo of the Script </h2>
 		<?php
 		if (!isset($_SESSION['user'])) {
-			echo 'You are not logged in';
+			echo 'You are not logged in</br>';
 		}
 		?>
 		<div class="window" id="user-info">
