@@ -91,13 +91,14 @@ require __DIR__ . "/config.php";
 			<p> <?php echo json_encode($_SESSION['guilds']); ?></p>
 		</div>
 		<br>
+		<!--
 		<h2> User Connections :</h2>
 		<table border="1">
 			<tr>
 				<th>NAME</th>
 				<th>TYPE</th>
 			</tr>
-			<?php
+			<#?php
 			for ($i = 0; $i < sizeof($_SESSION['connections']); $i++) {
 				echo "<tr><td>";
 				echo $_SESSION['connections'][$i]['name'];
@@ -107,7 +108,7 @@ require __DIR__ . "/config.php";
 				echo "</tr></td>";
 			}
 			?>
-		</table>
+		</table>-->
 		</div>
 		<br>
 		<h2> User Connections Response :</h2>
