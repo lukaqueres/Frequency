@@ -50,8 +50,7 @@ require __DIR__ . "/config.php";
 	<h1 style="text-align: center;">A Simple Working Demo of the Script </h2>
 		<?php
 		if (!isset($_SESSION['user'])) {
-			echo "<h2 style='color:red; font-weight:900; text-align: center;'> LOGIN WITH THE LINK ABOVE TO SEE IT WORK! </h2><br/>";
-			echo "<h4 style='color:red; font-weight:500; text-align: center;'> IGNORE THE ERRORS IF YOU HAVEN'T LOGGED IN! </h4>";
+			echo 'You are not logged in';
 		}
 		?>
 		<div class="window" id="user-info">
@@ -64,9 +63,9 @@ require __DIR__ . "/config.php";
 		</div>	
 		<br>
 		<h2>User Response :</h2>
-		<div class="response-block">
-			<p><?php echo json_encode($_SESSION['user']); ?></p>
-		</div>
+		<!--<div class="response-block">
+			<p><#?php echo json_encode($_SESSION['user']); ?></p>
+		</div>-->
 		<br>
 		<div class="window" id="user-info">
 		<h2> User Guilds :</h2>
