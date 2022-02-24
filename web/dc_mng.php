@@ -111,7 +111,7 @@ require __DIR__ . "/config.php";
 		</table>-->
 		</div>
 		<br>
-		<h2> User Connections Response :</h2>
+		<!--<h2> User Connections Response :</h2>-->
 	</div>
 </body>
 
