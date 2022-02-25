@@ -4,7 +4,7 @@
 }
 
 body {
-	background: #000010;
+	background: black;
 	color: white;
 	margin: 0px;
 }
@@ -69,16 +69,16 @@ body {
 	background-color: transparent;
 	width: 80px;
 	height: 40px;
-	border-radius: 5px;
+	border-radius: 20px;
 	border-style: solid;
-	border-color: #0000C0;
+	border-color: #0B0080;
 	border-width: 1px;
 	text-align: center;
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 .log-in:hover {
-	background-color: #0000C0;
+	background-color: #0B0080;
 	cursor: pointer;
 }
 
