@@ -102,9 +102,11 @@ body {
 }
 
 .clearlink {
-	text-decorations: none;
-	color: #060040;
+	text-decoration: none;
+	color: #0B0080;
 	border: none;
+	background-color: transparent;
+	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 .clearlink:hover {
