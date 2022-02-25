@@ -48,7 +48,7 @@ if (isset($_SESSION['user'])) {
 	<?php
 }
 ?>
-<body onload="changecontent('buttonoverview', 'useroverview')">
+<body onload="changecontent('buttonservers', 'userservers')">
 	<div id="aside_menu">
 		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
@@ -74,8 +74,8 @@ if (isset($_SESSION['user'])) {
 		<div class="window" id="user-info">
 			</br>
 		<div class="linkheader">
-			<button class="clearlink" id="buttonoverview" onclick="changecontent('buttonoverview', 'useroverview')">Overview</button>
-			<button class="clearlink" id="buttonservers" onclick="changecontent('buttonservers', 'userservers')">Servers</button>
+			<button class="clearlink" id="buttonoverview" onclick="changecontent('buttonservers', 'userservers')">Overview</button>
+			<button class="clearlink" id="buttonservers" onclick="changecontent('buttonoverview', 'useroverview')">Servers</button>
 		</div>
 			</br>
 		<div class="windowcontent" id="useroverview">
