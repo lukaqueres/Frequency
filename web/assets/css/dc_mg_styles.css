@@ -117,7 +117,8 @@ body {
 }
 
 .linkheader {
-	bordeer-bottom: 1px solid;
+	bordeer-bottom: solid;
+	border-width: 1px;
 }
 #user-info {
 	display: inline-block;
