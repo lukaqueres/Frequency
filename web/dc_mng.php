@@ -27,7 +27,7 @@ require __DIR__ . "/config.php";
 <head>
 	<title>Wild West Post Office | Manage</title>
 	<link rel="stylesheet" href="assets/css/dc_mg_styles.css">
-	<script type="text/javascript" src="dc_mg_scripts.js"></script>
+	<script type="text/javascript" src="assets/js/dc_mg_scripts.js"></script>
 </head>
 <?php	
 if (isset($_SESSION['user'])) {
