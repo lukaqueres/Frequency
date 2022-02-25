@@ -112,8 +112,16 @@ body {
 	cursor: pointer;
 }
 
+.clearlink.active {
+	color: white;
+}
+
 .clearlink:hover {
 	color: white;
+}
+
+.windowcontent.show {
+	display: none;
 }
 
 .linkheader {
