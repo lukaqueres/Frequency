@@ -30,7 +30,8 @@ require __DIR__ . "/config.php";
 </head>
 
 <body>
-	<div id="header"> <span class="logo">Wild West Post Office</span>
+	<div id="aside_menu">
+		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
 			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
 			<?php
@@ -42,9 +43,6 @@ require __DIR__ . "/config.php";
 			}
 			?>
 		</span>
-	</div>
-	<div id="aside_menu">
-		Menu
 	</div>
 	<div id="main_content">
 		<?php
