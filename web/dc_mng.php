@@ -57,14 +57,12 @@ require __DIR__ . "/config.php";
 
 			<p> Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
 			echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p>
-		</div>	
 		<br>
 		<!--<h2>User Response :</h2>
 		<div class="response-block">
 			<p><#?php echo json_encode($_SESSION['user']); ?></p>
 		</div>-->
 		<br>
-		<div class="window" id="user-info">
 		<h2> User Guilds :</h2>
 		<table border="1">
 			<tr>
@@ -88,24 +86,6 @@ require __DIR__ . "/config.php";
 			<p> <?php echo json_encode($_SESSION['guilds']); ?></p>
 		</div>
 		<br>
-		<!--
-		<h2> User Connections :</h2>
-		<table border="1">
-			<tr>
-				<th>NAME</th>
-				<th>TYPE</th>
-			</tr>
-			<#?php
-			for ($i = 0; $i < sizeof($_SESSION['connections']); $i++) {
-				echo "<tr><td>";
-				echo $_SESSION['connections'][$i]['name'];
-				echo "<td>";
-				echo $_SESSION['connections'][$i]['type'];
-				echo "</td>";
-				echo "</tr></td>";
-			}
-			?>
-		</table>-->
 		</div>
 		<br>
 		<!--<h2> User Connections Response :</h2>-->
