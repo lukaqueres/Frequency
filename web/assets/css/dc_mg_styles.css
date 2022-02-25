@@ -26,19 +26,17 @@ body {
 	width: 10%;
 	min-width: 200px;
 	height: 100%;
-	background-color: #000010;
+	background-color: black;
 	color: white;
-	float: right;
+	float: left;
 	z-index: 98;
-	top: 80px;
 	text-align: center;
 }
 
 #main_content {
-	top: 80px;
 	width: 90%;
-	float: right;
-	background-color: #000010;
+	float: left;
+	background-color: black;
 }
 
 .logo {
