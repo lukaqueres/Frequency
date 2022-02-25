@@ -23,7 +23,7 @@ body {
 
 #aside_menu {
 	left: 0px;
-	width: 20vh;
+	width: 20vw;
 	min-width: 200px;
 	height: 100%;
 	background-color: black;
@@ -35,7 +35,7 @@ body {
 }
 
 #main_content {
-	width: 80vh;
+	width: 80vw;
 	float: left;
 	background-color: black;
 }
