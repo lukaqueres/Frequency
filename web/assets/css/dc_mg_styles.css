@@ -116,6 +116,9 @@ body {
 	color: white;
 }
 
+.linkheader {
+	bordeer-bottom: 1px solid;
+}
 #user-info {
 	display: inline-block;
 }
