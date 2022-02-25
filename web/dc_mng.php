@@ -124,8 +124,8 @@ if (isset($_SESSION['user'])) {
 </body>
 <script>
 	function changecontent($button, $target) {
-		$button = document.getElementById($button);
-		$target = document.getElementById($target);
+		$button = document.getElementById($button)
+		$target = document.getElementById($target)
 		changewindowcontent($target, $button)
 	}
 </script>
