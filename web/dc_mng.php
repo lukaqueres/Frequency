@@ -27,6 +27,7 @@ require __DIR__ . "/config.php";
 <head>
 	<title>Wild West Post Office | Manage</title>
 	<link rel="stylesheet" href="assets/css/dc_mg_styles.css">
+	<script type="text/javascript" src="dc_mg_scripts.js"></script>
 </head>
 <?php	
 if (isset($_SESSION['user'])) {
@@ -73,22 +74,25 @@ if (isset($_SESSION['user'])) {
 		<div class="window" id="user-info">
 			</br>
 		<div class="linkheader">
-			<button class="clearlink">Overview</button>
-			<button class="clearlink">Servers</button>
+			<button class="clearlink" id="buttonoverview">Overview</button>
+			<button class="clearlink" id="buttonservers" onclick="changecontent(buttonservers, userservers)">Servers</button>
 		</div>
 			</br>
+		<div class="windowcontent" id="useroverview">
 		<h2> User Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
 
 			<p> Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
 			echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p>
-		<br>
+		</div>
+			<br>
 		<!--<h2>User Response :</h2>
 		<div class="response-block">
 			<p><#?php echo json_encode($_SESSION['user']); ?></p>
 		</div>-->
 		<br>
+		<div class="windowcontent" id="userservers">
 		<h2> User Guilds :</h2>
 		<table border="1">
 			<tr>
@@ -114,8 +118,15 @@ if (isset($_SESSION['user'])) {
 		<br>
 		</div>
 		<br>
+		</div>
 		<!--<h2> User Connections Response :</h2>-->
 	</div>
 </body>
-
+<script>
+	function changecontent($button, $target) {
+		$button = document.getElementById($button);
+		$target = document.getElementById($target);
+		changewindowcontent($target, $button)
+	}
+</script>
 </html>
