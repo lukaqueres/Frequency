@@ -48,7 +48,7 @@ if (isset($_SESSION['user'])) {
 	<?php
 }
 ?>
-<body onload="changecontent('buttonservers', 'userservers')">
+<body onload="changecontent('buttonservers', 'userservers');">
 	<div id="aside_menu">
 		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
