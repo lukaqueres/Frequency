@@ -64,10 +64,6 @@ if (isset($_SESSION['user'])) {
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
-			<div class="linkheader">
-				<button class="clearlink">Overview</button>
-				<button class="clearlink">Servers</button>
-			</div>
 		<?php
 		if (!isset($_SESSION['user'])) {
 			echo 'You are not logged in</br>';
@@ -75,6 +71,12 @@ if (isset($_SESSION['user'])) {
 		?>
 		</div>
 		<div class="window" id="user-info">
+			</br>
+		<div class="linkheader">
+			<button class="clearlink">Overview</button>
+			<button class="clearlink">Servers</button>
+		</div>
+			</br>
 		<h2> User Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
