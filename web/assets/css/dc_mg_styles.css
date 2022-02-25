@@ -31,6 +31,7 @@ body {
 	float: left;
 	z-index: 98;
 	text-align: center;
+	border-right: 1px #0B0080 solid;
 }
 
 #main_content {
