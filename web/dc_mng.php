@@ -28,7 +28,25 @@ require __DIR__ . "/config.php";
 	<title>Wild West Post Office | Manage</title>
 	<link rel="stylesheet" href="assets/css/dc_mg_styles.css">
 </head>
-
+<?php	
+if (isset($_SESSION['user'])) {
+	?>
+	<style type="text/css">
+		#error-info{
+			display:none;
+		}
+	</style>
+	<?php
+ }else {
+	?>
+	<style type="text/css">
+		#user-info{
+			display:none;
+		}
+	</style>
+	<?php
+}
+?>
 <body>
 	<div id="aside_menu">
 		<span class="logo">Wild West Post Office</span>
@@ -45,11 +63,13 @@ require __DIR__ . "/config.php";
 		</span>
 	</div>
 	<div id="main_content">
+		<div class="window" id="user-info">
 		<?php
 		if (!isset($_SESSION['user'])) {
 			echo 'You are not logged in</br>';
 		}
 		?>
+		</div>
 		<div class="window" id="user-info">
 		<h2> User Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
