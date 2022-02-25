@@ -101,6 +101,16 @@ body {
 	padding: 10px;
 }
 
+.clearlink {
+	text-decorations: none;
+	color: #060040;
+	border: none;
+}
+
+.clearlink:hover {
+	color: white;
+}
+
 #user-info {
 	display: inline-block;
 }
