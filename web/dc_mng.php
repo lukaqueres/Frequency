@@ -63,7 +63,7 @@ if (isset($_SESSION['user'])) {
 		</span>
 	</div>
 	<div id="main_content">
-		<div class="window" id="user-info">
+		<div class="window" id="error-info">
 		<?php
 		if (!isset($_SESSION['user'])) {
 			echo 'You are not logged in</br>';
