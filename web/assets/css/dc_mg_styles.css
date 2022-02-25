@@ -107,6 +107,9 @@ body {
 	border: none;
 	background-color: transparent;
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
+	font-size: 15px;
+	margin-inline: 10px;
+	cursor: pointer;
 }
 
 .clearlink:hover {
