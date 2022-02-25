@@ -1,5 +1,5 @@
 function changewindowcontent($target, $buttontarget) {
-  if $buttontarget.classList.contains("active") {
+  if $target.classList.contains("show") {
     $x = 1
   } else {
     $target.classList.toggle("show");
