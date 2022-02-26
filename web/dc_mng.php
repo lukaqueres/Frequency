@@ -127,7 +127,10 @@ if (isset($_SESSION['user'])) {
 		$button = document.getElementById($button)
 		$target = document.getElementById($target)
 		$targetbutton = document.getElementById($targetbutton)
-		changewindowcontent($target, $button, $targetbutton)
+		//changewindowcontent($target, $button, $targetbutton)
+		$button.classList.remove("active");
+   	 	$targetbutton.classList.add("active");
+    		$target.classList.toggle("show");
 	}
 </script>
 </html>
