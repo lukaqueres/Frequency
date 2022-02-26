@@ -100,6 +100,9 @@ body {
 	float: left;
 	padding: 1%;
 	width: 98%;
+  	position: fixed;
+  	height: 100vh;
+}
 }
 
 .clearlink {
@@ -128,6 +131,8 @@ body {
 .linkheader {
 	border-bottom: solid;
 	border-width: 1px;
+	margin-left: 0px;
+	width: 60%;
 }
 #user-info {
 	display: inline-block;
