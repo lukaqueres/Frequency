@@ -136,7 +136,7 @@ if (isset($_SESSION['user'])) {
 </body>
 <script>
 	function changecontent($button, $target, $targetbutton) {
-		changeuserwindowcontent($target, $button, $targetbutton)
+		//changeuserwindowcontent($target, $button, $targetbutton)
 	}
 </script>
 </html>
