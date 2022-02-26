@@ -28,6 +28,8 @@ require __DIR__ . "/config.php";
 	<title>Wild West Post Office | Manage</title>
 	<link rel="stylesheet" href="assets/css/dc_mg_styles.css">
 	<script type="text/javascript" src="assets/js/dc_mg_scripts.js"></script>
+	<style>
+		.windowcontent { display: none; }</style>
 </head>
 <?php	
 if (isset($_SESSION['user'])) {
@@ -74,8 +76,8 @@ if (isset($_SESSION['user'])) {
 		<div class="window" id="user-info">
 			</br>
 		<div class="linkheader">
-			<button class="clearlink" id="buttonoverview" onclick="changeuserwindowcontent('buttonoverview')">Overview</button>
-			<button class="clearlink" id="buttonservers" onclick="changeuserwindowcontent('buttonservers')">Servers</button>
+			<button class="clearlink windowContentBtn" onclick="currentWindow(1)">Overview</button>
+			<button class="clearlink windowContentBtn" onclick="currentWindow(2)">Servers</button>
 		</div>
 			</br>
 		<div class="windowcontent" id="useroverview">
