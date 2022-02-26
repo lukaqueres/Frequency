@@ -74,6 +74,7 @@ if (isset($_SESSION['user'])) {
 		?>
 		</div>
 		<div class="window" id="user-info">
+			<h1> User: </h1>
 			</br>
 		<div class="linkheader">
 			<button class="clearlink windowContentBtn" onclick="currentWindow(1)">Overview</button>
@@ -84,7 +85,7 @@ if (isset($_SESSION['user'])) {
 		<?php
 		if (isset($_SESSION['user'])) {
 		?>
-		<h2> User Details :</h2>
+		<h2>Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
 
@@ -105,7 +106,7 @@ if (isset($_SESSION['user'])) {
 ?>
 		<br>
 		<div class="windowcontent" id="userservers">
-		<h2> User Guilds :</h2>
+		<h2>Guilds :</h2>
 		<table border="1">
 			<tr>
 				<th>NAME</th>
