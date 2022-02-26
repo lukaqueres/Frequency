@@ -1,5 +1,5 @@
 function changewindowcontent($target, $button, $targetbutton) {
-  //if $target.classList.contains("show") {
+  if $target.classList.contains("show") {
     $x = 1
   } else {
     $button.classList.remove("active");
