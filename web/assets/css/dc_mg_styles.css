@@ -98,7 +98,8 @@ body {
 	background-color: #010008;
 	color: white;
 	float: left;
-	padding: 1vw;
+	padding: 1%;
+	width: 98%;
 }
 
 .clearlink {
