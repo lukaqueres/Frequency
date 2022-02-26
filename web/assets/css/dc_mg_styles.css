@@ -99,9 +99,9 @@ body {
 	color: white;
 	float: left;
 	padding: 1%;
-	width: 98%;
-  	position: fixed;
-  	height: 100vh;
+	width: 78%;
+	position: fixed;
+	height: 100vh;
 }
 
 .clearlink {
@@ -137,4 +137,8 @@ body {
 
 #user-info.hide {
 	display: none;
+}
+
+#error-info {
+	text-align: center;
 }
