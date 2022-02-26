@@ -31,7 +31,25 @@ require __DIR__ . "/config.php";
 	<style>
 		.windowcontent { display: none; }</style>
 </head>
-
+<?php	
+if (isset($_SESSION['user'])) {
+	?>
+	<style type="text/css">
+		#error-info{
+			display:none;
+		}
+	</style>
+	<?php
+ }else {
+	?>
+	<style type="text/css">
+		#user-info{
+			display:none;
+		}
+	</style>
+	<?php
+}
+?>
 <body onload="load()">
 	<div id="aside_menu">
 		<span class="logo">Wild West Post Office</span>
