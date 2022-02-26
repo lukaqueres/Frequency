@@ -124,11 +124,10 @@ if (isset($_SESSION['user'])) {
 </body>
 <script>
 	function changecontent($button, $target, $targetbutton) {
-		$classobjects = document.getElementsByClassName("windowcontent")
 		$button = document.getElementById($button)
 		$target = document.getElementById($target)
 		$targetbutton = document.getElementById($targetbutton)
-		changewindowcontent($target, $button, $targetbutton, $classobjects)
+		changewindowcontent($target, $button, $targetbutton)
 	}
 </script>
 </html>
