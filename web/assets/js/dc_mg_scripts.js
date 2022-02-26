@@ -6,10 +6,10 @@ function plusWindow(n) {
 }
 
 function currentWindow(n) {
-  showSlides(windowIndex = n);
+  showWindow(windowIndex = n);
 }
 
-function showSlides(n) {
+function showWindow(n) {
   var i;
   var windows = document.getElementsByClassName("windowcontent");
   var btns = document.getElementsByClassName("windowContentBtn");
