@@ -79,6 +79,9 @@ if (isset($_SESSION['user'])) {
 		</div>
 			</br>
 		<div class="windowcontent" id="useroverview">
+		<?php
+		if (isset($_SESSION['user'])) {
+		?>
 		<h2> User Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
@@ -91,6 +94,13 @@ if (isset($_SESSION['user'])) {
 		<div class="response-block">
 			<p><#?php echo json_encode($_SESSION['user']); ?></p>
 		</div>-->
+		<?php
+ 		}else {
+			echo '';
+		?>
+	<?php
+}
+?>
 		<br>
 		<div class="windowcontent" id="userservers">
 		<h2> User Guilds :</h2>
@@ -124,10 +134,7 @@ if (isset($_SESSION['user'])) {
 </body>
 <script>
 	function changecontent($button, $target, $targetbutton) {
-		$button = document.getElementById($button)
-		$target = document.getElementById($target)
-		$targetbutton = document.getElementById($targetbutton)
-		changewindowcontent($target, $button, $targetbutton)
+		changeuserwindowcontent($target, $button, $targetbutton)
 	}
 </script>
 </html>
