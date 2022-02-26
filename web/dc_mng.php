@@ -48,7 +48,7 @@ if (isset($_SESSION['user'])) {
 	<?php
 }
 ?>
-<body onload="changecontent('buttonservers', 'userservers');">
+<body onload="changecontent('buttonoverview', 'userservers', 'buttonservers');">
 	<div id="aside_menu">
 		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
@@ -74,8 +74,8 @@ if (isset($_SESSION['user'])) {
 		<div class="window" id="user-info">
 			</br>
 		<div class="linkheader">
-			<button class="clearlink" id="buttonoverview" onclick="changecontent('buttonservers', 'userservers')">Overview</button>
-			<button class="clearlink" id="buttonservers" onclick="changecontent('buttonoverview', 'useroverview')">Servers</button>
+			<button class="clearlink" id="buttonoverview" onclick="changecontent('buttonoverview', 'userservers', 'buttonservers')">Overview</button>
+			<button class="clearlink" id="buttonservers" onclick="changecontent('buttonservers', 'useroverview', 'buttonoverview')">Servers</button>
 		</div>
 			</br>
 		<div class="windowcontent" id="useroverview">
@@ -123,10 +123,11 @@ if (isset($_SESSION['user'])) {
 	</div>
 </body>
 <script>
-	function changecontent($button, $target) {
+	function changecontent($button, $target, $targetbutton) {
 		$button = document.getElementById($button)
 		$target = document.getElementById($target)
-		changewindowcontent($target, $button)
+		$targetbutton = document.getElementById($targetbutton)
+		changewindowcontent($target, $button, $targetbutton)
 	}
 </script>
 </html>
