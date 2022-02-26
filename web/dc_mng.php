@@ -75,7 +75,6 @@ if (isset($_SESSION['user'])) {
 		</div>
 		<div class="window" id="user-info">
 			<h1> User</h1>
-			</br>
 		<div class="linkheader">
 			<button class="clearlink windowContentBtn" onclick="currentWindow(1)">Overview</button>
 			<button class="clearlink windowContentBtn" onclick="currentWindow(2)">Servers</button>
