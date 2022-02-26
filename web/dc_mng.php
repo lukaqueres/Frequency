@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
 	<?php
 }
 ?>
-<body>
+<body onload="load()">
 	<div id="aside_menu">
 		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
@@ -135,8 +135,9 @@ if (isset($_SESSION['user'])) {
 	</div>
 </body>
 <script>
-	function changecontent($button, $target, $targetbutton) {
-		//changeuserwindowcontent($target, $button, $targetbutton)
+	function load() {
+		var windowIndex = 1;
+		showWindow(windowIndex);
 	}
 </script>
 </html>
