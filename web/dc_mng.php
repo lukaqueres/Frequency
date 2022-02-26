@@ -103,7 +103,6 @@ if (isset($_SESSION['user'])) {
 	<?php
 }
 ?>
-		<br>
 		<div class="windowcontent" id="userservers">
 		<h2>Guilds :</h2>
 		<table border="1">
