@@ -74,8 +74,8 @@ if (isset($_SESSION['user'])) {
 		<div class="window" id="user-info">
 			</br>
 		<div class="linkheader">
-			<button class="clearlink" id="buttonoverview" onclick="changecontent('buttonoverview', 'userservers', 'buttonservers')">Overview</button>
-			<button class="clearlink" id="buttonservers" onclick="changecontent('buttonservers', 'useroverview', 'buttonoverview')">Servers</button>
+			<button class="clearlink" id="buttonoverview" onclick="changeuserwindowcontent('buttonoverview')">Overview</button>
+			<button class="clearlink" id="buttonservers" onclick="changeuserwindowcontent('buttonservers')">Servers</button>
 		</div>
 			</br>
 		<div class="windowcontent" id="useroverview">
