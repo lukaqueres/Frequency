@@ -18,6 +18,7 @@ function showWindow(n) {
   for (i = 0; i < btns.length; i++) {
       btns[i].className = btns[i].className.replace(" active", "");
   }
-  windows[windowIndex-1].style.display = "block";  
+  if (!(windowIndex-1)) { windows[1].style.display = "block";  }
+  else { windows[windowIndex-1].style.display = "block";  }
   btns[windowIndex-1].className += " active";
 }
