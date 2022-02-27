@@ -52,6 +52,11 @@ if (isset($_SESSION['user'])) {
 ?>
 <body onload="load()">
 	<div id="aside_menu">
+		<div>
+			<img class="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
+			echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+			<h1> User</h1>
+		</div>
 		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
 			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
@@ -84,7 +89,6 @@ if (isset($_SESSION['user'])) {
 		<?php
 		if (isset($_SESSION['user'])) {
 		?>
-		<h2>Details :</h2>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
 
