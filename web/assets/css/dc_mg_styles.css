@@ -128,7 +128,8 @@ body {
 }
 
 #avatar {
-	border-radius: 50%
+	border-radius: 50%;
+	border: solid 1px white;
 }
 
 .linkheader {
