@@ -52,11 +52,17 @@ if (isset($_SESSION['user'])) {
 ?>
 <body onload="load()">
 	<div id="aside_menu">
+		<?php	
+		if (isset($_SESSION['user'])) {
+		?>
 		<div id="userPanel">
 			<div class="avatar"><img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
 				echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></div>
 			<h1><?php echo $_SESSION['username']?></h1>
 		</div>
+		<?php
+ 		}
+		?>
 		<span class="logo">Wild West Post Office</span>
 		<span class="menu">
 			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
