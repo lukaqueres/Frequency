@@ -135,7 +135,7 @@ if (isset($_SESSION['user'])) {
 <script>
 	function load() {
 		var windowIndex = 1;
-		currentWindow(2);
+		currentWindow(1);
 		//showWindow(windowIndex);
 	}
 </script>
