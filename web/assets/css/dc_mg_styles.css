@@ -128,8 +128,9 @@ body {
 }
 
 #avatar {
+	float: left;
 	border-radius: 50%;
-	border: solid 1px #0B0080;
+	border: solid 1px black;
 }
 
 .linkheader {
@@ -149,5 +150,9 @@ body {
 }
 
 #userPanel {
-	float: left;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	border-bottom: solid #0B0080 1px;
 }
