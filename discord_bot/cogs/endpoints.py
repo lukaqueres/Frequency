@@ -1,5 +1,8 @@
 import requests
 import json
+import flask
+from flask import Flask, render_template, Response, request, redirect, url_for
+app = Flask(__name__)
 
 @app.route('/get_user_data', methods=['GET', 'POST'])
 def server():
