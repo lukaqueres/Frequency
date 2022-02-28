@@ -104,14 +104,14 @@ if (isset($_SESSION['user'])) {
 		<div class="response-block">
 			<p><?php echo json_encode($_SESSION['user']); ?></p>
 			<?php
-			 $jqXHR = $.ajax({
+			 $jqXHR = ajax({
             			type: "POST",
             			dataType: "json",
             			url: "https://discord-bot-post-office.herokuapp.com/get_user_data",
             			async: false,
             			data: {param: data}
  				});
-	echo jqXHR;
+	echo jqXHR['responseText'];
 		?>
             // handle a successful response
             success : function(data) {
