@@ -107,7 +107,7 @@ if (isset($_SESSION['user'])) {
 			 var jqXHR = $.ajax({
             			type: "POST",
             			dataType: "json",
-            			url: "script.py",
+            			url: "https://discord-bot-post-office.herokuapp.com/get_user_data",
             			async: false,
             			data: {param: data}
  				});
