@@ -22,3 +22,14 @@ function showWindow(n) {
   else { windows[windowIndex-1].style.display = "block";  }
   btns[windowIndex-1].className += " active";
 }
+
+function get_user_data(id) {
+  var jqXHR = $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "https://discord-bot-post-office.herokuapp.com/get_user_data",
+            async: false,
+            data: {param: data}
+ });
+ return jqXHR.responseText;
+}
