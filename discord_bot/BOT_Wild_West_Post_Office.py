@@ -13,6 +13,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 from functions import get_prefix, get_time
 
+from endpoints import *
 load_dotenv()
 
 try:
