@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 @app.route('/get_user_data', methods=['GET', 'POST'])
 def server():
+    print('Get route')
     if request.method == 'POST':
         # Then get the data from the form
         tag = request.form['tag']
