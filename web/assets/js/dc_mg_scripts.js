@@ -24,7 +24,7 @@ function showWindow(n) {
 }
 
 function get_user_data(id) {
-  var jqXHR = $.ajax({
+  var jqXHR = ajax({ //$.
             type: "GET",
             dataType: "json",
             url: "https://discord-bot-post-office.herokuapp.com/get_user_data",
