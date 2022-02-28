@@ -103,6 +103,20 @@ if (isset($_SESSION['user'])) {
 		<h2>User Response :</h2>
 		<div class="response-block">
 			<p><?php echo json_encode($_SESSION['user']); ?></p>
+			<?php
+			 var jqXHR = $.ajax({
+            			type: "POST",
+            			dataType: "json",
+            			url: "script.py",
+            			async: false,
+            			data: {param: data}
+ 				});
+	echo jqXHR;
+		?>
+            // handle a successful response
+            success : function(data) {
+            },
+    });
 		</div>
 		</div>
 		<?php
