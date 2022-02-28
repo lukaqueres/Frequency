@@ -107,9 +107,9 @@ if (isset($_SESSION['user'])) {
 	echo "Responce: <script> get_user_data(oid); </script>";
 		
             // handle a successful response
-            success : function(data) {
-            },
-    });?>
+            //success : function(data) {
+            //},
+    //});?>
 		</div>
 		</div>
 		<?php
