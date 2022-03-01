@@ -41,7 +41,7 @@ get_user($email = False);
 $_SESSION['guilds'] = get_guilds();
 
 $_SESSION['guilds_details'] = array();
-if ($_SESSION['guilds']) {
+if (!($_SESSION['guilds'])) {
   $_SESSION['guilds_details'] = 'none';
 } else {
   foreach($_SESSION['guilds'] as $guild) {
