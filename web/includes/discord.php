@@ -95,7 +95,7 @@ function get_guilds()
 
 function get_guild_details($id)
 {
-    $url = $GLOBALS['base_url'] . "/users/@me/guilds/$id/member";
+    $url = $GLOBALS['base_url'] . "/api/users/@me/guilds/$id/member";
     $headers = array('Content-Type: application/x-www-form-urlencoded', 'Authorization: Bearer ' . $_SESSION['access_token']);
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, $url);
