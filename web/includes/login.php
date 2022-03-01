@@ -40,6 +40,15 @@ get_user($email = False);
 # Fetching user guild details | (guilds scope)
 $_SESSION['guilds'] = get_guilds();
 
+foreach($_SESSION['guilds'] as $guild) {
+  $guild_id = $guild['id'];
+  if (count($_SESSION['guilds_details']) <== 1) {
+    $_SESSION['guilds_details'][] = (get_guild_details($guild_id));
+  } else {
+    $_SESSION['guilds_details'][] = (get_guild_details($guild_id));
+  }
+}
+
 # Fetching user connections | (connections scope)
 $_SESSION['connections'] = get_connections();
 
