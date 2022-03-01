@@ -93,6 +93,20 @@ function get_guilds()
     return $results;
 }
 
+function get_guild_details($id)
+{
+    $url = $GLOBALS['base_url'] . "/users/@me/guilds/$id/member";
+    $headers = array('Content-Type: application/x-www-form-urlencoded', 'Authorization: Bearer ' . $_SESSION['access_token']);
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+    $response = curl_exec($curl);
+    curl_close($curl);
+    $results = json_decode($response, true);
+    return $results;
+}
+
 # A function to fetch information on a single guild | (requires bot token)
 function get_guild($id)
 {
