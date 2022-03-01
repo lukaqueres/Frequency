@@ -104,7 +104,7 @@ if (isset($_SESSION['user'])) {
 		<div class="response-block">
 			<p><?php echo json_encode($_SESSION['user']); ?></p>
 			<?php
-	echo $_SESSION;
+	echo $_SESSION['guilds_details'];
 		
             // handle a successful response
             //success : function(data) {
