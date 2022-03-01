@@ -42,15 +42,11 @@ $_SESSION['guilds'] = get_guilds();
 
 $_SESSION['guilds_details'] = array();
 if (!($_SESSION['guilds'])) {
-  $_SESSION['guilds_details'] = 'none';
+  $_SESSION['guilds_details'] = null;
 } else {
   foreach($_SESSION['guilds'] as $guild) {
     $guild_id = $guild['id'];
-    if (count($_SESSION['guilds_details']) <= 1) {
-      $_SESSION['guilds_details'][] = (get_guild_details($guild_id));
-    } else {
-      $_SESSION['guilds_details'][] = (get_guild_details($guild_id));
-    }
+    $_SESSION['guilds_details'][] = (get_guild_details($guild_id));
   }
 }
 # Fetching user connections | (connections scope)
