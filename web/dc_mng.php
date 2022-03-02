@@ -55,18 +55,16 @@ if (isset($_SESSION['user'])) {
 		<?php	
 		if (isset($_SESSION['user'])) {
 		?>
-		<div id="userPanel">
-			<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
-				echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-			<h1 style="float: left; padding: 25;"><?php echo $_SESSION['username']?></h1>
-		</div>
+		<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); 
+			echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+		<!--<h1 style="float: left; padding: 25;"><#?php echo $_SESSION['username']?></h1>-->
 		<?php
  		}
 		?>
-		<span class="logo">Wild West Post Office</span>
+		<!--<span class="logo">Wild West Post Office</span>
 		<span class="menu">
 			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
-			<?php
+			<#?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
 			if (isset($_SESSION['user'])) {
 				echo '<a href="includes/logout.php"><button class="log-in">Logout</button></a>';
@@ -74,7 +72,7 @@ if (isset($_SESSION['user'])) {
 				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
 			}
 			?>
-		</span>
+		</span>-->
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
