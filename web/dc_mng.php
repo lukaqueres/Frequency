@@ -63,7 +63,7 @@ if (isset($_SESSION['user'])) {
 		<?php
  		}
 		?>
-		<span class="menu">
+		<!--<span class="menu">-->
 			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
@@ -73,7 +73,7 @@ if (isset($_SESSION['user'])) {
 				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
 			}
 			?>
-		</span>
+		<!--</span>-->
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
