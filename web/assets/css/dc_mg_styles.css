@@ -27,8 +27,8 @@ body {
 	min-width: 50px;
 	max-width: 400px;
 	height: 100%;
-	background-color: black;
-	color: white;
+	background-color: white;
+	color: black;
 	float: left;
 	z-index: 98;
 	text-align: center;
@@ -95,7 +95,7 @@ body {
 }
 
 .window {
-	background-color: #010008;
+	background-color: black; /*#010008*/
 	color: white;
 	float: left;
 	padding: 1%;
@@ -128,6 +128,13 @@ body {
 }
 
 #avatar {
+	width: 100%; 
+	object-fit: contain;
+	float: left;
+	border-radius: 50%;
+	max-width: 128px;
+}
+.imagebtn {
 	width: 100%; 
 	object-fit: contain;
 	float: left;
