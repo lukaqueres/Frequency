@@ -133,12 +133,15 @@ body {
 	object-fit: contain;
 	float: left;
 	border-radius: 50%;
-	border: solid 1px black;
 }
 
 .linkheader {
 	border-bottom: solid #0B0080;
 	border-width: 1px;
+}
+
+.padding_box {
+	padding: 5px;
 }
 #user-info {
 	display: inline-block;
