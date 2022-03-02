@@ -63,7 +63,6 @@ if (isset($_SESSION['user'])) {
 		<?php
  		}
 		?>
-		<!--<span class="logo">Wild West Post Office</span>
 		<span class="menu">
 			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
 			<#?php
@@ -74,7 +73,6 @@ if (isset($_SESSION['user'])) {
 				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
 			}
 			?>
-		</span>-->
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
