@@ -32,7 +32,7 @@ body {
 	float: left;
 	z-index: 98;
 	text-align: center;
-	border-right: 1px #0B0080 solid;
+	border-right: 1px black solid; /*#0B0080*/
 }
 
 #main_content {
@@ -148,6 +148,7 @@ body {
 
 .padding_box {
 	padding: 5px;
+	background: black;
 }
 #user-info {
 	display: inline-block;
