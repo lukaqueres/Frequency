@@ -68,12 +68,12 @@ if (isset($_SESSION['user'])) {
 			if (isset($_SESSION['user'])) {
 				echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-gear-white.png "></a>';
 			} else {
-				echo "<a href='$auth_url'><img class='imagebtn' src='images/home-gear-white.png '></a>";
+				echo "<a href='$auth_url'><img class='imagebtn' src='images/home-gear-black.png '></a>";
 			}
 			?>
 		<!--</span>-->
 			</div>
-		<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
+		<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
