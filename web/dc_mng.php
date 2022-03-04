@@ -63,17 +63,17 @@ if (isset($_SESSION['user'])) {
  		}
 		?>
 		<!--<span class="menu">-->
-			<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
 			if (isset($_SESSION['user'])) {
-				echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-black.png "></a>';
+				echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-white.png "></a>';
 			} else {
 				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
 			}
 			?>
 		<!--</span>-->
 			</div>
+		<a href="https://web-plan-it.herokuapp.com/"> <button class="log-in">Main</button></a>
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
