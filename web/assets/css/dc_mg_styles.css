@@ -137,9 +137,11 @@ body {
 	width: 70%;
 	padding: 5px;
 	object-fit: contain;
+	border: solid 1px transparent;
 	/*float: left;
 	border-radius: 50%;*/
 	max-width: 128px;
+	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 .imagebtn:hover {
