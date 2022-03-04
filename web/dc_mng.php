@@ -66,7 +66,7 @@ if (isset($_SESSION['user'])) {
 			<?php
 			$auth_url = url($client_id, $redirect_url, $scopes);
 			if (isset($_SESSION['user'])) {
-				echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-white.png "></a>';
+				echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-gear-white.png "></a>';
 			} else {
 				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
 			}
