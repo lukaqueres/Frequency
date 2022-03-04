@@ -68,7 +68,7 @@ if (isset($_SESSION['user'])) {
 			if (isset($_SESSION['user'])) {
 				echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-gear-white.png "></a>';
 			} else {
-				echo "<a href='$auth_url'><button class='log-in'>Login</button></a>";
+				echo "<a href='$auth_url'><img class='imagebtn' src='images/home-gear-white.png '></a>";
 			}
 			?>
 		<!--</span>-->
