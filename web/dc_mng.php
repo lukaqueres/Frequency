@@ -99,6 +99,8 @@ if (isset($_SESSION['user'])) {
 		?>
 		<?php } elseif ($_GET['window'] == 'main') {?> <!-- PHP WINDOW IF-->
 			<div class="window" id="main">Main</div>
+		<?php } elseif ($_GET['window'] == 'guilds') {?> <!-- PHP WINDOW IF-->
+			<div class="window" id="guilds">Guilds</div>
 		<?php } elseif ($_GET['window'] == 'user') {?> <!-- PHP WINDOW IF-->
 		</div>
 		<div class="window" id="user-info">
