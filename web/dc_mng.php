@@ -87,8 +87,7 @@ if (isset($_SESSION['user'])) {
 		<?php
 			if (!(isset($_GET['window']))) 
 			{
-				${'window'} = 'main';
-				
+				redirect("../dc_mng.php?window=main");
 			}
 		?>
 		<div class="window" id="error-info">
