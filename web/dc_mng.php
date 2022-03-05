@@ -73,7 +73,9 @@ if (isset($_SESSION['user'])) {
 			?>
 		<!--</span>-->
 			</div>
-		<div style="bottom:0px;" class="padding_box">
+		<div style="height: max-content; width: max-content;">
+		</div>
+		<div style="bottom:0px; position: absolute;" class="padding_box">
 			<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
 		</div>
 	</div>
