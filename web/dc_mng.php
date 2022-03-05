@@ -73,8 +73,8 @@ if (isset($_SESSION['user'])) {
 		<!--</span>-->
 			</div>
 		<div style="margin-top: 100px;height: auto; width: auto;" class="padding_box">
-			<a href="https://web-plan-it.herokuapp.com/"><img class='imagebtn' src='images/user-icon-white.png'></a>
-			<a href="https://web-plan-it.herokuapp.com/"><img style="margin-top: 10px;" class='imagebtn' src='images/serwers-icon-white.png'></a>
+			<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=user"><img class='imagebtn' src='images/user-icon-white.png'></a>
+			<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><img style="margin-top: 10px;" class='imagebtn' src='images/serwers-icon-white.png'></a>
 		</div>
 		<div style="bottom:0px; position: absolute;" class="padding_box">
 			<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
@@ -84,6 +84,13 @@ if (isset($_SESSION['user'])) {
 			?>
 	</div>
 	<div id="main_content">
+		<?php
+			if (!($_GET['window'])) 
+			{
+				$['window'] = 'main';
+				
+			}
+		?>
 		<div class="window" id="error-info">
 		<?php
 		if (!isset($_SESSION['user'])) {
