@@ -132,6 +132,7 @@ body {
 	object-fit: contain;
 	border-radius: 50%;
 	max-width: 128px;
+	margin-bottom: 5px;
 }
 .imagebtn {
 	width: 70%;
