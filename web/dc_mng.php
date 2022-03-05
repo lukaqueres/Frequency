@@ -73,8 +73,8 @@ if (isset($_SESSION['user'])) {
 			?>
 		<!--</span>-->
 			</div>
-		<div style="height: max-content; width: max-content;">
-			<img class='imagebtn' src='images/serwers-icon-white.png'>
+		<div style="height: max-content; width: max-content;" class="padding_box">
+			<a href="https://web-plan-it.herokuapp.com/"><img class='imagebtn' src='images/serwers-icon-white.png'></a>
 		</div>
 		<div style="bottom:0px; position: absolute;" class="padding_box">
 			<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
