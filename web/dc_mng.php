@@ -97,6 +97,8 @@ if (isset($_SESSION['user'])) {
 			echo '<h1 style="font-size:100px;">You are not logged in</h1></br>';
 		}
 		?>
+		<?php } elseif ($_GET['window'] == 'main') {?> <!-- PHP WINDOW IF-->
+			<div class="window" id="main">Main</div>
 		<?php } elseif ($_GET['window'] == 'user') {?> <!-- PHP WINDOW IF-->
 		</div>
 		<div class="window" id="user-info">
