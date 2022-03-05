@@ -73,7 +73,9 @@ if (isset($_SESSION['user'])) {
 			?>
 		<!--</span>-->
 			</div>
-		<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-black.png '></a>
+		<div style="bottom:0px;" class="padding_box">
+			<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
+		</div>
 	</div>
 	<div id="main_content">
 		<div class="window" id="error-info">
