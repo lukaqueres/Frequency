@@ -99,7 +99,7 @@ body {
 	color: black;
 	float: left;
 	padding: 1%;
-	width: max-content;
+	width: -moz-available;
 	position: fixed;
 	height: 100vh;
 }
