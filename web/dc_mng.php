@@ -93,14 +93,22 @@ if (isset($_SESSION['user'])) {
 		<?php if (!isset($_SESSION['user'])) { ?> <!-- PHP WINDOW IF-->
 		<div class="window" id="error-info">
 		<?php
-		if (!isset($_SESSION['user'])) {
-			echo '<h1 style="font-size:100px;">You are not logged in</h1></br>';
-		}
-		?>
+		if (!isset($_SESSION['user'])) { echo '<h1 style="font-size:100px;">You are not logged in</h1></br>'; } ?>
 		<?php } elseif ($_GET['window'] == 'main') {?> <!-- PHP WINDOW IF-->
-			<div class="window" id="main">Main</div>
+			<div class="window" id="main">
+				<div class="small_window">
+					User:
+				</div>
+				<div class="small_window">
+					Guilds:
+				</div>
+				<div class="small_window">
+					Anty-spam:
+				</div>
+			</div>
 		<?php } elseif ($_GET['window'] == 'guilds') {?> <!-- PHP WINDOW IF-->
-			<div class="window" id="guilds">Guilds</div>
+			<div class="window" id="guilds">Guilds
+			</div>
 		<?php } elseif ($_GET['window'] == 'user') {?> <!-- PHP WINDOW IF-->
 		</div>
 		<div class="window" id="user-info">
