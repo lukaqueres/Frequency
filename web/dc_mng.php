@@ -94,6 +94,7 @@ require __DIR__ . "/config.php";
 			<div class="window" id="guilds">Guilds
 			</div>
 		<?php } elseif ($_GET['window'] == 'user') { #WINDOW CONTENT ----------------------------------------------------------- USER ?>
+			<script> load() </script>
 			<div class="window" id="user-info">
 				<h1> User</h1>
 				<div class="linkheader">
@@ -103,7 +104,6 @@ require __DIR__ . "/config.php";
 				</br>
 				<div class="windowcontent" id="useroverview">
 					<?php if (isset($_SESSION['user'])) { ?>
-						<script> load() </script>
 						<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 						<p> ID : <?php echo $_SESSION['user_id']; ?></p>
 
