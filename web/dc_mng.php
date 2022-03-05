@@ -87,7 +87,7 @@ if (isset($_SESSION['user'])) {
 		<?php
 			if (!($_GET['window'])) 
 			{
-				$['window'] = 'main';
+				${'window'} = 'main';
 				
 			}
 		?>
