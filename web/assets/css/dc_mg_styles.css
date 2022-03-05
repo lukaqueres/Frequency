@@ -104,6 +104,15 @@ body {
 	height: 100vh;
 }
 
+.small_window {
+	background-color: white; /*#010008*/
+	color: black;
+	float: left;
+	padding: 1%;
+	width: auto;
+	height: auto;
+}
+
 .clearlink {
 	text-decoration: none;
 	color: #0B0080;
