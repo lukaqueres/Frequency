@@ -85,7 +85,7 @@ if (isset($_SESSION['user'])) {
 	</div>
 	<div id="main_content">
 		<?php
-			if (!($_GET['window'])) 
+			if (!(isset($_GET['window']))) 
 			{
 				${'window'} = 'main';
 				
