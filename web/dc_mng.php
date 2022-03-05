@@ -62,7 +62,7 @@ require __DIR__ . "/config.php";
 				}
 			?>
 		</div>
-		<?php if (!(isset($_SESSION['user']))) { ?>
+		<?php if (isset($_SESSION['user'])) { ?>
 			<div style="margin-top: 100px;height: auto; width: auto;" class="padding_box">
 				<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=user"><img class='imagebtn' src='images/user-icon-white.png'></a>
 				<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><img style="margin-top: 10px;" class='imagebtn' src='images/serwers-icon-white.png'></a>
