@@ -46,7 +46,7 @@ require __DIR__ . "/config.php";
 	<?php } ?>
 
 	<body>
-		<div id=""container"> 
+		<div id="container"> 
 			<div id="aside_menu">
 				<div class="padding_box">
 					<?php if (isset($_SESSION['user'])) { ?>
