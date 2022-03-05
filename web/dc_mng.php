@@ -90,12 +90,14 @@ if (isset($_SESSION['user'])) {
 				redirect("../dc_mng.php?window=main");
 			}
 		?>
+		<?php if (!isset($_SESSION['user'])) { ?> <!-- PHP WINDOW IF-->
 		<div class="window" id="error-info">
 		<?php
 		if (!isset($_SESSION['user'])) {
 			echo '<h1 style="font-size:100px;">You are not logged in</h1></br>';
 		}
 		?>
+		<?php } elseif ($_GET['window'] == 'user') {?> <!-- PHP WINDOW IF-->
 		</div>
 		<div class="window" id="user-info">
 			<h1> User</h1>
@@ -155,6 +157,7 @@ if (isset($_SESSION['user'])) {
 		<div class="response-block">
 			<p> <?php echo json_encode($_SESSION['guilds']); ?></p>
 		</div>
+		<?php } ?> <!-- PHP WINDOW IF-->
 		<br>
 		</div>
 		<br>
