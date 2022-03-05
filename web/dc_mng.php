@@ -50,7 +50,7 @@ if (isset($_SESSION['user'])) {
 	<?php
 }
 ?>
-<body onload="load()">
+<body>
 	<div id="aside_menu">
 		<?php	
 		if (isset($_SESSION['user'])) {
@@ -122,6 +122,7 @@ if (isset($_SESSION['user'])) {
 		<?php
 		if (isset($_SESSION['user'])) {
 		?>
+		<script> load() </script>
 		<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
 		<p> ID : <?php echo $_SESSION['user_id']; ?></p>
 
