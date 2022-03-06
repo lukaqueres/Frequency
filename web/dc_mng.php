@@ -94,7 +94,7 @@ require __DIR__ . "/config.php";
 					<div class="window" id="guilds">Guilds
 					</div>
 				<?php } elseif ($_GET['window'] == 'user') { #WINDOW CONTENT ----------------------------------------------------------- USER ?>
-					<script type="text/javascript"> load(); </script>
+					<script type="text/javascript"> currentWindow(1); </script>
 					<div class="window" id="user-info">
 						<h1> User</h1>
 						<div class="linkheader">
