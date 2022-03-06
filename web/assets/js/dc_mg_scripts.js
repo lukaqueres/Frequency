@@ -1,3 +1,5 @@
+var windowIndex = 1;
+
 function plusWindow(n) {
   showWindow(windowIndex += n);
 }
