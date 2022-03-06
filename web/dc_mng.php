@@ -124,7 +124,7 @@ require __DIR__ . "/config.php";
 								</div>
 							<?php } ?>
 						</div>
-						<?php }else { echo ''; ?>
+						<?php #}else { echo ''; ?>
 						<div class="windowcontent" id="userservers">
 							<h2>Guilds :</h2>
 							<table border="1">
