@@ -1,0 +1,279 @@
+@media all 
+{
+    * 
+   {
+       font-family: "Bahnschrift", "Arial";
+       position: relative;
+    }
+
+    body {
+        background-color: white;/*#A7A7AB; #cdd1ff*/
+       width: 100%;
+       margin: 0px;
+    }
+}
+
+.header
+{
+   height: 50px;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   background-color: white;
+   color: black;
+   text-align: left;
+   z-index: 99;
+   /*border-bottom-style: solid;
+   border-width: 1px;*/
+}
+
+.footerlinksdiv
+{
+   text-align: right;
+}
+.headerlink
+{
+   border: none; /* Remove borders */
+   outline: none; /* Remove outline */
+   text-decoration: none;
+   color: black;
+   border-color: white;
+   border-style: none;
+   /*border-left-style: solid;
+   border-right-style: solid;*/
+   border-width: 1px;
+   transition: all 0.25s cubic-bezier(.77,0,.18,1);
+   display: inline-flex;
+   padding-left: 10px;
+   padding-right: 10px;
+   background-image: linear-gradient(to right, #0000C0 33%,transparent 33% 66%,#fff 66%);
+   background-position: right bottom;
+   background-size: 300% 1px;
+   background-repeat: no-repeat;
+   
+   margin-right: 20px;
+   margin-left: 20px;
+}
+
+.headerlink:hover
+{
+  /*border-bottom-style: solid;*/
+  background-position: left bottom;
+  transition: background-position 0.5s;
+  color: #0000C0;
+}
+
+.headerbtn
+{
+  text-decoration: none;
+  color: #0000C0;
+  background-color: white;
+  transition: all 0.25s cubic-bezier(.77,0,.18,1);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+  position: absolute;
+  border-color: #0000C0;
+  padding: 7px 15px 7px 15px;
+  cursor: pointer;
+}
+
+.headerbtn:hover
+{
+   border-color: #0000C0;
+   background-color: #0000C0;
+   color: white;
+}
+
+.container
+{
+   top: 0;
+}
+
+.clearlink
+{
+   font-size: 15px;
+   font-weight: 700;
+   color: black;
+   text-decoration: none;
+   padding: 20px 25px;
+}
+
+.circle 
+{
+   position: fixed;
+   height: 3px;
+   width: 3px;
+   background-color: black;
+   border-radius: 50%;
+}
+
+.window
+{
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 5px;
+   padding: 0px 0px 50px 0px;
+}
+
+#panel {
+  opacity: 1;
+   height: 200px;
+   width: 300px;
+  display: block; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20%;
+  right: -285px;
+  z-index: 99; /* Make sure it does not overlap */
+  border: solid; /* Remove borders */
+   border-width: 1px;
+   border-color: black;
+  outline: none; /* Remove outline */
+  background-color: black; /* Set a background color */
+  color: white; /* Text color */
+  border-radius: 5px 0px 0px 5px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+   border-right-style: none;
+  transition: all 0.25s cubic-bezier(.77,0,.18,1);
+}
+
+#panel.hide
+{
+   opacity: 0;
+   right: -300px;
+   display: none:
+}
+
+#panel.expand
+{
+   right: 0px;
+}
+
+#panel_up_btn
+{
+   height: 20%;
+   width: 15px;
+   border: none; /* Remove borders */
+   outline: none; /* Remove outline */
+   /*padding: 15px;*/
+   cursor: pointer; /* Add a mouse pointer on hover */
+   background-color: black; /* Set a background color */
+   color: white; /* Text color */
+   border-radius: 5px 0px 0px 0px; /* Rounded corners */
+   font-weight: 1000;
+   transition: all 0.25s cubic-bezier(.77,0,.18,1);
+}
+
+
+#panel_up_btn:hover
+{
+   background-color: white;
+   color: black;
+}
+
+#panel_more_btn
+{
+   width: 15px;
+   height: 80%;
+  cursor: pointer; /* Add a mouse pointer on hover */
+  /*-ms-transform: rotate(270deg);  IE 9 
+  -webkit-transform: rotate(270deg);  Chrome, Safari, Opera 
+  transform: rotate(270deg);*/
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: black; /* Set a background color */
+  color: white; /* Text color */
+  border-radius: 0px 0px 0px 5px; /* Rounded corners */
+  transition: all 0.25s cubic-bezier(.77,0,.18,1);
+   display: block;
+}
+
+#panel_more_btn:hover
+{
+   background-color: white;
+   color: black;
+}
+
+#rotated_text
+{
+   -ms-transform: rotate(270deg);
+   -webkit-transform: rotate(270deg);
+   transform: rotate(270deg);
+}
+
+#panel_content
+{
+   height: 100%;
+   left: 15px;
+   top: -100%;
+   background-color: black;
+   z-index: 99;
+   display: inline-block;
+   border-left-style: solid;
+   border-color: white;
+   border-width: 1px;
+}
+
+#main_up_left, #main_up_right
+{
+   width: 50%;
+   margin-left: auto;
+   margin-right: auto;
+   color: black;
+   float: left;
+   border-style: solid;
+   border-width: 1px;
+   padding: 10px;
+}
+#main
+{
+   top: 150px;
+   display: flex;                  /* establish flex container */
+   flex-direction: row;            /* default value; can be omitted */
+   flex-wrap: nowrap;              /* default value; can be omitted */
+   justify-content: space-between; /* switched from default (flex-start, see below) */
+}
+
+#top
+{
+   top: 79px;
+}
+
+#up
+{
+   text-align: center;
+   top: 79px;
+}
+
+#topPanel
+{
+   opacity: 0;
+   background-color: white;
+   color: black;
+   border-width: 1px;
+   border-style: solid;
+   border-top-color: black;
+   border-radius: 0px 0px 5px 5px;
+   top: -200px;
+   width: 150px; /*98px*/
+   height: 200px;
+   transition: all 0.25s cubic-bezier(.77,0,.18,1);
+   position: fixed;
+   z-index: 1;
+   right: 34px;
+   text-align: center;
+}
+
+#topPanel.show
+{
+   opacity: 1;
+   top: 54px;
+   z-index: 99;
+}
+
+#topPanel.expand
+{
+   right: 0px;
+}

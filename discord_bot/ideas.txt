@@ -1,0 +1,58 @@
+@client.command()
+@has_permissions(manage_messages=True)
+async def cytaty(ctx):
+    	print(" \nCytaty command has been used by member on:")
+    	channel  = ctx
+    	embed = discord.Embed(
+        	title="Czasy rewolwerowców i bandytów dobiegły końca. \nDziki zachód stał się legendą, a za istnieniem legend zawsze kryją się niezapomniane słowa. Aby je poznać musisz skorzystać ze zwoju na poczcie",
+        	description="   Po naciśnięciu reakcji, zostanie wysłany jeden z wielu cytatów z gier: \n   Red Dead Redemption, Red Dead Redemption 2 oraz Red Dead Online",
+        	color=0x0000ff,
+        )
+    	amount = 1
+    	await ctx.channel.purge(limit = amount)
+    	msg = await ctx.send(embed=embed)
+    	await msg.add_reaction('📜')
+    	#await msg.add_reaction('🏷️')
+    	#await ctx.message.add_reaction('📜')                                                    Emoji do wysłanej wiadomości przez użytkownika
+    	#await ctx.send(' >>> Ta opcja niedługo będzie działać :scroll:')                         Zwykła wiadomość jako cytat
+
+@client.command()
+@has_permissions(manage_messages=True)
+async def embed(ctx):
+    	now = datetime.now()
+    	today = date.today()
+    	current_day = today.strftime("%d/%m/%Y")
+    	current_time = now.strftime("%H:%M:%S")
+    	print("\nEmbed has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} {} \".".format(ctx.message.author, ctx.message.channel, ctx.message.guild, current_time, current_day))
+    	await ctx.channel.purge(limit = 1)
+    	embed = discord.Embed(
+        	#name="Lukaqueres"
+        	title="Nowości & Aktualności Red Dead Online",
+        	description=" Co tygodniowa aktualizacja RDO: 07.09.2021 - 13.09.2021",
+        	color=0x0000ff,
+        	)
+    	embed.add_field(name="Zniżki:", value="**-** 5 sztabek na licencję łowcy nagród \n**-** 30% zniżki na broszury ról \n**-** 40% zniżki na konie bretońskie\n**-** 40% zniżki na pasy na broń ról\n**-** 40% na amunicję i strzemiona\n**-** 50% na ostrogi", inline=True)
+    	embed.add_field(name="Aktualności", value="W tym tygodniu wydarzenia w grze swobodnej oraz tryb do broni przynosi 2 razy więcej dochodów jak i PD. W trakcie przestępstw krwawej forsy można zdobyć więcej *kapitali* niż zwykle. W tym tygodniu jest również dostępna odzież z poprzednich przepustek bandyty.", inline=True)
+    	embed.add_field(name="Witamy 3 odsłonę Klubu Rewolwerowca", value="\nCena wynosi 25 sztabek złota które zwracają się po osiągnęciu 25, maksymalnego poziomu. Możemy w niej zdobyć m. in. Nową kamizelkę, nóż, kurtkę, maskę czy końską grzywę.\nJest dostępna do 4 października 2021 ", inline=False)
+    	embed.add_field(name="Więcej", value="""**W tym tygodniu:**\n- Za dowolną modyfikację broni można zarobić 25 nabojów zapalających do strzelby jak i 200 nabojów express do rewolweru\n- Wszyscy gracze RDO którzy zalogują się w tym tygodniu dostaną 3 specjalne oleje z węża i 3 silne serum w ciągu 72 godzin.
+                    \n\nPosiadacze 2 poprzednich odsłon Klubu Rewolwerowca którzy zakupią tą (3) odsłonę otrzymają 25 not kapitałowych i 10 darmowych szybkich podróży w ciągu 72 godzin od zakupu. \nPrzypominamy że posiadanie wszystkich 4 odsłon zapewni darmową hallowienową przepustkę.  """, inline=False)
+    	embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar_url)
+    	embed.set_thumbnail(url="https://prod.cloud.rockstargames.com/global/Events/23152/171b3f1d-4598-4415-9151-957aa943388a.jpg")
+    	embed.set_footer(text="Miłej gry")
+    	msg = await ctx.send(embed=embed)
+    	await msg.add_reaction('🏷️')
+        
+        
+	"""@commands.command()
+	@has_permissions(manage_messages=True)
+	async def prefix_change(self, ctx, prefix):
+		await ctx.send(f'Zmieniono prefix komend na ``{prefix}``')
+		print("\n Prefix changed in guild: \" {} \" guild to \"{}\" on \" {} \".".format(ctx.message.guild, prefix, get_time()))
+		with open('data.json', 'r') as f:
+			prefixes = json.load(f)
+      
+	prefixes[str(ctx.message.guild.id)] = prefix
+    
+	with open('data.json','w') as f:
+		json.dump(prefixes, f, indent=4)"""
+    
