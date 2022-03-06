@@ -27,6 +27,7 @@ require __DIR__ . "/config.php";
 	<head>
 		<title>Wild West Post Office | Manage</title>
 		<link rel="stylesheet" href="assets/css/dc_mg_styles.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript" src="assets/js/dc_mg_scripts.js"></script>
 		<style> .windowcontent { display: none; } </style>
 	</head>
