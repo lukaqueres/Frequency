@@ -150,7 +150,7 @@ require __DIR__ . "/config.php";
 							</div>
 						</div>
 					</div>
-				<?php } #END OF WINDOW's IF STATEMENT ?>
+				<?php } else { redirect("../dc_mng.php?window=main"); } #END OF WINDOW's IF STATEMENT ?>
 			</div>
 		</div>
 	</body>
