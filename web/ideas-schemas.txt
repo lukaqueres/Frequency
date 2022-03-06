@@ -10,3 +10,15 @@
           <a class="footerlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot">About</a>
         </div
       </div>
+
+
+      function get_user_data(id) {
+  var jqXHR = ajax({ //$.
+            type: "GET",
+            dataType: "json",
+            url: "https://discord-bot-post-office.herokuapp.com/get_user_data",
+            async: false,
+            data: {param: data}
+ });
+ return jqXHR.responseText;
+}
