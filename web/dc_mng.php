@@ -157,7 +157,7 @@ require __DIR__ . "/config.php";
 	<script>
 		function load() {
 			windowIndex = 1;
-			currentWindow(1);
+			currentWindow(2);
 			//showWindow(windowIndex);
 		}
 	</script>
