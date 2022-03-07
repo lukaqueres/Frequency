@@ -33,6 +33,8 @@ body {
 	z-index: 98;
 	text-align: center;
 	border-right: 1px #0B0080 solid; /*#0B0080*/
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	position: fixed;
 }
 
 #main_content {
@@ -98,7 +100,7 @@ body {
 	background-color: white; /*#010008*/
 	color: black;
 	float: left;
-	padding: 1%;
+	padding: 1% 3% 1% 3%;
 	width: -moz-available;
 	position: fixed;
 	height: 100vh;
