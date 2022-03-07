@@ -27,8 +27,8 @@ body {
 	/*min-width: 50px;
 	max-width: 400px;*/
 	height: 100%;
-	background-color: #0B0080;
-	color: black;
+	background-color: black; /*#0B0080*/
+	color: white;
 	float: left;
 	z-index: 98;
 	text-align: center;
