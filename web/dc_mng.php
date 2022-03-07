@@ -68,7 +68,7 @@ require __DIR__ . "/config.php";
 					<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><button>Guilds</button></a>
 				</div>
 				<div>
-					<input type="text" id="servers_search" onkeyup="filter_guilds()" placeholder="Search for guilds.." title="Type in a name or id">
+					<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id">
 
 					<ul id="servers">
 						<li><a href="#">Adele</a></li>
