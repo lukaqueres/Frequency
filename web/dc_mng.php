@@ -71,13 +71,19 @@ require __DIR__ . "/config.php";
 					<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id">
 
 					<ul id="servers">
-						<li><a href="#">Adele</a></li>
-						<li><a href="#">Agnes</a></li>
-						<li><a href="#">Billy</a></li>
-						<li><a href="#">Bob</a></li>
-						<li><a href="#">Calvin</a></li>
-						<li><a href="#">Christina</a></li>
-						<li><a href="#">Cindy</a></li>
+						<?php 
+							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+								echo "<li><a href='#'>";
+								echo $_SESSION['guilds'][$i]['name'];
+								echo "</a></li>";
+								/*echo ;
+								echo "<td>";
+								echo $_SESSION['guilds'][$i]['id'];
+								echo "</td>";
+								echo "</tr></td>";
+								<li><a href="#">Adele</a></li>*/
+							}
+						?>
 					</ul>
 				</div>
 			</div>
