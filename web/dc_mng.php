@@ -73,7 +73,7 @@ require __DIR__ . "/config.php";
 					<ul id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								echo '<li><a href="?guild=' . $_SESSION['guilds'][$i]['id'] . '">' . $_SESSION['guilds'][$i]['name'] . '</a></li>';
+								echo '<li><a href="?window=guilds&guild=' . $_SESSION['guilds'][$i]['id'] . '">' . $_SESSION['guilds'][$i]['name'] . '</a></li>';
 								/*echo ;
 								echo "<td>";
 								echo $_SESSION['guilds'][$i]['id'];
