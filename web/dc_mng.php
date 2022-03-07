@@ -49,29 +49,31 @@ require __DIR__ . "/config.php";
 	<body>
 		<div id="container"> 
 			<div id="aside_menu">
-				<div class="padding_box">
+				<div style="margin-left: 0; width: 50px;">
+					<div class="padding_box">
+						<?php if (isset($_SESSION['user'])) { ?>
+							<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+							<!--<h1 style="float: left; padding: 25;"><#?php echo $_SESSION['username']?></h1>-->
+						<?php } ?>
+						<?php
+							$auth_url = url($client_id, $redirect_url, $scopes);
+							if (!(isset($_SESSION['user']))) {
+								echo "<a href='$auth_url'><img class='imagebtn' src='images/home-gear-black.png '></a>";
+							} else {
+								echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-gear-white.png "></a>';
+							}
+						?>
+					</div>
 					<?php if (isset($_SESSION['user'])) { ?>
-						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-						<!--<h1 style="float: left; padding: 25;"><#?php echo $_SESSION['username']?></h1>-->
+						<div style="margin-top: 100px;height: auto; width: auto;" class="padding_box">
+							<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=user"><img class='imagebtn' src='images/user-icon-white.png'></a>
+							<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><img style="margin-top: 10px;" class='imagebtn' src='images/serwers-icon-white.png'></a>
+						</div>
+						<div style="bottom:0px; position: absolute;" class="padding_box">
+							<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
+						</div>
 					<?php } ?>
-					<?php
-						$auth_url = url($client_id, $redirect_url, $scopes);
-						if (!(isset($_SESSION['user']))) {
-							echo "<a href='$auth_url'><img class='imagebtn' src='images/home-gear-black.png '></a>";
-						} else {
-							echo '<a href="includes/logout.php"><img class="imagebtn" src="images/log-out-gear-white.png "></a>';
-						}
-					?>
-				</div>
-				<?php if (isset($_SESSION['user'])) { ?>
-					<div style="margin-top: 100px;height: auto; width: auto;" class="padding_box">
-						<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=user"><img class='imagebtn' src='images/user-icon-white.png'></a>
-						<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><img style="margin-top: 10px;" class='imagebtn' src='images/serwers-icon-white.png'></a>
 					</div>
-					<div style="bottom:0px; position: absolute;" class="padding_box">
-						<a href="https://web-plan-it.herokuapp.com/"> <img class='imagebtn' src='images/home-gear-white.png '></a>
-					</div>
-				<?php } ?>
 			</div>
 			<div id="main_content">
 				<?php if (!(isset($_GET['window']))) { redirect("../dc_mng.php?window=main"); } #Redirect if no window specified  ?>
