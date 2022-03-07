@@ -142,10 +142,14 @@ body {
 
 #avatar {
 	height: 100%; 
+	float: right;
 	object-fit: contain;
 	border-radius: 50%;
 	max-width: 128px;
 	margin-bottom: 5px;
+}
+#avatar_username {
+	float: right;
 }
 .imagebtn {
 	width: 70%;
