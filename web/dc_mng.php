@@ -73,7 +73,9 @@ require __DIR__ . "/config.php";
 					<ul id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								echo "<li><a href='#'>";
+								echo "<li><a href='?guild='";
+								echo $_SESSION['guilds'][$i]['id'];
+								echo ">";
 								echo $_SESSION['guilds'][$i]['name'];
 								echo "</a></li>";
 								/*echo ;
