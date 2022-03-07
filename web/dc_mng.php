@@ -67,6 +67,19 @@ require __DIR__ . "/config.php";
 					<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=user"><button>User</button></a>
 					<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><button>Guilds</button></a>
 				</div>
+				<div>
+					<input type="text" id="servers_search" onkeyup="filter_guilds()" placeholder="Search for guilds.." title="Type in a name or id">
+
+					<ul id="servers">
+						<li><a href="#">Adele</a></li>
+						<li><a href="#">Agnes</a></li>
+						<li><a href="#">Billy</a></li>
+						<li><a href="#">Bob</a></li>
+						<li><a href="#">Calvin</a></li>
+						<li><a href="#">Christina</a></li>
+						<li><a href="#">Cindy</a></li>
+					</ul>
+				</div>
 			</div>
 			<div id="main_content">
 				<?php if (!(isset($_GET['window']))) { redirect("../dc_mng.php?window=main"); } #Redirect if no window specified  ?>
