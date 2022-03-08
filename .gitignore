@@ -5,6 +5,7 @@
 
 #My own
 .env
+.docker
 
 # User-specific files
 *.rsuser
