@@ -67,7 +67,7 @@ require __DIR__ . "/config.php";
 					<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=user"><button>User</button></a>
 					<a href="https://web-plan-it.herokuapp.com/dc_mng.php?window=guilds"><button>Guilds</button></a>
 				</div>
-				<div>
+				<div style="max-height: 50%; overflow:auto;">
 					<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id">
 
 					<ul id="servers">
