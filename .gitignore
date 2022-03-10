@@ -7,6 +7,7 @@
 .env
 .docker
 Dockerfile
+httpd.conf
 
 # User-specific files
 *.rsuser
@@ -353,4 +354,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-httpd.conf
