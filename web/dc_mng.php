@@ -67,13 +67,13 @@ require __DIR__ . "/config.php";
 					<a href="?window=user"><button>User</button></a>
 					<a href="?window=guilds"><button>Guilds</button></a>
 				</div>
-				<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id" style="width: 90%; margin-block: 10px;">
+				<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Filter by id or name.." title="Type in a name or id" style="width: 90%; margin-block: 10px;">
 				<div style="max-height: 50%; overflow:auto;">
 					<table style="border-collapse: collapse; border-spacing: 0;" id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 								echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
-								     <td>' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
+								     <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 								/*echo ;
 								echo "<td>";
 								echo $_SESSION['guilds'][$i]['id'];
