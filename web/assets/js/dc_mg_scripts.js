@@ -33,7 +33,8 @@ function search_guilds() {
     tabel = document.getElementById("servers");
     tr = tabel.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-        a = tr[i].getElementsByTagName("a")[0];
+        //a = tr[i].getElementsByTagName("a")[0];
+        a = tr[i];
         txtValue = a.textContent || a.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
