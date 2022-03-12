@@ -210,3 +210,7 @@ body {
 	color: black;
 	background-color: white;
 }
+
+.clicable_row:hover {
+	cursor: pointer;
+}
