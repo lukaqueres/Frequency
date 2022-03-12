@@ -72,8 +72,8 @@ require __DIR__ . "/config.php";
 					<table style="border-collapse: collapse; border-spacing: 0;" id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								echo '<tr style="border-block: white solid 1px;" ><td style="padding: 5px;" ><a href="?window=guilds&guild=' . $_SESSION['guilds'][$i]['id'] . '">' . $_SESSION['guilds'][$i]['name'] . '</a></td>
-								     <td>' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
+								echo '<a href="?window=guilds&guild=' . $_SESSION['guilds'][$i]['id'] . '" class="clearlink"> <tr class="search_row" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
+								     <td>' . $_SESSION['guilds'][$i]['id'] . '</td></tr></a>';
 								/*echo ;
 								echo "<td>";
 								echo $_SESSION['guilds'][$i]['id'];
