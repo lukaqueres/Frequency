@@ -67,9 +67,8 @@ require __DIR__ . "/config.php";
 					<a href="?window=user"><button>User</button></a>
 					<a href="?window=guilds"><button>Guilds</button></a>
 				</div>
+				<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id" style="width: 90%; margin-block: 10px;">
 				<div style="max-height: 50%; overflow:auto;">
-					<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id" style="width: 90%;">
-
 					<table style="border-collapse: collapse; border-spacing: 0;" id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
