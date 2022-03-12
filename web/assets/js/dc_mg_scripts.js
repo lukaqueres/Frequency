@@ -27,18 +27,18 @@ function showWindow(n) {
 }
 
 function search_guilds() {
-    var input, filter, ul, li, a, i, txtValue;
+    var input, filter, tabel, tr, a, i, txtValue;
     input = document.getElementById("servers_search");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("servers");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
+    tabel = document.getElementById("servers");
+    tr = tabel.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        a = tr[i].getElementsByTagName("a")[0];
         txtValue = a.textContent || a.innerText;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
+            tr[i].style.display = "";
         } else {
-            li[i].style.display = "none";
+            tr[i].style.display = "none";
         }
     }
 }
