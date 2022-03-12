@@ -203,6 +203,7 @@ body {
 }
 .search_row {
 	border-block: white solid 1px;
+	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
 .search_row:hover {
