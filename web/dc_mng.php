@@ -83,7 +83,7 @@ require __DIR__ . "/config.php";
 								<li><a href="#">Adele</a></li>*/
 							}
 						?>
-					</ul>
+					</table>
 				</div>
 			</div>
 			<div id="main_content">
