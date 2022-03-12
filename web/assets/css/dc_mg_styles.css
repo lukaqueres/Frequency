@@ -214,3 +214,7 @@ body {
 .clicable_row:hover {
 	cursor: pointer;
 }
+
+.no-display {
+	display: none;
+}
