@@ -201,3 +201,11 @@ body {
 	height: 10%;
 	font-size: 100%;
 }
+.search_row {
+	border-block: white solid 1px;
+}
+
+.search_row:hover {
+	color: black;
+	background-color: white;
+}
