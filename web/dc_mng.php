@@ -70,10 +70,11 @@ require __DIR__ . "/config.php";
 				<div style="max-height: 50%; overflow:auto;">
 					<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Search for guilds.." title="Type in a name or id">
 
-					<ul id="servers">
+					<table id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								echo '<li><a href="?window=guilds&guild=' . $_SESSION['guilds'][$i]['id'] . '">' . $_SESSION['guilds'][$i]['name'] . '</a></li>';
+								echo '<tr><td><a href="?window=guilds&guild=' . $_SESSION['guilds'][$i]['id'] . '">' . $_SESSION['guilds'][$i]['name'] . '</a></td>
+								     <td>' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 								/*echo ;
 								echo "<td>";
 								echo $_SESSION['guilds'][$i]['id'];
