@@ -104,7 +104,7 @@ require __DIR__ . "/config.php";
 								#$_SESSION['guild_details'] = get_guild_details($_GET['guildId']);
 							#}
 						?>
-						<p> Details : <?php echo json_encode($_SESSION['guild_details']); ?></p>
+						<p> Details : <?php #echo json_encode($_SESSION['guild_details']); ?></p>
 					</div>
 				<?php } elseif ($_GET['window'] == 'user') { #WINDOW CONTENT ----------------------------------------------------------- USER ?>
 					<div class="window" id="user-info">
