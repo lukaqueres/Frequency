@@ -72,7 +72,7 @@ require __DIR__ . "/config.php";
 					<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 						<?php 
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
+								echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&guildId=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
 								     <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 								/*echo ;
 								echo "<td>";
@@ -105,6 +105,12 @@ require __DIR__ . "/config.php";
 					</div>
 				<?php } elseif ($_GET['window'] == 'guilds') { #WINDOW CONTENT ----------------------------------------------------------- GUILDS ?>
 					<div class="window" id="guilds">Guilds
+						<?php
+							if (isset($_GET['guildId'])) {
+								$_SESSION['guild_details'] = get_guild_details($_GET['guildId']);
+							}
+						?>
+						<p> Details : <?php echo $_SESSION['guild_details']; ?></p>
 					</div>
 				<?php } elseif ($_GET['window'] == 'user') { #WINDOW CONTENT ----------------------------------------------------------- USER ?>
 					<div class="window" id="user-info">
