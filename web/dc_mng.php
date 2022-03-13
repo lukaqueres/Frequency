@@ -100,9 +100,13 @@ require __DIR__ . "/config.php";
 				<?php } elseif ($_GET['window'] == 'guilds') { #WINDOW CONTENT ----------------------------------------------------------- GUILDS ?>
 					<div class="window" id="guilds">Guilds
 						<?php
-							#if (isset($_GET['guildId'])) {
-								#$_SESSION['guild_details'] = get_guild_details($_GET['guildId']);
-							#}
+							if (isset($_GET['guildId'])) {
+								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+									if ($_SESSION['guilds'][$i]['id'] == $_GET['guildId']) {
+										echo json_encode($_SESSION['guilds'][$i]);
+									}
+								}
+							}
 						?>
 						<p> Details : <?php #echo json_encode($_SESSION['guild_details']); ?></p>
 					</div>
