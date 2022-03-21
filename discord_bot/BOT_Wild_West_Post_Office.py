@@ -11,7 +11,7 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
-from discord_slash import SlashCommand, SlashContext
+from discord-py-slash-command import SlashCommands
 
 from functions import get_prefix, get_time
 
