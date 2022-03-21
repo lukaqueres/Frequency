@@ -11,7 +11,8 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
-#from discord-py-slash-command import SlashCommands
+
+from discord_slash import cog_ext, SlashCommand
 
 from functions import get_prefix, get_time
 
@@ -141,7 +142,7 @@ bot.help_command = MyHelp()
 
 client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
 bot = client
-#slash = SlashCommand(client)
+slash = SlashCommand(client)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
