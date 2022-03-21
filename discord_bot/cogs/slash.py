@@ -45,7 +45,7 @@ class Slash(Cog):
                                    description = "What commands do you want to check?",
                                    option_type = 3,
                                    required = False
-                                )]))
+                                )])
     async def _test(self, ctx: SlashContext):
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
