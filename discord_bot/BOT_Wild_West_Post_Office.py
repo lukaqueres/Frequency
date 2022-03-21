@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio, psycopg2, nltk, interactions
+import discord, json, io, os, typing, requests, random, asyncio, psycopg2, nltk
 from os import getenv
 import contextlib, datetime
 from dotenv import load_dotenv
@@ -178,7 +178,7 @@ guild_ids = get_guilds_ids()
 	     options=[create_option(
                                    name = "number",
                                    description = "How many messages you want to delete?",
-                                   option_type = interactions.OptionType.INTEGER,
+                                   option_type = 3,
                                    required = True
                                 )])
 async def _clear(ctx): 
