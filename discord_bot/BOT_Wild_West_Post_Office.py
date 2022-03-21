@@ -170,7 +170,7 @@ async def status_change():
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
-guild_ids = get_guilds_ids
+guild_ids = get_guilds_ids()
 
 @slash.slash(name="clear", description="Clear command", guild_ids=guild_ids)
 async def _clear(ctx): 
