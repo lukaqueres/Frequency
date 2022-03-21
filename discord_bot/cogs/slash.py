@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio
+import discord, json, io, os, typing, requests, random, asyncio, interactions
 from discord import member, DMChannel, TextChannel, Intents
 from discord.ext import tasks, commands
 from discord.utils import get
@@ -15,6 +15,9 @@ client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 slash = SlashCommand(client, sync_commands=True)
 
 guild_ids = get_guilds_ids()
+
+async def commands_modules(ctc: discord.AutocompleteContext):
+    return ["test","tust","tast","tist"]
 
 class Slash(Cog):
     def __init__(self, client: Bot):
@@ -45,7 +48,8 @@ class Slash(Cog):
                                    description = "What commands do you want to check?",
                                    option_type = 3,
                                    required = False
-                                )])
+                                )]
+                      autocomplete=commands_modules)
     async def _test(self, ctx: SlashContext):
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
