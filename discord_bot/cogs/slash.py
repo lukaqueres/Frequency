@@ -39,8 +39,8 @@ class Slash(Cog):
                                    description = "What command do you want learn more about?",
                                    option_type = 3,
                                    required = False
-                               ),
-                                   manage_commands.create_option(
+                                ),
+                                create_option(
                                    name = "module",
                                    description = "What commands do you want to check?",
                                    option_type = 3,
