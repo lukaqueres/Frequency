@@ -22,7 +22,7 @@ class Slash(Cog):
     async def on_ready(self):
         print('Slash information module loaded')
     
-    @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
+    @cog_ext.cog_slash(name="test", description="test")
     async def _test(self, ctx: SlashContext):
         embed = Embed(title="Embed Test")
         await ctx.send(embed=embed)
