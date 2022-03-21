@@ -5,6 +5,8 @@ from discord import Embed
 from discord.ext.commands import Bot, Cog
 from discord_slash import cog_ext, SlashContext
 
+from functions import get_prefix, get_time
+
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
 class Slash(Cog):
