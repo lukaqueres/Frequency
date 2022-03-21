@@ -9,4 +9,4 @@ discord
 psycopg2
 nltk
 flask
-discord-py-interactions
+discord-py-slash-command
