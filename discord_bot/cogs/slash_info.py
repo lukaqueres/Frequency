@@ -12,7 +12,7 @@ from functions import get_prefix, get_time
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
-slash = SlashCommand(client, sync_commands = True)
+slash = SlashCommand(client, sync_commands=True)
 
 guild_ids = [688803708577775619]
 
@@ -24,8 +24,8 @@ class Slash(Cog):
     async def on_ready(self):
         print('Slash information module loaded')
     
-    @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
-    async def _test(self, ctx: SlashContext):
+    @cog_ext.cog_slash(name="testt", guild_ids=guild_ids, description="test")
+    async def _testt(self, ctx: SlashContext):
         embed = Embed(title="Embed Test")
         await ctx.send(embed=embed)
 
