@@ -34,7 +34,7 @@ class Slash(Cog):
     @cog_ext.cog_slash(name="help", 
                        guild_ids=guild_ids, 
                        description="Provides information about bot itself or specific commands",
-                      options=[manage_commands.create_option(
+                       options=[create_option(
                                    name = "command",
                                    description = "What command do you want learn more about?",
                                    option_type = 3,
