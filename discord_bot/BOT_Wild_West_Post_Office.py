@@ -26,7 +26,7 @@ try:
 except:
 	print("Failed to open database")
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.members = True
 fetch_offline_members = True
 
