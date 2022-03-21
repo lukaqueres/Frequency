@@ -12,9 +12,10 @@ from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 
-from discord_slash import cog_ext, SlashCommand
+from discord_slash import cog_ext, SlashContext, SlashCommand
+from discord_slash.utils.manage_commands import create_choice, 
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_guilds_ids
 
 from endpoints import *
 load_dotenv()
@@ -169,7 +170,7 @@ async def status_change():
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
-guild_ids = [688803708577775619]
+guild_ids = get_guilds_ids
 
 @slash.slash(name="clear", description="Clear command", guild_ids=guild_ids)
 async def _clear(ctx): 
