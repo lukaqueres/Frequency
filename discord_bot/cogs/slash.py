@@ -22,9 +22,30 @@ class Slash(Cog):
         
     @commands.Cog.listener()
     async def on_ready(self):
-        print('Slash information module loaded')
+        print('Slash commands module loaded')
     
     @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
+    async def _test(self, ctx: SlashContext):
+        if not ctx.author.guild_permissions.manage_messages:
+            return await ctx.send(">>> You can't use this!", hidden=True)
+        embed = Embed(title="Embed Test")
+        await ctx.send(embed=embed, hidden=True)
+        
+    @cog_ext.cog_slash(name="help", 
+                       guild_ids=guild_ids, 
+                       description="Provides information about bot itself or specific commands",
+                      options=[manage_commands.create_option(
+                                   name = "command",
+                                   description = "What command do you want learn more about?",
+                                   option_type = 3,
+                                   required = False
+                               ),
+                                   manage_commands.create_option(
+                                   name = "module",
+                                   description = "What commands do you want to check?",
+                                   option_type = 3,
+                                   required = False
+                                )]))
     async def _test(self, ctx: SlashContext):
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
