@@ -7,6 +7,7 @@ from discord_slash import cog_ext, SlashContext
 
 from functions import get_prefix, get_time
 
+intents = discord.Intents.all()
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
 class Slash(Cog):
