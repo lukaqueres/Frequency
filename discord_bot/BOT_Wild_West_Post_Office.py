@@ -174,7 +174,7 @@ guild_ids = get_guilds_ids()
 
 @slash.slash(name="clear", description="Clear command", guild_ids=guild_ids)
 async def _clear(ctx): 
-    await ctx.send("No")
+    await ctx.send("No", hidden=True)
 
 @client.command()
 @has_permissions(manage_messages=True)
