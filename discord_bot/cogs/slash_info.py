@@ -14,6 +14,8 @@ client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
 slash = SlashCommand(client, sync_commands = True)
 
+guild_ids = [688803708577775619]
+
 class Slash(Cog):
     def __init__(self, client: Bot):
         self.client = client
@@ -22,7 +24,7 @@ class Slash(Cog):
     async def on_ready(self):
         print('Slash information module loaded')
     
-    @cog_ext.cog_slash(name="test", description="test")
+    @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
     async def _test(self, ctx: SlashContext):
         embed = Embed(title="Embed Test")
         await ctx.send(embed=embed)
