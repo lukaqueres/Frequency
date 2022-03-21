@@ -11,9 +11,12 @@ from functions import get_prefix, get_time
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
+slash = SlashCommand(client, sync_commands = True)
+
 class Slash(Cog):
     def __init__(self, client: Bot):
         self.client = client
+        
     @commands.Cog.listener()
     async def on_ready(self):
         print('Slash information module loaded')
