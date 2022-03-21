@@ -13,7 +13,7 @@ from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 
 from discord_slash import cog_ext, SlashContext, SlashCommand
-from discord_slash.utils.manage_commands import create_choice, 
+from discord_slash.utils.manage_commands import create_choice, create_option
 
 from functions import get_prefix, get_time, get_guilds_ids
 
