@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio, interactions
+import discord, json, io, os, typing, requests, random, asyncio
 from discord import member, DMChannel, TextChannel, Intents
 from discord.ext import tasks, commands
 from discord.utils import get
