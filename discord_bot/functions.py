@@ -79,4 +79,6 @@ def get_time( specify = "DT" ):
 	else:
 		return str(dateandtime)
 		
+def get_guilds_ids():
+	return [688803708577775619]
 	
