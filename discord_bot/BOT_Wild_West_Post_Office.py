@@ -141,7 +141,7 @@ bot.help_command = MyHelp()
 
 client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
 bot = client
-slash = SlashCommand(client)
+#slash = SlashCommand(client)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
