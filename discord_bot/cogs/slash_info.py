@@ -27,9 +27,9 @@ class Slash(Cog):
     @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
     async def _test(self, ctx: SlashContext):
         if not ctx.author.guild_permissions.manage_messages:
-            return 0
+            return await ctx.send(">>> You can't use this!", hidden=True)
         embed = Embed(title="Embed Test")
-        await ctx.send(embed=embed)
+        await ctx.send(embed=embed, hidden=True)
 
 def setup(client: client):
     client.add_cog(Slash(client))
