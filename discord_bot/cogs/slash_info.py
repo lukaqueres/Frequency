@@ -14,7 +14,7 @@ client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
 slash = SlashCommand(client, sync_commands=True)
 
-guild_ids = [688803708577775619]
+guild_ids = get_guilds_ids()
 
 class Slash(Cog):
     def __init__(self, client: Bot):
