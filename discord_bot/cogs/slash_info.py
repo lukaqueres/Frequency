@@ -4,7 +4,8 @@ from discord.ext import tasks, commands
 from discord.utils import get
 from discord import Embed
 from discord.ext.commands import Bot, Cog
-from discord_slash import cog_ext, SlashContext
+from discord_slash import cog_ext, SlashContext, SlashCommand
+from discord_slash.utils.manage_commands import create_choice, create_option
 
 from functions import get_prefix, get_time
 
