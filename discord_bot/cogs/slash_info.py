@@ -7,7 +7,7 @@ from discord.ext.commands import Bot, Cog
 from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 
-from functions import get_prefix, get_time
+from functions import get_prefix, get_time, get_guilds_ids
 
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
@@ -24,8 +24,10 @@ class Slash(Cog):
     async def on_ready(self):
         print('Slash information module loaded')
     
-    @cog_ext.cog_slash(name="testt", guild_ids=guild_ids, description="test")
-    async def _testt(self, ctx: SlashContext):
+    @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
+    async def _test(self, ctx: SlashContext):
+        if not ctx.author.guild_permissions.manage_messages:
+            return 0
         embed = Embed(title="Embed Test")
         await ctx.send(embed=embed)
 
