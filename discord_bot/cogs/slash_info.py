@@ -14,7 +14,10 @@ client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 class Slash(Cog):
     def __init__(self, client: Bot):
         self.client = client
-
+    @commands.Cog.listener()
+    async def on_ready(self):
+        print('Slash information module loaded')
+    
     @cog_ext.cog_slash(name="test")
     async def _test(self, ctx: SlashContext):
         embed = Embed(title="Embed Test")
