@@ -1,4 +1,4 @@
-import discord, json, io, os, typing, requests, random, asyncio, psycopg2, nltk
+import discord, json, io, os, typing, requests, random, asyncio, psycopg2, nltk, interactions
 from os import getenv
 import contextlib, datetime
 from dotenv import load_dotenv
@@ -172,9 +172,17 @@ async def status_change():
 
 guild_ids = get_guilds_ids()
 
-@slash.slash(name="clear", description="Clear command", guild_ids=guild_ids)
+@slash.slash(name="clear", 
+	     description="Clear command", 
+	     guild_ids=guild_ids
+	     options=[create_option(
+                                   name = "number",
+                                   description = "How many messages you want to delete?",
+                                   option_type = interactions.OptionType.INTEGER,
+                                   required = True
+                                )])
 async def _clear(ctx): 
-    await ctx.send("No", hidden=True)
+    await ctx.send(f"No {number or 0 }", hidden=True)
 
 @client.command()
 @has_permissions(manage_messages=True)
