@@ -80,5 +80,6 @@ def get_time( specify = "DT" ):
 		return str(dateandtime)
 		
 def get_guilds_ids():
-	return [688803708577775619]
+	return [688803708577775619, 
+		812295569808162856]
 	
