@@ -16,7 +16,7 @@ slash = SlashCommand(client, sync_commands=True)
 
 guild_ids = get_guilds_ids()
 
-async def commands_modules(ctc: discord.AutocompleteContext):
+async def commands_modules():
     return ["test","tust","tast","tist"]
 
 class Slash(Cog):
@@ -48,7 +48,8 @@ class Slash(Cog):
                                    description = "What commands do you want to check?",
                                    option_type = 3,
                                    required = False
-                                )])
+                                )],
+                                autocomplete=commands_modules)
     async def _test(self, ctx: SlashContext):
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
