@@ -142,7 +142,7 @@ bot.help_command = MyHelp()
 
 client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
 bot = client
-slash = SlashCommand(client)
+slash = SlashCommand(client, sync_commands=True)
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
@@ -169,9 +169,15 @@ async def status_change():
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
+guild_ids = [688803708577775619]
+
+@slash.slash(name="clear", description="Clear command", guild_ids=guild_ids)
+async def _clear(ctx): 
+    await ctx.send("No")
+
 @client.command()
 @has_permissions(manage_messages=True)
-async def clear(ctx, number : int ):
+async def clear_msg(ctx, number : int ):
 	global current_day
 	global current_time
 	if number > 100:
@@ -180,8 +186,8 @@ async def clear(ctx, number : int ):
 	print("\n Clear with walue {} has been triggered by: \" {} \" on: \" {} \" channel in: \" {} \" guild on \" {} \".".format(number, ctx.message.author, ctx.message.channel, ctx.message.guild, get_time()))
 	await ctx.channel.purge(limit = number)
 
-@clear.error
-async def clear_error(error, ctx):
+@clear_msg.error
+async def clear_msg_error(error, ctx):
 	if isinstance(error, MissingPermissions):
 		global current_day
 		global current_time
