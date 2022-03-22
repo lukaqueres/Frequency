@@ -44,13 +44,13 @@ class Slash(Cog):
                                 	required = False
                                	   )
 			   	   ])
-	async def _clear(ctx, number: int): 
+	async def _clear(ctx): 
 		if not ctx.author.guild_permissions.manage_messages:
 			return await ctx.send(">>> You can't use this!", hidden=True)
 		if number == None:
 			return await ctx.send(">>> Invalid number given", hidden=True)
 		embed = Embed(title="Embed Test")
-		await ctx.send(f"No {number or 0 }", hidden=True)
+		await ctx.send(f"No {ammount or 0 } by user {user or 'NO'}", hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
 				guild_ids=guild_ids, 
