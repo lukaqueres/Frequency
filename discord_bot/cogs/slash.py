@@ -27,12 +27,20 @@ class Slash(Cog):
     async def on_ready(self):
         print('Slash commands module loaded')
     
-    @cog_ext.cog_slash(name="test", guild_ids=guild_ids, description="test")
-    async def _test(self, ctx: SlashContext):
+    @cog_ext.cog_slash(name="clear", 
+	                   description="Clear command", 
+	                   guild_ids=guild_ids,
+	                   options=[create_option(
+                                name = "number",
+                                description = "How many messages you want to delete?",
+                                option_type = 3,
+                                required = True
+                               )])
+    async def _clear(ctx): 
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
         embed = Embed(title="Embed Test")
-        await ctx.send(embed=embed, hidden=True)
+        await ctx.send(f"No {number or 0 }", hidden=True)
         
     @cog_ext.cog_slash(name="help", 
                        guild_ids=guild_ids, 
@@ -49,7 +57,7 @@ class Slash(Cog):
                                    option_type = 3,
                                    required = False
                                 )])
-    async def _test(self, ctx: SlashContext, command = None, module = None):
+    async def _help(self, ctx: SlashContext, command = None, module = None):
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
         embed = Embed(title="Embed Test")
