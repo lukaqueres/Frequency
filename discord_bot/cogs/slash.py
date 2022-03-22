@@ -54,8 +54,8 @@ class Slash(Cog):
 	async def _clear(self, ctx: SlashContext, amount: int = 100, member = None, days = 21): 
 		if amount <= 0 or amount > 100:
 			return await ctx.send(">>> Invalid number given. Number must fit between 1 and 100", hidden=True)
-		if days <= 0 or days > 21:
-			return await ctx.send(">>> Invalid days count given. Messages to delete can be max 21 days old", hidden=True)
+		if days <= 0 or days > 62:
+			return await ctx.send(">>> Invalid days count given. Messages to delete can be max 62 days old", hidden=True)
 		#channel = ctx.channel
 		#if member:
 			#await ctx.channel.purge(limit=amount, check=lambda message: message.author == member)
