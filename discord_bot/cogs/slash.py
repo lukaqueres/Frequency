@@ -46,8 +46,8 @@ class Slash(Cog):
 			   	   ])
 	@commands.has_permissions(manage_messages=True)
 	async def _clear(ctx: SlashContext, ammount: int, user = None): 
-		if ammount <= 0:
-			return await ctx.send(">>> Invalid number given", hidden=True)
+		#if ammount <= 0:
+			#return await ctx.send(">>> Invalid number given", hidden=True)
 		embed = Embed(title="Embed Test")
 		await ctx.send(f"No {ammount or 0 } by user {user or 'NO'} \n CTX: {ctx}", hidden=True)
         
