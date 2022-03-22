@@ -17,17 +17,17 @@ slash = SlashCommand(client, sync_commands=True)
 guild_ids = get_guilds_ids()
 
 async def commands_modules():
-    return ["test","tust","tast","tist"]
+	return ["test","tust","tast","tist"]
 
 class Slash(Cog):
-    def __init__(self, client: Bot):
-        self.client = client
+	def __init__(self, client: Bot):
+		self.client = client
         
-    @commands.Cog.listener()
-    async def on_ready(self):
-        print('Slash commands module loaded')
+	@commands.Cog.listener()
+	async def on_ready(self):
+		print('Slash commands module loaded')
     
-    @cog_ext.cog_slash(name="clear", 
+	@cog_ext.cog_slash(name="clear", 
 	                   description="Clear command", 
 	                   guild_ids=guild_ids,
 	                   options=[create_option(
