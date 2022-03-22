@@ -81,18 +81,15 @@ class Slash(Cog):
 				guild_ids=guild_ids, 
 				description="Provides information about bot itself or specific commands",
                        options=[create_option(
-                                   name = "command",
-                                   description = "What command do you want learn more about?",
+                                   name = "target",
+                                   description = "What command or module do you want learn more about?",
                                    option_type = 3,
                                    required = False
-                                ),
-                                create_option(
-                                   name = "module",
-                                   description = "What commands do you want to check?",
-                                   option_type = 3,
-                                   required = False
+			           choices = [
+					   create_choice(name = 'Music', value='music'), create_choice(name = 'clear', value='clear'), create_choice(name = 'More', value='more')
+				   ]
                                 )])
-	async def _help(self, ctx: SlashContext, command = None, module = None):
+	async def _help(self, ctx: SlashContext, target = None):
 		if not ctx.author.guild_permissions.manage_messages:
 			return await ctx.send(">>> You can't use this!", hidden=True)
 		embed = Embed(title="Embed Test")
