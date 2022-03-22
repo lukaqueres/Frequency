@@ -36,17 +36,17 @@ class Slash(Cog):
                                 option_type = 3,
                                 required = True
                                )])
-    async def _clear(ctx, number = None): 
-        if not ctx.author.guild_permissions.manage_messages:
-        	return await ctx.send(">>> You can't use this!", hidden=True)
-	if number == None:
-		return await ctx.send(">>> Invalid number given", hidden=True)
-        embed = Embed(title="Embed Test")
-        await ctx.send(f"No {number or 0 }", hidden=True)
+	async def _clear(ctx, number = None): 
+		if not ctx.author.guild_permissions.manage_messages:
+			return await ctx.send(">>> You can't use this!", hidden=True)
+		if number == None:
+			return await ctx.send(">>> Invalid number given", hidden=True)
+		embed = Embed(title="Embed Test")
+		await ctx.send(f"No {number or 0 }", hidden=True)
         
-    @cog_ext.cog_slash(name="help", 
-                       guild_ids=guild_ids, 
-                       description="Provides information about bot itself or specific commands",
+	@cog_ext.cog_slash(name="help", 
+				guild_ids=guild_ids, 
+				description="Provides information about bot itself or specific commands",
                        options=[create_option(
                                    name = "command",
                                    description = "What command do you want learn more about?",
@@ -59,11 +59,11 @@ class Slash(Cog):
                                    option_type = 3,
                                    required = False
                                 )])
-    async def _help(self, ctx: SlashContext, command = None, module = None):
-        if not ctx.author.guild_permissions.manage_messages:
-            return await ctx.send(">>> You can't use this!", hidden=True)
-        embed = Embed(title="Embed Test")
-        await ctx.send(embed=embed, hidden=True)
+	async def _help(self, ctx: SlashContext, command = None, module = None):
+		if not ctx.author.guild_permissions.manage_messages:
+			return await ctx.send(">>> You can't use this!", hidden=True)
+		embed = Embed(title="Embed Test")
+		await ctx.send(embed=embed, hidden=True)
 
 def setup(client: client):
-    client.add_cog(Slash(client))
+	client.add_cog(Slash(client))
