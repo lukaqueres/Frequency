@@ -63,9 +63,19 @@ class Slash(Cog):
 		if days <= 0 or days > 21:
 			return await ctx.send(">>> Invalid days count given. Messages to delete can be max 21 days old", hidden=True)
 		#channel = ctx.channel
-		if member:
-			await ctx.channel.purge(limit=amount, check=lambda message: message.author == member)
-		await ctx.send(f">>> This is just a test ( for now )", hidden=True)
+		#if member:
+			#await ctx.channel.purge(limit=amount, check=lambda message: message.author == member)
+		#else:
+			#await ctx.channel.purge(limit = amount)
+		deleted_messages = 0
+		async for message in ctx.channel.history(limit=amount):
+			if member and message.author == member:
+				deleted_messages += 1
+				message.delete()
+			else:
+				deleted_messages += 1
+				message.delete()
+		await ctx.send(f">>> Deleted {deleted_messages} messages", hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
 				guild_ids=guild_ids, 
