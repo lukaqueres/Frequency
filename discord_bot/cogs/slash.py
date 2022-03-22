@@ -33,14 +33,26 @@ class Slash(Cog):
 	                   options=[
 				   create_option(
                                 	name = "ammount",
-                                	description = "Restrict maximum number of messages to delete",
-                                	option_type = int,
+                                	description = "Set maximum number of messages to delete",
+                                	option_type = 4,
+                                	required = False
+                               	   ),
+				   create_option(
+                                	name = "days",
+                                	description = "Restrict by message age",
+                                	option_type = 4,
                                 	required = False
                                	   ),
 				   create_option(
                                 	name = "user",
                                 	description = "Restrict by message author",
                                 	option_type = 6,
+                                	required = False
+                               	   ),
+				   create_option(
+                                	name = "role",
+                                	description = "Restrict by message author roles",
+                                	option_type = 8,
                                 	required = False
                                	   )
 			   	   ])
