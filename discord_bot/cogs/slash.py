@@ -44,10 +44,9 @@ class Slash(Cog):
                                 	required = False
                                	   )
 			   	   ])
+	@commands.has_permissions(manage_messages=True)
 	async def _clear(ctx: SlashContext, ammount: int, user = None): 
-		if not ctx.author.guild_permissions.manage_messages:
-			return await ctx.send(">>> You can't use this!", hidden=True)
-		if number == None:
+		if number =< 0:
 			return await ctx.send(">>> Invalid number given", hidden=True)
 		embed = Embed(title="Embed Test")
 		await ctx.send(f"No {ammount or 0 } by user {user or 'NO'}", hidden=True)
