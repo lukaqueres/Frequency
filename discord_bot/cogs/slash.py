@@ -34,7 +34,7 @@ class Slash(Cog):
 	                   options=[
 				   create_option(
                                 	name = "amount",
-                                	description = "Set maximum number of messages to delete",
+                                	description = "Set number of messages to delete / filter of",
                                 	option_type = 4,
                                 	required = False
                                	   ),
@@ -51,9 +51,9 @@ class Slash(Cog):
                                 	required = False
                                	   )])
 	@commands.has_permissions(manage_messages=True)
-	async def _clear(self, ctx: SlashContext, amount: int = 100, member = None, days = 21): 
-		if amount <= 0 or amount > 100:
-			return await ctx.send(">>> Invalid number given. Number must fit between 1 and 100", hidden=True)
+	async def _clear(self, ctx: SlashContext, amount: int = 200, member = None, days = 62): 
+		if amount <= 0 or amount > 200:
+			return await ctx.send(">>> Invalid number given. Number must fit between 1 and 200", hidden=True)
 		if days <= 0 or days > 62:
 			return await ctx.send(">>> Invalid days count given. Messages to delete can be max 62 days old", hidden=True)
 		#channel = ctx.channel
