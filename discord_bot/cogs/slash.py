@@ -68,7 +68,7 @@ class Slash(Cog):
 		#else:
 			#await ctx.channel.purge(limit = amount)
 		deleted_messages = 0
-		async for message in ctx.channel.history(limit=amount, check=lambda message: message.author == member):
+		async for message in ctx.channel.history(limit=amount):
 			if member and message.author == member:
 				deleted_messages += 1
 				await message.delete()
