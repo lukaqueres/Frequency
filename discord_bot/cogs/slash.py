@@ -48,16 +48,9 @@ class Slash(Cog):
                                 	description = "Restrict by message author",
                                 	option_type = 6,
                                 	required = False
-                               	   ),
-				   create_option(
-                                	name = "role",
-                                	description = "Restrict by message author roles",
-                                	option_type = 8,
-                                	required = False
-                               	   )
-			   	   ])
+                               	   )])
 	@commands.has_permissions(manage_messages=True)
-	async def _clear(self, ctx: SlashContext, amount: int = 100, member = None, days = 21, role = None): 
+	async def _clear(self, ctx: SlashContext, amount: int = 100, member = None, days = 21): 
 		if amount <= 0 or amount > 100:
 			return await ctx.send(">>> Invalid number given. Number must fit between 1 and 100", hidden=True)
 		if days <= 0 or days > 21:
@@ -68,7 +61,10 @@ class Slash(Cog):
 		#else:
 			#await ctx.channel.purge(limit = amount)
 		deleted_messages = 0
-		async for message in ctx.channel.history(limit=amount):
+		after_date = datatime.datetime.utcnow()-datatime.timedelta(days=days)
+        	# limit can be changed to None but that this would make it a slow operation.
+        	#messages = await ctx.channel.history(limit=amount, after=after_date).flatten() # oldest_first=True ,
+		async for message in ctx.channel.history(limit=amount, after=after_date):
 			if member and message.author == member:
 				deleted_messages += 1
 				await message.delete()
