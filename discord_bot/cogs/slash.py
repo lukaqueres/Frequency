@@ -58,11 +58,11 @@ class Slash(Cog):
 			   	   ])
 	@commands.has_permissions(manage_messages=True)
 	async def _clear(self, ctx: SlashContext, ammount: int = 100, user = None, days = 21, role = None): 
-		if ammount <= 0 and ammount > 100:
+		if ammount <= 0 or ammount > 100:
 			return await ctx.send(">>> Invalid number given. Number must fit between 1 and 100", hidden=True)
-		if days <= 0 and days > 21:
+		if days <= 0 or days > 21:
 			return await ctx.send(">>> Invalid days count given. Messages to delete can be max 21 days old", hidden=True)
-		await ctx.send(f"No {ammount or 0 } by user {user or 'NO'} \n CTX: {ctx}", hidden=True)
+		await ctx.send(f">>> This is just a test ( for now )", hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
 				guild_ids=guild_ids, 
