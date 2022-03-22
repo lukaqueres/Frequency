@@ -28,7 +28,7 @@ class Slash(Cog):
 		print('Slash commands module loaded')
     
 	@cog_ext.cog_slash(name="clear", 
-	                   description="Clear command", 
+	                   description="Delets messages by number or filter", 
 	                   guild_ids=guild_ids,
 	                   options=[create_option(
                                 name = "number",
