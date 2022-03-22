@@ -10,6 +10,8 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
+from discord_slash import SlashCommand
+
 from functions import get_prefix, get_time, get_database_data
 
 load_dotenv()
@@ -79,6 +81,8 @@ class Database_maintenance(commands.Cog):
 		   INSERT INTO servers_msg_process ( guild_id, guild_name ) VALUES ( '{}', '{}' );""".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.name, guild.id, guild.name));
 		con.commit()
 		print("Succesful data base registration.")
+		slash = SlashCommand(client, sync_commands=True)
+		print("Synced slash commands.")
     #
 #<----------> On Bot remove from guild <----------------------------------------------------------------->
 #
