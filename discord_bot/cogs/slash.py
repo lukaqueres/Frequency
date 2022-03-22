@@ -49,7 +49,7 @@ class Slash(Cog):
                                    option_type = 3,
                                    required = False
                                 )])
-    async def _test(self, ctx: SlashContext):
+    async def _test(self, ctx: SlashContext, command = None, module = None):
         if not ctx.author.guild_permissions.manage_messages:
             return await ctx.send(">>> You can't use this!", hidden=True)
         embed = Embed(title="Embed Test")
