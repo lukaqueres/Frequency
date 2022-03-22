@@ -75,7 +75,7 @@ class Slash(Cog):
 			else:
 				deleted_messages += 1
 				await message.delete()
-		await ctx.send(f">>> Deleted {deleted_messages} messages", hidden=True)
+		await ctx.send(f">>> Deleted {deleted_messages} messages" if deleted_messages > 0 else f">>> No matching messages found" , hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
 				guild_ids=guild_ids, 
