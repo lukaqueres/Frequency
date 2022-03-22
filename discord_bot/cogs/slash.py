@@ -36,7 +36,7 @@ class Slash(Cog):
                                 option_type = int,
                                 required = True
                                )])
-	async def _clear(ctx, number: int = None): 
+	async def _clear(ctx, number: int): 
 		if not ctx.author.guild_permissions.manage_messages:
 			return await ctx.send(">>> You can't use this!", hidden=True)
 		if number == None:
