@@ -71,10 +71,10 @@ class Slash(Cog):
 		async for message in ctx.channel.history(limit=amount):
 			if member and message.author == member:
 				deleted_messages += 1
-				message.delete()
+				await message.delete()
 			else:
 				deleted_messages += 1
-				message.delete()
+				await message.delete()
 		await ctx.send(f">>> Deleted {deleted_messages} messages", hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
