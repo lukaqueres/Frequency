@@ -33,10 +33,10 @@ class Slash(Cog):
 	                   options=[create_option(
                                 name = "number",
                                 description = "How many messages you want to delete?",
-                                option_type = 3,
+                                option_type = int,
                                 required = True
                                )])
-	async def _clear(ctx, number : int = None): 
+	async def _clear(ctx, number: int = None): 
 		if not ctx.author.guild_permissions.manage_messages:
 			return await ctx.send(">>> You can't use this!", hidden=True)
 		if number == None:
