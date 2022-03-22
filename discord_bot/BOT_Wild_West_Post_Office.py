@@ -172,17 +172,17 @@ async def status_change():
 
 guild_ids = get_guilds_ids()
 
-@slash.slash(name="clear", 
-	     description="Clear command", 
-	     guild_ids=guild_ids,
-	     options=[create_option(
-                                   name = "number",
-                                   description = "How many messages you want to delete?",
-                                   option_type = 3,
-                                   required = True
-                                )])
-async def _clear(ctx): 
-    await ctx.send(f"No {number or 0 }", hidden=True)
+#@slash.slash(name="clear", 
+#	     description="Clear command", 
+#	     guild_ids=guild_ids,
+#	     options=[create_option(
+#                                  name = "number",
+#                                   description = "How many messages you want to delete?",
+#                                   option_type = 3,
+#                                   required = True
+#                                  )])
+#async def _clear(ctx): 
+#    await ctx.send(f"No {number or 0 }", hidden=True)
 
 @client.command()
 @has_permissions(manage_messages=True)
