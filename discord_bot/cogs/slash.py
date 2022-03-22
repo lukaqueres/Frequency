@@ -30,12 +30,20 @@ class Slash(Cog):
 	@cog_ext.cog_slash(name="clear", 
 	                   description="Delets messages by number or filter", 
 	                   guild_ids=guild_ids,
-	                   options=[create_option(
-                                name = "number",
-                                description = "How many messages you want to delete?",
-                                option_type = int,
-                                required = True
-                               )])
+	                   options=[
+				   create_option(
+                                	name = "ammount",
+                                	description = "Restrict maximum number of messages to delete",
+                                	option_type = int,
+                                	required = True
+                               	   )
+				   create_option(
+                                	name = "user",
+                                	description = "Restrict by message author",
+                                	option_type = 6,
+                                	required = False
+                               	   )
+			   	   ])
 	async def _clear(ctx, number: int): 
 		if not ctx.author.guild_permissions.manage_messages:
 			return await ctx.send(">>> You can't use this!", hidden=True)
