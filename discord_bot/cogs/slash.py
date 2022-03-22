@@ -34,7 +34,7 @@ class Slash(Cog):
 				   create_option(
                                 	name = "ammount",
                                 	description = "Restrict maximum number of messages to delete",
-                                	option_type = int,
+                                	option_type = 4,
                                 	required = True
                                	   ),
 				   create_option(
@@ -44,7 +44,7 @@ class Slash(Cog):
                                 	required = False
                                	   )
 			   	   ])
-	async def _clear(ctx): 
+	async def _clear(ctx: SlashContext, ammount: int, user = None): 
 		if not ctx.author.guild_permissions.manage_messages:
 			return await ctx.send(">>> You can't use this!", hidden=True)
 		if number == None:
