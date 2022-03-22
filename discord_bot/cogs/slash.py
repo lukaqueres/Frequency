@@ -72,6 +72,8 @@ class Slash(Cog):
 			if member and message.author == member:
 				deleted_messages += 1
 				await message.delete()
+			elif member and message.author != member:
+				continue
 			else:
 				deleted_messages += 1
 				await message.delete()
