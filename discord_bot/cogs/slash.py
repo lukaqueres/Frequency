@@ -35,7 +35,7 @@ class Slash(Cog):
                                 	name = "ammount",
                                 	description = "Restrict maximum number of messages to delete",
                                 	option_type = 4,
-                                	required = True
+                                	required = False
                                	   ),
 				   create_option(
                                 	name = "user",
