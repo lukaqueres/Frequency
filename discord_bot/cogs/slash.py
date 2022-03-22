@@ -32,7 +32,7 @@ class Slash(Cog):
 	                   guild_ids=guild_ids,
 	                   options=[
 				   create_option(
-                                	name = "ammount",
+                                	name = "amount",
                                 	description = "Set maximum number of messages to delete",
                                 	option_type = 4,
                                 	required = False
@@ -57,18 +57,14 @@ class Slash(Cog):
                                	   )
 			   	   ])
 	@commands.has_permissions(manage_messages=True)
-	async def _clear(self, ctx: SlashContext, ammount: int = 100, member = None, days = 21, role = None): 
+	async def _clear(self, ctx: SlashContext, amount: int = 100, member = None, days = 21, role = None): 
 		if ammount <= 0 or ammount > 100:
 			return await ctx.send(">>> Invalid number given. Number must fit between 1 and 100", hidden=True)
 		if days <= 0 or days > 21:
 			return await ctx.send(">>> Invalid days count given. Messages to delete can be max 21 days old", hidden=True)
-		msg = []
-		async for m in ctx.channel.history():
-			if len(msg) == 2:
-				break
-			if m.author == member:
-				msg.append(m)
-			await ctx.channel.delete_messages(msg)
+		#channel = ctx.channel
+		if member:
+			await ctx.channel.purge(limit=amount, check=lambda message: message.author == member)
 		await ctx.send(f">>> This is just a test ( for now )", hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
