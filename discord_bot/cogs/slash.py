@@ -84,7 +84,7 @@ class Slash(Cog):
                                    name = "target",
                                    description = "What command or module do you want learn more about?",
                                    option_type = 3,
-                                   required = False
+                                   required = False,
 			           choices = [
 					   create_choice(name = 'Music', value='music'), create_choice(name = 'clear', value='clear'), create_choice(name = 'More', value='more')
 				   ]
