@@ -74,9 +74,9 @@ class Database_maintenance(commands.Cog):
 		default_language = 'ENG'
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
 		date_of_join = str("{") + get_time("DD") + str("}")
-		cur.execute("""INSERT INTO servers_properties ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
-                   INSERT INTO servers_data ( guild_id, guild_name ) VALUES ( '{}', '{}' )
-		   INSERT INTO servers_msg_process ( guild_id, guild_name ) VALUES ( '{}', '{}' )""".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.name, guild.id, guild.name));
+		cur.execute("""SET datestyle = dmy; INSERT INTO servers_properties ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
+                   INSERT INTO servers_data ( guild_id, guild_name ) VALUES ( '{}', '{}' );
+		   INSERT INTO servers_msg_process ( guild_id, guild_name ) VALUES ( '{}', '{}' );""".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.name, guild.id, guild.name));
 		con.commit()
 		print("Succesful data base registration.")
     #
@@ -86,8 +86,8 @@ class Database_maintenance(commands.Cog):
 	async def on_guild_remove(self, guild):
 		print("Bot removed from guild: \" {} \" guild on \" {} \".".format(guild, get_time()))
 		sql = """DELETE FROM servers_properties WHERE GUILD_ID = %s;
-             DELETE FROM servers_data WHERE GUILD_ID = %s
-	     DELETE FROM servers_msg_process WHERE GUILD_ID = %s"""
+             DELETE FROM servers_data WHERE GUILD_ID = %s;
+	     DELETE FROM servers_msg_process WHERE GUILD_ID = %s;"""
 		guild = (guild.id, guild.id, guild.id)
 		cur.execute(sql, guild)
 		con.commit()
