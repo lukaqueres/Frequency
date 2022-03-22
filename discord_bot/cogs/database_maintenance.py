@@ -88,7 +88,7 @@ class Database_maintenance(commands.Cog):
 		sql = """DELETE FROM servers_properties WHERE GUILD_ID = %s;
              DELETE FROM servers_data WHERE GUILD_ID = %s
 	     DELETE FROM servers_msg_process WHERE GUILD_ID = %s"""
-		guild = (guild.id, guild.id)
+		guild = (guild.id, guild.id, guild.id)
 		cur.execute(sql, guild)
 		con.commit()
 		print("Succesful data base registration.")
