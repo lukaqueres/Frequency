@@ -62,8 +62,8 @@ class Slash(Cog):
 		#else:
 			#await ctx.channel.purge(limit = amount)
 		deleted_messages = 0
-		#after_date = datetime.utcnow()-timedelta(days=days)
-		after_date = get_time('DD', 'date')-timedelta(days=days)
+		after_date = datetime.utcnow()-timedelta(days=days)
+		#after_date = get_time('DD', 'date')-timedelta(days=days)
         	# limit can be changed to None but that this would make it a slow operation.
         	#messages = await ctx.channel.history(limit=amount, after=after_date).flatten() # oldest_first=True ,
 		async for message in ctx.channel.history(limit=amount, after=after_date):
