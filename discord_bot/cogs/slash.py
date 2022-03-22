@@ -36,9 +36,11 @@ class Slash(Cog):
                                 option_type = 3,
                                 required = True
                                )])
-    async def _clear(ctx, number): 
+    async def _clear(ctx, number = None): 
         if not ctx.author.guild_permissions.manage_messages:
-            return await ctx.send(">>> You can't use this!", hidden=True)
+        	return await ctx.send(">>> You can't use this!", hidden=True)
+	if number == None:
+		return await ctx.send(">>> Invalid number given", hidden=True)
         embed = Embed(title="Embed Test")
         await ctx.send(f"No {number or 0 }", hidden=True)
         
