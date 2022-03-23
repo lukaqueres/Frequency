@@ -136,12 +136,6 @@ class Slash(Cog):
                                    	option_type = 6,
                                    	required = True,
                                    ),
-				   create_option(
-                                   	name = "reason",
-                                   	description = "Input reason of actions that by default requires it.",
-                                   	option_type = 3,
-                                   	required = False,
-                                   ),
 			   	   create_option(
                                    	name = "action",
                                    	description = "Choose action.",
@@ -151,7 +145,13 @@ class Slash(Cog):
 						create_choice(name = 'Information', value='information'), 
 						create_choice(name = 'Ban', value='ban')
 				   	]
-                                )])
+                                  ),
+			   	  create_option(
+                                   	name = "reason",
+                                   	description = "Input reason of actions that by default requires it.",
+                                   	option_type = 3,
+                                   	required = False,
+                                   )])
 	async def _user(self, ctx: SlashContext, member = "autor", action = None): 
 		await ctx.send( f"Member: {member} and action: {action}" , hidden = True)
 		
