@@ -135,6 +135,7 @@ class Slash(Cog):
                                    	description = "Choose member action will take affect on.",
                                    	option_type = 6,
                                    	required = True,
+					default = True
                                    ),
 			   	   create_option(
                                    	name = "action",
@@ -152,8 +153,28 @@ class Slash(Cog):
                                    	option_type = 3,
                                    	required = False,
                                    )])
-	async def _user(self, ctx: SlashContext, member = "autor", action = None): 
-		await ctx.send( f"Member: {member} and action: {action}" , hidden = True)
+	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None): 
+		user = member
+		#_user = Extract(ctx, user)
+		rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
+		roles = " | ".join(reversed(rolelist))
+		#print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
+		account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
+		guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
+		embed = Embed(title="User information",
+			colour = user.colour,
+			#timestamp=get_time()
+			)
+		embed.set_thumbnail(url=user.avatar_url)
+      
+		embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
+		embed.add_field( name=chr(173), value=f"**Created**: {account_created}\n**Joined**: {guild_join}", inline=True),
+		#embed.add_field(name = chr(173), value = chr(173), inline=False)
+		embed.add_field( name="All roles:", value=roles, inline=False),
+		embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
+		embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
+		embed.set_footer(text="Provided by Wild West Post Office")
+		await ctx.send( embed = embed , hidden = True)
 		
 def setup(client: client):
 	client.add_cog(Slash(client))
