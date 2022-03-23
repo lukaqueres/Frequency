@@ -162,7 +162,6 @@ class Slash(Cog):
 					return await ctx.send( "Invalid time range ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
 			await ctx.defer()
 			user = member
-			guild_channels = ctx.guild.text_channels
 			if timerange:
 				after_date = datetime.utcnow()-timedelta(days=timerange)
 		
@@ -183,7 +182,9 @@ class Slash(Cog):
 			embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
 			embed.add_field( name=f"Last {timerange} days user message activity", value=chr(173), inline=False),
+			guild_channels = ctx.guild.text_channels
 			if timerange != None:
+				messages_per_channel = {}
 				for channel in guild_channels:
 					total_messages_count = 0
 					messages_count = 0
@@ -193,7 +194,16 @@ class Slash(Cog):
 					if messages_count == 0:
 						pass
 					else:
-						embed.add_field( name= f"Messages count in channel: {channel.name}", value=messages_count, inline=True),
+						messages_per_channel[messages_count] = channel.name
+				keys = messages_per_channel.keys()
+				keys.sort()
+				displayed = 0
+				max_display = 5
+				for key in keys:
+					if displayed == max_display:
+						break
+					displayed += 1
+					embed.add_field( name= f"Messages count in channel: {messages_per_channel[key]}", value=key, inline=True),
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		
