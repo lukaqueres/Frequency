@@ -10,6 +10,11 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
+intents = discord.Intents.default()
+intents.members = True
+
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
+
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
