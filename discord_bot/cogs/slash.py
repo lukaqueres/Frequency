@@ -157,8 +157,9 @@ class Slash(Cog):
                                    )])
 	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None, timerange = None): 
 		if action == 'information':
-			if (timerange > 21 or timerange < 1) and not None:
-				return await ctx.send( "Invalid time range ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
+			if timerange:
+				if (timerange > 21 or timerange < 1):
+					return await ctx.send( "Invalid time range ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
 			await ctx.defer()
 			user = member
 			guild_channels = ctx.guild.text_channels
