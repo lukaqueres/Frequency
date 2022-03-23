@@ -66,8 +66,9 @@ class Slash(Cog):
 		#after_date = get_time('DD', 'date')-timedelta(days=days)
         	# limit can be changed to None but that this would make it a slow operation.
         	#messages = await ctx.channel.history(limit=amount, after=after_date).flatten() # oldest_first=True ,
-		total_messages = ctx.channel.history(limit=amount, after=after_date)
-		async for message in total_messages:
+		total_messages_count = 0
+		async for message in ctx.channel.history(limit=amount, after=after_date):
+			total_messages_count += 1
 			if member and message.author == member:
 				deleted_messages += 1
 				await message.delete()
@@ -82,9 +83,9 @@ class Slash(Cog):
 			#timestamp=get_time()
 			)
 		if deleted_messages > 0:
-			embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {len(total_messages)} messages in time range and limit", inline=False),
+			embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {total_messages_count} messages in time range and limit", inline=False),
 		else:
-			embed.add_field( name=f"No messages deleted", value=f"None of { len(total_messages)} messages matched provided deletion criteria", inline=False),
+			embed.add_field( name=f"No messages deleted", value=f"None of { total_messages_count } messages matched provided deletion criteria", inline=False),
 		await ctx.send(embed = embed , hidden=True)
 	
 	@_clear.error
