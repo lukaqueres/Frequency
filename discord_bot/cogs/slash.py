@@ -138,7 +138,7 @@ class Slash(Cog):
                                    ),
 				   create_option(
                                    	name = "reason",
-                                   	description = "Input reason of actions that requires it. It only affects actions that can be provided with reason in default.",
+                                   	description = "Input reason of actions that by default requires it.",
                                    	option_type = 3,
                                    	required = False,
                                    ),
