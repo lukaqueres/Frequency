@@ -181,7 +181,6 @@ class Slash(Cog):
 			embed.add_field( name="All roles:", value=roles, inline=False),
 			embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
-			embed.add_field( name=f"Last {timerange} days user message activity", value=chr(173), inline=False),
 			guild_channels = ctx.guild.text_channels
 			if timerange != None:
 				messages_per_channel = {}
@@ -195,15 +194,18 @@ class Slash(Cog):
 						pass
 					else:
 						messages_per_channel[messages_count] = channel.name
-				keys = messages_per_channel.keys()
+				keys = list(messages_per_channel.keys())
 				keys.sort()
 				displayed = 0
 				max_display = 5
+				message = ""
 				for key in keys:
 					if displayed == max_display:
 						break
 					displayed += 1
-					embed.add_field( name= f"Messages count in channel: {messages_per_channel[key]}", value=key, inline=True),
+					message += f"Messages count in channel: {messages_per_channel[key]} : {key}\n"
+				embed.add_field( name=f"Last {timerange} days user message activity", value=message, inline=False),
+				#embed.add_field( name= f"Messages count in channel: {messages_per_channel[key]}", value=key, inline=True),
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		
