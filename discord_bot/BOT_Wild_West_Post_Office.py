@@ -153,14 +153,12 @@ current_time = now.strftime("%H:%M:%S")    #global current_time
 @client.event #---------------------------------READY---------------------------------------------------------------------------------------------------------
 async def on_ready():
 	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
-	print('Bot logged in with:')
-	print(f'ids: {get_guilds_ids()}')
-	#user = os.environ.get('CREATOR')
-	#await user.send('msg')
 	listofids = []
 	for guild in client.guilds:
 		listofids.append(guild.id)
-	print(f"ID serwerów z botem: {listofids}")
+	print(f'Bot logged in on \'{len(listofids)}\' guilds with:')
+	#user = os.environ.get('CREATOR')
+	#await user.send('msg')
   
 async def status_change():
 	await client.wait_until_ready()
@@ -171,7 +169,7 @@ async def status_change():
     		await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
     		print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
     		await asyncio.sleep(sleep_time)
-	client.loop.create_task(status_change())
+		client.loop.create_task(status_change())
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
 
