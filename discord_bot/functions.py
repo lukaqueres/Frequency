@@ -106,7 +106,7 @@ def check_database(guilds):
 	print('Database check start:')
 	listofnames = []
 	for guild in guilds:
-		listofids.append(guild.name)
+		listofnames.append(guild.name)
 	print(f'Checking guilds: {listofnames} ')
 	guilds_id = []
 	default_prefix = '$'
