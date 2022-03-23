@@ -125,5 +125,35 @@ class Slash(Cog):
 		embed = Embed(title="Embed Test")
 		await ctx.send(embed=embed, hidden=True)
 
+		
+	@cog_ext.cog_slash(name="user", 
+	                   description="Provides various options for user management", 
+	                   guild_ids=guild_ids,
+	                   options=[
+				   create_option(
+                                   	name = "member",
+                                   	description = "Choose member action will take affect on.",
+                                   	option_type = 6,
+                                   	required = True,
+                                   ),
+				   create_option(
+                                   	name = "reason",
+                                   	description = "Input reason of actions that requires it. It only affects actions that can be provided with reason in default.",
+                                   	option_type = 3,
+                                   	required = False,
+                                   ),
+			   	   create_option(
+                                   	name = "action",
+                                   	description = "Choose action.",
+                                   	option_type = 3,
+                                   	required = True,
+					choices = [
+						create_choice(name = 'Information', value='information'), 
+						create_choice(name = 'Ban', value='ban')
+				   	]
+                                )])
+	async def _user(self, ctx: SlashContext, member = "autor", action = None): 
+		await ctx.send( f"Member: {member} and action: {action}" , hidden = True)
+		
 def setup(client: client):
 	client.add_cog(Slash(client))
