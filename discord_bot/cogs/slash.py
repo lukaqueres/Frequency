@@ -178,7 +178,8 @@ class Slash(Cog):
 			total_messages_count = 0
 			messages_count = 0
 			async for message in channel.history(limit=500, after=after_date):
-				messages_count += 1
+				if message.autor == member:
+					messages_count += 1
 			if messages_count == 0:
 				pass
 			else:
