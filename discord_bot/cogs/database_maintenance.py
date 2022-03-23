@@ -56,12 +56,6 @@ def check_database():
 		con.commit()
 		print(f"Succesful database actualization on guild {guild.name}")
 
-if check_database_on_startup == 'TRUE':
-	listofids = []
-	for guild in client.guilds:
-		listofids.append(guild.id)
-	print(f"ID serwerów z botem: {listofids}")
-	check_database()
 #
 #<=========> Cog start <===============================================================================>
 #
@@ -73,6 +67,12 @@ class Database_maintenance(commands.Cog):
 	@commands.Cog.listener()
 	async def on_ready(self):
 		print('Database maintenance module loaded')
+		if check_database_on_startup == 'TRUE':
+			#listofids = []
+			#for guild in client.guilds:
+			#	listofids.append(guild.id)
+			#print(f"ID serwerów z botem: {listofids}")
+			check_database()
     
 #
 #<----------> On Bot join to guild <-------------------------------------------------------------------->
