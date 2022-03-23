@@ -87,8 +87,8 @@ class Slash(Cog):
 			embed.add_field( name=f"No messages deleted", value=f"None of { len(total_messages)} messages matched provided deletion criteria", inline=False),
 		await ctx.send(embed = embed , hidden=True)
 	
-	@clear.error
-	async def clear_error(self, ctx: SlashContext, error):
+	@_clear.error
+	async def _clear_error(self, ctx: SlashContext, error):
 		if isinstance(error, commands.errors.MemberNotFound):
 			await ctx.channel.send("Member not found!")
 		else: 
