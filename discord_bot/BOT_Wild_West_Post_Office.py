@@ -160,7 +160,7 @@ async def on_ready():
 	listofids = []
 	for guild in client.guilds:
 		listofids.append(guild.id)
-	print(f"ID serwerów z botem: {listofids})
+	print(f"ID serwerów z botem: {listofids}")
   
 async def status_change():
 	await client.wait_until_ready()
