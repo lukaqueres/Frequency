@@ -97,3 +97,28 @@ def get_guilds_ids():
 	return id_list
 	#return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
 	
+def check_database():
+	print('Database check start:')
+	listofnames = []
+	for guild in client.guilds:
+		listofids.append(guild.name)
+	print(f'Checking guilds: {listofnames} ')
+	guilds_id = []
+	default_prefix = '$'
+	default_language = 'ENG'
+	for guild in client.guilds:
+		date_of_join = str("{") + client.user.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
+		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
+		guilds_id.append(guild.id)
+		print('Database Check: Guild {} check.'.format( guild ))
+		cur.execute("""IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
+                   INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
+                   VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
+                   IF EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
+                   INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
+                   VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
+		   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = {} ) 
+		   INSERT INTO servers_msg_process ( guild_id, guild_name ) 
+		   VALUES ( '{}', '{}' );""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language, guild.id, guild.id, guild.name ));
+		con.commit()
+		print(f"Succesful database actualization for guild {guild.name}")
