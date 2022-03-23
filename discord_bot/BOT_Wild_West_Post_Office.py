@@ -157,6 +157,10 @@ async def on_ready():
 	print(f'ids: {get_guilds_ids()}')
 	#user = os.environ.get('CREATOR')
 	#await user.send('msg')
+	listofids = []
+	for guild in client.guilds:
+		listofids.append(guild.id)
+	print(f"ID serwerów z botem: {listofids})
   
 async def status_change():
 	await client.wait_until_ready()
