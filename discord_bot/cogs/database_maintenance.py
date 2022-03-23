@@ -75,6 +75,7 @@ class Database_maintenance(commands.Cog):
 			for guild in client.guilds:
 				listofids.append(guild.id)
 			print(f"ID serwerów z botem: {listofids}")
+			print(f"client.guilds: {client.guilds}")
 			check_database()
     
 #
