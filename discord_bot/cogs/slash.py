@@ -66,7 +66,8 @@ class Slash(Cog):
 		#after_date = get_time('DD', 'date')-timedelta(days=days)
         	# limit can be changed to None but that this would make it a slow operation.
         	#messages = await ctx.channel.history(limit=amount, after=after_date).flatten() # oldest_first=True ,
-		async for message in ctx.channel.history(limit=amount, after=after_date):
+		total_messages = ctx.channel.history(limit=amount, after=after_date)
+		async for message in total_messages:
 			if member and message.author == member:
 				deleted_messages += 1
 				await message.delete()
@@ -75,7 +76,16 @@ class Slash(Cog):
 			else:
 				deleted_messages += 1
 				await message.delete()
-		await ctx.send(f">>> Deleted {deleted_messages} messages" if deleted_messages > 0 else f">>> No matching messages found" , hidden=True)
+				
+			embed = Embed(title="User information",
+				colour = client.colour,
+				#timestamp=get_time()
+				)
+			if deleted_messages > 0:
+				embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {} messages in time range and limit", inline=False),
+			else:
+				embed.add_field( name=f"No messages deleted", value=f"None of { len(total_messages)} messages matched provided deletion criteria", inline=False),
+		await ctx.send(embed = embed , hidden=True)
         
 	@cog_ext.cog_slash(name="help", 
 				guild_ids=guild_ids, 
