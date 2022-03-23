@@ -88,8 +88,9 @@ def get_time( specify = "DT", return_type = "str" ):
 			return 0
 		
 def get_guilds_ids():
-	return [688803708577775619, 
-		812295569808162856,
-                499285265551065098,
-	        930559672715464764]
+	cur.execute("SELECT guild_id from SERVERS_PROPERTIES") # WHERE 1
+	ids = cur.fetchall()
+	con.commit()
+	return ids
+	#return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
 	
