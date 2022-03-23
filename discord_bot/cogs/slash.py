@@ -81,16 +81,19 @@ class Slash(Cog):
 		if deleted_messages > 0:
 			embed = Embed(title=f"Deleted {deleted_messages} messages",
 				colour = 0x206694,
-				desription = f"Out of {total_messages_count} messages in time range and limit"
-				#timestamp=get_time()
+				description = f"Out of {total_messages_count} messages in time range and limit"
 				)
 		
 			#embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {total_messages_count} messages in time range and limit", inline=False),
+		elif total_messages_count == 0:
+			embed = Embed(title=f"No messages deleted",
+				colour = 0x206694,
+				description = f"There was no messages that matched provided deletion criteria"
+				)
 		else:
 			embed = Embed(title=f"No messages deleted",
 				colour = 0x206694,
-				desription = f"None of { total_messages_count } messages matched provided deletion criteria"
-				#timestamp=get_time()
+				description = f"None of { total_messages_count } messages matched provided deletion criteria"
 				)
 			#embed.add_field( name=f"No messages deleted", value=f"None of { total_messages_count } messages matched provided deletion criteria", inline=False),
 		await ctx.send(embed = embed , hidden=True)
