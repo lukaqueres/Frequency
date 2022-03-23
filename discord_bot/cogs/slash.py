@@ -78,7 +78,7 @@ class Slash(Cog):
 				await message.delete()
 				
 		embed = Embed(title="Clear",
-			colour = client.colour,
+			colour = 0x206694,
 			#timestamp=get_time()
 			)
 		if deleted_messages > 0:
@@ -90,10 +90,10 @@ class Slash(Cog):
 	@_clear.error
 	async def _clear_error(self, ctx: SlashContext, error):
 		if isinstance(error, commands.errors.MemberNotFound):
-			await ctx.channel.send("Member not found!")
+			await ctx.channel.send("Member not found!", hidden=True)
 		else: 
 			print(error)
-			await ctx.channel.send("There was an error with executing command!")
+			await ctx.channel.send("There was an error with executing command!", hidden=True)
 
         
 	@cog_ext.cog_slash(name="help", 
