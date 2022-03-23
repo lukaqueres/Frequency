@@ -77,15 +77,22 @@ class Slash(Cog):
 			else:
 				deleted_messages += 1
 				await message.delete()
-				
-		embed = Embed(title="Clear",
-			colour = 0x206694,
-			#timestamp=get_time()
-			)
+		
 		if deleted_messages > 0:
-			embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {total_messages_count} messages in time range and limit", inline=False),
+			embed = Embed(title=f"Deleted {deleted_messages} messages",
+				colour = 0x206694,
+				desription = f"Out of {total_messages_count} messages in time range and limit"
+				#timestamp=get_time()
+				)
+		
+			#embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {total_messages_count} messages in time range and limit", inline=False),
 		else:
-			embed.add_field( name=f"No messages deleted", value=f"None of { total_messages_count } messages matched provided deletion criteria", inline=False),
+			embed = Embed(title=f"No messages deleted",
+				colour = 0x206694,
+				desription = f"None of { total_messages_count } messages matched provided deletion criteria"
+				#timestamp=get_time()
+				)
+			#embed.add_field( name=f"No messages deleted", value=f"None of { total_messages_count } messages matched provided deletion criteria", inline=False),
 		await ctx.send(embed = embed , hidden=True)
 	
 	@_clear.error
