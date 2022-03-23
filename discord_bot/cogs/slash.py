@@ -204,7 +204,7 @@ class Slash(Cog):
 						break
 					displayed += 1
 					message += f"**{messages_per_channel[key]}** : **{key}**\n"
-				embed.add_field( name=f"Last {timerange} days user message activity", value=message, inline=False),
+				embed.add_field( name=f"Last {timerange} days of user message activity:", value=message, inline=False),
 				#embed.add_field( name= f"Messages count in channel: {messages_per_channel[key]}", value=key, inline=True),
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
