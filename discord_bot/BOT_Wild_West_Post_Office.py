@@ -157,7 +157,7 @@ async def on_ready():
 	for guild in client.guilds:
 		listofids.append(guild.id)
 	print(f'Bot logged in on \'{len(listofids)}\' guilds with:')
-	check_database()
+	check_database(client.guilds)
 	#user = os.environ.get('CREATOR')
 	#await user.send('msg')
   
