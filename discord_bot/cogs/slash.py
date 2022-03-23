@@ -179,7 +179,7 @@ class Slash(Cog):
 				messages_count += 1
 			embed.add_field( name= f"Messages count in channel: {channel.name}", value=messages_count, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
-		await ctx.send( embed = embed , hidden = True)
+		await ctx.send(embed=embed, hidden=True)
 		
 def setup(client: client):
 	client.add_cog(Slash(client))
