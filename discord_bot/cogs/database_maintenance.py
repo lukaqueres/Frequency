@@ -53,7 +53,11 @@ def check_database():
 		con.commit()
 
 if check_database_on_startup == 'TRUE':
-	check_database()
+	listofids = []
+    	for guild in client.guilds:
+        	listofids.append(guild.id)
+	print(listofids)
+	#check_database()
 #
 #<=========> Cog start <===============================================================================>
 #
