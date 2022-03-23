@@ -27,7 +27,7 @@ con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
 global check_database_on_startup
-check_database_on_startup = 'TRUE'
+check_database_on_startup = True
 
 #
 #<----------> Check database <------------------------------------------------------------------------>
@@ -35,7 +35,10 @@ check_database_on_startup = 'TRUE'
 
 def check_database():
 	print('Database check start:')
-	#print('Checking guilds: {} '.format( str(client.guilds)))
+	listofnames = []
+	for guild in client.guilds:
+		listofids.append(guild.name)
+	print(f'Checking guilds: {listofnames} ')
 	guilds_id = []
 	default_prefix = '$'
 	default_language = 'ENG'
@@ -54,7 +57,7 @@ def check_database():
 		   INSERT INTO servers_msg_process ( guild_id, guild_name ) 
 		   VALUES ( '{}', '{}' );""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language, guild.id, guild.id, guild.name ));
 		con.commit()
-		print(f"Succesful database actualization on guild {guild.name}")
+		print(f"Succesful database actualization for guild {guild.name}")
 
 #
 #<=========> Cog start <===============================================================================>
@@ -67,7 +70,7 @@ class Database_maintenance(commands.Cog):
 	@commands.Cog.listener()
 	async def on_ready(self):
 		print('Database maintenance module loaded')
-		if check_database_on_startup == 'TRUE':
+		if check_database_on_startup:
 			#listofids = []
 			#for guild in client.guilds:
 			#	listofids.append(guild.id)
