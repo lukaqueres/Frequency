@@ -79,7 +79,7 @@ class Slash(Cog):
 				await message.delete()
 		
 		if deleted_messages > 0:
-			embed = Embed(title=f"Deleted {deleted_messages} messages",
+			embed = Embed(title=f"Deleted {deleted_messages} messages" if deleted_messages > 1 else "Deleted 1 message",
 				colour = 0x206694,
 				description = f"Out of {total_messages_count} messages in time range and limit"
 				)
