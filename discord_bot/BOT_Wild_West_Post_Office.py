@@ -17,6 +17,8 @@ from discord_slash.utils.manage_commands import create_choice, create_option
 
 from functions import get_prefix, get_time, get_guilds_ids
 
+from database_maintenance import check_database
+
 from endpoints import *
 load_dotenv()
 
@@ -157,6 +159,9 @@ async def on_ready():
 	for guild in client.guilds:
 		listofids.append(guild.id)
 	print(f'Bot logged in on \'{len(listofids)}\' guilds with:')
+	check = False
+	if check:
+		check_database()
 	#user = os.environ.get('CREATOR')
 	#await user.send('msg')
   
