@@ -71,10 +71,10 @@ class Database_maintenance(commands.Cog):
 	async def on_ready(self):
 		print('Database maintenance module loaded')
 		if check_database_on_startup:
-			#listofids = []
-			#for guild in client.guilds:
-			#	listofids.append(guild.id)
-			#print(f"ID serwerów z botem: {listofids}")
+			listofids = []
+			for guild in client.guilds:
+				listofids.append(guild.id)
+			print(f"ID serwerów z botem: {listofids}")
 			check_database()
     
 #
