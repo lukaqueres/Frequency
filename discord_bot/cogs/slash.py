@@ -173,12 +173,16 @@ class Slash(Cog):
 		embed.add_field( name="All roles:", value=roles, inline=False),
 		embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 		embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
+		embed.add_field( name="Last 7 days message activity", value=chr(173), inline=False),
 		for channel in guild_channels:
 			total_messages_count = 0
 			messages_count = 0
 			async for message in channel.history(limit=500, after=after_date):
 				messages_count += 1
-			embed.add_field( name= f"Messages count in channel: {channel.name}", value=messages_count, inline=True),
+			if messages_count == 0:
+				pass
+			else:
+				embed.add_field( name= f"Messages count in channel: {channel.name}", value=messages_count, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.send(embed=embed, hidden=True)
 		
