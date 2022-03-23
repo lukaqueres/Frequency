@@ -39,8 +39,8 @@ def check_database():
 	guilds_id = []
 	default_prefix = '$'
 	default_language = 'ENG'
-	date_of_join = str("{") + client.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
 	for guild in client.guilds:
+		date_of_join = str("{") + client.user.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
 		print('Database Check: Guild {} check.'.format( guild ))
@@ -49,7 +49,10 @@ def check_database():
                    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
                    IF EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
                    INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
-                   VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language ));
+                   VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
+		   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = {} ) 
+		   INSERT INTO servers_msg_process ( guild_id, guild_name ) 
+		   VALUES ( '{}', '{}' );""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language, guild.id, guild.id, guild.name ));
 		con.commit()
 		print(f"Succesful database actualization on guild {guild.name}")
 
