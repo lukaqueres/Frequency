@@ -176,7 +176,7 @@ class Slash(Cog):
 			total_messages_count = 0
 			messages_count = 0
 			async for message in channel.history(limit=500, after=after_date):
-				messages_conut[channel.name] += 1
+				messages_count += 1
 			embed.add_field( name= f"Messages count in channel: {channel.name}", value=messages_count, inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.send( embed = embed , hidden = True)
