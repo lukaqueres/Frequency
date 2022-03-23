@@ -196,9 +196,10 @@ class Slash(Cog):
 						messages_per_channel[messages_count] = channel.name
 				keys = list(messages_per_channel.keys())
 				keys.sort()
+				keys.reverse()
 				displayed = 0
 				max_display = 5
-				message = ""
+				message = "\n"
 				for key in keys:
 					if displayed == max_display:
 						break
