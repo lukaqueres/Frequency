@@ -56,7 +56,7 @@ if check_database_on_startup == 'TRUE':
 	listofids = []
 	for guild in client.guilds:
 		listofids.append(guild.id)
-	print(listofids)
+	print(f"ID serwerów z botem: {listofids})
 	#check_database()
 #
 #<=========> Cog start <===============================================================================>
