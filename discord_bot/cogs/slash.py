@@ -77,15 +77,24 @@ class Slash(Cog):
 				deleted_messages += 1
 				await message.delete()
 				
-			embed = Embed(title="Clear",
-				colour = client.colour,
-				#timestamp=get_time()
-				)
-			if deleted_messages > 0:
-				embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {len(total_messages)} messages in time range and limit", inline=False),
-			else:
-				embed.add_field( name=f"No messages deleted", value=f"None of { len(total_messages)} messages matched provided deletion criteria", inline=False),
+		embed = Embed(title="Clear",
+			colour = client.colour,
+			#timestamp=get_time()
+			)
+		if deleted_messages > 0:
+			embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"Out of {len(total_messages)} messages in time range and limit", inline=False),
+		else:
+			embed.add_field( name=f"No messages deleted", value=f"None of { len(total_messages)} messages matched provided deletion criteria", inline=False),
 		await ctx.send(embed = embed , hidden=True)
+	
+	@clear.error
+	async def clear_error(self, ctx: SlashContext, error):
+		if isinstance(error, commands.errors.MemberNotFound):
+			await ctx.channel.send("Member not found!")
+		else: 
+			print(error)
+			await ctx.channel.send("There was an error with executing command!")
+
         
 	@cog_ext.cog_slash(name="help", 
 				guild_ids=guild_ids, 
