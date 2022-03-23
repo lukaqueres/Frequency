@@ -154,6 +154,7 @@ current_time = now.strftime("%H:%M:%S")    #global current_time
 async def on_ready():
 	await client.change_presence(status=discord.Status.online, activity=discord.Game('Red Dead Redemption 2'))          #status online/offline  , activity=discord.Game('Red Dead Redemption 2')
 	print('Bot logged in with:')
+	print(f'ids: {get_guilds_ids()}')
 	#user = os.environ.get('CREATOR')
 	#await user.send('msg')
   
