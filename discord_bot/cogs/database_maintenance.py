@@ -54,8 +54,8 @@ def check_database():
 
 if check_database_on_startup == 'TRUE':
 	listofids = []
-    	for guild in client.guilds:
-        	listofids.append(guild.id)
+	for guild in client.guilds:
+		listofids.append(guild.id)
 	print(listofids)
 	#check_database()
 #
