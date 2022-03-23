@@ -150,7 +150,7 @@ class Slash(Cog):
                                    	required = False,
                                    )])
 	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None): 
-		ctx.defer()
+		await ctx.defer()
 		user = member
 		
 		messages_count = []
