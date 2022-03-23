@@ -35,11 +35,11 @@ check_database_on_startup = 'TRUE'
 
 def check_database():
 	print('Database check start:')
-	print('Checking guilds: {} '.format( str(client.guilds)))
+	#print('Checking guilds: {} '.format( str(client.guilds)))
 	guilds_id = []
 	default_prefix = '$'
 	default_language = 'ENG'
-	date_of_join = str("{") + get_time("DD") + str("}")
+	date_of_join = str("{") + client.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
 	for guild in client.guilds:
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
@@ -51,13 +51,14 @@ def check_database():
                    INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
                    VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language ));
 		con.commit()
+		print(f"Succesful database actualization on guild {guild.name}")
 
 if check_database_on_startup == 'TRUE':
 	listofids = []
 	for guild in client.guilds:
 		listofids.append(guild.id)
 	print(f"ID serwerów z botem: {listofids}")
-	#check_database()
+	check_database()
 #
 #<=========> Cog start <===============================================================================>
 #
