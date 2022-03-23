@@ -63,9 +63,6 @@ class Slash(Cog):
 			#await ctx.channel.purge(limit = amount)
 		deleted_messages = 0
 		after_date = datetime.utcnow()-timedelta(days=days)
-		#after_date = get_time('DD', 'date')-timedelta(days=days)
-        	# limit can be changed to None but that this would make it a slow operation.
-        	#messages = await ctx.channel.history(limit=amount, after=after_date).flatten() # oldest_first=True ,
 		total_messages_count = 0
 		async for message in ctx.channel.history(limit=amount, after=after_date):
 			total_messages_count += 1
@@ -154,10 +151,17 @@ class Slash(Cog):
                                    )])
 	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None): 
 		user = member
-		#_user = Extract(ctx, user)
+		
+		messages_count = []
+		guild_channels = ctx.guild.text_channels
+		after_date = datetime.utcnow()-timedelta(days=7)
+		for channel in guild_channels:
+			total_messages_count = 0
+			messages_count[channel.name] = 0
+			async for message in channel.history(limit=500, after=after_date):
+				messages_conut[channel.name] += 1
 		rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 		roles = " | ".join(reversed(rolelist))
-		#print(f"status: {user.status}, activity: {user.activity.type if user.activity else 'N/A'}")
 		account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
 		guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 		embed = Embed(title="User information",
@@ -172,6 +176,11 @@ class Slash(Cog):
 		embed.add_field( name="All roles:", value=roles, inline=False),
 		embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 		embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
+		for channel in messages_count:
+			if channel = 0:
+				continue
+			else:
+				embed.add_field( name= f"Messages count in channel: {channel}", value=messages_count[channel], inline=True),
 		embed.set_footer(text="Provided by Wild West Post Office")
 		await ctx.send( embed = embed , hidden = True)
 		
