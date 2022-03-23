@@ -102,16 +102,16 @@ def get_guilds_ids():
 	return id_list
 	#return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
 	
-def check_database():
+def check_database(guilds):
 	print('Database check start:')
 	listofnames = []
-	for guild in client.guilds:
+	for guild in guilds:
 		listofids.append(guild.name)
 	print(f'Checking guilds: {listofnames} ')
 	guilds_id = []
 	default_prefix = '$'
 	default_language = 'ENG'
-	for guild in client.guilds:
+	for guild in guilds:
 		date_of_join = str("{") + client.user.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
