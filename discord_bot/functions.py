@@ -94,6 +94,6 @@ def get_guilds_ids():
 	id_list = []
 	for i in enumerate(ids):
 		id_list.append(i[0])
-	return ids
+	return id_list
 	#return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
 	
