@@ -135,7 +135,6 @@ class Slash(Cog):
                                    	description = "Choose member action will take affect on.",
                                    	option_type = 6,
                                    	required = True,
-					default = True
                                    ),
 			   	   create_option(
                                    	name = "action",
