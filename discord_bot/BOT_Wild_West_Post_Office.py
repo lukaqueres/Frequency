@@ -164,11 +164,11 @@ async def status_change():
 	await client.wait_until_ready()
 	statuses = ["Red Dead Redemption 2", "Red Dead Redemption 1", "Red Dead Online", "Red Dead Revolver" ]
 	while not client.is_closed():
-    		sleep_time = random.randint(1800,3600)
-    		status = random.choice(statuses)
-    		await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
-    		print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
-    		await asyncio.sleep(sleep_time)
+		sleep_time = random.randint(1800,3600)
+		status = random.choice(statuses)
+		await client.change_presence(status=discord.Status.online, activity=discord.Game(name=status))
+		print("Activity has been changed to: {}, and next change will be again after: {} seconds." .format(status, sleep_time))
+		await asyncio.sleep(sleep_time)
 		client.loop.create_task(status_change())
 
 #----------------------------------------------------------------------------------------COMMANDS-------------------------------------------------------------------------------------------------------------
