@@ -92,8 +92,8 @@ def get_guilds_ids():
 	ids = cur.fetchall()
 	con.commit()
 	id_list = []
-	for i in enumerate(ids):
-		id_list.append(int(i))
+	for row in ids:
+    		id_list.append(row[0])
 	return id_list
 	#return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
 	
