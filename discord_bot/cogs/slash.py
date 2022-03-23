@@ -163,7 +163,8 @@ class Slash(Cog):
 			await ctx.defer()
 			user = member
 			guild_channels = ctx.guild.text_channels
-			after_date = datetime.utcnow()-timedelta(days=timerange)
+			if timerange:
+				after_date = datetime.utcnow()-timedelta(days=timerange)
 		
 			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 			roles = " | ".join(reversed(rolelist))
