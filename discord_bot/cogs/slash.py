@@ -13,7 +13,7 @@ from functions import get_prefix, get_time, get_guilds_ids
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix = get_prefix, Intents=intents)
 
-slash = SlashCommand(client, sync_commands=True)
+#slash = SlashCommand(client, sync_commands=True)
 
 guild_ids = get_guilds_ids()
 
