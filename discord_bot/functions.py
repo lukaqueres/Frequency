@@ -10,12 +10,8 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-from functions import get_prefix
-
 intents = discord.Intents.default()
 intents.members = True
-
-client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
 con = psycopg2.connect(DATABASE_URL)
@@ -28,6 +24,8 @@ def get_prefix(client, message):
 	con.commit()
 	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
 	return prefix
+
+client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 def get_database_data(database, column, condition):
 	cur.execute("SELECT {} from {} WHERE guild_id={}".format(column, database, condition))
