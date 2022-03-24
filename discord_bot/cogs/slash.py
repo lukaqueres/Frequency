@@ -220,7 +220,7 @@ class Slash(Cog):
       	
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{acount_create_delta}** days ago \n**Joined**: {guild_join}, **{guild_join_delta}** days ago", inline=True),
-			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else "No reason provided"}", inline=True),
+			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=True),
 			
 			await ctx.send(embed=embed)
 		
