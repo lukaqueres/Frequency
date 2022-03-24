@@ -156,19 +156,18 @@ class Slash(Cog):
                                    	required = False,
                                    )])
 	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None, timerange = None): 
+		user = member
+		rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
+		roles = " | ".join(reversed(rolelist))
+		account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
+		guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 		if action == 'information':
 			if timerange:
 				if (timerange > 21 or timerange < 1):
 					return await ctx.send( "Invalid time range ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
 			await ctx.defer()
-			user = member
 			if timerange:
 				after_date = datetime.utcnow()-timedelta(days=timerange)
-		
-			rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
-			roles = " | ".join(reversed(rolelist))
-			account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
-			guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 			embed = Embed(title="User information",
 				colour = user.colour,
 				#timestamp=get_time()
