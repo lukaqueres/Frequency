@@ -225,6 +225,8 @@ class Slash(Cog):
 			days_til_create = now - account_created # Do some maths
 			jdays, jhours, jminutes, jseconds = convert_timedelta(days_til_join) # Build in a converter
 			cdays, chours, cminutes, cseconds = convert_timedelta(days_til_create) # Build in a converter
+			account_created = str(account_created)
+			guild_join = str(guild_join)
 			account_created = account_created[:-4]
 			guild_join = guild_join[:-4]
 			embed = Embed(title="User banned",
