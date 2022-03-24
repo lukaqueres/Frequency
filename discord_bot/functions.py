@@ -121,29 +121,31 @@ def check_database(guilds):
 		#>>> data = ("O'Reilly", )
 		#>>> cur.execute(SQL, data)
 		SQL = """
-		   DO $$
-		   BEGIN 
-		   IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = %s ) 
-		   THEN
-                   	INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
-                   	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-                   END IF
-		   IF NOT EXISTS ( SELECT 1 FROM servers_data WHERE guild_id = %s ) 
-                   THEN
-		   	INSERT INTO servers_data ( guild_id, guild_name, music_volume)
-                   	VALUES (%s, %s, %s);
-		   END IF
-		   IF NOT EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = %s ) 
-		   THEN
-		   	INSERT INTO servers_msg_process ( guild_id, guild_name ) 
-		   	VALUES ( %s, %s );
-		   END IF
-		   END
-		   $$
+			INSERT INTO SERVERS_PROPERTIES
+    				( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE)
+			SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+				WHERE
+    					NOT EXISTS (
+        					SELECT guild_id FROM SERVERS_PROPERTIES WHERE guild_id = %s
+					);
+			INSERT INTO SERVERS_DATA
+    				( guild_id, guild_name, music_volume)
+			SELECT %s, %s, %s
+				WHERE
+    					NOT EXISTS (
+        					SELECT guild_id FROM SERVERS_DATA WHERE guild_id = %s
+					);
+			INSERT INTO SERVERS_MSG_PROCESS
+    				( guild_id, guild_name )
+			SELECT %s, %s
+				WHERE
+    					NOT EXISTS (
+        					SELECT guild_id FROM SERVERS_MSG_PROCESS WHERE guild_id = %s
+					);
 		   """
-		data = (guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, 
-			guild.id, guild.id, guild.name, 50, 
-			guild.id, guild.id, guild.name
+		data = (guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id,
+			guild.id, guild.name, 50, guild.id,
+			guild.id, guild.name, guild.id
 		       )
 		cur.execute(SQL, data)
 		#cur.execute(f"""
