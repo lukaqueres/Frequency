@@ -225,8 +225,8 @@ class Slash(Cog):
 			days_til_create = now - account_created # Do some maths
 			jdays, jhours, jminutes, jseconds = convert_timedelta(days_til_join) # Build in a converter
 			cdays, chours, cminutes, cseconds = convert_timedelta(days_til_create) # Build in a converter
-			#guild_join_delta = (today - int(guild_join)).days # I used ".days" to get only number of days
-			#acount_create_delta = (today - int(account_created)).days # I used ".days" to get only number of days
+			account_created = account_created[:-4]
+			guild_join = guild_join[:-4]
 			embed = Embed(title="User banned",
 				colour = user.colour,
 				#timestamp=get_time()
@@ -235,7 +235,7 @@ class Slash(Cog):
       	
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jdays}** days ago", inline=True),
-			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=True),
+			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=False),
 			
 			await ctx.send(embed=embed)
 		
