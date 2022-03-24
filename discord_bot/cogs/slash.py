@@ -212,7 +212,7 @@ class Slash(Cog):
 			today = datetime.today()
 			account_created = user.created_at
 			guild_join = user.joined_at
-			now = datetime.datetime.utcnow() # UTC time, can be changed
+			now = datetime.utcnow() # UTC time, can be changed
 
 			days_til_join = now - guild_join # Do some maths
 			days_til_create = now - account_created # Do some maths
