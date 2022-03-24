@@ -121,7 +121,7 @@ def check_database(guilds):
 			SQL = """SELECT COUNT(*) FROM %s WHERE guild_id = %s"""
 			data = ( table, guild.id)
 			row = cur.fetchone()
-			print(f"value: {value}")
+			print(f"row: {row}")
 			value = row[0]
 			con.commit()
 			if value == 1:
