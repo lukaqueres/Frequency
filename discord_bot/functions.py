@@ -120,8 +120,9 @@ def check_database(guilds):
 		for table in tables:
 			SQL = """SELECT COUNT(*) FROM %s WHERE guild_id = %s"""
 			data = ( table, guild.id)
+			cur.execute(SQL, data)
 			row = cur.fetchone()
-			print(f"row: {row}")
+			#print(f"row: {row}")
 			value = row[0]
 			con.commit()
 			if value == 1:
