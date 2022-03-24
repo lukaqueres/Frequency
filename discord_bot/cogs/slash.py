@@ -209,6 +209,20 @@ class Slash(Cog):
 				#embed.add_field( name= f"Messages count in channel: {messages_per_channel[key]}", value=key, inline=True),
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
+		if action == 'ban':
+			guild_join_delta = (today - guild_join).days # I used ".days" to get only number of days
+			acount_create_delta = (today - account_created).days # I used ".days" to get only number of days
+			embed = Embed(title="User banned",
+				colour = user.colour,
+				#timestamp=get_time()
+				)
+			embed.set_thumbnail(url=user.avatar_url)
+      	
+			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
+			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{acount_create_delta}** days ago \n**Joined**: {guild_join}, **{guild_join_delta}** days ago", inline=True),
+			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else "No reason provided"}", inline=True),
+			
+			await ctx.send(embed=embed)
 		
 def setup(client: client):
 	client.add_cog(Slash(client))
