@@ -118,7 +118,7 @@ def check_database(guilds):
 		guild_report += f"\nChecking guild: {guild.name}"
 		correct_tables = 0
 		for table in tables:
-			SQL = """SELECT COUNT(*) FROM $s WHERE guild_id = %s"""
+			SQL = """SELECT COUNT(*) FROM %s WHERE guild_id = %s"""
 			data = ( table, guild.id)
 			row = cur.fetchone()
 			value = row[0]
