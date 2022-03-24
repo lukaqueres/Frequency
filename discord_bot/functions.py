@@ -109,13 +109,13 @@ def check_database(guilds):
 	listofnames = []
 	for guild in guilds:
 		listofnames.append(guild.name)
-	print(f'Checking guilds: {listofnames} ')
+	#print(f'Checking guilds: {listofnames} ')
 	guilds_id = []
 	default_prefix = '$'
 	default_language = 'ENG'
 	for guild in guilds:
-		guild_report += f"\nChecking guild: {guild.name}"
 		guild_report = ""
+		guild_report += f"\nChecking guild: {guild.name}"
 		correct_tables = 0
 		for table in tables:
 			SQL = """SELECT COUNT(*) FROM $s WHERE guild_id = %s"""
