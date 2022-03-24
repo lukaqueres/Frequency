@@ -210,8 +210,16 @@ class Slash(Cog):
 			await ctx.send(embed=embed)
 		if action == 'ban':
 			today = datetime.today()
-			guild_join_delta = (today - guild_join).days # I used ".days" to get only number of days
-			acount_create_delta = (today - account_created).days # I used ".days" to get only number of days
+			account_created = user.created_at
+			guild_join = user.joined_at
+			now = datetime.datetime.utcnow() # UTC time, can be changed
+
+			days_til_join = now - guild_join # Do some maths
+			days_til_create = now - account_created # Do some maths
+			jdays, jhours, jminutes, jseconds = convert_timedelta(days_til_join) # Build in a converter
+			cdays, chours, cminutes, cseconds = convert_timedelta(days_til_create) # Build in a converter
+			#guild_join_delta = (today - int(guild_join)).days # I used ".days" to get only number of days
+			#acount_create_delta = (today - int(account_created)).days # I used ".days" to get only number of days
 			embed = Embed(title="User banned",
 				colour = user.colour,
 				#timestamp=get_time()
@@ -219,7 +227,7 @@ class Slash(Cog):
 			embed.set_thumbnail(url=user.avatar_url)
       	
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
-			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{acount_create_delta}** days ago \n**Joined**: {guild_join}, **{guild_join_delta}** days ago", inline=True),
+			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jday}** days ago", inline=True),
 			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=True),
 			
 			await ctx.send(embed=embed)
