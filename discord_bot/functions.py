@@ -112,7 +112,8 @@ def check_database(guilds):
 	default_prefix = '$'
 	default_language = 'ENG'
 	for guild in guilds:
-		date_of_join = str("{") + client.user.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
+		bot_user = client.get_user(client.id)
+		date_of_join = str("{") + bot_user.joined_at.strftime("%d/%m/%Y %H:%M:%S") + str("}")
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
 		print('Database Check: Guild {} check.'.format( guild ))
