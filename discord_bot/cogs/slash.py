@@ -175,6 +175,15 @@ class Slash(Cog):
 			await ctx.defer()
 			if timerange:
 				after_date = datetime.utcnow()-timedelta(days=timerange)
+			today = datetime.today()
+			account_created_date = user.created_at
+			guild_join_date = user.joined_at
+			now = datetime.utcnow() # UTC time, can be changed
+
+			days_til_join = now - guild_join_date # Do some maths
+			days_til_create = now - account_created_date # Do some maths
+			jdays, jhours, jminutes, jseconds = convert_timedelta(days_til_join) # Build in a converter
+			cdays, chours, cminutes, cseconds = convert_timedelta(days_til_create) # Build in a converter
 			embed = Embed(title="User information",
 				colour = user.colour,
 				#timestamp=get_time()
@@ -182,7 +191,7 @@ class Slash(Cog):
 			embed.set_thumbnail(url=user.avatar_url)
       	
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
-			embed.add_field( name=chr(173), value=f"**Created**: {account_created}\n**Joined**: {guild_join}", inline=True),
+			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jdays}** days ago", inline=True),
 			#embed.add_field(name = chr(173), value = chr(173), inline=False)
 			embed.add_field( name="All roles:", value=roles, inline=False),
 			embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
@@ -217,12 +226,12 @@ class Slash(Cog):
 			await ctx.send(embed=embed)
 		if action == 'ban':
 			today = datetime.today()
-			account_created = user.created_at
-			guild_join = user.joined_at
+			account_created_date = user.created_at
+			guild_join_date = user.joined_at
 			now = datetime.utcnow() # UTC time, can be changed
 
-			days_til_join = now - guild_join # Do some maths
-			days_til_create = now - account_created # Do some maths
+			days_til_join = now - guild_join_date # Do some maths
+			days_til_create = now - account_created_date # Do some maths
 			jdays, jhours, jminutes, jseconds = convert_timedelta(days_til_join) # Build in a converter
 			cdays, chours, cminutes, cseconds = convert_timedelta(days_til_create) # Build in a converter
 			account_created = str(account_created)
