@@ -20,6 +20,13 @@ guild_ids = get_guilds_ids()
 async def commands_modules():
 	return ["test","tust","tast","tist"]
 
+def convert_timedelta(duration): # Function to convert the time
+    days, seconds = duration.days, duration.seconds
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    seconds = (seconds % 60)
+    return days, hours, minutes, seconds
+
 class Slash(Cog):
 	def __init__(self, client: Bot):
 		self.client = client
