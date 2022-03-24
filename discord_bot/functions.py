@@ -117,14 +117,22 @@ def check_database(guilds):
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
 		print('Database Check: Guild {} check.'.format( guild ))
-		cur.execute(f"""IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {guild.id} ) 
-                   INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
-                   VALUES ('{guild.id}', '{guild.name}', '{date_of_join}', '{default_prefix}', '{guild.member_count}', '{"NO"}', '{"NO"}', '{"YES"}', '{"NO"}', '{members_count}', '{default_language}');
-                   IF EXISTS ( SELECT 1 FROM servers_data WHERE guild_id = {guild.id} ) 
-                   INSERT INTO servers_data ( guild_id, guild_name, music_volume) WHERE guild_id = {guild.id}
-                   VALUES ('{guild.id}', '{guild.name}', '{50}');
+		cur.execute(f"""
+		   IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {guild.id} ) 
+		   BEGIN
+                   	INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
+                   	VALUES ('{guild.id}', '{guild.name}', '{date_of_join}', '{default_prefix}', '{guild.member_count}', '{"NO"}', '{"NO"}', '{"YES"}', '{"NO"}', '{members_count}', '{default_language}');
+                   END
+		   IF EXISTS ( SELECT 1 FROM servers_data WHERE guild_id = {guild.id} ) 
+                   BEGIN
+		   	INSERT INTO servers_data ( guild_id, guild_name, music_volume) WHERE guild_id = {guild.id}
+                   	VALUES ('{guild.id}', '{guild.name}', '{50}');
+		   END
 		   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = {guild.id} ) 
-		   INSERT INTO servers_msg_process ( guild_id, guild_name ) 
-		   VALUES ( '{guild.id}', '{guild.name}' );""");
+		   BEGIN
+		   	INSERT INTO servers_msg_process ( guild_id, guild_name ) 
+		   	VALUES ( '{guild.id}', '{guild.name}' );
+		   END
+		   """);
 		con.commit()
 		print(f"Succesful database actualization for guild {guild.name}")
