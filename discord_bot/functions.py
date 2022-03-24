@@ -117,26 +117,55 @@ def check_database(guilds):
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
 		print('Database Check: Guild {} check.'.format( guild ))
-		cur.execute(f"""
+		#>>> SQL = "INSERT INTO authors (name) VALUES (%s);" # Note: no quotes
+		#>>> data = ("O'Reilly", )
+		#>>> cur.execute(SQL, data)
+		SQL = """
 		   DO $$
 		   BEGIN 
-		   IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {guild.id} ) 
+		   IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = %s ) 
 		   THEN
                    	INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
-                   	VALUES ('{guild.id}', '{guild.name}', '{date_of_join}', '{default_prefix}', '{guild.member_count}', '{"NO"}', '{"NO"}', '{"YES"}', '{"NO"}', '{members_count}', '{default_language}');
+                   	VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                    END IF
-		   IF EXISTS ( SELECT 1 FROM servers_data WHERE guild_id = {guild.id} ) 
+		   IF EXISTS ( SELECT 1 FROM servers_data WHERE guild_id = %s ) 
                    THEN
-		   	INSERT INTO servers_data ( guild_id, guild_name, music_volume) WHERE guild_id = {guild.id}
-                   	VALUES ('{guild.id}', '{guild.name}', '{50}');
+		   	INSERT INTO servers_data ( guild_id, guild_name, music_volume) WHERE guild_id = %s
+                   	VALUES (%s, %s, %s);
 		   END IF
-		   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = {guild.id} ) 
+		   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = %s ) 
 		   THEN
 		   	INSERT INTO servers_msg_process ( guild_id, guild_name ) 
-		   	VALUES ( '{guild.id}', '{guild.name}' );
+		   	VALUES ( %s, %s );
 		   END IF
 		   END
 		   $$
-		   """);
+		   """
+		data = (guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, 
+			guild.id, guild.id, guild.name, 50, 
+			guild.id, guild.id, guild.name
+		       )
+		cur.execute(SQL, data)
+		#cur.execute(f"""
+		#   DO $$
+		#   BEGIN 
+		#   IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {guild.id} ) 
+		#   THEN
+                #   	INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
+                #   	VALUES ('{guild.id}', '{guild.name}', '{date_of_join}', '{default_prefix}', '{guild.member_count}', '{"NO"}', '{"NO"}', '{"YES"}', '{"NO"}', '{members_count}', '{default_language}');
+                #   END IF
+		#   IF EXISTS ( SELECT 1 FROM servers_data WHERE guild_id = {guild.id} ) 
+                #   THEN
+		#   	INSERT INTO servers_data ( guild_id, guild_name, music_volume) WHERE guild_id = {guild.id}
+                #   	VALUES ('{guild.id}', '{guild.name}', '{50}');
+		#   END IF
+		#   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = {guild.id} ) 
+		#   THEN
+		#   	INSERT INTO servers_msg_process ( guild_id, guild_name ) 
+		#   	VALUES ( '{guild.id}', '{guild.name}' );
+		#   END IF
+		#   END
+		#   $$
+		#   """);
 		con.commit()
 		print(f"Succesful database actualization for guild {guild.name}")
