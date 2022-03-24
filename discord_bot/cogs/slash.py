@@ -210,6 +210,7 @@ class Slash(Cog):
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		if action == 'ban':
+			today = datetime.date.today()
 			guild_join_delta = (today - guild_join).days # I used ".days" to get only number of days
 			acount_create_delta = (today - account_created).days # I used ".days" to get only number of days
 			embed = Embed(title="User banned",
