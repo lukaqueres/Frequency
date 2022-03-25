@@ -290,6 +290,8 @@ class Slash(Cog):
 			if timespan > 14 and timespan < 1:
 				return await ctx.send( ">>> Messages can be deleted only from 1 to 14 days old.", hidden = True)
 		today = datetime.today()
+		account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
+		guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 		account_created_date = user.created_at
 		guild_join_date = user.joined_at
 		now = datetime.utcnow() # UTC time, can be changed
