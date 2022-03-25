@@ -255,7 +255,6 @@ class Slash(Cog):
 				reason = f"Resonable moderator: {ctx.author.name}, with reason:" + reason
 			else:
 				reason = f"Resonable moderator: {ctx.author.name}, with reason: No reason provided"
-			if 
 			#await member.ban(reason=reason, delete-message-days=timerange)
 			#if timerange != 7 or timerange != 1:
 			await ctx.send(embed=embed)
