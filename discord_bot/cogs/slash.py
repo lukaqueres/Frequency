@@ -311,11 +311,18 @@ class Slash(Cog):
 		#print(f"Atrybuty ctx: {vars(ctx)}")
 		embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 		embed.add_field( name=chr(173), value=f"**Joined**: {guild_join},\n **{jdays}** days ago", inline=True),
-		embed.add_field( name=chr(173), value=f"**Banned by**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
+		embed.add_field( name=chr(173), value=f"**Command invoked by**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
 		embed.add_field( name=chr(173), value=f"**Reason**: {reason}", inline=False),
 		reason = f"Responsible moderator: {ctx.author.name}, with reason:" + reason
 		#await member.ban(reason=reason, delete-message-days=timerange)
-		await ctx.guild.ban(member, reason=reason)
+		try:
+			await ctx.guild.ban(member, reason=reason)
+		except:
+			embed = Embed(title="User couldn't got banned",
+			colour = user.colour,
+			#timestamp=get_time()
+			)
+			return await ctx.send(embed=embed)
 		if timespan:
 			await ctx.defer()
 			total_messages_count = 0
