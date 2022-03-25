@@ -284,8 +284,8 @@ class Slash(Cog):
 	async def _ban(self, ctx: SlashContext, member = None, reason = None, timespan = None): 
 		if len(reason) > 450:
 			return await ctx.send( ">>> Reason can be maximum 450 caracters long.", hidden = True)
-		if timerange != 7 or timerange != 1:
-			return await ctx.send( ">>> Messages can be deleted only from 1 or 7 days ago. Please note that this feature is for now disabled", hidden = True)
+		if timespan > 14 and timespan < 1:
+			return await ctx.send( ">>> Messages can be deleted only from 1 to 14 days old.", hidden = True)
 		today = datetime.today()
 		account_created_date = user.created_at
 		guild_join_date = user.joined_at
@@ -313,8 +313,24 @@ class Slash(Cog):
 			reason = f"Responsible moderator: {ctx.author.name}, with reason: No reason provided"
 		#await member.ban(reason=reason, delete-message-days=timerange)
 		#await ctx.guild.ban(member, reason=reason)
-		if timerange:
-			embed.add_field( name="No messages deleted", value =  ">>> Please note that deleting messages from banned member is for now disabled, still there is working time-depending clear command", inline = False)
+		if timespan:
+			await ctx.defer()
+			total_messages_count = 0
+			deleted_messages = 0
+			after_date = datetime.utcnow()-timedelta(days=timespan)
+			for channel in ctx.guild.text_channels
+				async for message in channel.history(limit=200, after=after_date):
+					total_messages_count += 1
+					if member and message.author == member:
+						deleted_messages += 1
+						await message.delete()
+					elif member and message.author != member:
+						continue
+					else:
+						deleted_messages += 1
+						await message.delete()
+			embed.add_field( name=f"Deleted {deleted_messages}", value=f"**Out of**: {total_messages_count} messages in total", inline=False),
+			#embed.add_field( name="No messages deleted", value =  ">>> Please note that deleting messages from banned member is for now disabled, still there is working time-depending clear command", inline = False)
 		await ctx.send(embed=embed)
 def setup(client: client):
 	client.add_cog(Slash(client))
