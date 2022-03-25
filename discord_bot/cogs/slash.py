@@ -148,7 +148,7 @@ class Slash(Cog):
                                    	required = True,
 					choices = [
 						create_choice(name = 'Information', value='information'), 
-						create_choice(name = 'Ban', value='ban')
+						#create_choice(name = 'Ban', value='ban')
 				   	]
                                   ),
 			   	  create_option(
