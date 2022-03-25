@@ -281,7 +281,8 @@ class Slash(Cog):
                                    	option_type = 4,
                                    	required = False,
                                    )])
-	async def _ban(self, ctx: SlashContext, member = None, reason = None, timespan = None): 
+	@commands.has_permissions(ban_members=True)
+	async def _ban(self, ctx: SlashContext, member = None, reason = 'No reason provided', timespan = None): 
 		if len(reason) > 450:
 			return await ctx.send( ">>> Reason can be maximum 450 caracters long.", hidden = True)
 		if timespan > 14 and timespan < 1:
@@ -303,14 +304,12 @@ class Slash(Cog):
 			#timestamp=get_time()
 			)
 		embed.set_thumbnail(url=user.avatar_url)
-      
+		print(f"Atrybuty ctx: {vars(ctx)}")
 		embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
-		embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jdays}** days ago", inline=True),
-		embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=False),
-		if reason:
-			reason = f"Responsible moderator: {ctx.author.name}, with reason:" + reason
-		else:
-			reason = f"Responsible moderator: {ctx.author.name}, with reason: No reason provided"
+		embed.add_field( name=chr(173), value=f"**By**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
+		embed.add_field( name=chr(173), value=f"**Joined**: {guild_join},\n **{jdays}** days ago", inline=True),
+		embed.add_field( name=chr(173), value=f"**Reason**: {reason}", inline=False),
+		reason = f"Responsible moderator: {ctx.author.name}, with reason:" + reason
 		#await member.ban(reason=reason, delete-message-days=timerange)
 		#await ctx.guild.ban(member, reason=reason)
 		if timespan:
@@ -334,7 +333,3 @@ class Slash(Cog):
 		await ctx.send(embed=embed)
 def setup(client: client):
 	client.add_cog(Slash(client))
-
-    
-    
-    
