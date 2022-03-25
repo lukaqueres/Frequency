@@ -311,7 +311,6 @@ class Slash(Cog):
 			reason = f"Responsible moderator: {ctx.author.name}, with reason:" + reason
 		else:
 			reason = f"Responsible moderator: {ctx.author.name}, with reason: No reason provided"
-		if 
 		#await member.ban(reason=reason, delete-message-days=timerange)
 		#await ctx.guild.ban(member, reason=reason)
 		if timerange:
