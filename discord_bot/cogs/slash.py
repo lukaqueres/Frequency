@@ -174,7 +174,7 @@ class Slash(Cog):
 				if (timespan > 21 or timespan < 1):
 					return await ctx.send( "Invalid timespan ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
 			await ctx.defer()
-			if timerange:
+			if timespan:
 				after_date = datetime.utcnow()-timedelta(days=timespan)
 			today = datetime.today()
 			account_created_date = user.created_at
