@@ -283,10 +283,12 @@ class Slash(Cog):
                                    )])
 	@commands.has_permissions(ban_members=True)
 	async def _ban(self, ctx: SlashContext, member = None, reason = 'No reason provided', timespan = None): 
+		user = member
 		if len(reason) > 450:
 			return await ctx.send( ">>> Reason can be maximum 450 caracters long.", hidden = True)
-		if timespan > 14 and timespan < 1:
-			return await ctx.send( ">>> Messages can be deleted only from 1 to 14 days old.", hidden = True)
+		if timespan:
+			if timespan > 14 and timespan < 1:
+				return await ctx.send( ">>> Messages can be deleted only from 1 to 14 days old.", hidden = True)
 		today = datetime.today()
 		account_created_date = user.created_at
 		guild_join_date = user.joined_at
