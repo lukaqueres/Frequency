@@ -323,6 +323,7 @@ class Slash(Cog):
 			colour = user.colour,
 			#timestamp=get_time()
 			)
+			embed.set_thumbnail(url=user.avatar_url)
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field( name=chr(173), value=f"**Command invoked by**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
 			embed.add_field( name="Command failed", value=f"Because of missing bot permission", inline=False),
@@ -332,6 +333,7 @@ class Slash(Cog):
 			colour = user.colour,
 			#timestamp=get_time()
 			)
+			embed.set_thumbnail(url=user.avatar_url)
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field( name=chr(173), value=f"**Command invoked by**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
 			embed.add_field( name="Command failed", value=f"Because of command error", inline=False),
