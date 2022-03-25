@@ -332,7 +332,7 @@ class Slash(Cog):
 					else:
 						deleted_messages += 1
 						await message.delete()
-			embed.add_field( name=f"Deleted {deleted_messages}", value=f"**Out of**: {total_messages_count} messages in total", inline=False),
+			embed.add_field( name=f"Deleted {deleted_messages} messages", value=f"**Out of**: {total_messages_count} messages in total", inline=False),
 			#embed.add_field( name="No messages deleted", value =  ">>> Please note that deleting messages from banned member is for now disabled, still there is working time-depending clear command", inline = False)
 		await ctx.send(embed=embed)
 def setup(client: client):
