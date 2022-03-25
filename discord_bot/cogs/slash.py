@@ -318,7 +318,7 @@ class Slash(Cog):
 			total_messages_count = 0
 			deleted_messages = 0
 			after_date = datetime.utcnow()-timedelta(days=timespan)
-			for channel in ctx.guild.text_channels
+			for channel in ctx.guild.text_channels:
 				async for message in channel.history(limit=200, after=after_date):
 					total_messages_count += 1
 					if member and message.author == member:
