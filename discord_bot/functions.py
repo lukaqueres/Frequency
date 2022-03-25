@@ -99,8 +99,8 @@ def get_guilds_ids():
 	id_list = []
 	for row in ids:
     		id_list.append(row[0])
-	return id_list
-	#return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
+	#return id_list
+	return [688803708577775619, 812295569808162856, 499285265551065098, 930559672715464764]
 	
 def check_database(guilds):
 	print('Database check start:')
