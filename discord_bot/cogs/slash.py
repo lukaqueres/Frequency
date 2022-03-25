@@ -157,24 +157,24 @@ class Slash(Cog):
                                    	required = False,
                                    ),
 			   	  create_option(
-                                   	name = "timerange",
+                                   	name = "timespan",
                                    	description = "Input time span for actions that requires it.",
                                    	option_type = 4,
                                    	required = False,
                                    )])
-	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None, timerange = None): 
+	async def _user(self, ctx: SlashContext, member = "autor", action = None, reason = None, timespan = None): 
 		user = member
 		rolelist = [r.name for r in user.roles if r != ctx.guild.default_role]
 		roles = " | ".join(reversed(rolelist))
 		account_created = user.created_at.strftime("%d/%m/%Y %H:%M:%S")
 		guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 		if action == 'information':
-			if timerange:
-				if (timerange > 21 or timerange < 1):
-					return await ctx.send( "Invalid time range ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
+			if timespan:
+				if (timespan > 21 or timespan < 1):
+					return await ctx.send( "Invalid timespan ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
 			await ctx.defer()
 			if timerange:
-				after_date = datetime.utcnow()-timedelta(days=timerange)
+				after_date = datetime.utcnow()-timedelta(days=timespan)
 			today = datetime.today()
 			account_created_date = user.created_at
 			guild_join_date = user.joined_at
@@ -197,7 +197,7 @@ class Slash(Cog):
 			embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
 			guild_channels = ctx.guild.text_channels
-			if timerange != None:
+			if timespan != None:
 				messages_per_channel = {}
 				for channel in guild_channels:
 					total_messages_count = 0
@@ -220,11 +220,15 @@ class Slash(Cog):
 						break
 					displayed += 1
 					message += f"**{messages_per_channel[key]}** : **{key}**\n"
-				embed.add_field( name=f"Last {timerange} days of user message activity:", value=message, inline=False),
+				embed.add_field( name=f"Last {timespan} days of user message activity:", value=message, inline=False),
 				#embed.add_field( name= f"Messages count in channel: {messages_per_channel[key]}", value=key, inline=True),
 			embed.set_footer(text="Provided by Wild West Post Office")
 			await ctx.send(embed=embed)
 		if action == 'ban':
+			if len(reason) > 450:
+				return await ctx.send( ">>> Reason can be maximum 450 caracters long.", hidden = True)
+			if timerange != 7 or timerange != 1:
+				return await ctx.send( ">>> Messages can be deleted only from 1 or 7 days ago.", hidden = True)
 			today = datetime.today()
 			account_created_date = user.created_at
 			guild_join_date = user.joined_at
@@ -247,9 +251,73 @@ class Slash(Cog):
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jdays}** days ago", inline=True),
 			embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=False),
-			
+			if reason:
+				reason = f"Resonable moderator: {ctx.author.name}, with reason:" + reason
+			else:
+				reason = f"Resonable moderator: {ctx.author.name}, with reason: No reason provided"
+			if 
+			#await member.ban(reason=reason, delete-message-days=timerange)
+			#if timerange != 7 or timerange != 1:
 			await ctx.send(embed=embed)
 		
+	@cog_ext.cog_slash(name="ban", 
+	                   description="Bans specified memeber with possible messages deletion", 
+	                   guild_ids=guild_ids,
+	                   options=[
+				   create_option(
+                                   	name = "member",
+                                   	description = "Choose member action will take affect on",
+                                   	option_type = 6,
+                                   	required = True,
+                                   ),
+			   	  create_option(
+                                   	name = "reason",
+                                   	description = "Input reason of ban, can be avoided for no specified reason",
+                                   	option_type = 3,
+                                   	required = False,
+                                   ),
+			   	  create_option(
+                                   	name = "timespan",
+                                   	description = "Input timespan of messages to clean up after user, avoid for no messages deleted",
+                                   	option_type = 4,
+                                   	required = False,
+                                   )])
+	async def _ban(self, ctx: SlashContext, member = None, reason = None, timespan = None): 
+		if len(reason) > 450:
+			return await ctx.send( ">>> Reason can be maximum 450 caracters long.", hidden = True)
+		if timerange != 7 or timerange != 1:
+			return await ctx.send( ">>> Messages can be deleted only from 1 or 7 days ago. Please note that this feature is for now disabled", hidden = True)
+		today = datetime.today()
+		account_created_date = user.created_at
+		guild_join_date = user.joined_at
+		now = datetime.utcnow() # UTC time, can be changed
+		days_til_join = now - guild_join_date # Do some maths
+		days_til_create = now - account_created_date # Do some maths
+		jdays, jhours, jminutes, jseconds = convert_timedelta(days_til_join) # Build in a converter
+		cdays, chours, cminutes, cseconds = convert_timedelta(days_til_create) # Build in a converter
+		account_created = str(account_created)
+		guild_join = str(guild_join)
+		account_created = account_created[:-4]
+		guild_join = guild_join[:-4]
+		embed = Embed(title="User banned",
+			colour = user.colour,
+			#timestamp=get_time()
+			)
+		embed.set_thumbnail(url=user.avatar_url)
+      
+		embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
+		embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jdays}** days ago", inline=True),
+		embed.add_field( name=chr(173), value=f"**Reason**: {reason if reason else 'No reason provided'}", inline=False),
+		if reason:
+			reason = f"Responsible moderator: {ctx.author.name}, with reason:" + reason
+		else:
+			reason = f"Responsible moderator: {ctx.author.name}, with reason: No reason provided"
+		if 
+		#await member.ban(reason=reason, delete-message-days=timerange)
+		#await ctx.guild.ban(member, reason=reason)
+		if timerange:
+			embed.add_field( name="No messages deleted", value =  ">>> Please note that deleting messages from banned member is for now disabled, still there is working time-depending clear command", inline = False)
+		await ctx.send(embed=embed)
 def setup(client: client):
 	client.add_cog(Slash(client))
 
