@@ -193,7 +193,7 @@ class Slash(Cog):
 			embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
 			embed.add_field( name=chr(173), value=f"**Created**: {account_created}, **{cdays}** days ago \n**Joined**: {guild_join}, **{jdays}** days ago", inline=True),
 			#embed.add_field(name = chr(173), value = chr(173), inline=False)
-			embed.add_field( name="All roles:", value=roles , inline=False), #if roles else "No roles"
+			embed.add_field( name="All roles:", value=roles if roles else "No roles", inline=False), #if roles else "No roles"
 			embed.add_field(name = chr(173), value = f"**Status**: {str(user.status).title()}\n**Activity**: {str(user.activity.type).split('.')[-1].title() if user.activity else 'N/A'} {user.activity.name if user.activity else ''}\n**Bot**: {'NO' if not user.bot else 'YES'}", inline=True),
 			embed.add_field( name= chr(173), value=f"**Top role**: {user.top_role.name}\n**Number of roles**: {len(rolelist)}\n**Nitro**: { 'Yes' if bool(user.premium_since) else 'No'}", inline=True),
 			guild_channels = ctx.guild.text_channels
