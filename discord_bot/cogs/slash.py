@@ -310,8 +310,8 @@ class Slash(Cog):
 		embed.set_thumbnail(url=user.avatar_url)
 		#print(f"Atrybuty ctx: {vars(ctx)}")
 		embed.add_field( name=chr(173), value=f"**User**: {str(user)}\n**User ID**: {user.id}", inline=True),
-		embed.add_field( name=chr(173), value=f"**By**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
 		embed.add_field( name=chr(173), value=f"**Joined**: {guild_join},\n **{jdays}** days ago", inline=True),
+		embed.add_field( name=chr(173), value=f"**Banned by**: {str(ctx.author.name)}\n**User ID**: {ctx.author.id}", inline=True),
 		embed.add_field( name=chr(173), value=f"**Reason**: {reason}", inline=False),
 		reason = f"Responsible moderator: {ctx.author.name}, with reason:" + reason
 		#await member.ban(reason=reason, delete-message-days=timerange)
