@@ -28,7 +28,7 @@ class Slash_music(Cog):
 		
 	#music = client.create_group("music", "Music related commands.")
 
-	@music.cog_slash(name="play", 
+	@cog_ext.cog_slash(name="play", 
 	                   description="Play music from url or key words", 
 	                   guild_ids=guild_ids,
 	                   options=[
