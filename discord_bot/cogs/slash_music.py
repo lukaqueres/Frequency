@@ -26,7 +26,7 @@ class Slash_music(Cog):
 	async def on_ready(self):
 		print('Slash music module loaded')
 		
-	music = client.create_group("music", "Music related commands.")
+	#music = client.create_group("music", "Music related commands.")
 
 	@music.cog_slash(name="play", 
 	                   description="Play music from url or key words", 
