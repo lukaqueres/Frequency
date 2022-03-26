@@ -306,8 +306,57 @@ class MusicPlayer:
 		return self.bot.loop.create_task(self._cog.cleanup(guild))
 
 class Slash_music(Cog):
-	def __init__(self, client: Bot):
+	"""Commands for playing music, and its managing"""
+	__slots__ = ('bot', 'players')
+	
+	def __init__(self, client):
+		self.bot = bot
 		self.client = client
+		self.players = {}
+	
+	async def cleanup(self, guild):
+		try:
+			await guild.voice_client.disconnect()
+		except AttributeError:
+			pass
+
+		try:
+			del self.players[guild.id]
+		except KeyError:
+			pass
+
+	async def __local_check(self, ctx):
+		"""A local check which applies to all commands in this cog."""
+		if not ctx.guild:
+			raise commands.NoPrivateMessage
+		return True
+
+	async def cog_command_error(self, ctx, error):
+		"""A local error handler for all errors arising from commands in this cog."""
+		if isinstance(error, commands.NoPrivateMessage):
+			try:
+				return await ctx.send('This command can not be used in Private Messages.')
+			except discord.HTTPException:
+				pass
+		elif isinstance(error, InvalidVoiceChannel):
+			await ctx.send('Error connecting to Voice Channel. '
+							'Please make sure you are in a valid channel or provide me with one')
+		elif isinstance(error, youtube_dl.utils.RegexNotFoundError):
+			await ctx.send('There was error while downloading song, you can try again.')
+			print(error)
+
+		print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+
+	def get_player(self, ctx):
+		"""Retrieve the guild player, or generate one."""
+		try:
+			player = self.players[ctx.guild.id]
+		except KeyError:
+			player = MusicPlayer(ctx)
+			self.players[ctx.guild.id] = player
+
+		return player
         
 	@commands.Cog.listener()
 	async def on_ready(self):
