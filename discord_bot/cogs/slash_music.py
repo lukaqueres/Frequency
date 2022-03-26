@@ -324,7 +324,8 @@ class Slash_music(Cog):
                           #      	description = "Choose voice channel to connect, if not specified, bot will join current user channel",
                            #     	option_type = discord.VoiceChannel, #7
                             #    	required = False,
-                               	   )])
+                             #  	   )]
+			   )
 	async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
 		"""Connect to voice.
 		Parameters
