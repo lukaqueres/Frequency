@@ -26,7 +26,7 @@ from datetime import datetime, date, timedelta
 
 
 intents = discord.Intents.all()
-client = commands.Bot(command_prefix = get_prefix, Intents=intents)
+client, bot = (commands.Bot(command_prefix = get_prefix, Intents=intents),)*2
 
 #slash = SlashCommand(client, sync_commands=True)
 
