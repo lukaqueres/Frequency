@@ -318,16 +318,45 @@ class Slash_music(Cog):
 	@cog_ext.cog_slash(name="connect", 
 	                   description="Connect to voice channel", 
 	                   guild_ids=guild_ids,
-	                   options=[
-				   create_option(
-                                	name = "channel",
-                                	description = "Choose voice channel to connect, if not specified, bot will join current user channel",
-                                	option_type = discord.VoiceChannel, #7
-                                	required = False,
+	                   #options=[
+			#	   create_option(
+                         #       	name = "channel",
+                          #      	description = "Choose voice channel to connect, if not specified, bot will join current user channel",
+                           #     	option_type = discord.VoiceChannel, #7
+                            #    	required = False,
                                	   )])
-	@commands.has_permissions(manage_messages=True)
-	async def _connect(self, ctx: SlashContext, channel = None): 
-		await ctx.send( "Channel", hidden = True)
+	async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
+		"""Connect to voice.
+		Parameters
+		------------
+		channel: discord.VoiceChannel [Optional]
+			The channel to connect to. If a channel is not specified, an attempt to join the voice channel you are in
+			will be made.
+		This command also handles moving the bot to different channels.
+		"""
+		if not channel:
+			try:
+				channel = ctx.author.voice.channel
+			except AttributeError:
+				raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
+
+		vc = ctx.voice_client
+
+		if vc:
+			if vc.channel.id == channel.id:
+				return
+			try:
+				await vc.move_to(channel)
+			except asyncio.TimeoutError:
+				raise VoiceConnectionError(f'Moving to channel: <{channel}> timed out.')
+		else:
+			try:
+				await channel.connect()
+			except asyncio.TimeoutError:
+				raise VoiceConnectionError(f'Connecting to channel: <{channel}> timed out.')
+
+		await ctx.send(f'Connected to: **{channel}**', delete_after=20)
+
 	
 	@cog_ext.cog_slash(name="play", 
 	                   description="Play music from url or key words", 
@@ -349,7 +378,6 @@ class Slash_music(Cog):
 						create_choice(name = 'No', value = 'False')
 				   	]
                                	   )])
-	@commands.has_permissions(manage_messages=True)
 	async def _play(self, ctx: SlashContext, search = None, random_order = None): 
 		await ctx.send( "NO play", hidden = True)
 def setup(client: client):
