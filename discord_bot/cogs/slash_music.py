@@ -384,6 +384,7 @@ class Slash_music(Cog):
 			will be made.
 		This command also handles moving the bot to different channels.
 		"""
+		channel = None
 		if not channel:
 			try:
 				channel = ctx.author.voice.channel
