@@ -41,7 +41,7 @@ class Slash_music(Cog):
 				   create_option(
                                 	name = "random",
                                 	description = "Toggle random order of videos to play, will apply only to playlists",
-                                	option_type = 3,
+                                	option_type = bool,
                                 	required = False,
 					choices = [
 						create_choice(name = 'Yes', value = True), 
