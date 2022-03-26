@@ -322,7 +322,7 @@ class Slash_music(Cog):
 				   create_option(
                                 	name = "channel",
                                 	description = "Choose voice channel to connect, if not specified, bot will join current user channel",
-                                	option_type = 7,
+                                	option_type = discord.VoiceChannel, #7
                                 	required = False,
                                	   )])
 	@commands.has_permissions(manage_messages=True)
@@ -340,7 +340,7 @@ class Slash_music(Cog):
                                 	required = True
                                	   ),
 				   create_option(
-                                	name = "random",
+                                	name = "random_order",
                                 	description = "Toggle random order of videos to play, will apply only to playlists",
                                 	option_type = 3,
                                 	required = False,
@@ -350,7 +350,7 @@ class Slash_music(Cog):
 				   	]
                                	   )])
 	@commands.has_permissions(manage_messages=True)
-	async def _play(self, ctx: SlashContext, search = None, random = None): 
+	async def _play(self, ctx: SlashContext, search = None, random_order = None): 
 		await ctx.send( "NO play", hidden = True)
 def setup(client: client):
 	client.add_cog(Slash_music(client))
