@@ -4,7 +4,7 @@ from discord.ext import tasks, commands
 from discord.utils import get
 from discord import Embed
 from discord.ext.commands import Bot, Cog
-from discord_slash import cog_ext, SlashContext, SlashCommand, SlashCommandGroup
+from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext.commands import has_permissions, MissingPermissions
 
@@ -26,7 +26,7 @@ class Slash_music(Cog):
 	async def on_ready(self):
 		print('Slash music module loaded')
 		
-	music = SlashCommandGroup("music", "Music related commands.")
+	music = client.create_group("music", "Music related commands.")
 
 	@music.cog_slash(name="play", 
 	                   description="Play music from url or key words", 
