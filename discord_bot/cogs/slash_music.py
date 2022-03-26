@@ -375,7 +375,7 @@ class Slash_music(Cog):
                             #    	required = False,
                              #  	   )]
 			   )
-	async def connect_(self, ctx, *, channel: discord.VoiceChannel=None):
+	async def connect_(self, ctx): # , *, channel: discord.VoiceChannel=None
 		"""Connect to voice.
 		Parameters
 		------------
