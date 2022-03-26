@@ -41,11 +41,11 @@ class Slash_music(Cog):
 				   create_option(
                                 	name = "random",
                                 	description = "Toggle random order of videos to play, will apply only to playlists",
-                                	option_type = bool,
+                                	option_type = 3,
                                 	required = False,
 					choices = [
-						create_choice(name = 'Yes', value = True), 
-						create_choice(name = 'No', value = False)
+						create_choice(name = 'Yes', value = 'True'), 
+						create_choice(name = 'No', value = 'False')
 				   	]
                                	   )])
 	@commands.has_permissions(manage_messages=True)
