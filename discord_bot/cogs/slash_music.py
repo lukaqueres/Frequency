@@ -351,6 +351,6 @@ class Slash_music(Cog):
                                	   )])
 	@commands.has_permissions(manage_messages=True)
 	async def _play(self, ctx: SlashContext, search = None, random = None): 
-		ctx.send( "NO play", hidden = True)
+		await ctx.send( "NO play", hidden = True)
 def setup(client: client):
 	client.add_cog(Slash_music(client))
