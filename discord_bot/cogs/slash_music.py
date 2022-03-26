@@ -388,7 +388,8 @@ class Slash_music(Cog):
 			try:
 				channel = ctx.author.voice.channel
 			except AttributeError:
-				raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
+				#raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
+				return await ctx.send( ">>> Error connecting voice channel. No channel to join.", hidden = True)
 
 		vc = ctx.voice_client
 
