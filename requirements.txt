@@ -10,3 +10,4 @@ psycopg2
 nltk
 flask
 discord-py-slash-command
+discord.py-message-components
