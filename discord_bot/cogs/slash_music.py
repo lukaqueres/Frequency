@@ -389,7 +389,7 @@ class Slash_music(Cog):
 			try:
 				channel = ctx.author.voice.channel
 			except AttributeError:
-				#raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
+				raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
 				return await ctx.send( ">>> Error connecting voice channel. No channel to join.", hidden = True)
 
 		vc = ctx.voice_client
@@ -475,5 +475,24 @@ class Slash_music(Cog):
 			return await ctx.send('I am not currently playing anything!', delete_after=20)
 		
 		await self.cleanup(ctx.guild)
+	
+	@cog_ext.cog_slash(name="console", 
+	                   description="Open up a class-related console", 
+	                   guild_ids=guild_ids,
+			   options=[
+				   create_option(
+                                	name = "module",
+                                	description = "Select module for console",
+                                	option_type = 3,
+                                	required = True,
+					choices = [
+						create_choice(name = 'Music', value = 'music'), 
+						#create_choice(name = 'No', value = 'False')
+				   	]
+                               	   )]
+	                   )
+	async def console_(self, ctx, module):
+		await ctx.send( f'Console for {module}' )
+
 def setup(client: client):
 	client.add_cog(Slash_music(client))
