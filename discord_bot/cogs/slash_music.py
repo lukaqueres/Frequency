@@ -536,7 +536,9 @@ class Slash_music(Cog):
 			await ctx.send( embed = embed, components=[action_row])
 			
 			await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
-			await test.respond(content="queue")
+			interaction = await client.wait_for("button_click", check=lambda i: i.component.emoi == '🎶')
+    			await interaction.response.send_message('QUEUE', delete_after = 5)
+			#await test.respond(content="queue")
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
