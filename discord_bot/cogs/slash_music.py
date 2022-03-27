@@ -498,23 +498,23 @@ class Slash_music(Cog):
 		buttons = [
             		create_button(
                 		style=ButtonStyle.blurple,
-                		label="skip"
+                		label="🎶"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="pause"
+                		label="⏸️"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="resume"
+                		label="▶️"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="queue"
+                		label="⏭️"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="stop"
+                		label="⏹️"
             		),
           	]
 
