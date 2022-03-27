@@ -497,8 +497,24 @@ class Slash_music(Cog):
 	async def console_(self, ctx, module):
 		buttons = [
             		create_button(
-                		style=ButtonStyle.green,
-                		label="A Green Button"
+                		style=ButtonStyle.blurple,
+                		label="skip"
+            		),
+			create_button(
+                		style=ButtonStyle.blurple,
+                		label="pause"
+            		),
+			create_button(
+                		style=ButtonStyle.blurple,
+                		label="resume"
+            		),
+			create_button(
+                		style=ButtonStyle.blurple,
+                		label="queue"
+            		),
+			create_button(
+                		style=ButtonStyle.blurple,
+                		label="stop"
             		),
           	]
 
