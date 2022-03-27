@@ -460,7 +460,7 @@ class Slash_music(Cog):
 		await player.queue.put(source)
 		#await ctx.send( "NO play", hidden = True)
 		
-	@cog_ext.cog_slash(name="play", 
+	@cog_ext.cog_slash(name="stop", 
 	                   description="Stop playing music, clears queue and leave voice channel", 
 	                   guild_ids=guild_ids,
 	                   )
