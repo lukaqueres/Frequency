@@ -503,19 +503,19 @@ class Slash_music(Cog):
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="⏸️"
+                		emoji="⏸️"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="▶️"
+                		emoji="▶️"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="⏭️"
+                		emoji="⏭️"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
-                		label="⏹️"
+                		emoji="⏹️"
             		),
           	]
 
