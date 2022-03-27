@@ -495,34 +495,45 @@ class Slash_music(Cog):
                                	   )]
 	                   )
 	async def console_(self, ctx, module):
-		buttons = [
-            		create_button(
-                		style=ButtonStyle.blurple,
-                		#label="🎶"
-				emoji="🎶"
-            		),
-			create_button(
-                		style=ButtonStyle.blurple,
-                		emoji="⏸️"
-            		),
-			create_button(
-                		style=ButtonStyle.blurple,
-                		emoji="▶️"
-            		),
-			create_button(
-                		style=ButtonStyle.blurple,
-                		emoji="⏭️"
-            		),
-			create_button(
-                		style=ButtonStyle.blurple,
-                		emoji="⏹️"
-            		),
-          	]
-
-		action_row = create_actionrow(*buttons)
-		#if not vc or not vc.is_connected():
+		if module == 'music':
+			buttons = [
+            			create_button(
+                			style=ButtonStyle.blurple,
+                			#label="🎶"
+					emoji="🎶"
+            			),
+				create_button(
+                			style=ButtonStyle.blurple,
+                			emoji="🎵"
+            			),
+				create_button(
+                			style=ButtonStyle.blurple,
+                			emoji="⏹️"
+            			),
+				create_button(
+                			style=ButtonStyle.blurple,
+                			emoji="⏯️"
+            			),
+				create_button(
+                			style=ButtonStyle.blurple,
+                			emoji="⏭️"
+            			),
+          		]
+			embed = discord.Embed( 
+				title="Music console",
+				description="Use button for set action",
+				color= client.user.colour,
+				timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
+			)
+			embed.add_field(name= 'Buttons', value="""🎶 : Display current queue \n
+							          🎵 : Display information about current song \n
+								  ⏹️ : Clear queue and leave voice channel \n
+								  ⏯️ : Stops / Resumes playing songs \n
+								  ⏭️ : Skips current song""", inline=False),
+			action_row = create_actionrow(*buttons)
+			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-		await ctx.send( 'test', components=[action_row])
+			await ctx.send( 'test', components=[action_row])
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
