@@ -8,6 +8,9 @@ from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext.commands import has_permissions, MissingPermissions
 
+from discord_slash.utils.manage_components import create_button, create_actionrow
+from discord_slash.model import ButtonStyle
+
 from datetime import datetime, date, timedelta
 from functions import get_prefix, get_time, get_guilds_ids
 
@@ -492,13 +495,17 @@ class Slash_music(Cog):
                                	   )]
 	                   )
 	async def console_(self, ctx, module):
-		vc = ctx.voice_client
-		view = discord.ui.View()
-		item = discord.ui.Button(style=discord.ButtonStyle.blurple, label="Click Me", url="https://google.com")
-		view.add_item(item=item)
+		buttons = [
+            		create_button(
+                		style=ButtonStyle.green,
+                		label="A Green Button"
+            		),
+          	]
+
+		action_row = create_actionrow(*buttons)
 		#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-		await ctx.send( 'test', view=view)
+		await ctx.send( 'test', components=[action_row])
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
