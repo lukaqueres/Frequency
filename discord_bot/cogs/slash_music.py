@@ -476,6 +476,15 @@ class Slash_music(Cog):
 		
 		await self.cleanup(ctx.guild)
 	
+	console_components= [
+  			{
+    			"type": 2,
+    			"label": "Clear les kick",
+    			"style": 4,
+    			"custom_id": "clear_kick_button"
+  			}
+		     ]
+	
 	@cog_ext.cog_slash(name="console", 
 	                   description="Open up a class-related console", 
 	                   guild_ids=guild_ids,
@@ -492,7 +501,11 @@ class Slash_music(Cog):
                                	   )]
 	                   )
 	async def console_(self, ctx, module):
-		await ctx.send( f'Console for {module}' )
+		vc = ctx.voice_client
+
+		if not vc or not vc.is_connected():
+			return await ctx.send('>>> There is no music playing right now', hidden = True)
+		await ctx.send( 'test', components = console_components )
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
