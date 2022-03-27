@@ -486,7 +486,7 @@ class Slash_music(Cog):
 		     ]
 	
 	@cog_ext.cog_slash(name="console", 
-	                   description="Open up a class-related console", 
+	                   description="Open up a module-related console", 
 	                   guild_ids=guild_ids,
 			   options=[
 				   create_option(
@@ -503,8 +503,8 @@ class Slash_music(Cog):
 	async def console_(self, ctx, module):
 		vc = ctx.voice_client
 
-		if not vc or not vc.is_connected():
-			return await ctx.send('>>> There is no music playing right now', hidden = True)
+		#if not vc or not vc.is_connected():
+			#return await ctx.send('>>> There is no music playing right now', hidden = True)
 		await ctx.send( 'test', components = components )
 
 def setup(client: client):
