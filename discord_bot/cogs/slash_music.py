@@ -498,7 +498,8 @@ class Slash_music(Cog):
 		buttons = [
             		create_button(
                 		style=ButtonStyle.blurple,
-                		label="🎶"
+                		#label="🎶"
+				emoji="🎶"
             		),
 			create_button(
                 		style=ButtonStyle.blurple,
