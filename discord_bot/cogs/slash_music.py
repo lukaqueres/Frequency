@@ -500,23 +500,28 @@ class Slash_music(Cog):
             			create_button(
                 			style=ButtonStyle.blurple,
                 			#label="🎶"
-					emoji="🎶"
+					emoji="🎶",
+					custom_id="queue",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
-                			emoji="🎵"
+                			emoji="🎵",
+					custom_id="current_song",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
-                			emoji="⏹️"
+                			emoji="⏹️",
+					custom_id="stop",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
-                			emoji="⏯️"
+                			emoji="⏯️",
+					custom_id="pause_resume",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
-                			emoji="⏭️"
+                			emoji="⏭️",
+					custom_id="skip",
             			),
           		]
 			embed = discord.Embed( 
@@ -529,15 +534,27 @@ class Slash_music(Cog):
 							          🎵 : Display information about current song \n
 								  ⏹️ : Clear queue and leave voice channel \n
 								  ⏯️ : Stops / Resumes playing songs \n
-								  ⏭️ : Skips current song""", inline=False),
+								  ⏭️ : Skips current song""", inline=True),
+			embed.add_field(name= 'Buttons', value="``` TEST ```", inline=True),
 			action_row = create_actionrow(*buttons)
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-			await ctx.send( embed = embed, components=[action_row])
+			music_console_msg =  await ctx.send( embed = embed, components=[action_row])
 			
-			await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
-			interaction_queue = await client.wait_for("button_click", check=lambda i: i.component.emoi == '🎶')
-			await interaction_queue.response.send_message('QUEUE', delete_after = 5)
+			def check_button(i: discord.Interaction, button):
+				return i.author == ctx.author and i.message == music_console_msg
+
+			interaction, button = await client.wait_for('button_click', check=check_button)
+
+			embed = discord.Embed(title='You pressed an Button',
+					      description=f'You pressed a {button.custom_id} button.',
+					      color=discord.Color.random())
+			await interaction.respond(embed=embed, delete_after = 5)
+
+			
+			#await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
+			#interaction_queue = await client.wait_for("button_click", check=lambda i: i.component.emoi == '🎶')
+			#await interaction_queue.response.send_message('QUEUE', delete_after = 5)
 			#await test.respond(content="queue")
 
 def setup(client: client):
