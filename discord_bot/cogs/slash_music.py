@@ -443,20 +443,20 @@ class Slash_music(Cog):
 			#ytdlopts['playlistrandom'] = True
 		#else:
 			#ytdlopts['playlistrandom'] = False
-		async with ctx.typing():
+		await ctx.defer()
 
-			vc = ctx.voice_client
+		vc = ctx.voice_client
 
-			if not vc:
-				await ctx.invoke(self.connect_)
+		if not vc:
+			await ctx.invoke(self.connect_)
 
-			player = self.get_player(ctx)
-			# If download is False, source will be a dict which will be used later to regather the stream.
-			# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
-			source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
-			if source == "type_playlist":
-				source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player=player)
-				return 0
+		player = self.get_player(ctx)
+		# If download is False, source will be a dict which will be used later to regather the stream.
+		# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
+		source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
+		if source == "type_playlist":
+			source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player=player)
+			return 0
 		await player.queue.put(source)
 		#await ctx.send( "NO play", hidden = True)
 		
