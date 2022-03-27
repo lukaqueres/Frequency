@@ -542,6 +542,7 @@ class Slash_music(Cog):
 			music_console_msg =  await ctx.send( embed = embed, components=[action_row])
 			
 			def check_button(i: discord.Interaction, button):
+				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
 				return i.author == ctx.author and i.message == music_console_msg
 
 			interaction, button = await client.wait_for('button_click', check=check_button)
