@@ -430,7 +430,50 @@ class Slash_music(Cog):
 						create_choice(name = 'No', value = 'False')
 				   	]
                                	   )])
-	async def _play(self, ctx: SlashContext, search = None, random_order = None): 
-		await ctx.send( "NO play", hidden = True)
+	async def _play(self, ctx: SlashContext, search, random_order = None): 
+		"""Request a song and add it to the queue.
+		This command attempts to join a valid voice channel if the bot is not already in one.
+		Uses YTDL to automatically search and retrieve a song.
+		Parameters
+		------------
+		search: str [Required]
+			The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
+		"""
+		#if random != None:
+			#ytdlopts['playlistrandom'] = True
+		#else:
+			#ytdlopts['playlistrandom'] = False
+		async with ctx.typing():
+
+			vc = ctx.voice_client
+
+			if not vc:
+				await ctx.invoke(self.connect_)
+
+			player = self.get_player(ctx)
+			# If download is False, source will be a dict which will be used later to regather the stream.
+			# If download is True, source will be a discord.FFmpegPCMAudio with a VolumeTransformer.
+			source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
+			if source == "type_playlist":
+				source = await YTDLSource.create_source_from_playlist(ctx, search, loop=self.bot.loop, download=False, player=player)
+				return 0
+		await player.queue.put(source)
+		#await ctx.send( "NO play", hidden = True)
+		
+	@cog_ext.cog_slash(name="play", 
+	                   description="Stop playing music, clears queue and leave voice channel", 
+	                   guild_ids=guild_ids,
+	                   )
+	async def stop_(self, ctx):
+		"""Stop the currently playing song and destroy the player.
+		!Warning!
+			This will destroy the player assigned to your guild, also deleting any queued songs and settings.
+		"""
+		vc = ctx.voice_client
+
+		if not vc or not vc.is_connected():
+			return await ctx.send('I am not currently playing anything!', delete_after=20)
+		
+		await self.cleanup(ctx.guild)
 def setup(client: client):
 	client.add_cog(Slash_music(client))
