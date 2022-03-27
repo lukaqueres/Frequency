@@ -522,7 +522,7 @@ class Slash_music(Cog):
 			embed = discord.Embed( 
 				title="Music console",
 				description="Use button for set action",
-				color= client.user.colour,
+				color = 0x206694,
 				timestamp=datetime.utcnow() + timedelta( hours = 0 ) #timestamp=datetime.datetime.utcnow() + timedelta( hours = 1 )
 			)
 			embed.add_field(name= 'Buttons', value="""🎶 : Display current queue \n
