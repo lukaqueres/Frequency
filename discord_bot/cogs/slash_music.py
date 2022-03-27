@@ -492,19 +492,13 @@ class Slash_music(Cog):
                                	   )]
 	                   )
 	async def console_(self, ctx, module):
-		components= [
-  			{
-    			"type": 2,
-    			"label": "Clear les kick",
-    			"style": 4,
-    			"custom_id": "clear_kick_button"
-  			}
-		     ]
 		vc = ctx.voice_client
-
+		view = discord.ui.View()
+		item = discord.ui.Button(style=discord.ButtonStyle.blurple, label="Click Me", url="https://google.com")
+		view.add_item(item=item)
 		#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-		await ctx.send( 'test', components = components )
+		await ctx.send( 'test', view=view)
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
