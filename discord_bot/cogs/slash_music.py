@@ -476,7 +476,7 @@ class Slash_music(Cog):
 		
 		await self.cleanup(ctx.guild)
 	
-	console_components= [
+	components= [
   			{
     			"type": 2,
     			"label": "Clear les kick",
@@ -505,7 +505,7 @@ class Slash_music(Cog):
 
 		if not vc or not vc.is_connected():
 			return await ctx.send('>>> There is no music playing right now', hidden = True)
-		await ctx.send( 'test', components = console_components )
+		await ctx.send( 'test', components = components )
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
