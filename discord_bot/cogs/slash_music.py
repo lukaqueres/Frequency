@@ -533,7 +533,10 @@ class Slash_music(Cog):
 			action_row = create_actionrow(*buttons)
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-			await ctx.send( 'test', components=[action_row])
+			await ctx.send( embed = embed, components=[action_row])
+			
+			await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
+			await test.respond(content="queue")
 
 def setup(client: client):
 	client.add_cog(Slash_music(client))
