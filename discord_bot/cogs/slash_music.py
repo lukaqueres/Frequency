@@ -476,15 +476,6 @@ class Slash_music(Cog):
 		
 		await self.cleanup(ctx.guild)
 	
-	components= [
-  			{
-    			"type": 2,
-    			"label": "Clear les kick",
-    			"style": 4,
-    			"custom_id": "clear_kick_button"
-  			}
-		     ]
-	
 	@cog_ext.cog_slash(name="console", 
 	                   description="Open up a module-related console", 
 	                   guild_ids=guild_ids,
@@ -501,6 +492,14 @@ class Slash_music(Cog):
                                	   )]
 	                   )
 	async def console_(self, ctx, module):
+		components= [
+  			{
+    			"type": 2,
+    			"label": "Clear les kick",
+    			"style": 4,
+    			"custom_id": "clear_kick_button"
+  			}
+		     ]
 		vc = ctx.voice_client
 
 		#if not vc or not vc.is_connected():
