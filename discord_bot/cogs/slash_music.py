@@ -584,7 +584,7 @@ class Slash_music(Cog):
 				return i.message == music_console_msg
 			state = True
 			while state:
-				interaction, button = await self.client.wait_for("button_click", check=lambda i: i.component.custom_id == "queue") # lambda i: i.component.custom_id == "queue"
+				interaction, button = await self.client.wait_for("button_click", check=check_button) # lambda i: i.component.custom_id == "queue"
 
 				embed = discord.Embed(title='You pressed an Button',
 					      description=f'You pressed a {button.emoji} button.',
