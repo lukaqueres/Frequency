@@ -574,14 +574,15 @@ class Slash_music(Cog):
 				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
 				#return i.author == ctx.author and i.message == music_console_msg
 				return i.message == music_console_msg
-			
-			interaction, button = await client.wait_for('button_click', check=check_button) # lambda i: i.custom_id == "queue"
+			state = True
+			while state:
+				interaction, button = await client.wait_for('button_click', check=check_button) # lambda i: i.custom_id == "queue"
 
-			embed = discord.Embed(title='You pressed an Button',
+				embed = discord.Embed(title='You pressed an Button',
 					      description=f'You pressed a {button.emoji} button.',
 					      color=discord.Color.random())
-			await interaction.respond(embed=embed, delete_after = 5)
-
+				await interaction.respond(embed=embed, delete_after = 5)
+	
 			
 			#await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
 			#interaction_queue = await client.wait_for("button_click", check=lambda i: i.component.emoi == '🎶')
