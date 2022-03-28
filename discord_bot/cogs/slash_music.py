@@ -569,12 +569,6 @@ class Slash_music(Cog):
               			style=ButtonStyle.blurple
 				)
 			]])"""
-			music_console_msg = await ctx.send(
-        		"Support Tickets",
-        		components = [
-            			create_button(label = "General", style=ButtonStyle.red)
-        		]
-    			)
 			#print('willcheck')
 			def check_button(i: discord.Interaction, button):
 				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
