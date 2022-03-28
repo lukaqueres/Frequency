@@ -1,3 +1,4 @@
+discord.py-message-components
 discord.py
 requests
 youtube_dl
@@ -10,4 +11,4 @@ psycopg2
 nltk
 flask
 discord-py-slash-command
-discord.py-message-components
+
