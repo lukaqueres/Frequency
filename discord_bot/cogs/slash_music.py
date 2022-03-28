@@ -527,27 +527,27 @@ class Slash_music(Cog):
 				create_button(
                 			style=ButtonStyle.blurple,
                 			emoji="🎵",
-					custom_id="current_song",
+					custom_id="music_current_song",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
                 			emoji="🔀",
-					custom_id="stop",
+					custom_id="music_mix_songs",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
                 			emoji="⏹️",
-					custom_id="stop",
+					custom_id="music_stop",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
                 			emoji="⏯️",
-					custom_id="pause_resume",
+					custom_id="music_pause_resume",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
                 			emoji="⏭️",
-					custom_id="skip",
+					custom_id="music_skip_song",
             			),
           		]
 			buttons_row_two = [
@@ -555,7 +555,7 @@ class Slash_music(Cog):
                 			style=ButtonStyle.blurple,
                 			#label="🎶"
 					emoji="🎶",
-					custom_id="queue",
+					custom_id="music_queue",
             			),
 				create_button(
 					style=ButtonStyle.blurple,
@@ -565,17 +565,17 @@ class Slash_music(Cog):
 				create_button(
 					style=ButtonStyle.blurple,
 					emoji="🔁",
-					custom_id="music_help",
+					custom_id="music_loop",
 				),
 				create_button(
 					style=ButtonStyle.blurple,
 					emoji="🔂",
-					custom_id="music_help",
+					custom_id="music_song_loop",
 				),
 				create_button(
 					style=ButtonStyle.blurple,
 					emoji="🔇",
-					custom_id="music_help",
+					custom_id="music_no_voice",
 				),
 			]
 			embed = discord.Embed( 
