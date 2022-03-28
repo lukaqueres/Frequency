@@ -541,7 +541,7 @@ class Slash_music(Cog):
 			action_row = create_actionrow(*buttons)
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-			#music_console_msg =  await ctx.send( embed = embed, components=[action_row])
+			music_console_msg =  await ctx.send( embed = embed, components=[action_row])
 			"""music_console_msg =  await ctx.send( embed = embed, components=[[
 			create_button(
 				emoji="🎶",
@@ -572,7 +572,7 @@ class Slash_music(Cog):
 			music_console_msg = await ctx.send(
         		"Support Tickets",
         		components = [
-            			Button(label = "General", style=ButtonStyle.red)
+            			create_button(label = "General", style=ButtonStyle.red)
         		]
     			)
 			#print('willcheck')
