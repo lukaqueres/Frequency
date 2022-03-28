@@ -542,7 +542,7 @@ class Slash_music(Cog):
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
 			#music_console_msg =  await ctx.send( embed = embed, components=[action_row])
-			music_console_msg =  await ctx.send( embed = embed, components=[[
+			music_console_msg =  await ctx.send( embed = embed, components=[
 			Button(
 				emoji="🎶",
               			custom_id="disp_queue",
@@ -568,7 +568,7 @@ class Slash_music(Cog):
               			custom_id="song_skip",
               			style=ButtonStyle.blurple
 				)
-			]])
+			])
 			
 			def check_button(i: discord.Interaction, button):
 				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
