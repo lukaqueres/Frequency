@@ -11,4 +11,3 @@ psycopg2
 nltk
 flask
 discord-py-slash-command
-git+https://github.com/Rapptz/discord.py
