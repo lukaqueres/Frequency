@@ -8,6 +8,8 @@ from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext.commands import has_permissions, MissingPermissions
 
+from discord import Button, ButtonStyle
+
 from discord_slash.utils.manage_components import create_button, create_actionrow
 from discord_slash.model import ButtonStyle
 
@@ -539,13 +541,40 @@ class Slash_music(Cog):
 			action_row = create_actionrow(*buttons)
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-			music_console_msg =  await ctx.send( embed = embed, components=[action_row])
+			#music_console_msg =  await ctx.send( embed = embed, components=[action_row])
+			music_console_msg =  await ctx.send( embed = embed, components=[[
+			Button(
+				emoji="🎶",
+              			custom_id="disp_queue",
+              			style=ButtonStyle.blurple
+				),
+       			Button(
+				emoji="🎵",
+              			custom_id="disp_crnt_song",
+             			style=ButtonStyle.blurple
+				),
+       			Button(
+				emoji="⏹️",
+              			custom_id="song_stop",
+              			style=ButtonStyle.blurple
+				),
+       			Button(
+				emoji="⏯️",
+              			custom_id="song_pause_resume",
+              			style=ButtonStyle.blurple
+				),
+			Button(
+				emoji="⏭️",
+              			custom_id="song_skip",
+              			style=ButtonStyle.blurple
+				)
+			]])
 			
 			def check_button(i: discord.Interaction, button):
 				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
 				return i.author == ctx.author and i.message == music_console_msg
 
-			interaction, button = await client.wait_for('button_click', check= lambda i: i.custom_id == "queue")
+			interaction, button = await client.wait_for('button_click', check= check_button ) # lambda i: i.custom_id == "queue"
 
 			embed = discord.Embed(title='You pressed an Button',
 					      description=f'You pressed a {button.custom_id} button.',
