@@ -526,6 +526,13 @@ class Slash_music(Cog):
 					custom_id="skip",
             			),
           		]
+			buttons_row_two = [
+				create_button(
+					style=ButtonStyle.blurple,
+					emoji="❔",
+					custom_id="music_help",
+				)
+			]
 			embed = discord.Embed( 
 				title="Music console",
 				description="Use button for set action",
@@ -538,10 +545,11 @@ class Slash_music(Cog):
 								  ⏯️ : Stops / Resumes playing songs \n
 								  ⏭️ : Skips current song""", inline=True),
 			embed.add_field(name= 'Buttons', value="``` TEST ```", inline=True),
-			action_row = create_actionrow(*buttons)
+			action_row_one = create_actionrow(*buttons)
+			action_row_two = create_actionrow(*buttons_row_two)
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-			music_console_msg =  await ctx.send( embed = embed, components=[action_row])
+			music_console_msg =  await ctx.send( embed = embed, components=[action_row_one, action_row_two])
 			"""music_console_msg =  await ctx.send( embed = embed, components=[[
 			create_button(
 				emoji="🎶",
