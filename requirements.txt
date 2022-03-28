@@ -1,5 +1,6 @@
 discord.py-message-components
 discord.py
+https://github.com/Rapptz/discord.py
 requests
 youtube_dl
 YouTube-dl
