@@ -556,13 +556,13 @@ class Slash_music(Cog):
 				return i.message.id == music_console_msg.id
 			state = True
 			while state:
-				interaction, button = await self.client.wait_for("button_click", check=check_button) # lambda i: i.component.custom_id == "queue"
+				music_interaction, button = await self.client.wait_for("button_click", check=check_button) # lambda i: i.component.custom_id == "queue"
 				#message_reference = await ctx.channel.fetch_message(music_console_msg)
 				embed = discord.Embed(title='You pressed an Button',
 					      description=f'You pressed a {button.emoji} button.',
 					      color=discord.Color.random())
 				#await ctx.send(embed=embed, reference = music_console_msg, delete_after = 5)
-				await interaction.respond(centent = 'test') #, delete_after = 5
+				await music_interaction.respond(embed = embed) #, delete_after = 5
 	
 			
 			#await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
