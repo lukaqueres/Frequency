@@ -562,7 +562,7 @@ class Slash_music(Cog):
 					      description=f'You pressed a {button.emoji} button.',
 					      color=discord.Color.random())
 				#await ctx.send(embed=embed, delete_after = 60) #, reference = music_console_msg
-				await interaction.respond.send_message(embed = embed) #, delete_after = 5
+				await interaction.respond(embed = embed) #, delete_after = 5
 	
 			
 			#await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
