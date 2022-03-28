@@ -522,18 +522,17 @@ class Slash_music(Cog):
 	                   )
 	async def console_(self, ctx, module):
 		if module == 'music':
-			view = MusicButtons()
+			#view = MusicButtons()
 			buttons = [
-            			create_button(
-                			style=ButtonStyle.blurple,
-                			#label="🎶"
-					emoji="🎶",
-					custom_id="queue",
-            			),
 				create_button(
                 			style=ButtonStyle.blurple,
                 			emoji="🎵",
 					custom_id="current_song",
+            			),
+				create_button(
+                			style=ButtonStyle.blurple,
+                			emoji="🔀",
+					custom_id="stop",
             			),
 				create_button(
                 			style=ButtonStyle.blurple,
@@ -553,10 +552,31 @@ class Slash_music(Cog):
           		]
 			buttons_row_two = [
 				create_button(
+                			style=ButtonStyle.blurple,
+                			#label="🎶"
+					emoji="🎶",
+					custom_id="queue",
+            			),
+				create_button(
 					style=ButtonStyle.blurple,
 					emoji="❔",
 					custom_id="music_help",
-				)
+				),
+				create_button(
+					style=ButtonStyle.blurple,
+					emoji="🔁",
+					custom_id="music_help",
+				),
+				create_button(
+					style=ButtonStyle.blurple,
+					emoji="🔂",
+					custom_id="music_help",
+				),
+				create_button(
+					style=ButtonStyle.blurple,
+					emoji="🔇",
+					custom_id="music_help",
+				),
 			]
 			embed = discord.Embed( 
 				title="Music console",
