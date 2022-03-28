@@ -569,11 +569,11 @@ class Slash_music(Cog):
               			style=ButtonStyle.blurple
 				)
 			]])"""
-			
+			print('willcheck')
 			def check_button(i: discord.Interaction, button):
 				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
 				return i.author == ctx.author and i.message == music_console_msg
-
+			
 			interaction, button = await client.wait_for('button_click', check= check_button ) # lambda i: i.custom_id == "queue"
 
 			embed = discord.Embed(title='You pressed an Button',
