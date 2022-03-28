@@ -61,6 +61,30 @@ ffmpegopts = {
 
 ytdl = YoutubeDL(ytdlopts)
 
+class MusicButtons(discord.ui.View):
+	def __init__(self, *, timeout=180):
+		super().__init__(timeout=timeout)
+	@discord.ui.button(label="Blurple Button",style=discord.ButtonStyle.blurple,emoji="🎶") # or .primary
+	async def blurple_button(self,button:discord.ui.Button,interaction:discord.Interaction):
+		button.disabled=True
+		await interaction.response.edit_message(view=self)
+	@discord.ui.button(label="Gray Button",style=discord.ButtonStyle.gray,emoji="🎵") # or .secondary/.grey
+	async def gray_button(self,button:discord.ui.Button,interaction:discord.Interaction):
+		button.disabled=True
+		await interaction.response.edit_message(view=self)
+	@discord.ui.button(label="Green Button",style=discord.ButtonStyle.green,emoji="⏹️") # or .success
+	async def green_button(self,button:discord.ui.Button,interaction:discord.Interaction):
+		button.disabled=True
+		await interaction.response.edit_message(view=self)
+	@discord.ui.button(label="Red Button",style=discord.ButtonStyle.red,emoji="⏯️") # or .danger
+	async def red_button(self,button:discord.ui.Button,interaction:discord.Interaction):
+		button.disabled=True
+		await interaction.response.edit_message(view=self)
+	@discord.ui.button(label="Red Button",style=discord.ButtonStyle.red,emoji="⏭️") # or .danger
+	async def red_button(self,button:discord.ui.Button,interaction:discord.Interaction):
+		button.disabled=True
+		await interaction.response.edit_message(view=self)
+
 class VoiceConnectionError(commands.CommandError):
 	"""Custom Exception class for connection errors."""
 
@@ -498,6 +522,7 @@ class Slash_music(Cog):
 	                   )
 	async def console_(self, ctx, module):
 		if module == 'music':
+			view = MusicButtons()
 			buttons = [
             			create_button(
                 			style=ButtonStyle.blurple,
@@ -549,12 +574,13 @@ class Slash_music(Cog):
 			action_row_two = create_actionrow(*buttons_row_two)
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
-			music_console_msg =  await ctx.send( embed = embed, components=[action_row_one, action_row_two])
+			#music_console_msg =  await ctx.send( embed = embed, components=[action_row_one, action_row_two])
+			music_console_msg =  await ctx.send( embed = embed,view=view)
 			def check_button(i: discord.Interaction, button):
 				#print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
 				#return i.author == ctx.author and i.message == music_console_msg
 				return i.message.id == music_console_msg.id
-			state = True
+			state = False
 			while state:
 				event, button = await self.client.wait_for("button_click", check=check_button) # , button
 				#message_reference = await ctx.channel.fetch_message(music_console_msg)
