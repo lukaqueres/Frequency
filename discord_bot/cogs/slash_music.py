@@ -550,46 +550,18 @@ class Slash_music(Cog):
 			#if not vc or not vc.is_connected():
 			#return await ctx.send('>>> There is no music playing right now', hidden = True)
 			music_console_msg =  await ctx.send( embed = embed, components=[action_row_one, action_row_two])
-			"""music_console_msg =  await ctx.send( embed = embed, components=[[
-			create_button(
-				emoji="🎶",
-              			custom_id="disp_queue",
-              			style=ButtonStyle.blurple
-				),
-       			create_button(
-				emoji="🎵",
-              			custom_id="disp_crnt_song",
-             			style=ButtonStyle.blurple
-				),
-       			create_button(
-				emoji="⏹️",
-              			custom_id="song_stop",
-              			style=ButtonStyle.blurple
-				),
-       			create_button(
-				emoji="⏯️",
-              			custom_id="song_pause_resume",
-              			style=ButtonStyle.blurple
-				),
-			create_button(
-				emoji="⏭️",
-              			custom_id="song_skip",
-              			style=ButtonStyle.blurple
-				)
-			]])"""
-			#print('willcheck')
 			def check_button(i: discord.Interaction, button):
-				print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
+				#print(f'checking i.autor:{i.author} and ctx.autor: {ctx.author}, i.message: {i.message}, also music_console_msg: {music_console_msg}')
 				#return i.author == ctx.author and i.message == music_console_msg
 				return i.message.id == music_console_msg.id
 			state = True
 			while state:
 				interaction, button = await self.client.wait_for("button_click", check=check_button) # lambda i: i.component.custom_id == "queue"
-
+				#message_reference = await ctx.channel.fetch_message(music_console_msg)
 				embed = discord.Embed(title='You pressed an Button',
 					      description=f'You pressed a {button.emoji} button.',
 					      color=discord.Color.random())
-				await interaction.respond(embed=embed, delete_after = 5)
+				await ctx.send(embed=embed, delete_after = 5, reference = music_console_msg)
 	
 			
 			#await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
