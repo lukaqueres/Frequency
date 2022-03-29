@@ -612,7 +612,7 @@ class Slash_music(Cog):
 				#await ctx.send(embed=embed, delete_after = 60) #, reference = music_console_msg
 				#await event.respond(embed = embed) #, delete_after = 5
 				
-				await event.channel.send(embed = embed, reference = music_console_msg)
+				#await event.channel.send(embed = embed, reference = music_console_msg)
 				await event.send(content='Test')
 	
 			
