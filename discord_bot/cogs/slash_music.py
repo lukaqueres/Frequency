@@ -609,7 +609,7 @@ class Slash_music(Cog):
 					      color=discord.Color.random())
 				#await ctx.send(embed=embed, delete_after = 60) #, reference = music_console_msg
 				#await event.respond(embed = embed) #, delete_after = 5
-				await interaction.send(content='Test')
+				await event.send(content='Test')
 				await event.channel.send(embed = embed, reference = music_console_msg)
 	
 			
