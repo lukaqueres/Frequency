@@ -1,4 +1,5 @@
 discord.py-message-components
+discord-components
 discord.py
 requests
 youtube_dl
