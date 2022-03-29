@@ -604,10 +604,10 @@ class Slash_music(Cog):
 				return i.message.id == music_console_msg.id
 			state = True
 			while state:
-				event, button = await self.client.wait_for("button_click", check=check_button) # , button
+				event = await self.client.wait_for("button_click", check=check_button) # , button
 				#message_reference = await ctx.channel.fetch_message(music_console_msg)
 				embed = discord.Embed(title='You pressed an Button',
-					      description=f'You pressed a {button.emoji} button.',
+					      description='You pressed a {button.emoji} button.',
 					      color=discord.Color.random())
 				#await ctx.send(embed=embed, delete_after = 60) #, reference = music_console_msg
 				#await event.respond(embed = embed) #, delete_after = 5
