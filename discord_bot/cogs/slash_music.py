@@ -8,6 +8,8 @@ from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext.commands import has_permissions, MissingPermissions
 
+from discord_components import DiscordComponents, ComponentsBot, Button, SelectOption, Select
+
 #from discord import Button, ButtonStyle
 
 from discord_slash.utils.manage_components import create_button, create_actionrow
@@ -609,8 +611,9 @@ class Slash_music(Cog):
 					      color=discord.Color.random())
 				#await ctx.send(embed=embed, delete_after = 60) #, reference = music_console_msg
 				#await event.respond(embed = embed) #, delete_after = 5
-				await event.send(content='Test')
+				
 				await event.channel.send(embed = embed, reference = music_console_msg)
+				await event.send(content='Test')
 	
 			
 			#await client.wait_for("button_click", check = lambda i: i.component.emoi == '🎶')
