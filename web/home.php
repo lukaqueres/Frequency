@@ -23,12 +23,12 @@
   ?>
   <body>
     <div id="header_panel" class="vertical_center flex-container">
-        <div><h1> <?php echo $bot_name; ?> </h1></div>
+        <div class="no_margin"><h1> <?php echo $bot_name; ?> </h1></div>
         <div>
             <?php
             if (isset($_SESSION['user'])) 
             {
-                echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
+                echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng' style='width: 87px;font-size: 20px;'>
                   Manage
                 </a>";
             }
