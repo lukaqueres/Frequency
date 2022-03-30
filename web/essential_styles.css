@@ -53,8 +53,13 @@
     z-index: 99;
     border: solid 1px var(--accent_color);
     border-radius: 0 0 10px 10px;
+    transition: all 0.25s cubic-bezier(.77,0,.18,1);
     padding: 5px;
+    opacity: 0.75;
 }
+    #header_panel:hover {
+        opacity: 1;
+    }
 
     #header_panel * {
         margin-inline: 5px;
