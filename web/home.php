@@ -22,29 +22,31 @@
     
   ?>
   <body>
-    <div class="header_panel vertical_center">
-        <h1> <?php echo $bot_name; ?> </h1>
-        <?php
-          if (isset($_SESSION['user'])) 
-          {
-            echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
-              Manage
-            </a>";
-          }
-          else
-          {
-            $auth_url = url($client_id, $redirect_url, $scopes);
-            echo "<a class='headerbtn' href='$auth_url' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
-              Authorize
-            </a>";
-          }
-        ?>
-        <div style="top: -109px; right: 10%; /*! width: 100%; */" class="footerlinksdiv">
+    <div id="header_panel" class="vertical_center flex-container">
+        <div><h1> <?php echo $bot_name; ?> </h1></div>
+        <div>
+            <?php
+            if (isset($_SESSION['user'])) 
+            {
+                echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
+                  Manage
+                </a>";
+            }
+            else
+            {
+                $auth_url = url($client_id, $redirect_url, $scopes);
+                echo "<a class='headerbtn' href='$auth_url' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
+                  Authorize
+                </a>";
+            }
+            ?>
+        </div>
+        <div class="footerlinksdiv">
             <a class="headerlink" href=<?php echo $bot_invite_link; ?>>Main</a>
             <a class="headerlink" href=<?php echo $bot_invite_link; ?>>Commands &amp; Modules</a>
             <a class="headerlink" href=<?php echo $bot_invite_link; ?>>Updates &amp; Changelog</a>
         </div>
-    </div>
+    </div> <?php #END OF HEADER ?>
       <div id="panel">
         <button onclick="topFunction()" id="panel_up_btn" title="Go to top">&#8613;</button> 
         <button onclick="moveFunction(document.getElementById('panel'))" id="panel_more_btn"><h4 id="rotated_text">More</h4></button> 
