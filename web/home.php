@@ -2,7 +2,7 @@
 <html>
   <head>
     <title> Wild West Post Office | Main</title>
-    <link rel="stylesheet" type="text/css" href="base_styles.css" />
+    <link rel="stylesheet" type="text/css" href="essential_styles.css" />
     <script type="text/javascript" src="assets/js/scripts.js"></script>
     <?php include("manageDB.php"); ?>
     <meta name="description" content="Main site featuring Discord multi-task bot Wild West Post Office!" />
@@ -23,12 +23,11 @@
   ?>
   <body>
     <div class="header">
-        <h1 style="top: -17px; left: 5%;"> Wild West Post Office </h1>
-        <h6 style="top: -53px; left: 18%; /*! border-bottom-style: solid; */ padding-left: 10px;border-width: 1px;"> by Wild West Post Office </h6>
+        <h1> <?php echo $bot_name; ?> </h1>
         <?php
           if (isset($_SESSION['user'])) 
           {
-            echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng.php' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
+            echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
               Manage
             </a>";
           }
@@ -40,13 +39,11 @@
             </a>";
           }
         ?>
-      <div style="top: -109px; right: 10%; /*! width: 100%; */" class="footerlinksdiv">
-        <a class="headerlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands">Main</a>
-        <a class="headerlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands">Commands &amp; Modules</a>
-        <a class="headerlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands">Updates &amp; Changelog</a>
-      </div>
-        
-      </div>
+        <div style="top: -109px; right: 10%; /*! width: 100%; */" class="footerlinksdiv">
+            <a class="headerlink" href=<?php echo $bot_invite_link; ?>>Main</a>
+            <a class="headerlink" href=<?php echo $bot_invite_link; ?>>Commands &amp; Modules</a>
+            <a class="headerlink" href=<?php echo $bot_invite_link; ?>>Updates &amp; Changelog</a>
+        </div>
     </div>
       <div id="panel">
         <button onclick="topFunction()" id="panel_up_btn" title="Go to top">&#8613;</button> 

@@ -1,30 +1,34 @@
+:root {
+    --night_blue: #0C0E1A;
+    --white: #ffffff;
+}
+
 @media all 
 {
-    * 
-   {
-       font-family: "Bahnschrift", "Arial";
-       position: relative;
+    * {
+        font-family: "Bahnschrift", "Arial";
+        /*position: relative;*/
     }
 
     body {
         background-color: white;/*#A7A7AB; #cdd1ff*/
-       width: 100%;
-       margin: 0px;
+        width: 100%;
+        margin: 0px;
     }
 }
 
-.header
-{
-   height: 50px;
-   position: fixed;
-   left: 0;
-   top: 0;
-   width: 100%;
-   background-color: white;
-   color: black;
-   text-align: left;
-   z-index: 99;
-   /*border-bottom-style: solid;
+.header {
+    /*height: 50px;
+    left: 0;
+    width: 100%;
+    */
+    position: fixed;
+    top: 0;
+    background-color: white;
+    color: var(--night_blue;
+    text-align: center;
+    z-index: 99;
+    /*border-bottom-style: solid;
    border-width: 1px;*/
 }
 
