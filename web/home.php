@@ -41,7 +41,7 @@
             {
                 $auth_url = url($client_id, $redirect_url, $scopes);
                 echo "<a class='headerbtn' href='$auth_url'>
-                  <h1 class='no_margin' >Authorize</h1>
+                  <h3 class='no_margin' >Authorize</h3>
                 </a>";
             }
             ?>
