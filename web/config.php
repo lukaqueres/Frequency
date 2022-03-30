@@ -24,5 +24,5 @@ $redirect_url = "https://web-plan-it.herokuapp.com/includes/login.php";
 # https://i.imgur.com/2tlOI4t.png (screenshot)
 $bot_token = $_ENV["TOKEN"];
 
-$bot_name = "Wild West Post Office"
-$bot_invite_link = "https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands"
+$bot_name = "Wild West Post Office";
+$bot_invite_link = "https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands";
