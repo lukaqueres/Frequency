@@ -20,6 +20,10 @@
         width: 100%;
         margin: 0px;
     }
+
+    a {
+        transition: all 0.25s cubic-bezier(.77,0,.18,1);
+    }
 }
 
 .vertical_center {
@@ -49,6 +53,10 @@
     border-radius: 0 0 5px 5px;
     padding: 5px;
 }
+
+    #header_panel > div {
+        margin-block: 10px;
+    }
 
     #header_panel a {
         color: var(--link_color);
