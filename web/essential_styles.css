@@ -4,8 +4,8 @@
     --accent_color: #0C0E1A;
     --primary_font_color: white;
     --secondary_font_color: black;
-    --link_color : --primary_font_color;
-    --hover_link_color: darkblue;
+    --link_color: #C1C0E1;
+    --hover_link_color: #4440A5;
 }
 
 @media all 
@@ -121,7 +121,6 @@
     #headerbtn:hover {
         filter: brightness(0.85);
         color: var(--hover_link_color);
-        background-color: var(--primary_font_color);
     }
 
 .container
