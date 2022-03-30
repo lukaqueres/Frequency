@@ -50,12 +50,12 @@
     padding: 5px;
 }
 
-    #header_panel > a {
+    #header_panel a {
         color: var(--link_color);
 
     }
 
-        #header_panel > a:hover {
+        #header_panel a:hover {
             color: var(--hover_link_color);
         } 
 
