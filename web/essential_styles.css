@@ -120,7 +120,7 @@
 
     #headerbtn:hover {
         filter: brightness(0.85);
-        color: var(--hover_link_color);
+        /*color: var(--hover_link_color);*/
     }
 
 .container
