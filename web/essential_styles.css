@@ -12,6 +12,7 @@
 {
     * {
         font-family: "Bahnschrift", "Arial";
+        color: var(--primary_font_color);
         /*position: relative;*/
     }
 
@@ -120,7 +121,7 @@
 
     #headerbtn:hover {
         filter: brightness(0.85);
-        /*color: var(--hover_link_color);*/
+        color: var(--primary_font_color);
     }
 
 .container
