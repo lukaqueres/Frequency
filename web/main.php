@@ -33,14 +33,14 @@
             <?php
             if (isset($_SESSION['user'])) 
             {
-                echo "<a class='headerbtn' href='./dc_mng'>
+                echo "<a id='headerbtn' href='./dc_mng'>
                   Manage
                 </a>";
             }
             else
             {
                 $auth_url = url($client_id, $redirect_url, $scopes);
-                echo "<a class='headerbtn' href='$auth_url'>
+                echo "<a id='headerbtn' href='$auth_url'>
                   Authorize
                 </a>";
             }
