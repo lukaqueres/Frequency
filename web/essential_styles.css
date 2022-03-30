@@ -4,8 +4,8 @@
     --accent_color: #0C0E1A;
     --primary_font_color: white;
     --secondary_font_color: black;
-    --link_color: dark_blue;
-    --hover_link_color: white;
+    --link_color : --primary_font_color;
+    --hover_link_color: darkblue;
 }
 
 @media all 
