@@ -33,15 +33,15 @@
             <?php
             if (isset($_SESSION['user'])) 
             {
-                echo "<a class='headerbtn' href='https://web-plan-it.herokuapp.com/dc_mng' style='width: 87px;font-size: 20px;'>
+                echo "<a class='headerbtn' href='./dc_mng'>
                   Manage
                 </a>";
             }
             else
             {
                 $auth_url = url($client_id, $redirect_url, $scopes);
-                echo "<a class='headerbtn' href='$auth_url' style='width: 87px;border-radius: 20px;right: 2%;top: 4px;/*! height: calc(100% - 1px); */font-size: 20px;'>
-                  Authorize
+                echo "<a class='headerbtn' href='$auth_url'>
+                  <h1 class='no_margin' >Authorize</h1>
                 </a>";
             }
             ?>

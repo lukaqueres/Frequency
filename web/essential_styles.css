@@ -38,10 +38,12 @@
 .flex-container {
     display: flex;
     align-items: baseline;
+    flex-wrap: nowrap;
 }
 
     .flex-container > div {
         text-align: center;
+        align-self: center
     }
 
 #header_panel {
@@ -50,7 +52,7 @@
     color: var(--primary_font_color);
     z-index: 99;
     border: solid 1px var(--accent_color);
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 10px 10px;
     padding: 5px;
 }
 
