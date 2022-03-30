@@ -22,7 +22,7 @@
     
   ?>
   <body>
-    <div class="header">
+    <div class="header_panel">
         <h1> <?php echo $bot_name; ?> </h1>
         <?php
           if (isset($_SESSION['user'])) 
