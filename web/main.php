@@ -24,11 +24,11 @@
   <body>
     <div id="header_panel" class="vertical_center flex-container">
         <div><h1 class="no_margin" > <?php echo $bot_name; ?> </h1></div>
-        <div class="footerlinksdiv">
+        <!--<div class="footerlinksdiv">-->
             <a class="clearlink" href=<?php echo $bot_invite_link; ?>>Main</a>
             <a class="clearlink" href=<?php echo $bot_invite_link; ?>>Commands &amp; Modules</a>
             <a class="clearlink" href=<?php echo $bot_invite_link; ?>>Updates &amp; Changelog</a>
-        </div>
+        <!--</div>-->
         <div>
             <?php
             if (isset($_SESSION['user'])) 

@@ -42,7 +42,7 @@
     flex-wrap: nowrap;
 }
 
-    .flex-container > div {
+    .flex-container > * {
         text-align: center;
         align-self: center
     }
@@ -71,7 +71,7 @@
 
     }
 
-        #header_panel a:hover {
+        #header_panel > a:hover {
             color: var(--hover_link_color);
         } 
 
