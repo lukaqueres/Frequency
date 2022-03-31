@@ -51,19 +51,19 @@ require __DIR__ . "/config.php";
 			<div id="header_panel" class="vertical_center flex_container">
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
 				<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
-				<div class="dropdown">
-					<button onclick="myFunction()" class="dropbtn">Dropdown</button>
-					<div id="myDropdown" class="dropdown-content">
-						<?php
-							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
-							}
-						?>
-					</div>
-				</div>
 				<?php if (isset($_SESSION['user'])) { ?>
-				<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-				<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
+					<div class="dropdown">
+						<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+						<div id="myDropdown" class="dropdown-content">
+							<?php
+								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+									echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
+								}
+							?>
+						</div>
+					</div>
+					<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+					<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
 				<?php } else 
 					{
 						$auth_url = url($client_id, $redirect_url, $scopes);
