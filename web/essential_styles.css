@@ -89,7 +89,7 @@
     flex-wrap: nowrap;
 }
 
-    .flex-container > * {
+    .flex-container * {
         text-align: center;
         align-self: center
     }
