@@ -31,7 +31,7 @@
                 <?php
                 if (isset($_SESSION['user']))
                 {
-                echo "<a id='headerbtn' href='./dc_mng'>
+                echo "<a id='headerbtn' href='./manage'>
                     Manage
                 </a>";
                 }

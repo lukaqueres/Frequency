@@ -15,6 +15,6 @@ session_start();
 session_destroy();
 
 # Redirecting the user back to login page
-redirect("../index.php");
+redirect("../main.php");
 
 ?>

@@ -54,4 +54,4 @@ $_SESSION['guilds'] = get_guilds();
 $_SESSION['connections'] = get_connections();
 
 # Redirecting to home page once all data has been fetched
-redirect("../dc_mng.php");
+redirect("../manage.php");
