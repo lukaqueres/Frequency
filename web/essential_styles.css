@@ -73,6 +73,8 @@
     .grid_container > .header {
         grid-area: header;
         margin-inline: auto;
+        height: 51px;
+        background-color: var(--accent_color);
     }
 
     .grid_container > .left {
