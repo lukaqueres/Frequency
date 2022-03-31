@@ -22,7 +22,7 @@
     
   ?>
     <body>
-        <div id="header_panel" class="vertical_center flex_container">
+        <div id="header_panel" class="vertical_center flex_container hidden">
             <h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
             <a class="clearlink" href=<?php echo $bot_invite_link; ?> >Main</a>
             <a class="clearlink" href=<?php echo $bot_invite_link; ?> >Commands &amp; Modules</a>

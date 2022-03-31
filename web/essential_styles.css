@@ -72,6 +72,7 @@
 }
     .grid_container > .header {
         grid-area: header;
+        margin-inline: auto;
     }
 
     .grid_container > .left {
@@ -97,7 +98,7 @@
     flex-wrap: nowrap;
 }
 
-    .flex-container > * {
+    .flex_container > * {
         text-align: center;
         margin-inline: 10px;
         align-self: center;
