@@ -62,20 +62,16 @@ require __DIR__ . "/config.php";
 					</div>
 				</div>
 				<div class="no_margin">
-					<?php
-					if (isset($_SESSION['user']))
-					{
-					echo "<a id='headerbtn' href='./manage'>
-					    Manage
-					</a>";
-					}
-					else
-					{
-					$auth_url = url($client_id, $redirect_url, $scopes);
-					echo "<a id='headerbtn' href='$auth_url'>
-                    Authorize
-					</a>";
-					}
+					<?php if (isset($_SESSION['user'])) { ?>
+					<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
+					<?php } else 
+						{
+							$auth_url = url($client_id, $redirect_url, $scopes);
+							echo "<a id='headerbtn' href='$auth_url'>
+							Authorize
+							</a>";
+						}
 					?>
 				</div>
 			</div> <?php #END OF HEADER PANEL ?>
