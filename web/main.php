@@ -45,11 +45,21 @@
         </div> <?php #END OF HEADER PANEL ?>
 
         <div class="grid_container">
-            <div class="header"></div>
-            <div class="left"></div>
-            <div class="main"></div>
-            <div class="right"></div>
-            <div class="footer"></div>
+            <div class="header">
+                Header
+            </div>
+            <div class="left">
+                Left
+            </div>
+            <div class="main">
+                Main
+            </div>
+            <div class="right">
+                Right
+            </div>
+            <div class="footer">
+                Foooooooooter
+            </div>
         </div>
 
     </body>
