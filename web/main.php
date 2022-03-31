@@ -47,28 +47,7 @@
         </div> <?php #END OF HEADER PANEL ?>
 
         <div class="grid_container">
-            <div class="header flex_container">
-                <h1 class="no_margin"> <?php echo $bot_name; ?> </h1>
-                <a class="clearlink" href=<?php echo $bot_invite_link; ?> >Main</a>
-                <a class="clearlink" href=<?php echo $bot_invite_link; ?> >Commands &amp; Modules</a>
-                <a class="clearlink" href=<?php echo $bot_invite_link; ?> >Updates &amp; Changelog</a>
-                <div class="no_margin">
-                    <?php
-                    if (isset($_SESSION['user']))
-                    {
-                    echo "<a id='headerbtn' href='./dc_mng'>
-                        Manage
-                    </a>";
-                    }
-                    else
-                    {
-                    $auth_url = url($client_id, $redirect_url, $scopes);
-                    echo "<a id='headerbtn' href='$auth_url'>
-                        Authorize
-                    </a>";
-                    }
-                    ?>
-                </div>
+            <div class="header">
             </div>
             <div class="left">
                 Left
