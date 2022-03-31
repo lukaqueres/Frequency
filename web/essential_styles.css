@@ -89,7 +89,7 @@
     flex-wrap: nowrap;
 }
 
-    .flex-container * {
+    .flex-container > * {
         text-align: center;
         align-self: center
     }
@@ -111,6 +111,8 @@
 
     #header_panel * {
         margin-inline: 5px;
+        text-align: center;
+        align-self: center
     }
 
     #header_panel a {
