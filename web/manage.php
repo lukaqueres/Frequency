@@ -50,9 +50,17 @@ require __DIR__ . "/config.php";
 		<div id="container"> 
 			<div id="header_panel" class="vertical_center flex_container">
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
-				<a class="clearlink" href=<?php echo $bot_invite_link; ?> >Main</a>
-				<a class="clearlink" href=<?php echo $bot_invite_link; ?> >Commands &amp; Modules</a>
-				<a class="clearlink" href=<?php echo $bot_invite_link; ?> >Updates &amp; Changelog</a>
+				<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+				<div class="dropdown">
+					<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+					<div id="myDropdown" class="dropdown-content">
+						<?php
+							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+								echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
+							}
+						?>
+					</div>
+				</div>
 				<div class="no_margin">
 					<?php
 					if (isset($_SESSION['user']))
@@ -202,5 +210,24 @@ require __DIR__ . "/config.php";
 			currentWindow(1);
 			//showWindow(windowIndex);
 		}
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 	</script>
 </html>
