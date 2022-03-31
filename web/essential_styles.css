@@ -25,6 +25,9 @@
     a {
         transition: all 0.25s cubic-bezier(.77,0,.18,1);
     }
+        a:hover {
+            color: var(--hover_link_color);
+        }
 }
 
 #headerbtn {
