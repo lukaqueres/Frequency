@@ -75,6 +75,8 @@
         margin-inline: auto;
         height: 51px;
         background-color: var(--accent_color);
+        padding: 0;
+        width: 100%;
     }
 
     .grid_container > .left {
