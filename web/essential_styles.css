@@ -30,6 +30,10 @@
         }
 }
 
+.hidden {
+    display: none;
+}
+
 #headerbtn {
     text-decoration: none;
     background-color: var(--hover_link_color);
@@ -127,7 +131,7 @@
 
         #header_panel > a:hover {
             color: var(--hover_link_color);
-        } 
+        }
 
 .footerlinksdiv
 {

@@ -87,12 +87,11 @@
 </html> 
     
 <script>
-  function callshowtopmorePanel()
-  {
-    panel = document.getElementById("topPanel");
-    showtopmorePanel(panel)
-  }
-  panel = document.getElementById("panel");
-  // When the user scrolls down 20px from the top of the document, show the button
-  window.onscroll = function() {scrollFunction(panel)};
+    function callshowtopmorePanel()
+    {
+        panel = document.getElementById("header_panel");
+        showtopmorePanel(panel)
+    }
+  //panel = document.getElementById("panel");
+  //window.onscroll = function() {scrollFunction(panel)};
 </script>
