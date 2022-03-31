@@ -82,7 +82,7 @@ require __DIR__ . "/config.php";
 				</div>
 			</div>
 			<div id="main_content">
-				<?php if (!(isset($_GET['window']))) { redirect("../dc_mng.php?window=main"); } #Redirect if no window specified  ?>
+				<?php if (!(isset($_GET['window']))) { redirect("../manage?window=main"); } #Redirect if no window specified  ?>
 				<?php if (!isset($_SESSION['user'])) { #WINDOW CONTENT ----------------------------------------------------------- ERROR ON NOT LOGIN ?>
 					<div class="window" id="error-info">
 						<?php if (!isset($_SESSION['user'])) { echo '<h1 style="font-size:100px;">You are not logged in</h1></br>'; } ?>
