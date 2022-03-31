@@ -69,18 +69,18 @@
                     }
                     ?>
                 </div>
-                <div class="left">
-                    Left
-                </div>
-                <div class="main">
-                    Main
-                </div>
-                <div class="right">
-                    Right
-                </div>
-                <div class="footer">
-                    Foooooooooter
-                </div>
+            </div>
+            <div class="left">
+                Left
+            </div>
+            <div class="main">
+                Main
+            </div>
+            <div class="right">
+                Right
+            </div>
+            <div class="footer">
+                Foooooooooter
             </div>
         </div>
     </body>
