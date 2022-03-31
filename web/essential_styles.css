@@ -59,6 +59,7 @@
     width: 100%;
     gap: 0;
     gap: 10px;
+    text-align: center;
     background-color: var(--main_color);
     grid-template-areas:
         'header header header header header header'
@@ -94,7 +95,8 @@
 
     .flex-container > * {
         text-align: center;
-        align-self: center
+        margin-inline: 10px;
+        align-self: center;
     }
 
 #header_panel {
