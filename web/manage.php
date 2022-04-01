@@ -101,6 +101,7 @@ require __DIR__ . "/config.php";
 									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 										echo $_SESSION['guilds'][$i]['name'];
 									}
+								}
 							} elseif (isset($_SESSION['username'])) {
 								echo $_SESSION['username'];
 							} else {
