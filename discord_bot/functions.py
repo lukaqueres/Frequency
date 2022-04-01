@@ -43,7 +43,7 @@ def get_database_data(database, column, condition):
 
 def write_database_data(database, column, condition, value):
 	cur.execute(
-		"UPDATE %s SET %s = '%s' WHERE guild_id = '%s';",
+		"UPDATE %s SET %s = %s WHERE guild_id = %s;",
 		(database, column, value, condition)
 	)
 	con.commit()
