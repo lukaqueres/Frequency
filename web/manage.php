@@ -93,39 +93,6 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-			<div id="aside_menu">
-				<div class="side_menu_accountdet">
-					<?php if (isset($_SESSION['user_avatar'])) { ?>
-						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
-					<?php } ?>
-				</div>
-				<div>
-					<?php
-						$auth_url = url($client_id, $redirect_url, $scopes);
-						if (!(isset($_SESSION['user']))) {
-							echo "<a href='$auth_url'><button>Authorize</button></a>";
-						} else {
-							echo '<a href="includes/logout.php"><button>Log-out</button></a>';
-						}
-					?>
-					<a href="?window=user"><button>User</button></a>
-					<a href="?window=guilds"><button>Guilds</button></a>
-				</div>
-				<input type="text" id="servers_search" onkeyup="search_guilds()" placeholder="Filter by id or name.." title="Type in a name or id" style="width: 90%; margin-block: 10px;">
-				<div style="max-height: 50%; overflow:auto;">
-					<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
-						<?php 
-							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								if ($_SESSION['guilds'][$i]['owner'] || $_SESSION['guilds'][$i]['permissions'] == 2147483647) {
-									echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&guildId=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
-								     	      <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
-								}
-							}
-						?>
-					</table>
-				</div>
-			</div>
 			<div id="main_content">
 				<?php if (!(isset($_GET['window']))) { redirect("../manage?window=main"); } #Redirect if no window specified  ?>
 				<?php if (!isset($_SESSION['user'])) { #WINDOW CONTENT ----------------------------------------------------------- ERROR ON NOT LOGIN ?>
