@@ -28,7 +28,7 @@ require __DIR__ . "/config.php";
 		<title>Wild West Post Office | Manage</title>
 		<link rel="stylesheet" href="assets/css/manage_styles.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script type="text/javascript" src="assets/js/dc_mg_scripts.js"></script>
+		<script type="text/javascript" src="assets/js/manage_scripts.js"></script>
 		<style> .windowcontent { display: none; } </style>
 	</head>
 
@@ -54,13 +54,17 @@ require __DIR__ . "/config.php";
 				<?php if (isset($_SESSION['user'])) { ?>
 					<div class="dropdown">
 						<?php //<button onclick="myFunction()" class="dropbtn">Select server</button> ?>
-						<input type="text" id="servers_search" onkeyup="myFunction()" placeholder="Filter by id or name.." title="Type in a name or id">
+						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds()" placeholder="Filter by id or name.." title="Type in a name or id">
 						<div id="myDropdown" class="dropdown-content vertical_center">
-							<?php
-								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
-								}
-							?>
+							<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
+								<?php
+									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
+										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&guildId=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
+								     	      <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
+									}
+								?>
+								</table>
 						</div>
 					</div>
 					<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
