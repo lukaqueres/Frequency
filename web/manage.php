@@ -76,8 +76,8 @@ require __DIR__ . "/config.php";
 									}
 								?>
 								</table>
-								<button id="buttonUp" onclick="">Up</button>
-								<button id="buttonDown" onclick="">Down</button>
+								<button id="slideUp" onclick="">Up</button>
+								<button id="slideDown" onclick="">Down</button>
 						</div>
 					</div>
 					<div class="full_height flex_container">
