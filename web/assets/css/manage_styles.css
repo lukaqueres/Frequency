@@ -200,7 +200,7 @@ body {
 	font-size: 100%;
 }
 .search_row {
-	border-block: white solid 1px;
+	border-block: var(--accent_color) solid 1px;
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
