@@ -4,7 +4,7 @@
 	--white: #ffffff;
 	--accent_color: #0C0E1A;
 	--primary_font_color: white;
-	--secondary_font_color: black;
+	--secondary_font_color: #65AFFF;
 	--link_color: #C1C0E1;
 	--hover_link_color: #4440A5;
 }
@@ -386,6 +386,7 @@ slideUp, slideDown {
 		height: 51px;
 		padding: 0;
 		width: 100%;
+		color: var(--secondary_font_color)
 	}
 
 	.grid_container > .left {
