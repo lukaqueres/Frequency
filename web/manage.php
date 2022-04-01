@@ -64,6 +64,7 @@ require __DIR__ . "/config.php";
 										echo $_SESSION['guilds'][$i]['name'];
 									}
 								}
+							}
 						?> title="Type in a name or id">
 						<div id="myDropdown" class="dropdown-content vertical_center">
 							<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
