@@ -18,7 +18,10 @@ con = psycopg2.connect(DATABASE_URL)
 cur = con.cursor()
 
 def get_prefix(client, message):
-	cur.execute("SELECT guild_prefix from SERVERS_PROPERTIES WHERE guild_id={}".format(message.guild.id))
+	cur.execute(
+		"SELECT guild_prefix from SERVERS_PROPERTIES WHERE guild_id=%s",
+		(message.guild.id, )
+	)
 	row = cur.fetchone()
 	prefix = row[0]
 	con.commit()
@@ -28,7 +31,10 @@ def get_prefix(client, message):
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 def get_database_data(database, column, condition):
-	cur.execute("SELECT {} from {} WHERE guild_id={}".format(column, database, condition))
+	cur.execute(
+		"SELECT %s from %s WHERE guild_id=%s",
+		(column, database, condition)
+	)
 	row = cur.fetchone()
 	value = row[0]
 	con.commit()
@@ -36,12 +42,18 @@ def get_database_data(database, column, condition):
 	return value
 
 def write_database_data(database, column, condition, value):
-	cur.execute("UPDATE {} SET {} = '{}' WHERE guild_id = '{}';".format(database, column, value, condition))
+	cur.execute(
+		"UPDATE %s SET %s = '%s' WHERE guild_id = '%s';",
+		(database, column, value, condition)
+	)
 	con.commit()
 	return 1
 
 def get_language(condition):
-	cur.execute("SELECT guild_language from SERVERS_PROPERTIES WHERE guild_id={}".format(condition))
+	cur.execute(
+		"SELECT guild_language from SERVERS_PROPERTIES WHERE guild_id=%s",
+		(condition, )
+	)
 	row = cur.fetchone()
 	language = row[0]
 	con.commit()
@@ -119,7 +131,7 @@ def check_database(guilds):
 		correct_tables = 0
 		for table in tables:
 			SQL = """SELECT COUNT(*) FROM %s WHERE guild_id = %s"""
-			data = ( table, guild.id)
+			data = (table, guild.id)
 			cur.execute(SQL, data)
 			row = cur.fetchone()
 			#print(f"row: {row}")
