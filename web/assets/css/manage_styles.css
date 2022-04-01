@@ -206,8 +206,8 @@ body {
 
 	.search_row:hover {
 		filter: brightness(1.5);
-		/*color: black;
-		background-color: white;*/
+		color: black;
+		background-color: white;
 	}
 
 .clicable_row:hover {
