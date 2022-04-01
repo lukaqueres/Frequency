@@ -291,7 +291,7 @@ body {
 	height: 40px;
 }
 
-	#header_panel * {
+	#header_panel > * {
 		margin-inline: 10px;
 		text-align: center;
 		align-self: center
