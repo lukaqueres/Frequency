@@ -2,7 +2,7 @@
 <html>
   <head>
     <title> Wild West Post Office | Main</title>
-    <link rel="stylesheet" type="text/css" href="essential_styles.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/essential_styles.css" />
     <script type="text/javascript" src="assets/js/scripts.js"></script>
     <?php include("manageDB.php"); ?>
     <meta name="description" content="Main site featuring Discord multi-task bot Wild West Post Office!" />
