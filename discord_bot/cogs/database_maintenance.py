@@ -47,15 +47,42 @@ def check_database():
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots 
 		guilds_id.append(guild.id)
 		print('Database Check: Guild {} check.'.format( guild ))
-		cur.execute("""IF NOT EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
-                   INSERT INTO SERVERS_PROPERTIES ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) 
-                   VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
-                   IF EXISTS ( SELECT 1 FROM servers_properties WHERE guild_id = {} ) 
-                   INSERT INTO SERVERS_PROPERTIES ( NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) WHERE guild_id = {}
-                   VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
-		   IF EXISTS ( SELECT 1 FROM servers_msg_process WHERE guild_id = {} ) 
-		   INSERT INTO servers_msg_process ( guild_id, guild_name ) 
-		   VALUES ( '{}', '{}' );""".format( guild.id, guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.id, members_count, guild.member_count, default_language, guild.id, guild.id, guild.name ));
+		cur.execute(
+			"""
+			IF NOT EXISTS (
+				SELECT 1 FROM servers_properties WHERE guild_id = %s
+			)
+			INSERT INTO SERVERS_PROPERTIES (
+				GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX,
+				NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC,
+				UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE
+			)
+			VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+
+			IF EXISTS (
+				SELECT 1 FROM servers_properties WHERE guild_id = %s
+			)
+			INSERT INTO SERVERS_PROPERTIES (
+				NUMBER_OF_USERS, NUMBER_OF_MEMBERS, GUILD_LANGUAGE
+			)
+			WHERE guild_id = %s
+			VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+
+			IF EXISTS (
+			   SELECT 1 FROM servers_msg_process WHERE guild_id = %s
+			)
+			INSERT INTO servers_msg_process (
+			   guild_id, guild_name
+			)
+			VALUES (%s, %s);
+			""", (
+				guild.id, guild.id, guild.name, date_of_join, default_prefix,
+				guild.member_count, "NO", "NO", "YES", "NO", members_count,
+				default_language, guild.id, guild.id, members_count,
+				guild.member_count, default_language, guild.id, guild.id,
+				guild.name
+			)
+		)
 		con.commit()
 		print(f"Succesful database actualization for guild {guild.name}")
 
@@ -88,9 +115,30 @@ class Database_maintenance(commands.Cog):
 		default_language = 'ENG'
 		members_count = len([m for m in guild.members if not m.bot]) # doesn't include bots
 		date_of_join = str("{") + get_time("DD") + str("}")
-		cur.execute("""SET datestyle = dmy; INSERT INTO servers_properties ( GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX, NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC, UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}');
-                   INSERT INTO servers_data ( guild_id, guild_name ) VALUES ( '{}', '{}' );
-		   INSERT INTO servers_msg_process ( guild_id, guild_name ) VALUES ( '{}', '{}' );""".format(guild.id, guild.name, date_of_join, default_prefix, guild.member_count, "NO", "NO", "YES", "NO", members_count, default_language, guild.id, guild.name, guild.id, guild.name));
+		cur.execute(
+			"""
+			SET datestyle = dmy;
+
+			INSERT INTO servers_properties (
+				GUILD_ID, GUILD_NAME, DATE_OF_JOIN, GUILD_PREFIX,
+				NUMBER_OF_USERS, message_check_feature, ECONOMY, MUSIC,
+				UPDATES, NUMBER_OF_MEMBERS, GUILD_LANGUAGE
+			)
+			VALUES (
+				%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+			);
+
+			INSERT INTO servers_data ( guild_id, guild_name )
+			VALUES (%s, %s);
+
+			INSERT INTO servers_msg_process ( guild_id, guild_name )
+			VALUES (%s, %s);
+			""", (
+				guild.id, guild.name, date_of_join, default_prefix,
+				guild.member_count, "NO", "NO", "YES", "NO", members_count,
+				default_language, guild.id, guild.name, guild.id, guild.name
+			)
+		)
 		con.commit()
 		print("Succesful data base registration.")
 		slash = SlashCommand(client, sync_commands=True)
@@ -117,7 +165,15 @@ class Database_maintenance(commands.Cog):
 		guild = member.guild.id
 		members_count = len([m for m in member.guild.members if not m.bot]) # doesn't include bots
 		#print("\n Member joined: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
-		cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(members_count, member.guild.member_count, guild))
+		cur.execute(
+			"""
+			SET datestyle = dmy;
+
+			UPDATE SERVERS_PROPERTIES
+			SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = (%s, %s)
+			WHERE GUILD_ID = %s
+			""", (members_count, member.guild.member_count, guild)
+		)
 		con.commit()
 
 #
@@ -128,7 +184,15 @@ class Database_maintenance(commands.Cog):
 		guild = member.guild.id
 		members_count = len([m for m in member.guild.members if not m.bot]) # doesn't include bots
 		#print("\n Member left: \" {} \" guild on \" {} \".".format(member.guild.name, get_time()))
-		cur.execute("SET datestyle = dmy; UPDATE SERVERS_PROPERTIES SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = ('{}', '{}') WHERE GUILD_ID = '{}'".format(members_count, member.guild.member_count, guild))
+		cur.execute(
+			"""
+			SET datestyle = dmy;
+
+			UPDATE SERVERS_PROPERTIES
+			SET (NUMBER_OF_USERS, NUMBER_OF_MEMBERS) = (%s, %s)
+			WHERE GUILD_ID = %s
+			""", (members_count, member.guild.member_count, guild)
+		)
 		con.commit()
     
 
@@ -142,17 +206,47 @@ class Database_maintenance(commands.Cog):
 		database_record_channel_three = get_database_data('servers_data', 'logs_msg_channel_id', guild_id)
 		null = 'NULL'
 		if (channel_id == database_record_channel_one):
-			cur.execute("UPDATE servers_data SET message_check_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
+			cur.execute(
+				"""
+				UPDATE servers_data
+				SET message_check_channel_id = %s
+				WHERE GUILD_ID = %s
+				""", ('NULL', guild_id)
+			)
 			con.commit()
-			cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
+			cur.execute(
+				"""
+				UPDATE servers_properties
+				SET message_check_feature = %s
+				WHERE GUILD_ID = %s
+				""", ('NO', guild_id)
+			)
 			con.commit()
 		elif (channel_id == database_record_channel_two):
-			cur.execute("UPDATE servers_data SET updates_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
+			cur.execute(
+				"""
+				UPDATE servers_data
+				SET updates_channel_id = %s
+				WHERE GUILD_ID = %s
+				""", ('NULL', guild_id)
+			)
 			con.commit()
-			cur.execute("UPDATE servers_properties SET updates = '{}' WHERE GUILD_ID = '{}'".format('NO', guild_id))
+			cur.execute(
+				"""
+				UPDATE servers_properties
+				SET updates = %s
+				WHERE GUILD_ID = %s
+				""", ('NO', guild_id)
+			)
 			con.commit()
 		elif (channel_id == database_record_channel_three):
-			cur.execute("UPDATE servers_data SET logs_msg_channel_id = {} WHERE GUILD_ID = '{}'".format('NULL', guild_id))
+			cur.execute(
+				"""
+				UPDATE servers_data
+				SET logs_msg_channel_id = %s
+				WHERE GUILD_ID = %s
+				""", ('NULL', guild_id)
+			)
 			con.commit()
 		else:
 			return 0

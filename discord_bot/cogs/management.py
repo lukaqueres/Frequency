@@ -187,7 +187,10 @@ class Management(commands.Cog):
 		if (task == 'Music') or (task == 'music'): #>-------------------------------------------< Task - toggle Music
 			database_record = get_database_data('servers_properties', 'music', guild_id)
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
-				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
 				if ctx.voice_client != None:
@@ -195,17 +198,26 @@ class Management(commands.Cog):
 					await ctx.send("Bot left voice channel due to Music setting OFF.")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
-				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
-				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Music setting is now ON!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
-				cur.execute("UPDATE servers_properties SET music = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Music setting is now OFF!")
 				if ctx.voice_client != None:
@@ -227,22 +239,34 @@ class Management(commands.Cog):
 			if ((database_record_two == None) and (value == 'YES')) or ((database_record_two == None) and (database_record == 'NO')):
 				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
-				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Updates setting is now OFF!")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
-				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Updates setting is now ON!")
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
-				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Updates setting is now ON!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
-				cur.execute("UPDATE servers_properties SET updates = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Updates setting is now OFF!")
 				return 0
@@ -258,22 +282,34 @@ class Management(commands.Cog):
 		elif (task == 'Economy') or (task == 'economy'): #>-------------------------------------------< Task - toggle Economy
 			database_record = get_database_data('servers_properties', 'economy', guild_id)
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
-				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Economy setting is now OFF!")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
-				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Economy setting is now ON!")
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
-				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Economy setting is now ON!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
-				cur.execute("UPDATE servers_properties SET economy = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Economy setting is now OFF!")
 				return 0
@@ -292,22 +328,34 @@ class Management(commands.Cog):
 			if ((database_record_two == None) and (value == 'YES')) or ((database_record_two == None) and (database_record == 'NO')):
 				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
-				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Message check feature setting is now OFF!")
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
-				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Message check feature setting is now ON!")
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
-				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('YES', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					('YES', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Message check feature setting is now ON!")
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
-				cur.execute("UPDATE servers_properties SET message_check_feature = '{}' WHERE guild_id = '{}'".format('NO', guild_id))
+				cur.execute(
+					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					('NO', guild_id)
+				)
 				con.commit()
 				await ctx.channel.send("Message check feature setting is now OFF!")
 				return 0
