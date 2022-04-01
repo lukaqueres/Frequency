@@ -50,22 +50,21 @@ require __DIR__ . "/config.php";
 		<div id="container"> 
 			<div id="header_panel" class="vertical_center flex_container">
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
-				<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 				<?php if (isset($_SESSION['user'])) { ?>
 					<div class="dropdown">
-						<?php //<button onclick="myFunction()" class="dropbtn">Select server</button> ?>
 						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds(); myFunction()" placeholder= 
-						<?php 
-							if (!(isset($_GET['guild_id']))) { 
-								echo '"Select server"'; 
-							} else { 
-								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-										echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
+							<?php 
+								if (!(isset($_GET['guild_id']))) { 
+									echo '"Select server"'; 
+								} else { 
+									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+											echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
+										}
 									}
 								}
-							}
-						?> title="Type in a name or id">
+							?> 
+						title="Type in a name or id">
 						<div id="myDropdown" class="dropdown-content vertical_center">
 							<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 								<?php
@@ -93,7 +92,7 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-				<div class="grid_container center">
+			<div class="grid_container center">
 				<div class="header">
 					header
 				</div>
