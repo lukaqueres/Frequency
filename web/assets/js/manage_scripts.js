@@ -49,7 +49,7 @@ function isOverflown(element) {
 }
 
 function add_overflow_btns() {
-    const dropdown_cntnt = document.getElementbyClassName('dropdown-content')
+    const dropdown_cntnt = document.getElementsByClassName('dropdown-content')
     const buttonDown = document.getElementById('slideDown');
     const buttonUp = document.getElementById('slideUp');
     if (isOverflown(dropdown_cntnt)) {
