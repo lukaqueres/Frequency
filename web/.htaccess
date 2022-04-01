@@ -8,6 +8,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f 
 RewriteRule ^(.*)$ $1.php
 
-#Rewrites a request like http://www.example.com/states/ohio/ to http://www.example.com/states/?q=ohio at application level
-#Having the /? at the end makes the ending slash optional
-RewriteRule ^manage/([^\/]+)/?$ /manage/?window=$1 [L]
+RewriteRule ^/guilds/([0-9]+)\.html /manage.php?guild_id=$1

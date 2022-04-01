@@ -56,11 +56,11 @@ require __DIR__ . "/config.php";
 						<?php //<button onclick="myFunction()" class="dropbtn">Select server</button> ?>
 						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds(); myFunction()" placeholder= 
 						<?php 
-							if (!(isset($_GET['guildId']))) { 
+							if (!(isset($_GET['guild_id']))) { 
 								echo "Select server"; 
 							} else { 
 								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									if ($_SESSION['guilds'][$i]['id'] == $_GET['guildId']) {
+									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 										echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
 									}
 								}
@@ -71,7 +71,7 @@ require __DIR__ . "/config.php";
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
-										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&guildId=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
+										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
 								     	      <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 									}
 								?>
@@ -114,9 +114,9 @@ require __DIR__ . "/config.php";
 				<?php } elseif ($_GET['window'] == 'guilds') { #WINDOW CONTENT ----------------------------------------------------------- GUILDS ?>
 					<div class="window" id="guilds">Guilds
 						<?php
-							if (isset($_GET['guildId'])) {
+							if (isset($_GET['guild_id'])) {
 								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									if ($_SESSION['guilds'][$i]['id'] == $_GET['guildId']) {
+									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 										echo json_encode($_SESSION['guilds'][$i]);
 									}
 								}
