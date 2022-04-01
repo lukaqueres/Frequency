@@ -76,6 +76,8 @@ require __DIR__ . "/config.php";
 									}
 								?>
 								</table>
+								<button id="buttonUp" onclick="">Up</button>
+								<button id="buttonDown" onclick="">Down</button>
 						</div>
 					</div>
 					<div class="full_height flex_container">
@@ -217,6 +219,8 @@ require __DIR__ . "/config.php";
 		</div>
 	</body>
 	<script>
+	add_overflow_btns()
+
 		function load() {
 			var windowIndex = 1;
 			currentWindow(1);

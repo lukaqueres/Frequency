@@ -43,3 +43,37 @@ function search_guilds() {
         }
     }
 }
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function add_overflow_btns() {
+    const dropdown_cntnt = document.getElementbyClassName('dropdown-content')
+    const buttonDown = document.getElementById('slideDown');
+    const buttonUp = document.getElementById('slideUp');
+    if (isOverflown(dropdown_cntnt)) {
+
+        if (!(buttonDown.classList.contains('show'))) {
+            buttonDown.classList.add('show');
+        }
+
+        if (!(buttonUp.classList.contains('show'))) {
+            buttonUp.classList.add('show');
+        }
+
+        buttonDown.onclick = function () {
+            document.getElementById('container').scrollDown += 20;
+        };
+        buttonUp.onclick = function () {
+            document.getElementById('container').scrollUp -= 20;
+        };
+    } else {
+        if (buttonDown.classList.contains('show')) {
+            buttonDown.classList.remove('show');
+        }
+        if (buttonUp.classList.contains('show')) {
+            buttonUp.classList.remove('show');
+        }
+    }
+}

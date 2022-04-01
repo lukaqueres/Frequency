@@ -257,6 +257,7 @@ body {
 		text-decoration: none;
 		display: block;
 		transition: all 0.25s cubic-bezier(.77,0,.18,1);
+		width: 300px;
 	}
 
 		.dropdown a:hover {
@@ -344,4 +345,9 @@ body {
 
 .full_height {
 	height: 100%;
+}
+
+slideUp, slideDown {
+	position: absolute;
+	display: none;
 }
