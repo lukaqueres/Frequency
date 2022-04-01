@@ -212,11 +212,11 @@ body {
 
 .clicable_row:hover {
 	cursor: pointer;
+	filter: brightness(1.5);
 }
 
 .no-display {
 	display: none;
-	filter: brightness(1.5);
 }
 
 .dropbtn {
