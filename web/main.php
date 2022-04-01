@@ -55,9 +55,6 @@
             <div class="main">
                 Main
             </div>
-            <div class="right">
-                Right
-            </div>
             <div class="footer">
                 Foooooooooter
             </div>
