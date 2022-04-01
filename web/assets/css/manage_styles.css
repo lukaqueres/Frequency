@@ -355,3 +355,42 @@ slideUp, slideDown {
 	position: absolute;
 	display: none;
 }
+
+.grid_container {
+	display: grid;
+	height: 100%;
+	width: 100%;
+	gap: 0;
+	gap: 10px;
+	text-align: center;
+	background-color: var(--main_color);
+	grid-template-areas:
+		'header header header header header header'
+		'left left main main right right'
+		'footer footer footer footer footer footer';
+}
+
+	.grid_container > .header {
+		grid-area: header;
+		margin-inline: auto;
+		height: 51px;
+		padding: 0;
+		width: 100%;
+	}
+
+	.grid_container > .left {
+		grid-area: left;
+	}
+
+	.grid_container > .right {
+		grid-area: right;
+	}
+
+	.grid_container > .footer {
+		grid-area: footer;
+	}
+
+	.grid_container > div {
+		text-align: center;
+		padding: 10px;
+	}

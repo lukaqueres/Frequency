@@ -93,7 +93,23 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-			
+				<div class="grid_container">
+				<div class="header">
+					header
+				</div>
+				<div class="left">
+					left
+				</div>
+				<div class="main">
+					main
+				</div>
+				<div class="right">
+					right
+				</div>
+				<div class="footer">
+					footer
+				</div>
+			</div>
 		</div>
 	</body>
 	<script>
