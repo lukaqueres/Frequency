@@ -372,9 +372,11 @@ slideUp, slideDown {
 	text-align: center;
 	background-color: var(--main_color);
 	grid-template-areas:
-		'header header header header header header'
-		'left left main main right right'
-		'footer footer footer footer footer footer';
+		'left header header header header header'
+		'left main main main main main'
+		'left main main main main main'
+		'left main main main main main'
+		'left footer footer footer footer footer';
 }
 
 	.grid_container > .header {
@@ -395,6 +397,10 @@ slideUp, slideDown {
 
 	.grid_container > .footer {
 		grid-area: footer;
+	}
+
+	.grid_container > .main {
+		grid-area: main;
 	}
 
 	.grid_container > div {
