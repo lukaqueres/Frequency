@@ -216,6 +216,7 @@ body {
 
 .no-display {
 	display: none;
+	filter: brightness(1.5);
 }
 
 .dropbtn {
