@@ -54,7 +54,17 @@ require __DIR__ . "/config.php";
 				<?php if (isset($_SESSION['user'])) { ?>
 					<div class="dropdown">
 						<?php //<button onclick="myFunction()" class="dropbtn">Select server</button> ?>
-						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds(); myFunction()" placeholder="Filter by id or name.." title="Type in a name or id">
+						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds(); myFunction()" placeholder= 
+						<?php 
+							if (!(isset($_GET['guildId']))) { 
+								echo "Select server."; 
+							} else { 
+								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+									if ($_SESSION['guilds'][$i]['id'] == $_GET['guildId']) {
+										echo $_SESSION['guilds'][$i]['name'];
+									}
+								}
+						?> title="Type in a name or id">
 						<div id="myDropdown" class="dropdown-content vertical_center">
 							<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 								<?php
