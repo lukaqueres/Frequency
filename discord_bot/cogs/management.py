@@ -188,7 +188,7 @@ class Management(commands.Cog):
 			database_record = get_database_data('servers_properties', 'music', guild_id)
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET music = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -199,7 +199,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET music = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -207,7 +207,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
 				cur.execute(
-					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET music = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -215,7 +215,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
 				cur.execute(
-					"UPDATE servers_properties SET music = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET music = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -240,7 +240,7 @@ class Management(commands.Cog):
 				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET updates = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -248,7 +248,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET updates = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -256,7 +256,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
 				cur.execute(
-					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET updates = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -264,7 +264,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
 				cur.execute(
-					"UPDATE servers_properties SET updates = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET updates = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -283,7 +283,7 @@ class Management(commands.Cog):
 			database_record = get_database_data('servers_properties', 'economy', guild_id)
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET economy = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -291,7 +291,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET economy = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -299,7 +299,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
 				cur.execute(
-					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET economy = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -307,7 +307,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
 				cur.execute(
-					"UPDATE servers_properties SET economy = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET economy = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -329,7 +329,7 @@ class Management(commands.Cog):
 				return await ctx.channel.send("Can't turn ON while there is none channel set for alerts!")
 			if (value == None) and (database_record == 'YES'): # toggle to YES in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET message_check_feature = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
@@ -337,7 +337,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == None) and (database_record == 'NO'): # toggle to NO in case of no second argument
 				cur.execute(
-					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET message_check_feature = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -345,7 +345,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'ON') and (database_record == 'NO'): # toggle to YES
 				cur.execute(
-					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET message_check_feature = %s WHERE guild_id = %s",
 					('YES', guild_id)
 				)
 				con.commit()
@@ -353,7 +353,7 @@ class Management(commands.Cog):
 				return 0
 			elif (value == 'OFF') and (database_record == 'YES'): # toggle to NO
 				cur.execute(
-					"UPDATE servers_properties SET message_check_feature = '%s' WHERE guild_id = '%s'",
+					"UPDATE servers_properties SET message_check_feature = %s WHERE guild_id = %s",
 					('NO', guild_id)
 				)
 				con.commit()
