@@ -63,10 +63,10 @@ function add_overflow_btns() {
         }
 
         buttonDown.onclick = function () {
-            document.getElementById('container').scrollDown += 20;
+            document.document.getElementsByClassName('dropdown-content').scrollDown += 20;
         };
         buttonUp.onclick = function () {
-            document.getElementById('container').scrollUp -= 20;
+            document.document.getElementsByClassName('dropdown-content').scrollUp -= 20;
         };
     } else {
         if (buttonDown.classList.contains('show')) {
