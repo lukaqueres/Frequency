@@ -212,7 +212,7 @@ require __DIR__ . "/config.php";
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.add("show");
 }
 
 // Close the dropdown if the user clicks outside of it
