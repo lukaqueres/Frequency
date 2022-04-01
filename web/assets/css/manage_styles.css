@@ -275,7 +275,7 @@ body {
 
 	.flex_container > * {
 		text-align: center;
-		margin-inline: 10px;
+		margin-inline: 5px;
 		align-self: center;
 	}
 
