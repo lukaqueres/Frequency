@@ -92,7 +92,7 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-			<div class="grid_container center" style="height:80%; width:90%;">
+			<div id="main_grid" class="grid_container center" style="height:80%; width:90%;">
 				<div class="header">
 					header
 				</div>

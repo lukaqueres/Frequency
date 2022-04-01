@@ -1,6 +1,6 @@
 :root {
 	--main_color: #171925;
-	--secondary_main_color: #335C81 ;
+	--secondary_main_color: #090A0E;
 	--white: #ffffff;
 	--accent_color: #0C0E1A;
 	--primary_font_color: white;
@@ -408,3 +408,10 @@ slideUp, slideDown {
 		text-align: center;
 		padding: 10px;
 	}
+
+#main_grid {
+	background-color: var(--secondary_main_color);
+	border-radius: 14px;
+	height: 80%;
+	width: 90%;
+}
