@@ -53,7 +53,8 @@ require __DIR__ . "/config.php";
 				<!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
 				<?php if (isset($_SESSION['user'])) { ?>
 					<div class="dropdown">
-						<button onclick="myFunction()" class="dropbtn">Select server</button>
+						<?php //<button onclick="myFunction()" class="dropbtn">Select server</button> ?>
+						<input type="text" id="servers_search" onkeyup="myFunction()" placeholder="Filter by id or name.." title="Type in a name or id">
 						<div id="myDropdown" class="dropdown-content vertical_center">
 							<?php
 								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
