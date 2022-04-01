@@ -423,4 +423,9 @@ slideUp, slideDown {
 	margin: 10px;
 	padding: 5px;
 	border-radius: 15px;
+	text-align: center;
 }
+
+	.header_div_box > * {
+		margin-inline: 5px;
+	}
