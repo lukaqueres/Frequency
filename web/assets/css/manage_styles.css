@@ -205,14 +205,13 @@ body {
 }
 
 	.search_row:hover {
-		filter: brightness(1.5);
-		color: black;
-		background-color: white;
+		color: var(--primary_font_color);
+		background-color: var(--hover_link_color);
 	}
 
 .clicable_row:hover {
 	cursor: pointer;
-	filter: brightness(1.5);
+	/*filter: brightness(1.5);*/
 }
 
 .no-display {
