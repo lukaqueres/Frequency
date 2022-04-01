@@ -94,12 +94,17 @@ require __DIR__ . "/config.php";
 			</div> <?php #END OF HEADER PANEL ?>
 			<div id="main_grid" class="grid_container center" style="height:80%; width:90%;">
 				<div class="header">
-					<h1>Now in guild:
+					<h1>
 						<?php
-							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-									echo $_SESSION['guilds'][$i]['name'];
-								}
+							if (isset($_GET['guild_id'])) {
+								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+										echo $_SESSION['guilds'][$i]['name'];
+									}
+							} elseif (isset($_SESSION['username'])) {
+								echo $_SESSION['username'];
+							} else {
+								echo "Please log in";
 							}
 						?>
 					</h1>
