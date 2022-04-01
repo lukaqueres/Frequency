@@ -375,8 +375,6 @@ slideUp, slideDown {
 	grid-template-areas:
 		'left header header header header header'
 		'left main main main main main'
-		'left main main main main main'
-		'left main main main main main'
 		'left footer footer footer footer footer';
 }
 
@@ -402,6 +400,7 @@ slideUp, slideDown {
 
 	.grid_container > .main {
 		grid-area: main;
+		height:90%;
 	}
 
 	.grid_container > div {
