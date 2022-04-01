@@ -8,4 +8,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f 
 RewriteRule ^(.*)$ $1.php
 
-RewriteRule ^/guilds/([0-9]+)\.html /manage.php?guild_id=$1
+RewriteRule ^/manage/guilds/([0-9]+)\.html /manage.php?guild_id=$1
