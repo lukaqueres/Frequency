@@ -95,7 +95,7 @@ require __DIR__ . "/config.php";
 			<div id="main_grid" class="grid_container center">
 				<div class="header">
 					<div class="flex_container header_div_box">
-						<h1>
+						<h1 class="no_margin">
 							<?php
 								if (isset($_GET['guild_id'])) {
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
