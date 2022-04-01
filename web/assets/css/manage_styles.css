@@ -204,10 +204,11 @@ body {
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 }
 
-.search_row:hover {
-	color: black;
-	background-color: white;
-}
+	.search_row:hover {
+		filter: brightness(1.5);
+		/*color: black;
+		background-color: white;*/
+	}
 
 .clicable_row:hover {
 	cursor: pointer;
