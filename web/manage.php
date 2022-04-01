@@ -71,7 +71,7 @@ require __DIR__ . "/config.php";
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
-										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?window=guilds&guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
+										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
 								     	      <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 									}
 								?>
@@ -93,96 +93,7 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-			<div id="main_content">
-				<?php if (!(isset($_GET['window']))) { redirect("../manage?window=main"); } #Redirect if no window specified  ?>
-				<?php if (!isset($_SESSION['user'])) { #WINDOW CONTENT ----------------------------------------------------------- ERROR ON NOT LOGIN ?>
-					<div class="window" id="error-info">
-						<?php if (!isset($_SESSION['user'])) { echo '<h1 style="font-size:100px;">You are not logged in</h1></br>'; } ?>
-					</div>
-				<?php } elseif ($_GET['window'] == 'main') { #WINDOW CONTENT ----------------------------------------------------------- MAIN ?> 
-					<div class="window" id="main">
-						<div class="small_window">
-							User:
-						</div>
-						<div class="small_window">
-							Guilds:
-						</div>
-						<div class="small_window">
-							Anty-spam:
-						</div>
-					</div>
-				<?php } elseif ($_GET['window'] == 'guilds') { #WINDOW CONTENT ----------------------------------------------------------- GUILDS ?>
-					<div class="window" id="guilds">Guilds
-						<?php
-							if (isset($_GET['guild_id'])) {
-								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-										echo json_encode($_SESSION['guilds'][$i]);
-									}
-								}
-							}
-						?>
-						<p> Details : <?php #echo json_encode($_SESSION['guild_details']); ?></p>
-					</div>
-				<?php } elseif ($_GET['window'] == 'user') { #WINDOW CONTENT ----------------------------------------------------------- USER ?>
-					<div class="window" id="user-info">
-						<h1> User</h1>
-						<div class="linkheader">
-							<button class="clearlink windowContentBtn" onclick="currentWindow(1)">Overview</button>
-							<button class="clearlink windowContentBtn" onclick="currentWindow(2)">Servers</button>
-						</div>
-						</br>
-						<div class="windowcontent" id="useroverview">
-							<?php if (isset($_SESSION['user'])) { ?>
-								<p> Name : <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
-								<p> ID : <?php echo $_SESSION['user_id']; ?></p>
-
-								<p> Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);
-									echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-								</p>
-								<h2>User Response :</h2>
-								<div class="response-block">
-									<p><?php echo json_encode($_SESSION['user']); ?></p> 
-									<?php
-										echo json_encode($_SESSION['guilds_details']);
-		
-										// handle a successful response
-										//success : function(data) {
-										//}
-										//});
-									?>
-								</div>
-							<?php } ?>
-						</div>
-						<?php #}else { echo ''; ?>
-						<div class="windowcontent" id="userservers">
-							<h2>Guilds :</h2>
-							<table border="1">
-								<tr>
-									<th>NAME</th>
-									<th>ID</th>
-								</tr>
-									<?php
-										for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-											echo "<tr><td>";
-											echo $_SESSION['guilds'][$i]['name'];
-											echo "<td>";
-											echo $_SESSION['guilds'][$i]['id'];
-											echo "</td>";
-											echo "</tr></td>";
-										}
-									?>
-							</table>
-							<br>
-							<h2> User Guilds Response :</h2>
-							<div class="response-block">
-								<p> <?php echo json_encode($_SESSION['guilds']); ?></p>
-							</div>
-						</div>
-					</div>
-					<script type="text/javascript"> load(); </script>
-				<?php } else { redirect("../manage?window=main"); } #END OF WINDOW's IF STATEMENT ?>
-			</div>
+			
 		</div>
 	</body>
 	<script>
