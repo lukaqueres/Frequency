@@ -57,11 +57,11 @@ require __DIR__ . "/config.php";
 						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds(); myFunction()" placeholder= 
 						<?php 
 							if (!(isset($_GET['guildId']))) { 
-								echo "Select server."; 
+								echo "Select server"; 
 							} else { 
 								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 									if ($_SESSION['guilds'][$i]['id'] == $_GET['guildId']) {
-										echo $_SESSION['guilds'][$i]['name'];
+										echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
 									}
 								}
 							}
