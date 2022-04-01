@@ -94,7 +94,15 @@ require __DIR__ . "/config.php";
 			</div> <?php #END OF HEADER PANEL ?>
 			<div id="main_grid" class="grid_container center" style="height:80%; width:90%;">
 				<div class="header">
-					header
+					<h1>Now in guild:
+						<?php
+							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+									echo $_SESSION['guilds'][$i]['name'];
+								}
+							}
+						?>
+					</h1>
 				</div>
 				<div class="left">
 					left
