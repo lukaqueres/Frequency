@@ -149,6 +149,16 @@ require __DIR__ . "/config.php";
 											<h5>Owner</h5>
 										</div>
 									<?php };
+									if (in_array("NEWS", $guild['features'])) { ?>
+										<div class="tag">
+											<h5>News</h5>
+										</div>
+									<?php };
+									if (in_array("VERIFIED", $guild['features'])) { ?>
+										<div class="tag">
+											<h5>Verified</h5>
+										</div>
+									<?php };
 									if ($guild['icon'] == null) { ?>
 										<div class="tag">
 											<h5>No icon</h5>
