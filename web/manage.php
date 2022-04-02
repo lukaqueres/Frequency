@@ -94,6 +94,9 @@ require __DIR__ . "/config.php";
 			</div> <?php #END OF HEADER PANEL ?>
 			<div id="main_grid" class="grid_container center">
 				<div class="header">
+					
+				</div>
+				<div class="left">
 					<div class="flex_container header_div_box">
 						<h1 class="no_margin">
 							<?php
@@ -111,9 +114,6 @@ require __DIR__ . "/config.php";
 							?>
 						</h1>
 					</div>
-				</div>
-				<div class="left">
-					left
 				</div>
 				<div class="main">
 					main
