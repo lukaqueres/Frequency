@@ -1,4 +1,5 @@
 import discord, json, io, os, typing, requests, random, asyncio, psycopg2
+from psycopg2.sql import (SQL, Identifier)
 from os import getenv
 from dotenv import load_dotenv
 from ffmpeg import *
@@ -31,7 +32,13 @@ def get_prefix(client, message):
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 def get_database_data(database, column, condition):
-	cur.execute("SELECT {} from {} WHERE guild_id={}".format(column, database, condition))
+	cur.execute(
+		SQL("SELECT {} from {} WHERE guild_id=%s").format(
+			Identifier(column), Identifier(database)
+		),
+        (condition, )
+	)
+	cur.execute("SELECT {} from {} WHERE guild_id=%s".format(column, database))
 	#cur.execute(
 	#	"SELECT %s FROM %s WHERE guild_id=%s",
 	#	(column, database, condition)
