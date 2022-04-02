@@ -31,10 +31,11 @@ def get_prefix(client, message):
 client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 def get_database_data(database, column, condition):
-	cur.execute(
-		"SELECT %s FROM %s WHERE guild_id=%s",
-		(column, database, condition)
-	)
+	cur.execute("SELECT {} from {} WHERE guild_id={}".format(column, database, condition))
+	#cur.execute(
+	#	"SELECT %s FROM %s WHERE guild_id=%s",
+	#	(column, database, condition)
+	#)
 	row = cur.fetchone()
 	value = row[0]
 	con.commit()
