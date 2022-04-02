@@ -449,6 +449,11 @@ slideUp, slideDown {
 .tag {
 	background-color: #C1CCF3;
 	color: white;
-	border-radius: 5px;
-	padding: 2px;
+	border-radius: 10px;
+	padding: 2px 5px;
 }
+
+	.tag > h1 {
+		margin: 0;
+		font-size: 100%;
+	}
