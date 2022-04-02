@@ -107,7 +107,7 @@ require __DIR__ . "/config.php";
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
 											echo '<img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/>';
-											echo '<h2 class="no_margin w_padding" style="font: inherit;">' . $_SESSION['guilds'][$i]['name'] . '</h2>';
+											echo '<h2 class="no_margin w_padding" style="font-size: unset;">' . $_SESSION['guilds'][$i]['name'] . '</h2>';
 											break;
 										}
 									}
