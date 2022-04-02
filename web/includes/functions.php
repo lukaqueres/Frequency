@@ -41,6 +41,9 @@ function client_ip()
 # Check user's avatar type
 function is_animated($avatar)
 {
+	if ($avatar == null) {
+		return ".png";
+	}
 	$ext = substr($avatar, 0, 2);
 	if ($ext == "a_")
 	{
