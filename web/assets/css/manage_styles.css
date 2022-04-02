@@ -20,6 +20,9 @@ body {
 	margin: 0px;
 }
 
+.tags_div {
+	flex-wrap: wrap;
+}
 #aside_menu {
 	left: 0px;
 	width: 400px; /*2vw*/
@@ -451,6 +454,7 @@ slideUp, slideDown {
 	color: white;
 	border-radius: 10px;
 	padding: 2px 5px;
+	margin: 4px;
 }
 
 	.tag > h1 {
