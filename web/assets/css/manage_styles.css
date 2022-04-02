@@ -445,3 +445,9 @@ slideUp, slideDown {
 .max_font {
 	font-size: 100%;
 }
+
+.tag {
+	background-color: lightgrey;
+	color: white;
+	border-radius:20px;
+}

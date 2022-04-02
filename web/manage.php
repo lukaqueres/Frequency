@@ -106,11 +106,19 @@ require __DIR__ . "/config.php";
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
-											echo '<img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/>';                     #https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>';
+											echo '<img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/>';
 											echo '<h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1>';
 											break;
 										}
 									}
+									?>
+									<div class="flex_container">
+										<div class="tag">
+											<h1 class="max_font">Community</h1>
+										</div>
+									</div>
+									
+									<?php
 								} elseif (isset($_SESSION['username'])) {
 									echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
 								} else {
