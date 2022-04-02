@@ -111,14 +111,6 @@ require __DIR__ . "/config.php";
 											break;
 										}
 									}
-									?>
-									<div class="flex_container">
-										<div class="tag">
-											<h1 class="max_font">Community</h1>
-										</div>
-									</div>
-									
-									<?php
 								} elseif (isset($_SESSION['username'])) {
 									echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
 								} else {
@@ -128,7 +120,13 @@ require __DIR__ . "/config.php";
 						</div>
 					</div>
 					<?php
-						
+						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
+							<div class="flex_container">
+								<div class="tag">
+									<h1 class="max_font">Community</h1>
+								</div>
+							</div>	
+						<?php }
 					?>
 				</div>
 				<div class="main">

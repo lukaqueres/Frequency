@@ -449,5 +449,6 @@ slideUp, slideDown {
 .tag {
 	background-color: lightgrey;
 	color: white;
-	border-radius:20px;
+	border-radius:5px;
+	padding: 2px;
 }
