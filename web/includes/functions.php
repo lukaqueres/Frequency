@@ -62,7 +62,7 @@ function get_icon($guild)
 	} else {
 		$extension = is_animated($guild['icon']);
 		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild['id'] . '/' . $guild['icon'] . $extension;
-		return $icon_url
+		return $icon_url;
 	}
 }
 
