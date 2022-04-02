@@ -98,7 +98,7 @@ require __DIR__ . "/config.php";
 				</div>
 				<div class="left">
 					<div class="header_div_box">
-						<h1 class="no_margin flex_container">
+						<h1 class="no_margin flex_container full_height">
 							<?php
 								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
