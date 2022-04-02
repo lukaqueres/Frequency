@@ -173,14 +173,14 @@ function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
         // General x15
-        'generalAdministrator' => 0x8,
-        'generalViewAuditLog' => 0x80,
-        'generalManageServer' => 0x20,
+        'generalAdministrator' => 0x008,
+        'generalViewAuditLog' => 0x080,
+        'generalManageServer' => 0x020,
         'generalManageRoles' => 0x10000000,
-        'generalManageChannels' => 0x10,
-        'generalKickMembers' => 0x2,
-        'generalBanMembers' => 0x4,
-        'generalCreateInstantInvite' => 0x1,
+        'generalManageChannels' => 0x010,
+        'generalKickMembers' => 0x002,
+        'generalBanMembers' => 0x004,
+        'generalCreateInstantInvite' => 0x001,
         'generalChangeNickname' => 0x4000000,
         'generalManageNicknames' => 0x8000000,
         'generalManageEmoisAndStickers' => 0x40000000,
@@ -202,7 +202,7 @@ function get_permissions($usr_permissions_dec) {
         'textMentionEveryone' => 0x20000,
         'textUseExternalEmojis' => 0x40000,
         'textUseExternalStickers' => 0x2000000000,
-        'textAddReactions' => 0x40,
+        'textAddReactions' => 0x040,
         'textUseSlashCommands' => 0x80000000,
         // Voice x7
         'voiceConnect' => 0x100000,
