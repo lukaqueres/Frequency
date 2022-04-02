@@ -98,13 +98,13 @@ require __DIR__ . "/config.php";
 				</div>
 				<div class="left">
 					<div class="header_div_box">
-						<h1 class="no_margin">
+						<h1 class="no_margin flex_container">
 							<?php
 								if (isset($_GET['guild_id'])) {
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
-											echo '<img id="avatar" src="https://cdn.discordapp.com/avatars/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>';
+											echo '<img id="avatar" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>';
 											echo $_SESSION['guilds'][$i]['name'];
 											break;
 										}
