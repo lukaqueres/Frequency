@@ -264,6 +264,10 @@ body {
 		max-height: 30.6px
 	}
 
+	.dropdown-content .flex_container {
+		justify-content: center;
+	}
+
 	.dropdown-content a {
 		color: black;
 		padding: 12px 16px;
