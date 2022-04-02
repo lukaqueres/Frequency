@@ -116,7 +116,15 @@ require __DIR__ . "/config.php";
 					</div>
 				</div>
 				<div class="main">
-					main
+					<?php
+						if (isset($_GET['guild_id'])) {
+							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+									echo json_encode($_SESSION['guilds'][$i]);
+								}
+							}
+						}
+					?>
 				</div>
 				<div class="footer">
 					footer
