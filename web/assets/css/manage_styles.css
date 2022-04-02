@@ -139,7 +139,7 @@ body {
 	display: none;
 }
 
-#avatar {
+.icon, #avatar {
 	height: 60%; 
 	float: right;
 	object-fit: contain;
