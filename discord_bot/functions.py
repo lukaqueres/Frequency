@@ -19,7 +19,7 @@ cur = con.cursor()
 
 def get_prefix(client, message):
 	cur.execute(
-		"SELECT guild_prefix from SERVERS_PROPERTIES WHERE guild_id=%s",
+		"SELECT guild_prefix FROM SERVERS_PROPERTIES WHERE guild_id=%s",
 		(message.guild.id, )
 	)
 	row = cur.fetchone()
@@ -32,7 +32,7 @@ client = commands.Bot(command_prefix = get_prefix, intents=intents)
 
 def get_database_data(database, column, condition):
 	cur.execute(
-		"SELECT %s from %s WHERE guild_id=%s",
+		"SELECT %s FROM %s WHERE guild_id=%s",
 		(column, database, condition)
 	)
 	row = cur.fetchone()
@@ -51,7 +51,7 @@ def write_database_data(database, column, condition, value):
 
 def get_language(condition):
 	cur.execute(
-		"SELECT guild_language from SERVERS_PROPERTIES WHERE guild_id=%s",
+		"SELECT guild_language FROM SERVERS_PROPERTIES WHERE guild_id=%s",
 		(condition, )
 	)
 	row = cur.fetchone()
