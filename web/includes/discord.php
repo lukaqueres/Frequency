@@ -218,7 +218,7 @@ function get_permissions($usr_permissions_dec) {
     foreach($gen_permissions_codes as $key => $value) {
         $current_permission = base_convert($value, 16, 10);
         $has_permission = ($usr_permissions_dec & $current_permission) != 0;
-        echo '$key: ' . $key  . ' $value: ' . $value . ' $usr_permissions_dec: ' . $usr_permissions_dec . ' $current_permission: '. $current_permission . ' $has_permission: ' . $has_permission . '</br>';
+        echo '$key: ' . gettype($key) . '( ' . $key  . ') $value: ' . gettype($value) . '( ' . $value . ') $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ') $current_permission: ' . gettype($current_permission) . '( '. $current_permission . ') $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . '</br>';
         if ($has_permission) {
             $usr_permissions[] = $key;
         };
