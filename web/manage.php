@@ -70,7 +70,9 @@ require __DIR__ . "/config.php";
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
-										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" ><td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
+										echo '<tr class="search_row clicable_row" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
+											  <img class="icon no_margin" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>;
+											  <td style="padding: 5px;" >' . $_SESSION['guilds'][$i]['name'] . '</td>
 								     	      <td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 									}
 								?>
@@ -117,6 +119,9 @@ require __DIR__ . "/config.php";
 							?>
 						</div>
 					</div>
+					<?php
+						
+					?>
 				</div>
 				<div class="main">
 					<?php
