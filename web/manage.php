@@ -121,25 +121,30 @@ require __DIR__ . "/config.php";
 					</div>
 					<?php
 						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
-							<div class="flex_container">
-								<div class="tag">
-									<h1 class="max_font">Community</h1>
-								</div>
-								<div class="tag">
-									<h1 class="max_font">Community</h1>
-								</div>
-								<div class="tag">
-									<h1 class="max_font">Community</h1>
-								</div>
-								<div class="tag">
-									<h1 class="max_font">Community</h1>
-								</div>
-								<div class="tag">
-									<h1 class="max_font">Community</h1>
-								</div>
-								<div class="tag">
-									<h1 class="max_font">Community</h1>
-								</div>
+							<div class="flex_container tags_div">
+								<?php
+									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+											$guild = $_SESSION['guilds'][$i]
+											break;
+										}
+										if (inarray("COMMUNITY", $guild['features'])) { ?>
+											<div class="tag">
+												<h1 class="max_font">Community</h1>
+											</div>
+										<?php }
+										if (inarray("PARTNERED", $guild['features'])) { ?>
+											<div class="tag">
+												<h1 class="max_font">Partner</h1>
+											</div>
+										<?php }
+										if (inarray("DISCOVERABLE", $guild['features'])) { ?>
+											<div class="tag">
+												<h1 class="max_font">Discoverable</h1>
+											</div>
+										<?php }
+									}
+								?>
 							</div>	
 						<?php }
 					?>
