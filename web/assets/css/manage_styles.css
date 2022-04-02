@@ -260,6 +260,10 @@ body {
 	border-radius: 15px;
 }
 
+	.dropdown-content img {
+		max-height: 30.6px
+	}
+
 	.dropdown-content a {
 		color: black;
 		padding: 12px 16px;
