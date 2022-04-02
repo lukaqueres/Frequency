@@ -97,7 +97,7 @@ require __DIR__ . "/config.php";
 					
 				</div>
 				<div class="left">
-					<div class="flex_container header_div_box">
+					<div class="header_div_box">
 						<h1 class="no_margin">
 							<?php
 								if (isset($_GET['guild_id'])) {

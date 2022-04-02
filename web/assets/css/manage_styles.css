@@ -382,14 +382,14 @@ slideUp, slideDown {
 
 	.grid_container > .header {
 		grid-area: header;
+	}
+
+	.grid_container > .left {
 		margin-inline: auto;
 		height: 51px;
 		padding: 0;
 		width: 100%;
-		color: var(--secondary_font_color)
-	}
-
-	.grid_container > .left {
+		color: var(--secondary_font_color);
 		grid-area: left;
 	}
 
