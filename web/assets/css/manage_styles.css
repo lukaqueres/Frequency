@@ -457,7 +457,7 @@ slideUp, slideDown {
 	margin: 4px;
 }
 
-	.tag > h1 {
+	.tag > * {
 		margin: 0;
 		font-size: 100%;
 	}
