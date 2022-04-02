@@ -170,7 +170,8 @@ function check_state($state)
 }
 
 function get_permissions($usr_permissions_dec) {
-    gen_permissions_codes = [
+    $gen_permissions_codes = [
+        // Codes are updated to date 02.04.2022, please change date if there were updated changes to codes and/or permissions  
         // General x15
         generalAdministrator => 0x8,
         generalViewAuditLog => 0x80,
