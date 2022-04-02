@@ -173,51 +173,51 @@ function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
         // General x15
-        'generalAdministrator' => 0x000000000000008,
-        'generalViewAuditLog' => 0x000000000000080,
-        'generalManageServer' => 0x000000000000020,
-        'generalManageRoles' => 0x000000010000000,
-        'generalManageChannels' => 0x000000000000010,
-        'generalKickMembers' => 0x000000000000002,
-        'generalBanMembers' => 0x000000000000004,
-        'generalCreateInstantInvite' => 0x000000000000001,
-        'generalChangeNickname' => 0x00000004000000,
-        'generalManageNicknames' => 0x00000008000000,
-        'generalManageEmoisAndStickers' => 0x000000040000000,
-        'generalManageWebhooks' => 0x000000020000000,
-        'generalReadMessagesViewChannels' => 0x000000000000400,
-        'generalManageEvents' => 0x0000000200000000,
-        'generalModerateMembers' => 0x000000010000000000,
+        'generalAdministrator' => 0x000008,
+        'generalViewAuditLog' => 0x0080,
+        'generalManageServer' => 0x0020,
+        'generalManageRoles' => 0x10000000,
+        'generalManageChannels' => 0x0010,
+        'generalKickMembers' => 0x0002,
+        'generalBanMembers' => 0x0004,
+        'generalCreateInstantInvite' => 0x0001,
+        'generalChangeNickname' => 0x4000000,
+        'generalManageNicknames' => 0x8000000,
+        'generalManageEmoisAndStickers' => 0x40000000,
+        'generalManageWebhooks' => 0x20000000,
+        'generalReadMessagesViewChannels' => 0x0400,
+        'generalManageEvents' => 0x200000000,
+        'generalModerateMembers' => 0x10000000000,
         // Text x15
-        'textSendMessages' => 0x000000000000800,
-        'textCreatePublicThreads' => 0x0000000800000000,
-        'textCreatePrivateThreads' => 0x00000001000000000,
-        'textSendMessagesInThreads' => 0x00000004000000000,
-        'textSendTTSMessages' => 0x000000000001000,
-        'textManageMessages' => 0x000000002000,
-        'textManageThreads' => 0x00000000400000000,
-        'textEmbedLinks' => 0x0000000000004000,
-        'textAttachFiles' => 0x0000000000008000,
-        'textReadMessageHistory' => 0x000000000010000,
-        'textMentionEveryone' => 0x000000000020000,
-        'textUseExternalEmojis' => 0x000000000040000,
-        'textUseExternalStickers' => 0x000000002000000000,
-        'textAddReactions' => 0x000000000000040,
-        'textUseSlashCommands' => 0x0000000080000000,
+        'textSendMessages' => 0x0800,
+        'textCreatePublicThreads' => 0x800000000,
+        'textCreatePrivateThreads' => 0x1000000000,
+        'textSendMessagesInThreads' => 0x4000000000,
+        'textSendTTSMessages' => 0x1000,
+        'textManageMessages' => 0x2000,
+        'textManageThreads' => 0x400000000,
+        'textEmbedLinks' => 0x4000,
+        'textAttachFiles' => 0x8000,
+        'textReadMessageHistory' => 0x10000,
+        'textMentionEveryone' => 0x20000,
+        'textUseExternalEmojis' => 0x40000,
+        'textUseExternalStickers' => 0x2000000000,
+        'textAddReactions' => 0x040,
+        'textUseSlashCommands' => 0x80000000,
         // Voice x7
-        'voiceConnect' => 0x00000000100000,
-        'voiceSpeak' => 0x00000000200000,
-        'voiceMuteMembers' => 0x00000000400000,
-        'voiceDeafenMembers' => 0x00000000800000,
-        'voiceMoveMembers' => 0x000000001000000,
-        'voiceUseVActivity' => 0x000000002000000,
-        'voicePrioritySpeaker' => 0x000000000000100
+        'voiceConnect' => 0x100000,
+        'voiceSpeak' => 0x200000,
+        'voiceMuteMembers' => 0x400000,
+        'voiceDeafenMembers' => 0x800000,
+        'voiceMoveMembers' => 0x1000000,
+        'voiceUseVActivity' => 0x2000000,
+        'voicePrioritySpeaker' => 0x100,
     ];
-    $usr_permissions_binary = decbin($usr_permissions_dec);
+    //$usr_permissions_binary = decbin($usr_permissions_dec);
     $usr_permissions = array();
     foreach($gen_permissions_codes as $key => $value) {
-        $gen_binary_permission = hex2bin($value);
-        $has_permission = ($usr_permissions_binary & $gen_binary_permission) != 0;
+        $current_permission =  base_convert(string $value, 16, int 10);
+        $has_permission = ($usr_permissions_dec & $current_permission) != 0;
         if ($has_permission) {
             $usr_permissions[] = $key;
         };
