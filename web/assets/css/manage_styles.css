@@ -464,5 +464,5 @@ slideUp, slideDown {
 
 	.tag > * {
 		margin: 0;
-		font-size: 100%;
+		/*font-size: 100%;*/
 	}
