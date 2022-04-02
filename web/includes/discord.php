@@ -173,7 +173,7 @@ function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
         // General x15
-        'generalAdministrator' => 0x0008,
+        'generalAdministrator' => 0x000008,
         'generalViewAuditLog' => 0x0080,
         'generalManageServer' => 0x0020,
         'generalManageRoles' => 0x10000000,
