@@ -104,8 +104,8 @@ require __DIR__ . "/config.php";
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
-											echo '<img class="icon" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>';
-											echo '<h1 class="no_margin w_padding">' . $_SESSION['guilds'][$i]['name'] . '</h1>';
+											echo '<img class="icon no_margin" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>';
+											echo '<h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1>';
 											break;
 										}
 									}

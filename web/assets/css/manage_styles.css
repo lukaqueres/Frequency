@@ -433,3 +433,7 @@ slideUp, slideDown {
 	.header_div_box > * {
 		margin-inline: 5px;
 	}
+
+.max_font {
+	font-size: 100%;
+}
