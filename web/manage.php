@@ -121,7 +121,7 @@ require __DIR__ . "/config.php";
 					</div>
 					<?php
 						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
-							<div class="tags_div flex_container">
+							<div class="tags_div">
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {

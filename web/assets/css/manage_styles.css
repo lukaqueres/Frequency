@@ -22,7 +22,12 @@ body {
 
 .tags_div {
 	flex-wrap: wrap;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
 }
+
+
 #aside_menu {
 	left: 0px;
 	width: 400px; /*2vw*/
