@@ -98,14 +98,14 @@ require __DIR__ . "/config.php";
 				</div>
 				<div class="left">
 					<div class="header_div_box">
-						<h1 class="no_margin flex_container full_height">
+						<div class="no_margin flex_container full_height">
 							<?php
 								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
 											echo '<img class="icon" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>';
-											echo $_SESSION['guilds'][$i]['name'];
+											echo '<h1 class="no_margin w_padding">' . $_SESSION['guilds'][$i]['name'] . '</h1>';
 											break;
 										}
 									}
@@ -115,7 +115,7 @@ require __DIR__ . "/config.php";
 									echo "Please log in";
 								}
 							?>
-						</h1>
+						</div>
 					</div>
 				</div>
 				<div class="main">

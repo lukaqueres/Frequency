@@ -150,6 +150,10 @@ body {
 #avatar_username {
 	float: right;
 }
+
+.w_padding {
+	padding: 10px;
+}
 .imagebtn {
 	width: 70%;
 	padding: 5px;
