@@ -171,7 +171,7 @@ require __DIR__ . "/config.php";
 				</div>
 				<div class="main">
 					<?php
-						if (isset($_GET['guild_id'])) {
+						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 									echo json_encode($_SESSION['guilds'][$i]);
