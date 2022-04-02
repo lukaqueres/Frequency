@@ -55,4 +55,15 @@ function is_animated($avatar)
 	}
 }
 
+function get_icon($guild)
+{
+	if ($guild['icon'] == null) {
+		return "/images/blank_icon.png";
+	} else {
+		$extension = is_animated($guild['icon'])
+		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild['id'] . '/' . $guild['icon'] . $rxtension
+		return $icon_url
+	}
+}
+
 ?>
