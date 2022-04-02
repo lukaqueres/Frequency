@@ -171,7 +171,7 @@ function check_state($state)
 
 function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
-        // Codes are updated to date 02.04.2022, please change date if there were updated changes to codes and/or permissions  
+        // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
         // General x15
         'generalAdministrator' => 0x8,
         'generalViewAuditLog' => 0x80,
@@ -215,7 +215,7 @@ function get_permissions($usr_permissions_dec) {
     ];
     $usr_permissions_binary = decbin($usr_permissions_dec);
     $usr_permissions = array();
-    foreach(gen_permissions_codes as $key => $value) {
+    foreach($gen_permissions_codes as $key => $value) {
         $gen_binary_permission = hex2bin($value);
         $has_permission = ($usr_permissions_binary & $gen_binary_permission) != 0;
         if (has_permission) {
