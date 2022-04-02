@@ -131,27 +131,27 @@ require __DIR__ . "/config.php";
 									}
 									if (in_array("COMMUNITY", $guild['features'])) { ?>
 										<div class="tag">
-											<h3 class="max_font">Community</h3>
+											<h5>Community</h5>
 										</div>
 									<?php };
 									if (in_array("PARTNERED", $guild['features'])) { ?>
 										<div class="tag">
-											<h3 class="max_font">Partner</h3>
+											<h5>Partner</h5>
 										</div>
 									<?php };
 									if (in_array("DISCOVERABLE", $guild['features'])) { ?>
 										<div class="tag">
-											<h3 class="max_font">Discoverable</h3>
+											<h5>Discoverable</h5>
 										</div>
 									<?php };
 									if ($guild['owner']) { ?>
 										<div class="tag">
-											<h3 class="max_font">Owner</h3>
+											<h5>Owner</h5>
 										</div>
 									<?php };
 									if ($guild['icon'] == null) { ?>
 										<div class="tag">
-											<h3 class="max_font">No icon</h3>
+											<h5>No icon</h5>
 										</div>
 									<?php };
 								?>
