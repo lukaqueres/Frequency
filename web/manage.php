@@ -129,17 +129,17 @@ require __DIR__ . "/config.php";
 											break;
 										}
 									}
-									if (inarray("COMMUNITY", $guild['features'])) { ?>
+									if (in_array("COMMUNITY", $guild['features'])) { ?>
 										<div class="tag">
 											<h1 class="max_font">Community</h1>
 										</div>
 									<?php };
-									if (inarray("PARTNERED", $guild['features'])) { ?>
+									if (in_array("PARTNERED", $guild['features'])) { ?>
 										<div class="tag">
 											<h1 class="max_font">Partner</h1>
 										</div>
 									<?php };
-									if (inarray("DISCOVERABLE", $guild['features'])) { ?>
+									if (in_array("DISCOVERABLE", $guild['features'])) { ?>
 										<div class="tag">
 											<h1 class="max_font">Discoverable</h1>
 										</div>
