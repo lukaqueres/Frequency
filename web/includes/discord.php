@@ -215,7 +215,7 @@ function get_permissions($usr_permissions_dec) {
     ];
     $usr_permissions_binary = decbin($usr_permissions_dec);
     $usr_permissions = array();
-    foreach($array as $key => $value) {
+    foreach(gen_permissions_codes as $key => $value) {
         $gen_binary_permission = hex2bin($value);
         $has_permission = ($usr_permissions_binary & $gen_binary_permission) != 0;
         if (has_permission) {
