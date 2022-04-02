@@ -125,25 +125,25 @@ require __DIR__ . "/config.php";
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-											$guild = $_SESSION['guilds'][$i]
+											$guild = $_SESSION['guilds'][$i];
 											break;
 										}
-										if (inarray("COMMUNITY", $guild['features'])) { ?>
-											<div class="tag">
-												<h1 class="max_font">Community</h1>
-											</div>
-										<?php }
-										if (inarray("PARTNERED", $guild['features'])) { ?>
-											<div class="tag">
-												<h1 class="max_font">Partner</h1>
-											</div>
-										<?php }
-										if (inarray("DISCOVERABLE", $guild['features'])) { ?>
-											<div class="tag">
-												<h1 class="max_font">Discoverable</h1>
-											</div>
-										<?php }
 									}
+									if (inarray("COMMUNITY", $guild['features'])) { ?>
+										<div class="tag">
+											<h1 class="max_font">Community</h1>
+										</div>
+									<?php };
+									if (inarray("PARTNERED", $guild['features'])) { ?>
+										<div class="tag">
+											<h1 class="max_font">Partner</h1>
+										</div>
+									<?php };
+									if (inarray("DISCOVERABLE", $guild['features'])) { ?>
+										<div class="tag">
+											<h1 class="max_font">Discoverable</h1>
+										</div>
+									<?php };
 								?>
 							</div>	
 						<?php }
