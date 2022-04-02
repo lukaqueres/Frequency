@@ -211,7 +211,7 @@ function get_permissions($usr_permissions_dec) {
         'voiceDeafenMembers' => 0x800000,
         'voiceMoveMembers' => 0x1000000,
         'voiceUseVActivity' => 0x2000000,
-        'voicePrioritySpeaker' => 0x100,
+        'voicePrioritySpeaker' => 0x100
     ];
     $usr_permissions_binary = decbin($usr_permissions_dec);
     $usr_permissions = array();
