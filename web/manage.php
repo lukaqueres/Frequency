@@ -110,9 +110,9 @@ require __DIR__ . "/config.php";
 										}
 									}
 								} elseif (isset($_SESSION['username'])) {
-									echo $_SESSION['username'];
+									echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
 								} else {
-									echo "Please log in";
+									echo '<h1 class="no_margin w_padding">Please log in</h1>';
 								}
 							?>
 						</div>
