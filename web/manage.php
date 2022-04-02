@@ -100,10 +100,11 @@ require __DIR__ . "/config.php";
 					<div class="header_div_box">
 						<h1 class="no_margin">
 							<?php
+								$extention = is_animated($_SESSION['user_avatar']);
 								if (isset($_GET['guild_id'])) {
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-										echo '<img id="avatar" src="https://cdn.discordapp.com/avatars/' $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; />
+										echo '<img id="avatar" src="https://cdn.discordapp.com/avatars/' . $_SESSION['user_id'] . '/' . $_SESSION['user_avatar'] . $extention . '/>';
 											echo $_SESSION['guilds'][$i]['name'];
 										}
 									}
