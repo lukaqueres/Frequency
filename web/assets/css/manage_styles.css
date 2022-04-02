@@ -141,7 +141,7 @@ body {
 
 .icon, #avatar {
 	height: 60%; 
-	float: right;
+	float: left;
 	object-fit: contain;
 	border-radius: 50%;
 	max-width: 128px;

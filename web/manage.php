@@ -72,7 +72,7 @@ require __DIR__ . "/config.php";
 										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
 										$extention = is_animated($_SESSION['guilds'][$i]['icon']);
 										echo '<tr class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
-											<td style="padding: 5px;" ><img class="icon no_margin" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/>' . $_SESSION['guilds'][$i]['name'] . '</td>
+											<td class="flex_container" style="padding: 5px;" ><img class="icon no_margin" src="https://cdn.discordapp.com/icons/' . $_SESSION['guilds'][$i]['id'] . '/' . $_SESSION['guilds'][$i]['icon'] . $extention . '"/><h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1></td>
 								     		<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 									}
 								?>
