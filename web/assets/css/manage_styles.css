@@ -436,13 +436,14 @@ slideUp, slideDown {
 	width: 90%;
 }
 
-.header_div_box {
+.div_box {
 	border: 1px solid black;
 	background-color: black;
 	margin: 10px;
 	padding: 5px;
 	border-radius: 15px;
 	text-align: center;
+	height: calc( 100% - 20px);
 }
 
 	.header_div_box > * {

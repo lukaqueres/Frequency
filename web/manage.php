@@ -99,7 +99,7 @@ require __DIR__ . "/config.php";
 					
 				</div>
 				<div class="left">
-					<div class="header_div_box">
+					<div class="div_box">
 						<div class="no_margin flex_container full_height">
 							<?php
 								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
@@ -118,56 +118,56 @@ require __DIR__ . "/config.php";
 								}
 							?>
 						</div>
-					</div>
-					<?php
-						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
-							<div class="tags_div">
-								<?php
-									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-											$guild = $_SESSION['guilds'][$i];
-											break;
+						<?php
+							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
+								<div class="tags_div">
+									<?php
+										for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+											if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+												$guild = $_SESSION['guilds'][$i];
+												break;
+											}
 										}
-									}
-									if (in_array("COMMUNITY", $guild['features'])) { ?>
-										<div class="tag">
-											<h5>Community</h5>
-										</div>
-									<?php };
-									if (in_array("PARTNERED", $guild['features'])) { ?>
-										<div class="tag">
-											<h5>Partner</h5>
-										</div>
-									<?php };
-									if (in_array("DISCOVERABLE", $guild['features'])) { ?>
-										<div class="tag">
-											<h5>Discoverable</h5>
-										</div>
-									<?php };
-									if ($guild['owner']) { ?>
-										<div class="tag">
-											<h5>Owner</h5>
-										</div>
-									<?php };
-									if (in_array("NEWS", $guild['features'])) { ?>
-										<div class="tag">
-											<h5>News</h5>
-										</div>
-									<?php };
-									if (in_array("VERIFIED", $guild['features'])) { ?>
-										<div class="tag">
-											<h5>Verified</h5>
-										</div>
-									<?php };
-									if ($guild['icon'] == null) { ?>
-										<div class="tag">
-											<h5>No icon</h5>
-										</div>
-									<?php };
-								?>
+										if (in_array("COMMUNITY", $guild['features'])) { ?>
+											<div class="tag">
+												<h5>Community</h5>
+											</div>
+										<?php };
+										if (in_array("PARTNERED", $guild['features'])) { ?>
+											<div class="tag">
+												<h5>Partner</h5>
+											</div>
+										<?php };
+										if (in_array("DISCOVERABLE", $guild['features'])) { ?>
+											<div class="tag">
+												<h5>Discoverable</h5>
+											</div>
+										<?php };
+										if ($guild['owner']) { ?>
+											<div class="tag">
+												<h5>Owner</h5>
+											</div>
+										<?php };
+										if (in_array("NEWS", $guild['features'])) { ?>
+											<div class="tag">
+												<h5>News</h5>
+											</div>
+										<?php };
+										if (in_array("VERIFIED", $guild['features'])) { ?>
+											<div class="tag">
+												<h5>Verified</h5>
+											</div>
+										<?php };
+										if ($guild['icon'] == null) { ?>
+											<div class="tag">
+												<h5>No icon</h5>
+											</div>
+										<?php };
+									?>
 							</div>	
 						<?php }
 					?>
+					</div>
 				</div>
 				<div class="main">
 					<?php
