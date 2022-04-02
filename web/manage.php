@@ -121,7 +121,7 @@ require __DIR__ . "/config.php";
 					</div>
 					<?php
 						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
-							<div class="flex_container tags_div">
+							<div class="tags_div flex_container">
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
@@ -131,17 +131,27 @@ require __DIR__ . "/config.php";
 									}
 									if (in_array("COMMUNITY", $guild['features'])) { ?>
 										<div class="tag">
-											<h1 class="max_font">Community</h1>
+											<h3 class="max_font">Community</h3>
 										</div>
 									<?php };
 									if (in_array("PARTNERED", $guild['features'])) { ?>
 										<div class="tag">
-											<h1 class="max_font">Partner</h1>
+											<h3 class="max_font">Partner</h3>
 										</div>
 									<?php };
 									if (in_array("DISCOVERABLE", $guild['features'])) { ?>
 										<div class="tag">
-											<h1 class="max_font">Discoverable</h1>
+											<h3 class="max_font">Discoverable</h3>
+										</div>
+									<?php };
+									if ($guild['owner']) { ?>
+										<div class="tag">
+											<h3 class="max_font">Owner</h3>
+										</div>
+									<?php };
+									if ($guild['icon'] == null) { ?>
+										<div class="tag">
+											<h3 class="max_font">No icon</h3>
 										</div>
 									<?php };
 								?>
