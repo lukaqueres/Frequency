@@ -444,7 +444,7 @@ slideUp, slideDown {
 	padding: 5px;
 	border-radius: 15px;
 	text-align: center;
-	height: calc( 100% - 20px);
+	height: calc( 100% - 30px);
 }
 
 	.header_div_box > * {
