@@ -175,6 +175,9 @@ require __DIR__ . "/config.php";
 							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 									echo json_encode($_SESSION['guilds'][$i]);
+									echo '<br> TERAZ UPRAWNIENIA';
+									echo get_permissions($_SESSION['guilds'][$i]['permissions']);
+									break;
 								}
 							}
 						}
