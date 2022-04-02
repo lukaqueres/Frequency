@@ -99,7 +99,7 @@ require __DIR__ . "/config.php";
 					
 				</div>
 				<div class="left">
-					<div class="div_box">
+					<div class="div_box" style="min-width:250px;">
 						<div class="no_margin flex_container" style="height: 75px;">
 							<?php
 								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
@@ -107,7 +107,7 @@ require __DIR__ . "/config.php";
 										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
 											echo '<img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/>';
-											echo '<h2 class="no_margin w_padding" style="white-space:nowrap;">' . $_SESSION['guilds'][$i]['name'] . '</h2>';
+											echo '<h2 class="no_margin w_padding">' . $_SESSION['guilds'][$i]['name'] . '</h2>';
 											break;
 										}
 									}
