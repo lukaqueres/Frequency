@@ -394,7 +394,6 @@ slideUp, slideDown {
 	gap: 10px;
 	text-align: center;
 	background-color: var(--secondary_main_color);
-	grid-template-rows: auto 90% auto;
 	grid-template-areas:
 		'left header header header header header'
 		'left main main main main main'
