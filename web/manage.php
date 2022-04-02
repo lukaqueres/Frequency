@@ -125,6 +125,21 @@ require __DIR__ . "/config.php";
 								<div class="tag">
 									<h1 class="max_font">Community</h1>
 								</div>
+								<div class="tag">
+									<h1 class="max_font">Community</h1>
+								</div>
+								<div class="tag">
+									<h1 class="max_font">Community</h1>
+								</div>
+								<div class="tag">
+									<h1 class="max_font">Community</h1>
+								</div>
+								<div class="tag">
+									<h1 class="max_font">Community</h1>
+								</div>
+								<div class="tag">
+									<h1 class="max_font">Community</h1>
+								</div>
 							</div>	
 						<?php }
 					?>
