@@ -171,38 +171,45 @@ function check_state($state)
 
 function get_permissions($usr_permissions_dec) {
     gen_permissions_codes = [
-        // General
-        generalCreateInstantInvite => 0x1,
+        // General x15
+        generalAdministrator => 0x8,
+        generalViewAuditLog => 0x80,
+        generalManageServer => 0x20,
+        generalManageRoles => 0x10000000,
+        generalManageChannels => 0x10,
         generalKickMembers => 0x2,
         generalBanMembers => 0x4,
-        generalAdministrator => 0x8,
-        generalManageChannels => 0x10,
-        generalManageServer => 0x20,
+        generalCreateInstantInvite => 0x1,
         generalChangeNickname => 0x4000000,
         generalManageNicknames => 0x8000000,
-        generalManageRoles => 0x10000000,
+        generalManageEmoisAndStickers => 0x40000000,
         generalManageWebhooks => 0x20000000,
-        generalManageEmojis => 0x40000000,
-        generalViewAuditLog => 0x80,
-        // Text
-        textAddReactions => 0x40,
-        textReadMessages => 0x400,
+        generalReadMessagesViewChannels => 0x400,
+        generalManageEvents => 0x200000000,
+        generalModerateMembers => 0x10000000000,
+        // Text x15
         textSendMessages => 0x800,
+        textCreatePublicThreads => 0x800000000,
+        textCreatePrivateThreads => 0x1000000000,
+        textSendMessagesInThreads => 0x4000000000,
         textSendTTSMessages => 0x1000,
         textManageMessages => 0x2000,
+        textManageThreads => 0x400000000,
         textEmbedLinks => 0x4000,
         textAttachFiles => 0x8000,
         textReadMessageHistory => 0x10000,
         textMentionEveryone => 0x20000,
         textUseExternalEmojis => 0x40000,
-        // Voice
-        voiceViewChannel => 0x400,
+        textUseExternalStickers => 0x2000000000,
+        textAddReactions => 0x40,
+        textUseSlashCommands => 0x80000000,
+        // Voice x7
         voiceConnect => 0x100000,
         voiceSpeak => 0x200000,
         voiceMuteMembers => 0x400000,
         voiceDeafenMembers => 0x800000,
         voiceMoveMembers => 0x1000000,
-        voiceUseVAD => 0x2000000,
+        voiceUseVActivity => 0x2000000,
         voicePrioritySpeaker => 0x100,
     ]
     $usr_permissions_binary = decbin($usr_permissions_dec);
