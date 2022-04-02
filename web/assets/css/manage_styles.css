@@ -265,7 +265,7 @@ body {
 	}
 
 	.dropdown-content .flex_container {
-		justify-content: center;
+		justify-content: left;
 	}
 
 	.dropdown-content a {
