@@ -389,7 +389,6 @@ slideUp, slideDown {
 		height: 51px;
 		padding: 0;
 		width: 100%;
-		color: var(--secondary_font_color);
 		grid-area: left;
 	}
 
