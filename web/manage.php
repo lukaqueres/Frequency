@@ -40,7 +40,7 @@ require __DIR__ . "/config.php";
 				}
 			}
 			$this_guild['permissions'] = get_permissions($this_guild['data']['permissions']);
-			$this_guild['p_tag'] = get__user_permissions_tag($permissions);
+			$this_guild['p_tag'] = get__user_permissions_tag($this_guild['permissions']);
 			$this_guild['name'] = $this_guild['data']['name'];
 		};
 	?>
