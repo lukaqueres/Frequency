@@ -55,17 +55,6 @@ require __DIR__ . "/config.php";
 						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
 						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
 					</div>
-				<?php } else 
-					{
-						$auth_url = url($client_id, $redirect_url, $scopes);
-						echo "<a id='headerbtn' href='$auth_url'>
-						Authorize
-						</a>";
-					}
-				?>
-			</div> <?php #END OF HEADER PANEL ?>
-			<?php if (isset($_SESSION['user'])) { ?>
-				<div class="dropdown">
 					<input type="text" id="servers_search" onfocus="search_dropdownFunction()" onkeyup="search_guilds(); search_dropdownFunction()" placeholder= 
 						<?php 
 							if (!(isset($_GET['guild_id']))) { 
@@ -79,6 +68,17 @@ require __DIR__ . "/config.php";
 							}
 						?> 
 					title="Type in a name or id">
+				<?php } else 
+					{
+						$auth_url = url($client_id, $redirect_url, $scopes);
+						echo "<a id='headerbtn' href='$auth_url'>
+						Authorize
+						</a>";
+					}
+				?>
+			</div> <?php #END OF HEADER PANEL ?>
+			<?php if (isset($_SESSION['user'])) { ?>
+				<div class="dropdown">
 					<div id="search_dropdown" class="dropdown-content vertical_center">
 						<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 							<?php
