@@ -174,29 +174,29 @@ function get_permissions($usr_permissions_dec) {
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
         // /a_/ before permission provide administrator tag, while /m_/ tags as moderator, ( these permissions require 2FA )
         // General x15
-        'a_generalAdministrator' => 0x000008,
+        'generalAdministrator' => 0x000008,
         'generalViewAuditLog' => 0x0080,
-        'm_generalManageServer' => 0x0020,
-        'm_generalManageRoles' => 0x10000000,
-        'm_generalManageChannels' => 0x0010,
-        'm_generalKickMembers' => 0x0002,
-        'm_generalBanMembers' => 0x0004,
+        'generalManageServer' => 0x0020,
+        'generalManageRoles' => 0x10000000,
+        'generalManageChannels' => 0x0010,
+        'generalKickMembers' => 0x0002,
+        'generalBanMembers' => 0x0004,
         'generalCreateInstantInvite' => 0x0001,
         'generalChangeNickname' => 0x4000000,
-        'm_generalManageNicknames' => 0x8000000,
-        'm_generalManageEmoisAndStickers' => 0x40000000,
-        'm_generalManageWebhooks' => 0x20000000,
+        'generalManageNicknames' => 0x8000000,
+        'generalManageEmoisAndStickers' => 0x40000000,
+        'generalManageWebhooks' => 0x20000000,
         'generalReadMessagesViewChannels' => 0x0400,
-        'm_generalManageEvents' => 0x200000000,
-        'm_generalModerateMembers' => 0x10000000000,
+        'generalManageEvents' => 0x200000000,
+        'generalModerateMembers' => 0x10000000000,
         // Text x15
         'textSendMessages' => 0x0800,
         'textCreatePublicThreads' => 0x800000000,
         'textCreatePrivateThreads' => 0x1000000000,
         'textSendMessagesInThreads' => 0x4000000000,
         'textSendTTSMessages' => 0x1000,
-        'm_textManageMessages' => 0x2000,
-        'm_textManageThreads' => 0x400000000,
+        'textManageMessages' => 0x2000,
+        'textManageThreads' => 0x400000000,
         'textEmbedLinks' => 0x4000,
         'textAttachFiles' => 0x8000,
         'textReadMessageHistory' => 0x10000,
@@ -220,7 +220,7 @@ function get_permissions($usr_permissions_dec) {
         //$current_permission = base_convert($value, 16, 10);
         //$current_permission = (int)$current_permission;
         $has_permission = ($usr_permissions_dec & $value) != 0;
-        echo '$key: ' . gettype($key) . '( ' . $key  . ' ) $value: ' . gettype($value) . '( ' . $value . ' ) $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ' ) $current_permission: ' . gettype($current_permission) . '( '. $current_permission . ' ) $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . ' ) </br>';
+        echo '$key: ' . gettype($key) . '( ' . $key  . ' ) $value: ' . gettype($value) . '( ' . $value . ' ) $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ' ) $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . ' ) </br>';
         if ($has_permission) {
             $usr_permissions[] = $key;
         };
