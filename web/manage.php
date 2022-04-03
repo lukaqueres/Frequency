@@ -208,7 +208,7 @@ function search_dropdownFunction() {
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-  if (!event.target.matches('#servers_search') and (!event.target.matches('#search_dropdown')) {
+  if (!event.target.matches('#servers_search') and (!event.target.matches('#search_dropdown'))) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
