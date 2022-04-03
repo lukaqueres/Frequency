@@ -179,7 +179,7 @@ require __DIR__ . "/config.php";
 									$permissions = get_permissions($_SESSION['guilds'][$i]['permissions']);
 									echo json_encode($permissions);
 									echo '<br> TERAZ TAG';
-									echo json_encode(get__user_permissions_tag($permissions);
+									echo json_encode(get__user_permissions_tag($permissions));
 									break;
 								}
 							}
