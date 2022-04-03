@@ -219,7 +219,7 @@ function search_dropdownFunction() {
 	document.getElementById("search_dropdown").classList.add("show");
 	<?php
 	if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>
-		var IdOfElement = document.getElementById( <?php echo 'search_dropdown_' . $_GET['guild_id'] . '_'; ?>);
+		var IdOfElement = document.getElementById( <?php echo '"search_dropdown_' . $_GET['guild_id'] . '_"'; ?>);
 		var topPos = IdOfElement.offsetTop;
 		document.getElementById('search_dropdown').scrollTop = topPos;
 	<?php }; ?>
