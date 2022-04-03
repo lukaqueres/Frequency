@@ -51,10 +51,6 @@ require __DIR__ . "/config.php";
 			<div id="header_panel" class="flex_container">
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
 				<?php if (isset($_SESSION['user'])) { ?>
-					<div class="full_height flex_container">
-						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
-					</div>
 					<input type="text" id="servers_search" onfocus="search_dropdownFunction()" onkeyup="search_guilds(); search_dropdownFunction()" placeholder= 
 						<?php 
 							if (!(isset($_GET['guild_id']))) { 
@@ -68,6 +64,10 @@ require __DIR__ . "/config.php";
 							}
 						?> 
 					title="Type in a name or id">
+					<div class="full_height flex_container">
+						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
+					</div>
 				<?php } else 
 					{
 						$auth_url = url($client_id, $redirect_url, $scopes);
@@ -79,7 +79,7 @@ require __DIR__ . "/config.php";
 			</div> <?php #END OF HEADER PANEL ?>
 			<?php if (isset($_SESSION['user'])) { ?>
 				<div class="dropdown">
-					<div id="search_dropdown" class="dropdown-content vertical_center">
+					<div id="search_dropdown" class="dropdown-content">
 						<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 							<?php
 								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
