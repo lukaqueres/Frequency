@@ -143,11 +143,6 @@ require __DIR__ . "/config.php";
 												<h5>Discoverable</h5>
 											</div>
 										<?php };
-										if ($guild['owner']) { ?>
-											<div class="tag">
-												<h5>Owner</h5>
-											</div>
-										<?php };
 										if (in_array("NEWS", $guild['features'])) { ?>
 											<div class="tag">
 												<h5>News</h5>
@@ -163,6 +158,25 @@ require __DIR__ . "/config.php";
 												<h5>No icon</h5>
 											</div>
 										<?php };
+										$permissions = get_permissions($_SESSION['guilds'][$i]['permissions']);
+										$permissions_tag = get__user_permissions_tag($permissions);
+										if ($guild['owner']) { ?>
+											<div class="tag">
+												<h5>Owner</h5>
+											</div>
+										<?php } elseif ($permissions_tag == 'administrator') { ?>
+											<div class="tag">
+												<h5>Administrator</h5>
+											</div>
+										<?php } elseif ($permissions_tag == 'moderator') { ?>
+											<div class="tag">
+												<h5>Moderator</h5>
+											</div>
+										<?php } elseif ($permissions_tag == 'member') { ?>
+											<div class="tag">
+												<h5>Member</h5>
+											</div>
+										<?php }; ?>
 									?>
 							</div>	
 						<?php }
@@ -176,7 +190,6 @@ require __DIR__ . "/config.php";
 								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 									echo json_encode($_SESSION['guilds'][$i]);
 									echo '<br> TERAZ UPRAWNIENIA';
-									$permissions = get_permissions($_SESSION['guilds'][$i]['permissions']);
 									echo json_encode($permissions);
 									echo '<br> TERAZ TAG';
 									echo json_encode(get__user_permissions_tag($permissions));
