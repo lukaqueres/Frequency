@@ -230,13 +230,10 @@ window.onclick = function(event) {
 			dropdown.classList.remove('show');
 		}
 	}
-	if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown'))) && document.getElementsByClassName("dropdown-content").classList.contains('show')) {
-		var dropdowns = document.getElementsByClassName("dropdown-content");
-}		for (i = 0; i < dropdowns.length; i++) {
-			var openDropdown = dropdowns[i];
-			if (openDropdown.classList.contains('show')) {
-				openDropdown.classList.remove('show');
-			}
+	if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown'))) && document.getElementById("search_dropdown").classList.contains('show')) {
+		var dropdown = document.getElementById("search_dropdown");
+		if (dropdown.classList.contains('show')) {
+			dropdown.classList.remove('show');
 		}
 	}
 	</script>
