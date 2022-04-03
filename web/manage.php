@@ -78,8 +78,11 @@ require __DIR__ . "/config.php";
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
 			<?php if (isset($_SESSION['user'])) { ?>
-				<div class="dropdown">
-					<div id="search_dropdown" class="dropdown-content">
+				<div id="search_dropdown" class="dropdown">
+					<div>
+					tst
+					</div>
+					<div class="dropdown-content">
 						<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 							<?php
 								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
@@ -87,7 +90,7 @@ require __DIR__ . "/config.php";
 									$extention = is_animated($_SESSION['guilds'][$i]['icon']);
 									echo '<tr class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
 										<td class="flex_container" style="padding: 5px; margin-inline: 30px;" ><img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/><h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1></td>
-							     		<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
+						     			<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 								}
 							?>
 						</table>
@@ -211,13 +214,10 @@ function search_dropdownFunction() {
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
   if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown')))) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var dropdown = document.getElementById("search_dropdown");
     var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+    if (dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
     }
   }
 }
