@@ -240,7 +240,7 @@ window.onclick = function(event) {
 function addListiners() {
 	var div = document.getElementById("user_dropdown");
 
-	div.addEventListener('click', function (event) { user_dropdownFunction(); });
+	div.addEventListener('click', function (event) { document.getElementById("user_dropdown").classList.add("show"); });
  }
 
  addListiners()
