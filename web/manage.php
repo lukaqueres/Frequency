@@ -216,21 +216,27 @@ require __DIR__ . "/config.php";
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function search_dropdownFunction() {
-  document.getElementById("search_dropdown").classList.add("show");
+	document.getElementById("search_dropdown").classList.add("show");
+	<?php
+	if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>
+		var IdOfElement = document.getElementById( <?php echo 'search_dropdown_' . $_GET['guild_id'] . '_'; ?>);
+		var topPos = IdOfElement.offsetTop;
+		document.getElementById('search_dropdown').scrollTop = topPos;
+	<?php }; ?>
 }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-  if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown')))) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
+	if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown')))) {
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+			var openDropdown = dropdowns[i];
+			if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			}
+		}
+	}
 }
 	</script>
 </html>
