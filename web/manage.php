@@ -224,13 +224,13 @@ function user_dropdownFunction() {
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-	if (!event.target.matches('#user_dropdown')) {
+	if (!event.target.matches('#user_dropdown') && document.getElementById("user_dropdown").classList.contains('show')) {
 		var dropdown = document.getElementById("user_dropdown");
 		if (dropdown.classList.contains('show')) {
 			dropdown.classList.remove('show');
 		}
 	}
-	if ((!event.target.matches('#servers_search')) || ((!event.target.matches('#search_dropdown')))) {
+	if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown'))) && document.getElementsByClassName("dropdown-content").classList.contains('show')) {
 		var dropdowns = document.getElementsByClassName("dropdown-content");
 }		for (i = 0; i < dropdowns.length; i++) {
 			var openDropdown = dropdowns[i];
