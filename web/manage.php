@@ -176,7 +176,10 @@ require __DIR__ . "/config.php";
 								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
 									echo json_encode($_SESSION['guilds'][$i]);
 									echo '<br> TERAZ UPRAWNIENIA';
-									echo json_encode(get_permissions($_SESSION['guilds'][$i]['permissions']));
+									$permissions = get_permissions($_SESSION['guilds'][$i]['permissions']);
+									echo json_encode($permissions);
+									echo '<br> TERAZ TAG';
+									echo json_encode(get__user_permissions_tag($permissions);
 									break;
 								}
 							}

@@ -169,10 +169,32 @@ function check_state($state)
     }
 }
 
+function get__user_permissions_tag($usr_permissions_list) {
+    // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
+    $gen_permissions__tags = [
+        'generalAdministrator' => 'administrator',
+        'generalKickMembers' => 'moderator',
+        'generalBanMembers' => 'moderator',
+        'generalManageChannels' => 'moderator',
+        'generalManageServer' => 'moderator',
+        'textManageMessages' => 'moderator',
+        'generalManageRoles' => 'moderator',
+        'generalManageWebhooks' => 'moderator',
+        'generalManageEmoisAndStickers' => 'moderator',
+        'textManageThreads' => 'moderator',
+        'generalModerateMembers' => 'moderator'
+    ];
+    foreach($gen_permissions_tags as $permission => $tag) {
+        if (in_array($permission, $usr_permissions_list)) {
+            return $tag;
+        };
+    return 'member';
+}
+
 function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
-        // /a_/ before permission provide administrator tag, while /m_/ tags as moderator, ( these permissions require 2FA )
+        
         // General x15
         'generalAdministrator' => 0x000008,
         'generalViewAuditLog' => 0x0080,
@@ -220,23 +242,11 @@ function get_permissions($usr_permissions_dec) {
         //$current_permission = base_convert($value, 16, 10);
         //$current_permission = (int)$current_permission;
         $has_permission = ($usr_permissions_dec & $value) != 0;
-        echo '$key: ' . gettype($key) . '( ' . $key  . ' ) $value: ' . gettype($value) . '( ' . $value . ' ) $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ' ) $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . ' ) </br>';
+        //echo '$key: ' . gettype($key) . '( ' . $key  . ' ) $value: ' . gettype($value) . '( ' . $value . ' ) $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ' ) $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . ' ) </br>';
         if ($has_permission) {
             $usr_permissions[] = $key;
         };
     };
-    /*foreach($usr_permissions as $permission) {
-        $perm = substr($permission, 0, 2);
-        if ( $perm == 'a_' ) {
-            $usr_permissions['tag'] = 'Administrator';
-            break;
-        } elseif ( $perm == 'm_' ) {
-            $usr_permissions['tag'] = 'Moderator';
-            break;
-        } else {
-            $usr_permissions['tag'] = 'Member';
-        }
-    };*/
     return $usr_permissions;
     
 }
