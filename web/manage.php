@@ -89,9 +89,14 @@ require __DIR__ . "/config.php";
 								<button id="slideDown" onclick="">Down</button>
 						</div>
 					</div>
-					<div class="full_height flex_container">
-						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
-						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
+					<div class="dropdown">
+						<div onclick="" class="full_height flex_container clicable_div">
+							<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
+							<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
+						</div>
+						<div id="user_dropdown" >
+							test
+						</div>
 					</div>
 				<?php } else 
 					{
@@ -213,10 +218,14 @@ function search_dropdownFunction() {
 	<?php }; ?>
 }
 
+function user_dropdownFunction() {
+	document.getElementById("user_dropdown").classList.add("show");
+}
+
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-	if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown')))) {
-		var dropdowns = document.getElementsByClassName("dropdown-content");
+	if (!event.target.matches('#user_dropdown')) {
+		var dropdowns = document.getElementById("user_dropdown");
 		var i;
 		for (i = 0; i < dropdowns.length; i++) {
 			var openDropdown = dropdowns[i];
