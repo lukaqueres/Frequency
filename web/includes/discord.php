@@ -244,7 +244,7 @@ function get_permissions($usr_permissions_dec) {
         //$current_permission = base_convert($value, 16, 10);
         //$current_permission = (int)$current_permission;
         $has_permission = ($usr_permissions_dec & $value) != 0;
-        echo '$key: ' . gettype($key) . '( ' . $key  . ' ) $value: ' . gettype($value) . '( ' . $value . ' ) $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ' ) $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . ' ) </br>';
+        //echo '$key: ' . gettype($key) . '( ' . $key  . ' ) $value: ' . gettype($value) . '( ' . $value . ' ) $usr_permissions_dec: ' . gettype($usr_permissions_dec) . '( ' . $usr_permissions_dec . ' ) $has_permission: ' . gettype($has_permission) . '( ' . $has_permission . ' ) </br>';
         if ($has_permission) {
             $usr_permissions[] = $key;
         };
