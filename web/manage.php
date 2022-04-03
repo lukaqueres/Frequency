@@ -90,7 +90,7 @@ require __DIR__ . "/config.php";
 						</div>
 					</div>
 					<div class="dropdown full_height">
-						<div onclick="user_dropdownFunction()" class="full_height flex_container clicable_div">
+						<div class="full_height flex_container clicable_div" onclick='user_dropdownFunction()'>
 							<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
 							<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
 						</div>
