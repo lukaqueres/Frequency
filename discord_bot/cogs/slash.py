@@ -171,8 +171,8 @@ class Slash(Cog):
 		guild_join = user.joined_at.strftime("%d/%m/%Y %H:%M:%S")
 		if action == 'information':
 			if timespan:
-				if (timespan > 21 or timespan < 1):
-					return await ctx.send( "Invalid timespan ammount given. Must Oscilate between 1 and 21 days." , hidden=True)
+				if (timespan > 31 or timespan < 1):
+					return await ctx.send( "Invalid timespan ammount given. Must Oscilate between 1 and 31 days." , hidden=True)
 			await ctx.defer()
 			if timespan:
 				after_date = datetime.utcnow()-timedelta(days=timespan)

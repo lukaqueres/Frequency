@@ -256,7 +256,6 @@ body {
 	display: none;
 	position: absolute;
 	background-color: black;
-	filter: brightness(1.25);
 	min-width: 160px;
 	/*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
@@ -265,7 +264,8 @@ body {
 	max-height: 50vh;
 	width: 300px;
 	border: var(--accent_color) 1px solid;
-	border-radius: 15px;
+	border-radius: 0px 0px 15px 15px;
+	margin-top: 10px;
 }
 
 	.dropdown-content img {
@@ -307,12 +307,13 @@ body {
 	}
 
 #header_panel {
+	left: 0px;
 	position: fixed;
 	background-color: var(--accent_color);
 	color: var(--primary_font_color);
 	z-index: 99;
 	border: solid 1px var(--accent_color);
-	border-radius: 0 0 10px 10px;
+	border-radius: 0 0 0 10px;
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 	padding: 5px;
 	height: 40px;

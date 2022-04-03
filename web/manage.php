@@ -48,7 +48,7 @@ require __DIR__ . "/config.php";
 
 	<body>
 		<div id="container"> 
-			<div id="header_panel" class="vertical_center flex_container">
+			<div id="header_panel" class="flex_container">
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
 				<?php if (isset($_SESSION['user'])) { ?>
 					<div class="dropdown">

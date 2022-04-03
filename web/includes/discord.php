@@ -171,6 +171,7 @@ function check_state($state)
 
 function get__user_permissions_tag($usr_permissions_list) {
     // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
+    // Please add these permissions from top ( from highest )
     $gen_permissions_tags = [
         'generalAdministrator' => 'administrator',
         'generalKickMembers' => 'moderator',
