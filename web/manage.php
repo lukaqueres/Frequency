@@ -71,7 +71,7 @@ require __DIR__ . "/config.php";
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
 										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
 										$extention = is_animated($_SESSION['guilds'][$i]['icon']);
-										echo '<tr class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
+										echo '<tr id="search_dropdown_' . $_SESSION['guilds'][$i]['id'] .'_" class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
 											<td class="flex_container" style="padding: 5px; margin-inline: 30px;" ><img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/><h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1></td>
 								     		<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 									}
