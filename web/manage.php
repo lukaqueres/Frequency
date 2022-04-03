@@ -51,19 +51,36 @@ require __DIR__ . "/config.php";
 			<div id="header_panel" class="flex_container">
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
 				<?php if (isset($_SESSION['user'])) { ?>
-					<input type="text" id="servers_search" onfocus="search_dropdownFunction()" onkeyup="search_guilds(); search_dropdownFunction()" placeholder= 
-						<?php 
-							if (!(isset($_GET['guild_id']))) { 
-								echo '"Select server"'; 
-							} else { 
-								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-										echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
+					<div class="dropdown">
+						<input type="text" id="servers_search" onfocus="search_dropdownFunction()" onkeyup="search_guilds(); search_dropdownFunction()" placeholder= 
+							<?php 
+								if (!(isset($_GET['guild_id']))) { 
+									echo '"Select server"'; 
+								} else { 
+									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+											echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
+										}
 									}
 								}
-							}
-						?> 
-					title="Type in a name or id">
+							?> 
+						title="Type in a name or id">
+						<div id="search_dropdown" class="dropdown-content vertical_center">
+							<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
+								<?php
+									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
+										$extention = is_animated($_SESSION['guilds'][$i]['icon']);
+										echo '<tr class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
+											<td class="flex_container" style="padding: 5px; margin-inline: 30px;" ><img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/><h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1></td>
+								     		<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
+									}
+								?>
+								</table>
+								<button id="slideUp" onclick="">Up</button>
+								<button id="slideDown" onclick="">Down</button>
+						</div>
+					</div>
 					<div class="full_height flex_container">
 						<img id="avatar" src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']); echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" />
 						<span id="avatar_usename"><?php echo $_SESSION['username']?></span>
@@ -77,28 +94,6 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-			<?php if (isset($_SESSION['user'])) { ?>
-				<div id="search_dropdown" class="dropdown flex_container">
-					<div>
-					tst
-					</div>
-					<div class="dropdown-content">
-						<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
-							<?php
-								for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-									//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
-									$extention = is_animated($_SESSION['guilds'][$i]['icon']);
-									echo '<tr class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
-										<td class="flex_container" style="padding: 5px; margin-inline: 30px;" ><img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/><h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1></td>
-						     			<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
-								}
-							?>
-						</table>
-						<button id="slideUp" onclick="">Up</button>
-						<button id="slideDown" onclick="">Down</button>
-					</div>
-				</div>
-				<?php } ?>
 			<div id="main_grid" class="grid_container center">
 				<div class="header">
 					
@@ -214,10 +209,13 @@ function search_dropdownFunction() {
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
   if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown')))) {
-    var dropdown = document.getElementById("search_dropdown");
+    var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
-    if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
     }
   }
 }
