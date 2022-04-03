@@ -78,7 +78,7 @@ require __DIR__ . "/config.php";
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
 			<?php if (isset($_SESSION['user'])) { ?>
-				<div id="search_dropdown" class="dropdown">
+				<div id="search_dropdown" class="dropdown flex_container">
 					<div>
 					tst
 					</div>
