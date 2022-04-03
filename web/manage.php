@@ -230,7 +230,7 @@ window.onclick = function(event) {
 			dropdown.classList.remove('show');
 		}
 	}
-	if ((!event.target.matches('#servers_search')) && ((!event.target.matches('#search_dropdown')))) {
+	if ((!event.target.matches('#servers_search')) || ((!event.target.matches('#search_dropdown')))) {
 		var dropdowns = document.getElementsByClassName("dropdown-content");
 }		for (i = 0; i < dropdowns.length; i++) {
 			var openDropdown = dropdowns[i];
