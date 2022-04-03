@@ -31,7 +31,19 @@ require __DIR__ . "/config.php";
 		<script type="text/javascript" src="assets/js/manage_scripts.js"></script>
 		<style> .windowcontent { display: none; } </style>
 	</head>
-
+	<?php
+		if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
+			for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
+				if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
+					$this_guild['data'] = $_SESSION['guilds'][$i];
+					break;
+				}
+			}
+			$this_guild['permissions'] = get_permissions($this_guild['data']['permissions']);
+			$this_guild['p_tag'] = get__user_permissions_tag($permissions);
+			$this_guild['name'] = $this_guild['data']['name'];
+		};
+	?>
 	<?php if (isset($_SESSION['user'])) { ?>
 		<style type="text/css">
 			#error-info{
@@ -57,11 +69,7 @@ require __DIR__ . "/config.php";
 								if (!(isset($_GET['guild_id']))) { 
 									echo '"Select server"'; 
 								} else { 
-									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-											echo '"' . $_SESSION['guilds'][$i]['name'] . '"';
-										}
-									}
+									echo '"' . $this_guild['name'] . '"';
 								}
 							?> 
 						title="Type in a name or id">
@@ -103,14 +111,8 @@ require __DIR__ . "/config.php";
 						<div class="no_margin flex_container" style="height: 75px;">
 							<?php
 								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
-									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-										if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-											$extention = is_animated($_SESSION['guilds'][$i]['icon']);
-											echo '<img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/>';
-											echo '<h2 class="no_margin w_padding" style="font-size: unset;">' . $_SESSION['guilds'][$i]['name'] . '</h2>';
-											break;
-										}
-									}
+									echo '<img class="icon no_margin" src="' . get_icon($this_guild['data']) . '"/>';
+									echo '<h2 class="no_margin w_padding" style="font-size: unset;">' . $this_guild['name'] . '</h2>';
 								} elseif (isset($_SESSION['username'])) {
 									echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
 								} else {
@@ -122,12 +124,7 @@ require __DIR__ . "/config.php";
 							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
 								<div class="tags_div">
 									<?php
-										for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-											if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-												$guild = $_SESSION['guilds'][$i];
-												break;
-											}
-										}
+										$guild['features'] = $this_guild['data']['features']
 										if (in_array("COMMUNITY", $guild['features'])) { ?>
 											<div class="tag">
 												<h5>Community</h5>
@@ -158,8 +155,7 @@ require __DIR__ . "/config.php";
 												<h5>No icon</h5>
 											</div>
 										<?php };
-										$permissions = get_permissions($_SESSION['guilds'][$i]['permissions']);
-										$permissions_tag = get__user_permissions_tag($permissions);
+										$permissions_tag = $this_guild['p_tag'];
 										if ($guild['owner']) { ?>
 											<div class="tag">
 												<h5>Owner</h5>
@@ -186,14 +182,8 @@ require __DIR__ . "/config.php";
 				<div class="main">
 					<?php
 						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
-							for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
-								if ($_SESSION['guilds'][$i]['id'] == $_GET['guild_id']) {
-									echo json_encode($_SESSION['guilds'][$i]);
-									echo '<br> TERAZ UPRAWNIENIA';
-									echo json_encode($permissions);
-									break;
-								}
-							}
+							echo json_encode($this_guild['data']);
+							echo json_encode($this_guild['permissions']);
 						}
 					?>
 				</div>
