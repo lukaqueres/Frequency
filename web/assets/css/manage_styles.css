@@ -403,6 +403,10 @@ slideUp, slideDown {
 	grid-template-areas:
 		'header header header header header header'
 		'left left main main main main'
+		'left left main main main main'
+		'left left main main main main'
+		'left left main main main main'
+		'left left main main main main'
 		'left left footer footer footer footer';
 }
 
