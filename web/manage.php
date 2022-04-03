@@ -124,7 +124,7 @@ require __DIR__ . "/config.php";
 							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
 								<div class="tags_div">
 									<?php
-										$guild['features'] = $this_guild['data']['features'];
+										$guild = $this_guild['data'];
 										if (in_array("COMMUNITY", $guild['features'])) { ?>
 											<div class="tag">
 												<h5>Community</h5>
