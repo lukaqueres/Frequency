@@ -401,9 +401,9 @@ slideUp, slideDown {
 	text-align: center;
 	background-color: var(--secondary_main_color);
 	grid-template-areas:
-		'left header header header header header'
-		'left main main main main main'
-		'left footer footer footer footer footer';
+		'header header header header header header'
+		'left left main main main main'
+		'left left footer footer footer footer';
 }
 
 	.grid_container > .header {
@@ -439,8 +439,6 @@ slideUp, slideDown {
 #main_grid {
 	background-color: var(--secondary_main_color);
 	border-radius: 14px;
-	height: 80%;
-	width: 90%;
 }
 
 .div_box {
