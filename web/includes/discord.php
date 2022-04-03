@@ -237,5 +237,6 @@ function get_permissions($usr_permissions_dec) {
             $usr_permissions['tag'] = 'Member';
         }
     return $usr_permissions;
+    };
 }
 ?>
