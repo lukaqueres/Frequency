@@ -188,6 +188,7 @@ function get__user_permissions_tag($usr_permissions_list) {
         if (in_array($permission, $usr_permissions_list)) {
             return $tag;
         };
+    }
     return 'member';
 }
 
