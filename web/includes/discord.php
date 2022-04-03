@@ -236,7 +236,8 @@ function get_permissions($usr_permissions_dec) {
         } else {
             $usr_permissions['tag'] = 'Member';
         }
-    return $usr_permissions;
     };*/
+    return $usr_permissions;
+    
 }
 ?>
