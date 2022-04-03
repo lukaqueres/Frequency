@@ -236,5 +236,6 @@ window.onclick = function(event) {
 			dropdown.classList.remove('show');
 		}
 	}
+}
 	</script>
 </html>
