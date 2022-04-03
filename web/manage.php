@@ -237,5 +237,12 @@ window.onclick = function(event) {
 		}
 	}
 }
+function addListiners() {
+	var div = document.getElementById("user_dropdown");
+
+	div.addEventListener('click', function (event) { user_dropdownFunction(); });
+ }
+
+ addListiners()
 	</script>
 </html>
