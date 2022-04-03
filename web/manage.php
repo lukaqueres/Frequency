@@ -176,7 +176,7 @@ require __DIR__ . "/config.php";
 											<div class="tag">
 												<h5>Member</h5>
 											</div>
-										<?php }; ?>
+										<?php };
 									?>
 							</div>	
 						<?php }
