@@ -65,7 +65,7 @@ require __DIR__ . "/config.php";
 								}
 							?> 
 						title="Type in a name or id">
-						<div id="myDropdown" class="dropdown-content vertical_center">
+						<div id="search_dropdown" class="dropdown-content vertical_center">
 							<table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="servers">
 								<?php
 									for ($i = 0; $i < sizeof($_SESSION['guilds']); $i++) {
@@ -203,12 +203,12 @@ require __DIR__ . "/config.php";
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
-  document.getElementById("myDropdown").classList.add("show");
+  document.getElementById("search_dropdown").classList.add("show");
 }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
-  if (!event.target.matches('#servers_search')) {
+  if (!event.target.matches('#servers_search') and (!event.target.matches('#search_dropdown')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
