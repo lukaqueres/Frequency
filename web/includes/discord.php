@@ -172,30 +172,31 @@ function check_state($state)
 function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
+        // /a_/ before permission provide administrator tag, while /m_/ tags as moderator, ( these permissions require 2FA )
         // General x15
-        'generalAdministrator' => 0x000008,
+        'a_generalAdministrator' => 0x000008,
         'generalViewAuditLog' => 0x0080,
-        'generalManageServer' => 0x0020,
-        'generalManageRoles' => 0x10000000,
-        'generalManageChannels' => 0x0010,
-        'generalKickMembers' => 0x0002,
-        'generalBanMembers' => 0x0004,
+        'm_generalManageServer' => 0x0020,
+        'm_generalManageRoles' => 0x10000000,
+        'm_generalManageChannels' => 0x0010,
+        'm_generalKickMembers' => 0x0002,
+        'm_generalBanMembers' => 0x0004,
         'generalCreateInstantInvite' => 0x0001,
         'generalChangeNickname' => 0x4000000,
-        'generalManageNicknames' => 0x8000000,
-        'generalManageEmoisAndStickers' => 0x40000000,
-        'generalManageWebhooks' => 0x20000000,
+        'm_generalManageNicknames' => 0x8000000,
+        'm_generalManageEmoisAndStickers' => 0x40000000,
+        'm_generalManageWebhooks' => 0x20000000,
         'generalReadMessagesViewChannels' => 0x0400,
-        'generalManageEvents' => 0x200000000,
-        'generalModerateMembers' => 0x10000000000,
+        'm_generalManageEvents' => 0x200000000,
+        'm_generalModerateMembers' => 0x10000000000,
         // Text x15
         'textSendMessages' => 0x0800,
         'textCreatePublicThreads' => 0x800000000,
         'textCreatePrivateThreads' => 0x1000000000,
         'textSendMessagesInThreads' => 0x4000000000,
         'textSendTTSMessages' => 0x1000,
-        'textManageMessages' => 0x2000,
-        'textManageThreads' => 0x400000000,
+        'm_textManageMessages' => 0x2000,
+        'm_textManageThreads' => 0x400000000,
         'textEmbedLinks' => 0x4000,
         'textAttachFiles' => 0x8000,
         'textReadMessageHistory' => 0x10000,
@@ -224,6 +225,17 @@ function get_permissions($usr_permissions_dec) {
             $usr_permissions[] = $key;
         };
     };
+    foreach($usr_permissions as $permission) {
+        $perm = substr($permission, 0, 2);
+        if ( $perm == 'a_' ) {
+            $usr_permissions['tag'] = 'Administrator';
+            break;
+        } elseif ( $perm == 'm_' ) {
+            $usr_permissions['tag'] = 'Moderator';
+            break;
+        } else {
+            $usr_permissions['tag'] = 'Member';
+        }
     return $usr_permissions;
 }
 ?>
