@@ -52,7 +52,7 @@ require __DIR__ . "/config.php";
 				<h1 class="no_margin" > <?php echo $bot_name; ?> </h1>
 				<?php if (isset($_SESSION['user'])) { ?>
 					<div class="dropdown">
-						<input type="text" id="servers_search" onfocus="myFunction()" onkeyup="search_guilds(); myFunction()" placeholder= 
+						<input type="text" id="servers_search" onfocus="search_dropdownFunction()" onkeyup="search_guilds(); search_dropdownFunction()" placeholder= 
 							<?php 
 								if (!(isset($_GET['guild_id']))) { 
 									echo '"Select server"'; 
@@ -202,7 +202,7 @@ require __DIR__ . "/config.php";
 		}
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-function myFunction() {
+function search_dropdownFunction() {
   document.getElementById("search_dropdown").classList.add("show");
 }
 
