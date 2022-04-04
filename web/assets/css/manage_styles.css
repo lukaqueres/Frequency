@@ -400,13 +400,9 @@ slideUp, slideDown {
 	gap: 10px;
 	background-color: var(--secondary_main_color);
 	grid-template-areas:
-		'header header header header header header'
-		'left left main main main main'
-		'left left main main main main'
-		'left left main main main main'
-		'left left main main main main'
-		'left left main main main main'
-		'left left footer footer footer footer';
+		'header header header header'
+		'left main main main'
+		'left footer footer footer';
 }
 
 	.grid_container > .header {
