@@ -24,7 +24,7 @@ body {
 	flex-wrap: wrap;
 	display: flex;
 	align-items: baseline;
-	justify-content: center;
+	justify-content: left;
 }
 
 
@@ -302,7 +302,7 @@ body {
 	display: flex;
 	align-items: baseline;
 	flex-wrap: nowrap;
-	justify-content: center;
+	justify-content: left;
 }
 
 	.flex_container > * {
@@ -398,7 +398,6 @@ slideUp, slideDown {
 	width: 100%;
 	gap: 0;
 	gap: 10px;
-	text-align: center;
 	background-color: var(--secondary_main_color);
 	grid-template-areas:
 		'header header header header header header'
@@ -436,7 +435,6 @@ slideUp, slideDown {
 	}
 
 	.grid_container > div {
-		text-align: center;
 		padding: 10px;
 	}
 
@@ -451,8 +449,8 @@ slideUp, slideDown {
 	margin: 10px;
 	padding: 5px;
 	border-radius: 15px;
-	text-align: center;
 	height: calc( 100% - 30px);
+	height: auto;
 }
 
 .header_div_box > * {
