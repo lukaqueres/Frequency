@@ -269,11 +269,11 @@ function get_guild_tags($guild) {
 		$tags_div .= '<div class="tag"><h5>No icon</h5></div>'; };
 	if ($guild['owner']) {
 		$tags_div .= '<div class="tag"><h5>Owner</h5></div>';
-	} elseif (guild['p_tag'] == 'administrator') {
+	} elseif ($guild['p_tag'] == 'administrator') {
 		$tags_div .= '<div class="tag"><h5>Administrator</h5></div>';
-	} elseif (guild['p_tag'] == 'moderator') {
+	} elseif ($guild['p_tag'] == 'moderator') {
 		$tags_div .= '<div class="tag"><h5>Moderator</h5></div>';
-	} elseif (guild['p_tag'] == 'member') {
+	} elseif ($guild['p_tag'] == 'member') {
 		$tags_div .= '<div class="tag"><h5>Member</h5></div>';
 	};
     $tags_div .='</div>';
