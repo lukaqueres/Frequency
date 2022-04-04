@@ -415,9 +415,10 @@ slideUp, slideDown {
 	}
 
 	.grid_container > .left {
-		padding: 0;
 		grid-area: left;
 		height: auto;
+		height: 70vh;
+		width: 20vw;
 	}
 
 	.grid_container > .right {
