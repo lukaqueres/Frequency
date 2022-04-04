@@ -440,7 +440,6 @@ slideUp, slideDown {
 
 #main_grid {
 	background-color: var(--secondary_main_color);
-	border-radius: 14px;
 }
 
 .div_box {
