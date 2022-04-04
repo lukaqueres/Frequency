@@ -146,9 +146,6 @@ require __DIR__ . "/config.php";
 				<div class="footer">
 					footer
 				</div>		
-				</div>
-				<div class="left">
-
 			</div>
 		</div>
 	</body>
