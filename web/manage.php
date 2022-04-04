@@ -136,12 +136,14 @@ require __DIR__ . "/config.php";
 				left
 				</div>
 				<div class="main">
+				<h5>
 					<?php
 						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
 							echo json_encode($this_guild['data']);
 							echo json_encode($this_guild['permissions']);
 						}
 					?>
+				</h5>
 				</div>
 				<div class="footer">
 					footer
