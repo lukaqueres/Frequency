@@ -113,11 +113,11 @@ require __DIR__ . "/config.php";
 			<div id="main_grid" class="grid_container center">
 				<div class="header">
 					<div class="div_box" style="min-width:250px;">
-						<div class="no_margin flex_container" style="height: 75px;">
+						<div class="no_margin flex_container" style="height: 100px;">
 							<?php
 								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
 									echo '<img class="icon no_margin" src="' . get_icon($this_guild['data']) . '"/>';
-									echo '<h2 class="no_margin w_padding" style="font-size: unset;">' . $this_guild['name'] . '</h2>';
+									echo '<h2 class="no_margin w_padding">' . $this_guild['name'] . '</h2>';
 								} elseif (isset($_SESSION['username'])) {
 									echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
 								} else {
