@@ -252,4 +252,31 @@ function get_permissions($usr_permissions_dec) {
     return $usr_permissions;
     
 }
+
+function get_guild_tags($guild) {
+    $tags_div = '<div class="tags_div">';
+	if (in_array("COMMUNITY", $guild['features'])) {
+        $tags_div .= '<div class="tag"><h5>Community</h5></div>'; };
+	if (in_array("PARTNERED", $guild['features'])) {
+		$tags_div .= '<div class="tag"><h5>Partner</h5></div>'; };
+	if (in_array("DISCOVERABLE", $guild['features'])) {
+		$tags_div .= '<div class="tag"><h5>Discoverable</h5></div>'; };
+	if (in_array("NEWS", $guild['features'])) {
+		$tags_div .= '<div class="tag"><h5>News</h5></div>'; };
+	if (in_array("VERIFIED", $guild['features'])) {
+		$tags_div .= '<div class="tag"><h5>Verified</h5></div>'; };
+	if ($guild['icon'] == null) {
+		$tags_div .= '<div class="tag"><h5>No icon</h5></div>'; };
+	if ($guild['owner']) {
+		$tags_div .= '<div class="tag"><h5>Owner</h5></div>';
+	} elseif (guild['p_tag'] == 'administrator') {
+		$tags_div .= '<div class="tag"><h5>Administrator</h5></div>';
+	} elseif (guild['p_tag'] == 'moderator') {
+		$tags_div .= '<div class="tag"><h5>Moderator</h5></div>';
+	} elseif (guild['p_tag'] == 'member') {
+		$tags_div .= '<div class="tag"><h5>Member</h5></div>';
+	};
+    $tags_div .='</div>';
+    return $tags_div;
+}
 ?>

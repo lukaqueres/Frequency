@@ -80,7 +80,10 @@ require __DIR__ . "/config.php";
 										//echo '<a href="?' . $_SESSION['guilds'][$i]['id'] .'">' . $_SESSION['guilds'][$i]['name'] . '</a>';
 										$extention = is_animated($_SESSION['guilds'][$i]['icon']);
 										echo '<tr id="search_dropdown_' . $_SESSION['guilds'][$i]['id'] .'_" class="search_row clicable_row full_height flex_container" onclick="window.location.href=\'?guild_id=' . $_SESSION['guilds'][$i]['id'] .'\';" >
-											<td class="flex_container" style="padding: 5px; margin-inline: 30px;" ><img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/><h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1></td>
+											<td class="flex_container" style="padding: 5px; margin-inline: 30px;" >
+												<img class="icon no_margin" src="' . get_icon($_SESSION['guilds'][$i]) . '"/>
+												<h1 class="no_margin w_padding max_font">' . $_SESSION['guilds'][$i]['name'] . '</h1>
+											</td>
 								     		<td class="no-display">' . $_SESSION['guilds'][$i]['id'] . '</td></tr>';
 									}
 								?>
@@ -123,62 +126,10 @@ require __DIR__ . "/config.php";
 							?>
 						</div>
 						<?php
-							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) { ?>						
-								<div class="tags_div">
-									<?php
-										$guild = $this_guild['data'];
-										if (in_array("COMMUNITY", $guild['features'])) { ?>
-											<div class="tag">
-												<h5>Community</h5>
-											</div>
-										<?php };
-										if (in_array("PARTNERED", $guild['features'])) { ?>
-											<div class="tag">
-												<h5>Partner</h5>
-											</div>
-										<?php };
-										if (in_array("DISCOVERABLE", $guild['features'])) { ?>
-											<div class="tag">
-												<h5>Discoverable</h5>
-											</div>
-										<?php };
-										if (in_array("NEWS", $guild['features'])) { ?>
-											<div class="tag">
-												<h5>News</h5>
-											</div>
-										<?php };
-										if (in_array("VERIFIED", $guild['features'])) { ?>
-											<div class="tag">
-												<h5>Verified</h5>
-											</div>
-										<?php };
-										if ($guild['icon'] == null) { ?>
-											<div class="tag">
-												<h5>No icon</h5>
-											</div>
-										<?php };
-										$permissions_tag = $this_guild['p_tag'];
-										if ($guild['owner']) { ?>
-											<div class="tag">
-												<h5>Owner</h5>
-											</div>
-										<?php } elseif ($permissions_tag == 'administrator') { ?>
-											<div class="tag">
-												<h5>Administrator</h5>
-											</div>
-										<?php } elseif ($permissions_tag == 'moderator') { ?>
-											<div class="tag">
-												<h5>Moderator</h5>
-											</div>
-										<?php } elseif ($permissions_tag == 'member') { ?>
-											<div class="tag">
-												<h5>Member</h5>
-											</div>
-										<?php };
-									?>
-							</div>	
-						<?php }
-					?>
+							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {				
+								echo get_guild_tags($this_guild['data']);
+							}
+						?>
 					</div>
 				</div>
 				<div class="main">
