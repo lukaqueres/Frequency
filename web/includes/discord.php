@@ -171,7 +171,7 @@ function check_state($state)
 
 function get__user_permissions_tag($usr_permissions_list) {
     // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
-    // Please add these permissions from top ( from highest )
+    // Please add permissions from top ( from highest )
     $gen_permissions_tags = [
         'generalAdministrator' => 'administrator',
         'generalKickMembers' => 'moderator',
@@ -196,7 +196,7 @@ function get__user_permissions_tag($usr_permissions_list) {
 function get_permissions($usr_permissions_dec) {
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
-        
+        //https://discord.com/developers/docs/topics/permissions <- permissions tab in discord docks
         // General x15
         'generalAdministrator' => 0x000008,
         'generalViewAuditLog' => 0x0080,
