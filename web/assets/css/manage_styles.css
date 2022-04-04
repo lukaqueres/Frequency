@@ -443,7 +443,7 @@ slideUp, slideDown {
 }
 
 .div_box {
-	border-radius: 15px;
+	background-color: #110F3B;
 	height: auto;
 	padding: 0 10px;
 }
