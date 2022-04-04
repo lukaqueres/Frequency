@@ -411,13 +411,11 @@ slideUp, slideDown {
 
 	.grid_container > .header {
 		grid-area: header;
+		height: fit-content;
 	}
 
 	.grid_container > .left {
-		margin-inline: auto;
-		height: 51px;
 		padding: 0;
-		width: 100%;
 		grid-area: left;
 		height: auto;
 	}
@@ -443,7 +441,6 @@ slideUp, slideDown {
 }
 
 .div_box {
-	background-color: #110F3B;
 	height: auto;
 	padding: 0 10px 10px;
 }

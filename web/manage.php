@@ -132,6 +132,9 @@ require __DIR__ . "/config.php";
 						?>
 					</div>
 				</div>
+				<div class="left">
+				left
+				</div>
 				<div class="main">
 					<?php
 						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
