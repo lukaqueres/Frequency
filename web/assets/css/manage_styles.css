@@ -401,7 +401,7 @@ slideUp, slideDown {
 	grid-template-areas:
 		'header header header header'
 		'left main main main'
-		'left footer footer footer';
+		'left main main main';
 	overflow: hidden;
 }
 
