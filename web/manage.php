@@ -127,7 +127,7 @@ require __DIR__ . "/config.php";
 						</div>
 						<?php
 							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {				
-								echo get_guild_tags($this_guild['data']);
+								echo get_guild_tags($this_guild);
 							}
 						?>
 					</div>
