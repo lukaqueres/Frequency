@@ -314,10 +314,10 @@ body {
 #header_panel {
 	right: 0px;
 	position: fixed;
-	background-color: var(--accent_color);
+	background-color: black);
 	color: var(--primary_font_color);
 	z-index: 99;
-	border: solid 1px var(--accent_color);
+	border: solid 1px black;
 	border-radius: 0 0 0 10px;
 	transition: all 0.25s cubic-bezier(.77,0,.18,1);
 	padding: 5px;
@@ -367,7 +367,7 @@ body {
 }
 
 #servers_search {
-	background: black;
+	background: var(--accent_color);
 	color: var(--primary_font_color);
 	border-radius: 5px;
 	border: 1px;
