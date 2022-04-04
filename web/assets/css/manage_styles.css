@@ -314,7 +314,7 @@ body {
 #header_panel {
 	right: 0px;
 	position: fixed;
-	background-color: black);
+	background-color: black;
 	color: var(--primary_font_color);
 	z-index: 99;
 	border: solid 1px black;
