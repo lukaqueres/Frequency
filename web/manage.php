@@ -110,44 +110,47 @@ require __DIR__ . "/config.php";
 					}
 				?>
 			</div> <?php #END OF HEADER PANEL ?>
-			<div id="main_grid" class="grid_container center">
-				<div class="header">
-					<div class="div_box" style="min-width:250px;">
-						<div class="no_margin flex_container" style="height: 100px;">
+			<div class="w_padding" style="background-color: black;">
+				<div id="main_grid" class="grid_container center">
+					<div class="header">
+						<div class="div_box" style="min-width:250px;">
+							<div class="no_margin flex_container" style="height: 100px;">
+								<?php
+									if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
+										echo '<img class="icon no_margin" src="' . get_icon($this_guild['data']) . '"/>';
+										echo '<h2 class="no_margin w_padding">' . $this_guild['name'] . '</h2>';
+									} elseif (isset($_SESSION['username'])) {
+										echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
+									} else {
+										echo '<h1 class="no_margin w_padding">Please log in</h1>';
+									}
+								?>
+							</div>
 							<?php
-								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
-									echo '<img class="icon no_margin" src="' . get_icon($this_guild['data']) . '"/>';
-									echo '<h2 class="no_margin w_padding">' . $this_guild['name'] . '</h2>';
-								} elseif (isset($_SESSION['username'])) {
-									echo '<h1 class="no_margin w_padding">' . $_SESSION['username'] . '</h1>';
-								} else {
-									echo '<h1 class="no_margin w_padding">Please log in</h1>';
+								if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {				
+									echo get_guild_tags($this_guild);
 								}
 							?>
 						</div>
+					</div>
+					<div class="left">
+						<div class="w_padding">
+						</div>
+					</div>
+					<div class="main">
+					<h5>
 						<?php
-							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {				
-								echo get_guild_tags($this_guild);
+							if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
+								echo json_encode($this_guild['data']);
+								echo json_encode($this_guild['permissions']);
 							}
 						?>
+					</h5>
 					</div>
+					<div class="footer">
+						footer
+					</div>		
 				</div>
-				<div class="left">
-				left
-				</div>
-				<div class="main">
-				<h5>
-					<?php
-						if (isset($_GET['guild_id']) and isset($_SESSION['user'])) {
-							echo json_encode($this_guild['data']);
-							echo json_encode($this_guild['permissions']);
-						}
-					?>
-				</h5>
-				</div>
-				<div class="footer">
-					footer
-				</div>		
 			</div>
 		</div>
 	</body>
