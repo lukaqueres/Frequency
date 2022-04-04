@@ -445,7 +445,7 @@ slideUp, slideDown {
 .div_box {
 	background-color: #110F3B;
 	height: auto;
-	padding: 0 10px;
+	padding: 0 10px 10px;
 }
 
 .header_div_box > * {
