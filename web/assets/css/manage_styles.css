@@ -402,6 +402,7 @@ slideUp, slideDown {
 		'header header header header'
 		'left main main main'
 		'left footer footer footer';
+	overflow: hidden;
 }
 
 	.grid_container > .header {
