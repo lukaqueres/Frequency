@@ -109,9 +109,6 @@ require __DIR__ . "/config.php";
 			</div> <?php #END OF HEADER PANEL ?>
 			<div id="main_grid" class="grid_container center">
 				<div class="header">
-					
-				</div>
-				<div class="left">
 					<div class="div_box" style="min-width:250px;">
 						<div class="no_margin flex_container" style="height: 75px;">
 							<?php
@@ -194,7 +191,10 @@ require __DIR__ . "/config.php";
 				</div>
 				<div class="footer">
 					footer
+				</div>		
 				</div>
+				<div class="left">
+
 			</div>
 		</div>
 	</body>
