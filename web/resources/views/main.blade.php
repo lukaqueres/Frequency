@@ -12,7 +12,7 @@
     </head>
     <body>
         Hello World. 
-        <a class="clearlink" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&redirect_uri=https%3A%2F%2Fweb-plan-it.herokuapp.com%2Fmanage%2Flogin&response_type=code&scope=identify%20guilds%20guilds.members.read" >Updates &amp; Changelog</a>
+        <a class="button" href="https://discord.com/api/oauth2/authorize?client_id=875271995644842004&redirect_uri=https%3A%2F%2Fweb-plan-it.herokuapp.com%2Fmanage%2Flogin&response_type=code&scope=identify%20guilds%20guilds.members.read" >Updates &amp; Changelog</a>
         Yay
     </body>
 </html>
