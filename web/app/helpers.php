@@ -145,11 +145,3 @@ function get_icon($guild)
 		return $icon_url;
 	}
 }
-
-#declare variables
-$secret_id = "mPz7t6RNjmwerfLXN7LlB6-awue-6nUN";
-$scopes = "identify guilds guilds.members.read";
-$redirect_url = "https://web-plan-it.herokuapp.com/includes/login.php";
-$bot_token = $_ENV["TOKEN"];
-$bot_name = "Wild West Post Office";
-$bot_invite_link = "https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands";
