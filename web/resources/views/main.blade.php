@@ -12,7 +12,7 @@
     </head>
     <body>
         Hello World. 
-
+        <a class="clearlink" href=<?php echo $bot_invite_link; ?> >Updates &amp; Changelog</a>
         Yay
     </body>
 </html>
