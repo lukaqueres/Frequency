@@ -22,7 +22,7 @@ class User extends Authenticatable
         'username',
         'discriminator',
         'avatar',
-        'data'
+        'payload'
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable
         'username' => 'string',
         'discriminator' => 'string',
         'avatar' => 'string',
-        'data' => 'array',
+        'payload' => 'array',
         'refresh_token' => 'encrypted',
     ];
 }

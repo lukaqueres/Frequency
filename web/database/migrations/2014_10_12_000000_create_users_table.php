@@ -22,7 +22,7 @@ return new class extends Migration
             //$table->timestamp('email_verified_at')->nullable();
             //$table->string('password');
             $table->string('avatar')->nullable();
-            $table->array('data')->nullable();
+            $table->array('payload')->nullable();
             //$table->rememberToken();
             $table->string('refresh_token')->nullable();
             $table->timestamps();
