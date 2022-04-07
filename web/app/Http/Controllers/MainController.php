@@ -36,7 +36,6 @@ class MainController extends Controller
     public function user_view(Request $request)
     {
         $data = array();
-        $data['id']=$request->id;
         $data['view']=$request->view;
         return view('user', $data);
     }
