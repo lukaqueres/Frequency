@@ -24,24 +24,3 @@ Route::get('/manage/guild/{id}/{view?}', 'MainController@guild_view');
 Route::get('/manage/user/{view?}', 'MainController@user_view');
 //Route::get('/manage/', 'MainController@view');
 
-Route::redirect('/login', 'https://discord.com/oauth2/authorize?client_id=' . config('larascord.client_id')
-    . '&redirect_uri=' . config('larascord.redirect_uri')
-    . '&response_type=code&scope=' . implode('%20', explode('&', config('larascord.scopes')))
-    . '&prompt=' . config('larascord.prompt', 'none'))
-    ->name('login');
-
-Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])
-    ->middleware(['web', 'auth'])
-    ->name('password.confirm');
-
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-    ->middleware(['web', 'auth'])
-    ->name('logout');
-
-Route::group(['prefix' => config('larascord.prefix'), 'middleware' => ['web']], function() {
-    Route::get('/callback', [DiscordController::class, 'handle'])
-        ->name('larascord.login');
-
-    Route::redirect('/refresh-token', '/login')
-        ->name('larascord.refresh_token');
-});
