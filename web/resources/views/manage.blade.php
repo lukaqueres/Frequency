@@ -11,3 +11,4 @@
 Manage 
 
 Yay
+{{ Session::get('name')}}
