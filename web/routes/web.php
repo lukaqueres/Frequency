@@ -25,5 +25,8 @@ Route::get('/manage/user/{view?}', 'MainController@user_view');
 Route::get('/discord/authorize', 'AuthorizeController@discord_auth');
 //Route::get('/manage/', 'MainController@view');
 
-Auth::routes();
-Auth::routes(['register' => false]);
+
+//Error with installinh laravel/ui
+
+//Auth::routes();
+//Auth::routes(['register' => false]);
