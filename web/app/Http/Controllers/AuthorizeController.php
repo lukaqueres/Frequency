@@ -66,7 +66,7 @@ class AuthorizeController extends Controller
     {
         $this->tokenData['code'] = $code;
 
-        $response = Http::asForm()->post($this->tokenURL, $this->tokenData);
+        $response = Http::asForm()->post($this->tokenURL, $this->tokenData); 
 
         $response->throw();
 
