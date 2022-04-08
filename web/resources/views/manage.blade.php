@@ -12,3 +12,4 @@ Manage
 
 Yay
 {{ Session::get('name')}}
+{{ Session::get('username')}}
