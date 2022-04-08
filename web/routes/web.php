@@ -22,6 +22,6 @@ Route::get('/', 'MainController@index');
 
 Route::get('/manage/guild/{id}/{view?}', 'MainController@guild_view');
 Route::get('/manage/user/{view?}', 'MainController@user_view');
-Route::get('/discord/login', 'AuthorizeController@discord_auth');
+Route::get('/discord/authorize', 'AuthorizeController@discord_auth');
 //Route::get('/manage/', 'MainController@view');
 
