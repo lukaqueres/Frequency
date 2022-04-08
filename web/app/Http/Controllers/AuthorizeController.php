@@ -1,6 +1,6 @@
 <?php
 
-use namespace App\Http\Controllers;
+using namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;  class AuthorizeController extends Controller { 
     public function discord_auth(Request $request)
