@@ -11,7 +11,7 @@ class AuthorizeController extends Controller
     public function discord_auth(Request $request)
     {
         Session::put('name', 'John Doe');
-        Session::put('username', 'John_Doe');
+        $request->session()->put('username', 'John_doe');
         return view('guild');
     }
 }
