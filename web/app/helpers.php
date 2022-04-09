@@ -1,4 +1,4 @@
-<?php /*
+<?php 
 
 if (! function_exists('get__user_permissions_tag')) {
     function get__user_permissions_tag($usr_permissions_list) {
@@ -145,5 +145,3 @@ function get_icon($guild)
 		return $icon_url;
 	}
 }
-
-*/
