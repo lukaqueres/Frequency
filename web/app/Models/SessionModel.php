@@ -8,10 +8,11 @@ use Illuminate\Foundation\Auth\Session as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Session extends Authenticatable
+class SessionModel extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'sessions';
     /**
      * The attributes that are mass assignable.
      *
