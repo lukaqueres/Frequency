@@ -15,6 +15,6 @@
         return redirect()->route('manage');
     }
 ?>
-Guild {{ Session::get('name')}}
+Guild {{ Session::get('name')}}{{ Session::get('username')}}
 
 Yay
