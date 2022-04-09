@@ -22,7 +22,8 @@ class User extends Authenticatable
         'username',
         'discriminator',
         'avatar',
-        'payload'
+        'payload',
+        'last_activity'
     ];
 
     /**
@@ -33,6 +34,7 @@ class User extends Authenticatable
     protected $hidden = [
         'refresh_token',
         'remember_token',
+        'ip_address',
     ];
 
     /**
@@ -45,7 +47,9 @@ class User extends Authenticatable
         'username' => 'string',
         'discriminator' => 'string',
         'avatar' => 'string',
-        'payload' => 'array',
+        'payload' => 'json',
         'refresh_token' => 'encrypted',
+        'ip_address' => 'string',
+        'last_activity' => 'integrer'
     ];
 }
