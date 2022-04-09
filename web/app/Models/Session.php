@@ -23,7 +23,8 @@ class Session extends Authenticatable
         'discriminator',
         'avatar',
         'payload',
-        'last_activity'
+        'last_activity',
+        'user_agent'
     ];
 
     /**
@@ -50,6 +51,7 @@ class Session extends Authenticatable
         'payload' => 'json',
         'refresh_token' => 'encrypted',
         'ip_address' => 'string',
-        'last_activity' => 'integrer'
+        'last_activity' => 'integrer',
+        'user_agent' => 'string',
     ];
 }
