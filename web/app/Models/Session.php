@@ -29,7 +29,7 @@ class Session extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array<int, string> 
      */
     protected $hidden = [
         'refresh_token',
