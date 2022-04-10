@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Discord;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class DiscordController extends Controller
 {
