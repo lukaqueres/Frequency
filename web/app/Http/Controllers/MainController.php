@@ -30,7 +30,7 @@ class MainController extends Controller
     {
         $data = array();
         $data['id']=$request->id;
-        return view('manage', $data);
+        return view('manage', $data); 
     }
 
     public function user_view(Request $request)
