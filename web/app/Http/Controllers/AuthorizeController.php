@@ -14,7 +14,7 @@ class AuthorizeController extends Controller
         
         Session::put('name', 'John Doe');
         session()->put('username', 'John_Doe');
-        Session::save()
+        Session::save();
         return view('guild');
     }
 }
