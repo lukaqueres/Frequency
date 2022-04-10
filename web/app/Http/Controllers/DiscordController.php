@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controller;
+namespace App\Http\Controllers\Discord;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
