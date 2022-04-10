@@ -1,6 +1,6 @@
 <?php
 
-namespace app\app\Http\Controllers;
+namespace app\Http\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
