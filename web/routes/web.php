@@ -12,21 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get( '/manage/', 'MainController@manage_view' )->name('manage');
-/*
+
 Route::get('/', function () {
     return view('welcome');
-});*/
-
-Route::get('/', 'MainController@index');
-
-Route::get('/manage/guild/{id}/{view?}', 'MainController@guild_view');
-Route::get('/manage/user/{view?}', 'MainController@user_view');
-Route::get('/discord/authorize', 'AuthorizeController@discord_auth');
-//Route::get('/manage/', 'MainController@view');
-
-
-//Error with installinh laravel/ui
-
-//Auth::routes();
-//Auth::routes(['register' => false]);
+});
