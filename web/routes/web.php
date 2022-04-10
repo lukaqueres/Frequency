@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/manage/', 'MainController@manage_view' )->name('manage');
+
+Route::get('/', 'MainController@index');
+
+Route::get('/manage/guild/{id}/{view?}', 'MainController@guild_view');
+Route::get('/manage/user/{view?}', 'MainController@user_view');
+
+Route::get('/discord/authorize', 'AuthorizeController@authorize');
