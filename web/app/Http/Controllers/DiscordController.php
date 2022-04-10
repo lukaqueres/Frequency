@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class DiscordController extends Controller
 {
 
-	public function authorize(Request $request)
+	public function authorizeMe(Request $request)
 	{
 		//$session = SessionModel::all();
 		
