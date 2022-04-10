@@ -14,7 +14,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        return view('mainyjklkksuksyfsfgskgwygfcsgfsfgksfgsgcvcfvkwseyuyfeuyfjdhdvcjdgvd');
+        return view('main');
     }
 
     public function view(Request $request)
