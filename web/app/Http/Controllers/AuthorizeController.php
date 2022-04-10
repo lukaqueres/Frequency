@@ -13,7 +13,7 @@ class AuthorizeController extends Controller
         //$session = SessionModel::all();
         
         Session::put('name', 'John Doe');
-        session()->put('username', 'John_Doe');
+        session(['username' => 'John_Doe210328']);
         Session::save();
         return view('guild');
     }
