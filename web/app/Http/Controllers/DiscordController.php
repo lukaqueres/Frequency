@@ -69,7 +69,8 @@ class DiscordController extends Controller
                     'code' => 400
                 ]);
             } else {
-                return Session::flash('status', 'Missing authorization code');
+                Session::flash('status', 'Missing authorization code');
+                return redirect('/');
             }
         }
 
@@ -84,7 +85,8 @@ class DiscordController extends Controller
                     'code' => $e->getCode()
                 ]);
             } else {
-                return Session::flash('status', 'Invalid authorization code');
+                Session::flash('status', 'Invalid authorization code');
+                return redirect('/');
             }
         }
 
