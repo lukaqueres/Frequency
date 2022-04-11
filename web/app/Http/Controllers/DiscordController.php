@@ -30,7 +30,7 @@ class DiscordController extends Controller
         $this->tokenData['scope'] = "identify guilds guilds.members.read";
     }
 
-    private function getDiscordAccessToken(string $code): object
+    private function getAccessToken(string $code): object
     {
         $this->tokenData['code'] = $code;
 
@@ -41,9 +41,18 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getDiscordUser(string $access_token): object
+    private function getUser(string $access_token): object
     {
         $response = Http::withToken($access_token)->get($this->apiURLBase);
+
+        $response->throw();
+
+        return json_decode($response->body());
+    }
+
+    private function getGuilds(string $access_token): object
+    {
+        $response = Http::withToken($access_token)->get($this->apiURLBase . "/guilds");
 
         $response->throw();
 
@@ -67,7 +76,7 @@ class DiscordController extends Controller
 
         // Getting the access_token from the Discord API.
         try {
-            $accessToken = $this->getDiscordAccessToken($request->get('code'));
+            $accessToken = $this->getAccessToken($request->get('code'));
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
                 return response()->json([
@@ -82,7 +91,7 @@ class DiscordController extends Controller
 
         // Using the access_token to get the user's Discord ID.
         try {
-            $user = $this->getDiscordUser($accessToken->access_token);
+            $user = $this->getUser($accessToken->access_token);
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
                 return response()->json([
@@ -95,14 +104,31 @@ class DiscordController extends Controller
                 return redirect('/');
             }
         }
+
+        //Get guilds
+        try {
+            $guilds = $this->getGuilds($accessToken->access_token);
+        } catch (\Exception $e) {
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'larascord_message' => 'The authorization failed.',
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode()
+                ]);
+            } else {
+                Session::flash('status', 'Invalid authorization code');
+                return redirect('/');
+            }
+        }
+
         if (! Session::exists('token')) {
             Session::put('access_token', $accessToken);
-            Session::put('name', 'John Doe');
 		    Session::put('user_data', $user);
+            Session::put('guilds_data', $guilds);
         }
 
         Session::save();
         //var_dump($request);
-		return view('guild'); 
+		return redirect('manage');
 	}
 }
