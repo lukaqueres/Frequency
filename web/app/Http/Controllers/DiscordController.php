@@ -50,7 +50,7 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getGuilds(string $access_token): object
+    private function getGuilds(string $access_token): array
     {
         $response = Http::withToken($access_token)->get($this->apiURLBase . "/guilds");
 
