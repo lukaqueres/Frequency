@@ -71,7 +71,7 @@ class DiscordController extends Controller
             if (env('APP_DEBUG')) {
                 return response()->json([
                     'larascord_message' => 'The authorization code is invalid.',
-                    'message' => $e->getMessage();
+                    'message' => $e->getMessage(),
                     'code' => $e->getCode()
                 ]);
             } else {
@@ -91,11 +91,11 @@ class DiscordController extends Controller
                 ]);
             } else {
                 Session::flash('status', 'Invalid authorization code');
-                return redirect('/')
+                return redirect('/');
             }
         }
         if (! Session::exists('token')) {
-            Session::put('access_token', $accessToken)
+            Session::put('access_token', $accessToken);
             Session::put('name', 'John Doe');
 		    Session::put('username', 'lukaqueres');
         }
