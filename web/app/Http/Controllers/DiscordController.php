@@ -57,7 +57,7 @@ class DiscordController extends Controller
         $response->throw();
 
         //return json_decode($response->body());
-        return $response->body();
+        return json_decode($response->body());
     }
 
 	public function authorizeMe(Request $request)
