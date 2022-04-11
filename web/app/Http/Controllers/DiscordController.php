@@ -55,7 +55,7 @@ class DiscordController extends Controller
         if ($request->missing('code')) {
             if (env('APP_DEBUG')) {
                 return response()->json([
-                    'larascord_message' => 'The authorization code is missing.'
+                    'larascord_message' => 'The authorization code is missing.',
                     'code' => 400
                 ]);
             } else {
