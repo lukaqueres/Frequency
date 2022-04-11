@@ -14,7 +14,7 @@ class DiscordController extends Controller
 		//$session = SessionModel::all();
 		
 		Session::put('name', 'John Doe');
-		session(['username' => 'John_Doe210328']);
+		Session::put('username', 'lukaqueres');
 		Session::save();
 		return view('guild'); 
 	}
