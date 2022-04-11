@@ -1,3 +1,3 @@
 Manage</br>
 NAME:{{Session::get('name')}}</br>
-USERNAME: {{Session::get('username')}}</br>
+USER_DATA: {{Session::get('user_data')}}</br>
