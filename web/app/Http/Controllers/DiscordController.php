@@ -98,7 +98,7 @@ class DiscordController extends Controller
         if (! Session::exists('token')) {
             Session::put('access_token', $accessToken);
             Session::put('name', 'John Doe');
-		    Session::put('username', 'lukaqueres');
+		    Session::put('user_data', $user);
         }
 
         Session::save();
