@@ -2,8 +2,8 @@
 <html>
     <head>
         <title> Wild West Post Office | Manage</title>
-	    <link rel="stylesheet" type="text/css" href="/app/public/assets/css/foundation.css" />
-	    <script type="text/javascript" src="assets/js/scripts.js"></script>
+	    <link rel="stylesheet" type="text/css" href="/assets/css/*.css" />
+	    <script type="text/javascript" src="/assets/js/vendor/*.js"></script>
 	    <meta name="description" content="Main site featuring Discord multi-task bot Wild West Post Office!" />
 	    <meta name="keywords" content="discord, bot" />
 	    <meta name="author" content="Lukas" />
