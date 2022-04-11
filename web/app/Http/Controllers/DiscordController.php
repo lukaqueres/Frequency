@@ -56,7 +56,6 @@ class DiscordController extends Controller
 
         $response->throw();
 
-        //return json_decode($response->body());
         return json_decode($response->body());
     }
 
@@ -73,7 +72,6 @@ class DiscordController extends Controller
                 return Session::flash('status', 'Missing authorization code');
             }
         }
-        //if ($request->isMethod('post')) { ... }
 
         // Getting the access_token from the Discord API.
         try {
@@ -90,7 +88,7 @@ class DiscordController extends Controller
             }
         }
 
-        // Using the access_token to get the user's Discord ID.
+        // Using the access_token to get the user.
         try {
             $user = $this->getUser($accessToken->access_token);
         } catch (\Exception $e) {
@@ -106,7 +104,7 @@ class DiscordController extends Controller
             }
         }
 
-        //Get guilds
+        // Using the access_token to get guilds
         try {
             $guilds = $this->getGuilds($accessToken->access_token);
         } catch (\Exception $e) {
@@ -129,7 +127,6 @@ class DiscordController extends Controller
         }
 
         Session::save();
-        //var_dump($request);
 		return redirect('manage');
 	}
 }
