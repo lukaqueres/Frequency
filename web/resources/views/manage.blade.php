@@ -15,7 +15,15 @@
             <div class="header">
                 <h1 class="inline-margin">HEADER</h1>
             </div>
-            DATA: <?php echo json_encode(Session::get('data')); ?></br>
+            <div class="right">
+
+            </div>
+            <div class="main">
+                <h5>DATA: <?php echo json_encode(Session::get('data')); ?></br></h5>
+            </div>
+            <div class="footer">
+                FOOTA
+            </div>
         </div>
     </body>
 </html>
