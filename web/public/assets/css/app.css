@@ -31,7 +31,7 @@ a {
     gap: 0;
     grid-template-areas:
         'header header header header header header'
-        'left left main main main'
+        'left left main main main main'
         'footer footer footer footer footer footer';
 }
 
