@@ -34,7 +34,9 @@ a {
         'left left main main main main'
         'footer footer footer footer footer footer';
 }
-
+    .grid-container > div {
+        justify-self: stretch;
+    }
     .grid-container > .header {
         background-color: black;
         color: white;
