@@ -88,7 +88,7 @@ function get_permissions($usr_permissions_dec): array
 
 function get_guild_tags($guild) {
     $tags = [];
-    $guild_data = $guild['data'];
+    $guild_data = $guild->data;
 	if (in_array("COMMUNITY", $guild_data['features'])) {
         $tags[] = 'community'; };
 	if (in_array("PARTNERED", $guild_data['features'])) {
