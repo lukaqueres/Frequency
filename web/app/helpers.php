@@ -1,6 +1,7 @@
 <?php
 
-function get_user_permissions_tag($usr_permissions_list) {
+function get_user_permissions_tag($usr_permissions_list): array
+{
     // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
     // Please add permissions from top ( from highest )
     $gen_permissions_tags = [
@@ -24,7 +25,8 @@ function get_user_permissions_tag($usr_permissions_list) {
     return 'member';
 }
 
-function get_permissions($usr_permissions_dec) {
+function get_permissions($usr_permissions_dec): array
+{
     $gen_permissions_codes = [
         // Codes are updated to date /02.04.2022/, please change date if there were updated changes to codes and/or permissions  
         //https://discord.com/developers/docs/topics/permissions <- permissions tab in discord docks
