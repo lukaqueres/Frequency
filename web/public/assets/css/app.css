@@ -35,7 +35,7 @@ a {
         'footer footer footer footer footer footer';
 }
 
-    .grid-container > #header {
+    .grid-container > .header {
         background-color: black;
         color: white;
         padding: 20px;
