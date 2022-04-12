@@ -23,16 +23,7 @@ class DiscordController extends Controller
         "scope" => null
     ];
 
-    public function __construct()
-    {
-        $this->tokenData['client_id'] = "875271995644842004";
-        $this->tokenData['client_secret'] = "mPz7t6RNjmwerfLXN7LlB6-awue-6nUN";
-        $this->tokenData['grant_type'] = "authorization_code";
-        $this->tokenData['redirect_uri'] = "https://web-plan-it.herokuapp.com/discord/authorize";
-        $this->tokenData['scope'] = "identify guilds guilds.members.read";
-    }
-
-    private function getAccessToken(string $code): object
+    private function getAccessToken(string $code): object // Retrives Discord acces token by http request
     {
         $this->tokenData['code'] = $code;
 
@@ -43,7 +34,7 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getUser(string $access_token): object
+    private function getUser(string $access_token): object // Return Discord's user object. It contain data such as nick, avatar, if verified or e-mail
     {
         $response = Http::withToken($access_token)->get($this->apiURLBase);
 
@@ -52,7 +43,7 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getGuilds(string $access_token): array
+    private function getGuilds(string $access_token): array // Return array containing User's guilds. Every guild array contain their permissions, are they owner, guild's icon, name etc.
     {
         $response = Http::withToken($access_token)->get($this->apiURLBase . "/guilds");
 
@@ -61,10 +52,18 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-	public function authorizeMe(Request $request)
+    public function __construct() // Construct data for http requests
+    {
+        $this->tokenData['client_id'] = "875271995644842004";
+        $this->tokenData['client_secret'] = "mPz7t6RNjmwerfLXN7LlB6-awue-6nUN";
+        $this->tokenData['grant_type'] = "authorization_code";
+        $this->tokenData['redirect_uri'] = "https://web-plan-it.herokuapp.com/discord/authorize";
+        $this->tokenData['scope'] = "identify guilds guilds.members.read";
+    }
+
+	public function authorizeMe(Request $request) // Handles autorization requests from path. Used for fetching user's data from Discord
 	{
-        // Checking if the authorization code is present in the request.
-        if ($request->missing('code')) {
+        if ($request->missing('code')) { // Checking if the authorization code is present in the request
             if (env('APP_DEBUG')) {
                 return response()->json([
                     'larascord_message' => 'The authorization code is missing.',
@@ -76,8 +75,7 @@ class DiscordController extends Controller
             }
         }
 
-        // Getting the access_token from the Discord API.
-        try {
+        try { // Getting the access token from the Discord API
             $accessToken = $this->getAccessToken($request->get('code'));
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
@@ -92,8 +90,7 @@ class DiscordController extends Controller
             }
         }
 
-        // Using the access_token to get the user.
-        try {
+        try { // Using the access_token to get the user
             $user = $this->getUser($accessToken->access_token);
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
@@ -108,8 +105,7 @@ class DiscordController extends Controller
             }
         }
 
-        // Using the access_token to get guilds
-        try {
+        try { // Using the access_token to get guilds
             $guilds = $this->getGuilds($accessToken->access_token);
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
@@ -124,8 +120,8 @@ class DiscordController extends Controller
             }
         }
 
-        if (! Session::exists('token')) {
-            Session::put('access_token', $accessToken);
+        if (! Session::exists('user_data')) {
+            //Session::put('access_token', $accessToken);
 		    Session::put('user_data', $user);
             Session::put('guilds_data', $guilds);
         }
