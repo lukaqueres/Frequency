@@ -8,21 +8,36 @@ body {
     margin: 0;
 }
 
+a {
+    text-align: center;
+    text-decoration: none;
+    color: rebeccapurple;
+}
+
 #container {
     margin: 0;
     height: 100%;
     width: 100%;
 }
 
-#header {
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    background-color: black;
-    color: white;
-    padding: 20px;
-}
-
 .inline-margin {
     margin: 0 10px;
 }
+
+.grid-container {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    gap: 0;
+    grid-template-areas:
+        'header header header header header header'
+        'left left main main right right'
+        'footer footer footer footer footer footer';
+}
+
+    .grid-container > #header {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        grid-area: header;
+    }
