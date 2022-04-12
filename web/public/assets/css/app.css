@@ -30,10 +30,10 @@ a {
     width: 100%;
     gap: 0;
     grid-template-areas:
-        'header header'
+        'left header'
         'left main'
-        'footer footer';
-    grid-template-columns: 400px auto;
+        'left footer';
+    grid-template-columns: 50px auto;
 }
     .grid-container > div {
         justify-self: stretch;
@@ -44,4 +44,18 @@ a {
         color: white;
         padding: 20px;
         grid-area: header;
+    }
+
+    .grid-container > .left {
+        padding: 10px;
+        grid-area: left;
+    }
+
+    .grid-container > .main {
+        padding: 20px;
+        grid-area: main;
+    }
+    .grid-container > .footer {
+        padding: 20px;
+        grid-area: footer;
     }
