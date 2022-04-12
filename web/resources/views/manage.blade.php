@@ -16,7 +16,12 @@
                 <h1 class="inline-margin">HEADER</h1>
             </div>
             <div class="left">
-
+                <?php
+                    $guilds = Session::get('data')['guilds'];
+                    foreach($guilds as $guild) {
+                        echo get_icon($guild);
+                    }
+                ?>
             </div>
             <div class="main">
                 <h5>DATA: <?php echo json_encode(Session::get('data')); ?></br></h5>
