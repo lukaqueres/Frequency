@@ -34,7 +34,7 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getUser(string $access_token): object // Return Discord's user object. It contain data such as nick, avatar, if verified or e-mail
+    private function getUser(string $access_token): array // Return Discord's user array. It contain data such as nick, avatar, if verified or e-mail
     {
         $response = Http::withToken($access_token)->get($this->apiURLBase);
 
