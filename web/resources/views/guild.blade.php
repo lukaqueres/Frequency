@@ -1,3 +1,8 @@
 Guild</br>
 NAME:{{Session::get('name')}}</br>
-USER_DATA: <?php echo json_encode(Session::get('user_data')); ?></br>
+GUILD_DATA: <?php
+$data = Session::get('data')
+if (Arr::exists($data[$id]))  {
+    echo json_encode($data[$id]);
+}
+?></br>
