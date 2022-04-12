@@ -61,16 +61,16 @@ class DiscordController extends Controller
         $this->tokenData['scope'] = "identify guilds guilds.members.read";
     }
 
-	public function authorizeMe(Request $request) // Handles autorization requests from path. Used for fetching user's data from Discord
+	public function authorizeMe(Request $request) // Handle autorization requests from path. Used for fetching user's data from Discord
 	{
         if ($request->missing('code')) { // Checking if the authorization code is present in the request
             if (env('APP_DEBUG')) {
                 return response()->json([
-                    'larascord_message' => 'The authorization code is missing.',
+                    'error_message' => 'The authorization code is missing.',
                     'code' => 400
                 ]);
             } else {
-                Session::flash('status', 'Missing authorization code');
+                Session::flash('status', 'Missing authorization');
                 return redirect('/');
             }
         }
@@ -80,12 +80,12 @@ class DiscordController extends Controller
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
                 return response()->json([
-                    'larascord_message' => 'The authorization code is invalid.',
+                    'error_message' => 'The authorization code is invalid. Error getting acces token',
                     'message' => $e->getMessage(),
                     'code' => $e->getCode()
                 ]);
             } else {
-                Session::flash('status', 'Invalid authorization code');
+                Session::flash('status', 'Invalid authorization');
                 return redirect('/');
             }
         }
@@ -95,12 +95,12 @@ class DiscordController extends Controller
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
                 return response()->json([
-                    'larascord_message' => 'The authorization failed.',
+                    'error_message' => 'The authorization failed while getting user.',
                     'message' => $e->getMessage(),
                     'code' => $e->getCode()
                 ]);
             } else {
-                Session::flash('status', 'Invalid authorization code');
+                Session::flash('status', 'Invalid authorization');
                 return redirect('/');
             }
         }
@@ -110,23 +110,37 @@ class DiscordController extends Controller
         } catch (\Exception $e) {
             if (env('APP_DEBUG')) {
                 return response()->json([
-                    'larascord_message' => 'The authorization failed.',
+                    'error_message' => 'The authorization failed during guilds fetching.',
                     'message' => $e->getMessage(),
                     'code' => $e->getCode()
                 ]);
             } else {
-                Session::flash('status', 'Invalid authorization code');
+                Session::flash('status', 'Invalid authorization');
                 return redirect('/');
             }
         }
 
-        if (! Session::exists('user_data')) {
+        // Making nice arrays for guilds
+        $data = [];
+        $guilds_preview = [];
+        $data = Arr::add('user' => $user);
+
+        @foreach($guilds as $guild)
+            $guild['permissions_names'] = get_permissions(guild['permissions']);
+            $guild['tags'] = get_user_permissions_tag($guild['permissions_names']);
+            $guilds_preview = Arr::add([ $guild['id'], $guild['name'], $guild['icon'], $guild['tags'] ]);
+            $data = Arr::add($guild['id'] => $guild);
+        @endforeach
+
+        $data = Arr::add('guilds' => $guilds_preview)
+        
+        if (! Session::exists('data')) {
             //Session::put('access_token', $accessToken);
-		    Session::put('user_data', $user);
-            Session::put('guilds_data', $guilds);
+		    //Session::put('user_data', $user);
+            Session::put('data', $data);
+            Session::save();
         }
 
-        Session::save();
 		return redirect('manage');
 	}
 }
