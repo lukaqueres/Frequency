@@ -123,16 +123,16 @@ class DiscordController extends Controller
         // Making nice arrays for guilds
         $data = [];
         $guilds_preview = [];
-        $data = Arr::add('user' => $user);
+        $data = Arr::add('user', $user);
 
         @foreach($guilds as $guild)
             $guild['permissions_names'] = get_permissions(guild['permissions']);
             $guild['tags'] = get_user_permissions_tag($guild['permissions_names']);
             $guilds_preview = Arr::add([ $guild['id'], $guild['name'], $guild['icon'], $guild['tags'] ]);
-            $data = Arr::add($guild['id'] => $guild);
+            $data = Arr::add($guild['id'], $guild);
         @endforeach
 
-        $data = Arr::add('guilds' => $guilds_preview)
+        $data = Arr::add('guilds', $guilds_preview)
         
         if (! Session::exists('data')) {
             //Session::put('access_token', $accessToken);
