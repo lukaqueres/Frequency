@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get( '/manage/', 'MainController@showManage' )->name('manage');
+Route::get( '/manage/', 'DiscordController@showManage' )->name('manage');
 
 Route::get('/', 'MainController@index');
 
