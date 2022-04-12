@@ -135,13 +135,13 @@ class DiscordController extends Controller
             $this_guild['name'] = $guild->name;
             $this_guild['icon'] = $guild->icon;
             $this_guild['tags'] = $guild->tags;
-            $guilds_preview[] = $this_guild;
-            //$guilds_preview[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
+            //$guilds_preview[] = $this_guild;
+            $guilds_preview[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
             $data[$guild->id] = $guild;
         }
 
         $data['guilds'] = $guilds_preview;
-        //return var_dump($data['guilds']);
+        return var_dump($data['guilds']);
         //return response()->json(['guilds' => $data['guilds'] ]); 
         
         if (! Session::exists('data')) {
