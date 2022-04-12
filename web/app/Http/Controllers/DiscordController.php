@@ -141,7 +141,7 @@ class DiscordController extends Controller
         }
 
         $data['guilds'] = $guilds_preview;
-        return response()->json(['guilds' => $data['guilds'] ]);
+        return response()->json(['guilds' => $data['guilds'] ]); 
         
         if (! Session::exists('data')) {
             //Session::put('access_token', $accessToken);
