@@ -30,12 +30,13 @@ a {
     width: 100%;
     gap: 0;
     grid-template-areas:
-        'header header header header header header'
-        'left left main main main main'
-        'footer footer footer footer footer footer';
+        'header header'
+        'left main'
+        'footer footer';
 }
     .grid-container > div {
         justify-self: stretch;
+        align-self: center;
     }
     .grid-container > .header {
         background-color: black;
