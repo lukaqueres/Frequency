@@ -17,7 +17,7 @@
             </div>
             <div class="left">
                 <?php
-                    $guilds = Session::get('data')['guilds'];
+                    $guilds = Session::get('data')['guilds']['snipps'];
                     echo 'GUILDS: ' .  $guilds;
                     foreach($guilds as $guild) {
                         break;
