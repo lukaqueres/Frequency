@@ -159,7 +159,6 @@ class DiscordController extends Controller
             }
         }
         $data = array();
-        $data['id']=$request->id;
         return view('manage', $data); 
     }
 
