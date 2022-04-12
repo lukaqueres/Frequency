@@ -15,7 +15,7 @@
             <div class="header">
                 <h1 class="inline-margin">HEADER</h1>
             </div>
-            <div class="right">
+            <div class="left">
 
             </div>
             <div class="main">
