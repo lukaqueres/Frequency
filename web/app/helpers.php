@@ -88,26 +88,26 @@ function get_permissions($usr_permissions_dec): array
 
 function get_guild_tags($guild) {
     $tags = [];
-    $guild_data = $guild->data;
-	if (in_array("COMMUNITY", $guild_data['features'])) {
+    $guild_data = $guild;
+	if (in_array("COMMUNITY", $guild_data->features)) {
         $tags[] = 'community'; };
-	if (in_array("PARTNERED", $guild_data['features'])) {
+	if (in_array("PARTNERED", $guild_data->features)) {
 		$tags[] = 'partnered'; };
-	if (in_array("DISCOVERABLE", $guild_data['features'])) {
+	if (in_array("DISCOVERABLE", $guild_data->features)) {
 		$tags[] = 'discoverable'; };
-	if (in_array("NEWS", $guild_data['features'])) {
+	if (in_array("NEWS", $guild_data->features)) {
 		$tags[] = 'news'; };
-	if (in_array("VERIFIED", $guild_data['features'])) {
+	if (in_array("VERIFIED", $guild_data->features)) {
 		$tags[] = 'verified'; };
-	if ($guild_data['icon'] == null) {
+	if ($guild_data->icon == null) {
 		$tags[] = 'no_icon'; };
-	if ($guild_data['owner']) {
+	if ($guild_data->owner) {
 		$tags[] = 'owner';
-	} elseif ($guild['p_tag'] == 'administrator') {
+	} elseif ($guild->p_tag == 'administrator') {
 		$tags[] = 'administrator';
-	} elseif ($guild['p_tag'] == 'moderator') {
+	} elseif ($guild->p_tag == 'moderator') {
 		$tags[] = 'moderator';
-	} elseif ($guild['p_tag'] == 'member') {
+	} elseif ($guild->p_tag == 'member') {
 		$tags[] = 'member';
 	};
     return $tags;
