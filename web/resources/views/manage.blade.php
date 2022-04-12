@@ -18,6 +18,7 @@
             <div class="left">
                 <?php
                     $guilds = Session::get('data')['guilds'];
+                    echo 'GUILDS: ' .  $guilds;
                     foreach($guilds as $guild) {
                         break;
                         echo '<img class="icon no_margin" src="' . get_icon($guild) .'"/>';
