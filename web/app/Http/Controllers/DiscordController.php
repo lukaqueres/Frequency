@@ -144,4 +144,26 @@ class DiscordController extends Controller
 
 		return redirect('manage');
 	}
+
+    public function showManage(Request $request)
+    {
+        $data = array();
+        $data['id']=$request->id;
+        return view('manage', $data); 
+    }
+
+    public function showUser(Request $request)
+    {
+        $data = array();
+        $data['view']=$request->view;
+        return view('user', $data);
+    }
+
+    public function showGuild(Request $request)
+    {
+        $data = array();
+        $data['id']=$request->id;
+        $data['view']=$request->view;
+        return view('guild', $data);
+    }
 }

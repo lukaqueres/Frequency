@@ -26,26 +26,4 @@ class MainController extends Controller
         }
         return view('main', $data);
     }
-
-    public function manage_view(Request $request)
-    {
-        $data = array();
-        $data['id']=$request->id;
-        return view('manage', $data); 
-    }
-
-    public function user_view(Request $request)
-    {
-        $data = array();
-        $data['view']=$request->view;
-        return view('user', $data);
-    }
-
-    public function guild_view(Request $request)
-    {
-        $data = array();
-        $data['id']=$request->id;
-        $data['view']=$request->view;
-        return view('guild', $data);
-    }
 }
