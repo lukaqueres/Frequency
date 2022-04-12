@@ -11,7 +11,7 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div id="container grid-container">
+        <div id="grid-container container">
             <div id="header">
                 <h1 class="inline-margin">HEADER</h1>
             </div>
