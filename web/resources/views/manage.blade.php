@@ -24,7 +24,7 @@
                 ?>
             </div>
             <div class="main">
-                <h5>DATA: <?php echo json_encode(Session::get('data')); ?></br></h5>
+                <h5>DATA: <?php echo json_encode(Session::get('data'), JSON_PRETTY_PRINT); ?></br></h5>
             </div>
             <div class="footer">
                 FOOTA
