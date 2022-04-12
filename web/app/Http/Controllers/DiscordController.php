@@ -129,7 +129,7 @@ class DiscordController extends Controller
             $guild['permissions_names'] = get_permissions(guild['permissions']);
             $guild['tags'] = get_user_permissions_tag($guild['permissions_names']);
             $guilds_preview[] = [ $guild['id'], $guild['name'], $guild['icon'], $guild['tags'] ];
-            $data[$guild['id'] = $guild;
+            $data[$guild['id']] = $guild;
         }
         $data['guilds'] = $guilds_preview];
         
