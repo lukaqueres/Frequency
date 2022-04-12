@@ -33,7 +33,7 @@ a {
         'left header'
         'left main'
         'left footer';
-    grid-template-columns: 50px auto;
+    grid-template-columns: 75px auto;
 }
     .grid-container > div {
         justify-self: stretch;
@@ -49,6 +49,7 @@ a {
     .grid-container > .left {
         padding: 10px;
         grid-area: left;
+        height: 100%;
     }
 
     .grid-container > .main {
@@ -59,3 +60,8 @@ a {
         padding: 20px;
         grid-area: footer;
     }
+
+.icon {
+    width: 100%;
+    border-radius: 50%;
+}
