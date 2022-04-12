@@ -17,12 +17,12 @@
             </div>
             <div class="left">
                 <?php
-                    $guilds = Session::get('data')['guilds'];
-                    //echo 'GUILDS: ' .  json_encode($guilds);
-                    foreach($guilds as $guild) {
-                        break;
-                        echo '<img class="icon no_margin" src="' . get_icon($guild) .'"/>';
-                    }
+                    $guilds = Session::get('guilds.snippets');
+                    echo 'GUILDS: ' .  json_encode($guilds);
+                    //foreach($guilds as $guild) {
+                    //    break;
+                    //    echo '<img class="icon no_margin" src="' . get_icon($guild) .'"/>';
+                    //}
                 ?>
             </div>
             <div class="main">
