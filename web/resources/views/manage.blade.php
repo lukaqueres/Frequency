@@ -11,7 +11,11 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        Manage</br>
-        DATA: <?php echo json_encode(Session::get('data')); ?></br>
+        <div id="container">
+        <div id="header">
+            HEADER
+        </div>
+            DATA: <?php echo json_encode(Session::get('data')); ?></br>
+        </div>
     </body>
 </html>

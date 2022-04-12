@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+* {
+    font-family: "Bahnschrift", "Arial";
+}
+
+body {
+    margin: 0;
+}
+
+#container {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 50px;
+    background-color: black;
+    color: white;
+}
