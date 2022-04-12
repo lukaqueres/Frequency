@@ -19,7 +19,7 @@
                 <?php
                     $guilds = Session::get('data')['guilds'];
                     foreach($guilds as $guild) {
-                        echo get_icon($guild);
+                        echo '<img class="icon no_margin" src="' . get_icon($guild) .'"/>'
                     }
                 ?>
             </div>
