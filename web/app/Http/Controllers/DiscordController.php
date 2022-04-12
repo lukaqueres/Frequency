@@ -130,7 +130,12 @@ class DiscordController extends Controller
             //$guild['permissions_names'] = get_permissions($guild->permissions);
             $guild->p_tag = get_user_permissions_tag(get_permissions($guild->permissions));
             $guild->tags = get_guild_tags($guild);
-            $guilds_preview[] = [ 'id' => $guild->id, 'name' => $guild->name, 'icon' => $guild->icon, 'tags' => $guild->tags ];
+            $this_guild = array();
+            $this_guild['id'] = $guild->id;
+            $this_guild['name'] = $guild->name;
+            $this_guild['icon'] = $guild->icon;
+            $this_guild['tags'] = $guild->tags;
+            $guilds_preview[] = $this_guild;
             $data[$guild->id] = $guild;
         }
         $data['guilds'] = $guilds_preview;
