@@ -122,8 +122,8 @@ class DiscordController extends Controller
 
         // Making nice arrays for guilds
         $data = array();
-        $guilds_preview = [];
-        $data['user'] = $user;
+        $guilds_snippets = [];
+        //$data['user'] = $user;
 
         foreach($guilds as $guild) {
             //var_dump($guild->permissions);
@@ -136,11 +136,11 @@ class DiscordController extends Controller
             $this_guild['icon'] = $guild->icon;
             $this_guild['tags'] = $guild->tags;
             //$guilds_preview[] = $this_guild;
-            $guilds_preview[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
+            $guilds_snippets[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
             $data['guilds'][$guild->id] = $guild;
         }
 
-        $data['guilds']['snipps'] = $guilds_preview;
+        //$data['guilds']['snippets'] = $guilds_snippets;
         //return var_dump($data['guilds']);
         //return response()->json(['guilds' => $data['guilds'] ]); 
         
@@ -148,6 +148,8 @@ class DiscordController extends Controller
             //Session::put('access_token', $accessToken);
 		    //Session::put('user_data', $user);
             Session::put('data', $data);
+            Session::put('guilds.snippets', $guilds_snippets);
+            Session::put('user', $user);
             Session::put('authorized', true);
             Session::save();
         }
