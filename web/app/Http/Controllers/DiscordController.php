@@ -121,8 +121,8 @@ class DiscordController extends Controller
         }
 
         // Making nice arrays for guilds
-        $data = [];
-        $guilds_preview = [];
+        $data = array();
+        $guilds_preview = array();
         $data['user'] = $user;
 
         foreach($guilds as $guild) {
@@ -139,6 +139,7 @@ class DiscordController extends Controller
             //Session::put('access_token', $accessToken);
 		    //Session::put('user_data', $user);
             Session::put('data', $data);
+            Session::put('authorized', true);
             Session::save();
         }
 
@@ -147,6 +148,16 @@ class DiscordController extends Controller
 
     public function showManage(Request $request)
     {
+        if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'error_message' => 'User is not authorized.',
+                ]);
+            } else {
+                Session::flash('status', 'Not authorized');
+                return redirect('/');
+            }
+        }
         $data = array();
         $data['id']=$request->id;
         return view('manage', $data); 
@@ -154,6 +165,16 @@ class DiscordController extends Controller
 
     public function showUser(Request $request)
     {
+        if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'error_message' => 'User is not authorized.',
+                ]);
+            } else {
+                Session::flash('status', 'Not authorized');
+                return redirect('/');
+            }
+        }
         $data = array();
         $data['view']=$request->view;
         return view('user', $data);
@@ -161,6 +182,27 @@ class DiscordController extends Controller
 
     public function showGuild(Request $request)
     {
+        if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'error_message' => 'User is not authorized.',
+                ]);
+            } else {
+                Session::flash('status', 'Not authorized');
+                return redirect('/');
+            }
+        }
+        $data = Session::get('data');
+        if (! (Arr::exists($data, $request->$id)))  { // Check if user is in guild with given id
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'error_message' => 'Guild not found.',
+                ]);
+            } else {
+                Session::flash('status', 'Guild not found');
+                return redirect('/manage');
+            }
+        }
         $data = array();
         $data['id']=$request->id;
         $data['view']=$request->view;
