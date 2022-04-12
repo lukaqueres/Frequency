@@ -112,3 +112,31 @@ function get_guild_tags($guild) {
 	};
     return $tags;
 }
+
+# Check user's avatar type
+function is_animated($icon)
+{
+	if ($icon == null) {
+		return ".png";
+	}
+	$ext = substr($icon, 0, 2);
+	if ($ext == "a_")
+	{
+		return ".gif";
+	}
+	else
+	{
+		return ".png";
+	}
+}
+
+function get_icon($guild)
+{
+	if ($guild->icon == null) {
+		return "images/blank-icon.png";
+	} else {
+		$extension = is_animated($guild['icon']);
+		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild->id . '/' . $guild->icon . $extension;
+		return $icon_url;
+	}
+}
