@@ -33,6 +33,7 @@ a {
         'header header'
         'left main'
         'footer footer';
+    grid-template-columns: 200px auto;
 }
     .grid-container > div {
         justify-self: stretch;
