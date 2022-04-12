@@ -132,7 +132,7 @@ class DiscordController extends Controller
             $data = Arr::add($guild['id'], $guild);
         }
 
-        $data = Arr::add('guilds', $guilds_preview)
+        $data = Arr::add('guilds', $guilds_preview);
         
         if (! Session::exists('data')) {
             //Session::put('access_token', $accessToken);
