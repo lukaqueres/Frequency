@@ -122,7 +122,7 @@ class DiscordController extends Controller
 
         // Making nice arrays for guilds
         $data = array();
-        $guilds_preview = {};
+        $guilds_preview = [];
         $data['user'] = $user;
 
         foreach($guilds as $guild) {
