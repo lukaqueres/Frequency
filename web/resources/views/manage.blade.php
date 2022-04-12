@@ -13,7 +13,7 @@
     <body>
         <div id="container">
         <div id="header">
-            HEADER
+            <h1>HEADER</h1>
         </div>
             DATA: <?php echo json_encode(Session::get('data')); ?></br>
         </div>
