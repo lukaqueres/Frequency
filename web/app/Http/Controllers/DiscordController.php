@@ -136,8 +136,8 @@ class DiscordController extends Controller
             $this_guild['icon'] = $guild->icon;
             $this_guild['tags'] = $guild->tags;
             $guilds_preview[] = $this_guild;
-            return response()->json(['guild' => $this_guild ]);
             //$guilds_preview[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
+            return response()->json(['guild' => $guilds_preview ]);
             $data[$guild->id] = $guild;
         }
         $data['guilds'] = $guilds_preview;
