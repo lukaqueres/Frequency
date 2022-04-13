@@ -17,7 +17,7 @@
             </div>
             <div class="left">
                 <?php
-                    $guilds = Session::get('guilds.snippets');
+                    $guilds = Session::get('data')['guilds']['snippets'];
                     echo 'GUILDS: ' .  json_encode($guilds);
                     //foreach($guilds as $guild) {
                     //    break;
