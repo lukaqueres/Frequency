@@ -66,6 +66,14 @@ a {
     flex-direction: row;
 
 }
+
+    .flex-box > * {
+        text-align: center;
+        margin-inline: 10px;
+        align-self: center;
+    }
+
+
 .icon {
     height: 100%;
     border-radius: 50%;
