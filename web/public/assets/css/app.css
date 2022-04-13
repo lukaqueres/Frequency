@@ -81,3 +81,40 @@ a {
         -webkit-transform: scale(1.5); /* Safari 3-8 */
         transform: scale(1.5);
     }
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: black;
+    color: white;
+}
+
+    .popup > .popup-content {
+        visibility: hidden;
+        padding: 8px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+    }
+
+    .popup > .popup-content::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: black transparent transparent transparent;
+    }
+
+    .popup .show {
+        visibility: visible;
+    }
