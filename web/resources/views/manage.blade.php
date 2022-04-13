@@ -20,9 +20,7 @@
                     $guilds = Session::get('data')['guilds']['snippets'];
                     foreach($guilds as $guild) {
                         echo '
-                        <div class="inline-margin zoom">
-                            <img class="icon inline-margin" src="' . get_icon($guild) .'"/>
-                        </div>';
+                            <img class="icon inline-margin zoom" src="' . get_icon($guild) .'"/>';
                     }
                 ?>
             </div>
