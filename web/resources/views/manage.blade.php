@@ -22,6 +22,7 @@
                         echo '
                         <div class="popup row"
                             <img class="icon inline-margin zoom" src="' . get_icon($guild) .'"/>
+                            <h2>' . $guild['name'] . '</h2>
                         </div>';
                     }
                 ?>
