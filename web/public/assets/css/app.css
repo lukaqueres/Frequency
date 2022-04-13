@@ -67,7 +67,7 @@ a {
 }
 
 .zoom {
-    transition: transform .5s linear;
+    transition: transform .2s cubic-bezier(.33,1.38,.28,.89)
 }
 
     .zoom:hover {
