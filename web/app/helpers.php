@@ -135,8 +135,8 @@ function get_icon($guild)
 	if ($guild['icon'] == null) {
 		return "images/blank-icon.png";
 	} else {
-		$extension = is_animated($guild[4]); //$guild['icon']
-		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild[1] . '/' . $guild[4] . $extension; //$guild['id'] $guild['icon']
+		$extension = is_animated($guild['icon']);
+		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild['id'] . '/' . $guild['icon'] . $extension;
 		return $icon_url;
 	}
 }
