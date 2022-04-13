@@ -36,10 +36,10 @@
                                         <h4>' . $guild['name'] . '</h4>
                                         <p> TAGS </p>
                                     </div></div></div>';
-                            if ($count == 3) { $flow .= '</div>'; $count = 0; continue;}
+                            //if ($count == 3) { $flow .= '</div>'; $count = 0; continue;}
                             $count = $count + 1;
                         }
-                        echo $flow;
+                        echo $flow . '</div>';
                     ?>
                     </div>
             </div>
