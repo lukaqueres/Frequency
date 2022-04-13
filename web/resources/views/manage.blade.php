@@ -18,11 +18,9 @@
             <div class="left">
                 <?php
                     $guilds = Session::get('data')['guilds']['snippets'];
-                    echo 'GUILDS: ' .  json_encode($guilds);
-                    //foreach($guilds as $guild) {
-                    //    break;
-                    //    echo '<img class="icon no_margin" src="' . get_icon($guild) .'"/>';
-                    //}
+                    foreach($guilds as $guild) {
+                        echo '<img class="icon no_margin" src="' . get_icon($guild) .'"/>';
+                    }
                 ?>
             </div>
             <div class="main">
