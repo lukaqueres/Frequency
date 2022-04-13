@@ -23,9 +23,9 @@
                     $guilds = Session::get('data')['guilds']['snippets'];
                     foreach($guilds as $guild) {
                         echo '
-                        <div class="flex-box popup row">
-                            <img class="icon inline-margin zoom" src="' . get_icon($guild) .'"/>
-                            <h2>' . $guild['name'] . '</h2>
+                        <div class="row">
+                            <img class="columns align-self-middle shrink icon inline-margin zoom" src="' . get_icon($guild) .'"/>
+                            <h2 class="columns align-self-middle">' . $guild['name'] . '</h2>
                         </div>';
                     }
                 ?>
