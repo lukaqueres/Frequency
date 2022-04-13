@@ -50,7 +50,6 @@ a {
         padding: 10px;
         grid-area: left;
         height: 100%;
-        overflow: hidden;
     }
 
     .grid-container > .main {
