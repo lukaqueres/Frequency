@@ -37,7 +37,7 @@
                                         <p> TAGS </p>
                                     </div></div></div>';
                             if ($count == 0) { $flow .= '</div>'; $count = 0; continue;}
-                            $count += 1;
+                            $count = $count + 1;
                         }
                         echo $flow;
                     ?>
