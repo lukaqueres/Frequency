@@ -28,9 +28,10 @@
                     $count = 0;
                         foreach($snippets as $guild) {
                             $flow .= '<div class="cell"><div class="card">
+                              <div class="card-divider"><h4>' . $guild['name'] . '</h4></div>
                                         <div class="card-section">
                                         <img class="columns align-self-middle shrink icon inline-margin" src="' . get_icon($guild) .'"/>
-                                        <h4>' . $guild['name'] . '</h4>
+                                        
                                         <p> TAGS </p>
                                         </div></div></div>';
                             $count = $count + 1;
