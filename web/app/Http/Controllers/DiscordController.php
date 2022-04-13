@@ -138,21 +138,19 @@ class DiscordController extends Controller
             //$guilds_preview[] = $this_guild;
             $guilds_snippets[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
             $data['guilds'][$guild->id] = $guild;
+            $data['guilds']['snippets'] = $guilds_snippets;
         }
 
         //$data['guilds']['snippets'] = $guilds_snippets;
         //return var_dump($data['guilds']);
         //return response()->json(['guilds' => $data['guilds'] ]); 
         
-        if (! Session::exists('data')) {
-            //Session::put('access_token', $accessToken);
-		    //Session::put('user_data', $user);
-            Session::put('data', $data);
-            Session::put('guilds.snippets', $guilds_snippets);
-            Session::put('user', $user);
-            Session::put('authorized', true);
-            Session::save();
-        }
+        //Session::put('access_token', $accessToken);
+		//Session::put('user_data', $user);
+        Session::put('data', $data);
+        Session::put('user', $user);
+        Session::put('authorized', true);
+        Session::save();
 
 		return redirect('manage');
 	}
