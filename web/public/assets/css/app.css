@@ -23,7 +23,7 @@ a {
 .inline-margin {
     margin: 0 10px;
 }
-
+/*
 .grid-container {
     display: grid;
     height: 100%;
@@ -73,7 +73,7 @@ a {
         align-self: center;
     }
 
-
+    */
 .icon {
     height: 100%;
     border-radius: 50%;

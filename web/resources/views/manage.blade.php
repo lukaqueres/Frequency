@@ -13,22 +13,33 @@
 	    <meta charset="UTF-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <?php
+        // Get variables from Session data
+        $snippets = Session::get('data')['guilds']['snippets'];
+    ?>
     <body>
         <div id="container" class="grid-container">
             <div class="header">
                 <h1 class="inline-margin">HEADER</h1>
             </div>
             <div class="left">
-                <?php
-                    $guilds = Session::get('data')['guilds']['snippets'];
-                    foreach($guilds as $guild) {
-                        echo '
-                        <div class="row zoom">
-                            <img class="columns align-self-middle shrink icon inline-margin" src="' . get_icon($guild) .'"/>
-                            <h5 class="columns align-self-middle">' . $guild['name'] . '</h5>
-                        </div>';
-                    }
-                ?>
+                <div class="grid-container">
+                    <?php
+                        $flow = '<div class="grid-container">';
+                        $count = 0;
+                        foreach($snippets as $guild) {
+                            if ($count == 0) { $flow .= '<div class="grid-x grid-margin-x small-up-2 medium-up-3">'; }
+                            $flow .= '<div class="cell"><div class="card">
+                                        <img class="columns align-self-middle shrink icon inline-margin" src="' . get_icon($guild) .'"/>
+                                        <div class="card-section">
+                                        <h4>' . $guild['name'] . '</h4>
+                                        <p> TAGS </p>
+                                    </div></div></div>';
+                            if (count == 0) { $flow .= '</div>'; $count = 0; continue;}
+                            $count += 1;
+                        }
+                    ?>
+                    </div>
             </div>
             <div class="main">
                 <h5>DATA: <?php echo json_encode(Session::get('data'), JSON_PRETTY_PRINT); ?></br></h5>
