@@ -18,7 +18,7 @@
         $snippets = Session::get('data')['guilds']['snippets'];
     ?>
     <body>
-        <div id="container" class="grid-container">
+        <div class="grid-y medium-grid-frame">
             <div class="header">
                 <h1 class="inline-margin">HEADER</h1>
             </div>
@@ -30,8 +30,9 @@
                         foreach($snippets as $guild) {
                             if ($count == 0) { $flow .= '<div class="grid-x grid-margin-x small-up-2 medium-up-3">'; }
                             $flow .= '<div class="cell"><div class="card">
-                                        <img class="columns align-self-middle shrink icon inline-margin" src="' . get_icon($guild) .'"/>
+                                        
                                         <div class="card-section">
+                                        <img class="columns align-self-middle shrink icon inline-margin" src="' . get_icon($guild) .'"/>
                                         <h4>' . $guild['name'] . '</h4>
                                         <p> TAGS </p>
                                     </div></div></div>';
