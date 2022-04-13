@@ -38,6 +38,7 @@
                             if ($count == 0) { $flow .= '</div>'; $count = 0; continue;}
                             $count += 1;
                         }
+                        echo $flow;
                     ?>
                     </div>
             </div>
