@@ -50,6 +50,7 @@ a {
         padding: 10px;
         grid-area: left;
         height: 100%;
+        overflow: hidden;
     }
 
     .grid-container > .main {
@@ -61,6 +62,11 @@ a {
         grid-area: footer;
     }
 
+.flex-box {
+    display: flex;
+    flex-direction: row;
+
+}
 .icon {
     width: 100%;
     border-radius: 50%;
