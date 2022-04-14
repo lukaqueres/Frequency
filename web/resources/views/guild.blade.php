@@ -16,6 +16,7 @@
         $user = Session::get('user');
         $guilds = $data['guilds'];
         $snippets = $data['snippets'];
+        $thisGuild = $guilds[$id];
     ?>
     <body>
         <div class="app-grid-container">
@@ -25,19 +26,12 @@
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
                 </div>
-                <?php
-                    $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
-                    $count = 0;
-                        foreach($snippets as $guild) {
-                            $flow .= '<div class="cell"><div class="card">
-                              <div class="card-divider"><img class="columns align-self-middle shrink app-icon app-inline-margin" src="' . get_icon($guild) .'"/><h4>' . $guild['name'] . '</h4></div>
-                                        <div class="card-section">
-                                        <p> TAGS </p>
-                                        </div></div></div>';
-                            $count = $count + 1;
-                        }
-                    echo $flow . '</div></div>';
-                ?>
+                <div class="app-dropdown">
+                    <button onclick="search_dropdown()"> <?php echo $thisGuild['name']; ?> </button>
+                    <div id="app-search-dropdown" class="app-dropdown-content">
+                        <input type="text" id="servers_search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild['name'] . '" '; ?> title="Filter by name or id">
+                    </div>
+                </div>
             </div>
             <div class="app-main">
                 GUILD_DATA:
@@ -52,3 +46,14 @@
         </div>
     </body>
 </html>
+
+<script>
+
+    function search_dropdown() {
+        document.getElementById("app-search-dropdown").classList.add("show");
+        var IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild['id'] . '_"'; ?>);
+        var topPos = IdOfElement.offsetTop;
+        document.getElementById('app-search-dropdown').scrollTop = topPos;
+    }
+
+</script>
