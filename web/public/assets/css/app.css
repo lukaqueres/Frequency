@@ -26,8 +26,10 @@
 
 :root {
     --bg-color-one: black;
-
-
+    --acc-color-one: #1C1C1C;
+    --acc-color-two: #383838;
+    --fnt-color-one: black;
+    --fnt-color-two: white;
 }
 
 * {
@@ -113,6 +115,9 @@
 #app-dropdown-button {
     width: -moz-available;
     border-radius: 5px;
+    text-align: left;
+    background-color: var(--acc-color-two);
+    color: var(--fnt-color-one);
 }
 
 #app-dropdown-button-active {
@@ -176,4 +181,8 @@
     top: 5px;
     width: -moz-available;
     margin: 5px;
+}
+
+.app-no-margin {
+    margin: 0;
 }
