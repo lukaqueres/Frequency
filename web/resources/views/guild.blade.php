@@ -29,7 +29,7 @@
                 <div class="app-dropdown">
                     <button onclick="search_dropdown()"> <?php echo $thisGuild->name; ?> </button>
                     <div id="app-search-dropdown" class="app-dropdown-content">
-                        <input type="text" id="servers_search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
+                        <input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                         <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="ap-servers">
                             <?php
                                 foreach($snippets as $guild) {
@@ -69,13 +69,7 @@
     }
 
     window.onclick = function(event) {
-	    if (!event.target.matches('#app-user-dropdown') && document.getElementById("app-user-dropdown").classList.contains('app-show')) {
-		    var dropdown = document.getElementById("app-user-dropdown");
-		    if (dropdown.classList.contains('app-show')) {
-			    dropdown.classList.remove('app-show');
-		    }
-	    }
-	    if ((!event.target.matches('#app-servers-search')) && ((!event.target.matches('#app-search-dropdown'))) && document.getElementById("app-search-dropdown").classList.contains('app-show')) {
+	    if (!event.target.matches('#app-search-dropdown') && document.getElementById("app-search-dropdown").classList.contains('app-show')) {
 		    var dropdown = document.getElementById("app-search-dropdown");
 		    if (dropdown.classList.contains('app-show')) {
 			    dropdown.classList.remove('app-show');
