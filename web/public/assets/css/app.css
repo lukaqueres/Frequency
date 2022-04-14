@@ -118,7 +118,8 @@
     text-align: left;
     background-color: var(--acc-color-two);
     color: var(--fnt-color-two);
-    border: 1px solid var(--acc-color-two);
+    border: 1px solid black;
+    padding: 5px 10px;
 }
 
 #app-dropdown-button-active {
