@@ -23,9 +23,8 @@
     <body>
         <div class="app-grid-container">
             <div class="app-left">
-
+                 Back to manage
                 <div class="app-flex-container">
-                    <div> BACK to Manage </div>
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
                 </div>
