@@ -30,7 +30,7 @@
                     <button id="app-dropdown-button" onclick="search_dropdown()"> <?php echo $thisGuild->name; ?> </button>
                     <div id="app-search-dropdown" class="app-dropdown-content">
                         <input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
-                        <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="ap-servers">
+                        <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="app-servers">
                             <?php
                                 foreach($snippets as $guild) {
 									echo '<tr id="search_dropdown_' . $guild['id'] .'_" class="app-flex_container" >
