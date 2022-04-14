@@ -29,7 +29,7 @@
                 <div class="app-dropdown">
                     <button onclick="search_dropdown()"> <?php echo $thisGuild->name; ?> </button>
                     <div id="app-search-dropdown" class="app-dropdown-content">
-                        <input type="text" id="servers_search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild['name'] . '" '; ?> title="Filter by name or id">
+                        <input type="text" id="servers_search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 GUILD_DATA:
                 <?php
                 if (Arr::exists($guilds, $id))  {
-                    echo json_encode($guilds[$id]);
+                    echo json_encode($thisGuild->id);
                 } else {
                     echo 'No guild found';
                 }
