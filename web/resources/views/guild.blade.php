@@ -63,9 +63,9 @@
 
     function search_dropdown() {
         document.getElementById("app-search-dropdown").classList.add("app-show");
-        //var IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
-        //var topPos = IdOfElement.offsetTop;
-        //document.getElementById('app-search-dropdown').scrollTop = topPos;
+        IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
+        var topPos = IdOfElement.offsetTop;
+        document.getElementById('app-search-dropdown').scrollTop = topPos;
     }
 
     window.onclick = function(event) {
