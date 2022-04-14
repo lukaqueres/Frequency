@@ -60,7 +60,7 @@
         align-self: center;
     }
 
-    .app-flex-container .align-right {
+    .app-flex-container .app-align-right {
         justify-content: flex-end;
     }
 
