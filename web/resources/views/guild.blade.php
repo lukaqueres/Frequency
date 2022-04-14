@@ -35,7 +35,7 @@
                                 foreach($snippets as $guild) {
 									echo '<tr id="search_dropdown_' . $guild['id'] .'_" class="app-flex_container" >
 										<td class="app-flex_container" style="padding: 5px; margin-inline: 30px;" >
-											<img class="icon no_margin" src="' . get_icon($guild['icon']) . '"/>
+											<img class="icon no_margin" src="' . get_icon($guild) . '"/>
 											<h1 class="no_margin w_padding max_font">' . $guild['name'] . '</h1>
 										</td>
 								     	<td class="no-display">' . $guild['id'] . '</td></tr>';
