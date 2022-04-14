@@ -11,15 +11,38 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        Guild</br>
-        NAME:{{Session::get('name')}}</br>
-        GUILD_DATA: <?php
-        $data = Session::get('data')['guilds'];
-        if (Arr::exists($data, $id))  {
-            echo json_encode($data[$id]);
-        } else {
-            echo 'No guild found';
-        }
-        ?></br>
+        <div class="app-grid-container">
+            <div class="app-left">
+                Back to manage
+                <div class="app-flex-container">
+                    <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
+                    <div class="app-align-right"> <?php echo $user->username; ?> </div>
+                </div>
+                <?php
+                    $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
+                    $count = 0;
+                        foreach($snippets as $guild) {
+                            $flow .= '<div class="cell"><div class="card">
+                              <div class="card-divider"><img class="columns align-self-middle shrink app-icon app-inline-margin" src="' . get_icon($guild) .'"/><h4>' . $guild['name'] . '</h4></div>
+                                        <div class="card-section">
+                                        <p> TAGS </p>
+                                        </div></div></div>';
+                            $count = $count + 1;
+                        }
+                    echo $flow . '</div></div>';
+                ?>
+            </div>
+            <div class="app-main">
+                GUILD_DATA:
+                <?php
+                $data = Session::get('data')['guilds'];
+                if (Arr::exists($data, $id))  {
+                    echo json_encode($data[$id]);
+                } else {
+                    echo 'No guild found';
+                }
+                ?></br>
+            </div>
+        </div>
     </body>
 </html>
