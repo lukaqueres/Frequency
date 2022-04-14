@@ -138,7 +138,7 @@ class DiscordController extends Controller
             //$guilds_preview[] = $this_guild;
             $guilds_snippets[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
             $data['guilds'][$guild->id] = $guild;
-            $data['guilds']['snippets'] = $guilds_snippets;
+            $data['snippets'] = $guilds_snippets;
         }
 
         //$data['guilds']['snippets'] = $guilds_snippets;
