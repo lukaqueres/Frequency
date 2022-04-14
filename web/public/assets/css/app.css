@@ -117,7 +117,8 @@
     border-radius: 5px;
     text-align: left;
     background-color: var(--acc-color-two);
-    color: var(--fnt-color-one);
+    color: var(--fnt-color-two);
+    border: 1px solid var(--acc-color-two);
 }
 
 #app-dropdown-button-active {
@@ -151,6 +152,11 @@
 .app-dropdown-content {
     display: none;
 }
+
+    .app-dropdown-content h1, h2, h3, h4, h5 {
+        color: var(--fnt-color-two);
+    }
+
     .app-dropdown-content img {
         max-height: 30.6px
     }
