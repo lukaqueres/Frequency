@@ -19,9 +19,6 @@
     ?>
     <body>
         <div class="app-grid-container">
-            <div class="app-header">
-                <h1 class="app-inline-margin">HEADER</h1>
-            </div>
             <div class="app-left">
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
@@ -39,9 +36,6 @@
             </div>
             <div class="app-main">
                 <h5>DATA: <?php echo json_encode(Session::get('data'), JSON_PRETTY_PRINT); ?></br></h5>
-            </div>
-            <div class="app-footer">
-                FOOTA
             </div>
         </div>
     </body>
