@@ -116,9 +116,9 @@
     border-radius: 5px;
 }
 
-    #app-dropdown-button:active {
-        border-radius: 0;
-    }
+#app-dropdown-button-active {
+    border-radius: 5px 5px 0 0;
+}
 
 .app-dropdown {
     position: relative;
