@@ -10,7 +10,12 @@
 
 ::-webkit-scrollbar-thumb {
     background: white;
+    border-radius: 100vw;
 }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: white;
+    }
 
 :root {
     --bg-color-one: black;
@@ -149,4 +154,9 @@
 
 .app-no-display {
     display: none;
+}
+
+#app-servers-search {
+    position: fixed;
+
 }
