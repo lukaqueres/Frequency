@@ -50,10 +50,24 @@
 <script>
 
     function search_dropdown() {
-        document.getElementById("app-search-dropdown").classList.add("show");
-        var IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
-        var topPos = IdOfElement.offsetTop;
-        document.getElementById('app-search-dropdown').scrollTop = topPos;
+        document.getElementById("app-search-dropdown").classList.add("app-show");
+        //var IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
+        //var topPos = IdOfElement.offsetTop;
+        //document.getElementById('app-search-dropdown').scrollTop = topPos;
     }
 
+    window.onclick = function(event) {
+	    if (!event.target.matches('#app-user-dropdown') && document.getElementById("app-user-dropdown").classList.contains('app-show')) {
+		    var dropdown = document.getElementById("app-user-dropdown");
+		    if (dropdown.classList.contains('app-show')) {
+			    dropdown.classList.remove('app-show');
+		    }
+	    }
+	    if ((!event.target.matches('#app-servers-search')) && ((!event.target.matches('#app-search-dropdown'))) && document.getElementById("app-search-dropdown").classList.contains('app-show')) {
+		    var dropdown = document.getElementById("app-search-dropdown");
+		    if (dropdown.classList.contains('app-show')) {
+			    dropdown.classList.remove('app-show');
+		    }
+	    }
+    }
 </script>
