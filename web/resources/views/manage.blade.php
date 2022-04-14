@@ -15,11 +15,18 @@
     </head>
     <?php
         // Get variables from Session data
-        $snippets = Session::get('data')['guilds']['snippets'];
+        $data = Session::get('data');
+        $user = Session:get('user');
+        $guilds = $data['guilds'];
+        $snippets = $data['snippets'];
     ?>
     <body>
         <div class="app-grid-container">
             <div class="app-left">
+                <div class="grid-x grid-padding-x align-spaced"> <!-- Aligned to the space around -->
+                    <div class="cell small-4"><- Back</div>
+                    <div class="cell small-4"><?php echo $user->username; ?></div>
+                </div>
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
                     $count = 0;
