@@ -1,6 +1,6 @@
 $(document).foundation()
 
-function search_guilds() {
+/*function search_guilds() {
     var input, filter, tabel, tr, a, i, txtValue;
     input = document.getElementById("app-servers-search");
     filter = input.value.toUpperCase();
@@ -16,4 +16,4 @@ function search_guilds() {
             tr[i].style.display = "none";
         }
     }
-}
+}*/
