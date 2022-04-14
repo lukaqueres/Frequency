@@ -22,7 +22,7 @@
         'left main'
         'left main'
         'left main';
-    grid-template-columns: 200px auto;
+    grid-template-columns: 400px auto;
 }
     .app-grid-container > div {
         justify-self: stretch;
