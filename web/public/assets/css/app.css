@@ -158,11 +158,11 @@
         color: var(--fnt-color-two);
     }
 
-    .app-dropdown-content > tr {
+    .app-dropdown-content tr {
         padding: 5px 0;
     }
 
-    .app-dropdown-content > tr:hover {
+    .app-dropdown-content tr:hover {
         background-color: var(--bg-color-one);
     }
 
