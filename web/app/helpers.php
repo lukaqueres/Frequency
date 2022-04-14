@@ -147,7 +147,7 @@ function get_avatar($user)
 		return "images/blank-icon.png";
 	} else {
 		$extension = is_animated($user->avatar);
-		$icon_url = 'https://cdn.discordapp.com/icons/' . $user->id . '/' . $user->avatar . $extension;
+		$icon_url = 'https://cdn.discordapp.com/avatars/' . $user->id . '/' . $user->avatar . $extension;
 		return $icon_url;
 	}
 }
