@@ -17,6 +17,13 @@
         background: white;
     }
 
+@supports (scrollbar-color: white black) {
+    * {
+        scrollbar-3dlight-color: white black;
+        scrollbar-width: thin;
+    }
+}
+
 :root {
     --bg-color-one: black;
 
