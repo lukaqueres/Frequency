@@ -68,14 +68,14 @@
         document.getElementById('app-search-dropdown').scrollTop = topPos;
     }
 
-    /*window.onclick = function(event) {
-	    if (!event.target.matches('#app-search-dropdown')) {
+    window.onclick = function(event) {
+	    if !(event.target.matches('#app-search-dropdown') && document.getElementById("app-search-dropdown").classList.contains('app-show')) {
 		    var dropdown = document.getElementById("app-search-dropdown");
 		    if (dropdown.classList.contains('app-show')) {
 			    dropdown.classList.remove('app-show');
 		    }
 	    }
-    }*/
+    }
 
     function search_guilds() {
         var input, filter, tabel, tr, a, i, txtValue;
