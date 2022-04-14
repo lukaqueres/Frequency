@@ -140,3 +140,14 @@ function get_icon($guild)
 		return $icon_url;
 	}
 }
+
+function get_avatar($user)
+{
+	if ($user->avatar == null) {
+		return "images/blank-icon.png";
+	} else {
+		$extension = is_animated($user->avatar);
+		$icon_url = 'https://cdn.discordapp.com/icons/' . $user->id . '/' . $user->avatar . $extension;
+		return $icon_url;
+	}
+}
