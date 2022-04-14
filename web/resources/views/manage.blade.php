@@ -24,9 +24,12 @@
         <div class="app-grid-container">
             <div class="app-left">
 
-                <div class="grid-x grid-padding-x align-spaced">
-                    <div class="cell small-4"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
-                    <div class="cell small-4"> <?php echo $user->username; ?> </div>
+                <div class="grid-x grid-padding-x align-justify">
+                    <div class="cell small-4"> BACK to Manage </div>
+                    <div class="grid-x grid-padding-x align-spaced">
+                        <div class="cell small-4"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
+                        <div class="cell small-4"> <?php echo $user->username; ?> </div>
+                    </div>
                 </div>
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
