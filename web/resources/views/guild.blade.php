@@ -69,7 +69,7 @@
     }
 
     window.onclick = function(e) {
-        if (!e.target.matches('#app-dropdown-button')) {
+        if ((!e.target.matches('#app-dropdown-button')) || (!e.target.matches('#app-search-dropdown'))) {
             var myDropdown = document.getElementById("app-search-dropdown");
             if (myDropdown.classList.contains('app-show')) {
                 myDropdown.classList.remove('app-show');
