@@ -19,9 +19,9 @@
     width: 100%;
     gap: 0;
     grid-template-areas:
-        'left header'
         'left main'
-        'left footer';
+        'left main'
+        'left main';
     grid-template-columns: 200px auto;
 }
     .app-grid-container > div {
