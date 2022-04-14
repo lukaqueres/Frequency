@@ -200,8 +200,8 @@ class DiscordController extends Controller
                 return redirect('/');
             }
         }
-        $data = Session::get('data');
-        if (! (Arr::exists($data, $request->$id)))  { // Check if user is in guild with given id
+        $data = Session::get('data')['guilds'];
+        if (! (Arr::exists($data, $request->id)))  { // Check if user is in guild with given id
             if (env('APP_DEBUG')) {
                 return response()->json([
                     'error_message' => 'Guild not found.',
