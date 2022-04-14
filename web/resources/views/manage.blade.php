@@ -16,7 +16,7 @@
     <?php
         // Get variables from Session data
         $data = Session::get('data');
-        $user = Session:get('user');
+        $user = Session::get('user');
         $guilds = $data['guilds'];
         $snippets = $data['snippets'];
     ?>
