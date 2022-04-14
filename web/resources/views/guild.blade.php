@@ -27,7 +27,7 @@
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
                 </div>
                 <div class="app-dropdown">
-                    <button onclick="search_dropdown()"> <?php echo $thisGuild->name; ?> </button>
+                    <button id="app-dropdown-button" onclick="search_dropdown()"> <?php echo $thisGuild->name; ?> </button>
                     <div id="app-search-dropdown" class="app-dropdown-content">
                         <input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                         <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="ap-servers">
@@ -38,7 +38,7 @@
 											<img class="icon no_margin" src="' . get_icon($guild) . '"/>
 											<h1 class="no_margin w_padding max_font">' . $guild['name'] . '</h1>
 										</td>
-								     	<td class="no-display">' . $guild['id'] . '</td></tr>';
+								     	<td class="app-no-display">' . $guild['id'] . '</td></tr>';
 								}
                             ?>
                         </table>
@@ -68,14 +68,13 @@
         document.getElementById('app-search-dropdown').scrollTop = topPos;
     }
 
-    window.onclick = function(event) {
-        var dropdown =  document.getElementById("app-search-dropdown")
-	    if (!(event.target.matches('#app-search-dropdown')) && (dropdown.classList.contains('app-show'))) {
-		    var dropdown = document.getElementById("app-search-dropdown");
-		    if (dropdown.classList.contains('app-show')) {
-			    dropdown.classList.remove('app-show');
-		    }
-	    }
+    window.onclick = function(e) {
+        if (!e.target.matches('#app-dropdown-button')) {
+            var myDropdown = document.getElementById("app-search-dropdown");
+            if (myDropdown.classList.contains('app-show')) {
+                myDropdown.classList.remove('app-show');
+            }
+        }
     }
 
     function search_guilds() {
