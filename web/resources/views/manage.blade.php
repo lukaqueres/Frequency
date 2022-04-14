@@ -36,7 +36,7 @@
                                         </div></div></div>';
                             $count = $count + 1;
                         }
-                    echo $flow . '</div>';
+                    echo $flow . '</div></div>';
                 ?>
             </div>
             <div class="app-main">
