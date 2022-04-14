@@ -48,15 +48,20 @@
         grid-area: footer;
     }
 
-.app-flex-box {
+.app-flex-container {
     display: flex;
-    flex-direction: row;
+    align-items: baseline;
+    flex-wrap: nowrap;
 }
 
-    .app-flex-box > * {
+    .app-flex-container * {
         text-align: center;
         margin-inline: 10px;
         align-self: center;
+    }
+
+    .app-flex-container .align-right {
+        align-self: flex-end;
     }
 
 .app-icon {
