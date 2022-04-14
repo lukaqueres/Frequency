@@ -26,8 +26,8 @@
 
                 <div class="app-flex-container">
                     <div> BACK to Manage </div>
-                    <div class="align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
-                    <div class="align-right"> <?php echo $user->username; ?> </div>
+                    <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
+                    <div class="app-align-right"> <?php echo $user->username; ?> </div>
                 </div>
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
