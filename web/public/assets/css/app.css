@@ -134,3 +134,7 @@
 .app-show {
     display: block;
 }
+
+.app-no-display {
+    display: none;
+}
