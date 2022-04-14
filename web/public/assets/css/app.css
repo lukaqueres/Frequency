@@ -86,7 +86,6 @@
 }
 
     .app-flex-container * {
-        text-align: center;
         margin-inline: 10px;
         align-self: center;
     }
