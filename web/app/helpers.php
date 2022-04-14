@@ -133,7 +133,7 @@ function is_animated($icon)
 function get_icon($guild)
 {
 	if ($guild['icon'] == null) {
-		return "images/blank-icon.png";
+		return "/images/blank-icon.png";
 	} else {
 		$extension = is_animated($guild['icon']);
 		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild['id'] . '/' . $guild['icon'] . $extension;
@@ -144,7 +144,7 @@ function get_icon($guild)
 function get_avatar($user)
 {
 	if ($user->avatar == null) {
-		return "images/blank-icon.png";
+		return "/images/blank-icon.png";
 	} else {
 		$extension = is_animated($user->avatar);
 		$icon_url = 'https://cdn.discordapp.com/avatars/' . $user->id . '/' . $user->avatar . $extension;
