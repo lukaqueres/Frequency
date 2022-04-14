@@ -36,7 +36,7 @@
 									echo '<tr id="search_dropdown_' . $guild['id'] .'_" class="app-flex-container" >
 										<td class="app-flex-container" style="padding: 5px; margin-inline: 30px;" >
 											<img class="app-icon" src="' . get_icon($guild) . '"/>
-											<h1 class="">' . $guild['name'] . '</h1>
+											<h4 class="">' . $guild['name'] . '</h4>
 										</td>
 								     	<td class="app-no-display">' . $guild['id'] . '</td></tr>';
 								}
