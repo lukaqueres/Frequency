@@ -27,7 +27,7 @@
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
                 </div>
                 <div class="app-dropdown">
-                    <button onclick="search_dropdown()"> <?php echo $thisGuild['name']; ?> </button>
+                    <button onclick="search_dropdown()"> <?php echo $thisGuild->name; ?> </button>
                     <div id="app-search-dropdown" class="app-dropdown-content">
                         <input type="text" id="servers_search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild['name'] . '" '; ?> title="Filter by name or id">
                     </div>
