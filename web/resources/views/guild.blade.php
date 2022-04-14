@@ -69,7 +69,8 @@
     }
 
     window.onclick = function(event) {
-	    if (!(event.target.matches('#app-search-dropdown')) && (document.getElementById("app-search-dropdown").classList.contains('app-show'))) {
+        var dropdown =  document.getElementById("app-search-dropdown")
+	    if (!(event.target.matches(dropdown)) && (dropdown.classList.contains('app-show'))) {
 		    var dropdown = document.getElementById("app-search-dropdown");
 		    if (dropdown.classList.contains('app-show')) {
 			    dropdown.classList.remove('app-show');
