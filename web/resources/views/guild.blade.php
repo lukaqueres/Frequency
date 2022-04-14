@@ -10,6 +10,13 @@
 	    <meta charset="UTF-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <?php
+        // Get variables from Session data
+        $data = Session::get('data');
+        $user = Session::get('user');
+        $guilds = $data['guilds'];
+        $snippets = $data['snippets'];
+    ?>
     <body>
         <div class="app-grid-container">
             <div class="app-left">
@@ -35,9 +42,8 @@
             <div class="app-main">
                 GUILD_DATA:
                 <?php
-                $data = Session::get('data')['guilds'];
-                if (Arr::exists($data, $id))  {
-                    echo json_encode($data[$id]);
+                if (Arr::exists($guilds, $id))  {
+                    echo json_encode($guilds[$id]);
                 } else {
                     echo 'No guild found';
                 }
