@@ -162,6 +162,10 @@
         padding: 5px 0;
     }
 
+    .app-dropdown-content > tr:hover {
+        background-color: var(--bg-color-one);
+    }
+
     .app-dropdown-content img {
         max-height: 30.6px
     }
