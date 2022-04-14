@@ -37,7 +37,7 @@
                 GUILD_DATA:
                 <?php
                 if (Arr::exists($guilds, $id))  {
-                    echo json_encode($thisGuild->id);
+                    echo json_encode($thisGuild);
                 } else {
                     echo 'No guild found';
                 }
