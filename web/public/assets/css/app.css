@@ -24,6 +24,7 @@
     .app-grid-container > div {
         justify-self: stretch;
         align-self: center;
+        height: 100%;
     }
     .app-grid-container > .app-header {
         background-color: black;
