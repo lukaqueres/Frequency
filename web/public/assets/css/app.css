@@ -4,27 +4,16 @@
     font-family: "Bahnschrift", "Arial";
 }
 
-body {
-    margin: 0;
-}
-
-a {
-    text-align: center;
-    text-decoration: none;
-    color: rebeccapurple;
-}
-
-#container {
+#app-container {
     margin: 0;
     height: 100%;
     width: 100%;
 }
 
-.inline-margin {
+.app-inline-margin {
     margin: 0 10px;
 }
-/*
-.grid-container {
+.app-grid-container {
     display: grid;
     height: 100%;
     width: 100%;
@@ -35,99 +24,56 @@ a {
         'left footer';
     grid-template-columns: 200px auto;
 }
-    .grid-container > div {
+    .app-grid-container > div {
         justify-self: stretch;
         align-self: center;
     }
-    .grid-container > .header {
+    .app-grid-container > .app-header {
         background-color: black;
         color: white;
         padding: 20px;
         grid-area: header;
     }
 
-    .grid-container > .left {
+    .app-grid-container > .app-left {
         padding: 10px;
         grid-area: left;
         height: 100%;
     }
 
-    .grid-container > .main {
+    .app-grid-container > .app-main {
         padding: 20px;
         grid-area: main;
     }
-    .grid-container > .footer {
+
+    .app-grid-container > .app-footer {
         padding: 20px;
         grid-area: footer;
     }
 
-.flex-box {
+.app-flex-box {
     display: flex;
     flex-direction: row;
-
 }
 
-    .flex-box > * {
+    .app-flex-box > * {
         text-align: center;
         margin-inline: 10px;
         align-self: center;
     }
 
-    */
-.icon {
+.app-icon {
     height: 100%;
     border-radius: 50%;
 }
 
-.zoom {
+.app-zoom {
     transition: transform .2s cubic-bezier(.33,1.38,.28,.89);
 }
 
-    .zoom:hover {
+    .app-zoom:hover {
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
         -ms-transform: scale(1.5); /* IE 9 */
         -webkit-transform: scale(1.5); /* Safari 3-8 */
         transform: scale(1.2);
     }
-
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: black;
-    color: white;
-}
-
-    .popup > .popup-content {
-        visibility: hidden;
-        padding: 8px 0;
-        position: absolute;
-        z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-left: -80px;
-    }
-
-    .popup > .popup-content::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: black transparent transparent transparent;
-    }
-
-    .popup .show {
-        visibility: visible;
-    }
-
-.row {
-    height: 50px;
-    width: 100%;
-}
