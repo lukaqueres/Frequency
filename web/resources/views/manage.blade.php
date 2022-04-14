@@ -18,11 +18,11 @@
         $snippets = Session::get('data')['guilds']['snippets'];
     ?>
     <body>
-        <div class="grid-y medium-grid-frame">
-            <div class="header">
-                <h1 class="inline-margin">HEADER</h1>
+        <div class="app-grid-container">
+            <div class="app-header">
+                <h1 class="app-inline-margin">HEADER</h1>
             </div>
-            <div class="left">
+            <div class="app-left">
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
                     $count = 0;
@@ -30,7 +30,7 @@
                             $flow .= '<div class="cell"><div class="card">
                               <div class="card-divider"><h4>' . $guild['name'] . '</h4></div>
                                         <div class="card-section">
-                                        <img class="columns align-self-middle shrink icon inline-margin" src="' . get_icon($guild) .'"/>
+                                        <img class="columns align-self-middle shrink app-icon app-inline-margin" src="' . get_icon($guild) .'"/>
                                         
                                         <p> TAGS </p>
                                         </div></div></div>';
@@ -39,10 +39,10 @@
                     echo $flow . '</div>';
                 ?>
             </div>
-            <div class="main">
+            <div class="app-main">
                 <h5>DATA: <?php echo json_encode(Session::get('data'), JSON_PRETTY_PRINT); ?></br></h5>
             </div>
-            <div class="footer">
+            <div class="app-footer">
                 FOOTA
             </div>
         </div>
