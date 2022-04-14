@@ -23,12 +23,9 @@
     <body>
         <div class="app-grid-container">
             <div class="app-left">
-                <div class="grid-x grid-padding-x align-spaced align-middle">
-                    <div class="cell small-4"><- Back</div>
-                    <div class="grid-x grid-padding-x align-right align-middle">
-                        <div class="cell small-4"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
-                        <div class="cell small-4"> <?php echo $user->username; ?> </div>
-                    </div>
+                <div class="row align-spaced align-middle">
+                        <div class="column small-4"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
+                        <div class="column small-4"> <?php echo $user->username; ?> </div>
                 </div>
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
