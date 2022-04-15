@@ -36,7 +36,7 @@
 								<img class="app-icon" src="' . get_avatar($user) . '"/>
 								<h3 class="app-no-margin">' . $user->username . '</h3></a>
 								</td>
-								<td class="app-no-display">' . $user-<id . '</td>'; ?>
+								<td class="app-no-display">' . $user->id . '</td>'; ?>
                         </tr>
                             <?php
                                 foreach($snippets as $guild) {
