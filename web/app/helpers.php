@@ -153,7 +153,7 @@ function get_icon($guild)
 function get_avatar($user)
 {
     if(is_object($user)) {
-        $icon = $user->avatar;
+        $avatar = $user->avatar;
         $id = $user->id;
     }
     else {
