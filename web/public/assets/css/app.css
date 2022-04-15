@@ -115,6 +115,7 @@
     }
 
 #app-dropdown-button {
+    transition: transform .2s cubic-bezier(.33,1.38,.28,.89);
     width: -moz-available;
     border-radius: 5px;
     text-align: left;
