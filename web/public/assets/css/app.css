@@ -199,3 +199,10 @@
 .app-no-margin {
     margin: 0;
 }
+
+.app-link-tag {
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    padding: 5px 0;
+}
