@@ -157,7 +157,7 @@
     }
 
     .app-dropdown-content tr {
-        padding: 5px 0;
+        /*padding: 5px 0;*/
     }
 
     .app-dropdown-content tr:hover {
