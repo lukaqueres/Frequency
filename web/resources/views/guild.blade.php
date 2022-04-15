@@ -32,7 +32,7 @@
                     <div style="background-color: black; width: 100%; position: sticky; top: 0;"><input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id"></div>
                         <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="app-servers">
                         <tr class="app-flex-container" style="padding-block: 10px;">
-                        	<?php echo '<td class="app-flex-container" style="width: 100%; padding: 5px;" ><a class="app-flex-container app-no-margin app-link-tag app-zoom" href="#">
+                        	<?php echo '<td class="app-flex-container" style="width: 100%; border-bottom: 1px #18181E solid;; padding: 5px;" ><a class="app-flex-container app-no-margin app-link-tag app-zoom" href="#">
 								<img class="app-icon" src="' . get_avatar($user) . '"/>
 								<h3 class="app-no-margin">' . $user->username . '</h3></a>
 								</td>
