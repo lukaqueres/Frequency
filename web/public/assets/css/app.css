@@ -118,7 +118,7 @@
     width: -moz-available;
     border-radius: 5px;
     text-align: left;
-    background-color: var(--acc-color-two);
+    background-color: #2F2F3B;
     color: var(--fnt-color-two);
     border: 1px solid black;
     padding: 10px 15px;
