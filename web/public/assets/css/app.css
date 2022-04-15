@@ -94,7 +94,7 @@
     }
 
     .app-flex-container .app-align-right {
-        justify-content: flex-end;
+        float: right;
     }
 
 .app-icon {
