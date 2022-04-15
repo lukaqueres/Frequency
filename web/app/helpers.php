@@ -99,6 +99,10 @@ function get_guild_tags($guild) {
 		$tags[] = 'news'; };
 	if (in_array("VERIFIED", $guild_data->features)) {
 		$tags[] = 'verified'; };
+    if (in_array("ROLE_ICONS"), $guild_data->features) {
+        $tags[] = 'role_icons'; };
+    if (in_array("AUTO_MODERATION"), $guild_data->features) {
+        $tags[] = 'auto_moderation'; };
 	if ($guild_data->icon == null) {
 		$tags[] = 'no_icon'; };
 	if ($guild_data->owner) {
