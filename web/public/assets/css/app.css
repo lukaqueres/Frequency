@@ -55,8 +55,8 @@
 }
     .app-grid-container > div {
         justify-self: stretch;
-        align-self: center;
-        height: 100%;
+        /*align-self: center;
+        height: 100%;*/
     }
     .app-grid-container > .app-header {
         background-color: black;
@@ -68,7 +68,6 @@
     .app-grid-container > .app-left {
         padding: 10px;
         grid-area: left;
-        height: 100%;
     }
 
     .app-grid-container > .app-main {
@@ -219,7 +218,7 @@
 }
 
 
-.app-full-no-margin {
+.app-full-no-margin, body, html {
     width: 100%;
     height: 100%;
     margin: 0;
