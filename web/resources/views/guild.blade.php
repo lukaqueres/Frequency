@@ -62,11 +62,17 @@
 <script>
 
     function search_dropdown() {
-        document.getElementById("app-search-dropdown").classList.add("app-show");
-        document.getElementById("app-dropdown-button").classList.add("app-dropdown-button-active");
-        IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
-        var topPos = IdOfElement.offsetTop;
-        document.getElementById('app-search-dropdown').scrollTop = topPos;
+        var Dropdown = document.getElementById("app-search-dropdown");
+        if (!Dropdown.classList.contains('app-show')) {
+            Dropdown.classList.add("app-show");
+            document.getElementById("app-dropdown-button").classList.add("app-dropdown-button-active");
+            IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
+            var topPos = IdOfElement.offsetTop;
+            document.getElementById('app-search-dropdown').scrollTop = topPos;
+        } else {
+            Dropdown.classList.remove("app-show");
+            document.getElementById("app-dropdown-button").classList.remove("app-dropdown-button-active");
+        }
     }
 
     window.onclick = function(e) {
