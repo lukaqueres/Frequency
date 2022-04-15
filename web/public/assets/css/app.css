@@ -98,6 +98,7 @@
 
 .app-icon {
     /*width: 100%;*/
+    max-height: 30.6px;
     border-radius: 50%;
 }
 
