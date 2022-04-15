@@ -73,6 +73,7 @@
 
     .app-grid-container > .app-main {
         padding: 20px;
+        overflow-wrap: anywhere;
         grid-area: main;
     }
 
