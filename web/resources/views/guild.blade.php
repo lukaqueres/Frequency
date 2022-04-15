@@ -27,7 +27,7 @@
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
                 </div>
                 <div class="app-dropdown">
-                    <button id="app-dropdown-button" class="app-flex-container" onclick="search_dropdown()"> <?php echo '<img class="app-icon" src="' . get_icon($thisGuild) . '"/><h4>' . $thisGuild->name . '</h4>'; ?> </button>
+                    <button id="app-dropdown-button" class="app-flex-container" onclick="search_dropdown()"> <?php echo '<img class="app-icon" src="' . get_icon($thisGuild) . '"/><h4 class="app-no-margin">' . $thisGuild->name . '</h4>'; ?> </button>
                     <div id="app-search-dropdown" class="app-dropdown-content">
                         <input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                         <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="app-servers">
