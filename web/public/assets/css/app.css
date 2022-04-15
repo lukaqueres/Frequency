@@ -194,6 +194,10 @@
 }
 
 #app-servers-search {
+    background-color: black;
+    border: 2px #18181E solid;
+    border-radius: 5px;
+    color: white;
     position: sticky;
     top: 5px;
     width: -moz-available;
