@@ -115,7 +115,7 @@
     }
 
 #app-dropdown-button {
-    transition: transform .2s cubic-bezier(.33,1.38,.28,.89);
+    transition: transform .5s cubic-bezier(.33,1.38,.28,.89);
     width: -moz-available;
     border-radius: 5px;
     text-align: left;
@@ -123,6 +123,7 @@
     color: var(--fnt-color-two);
     border: 1px solid black;
     padding: 10px 15px;
+    cursor: pointer;
 }
 
     #app-dropdown-button:hover {
