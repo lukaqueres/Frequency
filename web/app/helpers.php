@@ -132,22 +132,40 @@ function is_animated($icon)
 
 function get_icon($guild)
 {
-	if ($guild['icon'] == null) {
+    if(is_object($guild)) {
+        $icon = $guild->icon;
+        $id = $guild->id;
+    }
+    else {
+        $icon = $guild['icon'];
+        $id = $guild['id'];
+    }
+
+	if ($icon == null) {
 		return "/images/blank-icon.png";
 	} else {
-		$extension = is_animated($guild['icon']);
-		$icon_url = 'https://cdn.discordapp.com/icons/' . $guild['id'] . '/' . $guild['icon'] . $extension;
+		$extension = is_animated($icon);
+		$icon_url = 'https://cdn.discordapp.com/icons/' . $id . '/' . $icon . $extension;
 		return $icon_url;
 	}
 }
 
 function get_avatar($user)
 {
-	if ($user->avatar == null) {
+    if(is_object($user)) {
+        $icon = $user->avatar;
+        $id = $user->id;
+    }
+    else {
+        $avatar = $user['avatar'];
+        $id = $user['icon'];
+    }
+
+	if ($avatar == null) {
 		return "/images/blank-icon.png";
 	} else {
-		$extension = is_animated($user->avatar);
-		$icon_url = 'https://cdn.discordapp.com/avatars/' . $user->id . '/' . $user->avatar . $extension;
+		$extension = is_animated($avatar);
+		$icon_url = 'https://cdn.discordapp.com/avatars/' . $id . '/' . $avatar . $extension;
 		return $icon_url;
 	}
 }
