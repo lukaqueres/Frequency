@@ -29,7 +29,7 @@
                 <div class="app-dropdown">
                     <div id="app-dropdown-button" class="app-flex-container" onclick="search_dropdown()"> <?php echo '<img class="app-icon" onclick="search_dropdown()" src="' . get_icon($thisGuild) . '"/><h4 class="app-no-margin" onclick="search_dropdown()">' . $thisGuild->name . '</h4>'; ?> </div>
                     <div id="app-search-dropdown" class="app-dropdown-content">
-                        <input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
+                    <div style="background-color: black; width: 100%;"><input type="text" id="app-servers-search" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id"></div>
                         <table style="border-collapse: collapse; border-spacing: 0; width: 100%;" id="app-servers">
                             <?php
                                 foreach($snippets as $guild) {
