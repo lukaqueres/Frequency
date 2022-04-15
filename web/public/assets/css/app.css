@@ -122,10 +122,6 @@
     padding: 5px 10px;
 }
 
-#app-dropdown-button-active {
-    border-radius: 5px 5px 0 0;
-}
-
 .app-dropdown {
     position: relative;
     display: inline-block;
@@ -144,6 +140,7 @@
         width: -moz-available;
         border: var(--accent_color) 1px solid;
         border-radius: 0px 0px 15px 15px;
+        margin-top: -3px;
     }
 
     .app-dropdown a:hover {
