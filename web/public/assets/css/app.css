@@ -124,6 +124,10 @@
     padding: 10px 15px;
 }
 
+    #app-dropdown-button:hover {
+        background-color: #0B0020;
+    }
+
 .app-dropdown {
     position: relative;
     display: inline-block;
@@ -146,7 +150,7 @@
     }
 
     .app-dropdown a:hover {
-        background-color: #ddd;
+        background-color: #0B0020;
     }
 
 .app-dropdown-content {
@@ -175,7 +179,7 @@
 
     .app-dropdown-content a {
         color: black;
-        padding: 12px 16px;
+        padding: 5px 10px;
         text-decoration: none;
         transition: all 0.25s cubic-bezier(.77,0,.18,1);
         width: -moz-available;
@@ -203,7 +207,7 @@
 .app-link-tag {
     border: 1px solid black;
     color: black;
-    background-color: white;
+    background-color: #2F2F3B;
     padding: 5px 0;
     border-radius: 10px;
 }
