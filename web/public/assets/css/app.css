@@ -68,6 +68,7 @@
     .app-grid-container > .app-left {
         padding: 10px;
         grid-area: left;
+        background-color: #0C0C0F;
     }
 
     .app-grid-container > .app-main {
@@ -145,7 +146,7 @@
         overflow-inline: hidden;
         max-height: 50vh;
         width: -moz-available;
-        border: var(--accent_color) 1px solid;
+        border: black 3px solid;
         border-radius: 0px 0px 15px 15px;
         margin-top: -3px;
     }
