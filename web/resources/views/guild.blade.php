@@ -65,13 +65,11 @@
         var Dropdown = document.getElementById("app-search-dropdown");
         if (!Dropdown.classList.contains('app-show')) {
             Dropdown.classList.add("app-show");
-            document.getElementById("app-dropdown-button").classList.add("app-dropdown-button-active");
             IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
             var topPos = IdOfElement.offsetTop;
             document.getElementById('app-search-dropdown').scrollTop = topPos;
         } else {
             Dropdown.classList.remove("app-show");
-            document.getElementById("app-dropdown-button").classList.remove("app-dropdown-button-active");
         }
     }
 
@@ -80,7 +78,6 @@
             var myDropdown = document.getElementById("app-search-dropdown");
             if (myDropdown.classList.contains('app-show')) {
                 myDropdown.classList.remove('app-show');
-                document.getElementById("app-dropdown-button").classList.remove("app-dropdown-button-active");
             }
         }
     }
