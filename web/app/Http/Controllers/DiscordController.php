@@ -58,7 +58,7 @@ class DiscordController extends Controller
         $this->tokenData['client_secret'] = "mPz7t6RNjmwerfLXN7LlB6-awue-6nUN";
         $this->tokenData['grant_type'] = "authorization_code";
         $this->tokenData['redirect_uri'] = "https://web-plan-it.herokuapp.com/discord/authorize";
-        $this->tokenData['scope'] = "identify guilds guilds.members.read";
+        $this->tokenData['scope'] = "identify guilds guilds.members.read email";
     }
 
 	public function authorizeMe(Request $request) // Handle autorization requests from path. Used for fetching user's data from Discord
