@@ -1,5 +1,15 @@
 @charset "UTF-8";
 
+:root {
+    --bg-color-one: black;
+    --acc-color-one: #1C1C1C;
+    --acc-color-two: #383838;
+    --fnt-color-one: black;
+    --fnt-color-two: white;
+
+    color-scheme: dark;
+}
+
 ::-webkit-scrollbar {
     width: 2px;
 }
@@ -22,14 +32,6 @@
         scrollbar-3dlight-color: white black;
         scrollbar-width: thin;
     }
-}
-
-:root {
-    --bg-color-one: black;
-    --acc-color-one: #1C1C1C;
-    --acc-color-two: #383838;
-    --fnt-color-one: black;
-    --fnt-color-two: white;
 }
 
 * {
