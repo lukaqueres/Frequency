@@ -52,8 +52,7 @@
     height: 100%;
     width: 100%;
     gap: 0;
-    grid-template-areas: 
-        'left' 'main';
+    grid-template-areas: 'left' 'main';
     grid-template-columns: 400px auto;
 }
     .app-grid-container > div {
