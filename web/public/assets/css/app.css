@@ -39,7 +39,8 @@
 }
 
 #pop-up {
-    background-color: black;
+    background-color: #090910;
+    color: #8883F2;
     border-radius: 10px;
     position: fixed;
 }
