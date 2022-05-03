@@ -38,6 +38,16 @@
     font-family: "Bahnschrift", "Arial";
 }
 
+#pop-up {
+    background-color: black;
+    border-radius: 10px;
+    position: fixed;
+}
+
+.blur *:not(#pop-up *) {
+    filter: blur(10px);
+}
+
 #app-container {
     margin: 0;
     height: 100%;
