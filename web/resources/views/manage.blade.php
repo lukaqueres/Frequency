@@ -22,6 +22,9 @@
     ?>
     <body>
         <div class="app-grid-container">
+            <?php if (Session::exists('status')) {
+                echo '<div id="pop-up">status: ' . json_encode(Session::get('status')) . '</div>';
+            }?>
             <div class="app-left">
                 Back to manage
                 <div class="app-flex-container">
