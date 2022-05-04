@@ -23,7 +23,7 @@
     <body>
         <div class="app-grid-container">
             <?php if (Session::exists('status')) {
-                echo '<div id="pop-up">status: ' . json_encode(Session::get('status')) . '</div>';
+                echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
             }?>
             <div class="app-left">
                 Back to manage
