@@ -64,10 +64,11 @@
         transition: 0.5s;
     }
 
-#blur.active:not(.pop-up *) {
+.container#blur.active {
     filter: blur(20px);
     pointer-events: none;
     user-select: none;
+    transition: .5s;
 }
 
 #app-container {
