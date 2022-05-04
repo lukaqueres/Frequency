@@ -50,8 +50,8 @@
     padding: 10px;
 }
 
-#blur *:not(#pop-up *) {
-    filter: blur(10px);
+#blur .active:not(#pop-up *) {
+    filter: blur(20px);
 }
 
 #app-container {
