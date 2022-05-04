@@ -28,6 +28,7 @@
                 <div class="app-flex-container">
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
+                    <button onclick="togglePopUp()">Guilds</button>
                 </div>
                 <div class="app-dropdown">
                     <div id="app-dropdown-button" class="app-flex-container" onclick="search_dropdown()"> <?php echo '<img class="app-icon" onclick="search_dropdown()" src="' . get_icon($thisGuild) . '"/><h4 class="app-no-margin" onclick="search_dropdown()">' . $thisGuild->name . '</h4>'; ?> </div>
