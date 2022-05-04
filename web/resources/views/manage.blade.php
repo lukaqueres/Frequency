@@ -21,10 +21,15 @@
         $snippets = $data['snippets'];
     ?>
     <body>
-            <?php if (Session::exists('status')) {
-                echo '<div id="blur" class="app-grid-container active"><div id="guildPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp(\'statusPop-up\')">Close</button></div>';
-            } else {
-                echo '<div id="blur" class="app-grid-container">'; } ?>
+            <?php if (Session::exists('status')) { ?>
+                <div id="blur" class="app-grid-container active">
+                    <div id="guildPop-up" class="pop-up active">
+                    <?php echo 'status: ' . json_encode(Session::get('status')); ?>
+                    <button onclick='togglePopUp("statusPop-up")'>Close</button>
+                    </div>;
+            <?php } else { ?>
+                <div id="blur" class="app-grid-container">
+            <?php } ?>
             <div class="app-left">
                 Back to manage
                 <div class="app-flex-container">
