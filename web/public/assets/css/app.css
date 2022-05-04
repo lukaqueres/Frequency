@@ -50,7 +50,7 @@
     padding: 10px;
 }
 
-#blur .active:not(#pop-up *) {
+#blur.active:not(#pop-up *) {
     filter: blur(20px);
 }
 
