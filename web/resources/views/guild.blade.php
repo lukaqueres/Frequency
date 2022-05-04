@@ -19,9 +19,9 @@
         $thisGuild = $guilds[$id];
     ?>
     <body>
-        <div class="app-grid-container">
+        <div id="blur" class="app-grid-container">
             <?php if (Session::exists('status')) {
-                echo '<div id="pop-up">status: ' . json_encode(Session::get('status')) . '</div>';
+                echo '<div class="pop-up">status: ' . json_encode(Session::get('status')) . '</div>';
             }?>
             <div class="app-left">
                 Back to manage
@@ -71,6 +71,10 @@
 
 <script>
 
+    function togglePopUp() {
+        var blur = document.getelementById('blur');
+        blur.classList.toggle('active');
+    }
     function search_dropdown() {
         var Dropdown = document.getElementById("app-search-dropdown");
         if (!Dropdown.classList.contains('app-show')) {

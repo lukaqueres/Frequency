@@ -38,7 +38,7 @@
     font-family: "Bahnschrift", "Arial";
 }
 
-#pop-up {
+.pop-up {
     background-color: #090910;
     color: #8883F2;
     border-radius: 10px;
@@ -50,7 +50,7 @@
     padding: 10px;
 }
 
-.blur *:not(#pop-up *) {
+#blur *:not(#pop-up *) {
     filter: blur(10px);
 }
 
