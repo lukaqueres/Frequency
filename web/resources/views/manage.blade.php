@@ -21,9 +21,9 @@
         $snippets = $data['snippets'];
     ?>
     <body>
-        <div class="app-grid-container">
+        <div id="blur" class="app-grid-container">
             <?php if (Session::exists('status')) {
-                echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
+                echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp(\'statusPop-up\')">Close</button></div>';
             }?>
             <div class="app-left">
                 Back to manage
