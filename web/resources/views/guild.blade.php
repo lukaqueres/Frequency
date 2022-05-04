@@ -73,7 +73,7 @@
 <script>
 
     function togglePopUp() {
-        var blur = document.getelementById('blur');
+        var blur = document.getElementById('blur');
         blur.classList.toggle('active');
     }
     function search_dropdown() {
