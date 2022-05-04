@@ -64,7 +64,7 @@
         transition: 0.5s;
     }
 
-.#blur.active :not(.pop-up) {
+#blur.active :not(.pop-up) {
     filter: blur(20px);
     pointer-events: none;
     user-select: none;
