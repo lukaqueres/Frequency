@@ -44,14 +44,30 @@
     border-radius: 10px;
     position: fixed;
     box-shadow: 5px 5px 9px rgba(0.4,0.4,0.7,0.8);
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
+    transition: 0.5s;
 }
+
+#guildPop-up, #statusPop-up {
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+    #guildPop-up.active, #statusPop-up.active {
+        opacity: 1;
+        top: 50%;
+        visibility: visible;
+        transition: 0.5s;
+    }
 
 #blur.active:not(#pop-up *) {
     filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
 }
 
 #app-container {

@@ -21,14 +21,18 @@
     <body>
         <div id="blur" class="app-grid-container">
             <?php if (Session::exists('status')) {
-                echo '<div class="pop-up">status: ' . json_encode(Session::get('status')) . '</div>';
+                echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
             }?>
+            <div id="guildPop-up" class="pop-up">
+                guilds
+                <button onclick="togglePopUp('guildPop-up')">Close</button>
+            </div>
             <div class="app-left">
                 Back to manage
                 <div class="app-flex-container">
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>
-                    <button onclick="togglePopUp()">Guilds</button>
+                    <button onclick="togglePopUp('guildPop-up')">Guilds</button>
                 </div>
                 <div class="app-dropdown">
                     <div id="app-dropdown-button" class="app-flex-container" onclick="search_dropdown()"> <?php echo '<img class="app-icon" onclick="search_dropdown()" src="' . get_icon($thisGuild) . '"/><h4 class="app-no-margin" onclick="search_dropdown()">' . $thisGuild->name . '</h4>'; ?> </div>
@@ -72,9 +76,11 @@
 
 <script>
 
-    function togglePopUp() {
+    function togglePopUp(popUp) {
         var blur = document.getElementById('blur');
         blur.classList.toggle('active');
+        var popUp = document.getElementById(popUp);
+        popUp.classList.toggle('active');
     }
     function search_dropdown() {
         var Dropdown = document.getElementById("app-search-dropdown");
