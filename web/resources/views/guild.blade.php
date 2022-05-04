@@ -75,13 +75,6 @@
 </html>
 
 <script>
-
-    function togglePopUp(popUp) {
-        var blur = document.getElementById('blur');
-        blur.classList.toggle('active');
-        var popUp = document.getElementById(popUp);
-        popUp.classList.toggle('active');
-    }
     function search_dropdown() {
         var Dropdown = document.getElementById("app-search-dropdown");
         if (!Dropdown.classList.contains('app-show')) {
