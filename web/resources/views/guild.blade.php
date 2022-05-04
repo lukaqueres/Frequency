@@ -19,13 +19,13 @@
         $thisGuild = $guilds[$id];
     ?>
     <body>
-        <div id="blur" class="app-grid-container">
+        <div id="blur" class="app-grid-container container">
             <?php if (Session::exists('status')) {
                 echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
             }?>
             <div id="guildPop-up" class="pop-up">
                 guilds
-                <button onclick="togglePopUp('guildPop-up')">Close</button>
+                <button class="pop-upContent" onclick="togglePopUp('guildPop-up')">Close</button>
             </div>
             <div class="app-left">
                 Back to manage
