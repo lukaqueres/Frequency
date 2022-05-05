@@ -66,9 +66,9 @@
         float: right;
         background-color: black;
         border: black;
-        border-radius: 2px;
-        padding: 2px;
-        margin-inline: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 1px 10px;
     }
 
     #guildPop-up > #guild-search {
