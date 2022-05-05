@@ -60,6 +60,16 @@
     width: 1000px;
     height: 400px;
 }
+
+    #guildPop-up #search {
+        width: 80%;
+        float: right;
+        background-color: black;
+        border-color: black;
+        border-radius: 2px;
+        padding: 2px;
+    }
+
     #guildPop-up > #guild-search {
         background-color: #000000;
         border-radius: 10px;
