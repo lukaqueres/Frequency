@@ -30,8 +30,8 @@
                 </div>
                 <div id="guild-search">
                     <table class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <tr class="app-flex-container" style="padding-block: 10px;">
-                        <?php echo '<td class="app-flex-container" style="width: 100%; border-bottom: 1px #18181E solid; padding: 5px;" ><a class="app-flex-container app-no-margin app-link-tag app-zoom" href="/manage/user">
+                        <tr class="flex" style="padding-block: 10px;">
+                        <?php echo '<td class="flex" style="width: 100%; border-bottom: 1px #18181E solid; padding: 5px;" ><a class="flex app-no-margin app-link-tag app-zoom" href="/manage/user">
 							<img class="app-icon" src="' . get_avatar($user) . '"/> 
 							<h3 class="app-no-margin">' . $user->username . '</h3></a>
 							</td>
@@ -40,8 +40,8 @@
                         </tr>
                         <?php
                         foreach($snippets as $guild) {
-						    echo '<tr id="search_dropdown_' . $guild['id'] .'_" class="app-flex-container" >
-							    <td class="app-flex-container" style="width: 100%; padding: 5px;" ><a class="app-flex-container app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
+						    echo '<tr id="search_dropdown_' . $guild['id'] .'_" class="flex" >
+							    <td class="flex" style="width: 100%; padding: 5px;" ><a class="flex app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
 									<img class="app-icon" src="' . get_icon($guild) . '"/>
 									<h3 class="app-no-margin">' . $guild['name'] . '</h3></a>
 								</td>
