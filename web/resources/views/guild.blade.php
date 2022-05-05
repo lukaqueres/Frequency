@@ -28,7 +28,7 @@
                     <button class="pop-upContent" onclick="togglePopUp('guildPop-up')">X</button>
                     <input type="text" onkeyup="" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                 </div>
-                <div>
+                <div id="guild-search">
                     <table class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tr class="app-flex-container" style="padding-block: 10px;">
                         <?php echo '<td class="app-flex-container" style="width: 100%; border-bottom: 1px #18181E solid; padding: 5px;" ><a class="app-flex-container app-no-margin app-link-tag app-zoom" href="/manage/user">
