@@ -55,6 +55,9 @@
     width: 1000px;
     height: 400px;
 }
+    #guildPop-up > #guild-search {
+        background-color: #000000;
+    }
 
     #guildPop-up > div {
         max-height: 100%;
