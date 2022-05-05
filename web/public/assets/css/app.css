@@ -49,10 +49,11 @@
     transform: translate(-50%, -50%);
     padding: 10px;
     transition: 0.5s;
+    overflow: auto;
 }
 
 #guildPop-up {
-    width: 600px;
+    width: 1000px;
     height: 400px;
 }
 
