@@ -63,6 +63,7 @@
     #guildPop-up > #guild-search {
         background-color: #000000;
         border-radius: 10px;
+        overflow-x: hidden;
     }
 
     #guildPop-up .flex {
