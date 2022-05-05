@@ -51,10 +51,14 @@
     transition: 0.5s;
 }
 
+#guildPop-up {
+    width: 600px;
+    height: 400px;
+}
+
 #guildPop-up, #statusPop-up {
     opacity: 0;
     visibility: hidden;
-
 }
 
     #guildPop-up.active, #statusPop-up.active {
