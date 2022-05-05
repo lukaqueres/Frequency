@@ -56,6 +56,20 @@
     transition: 0.5s;
 }
 
+    .pop-up .close-btn {
+        display: block;
+        background-color: black;
+        border: black solid 2px;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 1px 5px;
+    }
+
+        .pop-up .close-btn:hover {
+            background-color: #8883F2;
+            border-color: #8883F2;
+        }
+
 #guildPop-up {
     width: 1000px;
     height: 400px;

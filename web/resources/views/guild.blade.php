@@ -25,7 +25,7 @@
             }?>
             <div id="guildPop-up" class="pop-up">
                 <div>
-                    <button class="pop-upContent" onclick="togglePopUp('guildPop-up')">X</button>
+                    <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
                     <input type="text" id="search" onkeyup="" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                 </div>
                 <div id="guild-search">
