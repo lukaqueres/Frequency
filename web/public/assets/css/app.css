@@ -59,6 +59,8 @@
     #guildPop-up > div {
         max-height: 100%;
         overflow: auto;
+        float: left;
+        width: 50%;
     }
 
 #guildPop-up, #statusPop-up {
