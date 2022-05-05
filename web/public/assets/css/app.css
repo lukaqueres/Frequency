@@ -57,6 +57,7 @@
 }
     #guildPop-up > #guild-search {
         background-color: #000000;
+        border-radius: 10px;
     }
 
     #guildPop-up > div {
@@ -64,7 +65,6 @@
         overflow: auto;
         float: left;
         width: 50%;
-        border-radius: 10px;
     }
 
 #guildPop-up, #statusPop-up {
