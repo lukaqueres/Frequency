@@ -38,6 +38,11 @@
     font-family: "Bahnschrift", "Arial";
 }
 
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 .pop-up {
     background-color: #090910;
     color: #8883F2;
@@ -61,8 +66,7 @@
     }
 
     #guildPop-up .flex {
-        display: flex;
-        flex-wrap: nowrap;
+        width: 100%;
     }
 
         #guildPop-up .flex > * {
