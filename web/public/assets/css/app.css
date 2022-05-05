@@ -64,6 +64,7 @@
         overflow: auto;
         float: left;
         width: 50%;
+        border-radius: 10px;
     }
 
 #guildPop-up, #statusPop-up {
