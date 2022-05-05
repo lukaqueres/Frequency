@@ -60,7 +60,18 @@
         border-radius: 10px;
     }
 
+    #guildPop-up > .flex {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+        #guildPop-up > .flex > * {
+            justify-content: center;
+            align-items: center;
+        }
+
     #guildPop-up > div {
+        overflow-x: hidden;
         max-height: 100%;
         overflow: auto;
         float: left;
