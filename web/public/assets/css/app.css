@@ -60,12 +60,12 @@
         border-radius: 10px;
     }
 
-    #guildPop-up > .flex {
+    #guildPop-up .flex {
         display: flex;
         flex-wrap: nowrap;
     }
 
-        #guildPop-up > .flex > * {
+        #guildPop-up .flex > * {
             justify-content: center;
             align-items: center;
         }
