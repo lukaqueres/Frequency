@@ -89,16 +89,16 @@
         margin: 10px 15px 10px 5px;
     }
 
+        #guildPop-up #search:focus {
+            border: solid 2px #8883F2;
+        }
+
     #guildPop-up > #guild-search {
         background-color: #000000;
         border-radius: 10px;
         overflow-x: hidden;
         transition: .2s;
     }
-
-        #guildPop-up > #guild-search:focus {
-            border: solid 2px #8883F2;
-        }
 
     #guildPop-up .flex {
         width: 100%;
