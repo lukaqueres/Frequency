@@ -96,7 +96,7 @@
         transition: .2s;
     }
 
-        #guildPop-up > #guild-search:focus-visible {
+        #guildPop-up > #guild-search:focus {
             border: solid 2px #8883F2;
         }
 
