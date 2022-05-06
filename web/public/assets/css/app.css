@@ -96,10 +96,12 @@
         }
 
     #guildPop-up > #guild-search {
-        background-color: #000000;
+        background-color: #090910;
         border-radius: 10px;
         overflow-x: hidden;
         transition: .2s;
+        /*border: solid 2px black;
+        box-sizing: border-box;*/
     }
 
     #guildPop-up .flex {
