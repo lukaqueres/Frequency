@@ -90,7 +90,9 @@
     }
 
         #guildPop-up #search:focus {
-            outline: #8883F2;
+            outline: solid #8883F2;
+            outline-width: unset;
+
         }
 
     #guildPop-up > #guild-search {
