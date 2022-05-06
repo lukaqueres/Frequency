@@ -45,7 +45,7 @@
 }
 
 .pop-up {
-    background-color: #494681;
+    background-color: #504CA9;
     color: #8883F2;
     border-radius: 10px;
     position: fixed;
@@ -59,7 +59,7 @@
 
     .pop-up .close-btn {
         display: block;
-        background-color: #494681;
+        background-color: #504CA9;
         border: #090910 solid 2px;
         border-radius: 5px;
         cursor: pointer;
@@ -71,7 +71,7 @@
         .pop-up .close-btn:hover {
             background-color: #090910;
             border-color: #090910;
-            color: #494681;
+            color: #504CA9;
         }
 
 #guildPop-up {
@@ -82,11 +82,11 @@
     #guildPop-up #search {
         width: -moz-available;
         float: right;
-        background-color: black;
-        border: black;
+        background-color: #090910;
+        border: #090910;
         border-radius: 5px;
         padding: 5px;
-        margin: 10px 15px 10px 5px;
+        margin: 10px 25px 10px 20px;
     }
 
         #guildPop-up #search:focus {
