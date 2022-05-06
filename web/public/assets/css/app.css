@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* Color pallet-e link: https://coolors.co/000000-090910-19192d-292849-494681-8883f2-938ef3-c9c7f9-ffffff */
 :root {
     --bg-color-one: black;
     --acc-color-one: #1C1C1C;
@@ -44,7 +45,7 @@
 }
 
 .pop-up {
-    background-color: #090910;
+    background-color: #494681;
     color: #8883F2;
     border-radius: 10px;
     position: fixed;
@@ -52,22 +53,25 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 10px;
     transition: 0.5s;
+    padding: 10px;
 }
 
     .pop-up .close-btn {
         display: block;
-        background-color: black;
-        border: black solid 2px;
+        background-color: #494681;
+        border: #090910 solid 2px;
         border-radius: 5px;
         cursor: pointer;
         padding: 1px 5px;
+        color: #090910;
+        transition: .25s;
     }
 
         .pop-up .close-btn:hover {
-            background-color: #8883F2;
-            border-color: #8883F2;
+            background-color: #090910;
+            border-color: #090910;
+            color: #494681;
         }
 
 #guildPop-up {
@@ -76,13 +80,13 @@
 }
 
     #guildPop-up #search {
-        width: 80%;
+        width: -moz-available;
         float: right;
         background-color: black;
         border: black;
         border-radius: 5px;
         padding: 5px;
-        margin: 1px 10px;
+        margin: 11px 11px 11px 1px;
     }
 
     #guildPop-up > #guild-search {
