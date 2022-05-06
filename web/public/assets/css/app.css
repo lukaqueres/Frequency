@@ -89,7 +89,7 @@
         margin: 10px 15px 10px 5px;
     }
 
-        #guildPop-up #search:focus {
+        #guildPop-up #search:focus-visible {
             border: solid 2px #8883F2;
         }
 
