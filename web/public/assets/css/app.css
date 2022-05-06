@@ -86,14 +86,19 @@
         border: black;
         border-radius: 5px;
         padding: 5px;
-        margin: 11px 11px 11px 1px;
+        margin: 10px 15px 10px 5px;
     }
 
     #guildPop-up > #guild-search {
         background-color: #000000;
         border-radius: 10px;
         overflow-x: hidden;
+        transition: .2s;
     }
+
+        #guildPop-up > #guild-search:focus-visible {
+            border: solid 2px #8883F2;
+        }
 
     #guildPop-up .flex {
         width: 100%;
