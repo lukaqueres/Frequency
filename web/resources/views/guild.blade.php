@@ -32,7 +32,7 @@
                     <?php
                         $tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
                         foreach($tags as $tag) {
-                            echo '<button id="filter_' . $tag .'" class="tag active" onclick="filter_guilds(' . $tag .')">' . $tag .'</button>';
+                            echo '<button id="filter_' . $tag .'" class="tag active" onclick="filter_guilds(\'' . $tag .'\')">' . $tag .'</button>';
                         }
                     ?>
                     </div>
