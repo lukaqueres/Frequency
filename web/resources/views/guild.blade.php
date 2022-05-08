@@ -27,7 +27,7 @@
                 <div>
                     <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
                     <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
-                    Filter by tags:
+                    Filter by tags: </br>
                     <div class="tags">
                     <?php
                         $tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
@@ -53,7 +53,7 @@
                             foreach($thisGuild->tags as $tag) {
 						        $tags = $tags . '<div class="tag">' . $tag . '<div>';
 						    }
-						    echo '<tr id="search_guild_' . $guild['id'] .'_" class="flex" >
+						    echo '<tr id="search_guild_' . $guild['id'] .'">
 							    <td style="width: 100%; padding: 5px;" >
                                     <a class="flex app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
 									    <img class="app-icon" src="' . get_icon($guild) . '"/>
