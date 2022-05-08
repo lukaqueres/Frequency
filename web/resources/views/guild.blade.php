@@ -53,12 +53,14 @@
                             foreach($guild['tags'] as $tag) {
 						        $tags = $tags . '<div class="tag">' . $tag . '</div>';
 						    }
-						    echo '<tr id="search_guild_' . $guild['id'] .'">
+						    echo '<tr id="search_guild_' . $guild['id'] .'" class="guild-row">
 							    <td style="width: 100%; padding: 5px;" >
-                                    <a class="flex app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
-									    <img class="app-icon" src="' . get_icon($guild) . '"/>
-									    <h3 class="app-no-margin">' . $guild['name'] . '</h3>
-                                        <h3 class="app-no-margin">' . $guild['id'] .'</h3>
+                                    <a href="/manage/guild/' . $guild['id'] . '">
+                                        <div class="flex">
+									        <img class="app-icon" src="' . get_icon($guild) . '"/>
+									        <h3 class="app-no-margin">' . $guild['name'] . '</h3>
+                                            <h3 class="app-no-margin">' . $guild['id'] .'</h3>
+                                        </div>
                                         <div class="tags">' . $tags . '</div>
                                     </a>
 								</td>
