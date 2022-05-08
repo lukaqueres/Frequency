@@ -30,9 +30,9 @@
                     <div>
                     <?php
                         //echo $thisGuild['tags'];
-                        //foreach($thisGuild['tags'] as $tag) {
-						//    echo '<button class="tag">' . $tag .'</button>';
-						//}
+                        foreach($thisGuild->tags as $tag) {
+						    echo '<button class="tag">' . $tag .'</button>';
+						}
                     ?>
                     </div>
                 </div>
