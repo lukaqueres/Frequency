@@ -51,7 +51,7 @@
                         foreach($snippets as $guild) {
                             $tags = '';
                             foreach($guild['tags'] as $tag) {
-						        $tags = $tags . '<div class="tag">' . $tag . '<div>';
+						        $tags = $tags . '<div class="tag">' . $tag . '</div>';
 						    }
 						    echo '<tr id="search_guild_' . $guild['id'] .'">
 							    <td style="width: 100%; padding: 5px;" >
