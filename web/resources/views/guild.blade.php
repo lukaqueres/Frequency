@@ -49,7 +49,7 @@
                         </tr>
                         <?php
                         foreach($snippets as $guild) {
-                            $display_tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member']
+                            $display_tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
                             $tags = '';
                             foreach($guild['tags'] as $tag) {
                                 if !(in_array( $tag, $display_tags)) {
