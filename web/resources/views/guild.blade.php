@@ -50,7 +50,7 @@
                         <?php
                         foreach($snippets as $guild) {
                             $tags = '';
-                            foreach($thisGuild->tags as $tag) {
+                            foreach($guild['tags'] as $tag) {
 						        $tags = $tags . '<div class="tag">' . $tag . '<div>';
 						    }
 						    echo '<tr id="search_guild_' . $guild['id'] .'">
