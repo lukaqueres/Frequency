@@ -7,6 +7,13 @@ function togglePopUp(popUp) {
     popUp.classList.toggle('active');
 }
 
+function arrRemove(arr, value) {
+
+    return arr.filter(function (ele) {
+        return ele != value;
+    });
+}
+
 /*function search_guilds() {
     var input, filter, tabel, tr, a, i, txtValue;
     input = document.getElementById("app-servers-search");

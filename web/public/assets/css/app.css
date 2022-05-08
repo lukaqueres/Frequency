@@ -120,11 +120,11 @@
         }
 
     #guildPop-up > div {
-        overflow-x: hidden;
         max-height: 100%;
         overflow: auto;
         float: left;
         width: 50%;
+        overflow-x: hidden;
     }
 
     #guildPop-up a {
