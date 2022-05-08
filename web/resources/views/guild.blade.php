@@ -26,10 +26,10 @@
             <div id="guildPop-up" class="pop-up">
                 <div>
                     <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
-                    <input type="text" id="search" onkeyup="" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
+                    <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                 </div>
                 <div id="guild-search">
-                    <table class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="guilds-table" class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tr class="flex" style="padding-block: 10px;">
                         <?php echo '<td class="flex" style="width: 100%; border-bottom: 1px #18181E solid; padding: 5px;" ><a class="flex app-no-margin app-link-tag app-zoom" href="/manage/user">
 							<img class="app-icon" src="' . get_avatar($user) . '"/> 
@@ -125,6 +125,24 @@
         input = document.getElementById("app-servers-search");
         filter = input.value.toUpperCase();
         tabel = document.getElementById("app-servers");
+        tr = tabel.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            //a = tr[i].getElementsByTagName("a")[0];
+            a = tr[i];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+    function filter_guilds() {
+        var input, filter, tabel, tr, a, i, txtValue;
+        input = document.getElementById("filter-guilds");
+        filter = input.value.toUpperCase();
+        tabel = document.getElementById("guilds-table");
         tr = tabel.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
             //a = tr[i].getElementsByTagName("a")[0];
