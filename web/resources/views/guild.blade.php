@@ -27,13 +27,7 @@
                 <div>
                     <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
                     <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
-                    <div>
-                    <?php
-                        //echo $thisGuild['tags'];
-                        foreach($thisGuild->tags as $tag) {
-						    echo '<button class="tag">' . $tag .'</button>';
-						}
-                    ?>
+                    <div> Filter by tags:
                     </div>
                 </div>
                 <div id="guild-search">
@@ -48,12 +42,20 @@
                         </tr>
                         <?php
                         foreach($snippets as $guild) {
-						    echo '<tr id="search_dropdown_' . $guild['id'] .'_" class="flex" >
-							    <td class="flex" style="width: 100%; padding: 5px;" ><a class="flex app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
-									<img class="app-icon" src="' . get_icon($guild) . '"/>
-									<h3 class="app-no-margin">' . $guild['name'] . '</h3></a>
+                            $tags = '';
+                            foreach($thisGuild->tags as $tag) {
+						        $tags = $tags . '<div class="tag">' . $tag . '<div>';
+						    }
+						    echo '<tr id="search_guild_' . $guild['id'] .'_" class="flex" >
+							    <td class="flex" style="width: 100%; padding: 5px;" >
+                                    <a class="flex app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
+									    <img class="app-icon" src="' . get_icon($guild) . '"/>
+									    <h3 class="app-no-margin">' . $guild['name'] . '</h3>
+                                        <h3 class="app-no-margin">' . $guild['id'] .'</h3>
+                                        <div class="tags">' . $tags . '</div>
+                                    </a>
 								</td>
-								<td class="app-no-display">' . $guild['id'] . '</td></tr>';
+                                </tr>';
 						}
                         ?>
                     </table>
