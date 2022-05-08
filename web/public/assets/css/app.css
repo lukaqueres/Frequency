@@ -187,9 +187,10 @@
         color: #938EF3;
     }
 
-        .tags > .tag.active {
-            background-color: #8883F2;
-        }
+    .tags > .tag.active {
+        background-color: #8883F2;
+        color: black;
+    }
 
 #app-container {
     margin: 0;

@@ -193,7 +193,7 @@
             a = tagsButtons[i];
             if ( a.classList.contains('active')) {
                 var tagName = a.id.split("filter_").pop();
-                activeTags[] = tagName;
+                activeTags.push(tagName);
             }
         }
 
