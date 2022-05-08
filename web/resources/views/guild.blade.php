@@ -54,7 +54,7 @@
 						        $tags = $tags . '<div class="tag">' . $tag . '<div>';
 						    }
 						    echo '<tr id="search_guild_' . $guild['id'] .'_" class="flex" >
-							    <td class="flex" style="width: 100%; padding: 5px;" >
+							    <td style="width: 100%; padding: 5px;" >
                                     <a class="flex app-no-margin app-link-tag app-zoom" href="/manage/guild/' . $guild['id'] . '">
 									    <img class="app-icon" src="' . get_icon($guild) . '"/>
 									    <h3 class="app-no-margin">' . $guild['name'] . '</h3>

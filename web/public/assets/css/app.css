@@ -170,6 +170,9 @@
         height: fit-content;
         margin: 2px 5px;
         font-size: small;
+        cursor: pointer;
+        border: solid 1px #8883F2;
+        color: #938EF3;
     }
 
         .tags > .tag.active {
