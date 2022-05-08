@@ -146,6 +146,21 @@
         transition: .5s;
     }
 
+.tags {
+    display: flex;
+    width: 100%;
+}
+
+    .tags > .tag {
+        background-color: #292849;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+        .tags > .tag.active {
+            background-color: #8883F2;
+        }
+
 #app-container {
     margin: 0;
     height: 100%;

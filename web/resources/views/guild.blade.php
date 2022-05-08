@@ -27,6 +27,13 @@
                 <div>
                     <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
                     <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
+                    <div>
+                    <?php
+                        foreach($guilds['tags'] as $tag) {
+						    echo '<button class="tag">' . $tag .'</button>';
+						}
+                    ?>
+                    </div>
                 </div>
                 <div id="guild-search">
                     <table id="guilds-table" class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
