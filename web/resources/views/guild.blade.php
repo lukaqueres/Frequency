@@ -59,7 +59,7 @@
                                         <div class="flex">
 									        <img class="app-icon" src="' . get_icon($guild) . '"/>
 									        <h3 class="app-no-margin">' . $guild['name'] . '</h3>
-                                            <h3 class="app-no-margin">' . $guild['id'] .'</h3>
+                                            <h5 class="right">' . $guild['id'] .'</h5>
                                         </div>
                                         <div class="tags">' . $tags . '</div>
                                     </a>
