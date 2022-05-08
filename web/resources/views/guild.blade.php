@@ -32,7 +32,7 @@
                     <?php
                         $tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
                         foreach($tags as $tag) {
-                            echo '<button id="filter_' . $tag .'" class="tag active">' . $tag .'</button>';
+                            echo '<button id="filter_' . $tag .'" class="tag active" onclick="filter_guilds(' . $tag .')">' . $tag .'</button>';
                         }
                     ?>
                     </div>
@@ -174,7 +174,7 @@
             a = tr[i];
             a = a.getElementsByClassName("guild-name");
             txtValue = a.textContent || a.innerText;
-            if (!(txtValue.toUpperCase().indexOf(filter) > -1)) {
+            if (!txtValue.toUpperCase().indexOf(filter) > -1) {
                 arrRemove(fitGuilds, tr[i]);
             }
         }
