@@ -29,9 +29,10 @@
                     <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                     <div>
                     <?php
-                        foreach($thisGuild['tags'] as $tag) {
-						    echo '<button class="tag">' . $tag .'</button>';
-						}
+                        echo $thisGuild['tags'];
+                        //foreach($thisGuild['tags'] as $tag) {
+						//    echo '<button class="tag">' . $tag .'</button>';
+						//}
                     ?>
                     </div>
                 </div>
