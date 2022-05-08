@@ -120,6 +120,10 @@
         width: 50%;
     }
 
+    #guildPop-up a {
+        text-decoration: none;
+    }
+
 #guildPop-up, #statusPop-up {
     opacity: 0;
     visibility: hidden;
