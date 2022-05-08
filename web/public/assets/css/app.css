@@ -44,6 +44,14 @@
     flex-wrap: nowrap;
 }
 
+    .flex > * {
+        margin-inline: 2.5px;
+    }
+
+    .flex > .right {
+        margin-left: auto;
+    }
+
 .pop-up {
     background-color: black;
     color: #8883F2;
