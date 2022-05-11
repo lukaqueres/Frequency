@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="page-header">
-                HEADER
+                
             </div>
             <div class="page-aside">
                 Back to manage

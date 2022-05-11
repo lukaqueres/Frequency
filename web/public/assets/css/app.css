@@ -57,8 +57,8 @@
     display: inline-block;
     float: left;
     height: 100%;
-    min-width: 400px;
-    width: 30%;
+    /*min-width: 400px;*/
+    width: 300px;
     box-sizing: border-box;
 }
 
@@ -66,8 +66,8 @@
     display: inline-block;
     float: left;
     height: 100%;
-    width: 70%;
-    min-width: 400px;
+    width: calc(100% - 300px);
+    min-width: 300px;
     border-radius: 25px 0 0 0;
     background-image: linear-gradient(#201734, #421461);
     padding: 10px;
@@ -171,6 +171,7 @@
 #guildPop-up, #statusPop-up {
     opacity: 0;
     visibility: hidden;
+    z-index: 1;
 }
 
     #guildPop-up.active, #statusPop-up.active {
@@ -178,12 +179,13 @@
         top: 50%;
         visibility: visible;
         transition: 0.5s;
+        z-index: 1;
     }
 
 #blur {
     filter: blur(0) brightness(1);
     pointer-events: all;
-    user-select: none;
+    /*user-select: none;*/
     transition: .5s;
 }
 
