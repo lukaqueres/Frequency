@@ -74,7 +74,10 @@
                     </table>
                 </div>
             </div>
-            <div class="app-left">
+            <div class="side-box app-header">
+                HEADER
+            </div>
+            <div class="side-box app-left">
                 Back to manage
                 <div class="app-flex-container">
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>

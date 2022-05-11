@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Color pallet-e link: https://coolors.co/000000-090910-19192d-292849-494681-8883f2-938ef3-c9c7f9-ffffff */
+/* Color pallet-e link: https://coolors.co/000000-090910-19192d-201734-31164b-421461-5b0079-84409b-ad80bc-ffffff */
 :root {
     --bg-color-one: black;
     --acc-color-one: #1C1C1C;
@@ -39,6 +39,10 @@
     font-family: "Bahnschrift", "Arial";
 }
 
+
+.container {
+    background-image: linear-gradient(#201734, #421461);
+}
 .flex {
     display: flex;
     flex-wrap: nowrap;
@@ -158,6 +162,10 @@
         transition: .5s;
     }
 
+.side-box {
+    background: #090910;
+}
+
 .tags {
     display: flex;
     width: 100%;
@@ -206,7 +214,8 @@
     height: 100%;
     width: 100%;
     gap: 0;
-    grid-template-areas: 'left' 'main';
+    grid-template-areas: 'header' 'header',
+        'left' 'main';
     grid-template-columns: 400px auto;
 }
     .app-grid-container > div {
