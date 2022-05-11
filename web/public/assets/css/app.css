@@ -82,6 +82,7 @@
 
     .flex > * {
         margin-inline: 2.5px;
+        align-self: center;
     }
 
     .flex > .right {
