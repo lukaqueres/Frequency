@@ -66,10 +66,10 @@
                 </div>
             </div>
             <div class="page-header">
-                <div class="flex" style="float: left">
+                <div class="flex" style="float: left; height: 100%">
                     <h5>< Return</h5>
                 </div>
-                <div class="flex" style="float: right; margin-right: 20px; height: 100%;">
+                <div class="flex" style="float: right; margin-right: 30px; height: 100%;">
                     <img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
                     <h4><?php echo $user->username; ?></h4>
                 </div>
