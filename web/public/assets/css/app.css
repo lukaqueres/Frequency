@@ -43,8 +43,8 @@
 .container {
     min-height: 100vh;
     width: 100vw;
-    background: #090910;
-    /*background-image: linear-gradient(#201734, #421461);*/
+    /*background: #090910;*/
+    background-image: linear-gradient(#090910, #151022);
 }
 
 .page-header {
@@ -67,8 +67,9 @@
     height: 100%;
     width: 70%;
     min-width: 400px;
-    border-radius: 25px;
+    border-radius: 25px 0 0 0;
     background-image: linear-gradient(#201734, #421461);
+    padding: 10px;
 }
 
 .flex {
