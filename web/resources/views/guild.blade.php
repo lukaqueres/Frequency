@@ -155,61 +155,21 @@
         }
     }
 
-    function filter_guilds(tag = '') {
-        var input, filter, tabel, tr, a, i, txtValue, fitGuilds;
+    function filter_guilds() {
+        var input, filter, tabel, tr, a, i, txtValue;
         input = document.getElementById("filter-guilds");
         filter = input.value.toUpperCase();
         tabel = document.getElementById("guilds-table");
         tr = tabel.getElementsByTagName("tr");
-
-        fitGuilds = tr;
         for (i = 0; i < tr.length; i++) {
             //a = tr[i].getElementsByTagName("a")[0];
             a = tr[i];
-            a = a.getElementsByClassName("guild-name");
             txtValue = a.textContent || a.innerText;
-            if (!txtValue.toUpperCase().indexOf(filter) > -1) {
-                arrRemove(fitGuilds, tr[i]);
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
             }
-        }
-
-        if (!(tag=='')) {
-            tag = tag.concat('filter_', tag);
-            var tag_btn = document.getElementById(tag);
-            tag_btn.classList.toggle('active');
-        }
-
-        var tagsField, tagsButtons, activeTags;
-        activeTags = []
-        tagsField = document.getElementById('filter-tags');
-        tagsButtons = tagsField.getElementsByTagName("button");
-        for (i = 0; i < tagsButtons.length; i++) {
-            a = tagsButtons[i];
-            if ( a.classList.contains('active')) {
-                var tagName = a.id.split("filter_").pop();
-                activeTags.push(tagName);
-            }
-        }
-
-        var aValue, tagsValue, aTags;
-        for (i = 0; i < fitGuilds.length; i++) {
-            a = fitGuilds[i];
-            //aValue = a.textContent || a.innerText;
-            aTags = a.getElementsByClassName("tags");
-            tagsValue = aTags.textContent || aTags.innerText;
-            for (i = 0; i < activeTags.length; i++) {
-                filter = activeTags[i];
-                if (!(tagsValue.indexOf(filter) > -1)) {
-                    arrRemove(fitGuilds, tr[i]);
-                    break;
-                }
-            }
-        }
-        for (i = 0; i < tr.length; i++) {
-            tr[i].style.display = "none";
-        }
-        for (i = 0; i < fitGuilds.length; i++) {
-            tr[i].style.display = "";
         }
     }
 </script>
