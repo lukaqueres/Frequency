@@ -201,6 +201,10 @@
     background: #090910;
 }
 
+.no-margin {
+    margin: 0;
+}
+
 .tags {
     display: flex;
     width: 100%;
