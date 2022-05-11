@@ -66,7 +66,7 @@
                 </div>
             </div>
             <div class="page-header">
-                <div class="flex" style="float: right">
+                <div class="flex" style="float: right; margin-right: 20px;">
                     <img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
                     <?php echo $user->username; ?>
                 </div>
