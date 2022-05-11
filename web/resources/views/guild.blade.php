@@ -66,7 +66,10 @@
                 </div>
             </div>
             <div class="page-header">
-                
+                <div>
+                    <img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
+                    <?php echo $user->username; ?>
+                </div>
             </div>
             <div class="page-aside">
                 Back to manage
