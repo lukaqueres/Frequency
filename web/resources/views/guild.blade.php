@@ -26,16 +26,7 @@
             <div id="guildPop-up" class="pop-up">
                 <div>
                     <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
-                    <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
-                    Filter by tags: </br>
-                    <div id="filter-tags" class="tags" style="margin: 10px;">
-                    <?php
-                        $tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
-                        foreach($tags as $tag) {
-                            echo '<button id="filter_' . $tag .'" class="tag active" onclick="filter_guilds(\'' . $tag .'\')">' . $tag .'</button>';
-                        }
-                    ?>
-                    </div>
+                    <input type="text" id="filter-guilds" onkeyup="search_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
                 </div>
                 <div id="guild-search">
                     <table id="guilds-table" class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
