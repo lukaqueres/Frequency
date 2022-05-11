@@ -19,7 +19,7 @@
         $thisGuild = $guilds[$id];
     ?>
     <body>
-        <div id="blur" class="app-grid-container container">
+        <div id="blur" class="container">
             <?php if (Session::exists('status')) {
                 echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
             }?>
@@ -74,10 +74,10 @@
                     </table>
                 </div>
             </div>
-            <div class="side-box app-header">
+            <div class="side-box page-header">
                 HEADER
             </div>
-            <div class="side-box app-left">
+            <div class="side-box page-side">
                 Back to manage
                 <div class="app-flex-container">
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            <div class="app-main">
+            <div class="app-main page-main">
                 GUILD_DATA:
                 <?php
                 if (Arr::exists($guilds, $id))  {
