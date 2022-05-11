@@ -65,7 +65,7 @@
 .page-main {
     display: inline-block;
     float: left;
-    height: calc( 100vh - 55px);
+    height: calc( 100vh - 45px);
     width: calc(100% - 300px);
     min-width: 300px;
     border-radius: 15px 0 0 15px;
