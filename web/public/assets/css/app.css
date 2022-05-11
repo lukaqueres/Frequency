@@ -50,7 +50,7 @@
 .page-header {
     display: block;
     width: 100%;
-    height: 50px;
+    height: 40px;
 }
 
 .page-aside {
@@ -65,10 +65,10 @@
 .page-main {
     display: inline-block;
     float: left;
-    height: 100%;
+    height: calc( 100vh - 55px);
     width: calc(100% - 300px);
     min-width: 300px;
-    border-radius: 25px 0 0 0;
+    border-radius: 15px 0 0 15px;
     background-image: linear-gradient(#201734, #421461);
     padding: 10px;
     box-sizing: border-box;
