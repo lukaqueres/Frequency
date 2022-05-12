@@ -67,7 +67,7 @@
             </div>
             <div class="page-header">
                 <div class="flex" style="float: left; height: 100%">
-                    <a class="text" href="/manage">< Return</a>
+                    <a class="small text" href="/manage">< Return</a>
                 </div>
                 <div class="flex" style="float: right; margin-right: 30px; height: 100%;">
                     <img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
@@ -75,7 +75,6 @@
                 </div>
             </div>
             <div class="page-aside">
-                Back to manage
                 <div class="app-flex-container">
                     <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
                     <div class="app-align-right"> <?php echo $user->username; ?> </div>

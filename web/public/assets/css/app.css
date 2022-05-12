@@ -206,16 +206,22 @@
 }
 
 a.text {
-    border: none;
     text-decoration: none;
-    color: white;
-    transition: .25s;
+    color: #8883F2;
+    transition: all .25s;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: solid 1px transparent;
 }
 
     a.text:hover {
-        color: white;
+        color: #84409B;
         border-radius: 5px;
-        background: #421461;
+        border: 1px solid #84409B;
+    }
+
+    a.text.small {
+        font-size: small;
     }
 
 .tags {
