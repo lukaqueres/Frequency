@@ -212,6 +212,7 @@ a.text {
     border-radius: 5px;
     box-sizing: border-box;
     border: solid 1px transparent;
+    padding: 2px 5px;
 }
 
     a.text:hover {
