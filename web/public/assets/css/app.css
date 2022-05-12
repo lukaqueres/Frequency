@@ -209,11 +209,13 @@ a.text {
     border: none;
     text-decoration: none;
     color: white;
+    transition: .25s;
 }
 
     a.text:hover {
-        border: solid 1px #421461;
+        color: white;
         border-radius: 5px;
+        background: #421461;
     }
 
 .tags {
