@@ -67,7 +67,7 @@
             </div>
             <div class="page-header">
                 <div class="flex" style="float: left; height: 100%">
-                    <h5>< Return</h5>
+                    <a class="text" href="/manage">< Return</a>
                 </div>
                 <div class="flex" style="float: right; margin-right: 30px; height: 100%;">
                     <img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
