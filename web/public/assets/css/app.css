@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Color pallet-e link: https://coolors.co/000000-090910-151022-8883f2-31164b-421461-5b0079-84409b-ffffff */
+/* Color pallet-e link: https://coolors.co/000000-090910-160e24-3f0a58-5b0079-84409b-3f2a88-8883f2-ffffff */
 :root {
     --bg-color-one: black;
     --acc-color-one: #1C1C1C;
@@ -44,7 +44,7 @@
     min-height: 100vh;
     width: 100vw;
     /*background: #090910;*/
-    background-image: linear-gradient(#090910, #151022);
+    background-image: linear-gradient(135deg,#3F2A88, #3F0A58);
 }
 
 .page-header {
@@ -69,7 +69,7 @@
     width: calc(100% - 300px);
     min-width: 300px;
     border-radius: 15px 0 0 15px;
-    background-image: linear-gradient(#201734, #421461);
+    background-image: linear-gradient(#090910, #160E24);
     padding: 10px;
     box-sizing: border-box;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2) inset;

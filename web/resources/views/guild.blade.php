@@ -101,14 +101,14 @@
         }
     }
 
-    window.onclick = function(e) {
+    /*window.onclick = function(e) {
         if ((!e.target.matches('#app-dropdown-button')) && (!e.target.matches('#app-search-dropdown')) && (!e.target.matches('#app-servers-search'))) {
             var myDropdown = document.getElementById("app-search-dropdown");
             if (myDropdown.classList.contains('app-show')) {
                 myDropdown.classList.remove('app-show');
             }
         }
-    }
+    }*/
 
     function search_guilds() {
         var input, filter, tabel, tr, a, i, txtValue;
