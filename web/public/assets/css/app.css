@@ -211,6 +211,11 @@ a.text {
     color: white;
 }
 
+    a.text:hover {
+        border: solid 1px #421461;
+        border-radius: 5px;
+    }
+
 .tags {
     display: flex;
     width: 100%;
