@@ -205,7 +205,7 @@
     margin: 0;
 }
 
-.text a {
+a.text {
     border: none;
     text-decoration: none;
     color: black;
