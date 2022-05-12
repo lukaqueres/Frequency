@@ -30,14 +30,6 @@
                 </div>
                 <div id="guild-search">
                     <table id="guilds-table" class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <tr class="flex" style="padding-block: 10px;">
-                        <?php echo '<td class="flex" style="width: 100%; border-bottom: 1px #18181E solid; padding: 5px;" ><a class="flex app-no-margin app-link-tag app-zoom" href="/manage/user">
-							<img class="app-icon" src="' . get_avatar($user) . '"/> 
-							<h3 class="app-no-margin">' . $user->username . '</h3></a>
-							</td>
-							<td class="app-no-display">' . $user->id . '</td>';
-                        ?>
-                        </tr>
                         <?php
                         foreach($snippets as $guild) {
                             $display_tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
@@ -70,14 +62,12 @@
                     <a class="small text" href="/manage">< Return</a>
                 </div>
                 <div class="flex" style="float: right; margin-right: 30px; height: 100%;">
-                    <img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
+                    <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
                     <h4><?php echo $user->username; ?></h4>
                 </div>
             </div>
             <div class="page-aside">
                 <div class="app-flex-container">
-                    <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
-                    <div class="app-align-right"> <?php echo $user->username; ?> </div>
                     <button onclick="togglePopUp('guildPop-up')">Guilds</button>
                 </div>
                 <div class="app-dropdown">
