@@ -62,7 +62,7 @@
                     <a class="small text" href="/manage">< Return</a>
                     <button onclick="togglePopUp('guildPop-up')">
                         <?php
-                            echo $thisGuild['name'];
+                            echo $thisGuild->name;
                         ?>
                     </button>
                 </div>
