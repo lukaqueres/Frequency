@@ -107,14 +107,14 @@
                 </div>
             </div>
             <div class="app-main page-main">
-                GUILD_DATA:
+                <h5>GUILD_DATA:
                 <?php
                 if (Arr::exists($guilds, $id))  {
                     echo json_encode($thisGuild);
                 } else {
                     echo 'No guild found';
                 }
-                ?></br>
+                ?></br></h5>
             </div>
         </div>
     </body>
