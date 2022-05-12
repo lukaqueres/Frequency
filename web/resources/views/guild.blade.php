@@ -72,6 +72,7 @@
                 </div>
             </div>
             <div class="page-aside">
+                ASIDE
             </div>
             <div class="app-main page-main">
                 <h5>GUILD_DATA:
