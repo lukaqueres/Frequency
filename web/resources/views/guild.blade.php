@@ -64,9 +64,7 @@
                         echo $thisGuild->name;
                     ?>
                 </button>
-                <div class="flex" style="float: right; margin-right: 30px; height: 100%;">
-                    <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
-                </div>
+                <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
             </div>
             <div class="page-aside">
                 <button onclick="togglePopUp('guildPop-up')">
