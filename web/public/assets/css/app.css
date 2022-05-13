@@ -72,7 +72,7 @@ body {
     }
 
         .page-header > .top-btn:hover {
-            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
             background-color: #090910;
         }
 .page-aside {
