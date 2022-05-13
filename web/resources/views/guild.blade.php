@@ -59,12 +59,12 @@
             </div>
             <div class="page-header flex">
                 <a class="small text" href="/manage">< Return</a>
-                <button onclick="togglePopUp('guildPop-up')">
+                <button class="center" onclick="togglePopUp('guildPop-up')">
                     <?php
                         echo $thisGuild->name;
                     ?>
                 </button>
-                <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
+                <img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
             </div>
             <div class="page-aside">
                 <button onclick="togglePopUp('guildPop-up')">
