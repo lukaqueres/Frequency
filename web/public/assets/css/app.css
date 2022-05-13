@@ -216,6 +216,7 @@ body {
         visibility: visible;
         transition: 0.5s;
         z-index: 1;
+        box-shadow: 0px 0px 50px rgba(86, 55, 196, 0.25);
     }
 
 #blur {
