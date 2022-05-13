@@ -225,6 +225,13 @@ body {
     transition: .5s;
 }
 
+    #blur > div:not(.pop-up, .pop-upContent) {
+        filter: blur(0) brightness(1);
+        pointer-events: all;
+        /*user-select: none;*/
+        transition: .5s;
+    }
+
     #blur.active > div:not(.pop-up, .pop-upContent) {
         filter: blur(20px) brightness(0.25);
         pointer-events: none;
