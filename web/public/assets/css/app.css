@@ -185,13 +185,13 @@ body {
     opacity: 0;
     visibility: hidden;
     z-index: 1;
-    display: none;
+    /*display: none;*/
 }
 
     #guildPop-up.active, #statusPop-up.active {
         opacity: 1;
         top: 50%;
-        display: block;
+        /*display: block;*/
         visibility: visible;
         transition: 0.5s;
         z-index: 1;
