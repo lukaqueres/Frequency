@@ -57,15 +57,13 @@
                     </table>
                 </div>
             </div>
-            <div class="page-header">
-                <div class="flex" style="float: left; height: 100%">
-                    <a class="small text" href="/manage">< Return</a>
-                    <button onclick="togglePopUp('guildPop-up')">
-                        <?php
-                            echo $thisGuild->name;
-                        ?>
-                    </button>
-                </div>
+            <div class="page-header flex">
+                <a class="small text" href="/manage">< Return</a>
+                <button onclick="togglePopUp('guildPop-up')">
+                    <?php
+                        echo $thisGuild->name;
+                    ?>
+                </button>
                 <div class="flex" style="float: right; margin-right: 30px; height: 100%;">
                     <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?>
                 </div>

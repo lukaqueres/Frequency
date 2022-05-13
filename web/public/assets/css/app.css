@@ -82,6 +82,8 @@ body {
 .flex {
     display: flex;
     flex-wrap: nowrap;
+    float: left;
+    height: 100%;
 }
 
     .flex > * {
