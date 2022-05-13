@@ -225,12 +225,18 @@ a.text {
     box-sizing: border-box;
     border: solid 1px transparent;
     padding: 2px 5px;
+    background-image: linear-gradient(to right, #0000C0 33%,transparent 33% 66%,#fff 66%);
+    background-position: right bottom;
+    background-size: 300% 1px;
+    background-repeat: no-repeat;
 }
 
     a.text:hover {
         color: black;
-        border-radius: 5px;
-        border: 1px solid black;
+        /*border-radius: 5px;
+        border: 1px solid black;*/
+        background-position: left bottom;
+        transition: background-position 0.5s;
     }
 
     a.text.small {
