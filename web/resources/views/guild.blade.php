@@ -71,7 +71,11 @@
                 </div>
             </div>
             <div class="page-aside">
-                ASIDE
+                <button onclick="togglePopUp('guildPop-up')">
+                    <?php
+                        echo $thisGuild->name;
+                    ?>
+                </button>
             </div>
             <div class="app-main page-main">
                 <h5>GUILD_DATA:
