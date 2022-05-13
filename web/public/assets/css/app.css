@@ -39,6 +39,10 @@
     font-family: "Bahnschrift", "Arial";
 }
 
+body {
+    scroll-behavior: smooth;
+    overflow: hidden;
+}
 
 .container {
     min-height: 100vh;
