@@ -219,7 +219,7 @@ body {
 
 a.text {
     text-decoration: none;
-    color: #8883F2;
+    color: white;
     transition: all .25s;
     border-radius: 5px;
     box-sizing: border-box;
@@ -228,9 +228,9 @@ a.text {
 }
 
     a.text:hover {
-        color: #84409B;
+        color: black;
         border-radius: 5px;
-        border: 1px solid #84409B;
+        border: 1px solid black;
     }
 
     a.text.small {
