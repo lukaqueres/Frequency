@@ -8,6 +8,7 @@
 .docker
 Dockerfile
 httpd.conf
+git_cmd.txt
 
 # User-specific files
 *.rsuser
