@@ -78,6 +78,23 @@ body {
             box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
             background-color: #090910;
         }
+
+#head-input {
+    padding: 4px 10px;
+    border-radius: 7px;
+    background: #090910;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2) inset;
+    border: 1px solid #8883F2;
+    min-width: 200px;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+    #head-input:focus {
+        outline: solid #84409B;
+        outline-width: unset;
+    }
+
 .page-aside {
     display: inline-block;
     float: left;
