@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Color pallet-e link: https://coolors.co/000000-090910-160e24-3f0a58-5b0079-84409b-3f2a88-8883f2-ffffff */
+/* Color pallet-e link: https://coolors.co/000000-090910-160e24-2b0c3e-5b0079-84409b-3f2a88-6457bd-8883f2-ffffff */
 :root {
     --bg-color-one: black;
     --acc-color-one: #1C1C1C;
@@ -55,7 +55,7 @@ body {
     display: block;
     width: 100%;
     height: 40px;
-    background: #3F2A88;
+    background: #30228D;
 }
 
     .page-header > .top-btn {
