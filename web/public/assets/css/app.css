@@ -94,8 +94,10 @@ body {
 
     #head-button:hover, #head-input:hover {
         cursor: pointer;
-        background: #84409B;
+        background: #8883F2;
         box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
+        color: #090910;
+        border-color: #090910;
     }
 
     #head-input:focus {
