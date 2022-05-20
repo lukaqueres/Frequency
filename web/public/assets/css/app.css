@@ -89,16 +89,17 @@ body {
     max-width: 300px;
     overflow: hidden;
     color: #9C98FF;
+    transition: all .25s;
 }
 
     #head-button:hover, #head-input:hover {
         cursor: pointer;
         background: #84409B;
+        box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
     }
 
     #head-input:focus {
         outline: solid #84409B;
-        box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
     }
 
 .page-aside {
