@@ -79,7 +79,7 @@ body {
             background-color: #090910;
         }
 
-#head-input {
+#head-button, #head-input {
     padding: 4px 10px;
     border-radius: 7px;
     background: #090910;
@@ -88,11 +88,17 @@ body {
     min-width: 200px;
     max-width: 300px;
     overflow: hidden;
+    color: #9C98FF;
 }
+
+    #head-button:hover, #head-input:hover {
+        cursor: pointer;
+        background: #84409B;
+    }
 
     #head-input:focus {
         outline: solid #84409B;
-        outline-width: unset;
+        box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
     }
 
 .page-aside {
