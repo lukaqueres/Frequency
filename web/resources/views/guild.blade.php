@@ -59,7 +59,7 @@
             </div>
             <div class="page-header flex">
                 <a class="small text" href="/manage">< Return</a>
-                <input type="text" id="head-input" onkeyup="filter_guilds();" placeholder=<?php echo '"Search for guilds | ' . $thisGuild->name . '" '; ?> title="Search for guilds by name or id">
+                <button type="text" id="head-input" title="Search for guilds by name or id"><?php echo '"Search for guilds | ' . $thisGuild->name . '" '; ?></button>
                 <button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>
                 <img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
             </div>
