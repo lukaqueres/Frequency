@@ -60,7 +60,7 @@
             <div class="page-header flex">
                 <a class="small text" href="/manage">< Return</a>
                 <button type="text" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $thisGuild->name; ?></button>
-                <button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>
+                <!--<button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>-->
                 <img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
             </div>
             <div class="page-aside">
