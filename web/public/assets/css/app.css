@@ -89,14 +89,14 @@ body {
     max-width: 300px;
     overflow: hidden;
     color: #9C98FF;
-    transition: all .25s;
+    transition: all .5s;
 }
 
     #head-button:hover, #head-input:hover {
         cursor: pointer;
-        background: #8883F2;
+        background: #000; /*#0a0a44*/
         box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2), 10px 10px 10px rgba(0, 0, 0, 0.2);
-        color: #090910;
+        /*color: #090910;*/
         border-color: #090910;
     }
 
