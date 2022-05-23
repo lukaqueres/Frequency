@@ -52,6 +52,21 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
+    private function getDBdata(object $guild): object // Append to guild object data from DB
+    {
+
+    }
+
+    private function getguildsDB(array $guilds): array // Iterate on guilds to work on DB data
+    {
+        if (DB::table('servers_properties')->where('guild_id', $id)->exists()) {
+            $guild->isbot = True;
+            getDBdata($guild)
+        } else {
+            $guild->isbot = False;
+        }
+    }
+
     public function __construct() // Construct data for http requests
     {
         $this->tokenData['client_id'] = "875271995644842004";
