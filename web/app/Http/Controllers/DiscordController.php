@@ -54,14 +54,14 @@ class DiscordController extends Controller
 
     private function getDBdata(object $guild): object // Append to guild object data from DB
     {
-
+        // Add code hir
     }
 
     private function getguildsDB(array $guilds): array // Iterate on guilds to work on DB data
     {
         if (DB::table('servers_properties')->where('guild_id', $id)->exists()) {
             $guild->isbot = True;
-            getDBdata($guild)
+            getDBdata($guild);
         } else {
             $guild->isbot = False;
         }
