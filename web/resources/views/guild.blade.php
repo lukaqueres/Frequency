@@ -10,6 +10,7 @@
 	    <meta charset="UTF-8" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <?php
         // Get variables from Session data
         $data = Session::get('data');
@@ -17,7 +18,10 @@
         $guilds = $data['guilds'];
         $snippets = $data['snippets'];
         $thisGuild = $guilds[$id];
+        $DBdata = Session::get('DBdata');
+        $guildDB = $DBdata;
     ?>
+
     <body>
         <div id="blur" class="container">
             <?php if (Session::exists('status')) {
@@ -71,6 +75,7 @@
                 <?php
                 if (Arr::exists($guilds, $id))  {
                     echo json_encode($thisGuild);
+                    echo json_encode($guildDB);
                 } else {
                     echo 'No guild found';
                 }
