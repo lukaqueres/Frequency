@@ -19,7 +19,7 @@
         $snippets = $data['snippets'];
         $thisGuild = $guilds[$id];
         $DBdata = Session::get('DBdata');
-        $guildDB = $DBdata['id'];
+        $guildDB = $DBdata;
     ?>
 
     <body>
