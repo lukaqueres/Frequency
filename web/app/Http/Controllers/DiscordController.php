@@ -67,9 +67,9 @@ class DiscordController extends Controller
         $guildsIds = [];
         foreach($guilds as $guild)
         {
-            $id = $guild->$id;
+            $ids = $guild->$id;
 
-            $guildsIds[] = $id;
+            $guildsIds[] = $ids;
             
             /*
             if (DB::table('servers_properties')->where('guild_id', $id)->exists()) {
