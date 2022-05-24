@@ -96,6 +96,7 @@ class DiscordController extends Controller
     public function unAuthorizeMe(Request $request)
     {
         $request->session()->flush();
+        return redirect('/');
     }
 
 	public function authorizeMe(Request $request) // Handle autorization requests from path. Used for fetching user's data from Discord
