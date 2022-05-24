@@ -81,7 +81,7 @@ class DiscordController extends Controller
             }*/
         }
         //return response()->json(['error_message' => $guildsIds]);
-        foreach($guildsIds as $guild)
+        foreach($guildsIds as $id)
         {
             $DBguilds[$id] = False;
         }
@@ -92,7 +92,7 @@ class DiscordController extends Controller
         {
             $guild->invited = True;
             $id = $guild->id;
-            $DBguilds[$id] = $guild;
+            $DBguilds[$guild_id] = $guild;
         }
 
         return $DBguilds;
