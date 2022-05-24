@@ -65,11 +65,11 @@ class DiscordController extends Controller
     private function getguildsDB($guilds): array // Iterate on guilds to work on DB data
     {
         $guildsIds = [];
-        foreach($guilds as $guild)
+        foreach($guilds as $id=>$guild)
         {
-            $ids = $guild->$id;
+            //$ids = $guild->$id;
 
-            $guildsIds[] = $ids;
+            $guildsIds[] = $id;
             
             /*
             if (DB::table('servers_properties')->where('guild_id', $id)->exists()) {
