@@ -57,7 +57,7 @@ class DiscordController extends Controller
     {
         // Add code hir
         $guildsDB = DB::connection('alt')->table('servers_properties')
-                    ->whereIn('id', $guildsIds)
+                    ->whereIn('guild_id', $guildsIds)
                     ->get();
 
         return $guildsDB;
