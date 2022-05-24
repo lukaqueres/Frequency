@@ -92,7 +92,7 @@ class DiscordController extends Controller
 
         foreach($guildsIds as $guild)
         {
-            $DBguilds[$id] = $guild->invited = False;
+            $DBguilds[$id] = invited = False;
         }
         return $DBguilds;
     }
