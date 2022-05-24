@@ -62,7 +62,7 @@ class DiscordController extends Controller
         return $guildsDB;
     }
 
-    private function getguildsDB(array $guilds): array // Iterate on guilds to work on DB data
+    private function getguildsDB($guilds): array // Iterate on guilds to work on DB data
     {
         $guildsIds = [];
         foreach($guilds as $guild)
@@ -94,6 +94,11 @@ class DiscordController extends Controller
         $this->tokenData['grant_type'] = "authorization_code";
         $this->tokenData['redirect_uri'] = "https://web-plan-it.herokuapp.com/discord/authorize";
         $this->tokenData['scope'] = "identify guilds guilds.members.read email";
+    }
+
+    public function unAuthorizeMe(Request $request)
+    {
+        $request->session()->flush();
     }
 
 	public function authorizeMe(Request $request) // Handle autorization requests from path. Used for fetching user's data from Discord
