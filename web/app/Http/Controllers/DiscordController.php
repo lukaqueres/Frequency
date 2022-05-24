@@ -53,7 +53,7 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getDBdata(array $guildsIds): array // Append to guild object data from DB
+    private function getDBdata(array $guildsIds) // Append to guild object data from DB
     {
         // Add code hir
         $guildsDB = DB::connection('alt')->table('servers_properties')
