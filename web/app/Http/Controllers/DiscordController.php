@@ -82,7 +82,7 @@ class DiscordController extends Controller
         }
         //return response()->json(['error_message' => $guildsIds]);
         $DBdata = $this->getDBdata($guildsIds);
-        $DBguilds = object;
+        //$DBguilds = object;
         foreach($DBdata as $guild)
         {
             $id = $guild->$id;
