@@ -181,7 +181,7 @@ class DiscordController extends Controller
             $data['snippets'] = $guilds_snippets;
         }
 
-        $DBdata = getguildsDB($data['guilds']);
+        $DBdata = $this->getguildsDB($data['guilds']);
 
         //$data['guilds']['snippets'] = $guilds_snippets;
         //return var_dump($data['guilds']);
