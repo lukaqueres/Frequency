@@ -52,27 +52,34 @@ class DiscordController extends Controller
         return json_decode($response->body());
     }
 
-    private function getDBdata(object $guild): object // Append to guild object data from DB
+    private function getDBdata(array $guildsIds): array // Append to guild object data from DB
     {
         // Add code hir
-        $users = DB::table('users')
-                    ->whereIn('id', [1, 2, 3])
+        $guildsDB = DB::table('users')
+                    ->whereIn('id', $guildsIds)
                     ->get();
+
+        return $guildsDB;
     }
 
     private function getguildsDB(array $guilds): array // Iterate on guilds to work on DB data
     {
-        $guildsArr = [];
-        foreach($guildsArr as $guild)
+        $guildsIds = [];
+        foreach($guilds as $guild)
         {
             $id = $guild->$id;
+
+            $guildsIds[] = $id;
+            
+            /*
             if (DB::table('servers_properties')->where('guild_id', $id)->exists()) {
                 $guild->isbot = True;
-                $guildsArr[] = $id;
+                
             } else {
                 $guild->isbot = False;
-            }
+            }*/
         }
+        return $DBdata = getDBdata($guildsIds);
     }
 
     public function __construct() // Construct data for http requests
@@ -164,6 +171,8 @@ class DiscordController extends Controller
             $data['snippets'] = $guilds_snippets;
         }
 
+        $DBdata = getguildsDB($data['guilds']);
+
         //$data['guilds']['snippets'] = $guilds_snippets;
         //return var_dump($data['guilds']);
         //return response()->json(['guilds' => $data['guilds'] ]); 
@@ -171,6 +180,8 @@ class DiscordController extends Controller
         //Session::put('access_token', $accessToken);
 		//Session::put('user_data', $user);
         Session::put('data', $data);
+        Session::put('DBdata', $DBdata);
+
         Session::put('user', $user);
         Session::put('authorized', true);
         Session::save();
