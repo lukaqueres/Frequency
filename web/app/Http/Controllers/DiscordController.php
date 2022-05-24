@@ -86,7 +86,7 @@ class DiscordController extends Controller
         foreach($DBdata as $guild)
         {
             $id = $guild->id;
-            $DBguilds->id = $guild;
+            $DBguilds['id'] = $guild;
         }
         return $DBguilds;
     }
