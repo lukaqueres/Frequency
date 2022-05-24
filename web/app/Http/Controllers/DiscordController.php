@@ -79,6 +79,11 @@ class DiscordController extends Controller
                 $guild->isbot = False;
             }*/
         }
+        return response()->json([
+                    'error_message' => $guildsIds,
+                    'message' => $e->getMessage(),
+                    'code' => $e->getCode()
+                ]);
         return $DBdata = getDBdata($guildsIds);
     }
 
