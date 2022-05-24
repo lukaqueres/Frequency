@@ -80,7 +80,7 @@ class DiscordController extends Controller
             }*/
         }
         //return response()->json(['error_message' => $guildsIds]);
-        return $DBdata = getDBdata($guildsIds);
+        return $DBdata = $this->getDBdata($guildsIds);
     }
 
     public function __construct() // Construct data for http requests
