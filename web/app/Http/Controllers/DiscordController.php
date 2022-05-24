@@ -63,7 +63,7 @@ class DiscordController extends Controller
         return $guildsDB;
     }
 
-    private function getguildsDB($guilds): array // Iterate on guilds to work on DB data
+    private function getguildsDB($guilds) // Iterate on guilds to work on DB data
     {
         $guildsIds = [];
         foreach($guilds as $id=>$guild)
