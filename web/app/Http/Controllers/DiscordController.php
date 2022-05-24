@@ -85,8 +85,14 @@ class DiscordController extends Controller
         $DBguilds = [];
         foreach($DBdata as $guild)
         {
+            $guild->invited = True;
             $id = $guild->id;
             $DBguilds[$id] = $guild;
+        }
+
+        foreach($guildsIds as $guild)
+        {
+            $DBguilds[$id] = $guild->invited = False;
         }
         return $DBguilds;
     }
