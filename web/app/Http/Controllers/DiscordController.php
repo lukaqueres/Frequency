@@ -56,7 +56,7 @@ class DiscordController extends Controller
     private function getDBdata(array $guildsIds): array // Append to guild object data from DB
     {
         // Add code hir
-        $guildsDB = DB::DB::connection('alt')->table('guilds_properties')
+        $guildsDB = DB::connection('alt')->table('guilds_properties')
                     ->whereIn('id', $guildsIds)
                     ->get();
 
