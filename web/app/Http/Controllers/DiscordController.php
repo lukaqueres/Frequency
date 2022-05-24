@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class DiscordController extends Controller
 {
