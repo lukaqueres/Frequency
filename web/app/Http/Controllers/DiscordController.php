@@ -81,19 +81,20 @@ class DiscordController extends Controller
             }*/
         }
         //return response()->json(['error_message' => $guildsIds]);
-        $DBdata = $this->getDBdata($guildsIds);
-        $DBguilds = [];
-        foreach($DBdata as $guild)
-        {
-            //$guild->invited = True;
-            $id = $guild->id;
-            $DBguilds[$id] = $guild;
-        }
-
         foreach($guildsIds as $guild)
         {
             $DBguilds[$id] = False;
         }
+
+        $DBdata = $this->getDBdata($guildsIds);
+        $DBguilds = [];
+        foreach($DBdata as $guild)
+        {
+            $guild->invited = True;
+            $id = $guild->id;
+            $DBguilds[$id] = $guild;
+        }
+
         return $DBguilds;
     }
 
