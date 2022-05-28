@@ -1,6 +1,6 @@
 <?php
 
-namespace app\helpers\guilds;
+namespace App\Helpers\guilds;
 
 class Guild
 {
