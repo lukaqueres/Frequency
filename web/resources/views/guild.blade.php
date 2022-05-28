@@ -19,6 +19,7 @@
         $snippets = $data['snippets'];
         $thisGuild = $guilds[$id];
         $DBdata = Session::get('DBdata');
+        $guilds = Session::get('guilds');
         $guildDB = $DBdata[$id];
     ?>
 
@@ -76,6 +77,7 @@
                 if (Arr::exists($guilds, $id))  {
                     echo json_encode($thisGuild);
                     echo 'guildDB: ' . json_encode($guildDB);
+                    echo'<br> GUILDS: ' . json_encode($guilds);
                 } else {
                     echo 'No guild found';
                 }

@@ -177,6 +177,11 @@ class DiscordController extends Controller
         $data = array();
         $guilds_snippets = [];
         //$data['user'] = $user;
+        $guildsObj = array();
+        foreach($guilds as $guild) {
+            $guildsObj[$guild->id] = new Guild($guild->id);
+            $guildsObj[$guild->id]->assign_discord($guild);
+        }
 
         foreach($guilds as $guild) {
             //var_dump($guild->permissions);
@@ -204,6 +209,7 @@ class DiscordController extends Controller
 		//Session::put('user_data', $user);
         Session::put('data', $data);
         Session::put('DBdata', $DBdata);
+        Session::put('guilds', $guildsObj);
 
         Session::put('user', $user);
         Session::put('authorized', true);
