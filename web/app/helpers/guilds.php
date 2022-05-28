@@ -1,6 +1,7 @@
 <?php
 
-namespace app\helpers\guilds\Guild;
+namespace app\helpers\guilds;
+
 class Guild
 {
     public $id;
