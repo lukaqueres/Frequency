@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 
-use app\helpers\guilds;
+use app\helpers\guilds\Guild as Guild;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
