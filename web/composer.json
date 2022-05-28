@@ -22,7 +22,7 @@
     "autoload": {
         "files": [
             "app/helpers/helpers.php",
-            "app/helpers/guilds.php"
+            "app/helpers/Guild.php"
         ],
         "psr-4": {
             "App\\": "app/",
