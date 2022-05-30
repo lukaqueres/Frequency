@@ -89,7 +89,7 @@ class Guild
 		    $tags[] = 'no_icon';
         };
         
-	    if ($this->is_owner) {
+	    if ($this->owner) {
 		    $tags[] = 'owner';
 	    } elseif ($this->role == 'administrator') {
 		    $tags[] = 'administrator';
