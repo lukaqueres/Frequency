@@ -174,7 +174,7 @@ class DiscordController extends Controller
                 return redirect('/');
             }
         }
-
+        /*
         // Making nice arrays for guilds
         $data = array();
         $guilds_snippets = [];
@@ -195,7 +195,7 @@ class DiscordController extends Controller
             $data['guilds'][$guild->id] = $guild;
             $data['snippets'] = $guilds_snippets;
         }
-
+        */
         $DBdata = $this->getguildsDB($data['guilds']);
 
         $guildsObj = array();
@@ -210,8 +210,8 @@ class DiscordController extends Controller
         
         //Session::put('access_token', $accessToken);
 		//Session::put('user_data', $user);
-        Session::put('data', $data);
-        Session::put('DBdata', $DBdata);
+        /*Session::put('data', $data);
+        Session::put('DBdata', $DBdata);*/
         Session::put('guilds', $guildsObj);
 
         Session::put('user', $user);

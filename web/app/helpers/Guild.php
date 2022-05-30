@@ -32,7 +32,6 @@ class Guild
         $this->gen_role();
     }
 
-
     protected function assign_discord($guild) {
         $this->id = $guild->id;
         $this->name = $guild->name;
