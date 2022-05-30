@@ -100,4 +100,30 @@ class Guild
 	    };
         $this->tags = $tags;
     }
+
+    protected function gen_role() {
+    $usr_permissions_list = $this->permissions;
+        // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
+        // Please add permissions from top ( from highest )
+        $gen_permissions_tags = [
+            'generalAdministrator' => 'administrator',
+            'generalKickMembers' => 'moderator',
+            'generalBanMembers' => 'moderator',
+            'generalManageChannels' => 'moderator',
+            'generalManageServer' => 'moderator',
+            'textManageMessages' => 'moderator',
+            'generalManageRoles' => 'moderator',
+            'generalManageWebhooks' => 'moderator',
+            'generalManageEmoisAndStickers' => 'moderator',
+            'textManageThreads' => 'moderator',
+            'generalModerateMembers' => 'moderator'
+        ];
+        foreach($gen_permissions_tags as $permission => $tag) {
+            if (in_array($permission, $usr_permissions_list)) {
+                $tag = $tag;
+            };
+        }
+        $tag = 'member';
+        $this->role = $tag;
+    }
 }
