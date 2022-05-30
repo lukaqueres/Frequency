@@ -42,9 +42,13 @@ class Guild
     }
 
     protected function assign_DB($guild) {
-        $this->is_bot = True;
-        $this->num_members = $guild->number_of_members;
-        $this->num_users = $guild->number_of_users;
+        if $guild {
+            $this->is_bot = True;
+            $this->num_members = $guild->number_of_members;
+            $this->num_users = $guild->number_of_users;
+        } else {
+            $this->is_bot = False;
+        }
     }
 
     public function gen_iconurl() {
