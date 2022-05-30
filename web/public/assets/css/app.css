@@ -124,6 +124,7 @@ body {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2) inset;*/
     padding: 10px;
     box-sizing: border-box;
+    word-wrap: break-word;
 }
 
 .flex {

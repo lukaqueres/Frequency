@@ -52,7 +52,7 @@ class Guild
         }
     }
 
-    public function gen_iconurl() {
+    protected function gen_iconurl() {
         $icon = $this->icon;
         $id = $this->id;
 
