@@ -76,8 +76,8 @@
                 <h5>GUILD_DATA:
                 <?php
                 if (Arr::exists($guilds, $id))  {
-                    echo json_encode($thisGuild);
-                    echo 'guildDB: ' . json_encode($guildDB);
+                    //echo json_encode($thisGuild);
+                    //echo 'guildDB: ' . json_encode($guildDB);
                     echo'<br> GUILDS: ' . json_encode($guildOBJ);
                 } else {
                     echo 'No guild found';

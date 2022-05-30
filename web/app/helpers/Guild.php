@@ -8,9 +8,9 @@ class Guild
     public $name;
     protected $icon;
     public $icon_url;
-    public $is_owner;
+    public $owner;
     public $tags;
-    public $is_bot;
+    public $has_bot;
     public $role;
     protected $permissions_num;
     protected $permissions;
@@ -36,18 +36,18 @@ class Guild
         $this->id = $guild->id;
         $this->name = $guild->name;
         $this->permissions_num = $guild->permissions;
-        $this->is_owner = $guild->owner;
+        $this->owner = $guild->owner;
         $this->icon = $guild->icon;
         $this->features = $guild->features;
     }
 
     protected function assign_DB($guild) {
         if ($guild) {
-            $this->is_bot = True;
+            $this->has_bot = True;
             $this->num_members = $guild->number_of_members;
             $this->num_users = $guild->number_of_users;
         } else {
-            $this->is_bot = False;
+            $this->has_bot = False;
         }
     }
 
@@ -98,6 +98,6 @@ class Guild
 	    } elseif ($this->role == 'member') {
 		    $tags[] = 'member';
 	    };
-        $this->tag = $tags;
+        $this->tags = $tags;
     }
 }
