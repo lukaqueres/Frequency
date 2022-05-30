@@ -23,7 +23,16 @@ class Guild
         $this->id = $id;
     }
 
-    function assign_discord($guild) {
+    function assign($discord, $DB) {
+        $this->assign_discord($discord);
+        $this->assign_DB($DB);
+        $this->gen_iconurl;
+        $this->gen_permissions();
+        $this->gen_tags();
+    }
+
+
+    protected function assign_discord($guild) {
         $this->id = $guild->id;
         $this->name = $guild->name;
         $this->permissions_num = $guild->permissions;
@@ -32,7 +41,7 @@ class Guild
         $this->features = $guild->features;
     }
 
-    function assign_DB($guild) {
+    protected function assign_DB($guild) {
         $this->is_bot = True;
         $this->num_members = $guild->number_of_members;
         $this->num_users = $guild->number_of_users;
@@ -51,12 +60,12 @@ class Guild
         $this->icon_url = $url;
     }
 
-    public function gen_permissions() {
+    protected function gen_permissions() {
         $usr_permissions = get_permissions($this->permissions_num);
         $this->permissions = $usr_permissions;
     }
 
-    public function gen_tags() {
+    protected function gen_tags() {
         $tags = [];
 	    if (in_array("COMMUNITY", $this->features)) {
             $tags[] = 'community'; };

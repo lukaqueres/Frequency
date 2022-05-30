@@ -179,11 +179,6 @@ class DiscordController extends Controller
         $data = array();
         $guilds_snippets = [];
         //$data['user'] = $user;
-        $guildsObj = array();
-        foreach($guilds as $guild) {
-            $guildsObj[$guild->id] = new Guild($guild->id);
-            $guildsObj[$guild->id]->assign_discord($guild);
-        }
 
         foreach($guilds as $guild) {
             //var_dump($guild->permissions);
@@ -202,6 +197,12 @@ class DiscordController extends Controller
         }
 
         $DBdata = $this->getguildsDB($data['guilds']);
+
+        $guildsObj = array();
+        foreach($guilds as $guild) {
+            $guildsObj[$guild->id] = new Guild($guild->id);
+            $guildsObj[$guild->id]->assign($guild, $DBdata[$guild->id]);
+        }
 
         //$data['guilds']['snippets'] = $guilds_snippets;
         //return var_dump($data['guilds']);
