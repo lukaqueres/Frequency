@@ -29,6 +29,7 @@ class Guild
         $this->gen_iconurl();
         $this->gen_permissions();
         $this->gen_tags();
+        $this->gen_role();
     }
 
 
