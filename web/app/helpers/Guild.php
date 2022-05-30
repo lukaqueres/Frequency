@@ -26,7 +26,7 @@ class Guild
     function assign($discord, $DB) {
         $this->assign_discord($discord);
         $this->assign_DB($DB);
-        $this->gen_iconurl;
+        $this->gen_iconurl();
         $this->gen_permissions();
         $this->gen_tags();
     }
