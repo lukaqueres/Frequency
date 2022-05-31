@@ -86,10 +86,10 @@
                 <div class="card">
                     <p>Overwiew</p>
                     <ul class="no-points">
-                        <li> Name <?php echo '<h5 class="code-text">' . $guild->name . '<h5>' ; ?> </li>
-                        <li> Id <?php echo '<h5 class="code-text">' . $guild->id . '<h5>' ; ?> </li>
-                        <li> Bot <?php echo '<h5 class="code-text">' . $s . '<h5>' ; ?> </li>
-                        <li> Role <?php echo '<h5 class="code-text">' . $guild->role . '<h5>' ; ?> </li>
+                        <li> Name <?php echo '<span class="code-text">' . $guild->name . '</span>' ; ?> </li>
+                        <li> Id <?php echo '<span class="code-text">' . $guild->id . '</span>' ; ?> </li>
+                        <li> Bot <?php echo '<span class="code-text">' . $s . '</span>' ; ?> </li>
+                        <li> Role <?php echo '<span class="code-text">' . $guild->role . '</span>' ; ?> </li>
                     </ul>
                 </div>
             </div>
