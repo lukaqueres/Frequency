@@ -93,7 +93,7 @@
         var Dropdown = document.getElementById("app-search-dropdown");
         if (!Dropdown.classList.contains('app-show')) {
             Dropdown.classList.add("app-show");
-            IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$thisGuild->id . '_"'; ?>);
+            IdOfElement = document.getElementById( <?php echo '"search_dropdown_'.$guild->id . '_"'; ?>);
             var topPos = IdOfElement.offsetTop;
             document.getElementById('app-search-dropdown').scrollTop = topPos;
         } else {
