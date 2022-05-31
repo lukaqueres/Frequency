@@ -105,6 +105,12 @@ class Guild
     $usr_permissions_list = $this->permissions;
         // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
         // Please add permissions from top ( from highest )
+        if ($owner) {
+            $role = 'owner';
+            $this->role = $role;
+            return;
+        }
+        $tag = 'member';
         $gen_permissions_tags = [
             'generalAdministrator' => 'administrator',
             'generalKickMembers' => 'moderator',
@@ -121,9 +127,9 @@ class Guild
         foreach($gen_permissions_tags as $permission => $tag) {
             if (in_array($permission, $usr_permissions_list)) {
                 $tag = $tag;
+                break;
             };
         }
-        $tag = 'member';
         $this->role = $tag;
     }
 }

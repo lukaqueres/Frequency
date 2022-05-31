@@ -278,6 +278,16 @@ body {
     margin: 0;
 }
 
+ul.no-points {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.code-text {
+    background: black;
+}
+
 .icon {
     /*width: 100%;*/
     height: 100%;
