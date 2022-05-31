@@ -214,7 +214,7 @@ class DiscordController extends Controller
         
         //Session::put('access_token', $accessToken);
 		//Session::put('user_data', $user);
-        Session::put('data', $data);
+        //Session::put('data', $data);
         /*Session::put('DBdata', $DBdata);*/
         Session::put('guilds', $guildsObj);
 

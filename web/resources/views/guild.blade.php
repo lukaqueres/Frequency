@@ -13,15 +13,15 @@
 
     <?php
         // Get variables from Session data
-        $data = Session::get('data');
+        //$data = Session::get('data');
         $user = Session::get('user');
-        $guilds = $data['guilds'];
-        $snippets = $data['snippets'];
-        $thisGuild = $guilds[$id];
-        $DBdata = Session::get('DBdata');
+        //$guilds = $data['guilds'];
+        //$snippets = $data['snippets'];
+        //$thisGuild = $guilds[$id];
+        //$DBdata = Session::get('DBdata');
         $guilds = Session::get('guilds');
-        $guildOBJ = $guilds[$id];
-        $guildDB = $DBdata[$id];
+        $guild = $guilds[$id];
+        //$guildDB = $DBdata[$id];
     ?>
 
     <body>
@@ -32,27 +32,27 @@
             <div id="guildPop-up" class="pop-up">
                 <div>
                     <button class="close-btn" onclick="togglePopUp('guildPop-up')">X</button>
-                    <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $thisGuild->name . '" '; ?> title="Filter by name or id">
+                    <input type="text" id="filter-guilds" onkeyup="filter_guilds();" placeholder= <?php echo '"' . $guild->name . '" '; ?> title="Filter by name or id">
                 </div>
                 <div id="guild-search">
                     <table id="guilds-table" class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <?php
-                        foreach($snippets as $guild) {
+                        foreach($guilds as $guild) {
                             $display_tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
                             $tags = '';
-                            foreach($guild['tags'] as $tag) {
+                            foreach($guild->tags as $tag) {
                                 if (!(in_array( $tag, $display_tags))) {
                                     continue;
                                 }
 						        $tags = $tags . '<div class="tag">' . $tag . '</div>';
 						    }
-						    echo '<tr id="search_guild_' . $guild['id'] .'" class="guild-row">
+						    echo '<tr id="search_guild_' . $guild->id .'" class="guild-row">
 							    <td style="width: 100%; padding: 5px; border-block: solid 1px;" >
-                                    <a href="/manage/guild/' . $guild['id'] . '">
+                                    <a href="/manage/guild/' . $guild->id . '">
                                         <div class="flex">
-									        <img class="app-icon" src="' . get_icon($guild) . '"/>
-									        <h3 class="guild-name app-no-margin">' . $guild['name'] . '</h3>
-                                            <h5 class="right">' . $guild['id'] .'</h5>
+									        <img class="app-icon" src="' . $guild->icon_url . '"/>
+									        <h3 class="guild-name app-no-margin">' . $guild->name . '</h3>
+                                            <h5 class="right">' . $guild->id .'</h5>
                                         </div>
                                         <div class="tags">' . $tags . '</div>
                                     </a>
@@ -65,7 +65,7 @@
             </div>
             <div class="page-header flex">
                 <a class="small text" href="/manage">< Return</a>
-                <button type="text" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $thisGuild->name; ?></button>
+                <button type="text" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $guild->name; ?></button>
                 <!--<button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>-->
                 <a href="/discord/logout">LogOut</a><img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
             </div>
@@ -73,12 +73,12 @@
                 /
             </div>
             <div class="app-main page-main">
-                <h5>GUILD_DATA:
+                <h5>
                 <?php
                 if (Arr::exists($guilds, $id))  {
                     //echo json_encode($thisGuild);
                     //echo 'guildDB: ' . json_encode($guildDB);
-                    echo'<br> GUILDS: ' . json_encode($guildOBJ);
+                    echo'<br> GUILDS: ' . json_encode($guild);
                 } else {
                     echo 'No guild found';
                 }
