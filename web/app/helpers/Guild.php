@@ -105,7 +105,7 @@ class Guild
     $usr_permissions_list = $this->permissions;
         // /administrator/ permissions provide administrator tag, while /moderator/ will tag as moderator, ( all these permissions require 2FA )
         // Please add permissions from top ( from highest )
-        if ($owner) {
+        if ($this->owner) {
             $role = 'owner';
             $this->role = $role;
             return;
