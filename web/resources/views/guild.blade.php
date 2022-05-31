@@ -74,12 +74,21 @@
             </div>
             <div class="app-main page-main">
             <div class="card-container">
+                <?php
+                if ($guild->has_bot)
+                {
+                    $s= 'Current';
+                } else {
+                    $s= 'Absent';
+                }
+                ?>
+
                 <div class="card">
                     <p>Overwiew</p>
                     <ul class="no-points">
                         <li> Name <?php echo '<h5 class="code-text">' . $guild->name . '<h5>' ; ?> </li>
                         <li> Id <?php echo '<h5 class="code-text">' . $guild->id . '<h5>' ; ?> </li>
-                        <li> Bot <?php echo '<h5 class="code-text">' . if ($guild->has_bot) { 'Current' } else { 'Absent' } . '<h5>' ; ?> </li>
+                        <li> Bot <?php echo '<h5 class="code-text">' . $s . '<h5>' ; ?> </li>
                         <li> Role <?php echo '<h5 class="code-text">' . $guild->role . '<h5>' ; ?> </li>
                     </ul>
                 </div>
