@@ -15,10 +15,11 @@
     </head>
     <?php
         // Get variables from Session data
-        $data = Session::get('data');
+        //$data = Session::get('data');
         $user = Session::get('user');
-        $guilds = $data['guilds'];
-        $snippets = $data['snippets'];
+        //$guilds = $data['guilds'];
+        //$snippets = $data['snippets'];
+        $guilds = Session::get('guilds');
     ?>
     <body>
             <?php if (Session::exists('status')) { ?>
@@ -39,9 +40,9 @@
                 <?php
                     $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
                     $count = 0;
-                        foreach($snippets as $guild) {
+                        foreach($guilds as $guild) {
                             $flow .= '<div class="cell"><div class="card">
-                              <div class="card-divider"><img class="columns align-self-middle shrink app-icon app-inline-margin" src="' . get_icon($guild) .'"/><h4>' . $guild['name'] . '</h4></div>
+                              <div class="card-divider"><img class="columns align-self-middle shrink app-icon app-inline-margin" src="' . $guild->icon_url .'"/><h4>' . $guild->name . '</h4></div>
                                         <div class="card-section">
                                         <p> TAGS </p>
                                         </div></div></div>';
@@ -51,7 +52,7 @@
                 ?>
             </div>
             <div class="app-main">
-                <h5>DATA: <?php echo json_encode(Session::get('data'), JSON_PRETTY_PRINT); ?></br></h5>
+                <h5>DATA: <?php echo json_encode($guilds, JSON_PRETTY_PRINT); ?></br></h5>
             </div>
         </div>
     </body>
