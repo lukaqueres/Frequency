@@ -37,22 +37,22 @@
                 <div id="guild-search">
                     <table id="guilds-table" class="pop-upContent" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <?php
-                        foreach($guilds as $guild) {
+                        foreach($guilds as $g) {
                             $display_tags = ['community', 'news', 'member', 'partnered', 'auto_moderation', 'owner', 'administrator', 'moderator', 'member'];
                             $tags = '';
-                            foreach($guild->tags as $tag) {
+                            foreach($g->tags as $tag) {
                                 if (!(in_array( $tag, $display_tags))) {
                                     continue;
                                 }
 						        $tags = $tags . '<div class="tag">' . $tag . '</div>';
 						    }
-						    echo '<tr id="search_guild_' . $guild->id .'" class="guild-row">
+						    echo '<tr id="search_guild_' . $g->id .'" class="guild-row">
 							    <td style="width: 100%; padding: 5px; border-block: solid 1px;" >
-                                    <a href="/manage/guild/' . $guild->id . '">
+                                    <a href="/manage/guild/' . $g->id . '">
                                         <div class="flex">
-									        <img class="app-icon" src="' . $guild->icon_url . '"/>
-									        <h3 class="guild-name app-no-margin">' . $guild->name . '</h3>
-                                            <h5 class="right">' . $guild->id .'</h5>
+									        <img class="app-icon" src="' . $g->icon_url . '"/>
+									        <h3 class="guild-name app-no-margin">' . $g->name . '</h3>
+                                            <h5 class="right">' . $g->id .'</h5>
                                         </div>
                                         <div class="tags">' . $tags . '</div>
                                     </a>
