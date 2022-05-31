@@ -70,7 +70,7 @@
                 <a href="/discord/logout">LogOut</a><img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
             </div>
             <div class="page-aside">
-                /
+                
             </div>
             <div class="app-main page-main">
                 <h5>
