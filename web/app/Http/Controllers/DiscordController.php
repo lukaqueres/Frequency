@@ -196,6 +196,10 @@ class DiscordController extends Controller
             $data['snippets'] = $guilds_snippets;
         }
         */
+        $data = array();
+        foreach($guilds as $guild) {
+            $data['guilds'][$guild->id] = $guild;
+        }
         $DBdata = $this->getguildsDB($data['guilds']);
 
         $guildsObj = array();
