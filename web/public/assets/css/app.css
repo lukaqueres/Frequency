@@ -270,6 +270,29 @@ body {
         transition: .5s;
     }
 
+.card-container {
+
+}
+
+    .card-container > .card {
+        border: 1px solid #30228D;
+        border-radius: 5px;
+        padding: 20px;
+        width: 300px;
+        background: black;
+        box-sizing: border-box;
+    }
+
+.card > p {
+    margin: 5px;
+    font-size: x-large;
+    color: #8883F2;
+}
+
+.card li {
+    margin-block: 2px;
+}
+
 .side-box {
     background: #090910;
 }
@@ -284,8 +307,12 @@ ul.no-points {
     padding: 0;
 }
 
-.code-text {
-    background: black;
+.bg-text {
+    background: #8883F2;
+    border: solid 1px #8883F2;
+    border-radius: 2px;
+    padding: 2px;
+    color: black;
 }
 
 .icon {
