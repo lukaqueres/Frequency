@@ -117,15 +117,15 @@ button {
     box-sizing: border-box;
 }
 
-    .page-aside > .buttons-cont {
+    .page-aside > .buttons {
         min-height: 150px;
     }
 
-.buttons-cont {
+.buttons {
     min-width: 50px;
 }
 
-    .buttons-cont:hover {
+    .buttons > button:hover {
         color: black;
     }
 
