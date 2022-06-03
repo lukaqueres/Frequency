@@ -44,6 +44,10 @@ body {
     overflow: hidden;
 }
 
+button {
+    cursor: pointer;
+}
+
 .container {
     min-height: 100vh;
     width: 100vw;
@@ -115,6 +119,14 @@ body {
 
     .page-aside > .buttons-cont {
         min-height: 150px;
+    }
+
+.buttons-cont {
+    min-width: 50px;
+}
+
+    .buttons-cont:hover {
+        color: black;
     }
 
 .page-main {
