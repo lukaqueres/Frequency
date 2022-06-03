@@ -113,6 +113,10 @@ body {
     box-sizing: border-box;
 }
 
+    .page-aside > .buttons-cont {
+        min-height: 150px;
+    }
+
 .page-main {
     display: inline-block;
     float: left;
