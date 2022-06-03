@@ -151,6 +151,11 @@ body {
         align-self: flex-start;
     }
 
+    .flex.vertical {
+        flex-direction: column;
+        justify-content: center;
+    }
+
 .pop-up {
     background-color: black;
     color: #8883F2;
