@@ -127,7 +127,13 @@ button {
 }
 
     .buttons > button:hover {
-        color: black;
+        color: #30228D;
+        box-shadow: 60px -16px #30228D;
+    }
+
+    .buttons > button {
+        border: solid 1px transparent;
+        border-radius: 0px;
     }
 
 .page-main {
