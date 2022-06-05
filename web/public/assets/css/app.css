@@ -306,7 +306,8 @@ button {
     }
 
 .card-container {
-
+    display: flex;
+    padding: 7px;
 }
 
     .card-container > .card {
@@ -326,7 +327,7 @@ button {
     margin: 5px;
     font-size: x-large;
     color: #8883F2;
-    margin-top: 0px;
+    margin-block: 0px;
 }
 
 .card li {
