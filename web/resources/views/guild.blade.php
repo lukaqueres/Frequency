@@ -109,6 +109,15 @@
                     ?>
                     </div>
                 </div>
+                <div class="card">
+                    <p>Overwiew</p>
+                    <ul class="no-points">
+                        <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                        <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                        <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                        <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                    </ul>
+                </div>
             </div>
                 <h5>
                 <?php
