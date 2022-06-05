@@ -316,7 +316,7 @@ button {
         border-radius: 5px;
         padding: 20px;
         min-width: 300px;
-        background: black;
+        background: #3F2A88;
         box-sizing: border-box;
         margin: 3px;
     }
@@ -331,20 +331,20 @@ button {
             flex-grow: 1;
         }
 
-    .card-container > .card.inactive {
-        filter: brightness(0.5);
-    }
+        .card-container > .card.inactive {
+            filter: brightness(0.5);
+        }
 
-.card > p {
-    margin: 5px;
-    font-size: x-large;
-    color: #8883F2;
-    margin-block: 0px;
-}
+        .card-container > .card > p {
+            margin: 5px;
+            font-size: x-large;
+            color: black;
+            margin-block: 0px;
+        }
 
-.card li {
-    margin-block: 5px;
-}
+        .card-container > .card li {
+            margin-block: 5px;
+        }
 
 .side-box {
     background: #090910;
