@@ -88,7 +88,7 @@
                     }
                     ?>
                     <div class="card full">
-                        <img class="icon" src= <?php echo '"' . $guild->icon_url '"'; ?>>
+                        <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
                         <p><?php echo $guild->name; ?></p>
                     </div>
                     <div class="card">
