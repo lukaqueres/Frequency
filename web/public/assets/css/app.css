@@ -318,6 +318,10 @@ button {
         box-sizing: border-box;
     }
 
+    .card-container > .card.full {
+        width: 100%;
+    }
+
 .card > p {
     margin: 5px;
     font-size: x-large;

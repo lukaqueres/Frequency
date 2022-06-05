@@ -87,7 +87,9 @@
                     $s= 'Absent';
                 }
                 ?>
-
+                <div class="card full">
+                    <p>Overwiew</p>
+                </div>
                 <div class="card">
                     <p>Overwiew</p>
                     <ul class="no-points">
