@@ -322,10 +322,11 @@ button {
     margin: 5px;
     font-size: x-large;
     color: #8883F2;
+    margin-top: 0px;
 }
 
 .card li {
-    margin-block: 2px;
+    margin-block: 5px;
 }
 
 .side-box {
