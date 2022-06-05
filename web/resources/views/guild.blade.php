@@ -88,7 +88,7 @@
                 }
                 ?>
                 <div class="card full">
-                    <p>Overwiew</p>
+                    <p><?php echo $guild->name; ?></p>
                 </div>
                 <div class="card">
                     <p>Overwiew</p>
@@ -98,6 +98,16 @@
                         <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
                         <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
                     </ul>
+                </div>
+                <div class="card">
+                    <p>Features</p>
+                    <div class="tags">
+                    <?php
+                        foreach($guild->features as $feature) {
+                            echo '<div class="tag">' . $feature . '</div>';
+                        }
+                    ?>
+                    </div>
                 </div>
             </div>
                 <h5>

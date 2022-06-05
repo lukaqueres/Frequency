@@ -308,6 +308,7 @@ button {
 .card-container {
     display: flex;
     padding: 7px;
+    flex-wrap: wrap;
 }
 
     .card-container > .card {
@@ -317,10 +318,15 @@ button {
         width: 300px;
         background: black;
         box-sizing: border-box;
+        margin: 3px;
     }
 
     .card-container > .card.full {
         width: 100%;
+    }
+
+    .card-container > .card.inactive {
+        filter: brightness(0.5);
     }
 
 .card > p {
