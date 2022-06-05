@@ -321,13 +321,15 @@ button {
         margin: 3px;
     }
 
-    .card-container > .card.full {
-        width: 100%;
-    }
+        .card-container > .card.full {
+            width: 100%;
+            flex-grow: 1;
+        }
 
-    .card-container > .card.wide {
-        width: 600px;
-    }
+        .card-container > .card.wide {
+            width: 600px;
+            flex-grow: 1;
+        }
 
     .card-container > .card.inactive {
         filter: brightness(0.5);
