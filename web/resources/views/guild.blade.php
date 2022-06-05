@@ -99,7 +99,7 @@
                         <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
                     </ul>
                 </div>
-                <div class="card">
+                <div class="card wide">
                     <p>Features</p>
                     <div class="tags">
                     <?php

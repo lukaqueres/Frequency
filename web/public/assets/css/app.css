@@ -315,7 +315,7 @@ button {
         border: 1px solid #30228D;
         border-radius: 5px;
         padding: 20px;
-        width: 300px;
+        min-width: 300px;
         background: black;
         box-sizing: border-box;
         margin: 3px;
@@ -323,6 +323,10 @@ button {
 
     .card-container > .card.full {
         width: 100%;
+    }
+
+    .card-container > .card.wide {
+        width: 600px;
     }
 
     .card-container > .card.inactive {
