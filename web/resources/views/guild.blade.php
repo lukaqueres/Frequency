@@ -78,57 +78,58 @@
                 </div>
             </div>
             <div class="app-main page-main">
-            <div class="card-container">
-                <?php
-                if ($guild->has_bot)
-                {
-                    $s= 'Current';
-                } else {
-                    $s= 'Absent';
-                }
-                ?>
-                <div class="card full">
-                    <p><?php echo $guild->name; ?></p>
-                </div>
-                <div class="card">
-                    <p>Overwiew</p>
-                    <ul class="no-points">
-                        <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                        <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                        <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                        <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                    </ul>
-                </div>
-                <div class="card wide">
-                    <p>Features</p>
-                    <div class="tags">
+                <div class="card-container">
                     <?php
-                        foreach($guild->features as $feature) {
-                            echo '<div class="tag">' . $feature . '</div>';
-                        }
+                    if ($guild->has_bot)
+                    {
+                        $s= 'Current';
+                    } else {
+                        $s= 'Absent';
+                    }
                     ?>
+                    <div class="card full">
+                        <img class="icon" src= <?php echo '"' . $guild->icon_url '"'; ?>>
+                        <p><?php echo $guild->name; ?></p>
+                    </div>
+                    <div class="card">
+                        <p>Overwiew</p>
+                        <ul class="no-points">
+                            <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                            <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                            <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                            <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                        </ul>
+                    </div>
+                    <div class="card wide">
+                        <p>Features</p>
+                        <div class="tags">
+                        <?php
+                            foreach($guild->features as $feature) {
+                                echo '<div class="tag">' . $feature . '</div>';
+                            }
+                        ?>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <p>Overwiew</p>
+                        <ul class="no-points">
+                            <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                            <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                            <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                            <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="card">
-                    <p>Overwiew</p>
-                    <ul class="no-points">
-                        <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                        <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                        <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                        <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                    </ul>
-                </div>
-            </div>
-                <h5>
-                <?php
-                if (Arr::exists($guilds, $id))  {
-                    //echo json_encode($thisGuild);
-                    //echo 'guildDB: ' . json_encode($guildDB);
-                    echo'<br> GUILDS: ' . json_encode($guild);
-                } else {
-                    echo 'No guild found';
-                }
-                ?></br></h5>
+                    <h5>
+                    <?php
+                    if (Arr::exists($guilds, $id))  {
+                        //echo json_encode($thisGuild);
+                        //echo 'guildDB: ' . json_encode($guildDB);
+                        echo'<br> GUILDS: ' . json_encode($guild);
+                    } else {
+                        echo 'No guild found';
+                    }
+                    ?></br></h5>
             </div>
         </div>
     </body>
