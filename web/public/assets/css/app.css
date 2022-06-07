@@ -326,7 +326,7 @@ button {
         border: 1px dotted #30228D;
         border-radius: 5px;
         min-width: 300px;
-        background: #0909109e;
+        background: #06060ba8;
         box-sizing: border-box;
         margin: 3px;
     }
@@ -337,7 +337,7 @@ button {
 
         .card-container > .card > .title {
             padding: 5px 45px;
-            color: #696297;
+            color: #30228D;
             background: #000000a3;
             margin: 0px;
         }
