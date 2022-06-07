@@ -390,11 +390,10 @@ ul.no-points {
 }
 
 .bg-text {
-    background: #8883F2;
-    border: solid 1px #8883F2;
+    border: dashed 1px #30228D;
     border-radius: 2px;
     padding: 2px;
-    color: black;
+    color: #7B67FF;
 }
 
 .icon {
