@@ -127,9 +127,9 @@ class Guild
             'textManageThreads' => 'moderator',
             'generalModerateMembers' => 'moderator'
         ];
-        foreach($gen_permissions_tags as $permission => $tag) {
+        foreach($gen_permissions_tags as $permission => $role) {
             if (in_array($permission, $usr_permissions_list)) {
-                $tag = $tag;
+                $tag = $role;
                 break;
             };
         }
