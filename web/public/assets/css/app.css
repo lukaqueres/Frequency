@@ -430,6 +430,16 @@ a.text {
         font-size: small;
     }
 
+.x-center {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+x-title {
+    font-size: xx-large;
+    margin: 0;
+}
+
 .tags {
     display: flex;
     width: 100%;
