@@ -104,11 +104,13 @@
                     </div>
                     <div class="card wide">
                         <p>Features</p>
+                        <div class="tags">
                         <?php
                             foreach($guild->features as $feature) {
                                 echo '<div class="tag">' . $feature . '</div>';
                             }
                         ?>
+                        </div>
                     </div>
                     <div class="card">
                         <p>Overwiew</p>
