@@ -88,9 +88,9 @@
                     }
                     ?>
                     <div class="card full">
-                        <div class="flex">
+                        <div class="flex x-center">
                             <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
-                            <p><?php echo $guild->name; ?></p>
+                            <p class="x-title"><?php echo $guild->name; ?></p>
                         </div>
                     </div>
                     <div class="card">
