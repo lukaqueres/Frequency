@@ -435,6 +435,12 @@ a.text {
     transform: translateX(-50%);
 }
 
+.xy-center {
+    left: 50%;
+    top: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+}
 .x-title {
     font-size: xx-large;
     margin: 0;
