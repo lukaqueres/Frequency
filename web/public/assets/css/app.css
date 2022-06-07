@@ -335,6 +335,10 @@ button {
             padding: 20px;
         }
 
+        .card-container > .card > .title {
+            padding: 20px;
+        }
+
         .card-container > .card.full {
             width: 100%;
             flex-grow: 1;

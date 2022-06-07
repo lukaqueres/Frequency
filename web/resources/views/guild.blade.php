@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <p>Overwiew</p>
+                        <p class="title">Overwiew</p>
                         <div class="content">
                             <ul class="no-points">
                                 <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="card wide">
-                        <p>Features</p>
+                        <p class="title">Features</p>
                         <div class="tags content">
                         <?php
                             foreach($guild->features as $feature) {
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <p>Overwiew</p>
+                        <p class="title">Overwiew</p>
                         <div class="content">
                             <ul class="no-points">
                                 <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
