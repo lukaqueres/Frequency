@@ -346,7 +346,8 @@ button {
             border-top: none;
             padding: 2px 30px;
             background-color: #30228D;
-            margin-top: -20px;
+            margin-top: -21px;
+            color: black;
         }
 
         .card-container > .card.full {
