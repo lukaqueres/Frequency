@@ -336,7 +336,10 @@ button {
         }
 
         .card-container > .card > .title {
-            padding: 20px;
+            padding: 5px 45px;
+            color: #696297;
+            background: #000000a3;
+            margin: 0px;
         }
 
         .card-container > .card.full {
