@@ -13,11 +13,14 @@ class Guild
     public $has_bot;
     public $role;
     protected $permissions_num;
-    protected $permissions;
+    public $permissions; // protected
     public $num_users;
     public $num_members;
     public $features;
 
+    // For DEBUGGING ->
+    //public $permissions_names;
+    // <-
 
     function __construct($id) {
         $this->id = $id;
