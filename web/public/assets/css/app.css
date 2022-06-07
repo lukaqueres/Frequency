@@ -326,8 +326,9 @@ button {
         border: 1px dotted #30228D;
         border-radius: 5px;
         min-width: 300px;
-        background: #06060ba8;
+        /*background: #06060ba8;*/
         box-sizing: border-box;
+        background: linear-gradient(180deg, #000000a3, #06060ba8);
         margin: 3px;
     }
 
