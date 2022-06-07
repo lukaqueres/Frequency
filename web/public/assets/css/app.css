@@ -339,10 +339,14 @@ button {
         }
 
         .card-container > .card > .title {
-            padding: 5px 45px;
-            color: #30228D;
-            background: #000000a3;
-            margin: 0px;
+            width: fit-content;
+            border: 1px dotted #30228D;
+            border-radius: 0 0 5px 5px;
+            box-sizing: border-box;
+            border-top: none;
+            padding: 2px 30px;
+            background-color: #30228D;
+            margin-top: -20px;
         }
 
         .card-container > .card.full {
