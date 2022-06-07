@@ -435,7 +435,7 @@ a.text {
     transform: translateX(-50%);
 }
 
-x-title {
+.x-title {
     font-size: xx-large;
     margin: 0;
 }
