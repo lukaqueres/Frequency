@@ -106,8 +106,12 @@
                         <p class="title">Features</p>
                         <div class="tags">
                         <?php
-                            foreach($guild->features as $feature) {
-                                echo '<div class="tag">' . $feature . '</div>';
+                            if (!$guild->features) {
+                                echo '<span class="x-title xy-center"> N/A</span>';
+                            } else {
+                                foreach($guild->features as $feature) {
+                                    echo '<div class="tag">' . $feature . '</div>';
+                                }
                             }
                         ?>
                         </div>
