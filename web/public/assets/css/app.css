@@ -323,14 +323,17 @@ button {
 }
 
     .card-container > .card {
-        border: 1px solid #30228D;
+        border: 1px dotted #30228D;
         border-radius: 5px;
-        padding: 20px;
         min-width: 300px;
-        background: #30228D;
+        background: #0909109e;
         box-sizing: border-box;
         margin: 3px;
     }
+
+        .card-container > .card > .content {
+            padding: 20px;
+        }
 
         .card-container > .card.full {
             width: 100%;

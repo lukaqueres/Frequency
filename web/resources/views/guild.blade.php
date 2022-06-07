@@ -88,21 +88,25 @@
                     }
                     ?>
                     <div class="card full flex">
-                        <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
-                        <p><?php echo $guild->name; ?></p>
+                        <div class="content">
+                            <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
+                            <p><?php echo $guild->name; ?></p>
+                        </div>
                     </div>
                     <div class="card">
                         <p>Overwiew</p>
-                        <ul class="no-points">
-                            <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                            <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                            <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                            <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                        </ul>
+                        <div class="content">
+                            <ul class="no-points">
+                                <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                                <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                                <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                                <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="card wide">
                         <p>Features</p>
-                        <div class="tags">
+                        <div class="tags content">
                         <?php
                             foreach($guild->features as $feature) {
                                 echo '<div class="tag">' . $feature . '</div>';
@@ -112,12 +116,14 @@
                     </div>
                     <div class="card">
                         <p>Overwiew</p>
-                        <ul class="no-points">
-                            <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                            <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                            <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                            <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                        </ul>
+                        <div class="content">
+                            <ul class="no-points">
+                                <li><span> Name </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                                <li><span> Id </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                                <li><span> Bot </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                                <li><span> Role </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                     <h5>
