@@ -359,8 +359,8 @@ button {
         .card-container > .card > p {
             margin: 5px;
             font-size: x-large;
-            color: black;
             margin-block: 0px;
+            color: #30228D;
         }
 
         .card-container > .card li {
