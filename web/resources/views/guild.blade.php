@@ -24,7 +24,7 @@
         //$guildDB = $DBdata[$id];
     ?>
 
-    <body>
+    <body class="dotted">
         <div id="blur" class="container">
             <?php if (Session::exists('status')) {
                 echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
