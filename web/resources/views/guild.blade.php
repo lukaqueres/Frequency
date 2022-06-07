@@ -87,8 +87,8 @@
                         $s= 'Absent';
                     }
                     ?>
-                    <div class="card full flex">
-                        <div class="content">
+                    <div class="card full">
+                        <div class="content flex">
                             <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
                             <p><?php echo $guild->name; ?></p>
                         </div>
