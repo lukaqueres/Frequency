@@ -347,6 +347,7 @@ button {
             padding: 2px 30px;
             background-color: #30228D;
             margin-top: -21px;
+            margin-bottom: 11px;
             color: black;
         }
 
@@ -443,6 +444,9 @@ a.text {
         height: fit-content;
         margin: 2px 5px;
         font-size: small;
+        border: solid 1px #7B67FF;
+        color: #7160DF;
+    }
     }
 
     .tags > button.tag {
