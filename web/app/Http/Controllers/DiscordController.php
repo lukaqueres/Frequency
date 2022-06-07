@@ -118,6 +118,18 @@ class DiscordController extends Controller
 
 	public function authorizeMe(Request $request) // Handle autorization requests from path. Used for fetching user's data from Discord
 	{
+        if($request->error == 'access_denied') { // Check if user failed to authorize trough discord page
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'error_message' => 'User did not completed authorization.',
+                    'code' => 400
+                ]);
+            } else {
+                Session::flash('status', 'Failed authorization');
+                return redirect('/');
+            }
+        }
+
         if ($request->missing('code')) { // Checking if the authorization code is present in the request
             if (env('APP_DEBUG')) {
                 return response()->json([
