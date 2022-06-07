@@ -13,7 +13,7 @@ class Guild
     public $has_bot;
     public $role;
     protected $permissions_num;
-    public $permissions; // protected
+    protected $permissions; // protected
     public $num_users;
     public $num_members;
     public $features;
