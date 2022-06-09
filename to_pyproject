@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-poetry init --no-interaction
-
-xargs poetry add < requirements.txt
-xargs poetry add --dev < dev-requirements.txt
