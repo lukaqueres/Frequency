@@ -1,4 +1,9 @@
-import discord, json, io, os, typing, requests, random, asyncio, psycopg2, nltk
+import os
+import typing
+import random
+import asyncio
+import nltk
+import psycopg2
 from os import getenv
 import contextlib, datetime
 from dotenv import load_dotenv
@@ -9,6 +14,7 @@ from discord import member, DMChannel, FFmpegPCMAudio, TextChannel, Intents
 from discord.ext import tasks, commands
 from discord.utils import get
 from youtube_dl import *
+import discord
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 #from youtube_dl import YoutubeDL
 
@@ -242,8 +248,10 @@ for package in packages:
 for filename in os.listdir('./discord_bot/cogs'):
 	if filename.endswith('.py'):
 		client.load_extension(f'cogs.{filename[:-3]}')
-		
+
 #>just say it's over ( installing of course )
 print("All modules, packages installed")
 TOKEN = os.environ.get('TOKEN')
-client.run(TOKEN)
+
+if __name__ == "__main__":
+	client.run(TOKEN)
