@@ -10,14 +10,13 @@ from discord.utils import get
 from youtube_dl import *
 from discord.ext.commands import has_permissions, MissingPermissions, bot
 
-intents = discord.Intents.default()
-intents.members = True
-
-DATABASE_URL = os.environ.get('DATABASE_URL')
-con = psycopg2.connect(DATABASE_URL)
-cur = con.cursor()
+def get_connection():
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    return psycopg2.connect(DATABASE_URL)
 
 def get_prefix(client, message):
+	con = get_connection()
+	cur = con.cursor()
 	cur.execute(
 		"SELECT guild_prefix FROM SERVERS_PROPERTIES WHERE guild_id=%s",
 		(message.guild.id, )
@@ -28,9 +27,9 @@ def get_prefix(client, message):
 	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
 	return prefix
 
-client = commands.Bot(command_prefix = get_prefix, intents=intents)
-
 def get_database_data(database, column, condition):
+	con = get_connection()
+	cur = con.cursor()
 	cur.execute("SELECT {} from {} WHERE guild_id={}".format(column, database, condition))
 	#cur.execute(
 	#	"SELECT %s FROM %s WHERE guild_id=%s",
@@ -43,6 +42,8 @@ def get_database_data(database, column, condition):
 	return value
 
 def write_database_data(database, column, condition, value):
+	con = get_connection()
+	cur = con.cursor()
 	cur.execute(
 		"UPDATE %s SET %s = %s WHERE guild_id = %s;",
 		(database, column, value, condition)
@@ -51,6 +52,8 @@ def write_database_data(database, column, condition, value):
 	return 1
 
 def get_language(condition):
+	con = get_connection()
+	cur = con.cursor()
 	cur.execute(
 		"SELECT guild_language FROM SERVERS_PROPERTIES WHERE guild_id=%s",
 		(condition, )
@@ -106,6 +109,8 @@ def get_time( specify = "DT", return_type = "str" ):
 			return 0
 		
 def get_guilds_ids():
+	con = get_connection()
+	cur = con.cursor()
 	cur.execute("SELECT guild_id from SERVERS_PROPERTIES") # WHERE 1
 	ids = cur.fetchall()
 	con.commit()
@@ -126,6 +131,8 @@ def check_database(guilds):
 	guilds_id = []
 	default_prefix = '$'
 	default_language = 'ENG'
+	con = get_connection()
+	cur = con.cursor()
 	for guild in guilds:
 		guild_report = ""
 		guild_report += f"\nChecking guild: {guild.name}"
@@ -184,3 +191,9 @@ def check_database(guilds):
 		report += guild_report
 	print(report)
 	print("Succesful database actualization")
+
+if __name__ == "__main__":
+    intents = discord.Intents.default()
+    intents.members = True
+
+    client = commands.Bot(command_prefix = get_prefix, intents=intents)
