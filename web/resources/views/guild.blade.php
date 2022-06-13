@@ -135,7 +135,7 @@
                         </ul>
                     </div>
                     <div class="card">
-                        <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
+                        <p class="title flex">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
                         <div>
                             <form id="input-container" class="tags">
                             </form>
@@ -183,7 +183,7 @@
         let count = document.getElementById("input-container").childElementCount;
         var container = document.getElementById("input-container");
         // Append a node with a random text
-        container.appendChild(document.createTextNode("Keyword " + (count + 1));
+        container.appendChild(document.createTextNode("Keyword " + (count + 1)));
         // Create an <input> element, set its type and name attributes
         var input = document.createElement("input");
         input.type = "text";
