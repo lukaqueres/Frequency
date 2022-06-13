@@ -126,15 +126,6 @@
                         </ul>
                     </div>
                     <div class="card">
-                        <p class="title">Data</p>
-                        <ul class="no-points">
-                            <li><span> Members: </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                            <li><span> Message service: </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                            <li><span> Bot: </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                            <li><span> Role: </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                        </ul>
-                    </div>
-                    <div class="card">
                         <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
                         <div>
                             <form id="input-container" class="tags">
