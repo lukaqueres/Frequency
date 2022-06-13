@@ -135,7 +135,7 @@
                         </ul>
                     </div>
                     <div class="card">
-                        <p class="title flex">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
+                        <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
                         <div>
                             <form id="input-container" class="tags">
                             </form>
