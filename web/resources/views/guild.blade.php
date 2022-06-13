@@ -190,7 +190,7 @@
         input.name = "key-word";
         container.appendChild(input);
         // Append a line break 
-        container.appendChild(document.createElement("br"));
+        //container.appendChild(document.createElement("br"));
     }
 
     function search_guilds() {
