@@ -404,7 +404,7 @@ ul.no-points {
     border-radius: 50%;
 }
 
-a.text {
+a.text, button.text {
     text-decoration: none;
     color: white;
     transition: all .25s;
@@ -418,7 +418,7 @@ a.text {
     background-repeat: no-repeat;
 }
 
-    a.text:hover {
+    a.text:hover, button.text:hover {
         color: white;
         /*border-radius: 5px;
         border: 1px solid black;*/
