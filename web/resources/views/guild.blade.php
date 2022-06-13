@@ -176,12 +176,22 @@
         // Append a node with a random text
         container.appendChild(document.createTextNode("Keyword " + (count + 1)));
         // Create an <input> element, set its type and name attributes
+        var div = document.createElement("div");
         var input = document.createElement("input");
+        var button = document.createElement("button");
         input.type = "text";
         input.name = "key-word";
-        container.appendChild(input);
+
+        button.onclick = "removeInput()";
+        div.appendChild(input);
+        div.appendChild(button);
+        container.appendChild(div);
         // Append a line break 
         //container.appendChild(document.createElement("br"));
+    }
+    function removeInput(input = null) {
+        var input = document.getElementById('texts'+i);
+        temp.parentNode.removeChild(temp);
     }
 
     function search_guilds() {
