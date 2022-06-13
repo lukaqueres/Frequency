@@ -181,13 +181,14 @@
     }*/
 
     function addInput() {
+        let count = document.getElementById("input-container").childElementCount;
         var container = document.getElementById("input-container");
         // Append a node with a random text
-        container.appendChild(document.createTextNode("Keyword "));
+        container.appendChild(document.createTextNode("Keyword " + (count + 1));
         // Create an <input> element, set its type and name attributes
         var input = document.createElement("input");
         input.type = "text";
-        input.name = "keyword";
+        input.name = "key-word";
         container.appendChild(input);
         // Append a line break 
         container.appendChild(document.createElement("br"));
