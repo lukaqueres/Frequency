@@ -463,7 +463,6 @@ a.text {
         border: solid 1px #7B67FF;
         color: #7160DF;
     }
-    }
 
     .tags > button.tag {
         background-color: #292849;
@@ -476,6 +475,18 @@ a.text {
         cursor: pointer;
         border: solid 1px #8883F2;
         color: #938EF3;
+    }
+
+    .tags > input.tag {
+        background-color: black;
+        border-radius: 5px;
+        padding: 5px 10px 2px 10px;
+        width: fit-content;
+        height: fit-content;
+        margin: 2px 5px;
+        font-size: small;
+        border: solid 1px #7B67FF;
+        color: #7160DF;
     }
 
     .tags > .tag.active {

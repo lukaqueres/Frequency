@@ -117,13 +117,30 @@
                         </div>
                     </div>
                     <div class="card">
-                        <p class="title">Overwiew</p>
+                        <p class="title">Data</p>
                         <ul class="no-points">
-                            <li><span> Name: </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                            <li><span> Id: </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                            <li><span> Members: </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                            <li><span> Message service: </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
                             <li><span> Bot: </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
                             <li><span> Role: </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
                         </ul>
+                    </div>
+                    <div class="card">
+                        <p class="title">Data</p>
+                        <ul class="no-points">
+                            <li><span> Members: </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                            <li><span> Message service: </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                            <li><span> Bot: </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                            <li><span> Role: </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <p class="title">Key-words</p>
+                        <div>
+                        <button class="text" onclick="addInput()">Add key-word</button>
+                            <form id="input-container" class="tags">
+                            </form>
+                        </div>
                     </div>
                 </div>
                     <h5>
@@ -162,6 +179,19 @@
             }
         }
     }*/
+
+    function addInput() {
+        var container = document.getElementById("input-container");
+        // Append a node with a random text
+        container.appendChild(document.createTextNode("Keyword "));
+        // Create an <input> element, set its type and name attributes
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "keyword";
+        container.appendChild(input);
+        // Append a line break 
+        container.appendChild(document.createElement("br"));
+    }
 
     function search_guilds() {
         var input, filter, tabel, tr, a, i, txtValue;
