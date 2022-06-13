@@ -182,11 +182,12 @@
         input.type = "text";
         input.name = "key-word";
 
-        button.onClick = "removeInput()";
+        ..button.onClick = "removeInput()";
         button.innerText = "Remove key-word";
         button.className = "text";
         div.appendChild(input);
         div.appendChild(button);
+        button.addEventListener('click', function(){ removeInput();});
         container.appendChild(div);
         // Append a line break 
         //container.appendChild(document.createElement("br"));
