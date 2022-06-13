@@ -125,7 +125,7 @@
                             <li><span> Role: </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
                         </ul>
                     </div>
-                    <div class="card">
+                    <div class="card wide">
                         <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
                         <div>
                             <form id="input-container" class="tags">
