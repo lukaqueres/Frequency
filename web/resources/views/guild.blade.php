@@ -184,7 +184,7 @@
 
         button.onclick = "removeInput()";
         button.innerText = "Remove key-word";
-        button.class= "text";
+        button.className = "text";
         div.appendChild(input);
         div.appendChild(button);
         container.appendChild(div);
