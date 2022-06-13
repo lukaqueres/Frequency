@@ -182,7 +182,7 @@
         input.type = "text";
         input.name = "key-word";
 
-        button.onclick = "removeInput()";
+        button.onclick = removeInput();
         button.innerText = "Remove key-word";
         button.className = "text";
         div.appendChild(input);
@@ -191,9 +191,10 @@
         // Append a line break 
         //container.appendChild(document.createElement("br"));
     }
+
     function removeInput(input = null) {
         var input = document.getElementById('texts'+i);
-        temp.parentNode.removeChild(temp);
+        input.parentNode.removeChild(input);
     }
 
     function search_guilds() {
