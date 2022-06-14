@@ -174,7 +174,7 @@
         let count = document.getElementById("input-container").childElementCount;
         var container = document.getElementById("input-container");
         // Append a node with a random text
-        container.appendChild(document.createTextNode("Keyword " + (count + 1)));
+        container.appendChild(document.createTextNode(count + 1));
         // Create an <input> element, set its type and name attributes
         var div = document.createElement("div");
         var input = document.createElement("input");
