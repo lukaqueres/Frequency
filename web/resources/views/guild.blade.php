@@ -185,13 +185,14 @@
         input.type = "text";
         input.name = "key-word";
 
-        button.onclick = function() { removeInput('"key-word-"'+(count + 1));};
+        //button.onclick = function() { removeInput('"key-word-"'+(count + 1));};
+        button.setAttribute("onclick",'removeInput("key-word-"'+(count + 1)'")');
         //button.HTML = '<button class="text" onclick="key-word-' + (count+1) + '">Remove key-word</button>'
         button.innerText = "Remove key-word";
         button.className = "text";
         button.type="button";
 
-        div.Id = "key-word-"+(count + 1);
+        div.id = "key-word-"+(count + 1);
         div.appendChild(input);
         div.appendChild(button);
         //button.addEventListener('click', function(){ removeInput();});
