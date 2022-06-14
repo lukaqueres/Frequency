@@ -182,9 +182,10 @@
         input.type = "text";
         input.name = "key-word";
 
-        button.onclick = removeInput();
+        button.onclick = removeInput("key-word-"+(count + 1));
         button.innerText = "Remove key-word";
         button.className = "text";
+        div.Id = "key-word-"+(count + 1);
         div.appendChild(input);
         div.appendChild(button);
         //button.addEventListener('click', function(){ removeInput();});
@@ -194,8 +195,8 @@
     }
 
     function removeInput(input = null) {
-        var input = document.getElementById('texts'+i);
-        input.parentNode.removeChild(input);
+        var div = document.getElementById(input);
+        div.parentNode.removeChild(div);
     }
 
     function search_guilds() {
