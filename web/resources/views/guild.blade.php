@@ -182,8 +182,9 @@
 
         var input = document.createElement("input");
         var button = document.createElement("button");
+
         input.type = "text";
-        input.name = "key-word";
+        input.name = "key-word-"+(count + 1);
 
         //button.onclick = function() { removeInput('"key-word-"'+(count + 1));};
         button.setAttribute("onclick",'removeInput("key-word-'+(count + 1)+'")');
