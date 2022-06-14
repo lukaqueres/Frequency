@@ -127,7 +127,7 @@
                     </div>
                     <div class="card wide">
                         <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
-                        <div class="tags">
+                        <div>
                             <form id="input-container" class="tags">
                             </form>
                         </div>
