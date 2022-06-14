@@ -183,7 +183,7 @@
         input.name = "key-word";
 
         //button.onclick = function() { removeInput('"key-word-"'+(count + 1));};
-        button.innerHTML = '<button class="text" onclick="key-word-' + (count+1) + '">Remove key-word</button>'
+        button.HTML = '<button class="text" onclick="key-word-' + (count+1) + '">Remove key-word</button>'
         //button.innerText = "Remove key-word";
         //button.className = "text";
         div.Id = "key-word-"+(count + 1);
