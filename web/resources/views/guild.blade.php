@@ -177,6 +177,9 @@
         container.appendChild(document.createTextNode(count + 1));
         // Create an <input> element, set its type and name attributes
         var div = document.createElement("div");
+
+        div.className = "flex";
+
         var input = document.createElement("input");
         var button = document.createElement("button");
         input.type = "text";
