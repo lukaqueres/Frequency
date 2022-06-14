@@ -467,6 +467,7 @@ a.text, button.text {
         border: solid 1px #7B67FF;
         color: #7160DF;
         flex-grow: 1;
+        max-width: 300px;
     }
 
     .tags > button.tag {
