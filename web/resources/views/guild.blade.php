@@ -127,7 +127,7 @@
                     </div>
                     <div class="card wide">
                         <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
-                        <div>
+                        <div class="tags">
                             <form id="input-container" class="tags">
                             </form>
                         </div>
@@ -177,7 +177,7 @@
         // Create an <input> element, set its type and name attributes
         var div = document.createElement("div");
 
-        div.className = "flex";
+        div.className = "flex tag";
         //div.appendChild(document.createTextNode(count + 1));
 
         var input = document.createElement("input");
