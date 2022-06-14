@@ -184,9 +184,9 @@
         var button = document.createElement("button");
 
         input.type = "text";
-        input.name = "key-word-"+(count + 1);
+        input.name = "word-"+(count + 1);
 
-        button.setAttribute("onclick",'removeInput("key-word-'+(count + 1)+'")');
+        button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
         button.innerText = "Remove key-word";
         button.className = "text";
         button.type="button";
@@ -200,8 +200,8 @@
         //container.appendChild(document.createElement("br"));
     }
 
-    function removeInput(input = null) {
-        var div = document.getElementById(input);
+    function removeInput(e) {
+        var div = e.target.parentNode; // document.getElementById(input);
         div.parentNode.removeChild(div);
     }
 
