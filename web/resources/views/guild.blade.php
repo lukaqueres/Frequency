@@ -187,7 +187,7 @@
         input.name = "word-"+(count + 1);
 
         button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
-        button.innerText = "Remove key-word";
+        button.innerText = "x";
         button.className = "text";
         button.type="button";
 
