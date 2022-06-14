@@ -462,6 +462,7 @@ a.text, button.text {
         font-size: small;
         border: solid 1px #7B67FF;
         color: #7160DF;
+        flex-grow: 1;
     }
 
     .tags > button.tag {
