@@ -178,7 +178,7 @@
         var div = document.createElement("div");
 
         div.className = "flex";
-        div.appendChild(document.createTextNode(count + 1));
+        //div.appendChild(document.createTextNode(count + 1));
 
         var input = document.createElement("input");
         var button = document.createElement("button");
