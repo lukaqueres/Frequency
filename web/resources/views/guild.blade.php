@@ -135,7 +135,7 @@
                     <div class="card wide">
                         <p class="title">Key-words</p>
                         <div id="input-container" class="tags">
-                            <div class="tag"><input type="text" id="keyword-entry" class="cover" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></div>
+                            <div class="tag flex"><input type="text" id="keyword-entry" class="cover" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></div>
                         </div>
                     </div>
                 </div>
