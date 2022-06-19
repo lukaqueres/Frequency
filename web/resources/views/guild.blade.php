@@ -188,7 +188,7 @@
         
         var keyword = keywordEntry.value;
         keywordEntry.value = '';
-        keyword = keyword.replaceAll(" ", "");
+        keyword = keyword.replace(/\s/g, '');
         if (!keyword) {
             keyword = 'empty';
         };
