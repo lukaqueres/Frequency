@@ -183,7 +183,11 @@
         }
     }*/
 
-    function addInput() {
+    function addInput(e) {
+        var keywordEntry = document.getElementById("keyword-entry");
+        
+        var keyword = keywordEntry.value;
+        keywordEntry.value = '';
         let count = document.getElementById("input-container").childElementCount;
         var container = document.getElementById("input-container");
         // Append a node with a random text
@@ -199,6 +203,7 @@
         input.type = "text";
         input.name = "word-"+(count + 1);
         input.className = "cover";
+        input.vaule = keyword;
 
         button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
         button.innerText = "x";
