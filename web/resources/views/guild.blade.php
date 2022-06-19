@@ -203,7 +203,7 @@
         input.type = "text";
         input.name = "word-"+(count + 1);
         input.className = "cover";
-        input.vaule = keyword;
+        input.setAttribute("value",keyword);
 
         button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
         button.innerText = "x";
