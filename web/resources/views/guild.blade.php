@@ -156,7 +156,7 @@
 <script>
 
     var keywordEntry = document.getElementById("keyword-entry");
-    wage.addEventListener("keydown", function (e) {
+    keywordEntry.addEventListener("keydown", function (e) {
         if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
             addInput();
         }
