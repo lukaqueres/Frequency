@@ -188,6 +188,11 @@
         
         var keyword = keywordEntry.value;
         keywordEntry.value = '';
+
+        if !(keyword) {
+            keyword = 'empty';
+        };
+
         let count = document.getElementById("input-container").childElementCount;
         var container = document.getElementById("input-container");
         // Append a node with a random text
