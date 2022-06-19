@@ -133,8 +133,9 @@
                         </ul>
                     </div>
                     <div class="card wide">
-                        <p class="title">Key-words <input type="text" id="keyword-entry" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></p>
+                        <p class="title">Key-words</p>
                         <div id="input-container" class="tags">
+                            <div class="tag"><input type="text" id="keyword-entry" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></div>
                         </div>
                     </div>
                 </div>
