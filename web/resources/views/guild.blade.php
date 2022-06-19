@@ -133,10 +133,8 @@
                         </ul>
                     </div>
                     <div class="card wide">
-                        <p class="title">Key-words <button class="text" onclick="addInput()">Add key-word</button></p>
-                        <div>
-                            <form id="input-container" class="tags">
-                            </form>
+                        <p class="title">Key-words <input type="text" id="keyword-entry" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></p>
+                        <div id="input-container" class="tags">
                         </div>
                     </div>
                 </div>
@@ -156,6 +154,13 @@
 </html>
 
 <script>
+
+    var keywordEntry = document.getElementById("keyword-entry");
+    wage.addEventListener("keydown", function (e) {
+        if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+            addInput();
+        }
+    });
     function search_dropdown() {
         var Dropdown = document.getElementById("app-search-dropdown");
         if (!Dropdown.classList.contains('app-show')) {
