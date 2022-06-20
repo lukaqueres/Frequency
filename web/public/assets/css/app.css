@@ -468,6 +468,7 @@ a.text, button.text {
         color: #7160DF;
         flex-grow: 1;
         max-width: 300px;
+        text-align: center;
     }
 
     .tags > button.tag {
