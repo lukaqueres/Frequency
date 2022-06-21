@@ -468,6 +468,12 @@ a.text, button.text {
 
 .status-msg {
     width:100%;
+    background:black;
+    padding: 5px;
+    margin: 2px;
+    box-sizing: border-box;
+    border: solid 1px black;
+    border-radius: 5px;
 }
 
 .tags {
