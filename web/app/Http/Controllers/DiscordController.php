@@ -239,7 +239,8 @@ class DiscordController extends Controller
             return redirect('manage');
         }
         else {
-            return redirect(state);
+            $redirUrl= $request->'state';
+            return redirect($redirUrl);
         }
 	}
 
