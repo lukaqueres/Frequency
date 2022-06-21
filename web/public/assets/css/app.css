@@ -450,6 +450,18 @@ a.text, button.text {
     margin: 0;
 }
 
+#status-msg-container {
+    position: fixed;
+    top: 50px;
+    right: 0px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.status-msg {
+    width:100%;
+}
+
 .tags {
     display: flex;
     width: 100%;

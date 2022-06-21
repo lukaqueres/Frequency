@@ -26,6 +26,17 @@
 
     <body>
         <div id="blur" class="dotted container">
+            <div id="status-msg-container" class="flex vertical">
+                <div class="status-msg">
+                    status
+                </div>
+                <div class="status-msg">
+                    status
+                </div>
+                <div class="status-msg">
+                    status
+                </div>
+            </div>
             <?php if (Session::exists('status')) {
                 echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
             }?>
