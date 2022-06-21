@@ -42,6 +42,7 @@
 body {
     scroll-behavior: smooth;
     overflow: hidden;
+    margin: 0;
 }
 
 button {
@@ -559,8 +560,8 @@ a.text, button.text {
 }
     .app-grid-container > div {
         justify-self: stretch;
-        /*align-self: center;
-        height: 100%;*/
+        align-self: center;
+        height: 100%;
     }
     .app-grid-container > .app-header {
         background-color: black;
@@ -602,7 +603,7 @@ a.text, button.text {
     }
 
 .app-icon {
-    /*width: 100%;*/
+    width: 100%;
     max-height: 30.6px;
     border-radius: 50%;
 }
@@ -613,8 +614,8 @@ a.text, button.text {
 
     .app-zoom:hover {
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-        -ms-transform: scale(1.1); /* IE 9 */
-        -webkit-transform: scale(1.1); /* Safari 3-8 */
+        -ms-transform: scale(1.1);  IE 9 
+        -webkit-transform: scale(1.1);  Safari 3-8 
         transform: scale(1.1);
     }
 
@@ -644,7 +645,7 @@ a.text, button.text {
         position: absolute;
         background-color: black;
         min-width: 160px;
-        /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         transition: all 0.25s cubic-bezier(.77,0,.18,1);
         z-index: 1;
         overflow-inline: hidden;
