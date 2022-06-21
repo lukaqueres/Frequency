@@ -88,7 +88,7 @@
                 <img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
             </div>
             <div class="page-aside">
-                <div class="flex vertical buttons">
+                <div class="flex vertical buttons space-around">
                     <button>Overwiew</button>
                     <button>Settings</button>
                     <button>Messages settings</button>
