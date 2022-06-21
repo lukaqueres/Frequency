@@ -456,6 +456,8 @@ a.text, button.text {
     right: 0px;
     max-height: 100px;
     overflow: hidden;
+    width: 200px;
+    height: 300px;
 }
 
 .status-msg {
