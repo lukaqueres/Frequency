@@ -482,6 +482,8 @@ a.text, button.text {
 
     .status-msg > p {
         text-align: center;
+        color: #30228D;
+        border-bottom: solid 1px #30228D;
     }
 
     .tags {
