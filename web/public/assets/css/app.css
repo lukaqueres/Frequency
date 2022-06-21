@@ -459,28 +459,32 @@ a.text, button.text {
     position: fixed;
     top: 50px;
     right: 0px;
-    max-height: 100px;
+    /*max-height: 100px;*/
     overflow: hidden;
-    width: 200px;
+    width: 300px;
     height: 300px;
     z-index: 99;
 }
 
 .status-msg {
-    width:100%;
-    background:black;
+    width: 100%;
+    background: black;
     padding: 5px;
     margin: 2px;
     box-sizing: border-box;
-    border: solid 1px black;
+    border: solid 1px #30228D;
     border-radius: 5px;
 }
 
-.tags {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-}
+    .status-msg > p {
+        text-align: center;
+    }
+
+    .tags {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
 
     .tags > div.tag {
         background-color: black;

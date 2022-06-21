@@ -28,6 +28,7 @@
         <div id="blur" class="dotted container">
             <div id="status-msg-container" class="flex vertical">
                 <div class="status-msg">
+                    <p>Test</p>
                     <h4>status</h4>
                 </div>
                 <div class="status-msg">
