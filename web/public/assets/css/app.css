@@ -476,6 +476,10 @@ a.text, button.text {
     border-radius: 5px;
 }
 
+    .status-msg * {
+        margin: 0;
+    }
+
     .status-msg > p {
         text-align: center;
     }
