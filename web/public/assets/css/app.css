@@ -192,7 +192,7 @@ button {
 
     .flex.vertical {
         flex-direction: column;
-        justify-content: space-around;
+        /*justify-content: space-around;*/
         width: 100%;
         align-content: center;
     }
