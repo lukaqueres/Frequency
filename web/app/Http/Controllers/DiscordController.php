@@ -235,11 +235,11 @@ class DiscordController extends Controller
         Session::put('authorized', true);
         Session::save();
 
-        if ($request->missing(status)) {
+        if ($request->missing(state)) {
             return redirect('manage');
         }
         else {
-            return redirect(status);
+            return redirect(state);
         }
 	}
 
