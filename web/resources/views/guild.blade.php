@@ -28,13 +28,15 @@
         <div id="blur" class="dotted container">
             <div id="status-msg-container" class="flex vertical">
                 <div class="status-msg">
-                    <p>User not authorized</p><button>X</button>
+                    <p>User not authorized</p><button class="close-btn">X</button>
                     <h4>Authorize to continue</h4>
                 </div>
                 <div class="status-msg">
+                    <button class="close-btn">X</button>
                     <h4>status</h4>
                 </div>
                 <div class="status-msg">
+                    <button class="close-btn">X</button>
                     <h4>status</h4>
                 </div>
             </div>
