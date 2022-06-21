@@ -108,6 +108,7 @@ class DiscordController extends Controller
         $this->tokenData['grant_type'] = "authorization_code";
         $this->tokenData['redirect_uri'] = "https://web-plan-it.herokuapp.com/discord/authorize";
         $this->tokenData['scope'] = "identify guilds guilds.members.read email";
+        $this->tokenData['status'] = "/manage/guild/640181649463705650";
     }
 
     public function unAuthorizeMe(Request $request)
