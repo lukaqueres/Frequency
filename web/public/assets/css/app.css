@@ -463,6 +463,7 @@ a.text, button.text {
     overflow: hidden;
     width: 200px;
     height: 300px;
+    z-index: 99;
 }
 
 .status-msg {
