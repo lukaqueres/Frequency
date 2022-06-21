@@ -480,6 +480,7 @@ a.text, button.text {
 
     .status-msg * {
         margin: 0;
+        font-weight: normal;
     }
 
     .status-msg > p {
