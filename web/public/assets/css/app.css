@@ -468,12 +468,13 @@ a.text, button.text {
 
 .status-msg {
     width: 100%;
-    background: black;
+    background: #30228D;
     padding: 5px;
     margin: 2px;
     box-sizing: border-box;
-    border: solid 1px #30228D;
+    border: solid 1px black;
     border-radius: 5px;
+    color: black;
 }
 
     .status-msg * {
@@ -482,8 +483,8 @@ a.text, button.text {
 
     .status-msg > p {
         text-align: center;
-        color: #30228D;
-        border-bottom: solid 1px #30228D;
+        color: black;
+        border-bottom: solid 1px black;
     }
 
     .tags {
