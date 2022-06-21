@@ -538,6 +538,7 @@ a.text, button.text {
         color: black;
     }
 
+} /*
 #app-container {
     margin: 0;
     height: 100%;
@@ -660,14 +661,14 @@ a.text, button.text {
 
 .app-dropdown-content {
     display: none;
-}
+
 
     .app-dropdown-content h1, h2, h3, h4, h5 {
         color: var(--fnt-color-two);
     }
 
     .app-dropdown-content tr {
-        /*padding: 5px 0;*/
+        padding: 5px 0;
     }
 
     .app-dropdown-content tr:hover {
@@ -727,3 +728,4 @@ a.text, button.text {
     height: 100%;
     margin: 0;
 }
+*/
