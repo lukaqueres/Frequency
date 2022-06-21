@@ -197,6 +197,11 @@ button {
         align-content: center;
     }
 
+    .flex.space-around {
+        justify-content: space-around;
+    }
+
+
     .flex > .cover {
         flex-grow: 1;
     }
