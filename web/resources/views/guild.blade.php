@@ -28,13 +28,13 @@
         <div id="blur" class="dotted container">
             <div id="status-msg-container" class="flex vertical">
                 <div class="status-msg">
-                    status
+                    <h4>status</h4>
                 </div>
                 <div class="status-msg">
-                    status
+                    <h4>status</h4>
                 </div>
                 <div class="status-msg">
-                    status
+                    <h4>status</h4>
                 </div>
             </div>
             <?php if (Session::exists('status')) {
