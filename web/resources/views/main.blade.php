@@ -12,7 +12,8 @@
     </head>
     <body>
         Main</br>
-        <a href='https://discord.com/api/oauth2/authorize?client_id=875271995644842004&state=%2Fmanage%2Fguild%2F640181649463705650&redirect_uri=https%3A%2F%2Fweb-plan-it.herokuapp.com%2Fdiscord%2Fauthorize&response_type=code&scope=identify%20email%20guilds%20guilds.members.read'> AUTHORIZE </a>
+        <a href='https://discord.com/api/oauth2/authorize?client_id=875271995644842004&state=%2Fmanage%2Fguild%2F640181649463705650&redirect_uri=https%3A%2F%2Fweb-plan-it.herokuapp.com%2Fdiscord%2Fauthorize&response_type=code&scope=identify%20email%20guilds%20guilds.members.read'> AUTHORIZE FOR GUILD</a>
+        <a href='https://discord.com/api/oauth2/authorize?client_id=875271995644842004&redirect_uri=https%3A%2F%2Fweb-plan-it.herokuapp.com%2Fdiscord%2Fauthorize&response_type=code&scope=identify%20email%20guilds%20guilds.members.read'> AUTHORIZE </a>
         <?php if (Session::exists('status')) {
             echo 'status: ' . json_encode(Session::get('status'));
         }?>
