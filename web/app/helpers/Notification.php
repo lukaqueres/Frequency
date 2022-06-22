@@ -28,7 +28,7 @@ class Notification
         if ($this->link) {
             $node .= '<a href="' . $this->link . '">' . $this->linkTitle; . '</a>';
         }
-        $node .= '<button class="close" onclick="closeParent()">Close notification</button></div>';
+        $node .= '<button class="close" onclick="closeParent(event)">Close notification</button></div>';
         $this->node = $node;
     }
 
