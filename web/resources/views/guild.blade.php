@@ -27,7 +27,7 @@
     <body>
         <div id="blur" class="dotted container">
             <div id="notification-container" class="flex vertical">
-                <div class="status-msg">
+                <div class="notification">
                     <p>User not authorized</p>
                     <h4>Authorize to continue</h4>
                     <button class="close-btn">Close notification</button>
