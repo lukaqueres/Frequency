@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class Notification
+class NotificationGenerator
 {
     public $code;
     protected $title;
