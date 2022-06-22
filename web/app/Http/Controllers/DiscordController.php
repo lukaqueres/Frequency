@@ -281,11 +281,11 @@ class DiscordController extends Controller
     public function showGuild(Request $request)
     {
         if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
-            if (env('APP_DEBUG')) {
-                return response()->json([
-                    'error_message' => 'User is not authorized.',
-                ]);
-            } else {
+            //if (env('APP_DEBUG')) {
+            //    return response()->json([
+            //        'error_message' => 'User is not authorized.',
+            //    ]);
+            //} else {
                 $notification = new Notification('Not authorized', 'User not found, authorize through discord in order to continue. Link below after authorization will redirect to wanted destination.');
                 $notification->addUrl('Authorize', url()->current());
                 $notification->generate();
