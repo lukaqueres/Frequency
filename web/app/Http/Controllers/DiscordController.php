@@ -281,31 +281,31 @@ class DiscordController extends Controller
     public function showGuild(Request $request)
     {
         if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
-            //if (env('APP_DEBUG')) {
-            //    return response()->json([
-            //        'error_message' => 'User is not authorized.',
-            //    ]);
-            //} else {
+            if (env('APP_DEBUG')) {
+                return response()->json([
+                    'error_message' => 'User is not authorized.',
+                ]);
+            } else {
                 $notification = new Notification('Not authorized', 'User not found, authorize through discord in order to continue. Link below after authorization will redirect to wanted destination.');
                 $notification->addUrl('Authorize', url()->current());
                 $notification->generate();
                 Session::flash('notification', $notification);
                 return redirect('/');
-            //}
+            }
         }
         $data = Session::get('guilds');
         if (! (Arr::exists($data, $request->id)))  { // Check if user is in guild with given id
-            if (env('APP_DEBUG')) {
-                return response()->json([
-                    'error_message' => 'Guild not found.',
-                ]);
-            } else {
+            //if (env('APP_DEBUG')) {
+            //    return response()->json([
+            //        'error_message' => 'Guild not found.',
+            //    ]);
+            //} else {
                 $notification = new Notification('Guild not found', 'Guild not found, check if provided guild id is correct and authorized user is member in it.');
                 $notification->generate();
                 Session::flash('notification', $notification);
                 return var_dump($notification);
                 return redirect('/manage');
-            }
+            //}
         }
         $data = array();
         $data['id']=$request->id;
