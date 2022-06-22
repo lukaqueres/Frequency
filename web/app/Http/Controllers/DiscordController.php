@@ -299,7 +299,8 @@ class DiscordController extends Controller
                     'error_message' => 'Guild not found.',
                 ]);
             } else {
-                Session::flash('notification', 'Guild not found');
+                $notification = new Notification('Guild not found', 'Guild not found, check if provided guild id is correct and authorized user is member in it.');
+                Session::flash('notification', $notification);
                 return redirect('/manage');
             }
         }
