@@ -252,7 +252,7 @@ class DiscordController extends Controller
                     'error_message' => 'User is not authorized.',
                 ]);
             } else {
-                Session::flash('status', 'Not authorized');
+                Session::flash('notification', 'Not authorized');
                 return redirect('/');
             }
         }
@@ -268,7 +268,7 @@ class DiscordController extends Controller
                     'error_message' => 'User is not authorized.',
                 ]);
             } else {
-                Session::flash('status', 'Not authorized');
+                Session::flash('notification', 'Not authorized');
                 return redirect('/');
             }
         }
@@ -285,7 +285,7 @@ class DiscordController extends Controller
                     'error_message' => 'User is not authorized.',
                 ]);
             } else {
-                Session::flash('status', 'Not authorized');
+                Session::flash('notification', 'Not authorized');
                 return redirect('/');
             }
         }
@@ -296,7 +296,7 @@ class DiscordController extends Controller
                     'error_message' => 'Guild not found.',
                 ]);
             } else {
-                Session::flash('status', 'Guild not found');
+                Session::flash('notification', 'Guild not found');
                 return redirect('/manage');
             }
         }
