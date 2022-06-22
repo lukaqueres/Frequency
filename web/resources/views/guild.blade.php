@@ -26,19 +26,19 @@
 
     <body>
         <div id="blur" class="dotted container">
-            <div id="status-msg-container" class="flex vertical">
+            <div id="notification-container" class="flex vertical">
                 <div class="status-msg">
-                    <button class="close-btn">X</button>
                     <p>User not authorized</p>
                     <h4>Authorize to continue</h4>
+                    <button class="close-btn">Close notification</button>
                 </div>
-                <div class="status-msg">
-                    <button class="close-btn">X</button>
+                <div class="notification">
                     <h4>status</h4>
+                    <button class="close-btn">Close notification</button>
                 </div>
-                <div class="status-msg">
-                    <button class="close-btn">X</button>
+                <div class="notification">
                     <h4>status</h4>
+                    <button class="close-btn">Close notification</button>
                 </div>
             </div>
             <?php if (Session::exists('status')) {
