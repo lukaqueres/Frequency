@@ -23,7 +23,7 @@
         "files": [
             "app/helpers/helpers.php",
             "app/helpers/Guild.php",
-            "app/helpers/Notification.php"
+            "app/helpers/NotificationGenerator.php"
         ],
         "psr-4": {
             "App\\": "app/",
