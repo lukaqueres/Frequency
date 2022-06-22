@@ -456,7 +456,7 @@ a.text, button.text {
     margin: 0;
 }
 
-#status-msg-container {
+#notification-container {
     position: fixed;
     top: 50px;
     right: 0px;
@@ -467,7 +467,7 @@ a.text, button.text {
     z-index: 99;
 }
 
-.status-msg {
+.notification {
     width: 100%;
     background: #9c94ff;
     padding: 5px;
