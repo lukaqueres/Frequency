@@ -291,7 +291,7 @@ class DiscordController extends Controller
                 $notification->generate();
                 Session::flash('notification', $notification);
                 return redirect('/');
-            }
+            //}
         }
         $data = Session::get('guilds');
         if (! (Arr::exists($data, $request->id)))  { // Check if user is in guild with given id
