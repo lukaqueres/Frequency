@@ -33,11 +33,11 @@
                     <button class="close">Close notification</button>
                 </div>
                 <div class="notification">
-                    <h6>status</h6>
+                    <h5>status</h5>
                     <button class="close">Close notification</button>
                 </div>
                 <div class="notification">
-                    <h4>status</h4>
+                    <h5>status</h5>
                     <button class="close">Close notification</button>
                 </div>
             </div>

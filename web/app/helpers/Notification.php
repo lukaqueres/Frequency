@@ -24,7 +24,7 @@ class Notification
         $notifiClasses = 'notification';
         $node = '<div class="' . $notifiClasses . '">
                     <p>' . $this->title . '</p>
-                    <h4>' . $this->content . '</h4>';
+                    <h5>' . $this->content . '</h5>';
         if ($this->link) {
             $node .= '<a href="' . $this->link . '">' . $this->linkTitle; . '</a>';
         }
