@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 
 use Guild;
-use NotificationGenerator;
+use app\helpers\NotificationGenerator;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
