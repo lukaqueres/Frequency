@@ -2,7 +2,7 @@ $(document).foundation()
 
 
 function closeParent(e) {
-    let deleteNode = e.target;
+    let deleteNode = e.target.parentNode;
     deleteNode.parentNode.removeChild(deleteNode);
 }
 
