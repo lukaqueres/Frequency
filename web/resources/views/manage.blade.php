@@ -22,15 +22,37 @@
         $guilds = Session::get('guilds');
     ?>
     <body>
-            <?php if (Session::exists('status')) { ?>
+            <?php if (Session::exists('notification')) { ?>
                 <div id="blur" class="app-grid-container active">
                     <div id="guildPop-up" class="pop-up active">
-                    <?php echo 'status: ' . json_encode(Session::get('status')); ?>
+                    <?php echo 'status: ' . json_encode(Session::get('notification')); ?>
                     <button onclick='togglePopUp("statusPop-up")'>Close</button>
                     </div>;
             <?php } else { ?>
                 <div id="blur" class="app-grid-container">
             <?php } ?>
+            <div id="notification-container" class="flex vertical">
+                <?php
+                    if (Session::exists('notification')) {
+                        $notification = Session::get('notification');
+                        $notifynode = $notification->generate();
+                        echo $notifynode;
+                    }
+                ?>
+                <div class="notification">
+                    <p>User not authorized</p>
+                    <h5>Authorize to continue</h5>
+                    <button class="close" onclick="closeParent(event)">Close notification</button>
+                </div>
+                <div class="notification">
+                    <h5>status</h5>
+                    <button class="close" onclick="closeParent(event)">Close notification</button>
+                </div>
+                <div class="notification">
+                    <h5>status</h5>
+                    <button class="close" onclick="closeParent(event)">Close notification</button>
+                </div>
+            </div>
             <div class="app-left">
                 Back to manage
                 <div class="app-flex-container">
