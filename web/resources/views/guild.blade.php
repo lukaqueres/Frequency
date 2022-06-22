@@ -29,11 +29,11 @@
             <div id="notification-container" class="flex vertical">
                 <div class="notification">
                     <p>User not authorized</p>
-                    <h4>Authorize to continue</h4>
+                    <h5>Authorize to continue</h5>
                     <button class="close">Close notification</button>
                 </div>
                 <div class="notification">
-                    <h4>status</h4>
+                    <h6>status</h6>
                     <button class="close">Close notification</button>
                 </div>
                 <div class="notification">
