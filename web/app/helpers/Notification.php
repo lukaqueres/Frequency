@@ -23,7 +23,7 @@ class Notification
         $this->linkTitle = $linkTitle;
     }
 
-    public function generate() {
+    function generate() {
         $notifiClasses = 'notification';
         $node = '<div class="' . $notifiClasses . '">
                     <p>' . $this->title . '</p>
