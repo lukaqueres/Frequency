@@ -489,15 +489,15 @@ a.text, button.text {
         border-bottom: solid 1px black;
     }
 
-    .notification > .close-btn {
-        /*position: absolute;*/
-        top: 3px;
-        right: 1px;
-        background: black;
+    .notification > .close {
+        background: transparent;
         border: 1px black solid;
-        color: #30228D;
-        border-radius: 0 5px 0 5px;
+        color: black;
+        border-radius: 5px;
         box-sizing: border-box;
+        transform: translateX(-50%);
+        margin: 10px;
+        margin-left: 50%;
     }
 
     .tags {
