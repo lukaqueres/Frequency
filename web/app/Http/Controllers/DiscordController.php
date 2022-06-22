@@ -288,6 +288,7 @@ class DiscordController extends Controller
             } else {
                 $notification = new Notification('Not authorized', 'User not found, authorize through discord in order to continue. Link below after authorization will redirect to wanted destination.');
                 $notification->addUrl('Authorize', url()->current());
+                $notification->generate();
                 Session::flash('notification', $notification);
                 return redirect('/');
             }
@@ -300,6 +301,7 @@ class DiscordController extends Controller
                 ]);
             } else {
                 $notification = new Notification('Guild not found', 'Guild not found, check if provided guild id is correct and authorized user is member in it.');
+                $notification->generate();
                 Session::flash('notification', $notification);
                 return redirect('/manage');
             }
