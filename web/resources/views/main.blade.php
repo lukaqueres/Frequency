@@ -17,5 +17,27 @@
         <?php if (Session::exists('notification')) {
             echo 'notification: ' . json_encode(Session::get('notification'));
         }?>
+        <div id="notification-container" class="flex vertical">
+            <?php
+                if (Session::exists('notification')) {
+                    $notification = Session::get('notification');
+                    $notifynode = $notification->generate();
+                    echo $notifynode;
+                }
+            ?>
+            <div class="notification">
+                <p>User not authorized</p>
+                <h5>Authorize to continue</h5>
+                <button class="close" onclick="closeParent(event)">Close notification</button>
+            </div>
+            <div class="notification">
+                <h5>status</h5>
+                <button class="close" onclick="closeParent(event)">Close notification</button>
+            </div>
+            <div class="notification">
+                <h5>status</h5>
+                <button class="close" onclick="closeParent(event)">Close notification</button>
+            </div>
+        </div>
     </body>
 </html>
