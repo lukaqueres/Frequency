@@ -27,6 +27,13 @@
     <body>
         <div id="blur" class="dotted container">
             <div id="notification-container" class="flex vertical">
+                <?php
+                    if (Session::exists('notification')) {
+                        $notification = Session::get('notification');
+                        $notifynode = $notification->generate();
+                        echo $notifynode;
+                    }
+                ?>
                 <div class="notification">
                     <p>User not authorized</p>
                     <h5>Authorize to continue</h5>

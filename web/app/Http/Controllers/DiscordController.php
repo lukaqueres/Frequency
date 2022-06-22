@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 
 use Guild;
+use Notification;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -285,7 +286,9 @@ class DiscordController extends Controller
                     'error_message' => 'User is not authorized.',
                 ]);
             } else {
-                Session::flash('notification', 'Not authorized');
+                $notification = new Notification('Not authorized', 'User not found, authorize through discord in order to continue. Link below after authorization will redirect to wanted destination.');
+                $notification->addUrl('Authorize', url()->current());
+                Session::flash('notification', $notification);
                 return redirect('/');
             }
         }

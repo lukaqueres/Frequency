@@ -13,9 +13,12 @@ class Notification
     public $node;
 
 
-    function __construct($title, $content, $link = Null, $linkTitle = Null) {
+    function __construct($title, $content) {
         $this->title = $title;
         $this->content = $content;
+    }
+
+    function addUrl($linkTitle, $link) {
         $this->link = $link;
         $this->linkTitle = $linkTitle;
     }
