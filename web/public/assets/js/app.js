@@ -1,5 +1,11 @@
 $(document).foundation()
 
+
+function closeParent(e) {
+    let deleteNode = e.target;
+    deleteNode.parentNode.removeChild(deleteNode);
+}
+
 function togglePopUp(popUp) {
     var blur = document.getElementById('blur');
     blur.classList.toggle('active');

@@ -30,15 +30,15 @@
                 <div class="notification">
                     <p>User not authorized</p>
                     <h5>Authorize to continue</h5>
-                    <button class="close">Close notification</button>
+                    <button class="close" onclick="closeParent()">Close notification</button>
                 </div>
                 <div class="notification">
                     <h5>status</h5>
-                    <button class="close">Close notification</button>
+                    <button class="close" onclick="closeParent()">Close notification</button>
                 </div>
                 <div class="notification">
                     <h5>status</h5>
-                    <button class="close">Close notification</button>
+                    <button class="close" onclick="closeParent()">Close notification</button>
                 </div>
             </div>
             <?php if (Session::exists('status')) {
