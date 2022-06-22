@@ -478,18 +478,18 @@ a.text, button.text {
     color: black;
 }
 
-    .status-msg * {
+    .notification * {
         margin: 0;
         font-weight: normal;
     }
 
-    .status-msg > p {
+    .notification > p {
         text-align: center;
         color: black;
         border-bottom: solid 1px black;
     }
 
-    .status-msg > .close-btn {
+    .notification > .close-btn {
         /*position: absolute;*/
         top: 3px;
         right: 1px;
