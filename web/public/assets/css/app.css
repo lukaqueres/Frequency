@@ -487,6 +487,7 @@ a.text, button.text {
         text-align: center;
         color: black;
         border-bottom: solid 1px black;
+        margin-bottom: 10px;
     }
 
     .notification > .close {
