@@ -469,7 +469,7 @@ a.text, button.text {
 
 .status-msg {
     width: 100%;
-    background: #30228D;
+    background: #9c94ff;
     padding: 5px;
     margin: 2px;
     box-sizing: border-box;
@@ -490,7 +490,7 @@ a.text, button.text {
     }
 
     .status-msg > .close-btn {
-        position: absolute;
+        /*position: absolute;*/
         top: 3px;
         right: 1px;
         background: black;
