@@ -29,6 +29,7 @@
             <div id="this-posibilities" class="flex vertical">
                 
             </div>
+            <button onclick="thislottery()">Run lottery</button>
         </div>
     </body>
 
@@ -50,8 +51,8 @@
 
             let newMaxValue = 100 - provideValue - pChanceSum;
             newMaxValue = parseInt(newMaxValue);
-            console.log(typeof newMaxValue);
-            console.log(newMaxValue);
+            //console.log(typeof newMaxValue);
+            //console.log(newMaxValue);
 
             document.getElementById('this-provide-range').setAttribute("max",newMaxValue);
             document.getElementById('this-provide-range').setAttribute("value",newMaxValue);
@@ -88,6 +89,27 @@
             div.appendChild(button);
 
             container.appendChild(div);
+        }
+
+        function thislottery() {
+            var x = document.getElementsByClassName("this-chance-range");
+            var pChanceSum = [];
+
+            for(var i = 0; i<x.length; i++){
+               pChanceSum.push(x[i].value);
+            }
+
+            numArray.sort((a, b) => a - b);
+
+            let lotteryNum = random(1, 99);
+
+            for(var i = 0; i<pChanceSum.length; i++){
+                if (lotteryNum <= pChanceSum[i]) {
+                    console.log(lotteryNum);
+                    console.log(pChanceSum[i]);
+                    break;
+                }
+            }
         }
 
         function thischangeProvideInput(e) {
