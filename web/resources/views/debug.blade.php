@@ -25,7 +25,7 @@
                 <input type="number" oninput="thischangeProvideInput(event)" id="this-provide-range-num" value ='100' min="10" max="100"/>
                 <button onclick="thisAddPosibility()">Add</button>
             </div>
-            <div id="possibilities">
+            <div id="this-posibilities">
                 
             </div>
         </div>
@@ -33,9 +33,39 @@
 
     <script>
         function thisAddPosibility() {
+
+            let provideText = document.getElementById('this-provide-text').value;
+            let provideValue = document.getElementById('this-provide-range').value;
+
             let rangeInput, textInput, pdiv;
             let pChanceSum, pSum;
 
+            var container = document.getElementById('this-posibilities');
+            var div = document.createElement("div");
+            div.className = "this-posibility flex";
+
+            let p = document.createElement("p");
+            p.innerText = provideText;
+
+            var inputRange = document.createElement("input");
+            input.type = "range";
+            input.setAttribute("value",provideValue);
+
+            var inputNum = document.createElement("input");
+            input.type = "number";
+            input.setAttribute("value",provideValue);
+
+            var button = document.createElement("button");
+            button.setAttribute("onclick",'closeParent(event)'); // "key-word-'+(count + 1)+'"
+            button.innerText = "Delete";
+            button.type="button";
+
+            div.appendChild(p);
+            div.appendChild(inputRange);
+            div.appendChild(inputNum);
+            div.appendChild(button);
+
+            container.appendChild(div);
         }
 
         function thischangeProvideInput(e) {
