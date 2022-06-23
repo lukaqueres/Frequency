@@ -22,12 +22,18 @@
             <div class="flex">
                 <input type="text" id="this-provide-text" placeholder="Thing to random"/>
                 <input type="range" id="this-provide-range" value='100'  min='10' max='100'/>
-                <button onclick="">Add possibility</button>
+                <button onclick="thisAddPosibility()">Add posibility</button>
+            </div>
+            <div id="possibilities">
+                
             </div>
         </div>
     </body>
 
     <script>
-
+        function thisAddPosibility() {
+            let rangeInput, textInput, pdiv;
+            let pChanceSum, pSum;
+        }
     </script>
 </html>
