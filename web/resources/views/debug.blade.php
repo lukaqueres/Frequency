@@ -30,6 +30,7 @@
                 
             </div>
             <button onclick="thislottery()">Run lottery</button>
+            <p id="this-result"></p>
         </div>
     </body>
 
@@ -107,6 +108,14 @@
                 if (lotteryNum <= pChanceSum[i]) {
                     console.log(lotteryNum);
                     console.log(pChanceSum[i]);
+
+                    var p = document.getElementById('this-result');
+
+                    //let p = document.createElement("p");
+                    p.innerText = 'Result with ' + pChanceSum[i] + '% chance wins!';
+
+                    //container.appendChild(p);
+
                     break;
                 }
             }
