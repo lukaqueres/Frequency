@@ -38,6 +38,12 @@
             let provideText = document.getElementById('this-provide-text').value;
             let provideValue = document.getElementById('this-provide-range').value;
 
+            document.getElementById('this-provide-range').setAttribute("max",provideValue);
+            document.getElementById('this-provide-range').setAttribute("value",provideValue);
+
+            document.getElementById('this-provide-range-num').setAttribute("max",provideValue);
+            document.getElementById('this-provide-range-num').setAttribute("value",provideValue);
+
             let rangeInput, textInput, pdiv;
             let pChanceSum, pSum;
 
