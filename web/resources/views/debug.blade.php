@@ -48,12 +48,12 @@
             p.innerText = provideText;
 
             var inputRange = document.createElement("input");
-            input.type = "range";
-            input.setAttribute("value",provideValue);
+            inputRange.type = "range";
+            inputRange.setAttribute("value",provideValue);
 
             var inputNum = document.createElement("input");
-            input.type = "number";
-            input.setAttribute("value",provideValue);
+            inputNum.type = "number";
+            inputNum.setAttribute("value",provideValue);
 
             var button = document.createElement("button");
             button.setAttribute("onclick",'closeParent(event)'); // "key-word-'+(count + 1)+'"
