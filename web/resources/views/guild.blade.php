@@ -37,6 +37,7 @@
                 <div class="notification">
                     <p>User not authorized</p>
                     <h5>Authorize to continue</h5>
+                    <a href="#">Authorize</a>
                     <button class="close" onclick="closeParent(event)">Close notification</button>
                 </div>
                 <div class="notification">
