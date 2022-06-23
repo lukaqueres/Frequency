@@ -48,7 +48,7 @@
                pChanceSum += x[i].value;
             }
 
-            let newMaxValue = provideValue - pChanceSum;
+            let newMaxValue = 100 - provideValue - pChanceSum;
             newMaxValue = parseInt(newMaxValue);
             console.log(typeof newMaxValue);
             console.log(newMaxValue);
