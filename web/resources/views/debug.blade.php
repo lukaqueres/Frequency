@@ -41,6 +41,8 @@
             let rangeInput, textInput, pdiv;
             let pChanceSum, pSum;
 
+            pChanceSum = 0;
+
             var x = document.getElementsByClassName("this-chance-range");
             for(var i = 0; i<x.length; i++){
                pChanceSum += x[i].value;
@@ -67,7 +69,7 @@
             var inputRange = document.createElement("input");
             inputRange.type = "range";
             inputRange.setAttribute("value",provideValue);
-            div.className = "this-chance-range";
+            inputRange.className = "this-chance-range";
 
             var inputNum = document.createElement("input");
             inputNum.type = "number";
