@@ -25,7 +25,8 @@
                 <input type="number" oninput="thischangeProvideInput(event)" id="this-provide-range-num" value ='100' min="10" max="100"/>
                 <button onclick="thisAddPosibility()">Add</button>
             </div>
-            <div id="this-posibilities">
+            <br>
+            <div id="this-posibilities" class="flex column">
                 
             </div>
         </div>
