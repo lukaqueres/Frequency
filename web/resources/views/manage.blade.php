@@ -26,7 +26,7 @@
         <?php
             if (Session::exists('notification')) {
                 $notification = Session::get('notification');
-                $notifynode = $notification->generate();
+                $notifynode = $notification->node;
                 echo $notifynode;
             }
         ?>
