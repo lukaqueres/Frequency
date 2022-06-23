@@ -20,9 +20,10 @@
         DEBUGGING
         <div id="this-random-picker">
             <div class="flex">
-                <input type="text" id="this-provide-text" placeholder="Thing to random"/>
+                <input type="text" id="this-provide-text" placeholder="Posibility"/>
                 <input type="range" id="this-provide-range" value='100'  min='10' max='100'/>
-                <button onclick="thisAddPosibility()">Add posibility</button>
+                <input type="number" id="this-provide-range-num" value ='100' min="10" max="100"/>
+                <button onclick="thisAddPosibility()">Add</button>
             </div>
             <div id="possibilities">
                 
@@ -34,6 +35,7 @@
         function thisAddPosibility() {
             let rangeInput, textInput, pdiv;
             let pChanceSum, pSum;
+
         }
     </script>
 </html>
