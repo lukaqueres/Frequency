@@ -21,8 +21,8 @@
         <div id="this-random-picker">
             <div class="flex">
                 <input type="text" id="this-provide-text" placeholder="Posibility"/>
-                <input type="range" oninput="thischangeProvideInput(event)" id="this-provide-range" value='100'  min='10' max='100'/>
-                <input type="number" oninput="thischangeProvideInput(event)" id="this-provide-range-num" value ='100' min="10" max="100"/>
+                <input type="range" oninput="thischangeProvideInput(event)" id="this-provide-range" value='100'  min='0' max='100'/>
+                <input type="number" oninput="thischangeProvideInput(event)" id="this-provide-range-num" value ='100' min="0" max="100"/>
                 <button onclick="thisAddPosibility()">Add</button>
             </div>
             <br>
@@ -69,10 +69,12 @@
             var inputRange = document.createElement("input");
             inputRange.type = "range";
             inputRange.setAttribute("value",provideValue);
+            inputRange.setAttribute("min",'0');
             inputRange.className = "this-chance-range";
 
             var inputNum = document.createElement("input");
             inputNum.type = "number";
+            inputNum.setAttribute("min",'0');
             inputNum.setAttribute("value",provideValue);
 
             var button = document.createElement("button");
