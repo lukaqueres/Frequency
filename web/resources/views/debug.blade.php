@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Wild West Post Office | Manage</title>
+        <title> Wild West Post Office | Debug</title>
 	    <link rel="stylesheet" type="text/css" href="/assets/css/app.css" />
 	    <script type="text/javascript" src="/assets/js/app.js"></script>
 	    <meta name="description" content="Main site featuring Discord multi-task bot Wild West Post Office!" />
