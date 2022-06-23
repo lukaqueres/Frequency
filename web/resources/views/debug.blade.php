@@ -48,6 +48,9 @@
 
             let newMaxValue = provideValue - pChanceSum;
             newMaxValue = parseInt(newMaxValue);
+            console.log(typeof newMaxValue);
+            console.log(newMaxValue);
+
             document.getElementById('this-provide-range').setAttribute("max",newMaxValue);
             document.getElementById('this-provide-range').setAttribute("value",newMaxValue);
 
