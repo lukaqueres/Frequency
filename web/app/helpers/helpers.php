@@ -179,7 +179,8 @@ function gen_authorization_link($state = Null) {
         'client_id' => '875271995644842004',
         'redirect_uri' => 'https://web-plan-it.herokuapp.com/discord/authorize',
         'scope' => 'identify guilds guilds.members.read email',
-        'state' => $state
+        'state' => $state,
+        'response_type' => 'code'
     ];
 
     $url = 'https://discord.com/api/oauth2/authorize?';
