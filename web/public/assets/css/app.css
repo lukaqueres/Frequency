@@ -497,7 +497,7 @@ a.text, button.text {
         border-radius: 5px;
         box-sizing: border-box;
         margin-block: 10px;
-        padding: 10px;
+        padding: 5px;
         width: 100%;
         display: inline-block;
         text-align: center;
@@ -511,7 +511,7 @@ a.text, button.text {
         border-radius: 5px;
         box-sizing: border-box;
         transform: translateX(-50%);
-        margin: 10px;
+        /*margin: 10px;*/
         margin-left: 50%;
     }
 
