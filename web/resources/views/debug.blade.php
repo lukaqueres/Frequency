@@ -26,7 +26,7 @@
                 <button onclick="thisAddPosibility()">Add</button>
             </div>
             <br>
-            <div id="this-posibilities" class="flex column">
+            <div id="this-posibilities" class="flex vertical">
                 
             </div>
         </div>
