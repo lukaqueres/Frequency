@@ -177,9 +177,9 @@ function get_avatar($user)
 function gen_authorization_link($state = Null) {
     $params = [
         'client_id' => '875271995644842004',
-        'state' => $state,
         'redirect_uri' => 'https://web-plan-it.herokuapp.com/discord/authorize',
-        'scope' => 'identify guilds guilds.members.read email'
+        'scope' => 'identify guilds guilds.members.read email',
+        'state' => $state
     ];
 
     $url = 'https://discord.com/api/oauth2/authorize?';
