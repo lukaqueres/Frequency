@@ -40,9 +40,9 @@
 
         function thischangeProvideInput(e) {
             if (e.target.id == 'this-provide-range') {
-                document.getelementById('this-provide-range-num').value = e.target.value;
+                document.getElementById('this-provide-range-num').value = e.target.value;
             } else {
-            document.getelementById('this-provide-range').value = e.target.value;
+            document.getElementById('this-provide-range').value = e.target.value;
             }
         }
     </script>
