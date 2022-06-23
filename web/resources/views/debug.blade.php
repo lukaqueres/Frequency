@@ -101,7 +101,7 @@
 
             pChanceSum.sort((a, b) => a - b);
 
-            let lotteryNum = random(1, 99);
+            let lotteryNum = random(0, 100);
 
             for(var i = 0; i<pChanceSum.length; i++){
                 if (lotteryNum <= pChanceSum[i]) {
