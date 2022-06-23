@@ -26,4 +26,10 @@ class MainController extends Controller
         }
         return view('main', $data);
     }
+
+    public function debug(Request $request)
+    {
+        $data = [];
+        return view('debug', $data);
+    }
 }
