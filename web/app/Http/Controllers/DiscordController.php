@@ -303,7 +303,7 @@ class DiscordController extends Controller
                 $notification = new NotificationGenerator('Guild not found', 'Guild not found, check if provided guild id is correct and authorized user is member in it.');
                 $notification->generate();
                 Session::flash('notification', $notification);
-                return var_dump($notification);
+                //return var_dump($notification);
                 return redirect('/manage');
             //}
         }
