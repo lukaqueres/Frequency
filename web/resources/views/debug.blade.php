@@ -38,14 +38,19 @@
             let provideText = document.getElementById('this-provide-text').value;
             let provideValue = document.getElementById('this-provide-range').value;
 
-            document.getElementById('this-provide-range').setAttribute("max",provideValue);
-            document.getElementById('this-provide-range').setAttribute("value",provideValue);
-
-            document.getElementById('this-provide-range-num').setAttribute("max",provideValue);
-            document.getElementById('this-provide-range-num').setAttribute("value",provideValue);
-
             let rangeInput, textInput, pdiv;
             let pChanceSum, pSum;
+
+            var x = document.getElementsByClassName("this-chance-range");
+            for(var i = 0; i<x.length; i++){
+               pChanceSum += x[i].value;
+            }
+
+            document.getElementById('this-provide-range').setAttribute("max",(provideValue - pChanceSum));
+            document.getElementById('this-provide-range').setAttribute("value",(provideValue - pChanceSum));
+
+            document.getElementById('this-provide-range-num').setAttribute("max",(provideValue - pChanceSum));
+            document.getElementById('this-provide-range-num').setAttribute("value",(provideValue - pChanceSum));
 
             var container = document.getElementById('this-posibilities');
             var div = document.createElement("div");
@@ -57,6 +62,7 @@
             var inputRange = document.createElement("input");
             inputRange.type = "range";
             inputRange.setAttribute("value",provideValue);
+            div.className = "this-chance-range";
 
             var inputNum = document.createElement("input");
             inputNum.type = "number";
