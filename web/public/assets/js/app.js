@@ -20,6 +20,12 @@ function arrRemove(arr, value) {
     });
 }
 
+function random(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
 /*function search_guilds() {
     var input, filter, tabel, tr, a, i, txtValue;
     input = document.getElementById("app-servers-search");
