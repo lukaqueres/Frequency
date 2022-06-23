@@ -457,7 +457,7 @@ a.text, button.text {
 }
 
 .icon {
-    width: 100%;
+    /*width: 100%;*/
     max-height: 30.6px;
     border-radius: 50%;
 }
