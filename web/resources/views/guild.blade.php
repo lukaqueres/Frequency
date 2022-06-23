@@ -73,7 +73,7 @@
 							    <td style="width: 100%; padding: 5px; border-block: solid 1px;" >
                                     <a href="/manage/guild/' . $g->id . '">
                                         <div class="flex">
-									        <img class="app-icon" src="' . $g->icon_url . '"/>
+									        <img class="icon" src="' . $g->icon_url . '"/>
 									        <h3 class="guild-name app-no-margin">' . $g->name . '</h3>
                                             <h5 class="right">' . $g->id .'</h5>
                                         </div>

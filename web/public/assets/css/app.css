@@ -456,6 +456,12 @@ a.text, button.text {
     margin: 0;
 }
 
+.icon {
+    width: 100%;
+    max-height: 30.6px;
+    border-radius: 50%;
+}
+
 #notification-container {
     position: fixed;
     top: 50px;
