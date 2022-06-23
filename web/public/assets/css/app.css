@@ -496,10 +496,12 @@ a.text, button.text {
         color: #9c94ff;
         border-radius: 5px;
         box-sizing: border-box;
-        transform: translateX(-50%);
-        margin: 10px;
-        margin-left: 50%;
+        margin-block: 10px;
         padding: 10px;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
     }
 
     .notification > .close {
