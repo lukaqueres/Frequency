@@ -287,7 +287,7 @@ class DiscordController extends Controller
                 ]);
             } else {
                 $notification = new NotificationGenerator('Not authorized', 'User not found, authorize through discord in order to continue. Link below after authorization will redirect to wanted destination.');
-                $notification->addUrl('Authorize', url()->current());
+                $notification->addUrl('Authorize', gen_authorization_link(url()->current()));
                 $notification->generate();
                 Session::flash('notification', $notification);
                 return redirect('/');
