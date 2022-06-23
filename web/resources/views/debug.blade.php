@@ -21,8 +21,8 @@
         <div id="this-random-picker">
             <div class="flex">
                 <input type="text" id="this-provide-text" placeholder="Posibility"/>
-                <input type="range" id="this-provide-range" value='100'  min='10' max='100'/>
-                <input type="number" id="this-provide-range-num" value ='100' min="10" max="100"/>
+                <input type="range" oninput="thischangeProvideInput(event)" id="this-provide-range" value='100'  min='10' max='100'/>
+                <input type="number" oninput="thischangeProvideInput(event)" id="this-provide-range-num" value ='100' min="10" max="100"/>
                 <button onclick="thisAddPosibility()">Add</button>
             </div>
             <div id="possibilities">
@@ -36,6 +36,14 @@
             let rangeInput, textInput, pdiv;
             let pChanceSum, pSum;
 
+        }
+
+        function thischangeProvideInput(e) {
+            if (e.target.id == 'this-provide-range') {
+                document.getelementById('this-provide-range-num').value = e.target.value;
+            } else {
+            document.getelementById('this-provide-range').value = e.target.value;
+            }
         }
     </script>
 </html>
