@@ -99,7 +99,7 @@
                pChanceSum.push(x[i].value);
             }
 
-            numArray.sort((a, b) => a - b);
+            pChanceSum.sort((a, b) => a - b);
 
             let lotteryNum = random(1, 99);
 
