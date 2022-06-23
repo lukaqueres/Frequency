@@ -173,3 +173,18 @@ function get_avatar($user)
 		return $icon_url;
 	}
 }
+
+function gen_authorization_link($state = Null) {
+    $params = [
+        'client_id' => '875271995644842004',
+        'state' => $state,
+        'redirect_uri' => 'https://web-plan-it.herokuapp.com/discord/authorize',
+        'scope' => 'identify guilds guilds.members.read email'
+    ];
+
+    $url = 'https://discord.com/api/oauth2/authorize?';
+    // array_filter will remove any empty value
+    $url .= http_build_query(array_filter($params));
+
+    return $url;
+}
