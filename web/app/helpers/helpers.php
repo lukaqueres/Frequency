@@ -184,7 +184,7 @@ function gen_authorization_link($state = Null) {
 
     $url = 'https://discord.com/api/oauth2/authorize?';
     // array_filter will remove any empty value
-    $url .= http_build_query(array_filter($params));
+    $url .= http_build_query($params);
 
     return $url;
 }
