@@ -46,11 +46,13 @@
                pChanceSum += x[i].value;
             }
 
-            document.getElementById('this-provide-range').setAttribute("max",(provideValue - pChanceSum));
-            document.getElementById('this-provide-range').setAttribute("value",(provideValue - pChanceSum));
+            let newMaxValue = provideValue - pChanceSum;
+            newMaxValue = parseInt(newMaxValue);
+            document.getElementById('this-provide-range').setAttribute("max",newMaxValue);
+            document.getElementById('this-provide-range').setAttribute("value",newMaxValue);
 
-            document.getElementById('this-provide-range-num').setAttribute("max",(provideValue - pChanceSum));
-            document.getElementById('this-provide-range-num').setAttribute("value",(provideValue - pChanceSum));
+            document.getElementById('this-provide-range-num').setAttribute("max",newMaxValue);
+            document.getElementById('this-provide-range-num').setAttribute("value",newMaxValue);
 
             var container = document.getElementById('this-posibilities');
             var div = document.createElement("div");
