@@ -312,7 +312,7 @@ class DiscordController extends Controller
             $notification = new NotificationGenerator('Bot is not present', 'Bot has not still been invited to this guild. Invite it to unlock multiple configuration options.');
 
             if ($guilds[$request->id]->role == 'administrator' || $guilds[$request->id]->role == 'owner') {
-                $notification->addUrl('Invite', 'https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands');
+                $notification->addUrl('Invite', 'https://discord.com/api/oauth2/authorize?client_id=875271995644842004&permissions=8&scope=bot%20applications.commands', 'target="_blank"');
             }
             $notification->generate();
             Session::flash('notification', $notification);
