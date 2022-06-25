@@ -159,7 +159,7 @@
                     <div class="card wide">
                         <p class="title">Key-words</p>
                         <div id="input-container" class="tags">
-                            <div class="tag flex"><input type="text" id="keyword-entry" class="cover" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></div>
+                            <div class="tag flex"><input type="text" id="keyword-entry" class="cover" maxlength="20" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></div>
                         </div>
                     </div>
                 </div>
@@ -257,6 +257,7 @@
         input.name = "word-"+(count + 1);
         input.className = "cover";
         input.setAttribute("value",keyword);
+        input.setAttribute('maxlengt','20');
 
         button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
         button.innerText = "x";
