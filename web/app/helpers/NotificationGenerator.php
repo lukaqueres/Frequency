@@ -31,7 +31,7 @@ class NotificationGenerator
                     <p>' . $this->title . '</p>
                     <h5>' . $this->content . '</h5>';
         if ($this->link) {
-            $node .= '<a ' . $linkAttr . ' href="' . $this->link . '">' . $this->linkTitle . '</a>';
+            $node .= '<a ' . $this->linkAttr . ' href="' . $this->link . '">' . $this->linkTitle . '</a>';
         }
         $node .= '<button class="close" onclick="closeParent(event)">Close notification</button></div>';
         $this->node = $node;
