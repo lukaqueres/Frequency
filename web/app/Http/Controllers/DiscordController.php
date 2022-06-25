@@ -278,7 +278,7 @@ class DiscordController extends Controller
         return view('user', $data);
     }
 
-    public function showGuild(Request $request)
+    public function Guildview(Request $request)
     {
         if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
             if (env('APP_DEBUG')) {
@@ -293,8 +293,8 @@ class DiscordController extends Controller
                 return redirect('/');
             }
         }
-        $data = Session::get('guilds');
-        if (! (Arr::exists($data, $request->id)))  { // Check if user is in guild with given id
+        $guilds = Session::get('guilds');
+        if (! (Arr::exists($guilds, $request->id)))  { // Check if user is in guild with given id
             if (env('APP_DEBUG')) {
                 return response()->json([
                     'error_message' => 'Guild not found.',
@@ -307,6 +307,19 @@ class DiscordController extends Controller
                 return redirect('/manage');
             }
         }
+
+        if (!$guilds[$request->id]->has_bot)  { // Check if bot is in guild
+            $notification = new NotificationGenerator('Bot is not present', 'Bot has not still been invited to this guild. Invite it to unlock multiple configuration options.');
+
+            if ($guilds[$request->id]->role == 'administrator' || $guilds[$request->id]->role == 'owner') {
+                $notification->addUrl('Invite', '');
+            }
+            $notification->generate();
+            Session::flash('notification', $notification);
+            //return var_dump($notification);
+            return redirect('/manage');
+        }
+
         $data = array();
         $data['id']=$request->id;
         $data['view']=$request->view;
