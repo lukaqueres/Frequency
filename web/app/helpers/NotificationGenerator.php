@@ -9,6 +9,7 @@ class NotificationGenerator
     protected $icon;
     protected $content;
     protected $link;
+    protected $linkAttr;
     protected $linkTitle;
     public $node;
 
@@ -18,9 +19,10 @@ class NotificationGenerator
         $this->content = $content;
     }
 
-    function addUrl($linkTitle, $link) {
+    function addUrl($linkTitle, $link, $linkAttr = Null) {
         $this->link = $link;
         $this->linkTitle = $linkTitle;
+        $this->linkAttr = $linkAttr;
     }
 
     function generate() {
@@ -29,7 +31,7 @@ class NotificationGenerator
                     <p>' . $this->title . '</p>
                     <h5>' . $this->content . '</h5>';
         if ($this->link) {
-            $node .= '<a href="' . $this->link . '">' . $this->linkTitle . '</a>';
+            $node .= '<a ' . $linkAttr . ' href="' . $this->link . '">' . $this->linkTitle . '</a>';
         }
         $node .= '<button class="close" onclick="closeParent(event)">Close notification</button></div>';
         $this->node = $node;
