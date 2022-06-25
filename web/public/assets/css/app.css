@@ -530,7 +530,7 @@ a.text, button.text {
     .tags > div.tag {
         background-color: black;
         border-radius: 5px;
-        padding: 5px 10px 2px 10px;
+        padding: 5px 10px;
         width: fit-content;
         height: fit-content;
         margin: 2px 5px;
@@ -541,6 +541,10 @@ a.text, button.text {
         max-width: 300px;
         text-align: center;
     }
+
+        .tags > div.tag * {
+            margin-block: 0;
+        }
 
     .tags > button.tag {
         background-color: #292849;
