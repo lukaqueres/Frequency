@@ -141,7 +141,7 @@
                                 echo '<span class="x-title xy-center"> N/A</span>';
                             } else {
                                 foreach($guild->features as $feature) {
-                                    echo '<div class="tag"><h5>' . $feature . '</h5></div>';
+                                    echo '<div class="tag"><h4>' . $feature . '</h4></div>';
                                 }
                             }
                         ?>
