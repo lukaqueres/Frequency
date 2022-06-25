@@ -32,6 +32,7 @@
                         $notification = Session::get('notification');
                         $notifynode = $notification->node;
                         echo $notifynode;
+                        Session::forget('notification');
                     }
                 ?>
                 <div class="notification">
