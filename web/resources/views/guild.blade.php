@@ -257,7 +257,7 @@
         input.name = "word-"+(count + 1);
         input.className = "cover";
         input.setAttribute("value",keyword);
-        input.setAttribute('maxlengt','20');
+        input.setAttribute('maxlength','20');
 
         button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
         button.innerText = "x";
