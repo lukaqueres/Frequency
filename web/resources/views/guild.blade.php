@@ -255,7 +255,7 @@
 
         input.type = "text";
         input.name = "word-"+(count + 1);
-        input.className = "cover text key-word";
+        input.className = "cover key-word";
         input.setAttribute("value",keyword);
         input.setAttribute('maxlength','20');
 
