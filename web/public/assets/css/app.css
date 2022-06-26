@@ -462,12 +462,6 @@ a.text, button.text {
     border-radius: 50%;
 }
 
-input[type=text] .text {
-    border: none;
-    background: transparent;
-}
-
-
 #notification-container {
     position: fixed;
     top: 50px;
@@ -475,7 +469,7 @@ input[type=text] .text {
     /*max-height: 100px;*/
     overflow: hidden;
     width: 300px;
-    height: 100%;
+    height: auto;
     z-index: 99;
 }
 
