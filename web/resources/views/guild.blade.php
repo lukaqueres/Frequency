@@ -261,7 +261,7 @@
 
         button.setAttribute("onclick",'removeInput(event)'); // "key-word-'+(count + 1)+'"
         button.innerText = "x";
-        button.className = "text";
+        button.className = "key-word-button";
         button.type="button";
 
         div.id = "key-word-"+(count + 1);

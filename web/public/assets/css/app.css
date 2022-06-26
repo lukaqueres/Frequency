@@ -417,8 +417,13 @@ ul.no-points {
 .key-word-input {
     background: #7160DF;
     border: 1px solid #7160DF;
-    border-radius: 5px;
+    border-radius: 3px;
     color: black;
+}
+
+.key-word-button {
+    background: transparent;
+    border: 1px solid #7160DF;
 }
 
 a.text, button.text {
