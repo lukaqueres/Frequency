@@ -13,6 +13,10 @@
         margin-inline: 4px;
     }
 
+    .menu.dropdown > .content.active {
+        display: block;
+    }
+
     .menu.dropdown > .content {
         display: none;
         width: 100px;
@@ -20,8 +24,4 @@
         position: relative;
         right: 10px;
         top: 50px;
-    }
-
-    .menu.dropdown > .content.active {
-        display: block;
     }
