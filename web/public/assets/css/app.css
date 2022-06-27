@@ -60,7 +60,7 @@ button {
 .page-header {
     display: block;
     width: 100%;
-    height: 50px;
+    height: 40px;
     background: #30228D;
 }
 
@@ -151,6 +151,7 @@ button {
         .buttons.slider > * {
             margin-inline: 2.5px;
             align-self: center;
+            height: auto;
         }
 
         .buttons.slider > button {
