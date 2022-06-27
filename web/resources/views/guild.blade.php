@@ -85,8 +85,8 @@
                     <button>Messages settings</button>
                     <button>Debug info</button>
                 </div>
-                <div class="menu dropdown">
-                    <img class="icon right button" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
+                <div class="right menu dropdown flex">
+                    <img class="icon button" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
                 </div>
             </div>
             <div class="page-aside">
