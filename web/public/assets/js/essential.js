@@ -14,7 +14,7 @@ function OnStart() {
 OnStart();
 
 window.onclick = function (event) {
-    CloseDropdownOnClick(e);
+    CloseDropdownOnClick(event);
 }
 
 function AddOnClick(object, task) {
