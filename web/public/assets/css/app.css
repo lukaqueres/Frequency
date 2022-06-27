@@ -149,7 +149,7 @@ button {
     }
 
         .buttons.slider > * {
-            margin-inline: 2.5px;
+            margin: 2.5px;
             align-self: center;
             height: auto;
         }
