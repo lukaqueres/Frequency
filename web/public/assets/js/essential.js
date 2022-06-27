@@ -5,9 +5,9 @@ function OnStart() {
     var menus = document.getElementsByClassName('menu');
     let dropdownButtons = Array();
     for (const menu of menus) {
-        dropdownbuttons.push(menu.getElementsByClassName('button'));
+        dropdownButtons.push(menu.getElementsByClassName('button'));
     }
-    //console.log(buttons.lenght());
+    //console.log(dropdownButtons.lenght());
     AddOnClick(dropdownButtons, 'OpenDropdown(event)');
 }
 
