@@ -1,0 +1,18 @@
+.menu.dropdown {
+    background: transparent;
+}
+
+    .menu.dropdown > .button::after {
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px;
+        border-bottom-width: 6px;
+        content: '';
+        border-bottom-width: 0;
+        border-color: #1779ba transparent transparent;
+        right: 5px;
+        left: auto;
+        margin-top: -3px;
+    }
