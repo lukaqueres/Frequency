@@ -12,3 +12,13 @@
         border-color: black transparent transparent;
         margin-inline: 4px;
     }
+
+    .menu.dropdown > .content {
+        display: none;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        right: 10px;
+        top: 50px;
+
+    }

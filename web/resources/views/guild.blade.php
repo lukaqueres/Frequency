@@ -78,7 +78,6 @@
                 <a class="small text" href="/manage">< Return</a>
                 <button type="text" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $guild->name; ?></button>
                 <!--<button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>-->
-                <a href="/discord/logout">LogOut</a>
                 <div class="buttons slider">
                     <button>Overwiew</button>
                     <button>Settings</button>
@@ -89,6 +88,9 @@
                     <button class="button none flex">
                         <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
                     </button>
+                    <div class="content flex vertical">
+                        <a href="/discord/logout">LogOut</a>
+                    </div>
                 </div>
             </div>
             <div class="page-aside">
