@@ -88,7 +88,7 @@
                     <button class="button none flex">
                         <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
                     </button>
-                    <div class="content flex vertical">
+                    <div class="content">
                         <a href="/discord/logout">LogOut</a>
                     </div>
                 </div>
