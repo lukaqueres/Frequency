@@ -13,6 +13,10 @@ function OnStart() {
 
 OnStart();
 
+window.onclick = function (event) {
+    CloseDropdownOnClick(e);
+}
+
 function AddOnClick(object, task) {
     if (object instanceof Array) {
         for (const node of object) {
