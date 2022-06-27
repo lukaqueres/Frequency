@@ -13,7 +13,7 @@
         margin-inline: 4px;
     }
 
-    .menu.dropdown > .content.active {
+    .menu.dropdown > .content.show {
         display: block;
     }
 
