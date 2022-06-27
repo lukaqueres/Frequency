@@ -143,7 +143,7 @@ button {
         display: flex;
         flex-wrap: nowrap;
         float: left;
-        height: 100%;
+        height: auto;
         background: #1A124D;
         border-radius: 50px;
     }
