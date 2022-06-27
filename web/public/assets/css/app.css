@@ -50,6 +50,12 @@ button {
     transition: .25s;
 }
 
+button.none {
+    background: transparent;
+    border: none;
+    text-decoration: none;
+}
+
 .container {
     min-height: 100vh;
     width: 100vw;

@@ -86,7 +86,9 @@
                     <button>Debug info</button>
                 </div>
                 <div class="right menu dropdown flex">
-                    <img class="icon button" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
+                    <button class="button">
+                        <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
+                    </button>
                 </div>
             </div>
             <div class="page-aside">
