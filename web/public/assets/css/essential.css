@@ -8,10 +8,13 @@
         border-style: solid;
         border-width: 6px;
         border-bottom-width: 6px;
+        border-bottom-width: 6px;
         content: '';
         border-bottom-width: 0;
         border-color: black transparent transparent;
         margin-inline: 4px;
+        margin-top: 25%;
+        transform: translateY(-10%);
     }
 
     .menu.dropdown > .content.show {
