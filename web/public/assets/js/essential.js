@@ -14,7 +14,7 @@ OnStart();
 
 function AddOnClick(object, task) {
     if (object instanceof Array) {
-        for (const node of objects) {
+        for (const node of object) {
             node.setAttribute("onclick", task);
         }
     } else {
