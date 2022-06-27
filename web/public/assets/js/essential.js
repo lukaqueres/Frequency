@@ -2,7 +2,7 @@ const pass = () => {}
 
 function OnStart() {
     //var dropdownButtons = document.querySelector(".menu .button");
-    var menus = document.getElementsByClassName('menu');
+    var menus = document.querySelector(".menu");
     let dropdownButtons = Array();
     for (const menu of menus) {
         dropdownButtons.push(menu.getElementsByClassName('button'));
