@@ -37,6 +37,9 @@ function CloseDropdownOnClick(e) {
     var target = e.target;
     var menus = document.querySelector(".menu .content");
     var activeMenus = menus.querySelector(".show");
+    if (!activeMenus) {
+        return;
+    }
     for (const menu of activeMenus) {
         if (menu == target || menu.contains(target)) {
             pass();
