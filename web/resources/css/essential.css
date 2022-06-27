@@ -1,7 +1,7 @@
 .menu.dropdown {
     background: transparent;
 }
-
+    
     .menu.dropdown > .button::after {
         display: inline;
         border-style: solid;

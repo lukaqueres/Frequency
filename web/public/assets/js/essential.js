@@ -1,5 +1,22 @@
 const pass = () => {}
 
+function OnStart() {
+    var dropdownButtons = document.querySelector(".menu .button");
+    AddOnClick(dropdownButtons, 'OpenDropdown(event)');
+}
+
+OnStart();
+
+function AddOnClick(object, task) {
+    if (object instanceof Array) {
+        for (const node of objects) {
+            node.setAttribute("onclick", task);
+        }
+    } else {
+        object.setAttribute("onclick", task);
+    }
+}
+
 function OpenDropdown(e) {
     var container = e.target.parentNode;
     var content = container.querySelector(".content");
