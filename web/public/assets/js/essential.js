@@ -2,13 +2,17 @@ const pass = () => {}
 
 function OnStart() {
     //var dropdownButtons = document.querySelector(".menu .button");
-    var menus = document.querySelector(".menu");
+    var menus = document.querySelectorAll(".menu");
     let dropdownButtons = Array();
-    for (const menu of menus) {
-        dropdownButtons.push(menu.getElementsByClassName('button'));
+    if (!menus) {
+        pass();
+    } else {
+        for (const menu of menus) {
+            dropdownButtons.push(menu.getElementsByClassName('button'));
+        }
+        console.log('Buttons Lenght: ' + dropdownButtons.lenght + ' , Menus Lenght: ' + menus.length);
+        AddOnClick(dropdownButtons, 'OpenDropdown(event)');
     }
-    console.log('Buttons Lenght: ' + dropdownButtons.lenght + ' , Menus Lenght: ' + menus.length);
-    AddOnClick(dropdownButtons, 'OpenDropdown(event)');
 }
 
 OnStart();
