@@ -20,5 +20,8 @@
         position: relative;
         right: 10px;
         top: 50px;
+    }
 
+    .menu.dropdown > .content.active {
+        display: block;
     }
