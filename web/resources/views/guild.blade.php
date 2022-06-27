@@ -36,20 +36,6 @@
                         Session::forget('notification');
                     }
                 ?>
-                <div class="notification">
-                    <p>User authorized</p>
-                    <h5>continue</h5>
-                    <a href="#">Nothing</a>
-                    <button class="close" onclick="closeParent(event)">Close notification</button>
-                </div>
-                <div class="notification">
-                    <h5>status</h5>
-                    <button class="close" onclick="closeParent(event)">Close notification</button>
-                </div>
-                <div class="notification">
-                    <h5>status</h5>
-                    <button class="close" onclick="closeParent(event)">Close notification</button>
-                </div>
             </div>
             <?php if (Session::exists('status')) {
                 echo '<div id="statusPop-up" class="pop-up active">status: ' . json_encode(Session::get('status')) . '<button onclick="togglePopUp("statusPop-up")">Close</button></div>';
@@ -99,7 +85,9 @@
                     <button>Messages settings</button>
                     <button>Debug info</button>
                 </div>
-                <img class="icon right" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
+                <div class="menu dropdown">
+                    <img class="icon right button" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
+                </div>
             </div>
             <div class="page-aside">
                 <div class="flex vertical buttons space-around">
