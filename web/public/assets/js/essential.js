@@ -39,8 +39,8 @@ function OpenDropdown(e) {
 
 function CloseDropdownOnClick(e) {
     var target = e.target;
-    var menus = document.querySelector(".menu .content");
-    var activeMenus = menus.querySelector(".show");
+    var menus = document.querySelectorAll(".menu .content");
+    var activeMenus = menus.querySelectorAll(".show");
     if (!activeMenus) {
         return;
     }
