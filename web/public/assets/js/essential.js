@@ -42,8 +42,8 @@ function AddOnClick(collection, task) {
 function OpenDropdown(e) {
     var container = e.target.parentNode;
     var content = container.querySelector('content');;
-    console.log('Content: ' + content);
-    content.classList.add("show");
+    console.log('Container: ' + container + ' ,  Content: ' + content);
+    content.classList.add("show"); 
 }
 
 function CloseDropdownOnClick(e) {
