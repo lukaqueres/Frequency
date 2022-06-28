@@ -40,13 +40,17 @@ function AddOnClick(collection, task) {
 }
 
 function OpenDropdown(e) {
+    
     var container = e.target.parentNode;
     if (!container.matches('div')) {
         container = container.parentNode;
     }
     var content = container.querySelector('.content');
-    console.log('Container: ' + container + ' ,  Content: ' + content + ' ,  First element: ' + content);
-    content.classList.add("show"); 
+    if (content.classList.contains('show')) {
+        content.classList.remove('show');
+    } else {
+        content.classList.add("show");
+    }
 }
 
 function CloseDropdownOnClick(e) {
