@@ -29,7 +29,7 @@ function CollectionToArray(collection) {
 
 
 function AddOnClick(collection, task) {
-    collection = CollectionToArray(collection);
+    collection = Array.from(collection);
     if (collection instanceof Array) {
         for (const node of collection) {
             console.log('Node: ' + node);
