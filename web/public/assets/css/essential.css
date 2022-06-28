@@ -27,7 +27,6 @@
         height: 100px;
         right: 10px;
         top: 50px;
-        z-index: 10;
         background: black;
         position: fixed;
     }
