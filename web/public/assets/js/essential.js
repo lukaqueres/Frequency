@@ -21,6 +21,7 @@ window.onclick = function (event) {
 }
 
 function AddOnClick(object, task) {
+    object = Array.from(object)
     console.log('Object: ' + object);
     if (object instanceof Array) {
         for (const node of object) {
