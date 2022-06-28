@@ -395,7 +395,7 @@ button.none {
         }
 
         .card-container > .card.wide {
-            min-width: 50%;
+            width: 50%;
             flex-grow: 1;
         }
 
