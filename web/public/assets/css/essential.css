@@ -28,5 +28,6 @@
         right: 10px;
         top: 50px;
         background: black;
+        border-radius: 5px;
         position: fixed;
     }
