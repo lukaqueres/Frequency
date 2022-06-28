@@ -174,6 +174,8 @@
 
 <script>
 
+    OnStart();
+
     var keywordEntry = document.getElementById("keyword-entry");
     keywordEntry.addEventListener("keydown", function (e) {
         if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
