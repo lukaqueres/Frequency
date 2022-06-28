@@ -97,9 +97,6 @@
                     </div>
                 </div>
             </div>
-            <div class="page-aside">
-
-            </div>
             <div class="app-main page-main">
                 <div class="card-container">
                     <?php
