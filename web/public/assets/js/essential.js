@@ -16,7 +16,6 @@ function OnStart() {
     }
 }
 
-OnStart();
 
 window.onclick = function (event) {
     CloseDropdownOnClick(event);
