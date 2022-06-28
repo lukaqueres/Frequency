@@ -24,6 +24,7 @@ function CollectionToArray(collection) {
     for (let i = 0; i < collection.length; i++) {
         array.push(collection[i]);
     }
+    return array;
 }
 
 
