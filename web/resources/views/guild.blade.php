@@ -89,18 +89,14 @@
                     <button class="button none flex">
                         <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
                     </button>
-                    <div class="content">
-                        <a href="/discord/logout">LogOut</a>
+                    <div class="content flex vertical">
+                        <h3><?php echo $user->username; ?></h3>
+                        <a class="text" href="/discord/logout">LogOut</a>
                     </div>
                 </div>
             </div>
             <div class="page-aside">
-                <div class="flex vertical buttons space-around">
-                    <button>Overwiew</button>
-                    <button>Settings</button>
-                    <button>Messages settings</button>
-                    <button>Debug info</button>
-                </div>
+
             </div>
             <div class="app-main page-main">
                 <div class="card-container">
