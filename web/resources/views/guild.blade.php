@@ -232,8 +232,8 @@
         
         var keyword = keywordEntry.value;
         keywordEntry.value = '';
-        keyword = keyword.replace(/\s/g, '');
-        if (!keyword) {
+        keywordempty = keyword.replace(/\s/g, '');
+        if (!keywordempty) {
             return notify( 'Empty keyword', "Provided keyword is empty, please input word to be selected.");
         };
 
