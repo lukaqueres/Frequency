@@ -11,7 +11,6 @@ function OnStart() {
         for (const menu of menus) {
             dropdownButtons.push(menu.getElementsByClassName('button'));
         }
-        console.log('Buttons Lenght: ' + dropdownButtons.lenght + ' , Menus Lenght: ' + menus.lenght);
         AddOnClick(dropdownButtons, 'OpenDropdown(event)');
     }
 }
@@ -24,6 +23,7 @@ window.onclick = function (event) {
 function AddOnClick(object, task) {
     if (object instanceof Array) {
         for (const node of object) {
+            console.log('Node: ' + node);
             node.setAttribute("onclick", task);
         }
     } else {
