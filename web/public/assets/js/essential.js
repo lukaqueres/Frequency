@@ -15,14 +15,20 @@ function OnStart() {
     }
 }
 
-
 window.onclick = function (event) {
     CloseDropdownOnClick(event);
 }
 
+function CollectionToArray(colletion) {
+    let array = array();
+    for (let i = 0; i < collection.length; i++) {
+        array.push(colleection[i]);
+    }
+}
+
+
 function AddOnClick(object, task) {
-    object = Array.from(object)
-    console.log('Object: ' + object);
+    object = CollectionToArray(object);
     if (object instanceof Array) {
         for (const node of object) {
             console.log('Node: ' + node);
