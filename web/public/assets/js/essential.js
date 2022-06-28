@@ -28,15 +28,15 @@ function CollectionToArray(collection) {
 }
 
 
-function AddOnClick(object, task) {
-    object = CollectionToArray(object);
-    if (object instanceof Array) {
-        for (const node of object) {
+function AddOnClick(collection, task) {
+    object = CollectionToArray(collection);
+    if (collection instanceof Array) {
+        for (const node of collection) {
             console.log('Node: ' + node);
             node.setAttribute("onclick", task);
         }
     } else {
-        object.setAttribute("onclick", task);
+        collection.setAttribute("onclick", task);
     }
 }
 
