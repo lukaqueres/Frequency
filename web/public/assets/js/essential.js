@@ -10,7 +10,7 @@ function OnStart() {
         for (const menu of menus) {
             dropdownButtons.push(menu.getElementsByClassName('button'));
         }
-        console.log('Buttons Lenght: ' + dropdownButtons.lenght + ' , Menus Lenght: ' + menus.length);
+        console.log('Buttons Lenght: ' + dropdownButtons.lenght + ' , Menus Lenght: ' + menus.lenght);
         AddOnClick(dropdownButtons, 'OpenDropdown(event)');
     }
 }
