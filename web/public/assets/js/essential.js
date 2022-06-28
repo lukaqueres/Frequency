@@ -20,7 +20,7 @@ window.onclick = function (event) {
 }
 
 function CollectionToArray(colletion) {
-    let array = array();
+    let array = Array();
     for (let i = 0; i < collection.length; i++) {
         array.push(colleection[i]);
     }
