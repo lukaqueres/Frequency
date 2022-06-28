@@ -1,4 +1,11 @@
 
+a.full-btn, button.full-btn {
+    background: #30228D;
+    border: solid 1px #30228D;
+    border-radius: 3px;
+    padding: 2px 10px;
+}
+
 .menu.dropdown {
     background: transparent;
 }
