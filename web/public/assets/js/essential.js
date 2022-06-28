@@ -44,7 +44,7 @@ function OpenDropdown(e) {
     if (!container.matches('div')) {
         container = container.parentNode;
     }
-    var content = container.querySelectorAll('content');
+    var content = container.querySelector('content');
     console.log('Container: ' + container + ' ,  Content: ' + content + ' ,  First element: ' + content.item(0));
     content.classList.add("show"); 
 }
