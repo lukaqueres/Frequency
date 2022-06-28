@@ -19,7 +19,7 @@ window.onclick = function (event) {
     CloseDropdownOnClick(event);
 }
 
-function CollectionToArray(colletion) {
+function CollectionToArray(collection) {
     let array = Array();
     for (let i = 0; i < collection.length; i++) {
         array.push(collection[i]);
