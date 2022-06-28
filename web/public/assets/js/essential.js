@@ -9,7 +9,7 @@ function OnStart() {
         pass();
     } else {
         for (const menu of menus) {
-            dropdownButtons.push(menu.getElementsByClassName('button'));
+            dropdownButtons.push(menu.querySelectorAll('.button'));
         }
         AddOnClick(dropdownButtons, 'OpenDropdown(event)');
     }
