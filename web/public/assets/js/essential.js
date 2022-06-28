@@ -41,10 +41,10 @@ function OpenDropdown(e) {
 function CloseDropdownOnClick(e) {
     var target = e.target;
     var menus = document.querySelectorAll(".menu .content");
-    var activeMenus = menus.querySelectorAll(".show");
     if (!activeMenus) {
         return;
     }
+    var activeMenus = menus.querySelectorAll(".show");
     for (const menu of activeMenus) {
         if (menu == target || menu.contains(target)) {
             pass();
