@@ -32,7 +32,6 @@ function AddOnClick(collection, task) {
     collection = Array.from(collection);
     if (collection instanceof Array) {
         for (const node of collection) {
-            console.log('Node: ' + node);
             node.setAttribute("onclick", task);
         }
     } else {
@@ -42,7 +41,8 @@ function AddOnClick(collection, task) {
 
 function OpenDropdown(e) {
     var container = e.target.parentNode;
-    var content = container.querySelector(".content");
+    console.log('Container: ' + container);
+    var content = container.querySelectorAll(".content");
     content.classList.add("show");
 }
 
