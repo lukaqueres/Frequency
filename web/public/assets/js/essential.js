@@ -2,9 +2,10 @@ const pass = () => {}
 
 function OnStart() {
     //var dropdownButtons = document.querySelector(".menu .button");
-    var menus = document.querySelectorAll(".menu");
+    var menus = Array();
+    menus = document.querySelectorAll(".menu");
     let dropdownButtons = Array();
-    if (!menus) {
+    if (menus.length == 0) {
         pass();
     } else {
         for (const menu of menus) {
