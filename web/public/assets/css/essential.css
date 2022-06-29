@@ -82,3 +82,8 @@ a.full-btn, button.full-btn {
                 background: black;
                 color: #30228D;
             }
+
+            .menu.slider > .buttons > button.active {
+                background: black;
+                color: #30228D;
+            }
