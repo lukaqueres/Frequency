@@ -20,7 +20,7 @@ function OnStart() { // function to run on page creation
     if (slideshows.length == 0) {
         pass();
     } else {
-        for (const slideshow of slideshows) {
+        for (const slideshow of slideshows[0]) {
             slideshowsButtons.push(...slideshow.querySelectorAll('.button'));
         }
         AddOnClick(slideshows, 'ChangeSlide(event)');
