@@ -92,8 +92,8 @@
                 </div>
             </div>
             <div class="app-main page-main">
-                <div class="slider-container flex vertical">
-                    <div class="buttons slider">
+                <div class="menu slider flex vertical">
+                    <div class="buttons">
                         <button>Overwiew</button>
                         <button>Settings</button>
                         <button>Messages settings</button>
