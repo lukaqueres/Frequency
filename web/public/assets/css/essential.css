@@ -51,3 +51,34 @@ a.full-btn, button.full-btn {
         position: fixed;
         color: #30228D;
     }
+
+
+.menu.slider {
+    width:100%;
+}
+
+    .menu.slider > buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        float: left;
+        height: auto;
+        background: #30228D;
+        border-radius: 20px;
+        padding: 1px 5px;
+    }
+
+        .menu.slider > buttons > button {
+            margin: 2.5px;
+            border-radius: 50px;
+            border: solid 1px transparent;
+            padding: 5px 10px;
+            min-width: 150px;
+            background: #30228D;
+            border: solid 2px black;
+            color: black;
+        }
+
+            .menu.slider > buttons > button:hover {
+                background: black;
+                color: #30228D;
+            }
