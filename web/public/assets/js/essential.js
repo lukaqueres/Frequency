@@ -25,6 +25,7 @@ function OnStart() { // function to run on page creation
         }
         AddOnClick(slideshows, 'ChangeSlide(event)');
     } // End of assigning onclick event to slideshow menus buttons
+    console.log('Slideshows: ' + slideshows + ' ,Buttons: ' + slideshowsButtons);
 }
 
 window.onclick = function (event) {
