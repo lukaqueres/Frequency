@@ -87,3 +87,13 @@ a.full-btn, button.full-btn {
                 background: black;
                 color: #30228D;
             }
+
+    .menu.slider > .slides {
+        width: 100%;
+        height: 100%;
+    }
+
+        .menu.slider > .slides > .slide {
+            width: 100%;
+            height: 100%;
+        }
