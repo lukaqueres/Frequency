@@ -79,12 +79,6 @@
                 <a class="small text" href="/manage">< Return</a>
                 <button type="text" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $guild->name; ?></button>
                 <!--<button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>-->
-                <div class="buttons slider">
-                    <button>Overwiew</button>
-                    <button>Settings</button>
-                    <button>Messages settings</button>
-                    <button>Debug info</button>
-                </div>
                 <div class="right menu dropdown flex">
                     <button class="button none flex">
                         <img class="icon" src= <?php echo '"' . get_avatar($user) . ' " >'; ?>
@@ -98,6 +92,14 @@
                 </div>
             </div>
             <div class="app-main page-main">
+                <div class="slider-container flex vertical">
+                    <div class="buttons slider">
+                        <button>Overwiew</button>
+                        <button>Settings</button>
+                        <button>Messages settings</button>
+                        <button>Debug info</button>
+                    </div>
+                </div>
                 <div class="card-container">
                     <?php
                     if ($guild->has_bot)
