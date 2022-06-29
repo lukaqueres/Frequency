@@ -1,18 +1,30 @@
-const pass = () => {}
+const pass = () => {} // create function to let write some nice 'pass()' on if or something
 
-function OnStart() {
-    //var dropdownButtons = document.querySelector(".menu .button");
-    var menus = Array();
-    menus = document.querySelectorAll(".menu");
+function OnStart() { // function to run on page creation
+
+    var dropdownmenus = Array(); // Assigning onclick event to dropdown menus buttons
+    dropdownmenus = document.querySelectorAll(".menu.dropdown");
     let dropdownButtons = Array();
-    if (menus.length == 0) {
+    if (dropdownmenus.length == 0) {
         pass();
     } else {
-        for (const menu of menus) {
+        for (const menu of dropdownmenus) {
             dropdownButtons.push(...menu.querySelectorAll('.button'));
         }
         AddOnClick(dropdownButtons, 'OpenDropdown(event)');
-    }
+    } // End of assigning onclick event to dropdown menu buttons
+
+    var slideshows = Array(); // Assigning onclick event to slideshow menus buttons
+    slideshows = document.querySelectorAll('.menu.slider');
+    let slideshowsButtons = Array();
+    if (slideshows.length == 0) {
+        pass();
+    } else {
+        for (const slideshow of slideshows) {
+            slideshowsButtons.push(...slideshow.querySelectorAll('.button'));
+        }
+        AddOnClick(slideshows, 'ChangeSlide(event)');
+    } // End of assigning onclick event to slideshow menus buttons
 }
 
 window.onclick = function (event) {
@@ -28,7 +40,7 @@ function CollectionToArray(collection) {
 }
 
 
-function AddOnClick(collection, task) {
+function AddOnClick(collection, task) { // Add onclick attribute to array of html elements or single ones
     collection = Array.from(collection);
     if (collection instanceof Array) {
         for (const node of collection) {
@@ -39,10 +51,28 @@ function AddOnClick(collection, task) {
     }
 }
 
-function OpenDropdown(e) {
+//
+// <>-------------------------------------------<> DROPDOWN FUNCTIONS <>----------------------------------------------------------------------------------------<>
+//
+// These functions are used to mentain dropdown menus with only css configuration on html file.
+// All what is needed while creating dropdown menu, is to correctly assign css classes to divs.
+//
+// main container div = 'menu dropdown'; within previous div add button and div with class 'content'.
+// like this:
+//
+// <div class="menu dropdown">
+//      <button>OPEN DROPDOWN</button>
+//      <div class="content">CONTENT</div>
+// </div>
+//
+// JS will automaticly add onclick attribute to button
+//
+// <>-----------------------------------------<> DROPDOWN FUNCTIONS CODE <>--------------------------------------------------------------------------------------<>
+//
+function OpenDropdown(e) { // This function will open dropdown depending on button clicked
     
     var container = e.target.parentNode;
-    if (!container.matches('div')) {
+    if (!container.classList.contains('dropdown')) {
         container = container.parentNode;
     }
     var content = container.querySelector('.content');
@@ -53,7 +83,7 @@ function OpenDropdown(e) {
     }
 }
 
-function CloseDropdownOnClick(e) {
+function CloseDropdownOnClick(e) { // This will close dropdowns on click in window                  <-!-> NOT DEBUGGED <-!->
     var target = e.target;
     var menus = document.querySelectorAll(".menu .content");
     if (!activeMenus) {
@@ -69,4 +99,53 @@ function CloseDropdownOnClick(e) {
             }
         }
     }
+}
+
+//
+// <>------------------------------------------<> SLIDESHOW FUNCTIONS <>----------------------------------------------------------------------------------------<>
+//
+// These functions are used to mentain divs slideshows with only css configuration on html file.
+// All what is needed while creating div slideshow, is to correctly assign css classes to divs.
+//
+// main container div = 'menu dropdown'; within previous div add button and div with class 'content'.
+// like this:
+//
+// <div class="menu dropdown">
+//      <button>OPEN DROPDOWN</button>
+//      <div class="content">CONTENT</div>
+// </div>
+//
+// JS will automaticly add onclick attribute to button
+//
+// <>----------------------------------------<> SLIDESHOW FUNCTIONS CODE <>--------------------------------------------------------------------------------------<>
+//
+
+function ChangeSlide(e) { // This function will open dropdown depending on button clicked
+    var buttoncontainer = e.target.parentNode;
+    if (!buttoncontainer.classList.contains('buttons')) {
+        buttoncontainer = buttoncontainer.parentNode;
+    }
+
+    var nOfButton = 0;
+    var buttons = buttoncontainer.childNodes;
+    for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i] == e.target) {
+            nOfButton = i;
+            break;
+        }
+    }
+
+    var container = e.target.parentNode;
+    if (!container.classList.contains('slider')) {
+        container = container.parentNode;
+    }
+
+    var slides = container.querySelector('.slides');
+    var slides = slides.childNodes;
+    for (const slide of slides) {
+        if (slide.classList.contains('show')) {
+            slide.classList.remove('show');
+        }
+    }
+    slides[nOfButton].classList.add('show');
 }
