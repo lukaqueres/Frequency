@@ -21,7 +21,7 @@ function OnStart() { // function to run on page creation
         pass();
     } else {
         for (const slideshow of slideshows) {
-            slideshowsButtons.push(...slideshow.querySelectorAll('.button'));
+            slideshowsButtons = slideshowsButtons.concat(slideshow.querySelectorAll('.button'));
             console.log('Slideshowsbuttonsadd: ' + slideshow.querySelectorAll('.button'));
         }
         AddOnClick(slideshowsButtons, 'ChangeSlide(event)');
