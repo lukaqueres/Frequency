@@ -22,7 +22,7 @@ function OnStart() { // function to run on page creation
     } else {
         for (const slideshow of slideshows) {
             let nodes = slideshow.querySelectorAll('.button')
-            slideshowsButtons = slideshowsButtons.concat(nodes);
+            slideshowsButtons = nodes.concat(slideshowsButtons);
             console.log('Slideshowsbuttonsadd: ' + slideshowsButtons);
         }
         AddOnClick(slideshowsButtons, 'ChangeSlide(event)');
