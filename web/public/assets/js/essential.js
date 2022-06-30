@@ -22,6 +22,7 @@ function OnStart() { // function to run on page creation
     } else {
         for (const slideshow of slideshows) {
             slideshowsButtons.push(...slideshow.querySelectorAll('.button'));
+            console.log('Slideshowsbuttonsadd: ' + slideshow.querySelectorAll('.button'));
         }
         AddOnClick(slideshowsButtons, 'ChangeSlide(event)');
     } // End of assigning onclick event to slideshow menus buttons
