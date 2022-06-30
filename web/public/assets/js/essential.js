@@ -46,6 +46,7 @@ function AddOnClick(collection, task) { // Add onclick attribute to array of htm
     collection = Array.from(collection);
     if (collection instanceof Array) {
         for (const node of collection) {
+            console.log('DBUG: ' + node);
             node.setAttribute("onclick", task);
         }
     } else {
