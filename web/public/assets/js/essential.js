@@ -22,7 +22,10 @@ function OnStart() { // function to run on page creation
     } else {
         for (const slideshow of slideshows) {
             let nodes = slideshow.querySelectorAll('.button');
-            console.log('NODE: ' + nodes)
+            for (const node in nodes) {
+                console.log('NODE: ' + node)
+                slideshowsButtons.push(node);
+            }
             slideshowsButtons = nodes.concat(slideshowsButtons);
             console.log('Slideshowsbuttonsadd: ' + slideshowsButtons);
         }
