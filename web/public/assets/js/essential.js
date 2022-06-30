@@ -1,5 +1,16 @@
 const pass = () => {} // create function to let write some nice 'pass()' on if or something
 
+function getParentElementByClassName(node, className) {
+    let nodeParent = node.parentNode;
+    while (nodeParent) {
+        if (!nodeParent.classList.contains(className)) {
+            break;
+        }
+        nodeParent = nodeParent.parentNode;
+    }
+    return nodeParent;
+}
+
 function OnStart() { // function to run on page creation
 
     var dropdownmenus = Array(); // Assigning onclick event to dropdown menus buttons
