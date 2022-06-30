@@ -26,7 +26,6 @@ function OnStart() { // function to run on page creation
                 console.log('NODE: ' + node)
                 slideshowsButtons.push(node);
             }
-            slideshowsButtons = nodes.concat(slideshowsButtons);
             console.log('Slideshowsbuttonsadd: ' + slideshowsButtons);
         }
         AddOnClick(slideshowsButtons, 'ChangeSlide(event)');
