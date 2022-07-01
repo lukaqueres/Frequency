@@ -91,6 +91,9 @@
                     </div>
                 </div>
             </div>
+            <div class="page-aside">
+                CHOOSE GUILD
+            </div>
             <div class="app-main page-main">
                 <div class="menu slider flex vertical">
                     <div class="buttons">
