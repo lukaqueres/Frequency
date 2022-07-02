@@ -99,7 +99,7 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                     <li class="margin">
                     GUILDS
-                        <ul>
+                        <ul class="scroll">
                             <?php
                                 foreach($guilds as $g) {
                                     echo '
