@@ -188,7 +188,7 @@ button.none {
                 width: 100%;
                 display: flex;
                 text-decoration: none;
-                color: black;
+                color: inherit;
             }
 
                 .page-aside ul li a .aside-icon {
