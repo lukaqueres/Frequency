@@ -206,10 +206,9 @@ button.none {
                 .page-aside ul li a .title {
                     position: relative;
                     display: block;
-                    min-width: 60px;
+                    padding: 0 10px;
                     height: 60px;
                     line-height: 60px;
-                    text-align: center;
                 }
 
 .dotted {
