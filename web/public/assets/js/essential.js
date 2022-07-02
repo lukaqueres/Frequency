@@ -42,6 +42,16 @@ function OnStart() { // function to run on page creation
         AddOnClick(slideshowsButtons, 'ChangeSlide(event)');
     } // End of assigning onclick event to slideshow menus buttons
     console.log('Slideshows: ' + slideshows + ' ,Buttons: ' + slideshowsButtons);
+
+    // ADD ASIDE SHRINK / EXPAND
+    let toggle = document.querySelector('.expand-aside');
+    let aside = document.querySelector('.page-aside');
+    let main = document.querySelector('.page-main');
+
+    toggle.onclick = function () {
+        aside.classList.toggle('shrink');
+        main.classList.toggle('expand');
+    }
 }
 
 window.onclick = function (event) {
@@ -167,3 +177,6 @@ function ChangeSlide(e) { // This function will open dropdown depending on butto
     }
     slides[nOfButton].classList.add('show');
 }
+
+
+// OTHER
