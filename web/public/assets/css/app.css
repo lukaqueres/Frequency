@@ -128,6 +128,7 @@ button.none {
     transition: 0.5s;
     background: #30228D;
     top: -40px;
+    z-index: 100;
     position: relative;
 }
 
