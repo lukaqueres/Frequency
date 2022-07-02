@@ -98,6 +98,7 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                     <li class="margin">
+                    GUILDS
                         <ul>
                             <?php
                                 foreach($guilds as $g) {
