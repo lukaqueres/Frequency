@@ -152,6 +152,10 @@ button.none {
         color: black;
     }
 
+    .page-aside > .expand-aside:focus-visible {
+        outline: none;
+    }
+
     .page-aside > button {
         background: #3F2A88;
         border: 2px solid #3F2A88;
