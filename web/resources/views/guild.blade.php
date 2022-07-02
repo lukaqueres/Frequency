@@ -93,7 +93,7 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><></button>
                 <ul>
-                    <li><a href="#" ><img src="/assets/images/overview.png"/><span>Overview</span></a></li>
+                    <li><a href="#" ><span><img src="/assets/images/overview.png"/></span><span>Overview</span></a></li>
                     <li><a href="#" ><span>Main settings</span></a></li>
                     <li><a href="#" ><span>Message settings</span></a></li>
                     <li><a href="#" ><span>Debugging</span></a></li>
