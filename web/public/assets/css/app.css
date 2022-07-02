@@ -173,6 +173,16 @@ button.none {
         margin-top: 0;
     }
 
+    .page-aside ul.scroll {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        overflow: scroll;
+        margin-top: 0;
+    }
+
         .page-aside ul li.margin {
             margin-inline: 10px;
         }
