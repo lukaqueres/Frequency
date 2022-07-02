@@ -171,28 +171,7 @@ button.none {
             position: relative;
             /*width: 100%;*/
             list-style: none;
-            padding: 10px;
         }
-
-            .page-aside ul li img {
-                position: relative;
-                display: block;
-                min-width: 30px;
-                height: 30px;
-                line-height: 60px;
-            }
-
-            .page-aside ul li a {
-                /*display: block;*/
-                text-decoration: none;
-                color: white;
-                width: 100%;
-            }
-
-            .page-aside ul li .title {
-                color: black;
-                margin-left: 5px;
-            }
 
 .dotted {
     background: #090910;
