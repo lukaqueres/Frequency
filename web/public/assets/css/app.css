@@ -171,21 +171,20 @@ button.none {
             position: relative;
             width: 100%;
             list-style: none;
-            border: solid 1px #3F2A88;
+            border: solid 1px black;
             border-radius: 5px;
         }
 
             .page-aside ul li:hover {
-                background: #3F2A88;
+                background: black;
             }
 
-
-        .page-aside ul li  {
-            position: relative;
-            width: 100%;
-            list-style: none;
-        }
-
+            .page-aside ul li a {
+                position: relative;
+                display: block;
+                width: 100%;
+                display: flex;text-decoration: none; 
+            }
 
 .dotted {
     background: #090910;
