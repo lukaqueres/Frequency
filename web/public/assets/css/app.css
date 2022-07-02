@@ -126,6 +126,7 @@ button.none {
     min-width: 300px;
     box-sizing: border-box;
     transition: 0.5s;
+    background: #30228D;
 }
 
     .page-aside.shrink {
