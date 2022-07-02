@@ -175,8 +175,8 @@ button.none {
             .page-aside ul li img {
                 position: relative;
                 display: block;
-                min-width: 60px;
-                height: 60px;
+                min-width: 30px;
+                height: 30px;
                 line-height: 60px;
             }
 
