@@ -92,7 +92,12 @@
             </div>
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><></button>
-                <button class="button">XD Menu główne</button>
+                <ul>
+                    <li><button class="button">XD Menu główne</button></li>
+                    <li><button class="button">XD Menu główne</button></li>
+                    <li><button class="button">XD Menu główne</button></li>
+                    <li><button class="button">XD Menu główne</button></li>
+                </ul>
             </div>
             <div class="app-main page-main">
                 <div class="menu slider flex vertical">
