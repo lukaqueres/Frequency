@@ -158,6 +158,12 @@ button.none {
         overflow: hidden;
     }
 
+    .page-aside ul li {
+        position: relative;
+        width: 100%;
+        list-style: none;
+    }
+
 .dotted {
     background: #090910;
     background-position-x: 0%;
