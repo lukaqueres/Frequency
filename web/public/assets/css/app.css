@@ -122,8 +122,7 @@ button.none {
     display: block;
     float: left;
     height: calc( 100vh + 50px );
-    min-width: 400px;
-    min-width: 300px;
+    width: 300px;
     box-sizing: border-box;
     transition: 0.5s;
     background: #30228D;
@@ -133,7 +132,7 @@ button.none {
 }
 
     .page-aside.shrink {
-        min-width: 50px;
+        width: 50px;
     }
 
     .page-aside > .buttons {
@@ -142,11 +141,14 @@ button.none {
     }
 
     .page-aside > .expand-aside {
-        background: transparent;
-        border: 2px solid #30228D;
-        position: relative;
-        top: 5px;
-        right: 5px;
+        background: #30228D;
+        border: 3px solid #30228D;
+        position: fixed;
+        top: 0px;
+        right: -40px;
+        border-radius: 0 5px 5px 0;
+        width: 40px;
+        height: 40px;
     }
 
     .page-aside > button {
