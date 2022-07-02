@@ -169,9 +169,23 @@ button.none {
 
         .page-aside ul li {
             position: relative;
-            /*width: 100%;*/
+            width: 100%;
+            list-style: none;
+            border: solid 1px #3F2A88;
+            border-radius: 5px;
+        }
+
+            .page-aside ul li:hover {
+                background: #3F2A88;
+            }
+
+
+        .page-aside ul li  {
+            position: relative;
+            width: 100%;
             list-style: none;
         }
+
 
 .dotted {
     background: #090910;
