@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="page-aside">
-                <button class="expand-aside"><></button>
+                <button class="expand-aside clear" onclick="shrinkAside()"><></button>
             </div>
             <div class="app-main page-main">
                 <div class="menu slider flex vertical">
