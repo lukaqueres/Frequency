@@ -19,7 +19,7 @@ a.full-btn, button.full-btn {
         border-bottom-width: 6px;
         content: '';
         border-bottom-width: 0;
-        border-color: black transparent transparent;
+        border-color: white transparent transparent;
         margin-inline: 4px;
         margin-top: 25%;
         transform: translateY(-10%);
