@@ -172,8 +172,6 @@ button.none {
             position: relative;
             width: 100%;
             list-style: none;
-            border: solid 1px black;
-            border-radius: 5px;
             color: black;
         }
 
