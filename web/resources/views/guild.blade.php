@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="page-aside">
-                CHOOSE GUILD
+                <button class="expand-aside"><></button>
             </div>
             <div class="app-main page-main">
                 <div class="menu slider flex vertical">
