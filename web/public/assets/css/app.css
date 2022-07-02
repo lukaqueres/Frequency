@@ -190,7 +190,8 @@ button.none {
             }
 
             .page-aside ul li .title {
-                color: black
+                color: black;
+                margin-left: 5px;
             }
 
 .dotted {
