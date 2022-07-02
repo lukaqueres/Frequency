@@ -93,10 +93,10 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><ion-icon name="chevron-back-outline"></ion-icon></button>
                 <ul>
-                    <li><a href="#" ><span class="icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
-                    <li><a href="#" ><span class="icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
-                    <li><a href="#" ><span class="icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
-                    <li><a href="#" ><span class="icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                 </ul>
             </div>
             <div class="app-main page-main">
