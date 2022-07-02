@@ -93,10 +93,10 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><></button>
                 <ul>
-                    <li><button class="button">XD Menu główne</button></li>
-                    <li><button class="button">XD Menu główne</button></li>
-                    <li><button class="button">XD Menu główne</button></li>
-                    <li><button class="button">XD Menu główne</button></li>
+                    <li><a href="#" >XD Menu główne</a href="#"></li>
+                    <li><a href="#" >XD Menu główne</a href="#"></li>
+                    <li><a href="#" >XD Menu główne</a href="#"></li>
+                    <li><a href="#" >XD Menu główne</a href="#"></li>
                 </ul>
             </div>
             <div class="app-main page-main">
