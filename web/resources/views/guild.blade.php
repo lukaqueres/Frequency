@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="page-aside">
-                <button class="expand-aside" onclick="shrinkAside()"><></button>
+                <button class="expand-aside" onclick="shrinkAside()"><ion-icon name="chevron-back-outline"></ion-icon></button>
                 <ul>
                     <li><a href="#" ><span class="icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
                     <li><a href="#" ><span class="icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
