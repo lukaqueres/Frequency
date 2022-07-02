@@ -93,7 +93,7 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><></button>
                 <ul>
-                    <li><a href="#" ><span class="icon" ><img src="/assets/images/overview.png"/></span><span class="title" >Overview</span></a></li>
+                    <li><a href="#" ><span class="icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
                     <li><a href="#" ><span class="icon" ><img src="/assets/images/overview.png"/></span><span class="title" >Main settings</span></a></li>
                     <li><a href="#" ><span class="icon" ><img src="/assets/images/overview.png"/></span><span class="title" >Message settings</span></a></li>
                     <li><a href="#" ><span class="icon" ><img src="/assets/images/overview.png"/></span><span class="title" >Debugging</span></a></li>
@@ -180,6 +180,9 @@
                     ?></br></h5>
             </div>
         </div>
+        <?php // Because of shitty way I would have to deal with images in aside, I am using this as test/probably will stay, using https://ionic.io/ionicons ?>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
 </html>
 
