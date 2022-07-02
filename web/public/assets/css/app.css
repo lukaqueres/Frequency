@@ -169,6 +169,7 @@ button.none {
             position: relative;
             width: 100%;
             list-style: none;
+            padding: 10px;
         }
 
             .page-aside ul li img {
