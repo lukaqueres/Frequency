@@ -27,7 +27,7 @@
     ?>
 
     <body>
-        <div id="blur" class="dotted container">
+        <div id="blur" class="container">
             <div id="notification-container" class="flex vertical">
                 <?php
                     if (Session::exists('notification')) {
