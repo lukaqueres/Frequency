@@ -174,10 +174,12 @@ button.none {
             list-style: none;
             border: solid 1px black;
             border-radius: 5px;
+            color: black;
         }
 
             .page-aside ul li:hover {
                 background: black;
+                color: #30228D;
             }
 
             .page-aside ul li a {
