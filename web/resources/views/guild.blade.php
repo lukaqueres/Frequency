@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="page-aside">
-                <button class="expand-aside clear" onclick="shrinkAside()"><></button>
+                <button class="expand-aside" onclick="shrinkAside()"><></button>
                 <button class="button">XD Menu główne</button>
             </div>
             <div class="app-main page-main">
