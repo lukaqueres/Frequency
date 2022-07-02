@@ -93,10 +93,10 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><></button>
                 <ul>
-                    <li><a href="#" >XD Menu główne</a href="#"></li>
-                    <li><a href="#" >XD Menu główne</a href="#"></li>
-                    <li><a href="#" >XD Menu główne</a href="#"></li>
-                    <li><a href="#" >XD Menu główne</a href="#"></li>
+                    <li><a href="#" ><img src="/assets/images/overview.png" Overview</a href="#"></li>
+                    <li><a href="#" >Main settings</a href="#"></li>
+                    <li><a href="#" >Message settings</a href="#"></li>
+                    <li><a href="#" >Debugging</a href="#"></li>
                 </ul>
             </div>
             <div class="app-main page-main">
