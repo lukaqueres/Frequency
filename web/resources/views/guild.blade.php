@@ -97,6 +97,21 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
+                    <li class="margin">
+                        <ul>
+                            <?php
+                                foreach($guilds as $g) {
+                                    echo '
+                                    <li>
+                                        <a href="/manage/guild/' . $g->id . '">
+									        <span class="aside-icon"><img class="icon" src="' . $g->icon_url . '"/></span>
+									        <span class="title">' . $g->name . '</span>
+                                        </a>
+                                    </li>';
+                                }
+                            ?>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="app-main page-main">
