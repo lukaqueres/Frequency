@@ -93,10 +93,10 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><></button>
                 <ul>
-                    <li><a href="#" ><img src="/assets/images/overview.png"/>Overview</li>
-                    <li><a href="#" >Main settings</a></li>
-                    <li><a href="#" >Message settings</a></li>
-                    <li><a href="#" >Debugging</a></li>
+                    <li><a href="#" ><img src="/assets/images/overview.png"/><span>Overview</span></li>
+                    <li><a href="#" ><span>Main settings</span></a></li>
+                    <li><a href="#" ><span>Message settings</span></a></li>
+                    <li><a href="#" ><span>Debugging</span></a></li>
                 </ul>
             </div>
             <div class="app-main page-main">
