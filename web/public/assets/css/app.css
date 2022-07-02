@@ -199,6 +199,19 @@ button.none {
                     text-align: center;
                 }
 
+                    .page-aside ul li a .aside-icon ion-icon {
+                        font-size: 1.75em;
+                    }
+
+                .page-aside ul li a .title {
+                    position: relative;
+                    display: block;
+                    min-width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                    text-align: center;
+                }
+
 .dotted {
     background: #090910;
     background-position-x: 0%;
