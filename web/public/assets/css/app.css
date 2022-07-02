@@ -132,7 +132,7 @@ button.none {
 }
 
     .page-aside.shrink {
-        width: 50px;
+        width: 60px;
     }
 
     .page-aside > .buttons {
@@ -271,7 +271,7 @@ button.none {
 }
 
 .page-main.expand {
-    width: calc(100% - 50px);
+    width: calc(100% - 60px);
 
 }
 
