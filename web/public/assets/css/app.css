@@ -140,6 +140,14 @@ button.none {
         margin-top: 50px;
     }
 
+    .page-aside > .expand-aside {
+        background: transparent;
+        border: 2px solid #30228D;
+        position: relative;
+        top: 5px;
+        right: 5px;
+    }
+
 .dotted {
     background: #090910;
     background-position-x: 0%;
