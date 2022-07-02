@@ -169,6 +169,10 @@ button.none {
         margin-top: 0;
     }
 
+        .page-aside ul li.margin {
+            margin-inline: 10px;
+        }
+
         .page-aside ul li {
             position: relative;
             width: 100%;
