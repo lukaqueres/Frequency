@@ -148,6 +148,13 @@ button.none {
         right: 5px;
     }
 
+    .page-aside > button {
+        background: #3F2A88;
+        border: 2px solid #3F2A88;
+        width: 100%;
+        overflow: hidden;
+    }
+
 .dotted {
     background: #090910;
     background-position-x: 0%;
