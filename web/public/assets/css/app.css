@@ -188,6 +188,14 @@ button.none {
                 color: black;
             }
 
+                .page-aside ul li a .icon {
+                    position: relative;
+                    display: block;
+                    min-width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                }
+
 .dotted {
     background: #090910;
     background-position-x: 0%;
