@@ -125,7 +125,12 @@ button.none {
     /*min-width: 400px;*/
     min-width: 300px;
     box-sizing: border-box;
+    transition: 0.5s;
 }
+
+    .page-aside.shrink {
+        min-width: 50px;
+    }
 
     .page-aside > .buttons {
         min-height: 150px;
@@ -185,6 +190,12 @@ button.none {
     padding: 10px;
     box-sizing: border-box;
     word-wrap: break-word;
+    transition: 0.5s;
+}
+
+.page-main.expand {
+    width: calc(100% - 50px);
+
 }
 
 .flex {
