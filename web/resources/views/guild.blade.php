@@ -76,8 +76,7 @@
                 </div>
             </div>
             <div class="page-header flex">
-                <a class="small text" href="/manage">< Return</a>
-                <button type="text" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $guild->name; ?></button>
+                <button type="text" class="center" id="head-button" onclick="togglePopUp('guildPop-up')" title="Search for guilds by name or id"><?php echo 'Search for guilds | ' . $guild->name; ?></button>
                 <!--<button class="top-btn top center" onclick="togglePopUp('guildPop-up')">Choose guild</button>-->
                 <div class="right menu dropdown flex">
                     <button class="button none flex">
@@ -93,6 +92,7 @@
             </div>
             <div class="page-aside">
                 <button class="expand-aside clear" onclick="shrinkAside()"><></button>
+                <button class="button">XD Menu główne</button>
             </div>
             <div class="app-main page-main">
                 <div class="menu slider flex vertical">
