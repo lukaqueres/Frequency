@@ -184,16 +184,19 @@ button.none {
                 position: relative;
                 display: block;
                 width: 100%;
-                display: flex;text-decoration: none;
+                display: flex;
+                text-decoration: none;
                 color: black;
+                white-space: nowrap;
             }
 
-                .page-aside ul li a .icon {
+                .page-aside ul li a .aside-icon {
                     position: relative;
                     display: block;
                     min-width: 60px;
                     height: 60px;
                     line-height: 60px;
+                    text-align: center;
                 }
 
 .dotted {
