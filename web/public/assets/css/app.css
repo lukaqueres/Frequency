@@ -171,6 +171,10 @@ button.none {
             list-style: none;
         }
 
+            .page-aside ul li img {
+                height: 100%;
+            }
+
             .page-aside ul li a {
                 position: relative;
                 display: block;
