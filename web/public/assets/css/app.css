@@ -165,11 +165,19 @@ button.none {
         width: 100%;
     }
 
-    .page-aside ul li {
-        position: relative;
-        width: 100%;
-        list-style: none;
-    }
+        .page-aside ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+        }
+
+            .page-aside ul li a {
+                position: relative;
+                display: block;
+                text-decoration: none;
+                color: white;
+                width: 100%;
+            }
 
 .dotted {
     background: #090910;
