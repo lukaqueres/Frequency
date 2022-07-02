@@ -187,7 +187,6 @@ button.none {
                 display: flex;
                 text-decoration: none;
                 color: black;
-                white-space: nowrap;
             }
 
                 .page-aside ul li a .aside-icon {
@@ -209,6 +208,8 @@ button.none {
                     padding: 0 10px;
                     height: 60px;
                     line-height: 60px;
+                    text-align: start;
+                    white-space: nowrap;
                 }
 
 .dotted {
