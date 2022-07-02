@@ -163,11 +163,13 @@ button.none {
         top: 30px;
         left: 0;
         width: 100%;
+        padding: 0;
+        overflow: hidden;
     }
 
         .page-aside ul li {
             position: relative;
-            width: 100%;
+            /*width: 100%;*/
             list-style: none;
             padding: 10px;
         }
@@ -181,11 +183,14 @@ button.none {
             }
 
             .page-aside ul li a {
-                position: relative;
-                display: block;
+                /*display: block;*/
                 text-decoration: none;
                 color: white;
                 width: 100%;
+            }
+
+            .page-aside ul li .title {
+                color: black
             }
 
 .dotted {
