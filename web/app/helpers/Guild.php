@@ -59,7 +59,7 @@ class Guild
         $id = $this->id;
 
 	    if ($icon == null) {
-		    $url = "/images/blank-icon.png";
+		    $url = "/assets/images/blank-icon.png";
 	    } else {
 		    $extension = is_animated($icon);
 		    $url = 'https://cdn.discordapp.com/icons/' . $id . '/' . $icon . $extension;
