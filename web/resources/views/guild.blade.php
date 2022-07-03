@@ -113,20 +113,6 @@
                 </ul>
             </div>
             <div class="app-main page-main">
-                <div class="menu slider flex vertical">
-                    <div class="buttons">
-                        <button>Overwiew</button>
-                        <button>Settings</button>
-                        <button>Messages settings</button>
-                        <button>Debug info</button>
-                    </div>
-                    <div class="slides">
-                        <div class="slide">SLIDE 1</div>
-                        <div class="slide">SLIDE 2</div>
-                        <div class="slide">SLIDE 3</div>
-                        <div class="slide">SLIDE 4</div>
-                    </div>
-                </div>
                 <div class="card-container">
                     <?php
                     if ($guild->has_bot)
