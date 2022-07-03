@@ -173,6 +173,10 @@ button.none {
         margin-top: 0;
     }
 
+        .page-aside ul.margin {
+            margin-top: 100px;
+        }
+
     .page-aside ul.scroll {
         position: absolute;
         top: 0;
@@ -183,10 +187,6 @@ button.none {
         overflow-x: hidden;
         margin-top: 0;
     }
-
-        .page-aside ul li.margin {
-            margin-inline: 10px;
-        }
 
         .page-aside ul li {
             position: relative;
