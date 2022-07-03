@@ -98,7 +98,7 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                 </ul>
-                <ul class="scroll">
+                <ul class="scroll margin">
                     <?php
                     foreach($guilds as $g) {
                         echo '
