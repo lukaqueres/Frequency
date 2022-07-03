@@ -113,3 +113,13 @@ function shrinkAside() {
     aside.classList.toggle('shrink');
     main.classList.toggle('expand');
 }
+
+function scrollUp() {
+    let window = document.querySelector('.scroll');
+    window.scrollBy(0, 20);
+}
+
+function scrollDown() {
+    let window = document.querySelector('.scroll');
+    window.scrollBy(0, -20);
+}
