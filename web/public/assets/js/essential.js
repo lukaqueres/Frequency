@@ -25,23 +25,6 @@ function OnStart() { // function to run on page creation
         AddOnClick(dropdownButtons, 'OpenDropdown(event)');
     } // End of assigning onclick event to dropdown menu buttons
 
-    var slideshows = Array(); // Assigning onclick event to slideshow menus buttons
-    slideshows = document.querySelectorAll('.menu.slider');
-    let slideshowsButtons = Array();
-    if (slideshows.length == 0) {
-        pass();
-    } else {
-        for (const slideshow of slideshows) {
-            let nodes = slideshow.querySelectorAll('.button');
-            for (const node in nodes) {
-                console.log('NODE: ' + node)
-                slideshowsButtons.push(node);
-            }
-            console.log('Slideshowsbuttonsadd: ' + slideshowsButtons);
-        }
-        AddOnClick(slideshowsButtons, 'ChangeSlide(event)');
-    } // End of assigning onclick event to slideshow menus buttons
-    console.log('Slideshows: ' + slideshows + ' ,Buttons: ' + slideshowsButtons);
 }
 
 window.onclick = function (event) {
