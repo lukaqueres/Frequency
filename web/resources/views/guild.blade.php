@@ -104,7 +104,7 @@
                         echo '
                         <li>
                             <a href="/manage/guild/' . $g->id . '">
-					            <span class="aside-icon"><img src="' . $g->icon_url . '"/></span>
+					            <span class="aside-icon"><img class="icon" src="' . $g->icon_url . '"/></span>
 					            <span class="title">' . $g->name . '</span>
                             </a>
                         </li>';
