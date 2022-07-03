@@ -177,10 +177,11 @@ button.none {
         margin-top: 0;
     }
 
-    .page-aside ul.scroll {
-        overflow: scroll;
-        overflow-x: hidden;
-    }
+        .page-aside ul.scroll {
+            overflow: scroll;
+            overflow-x: hidden;
+            height: 50%;
+        }
 
         /* Hide scrollbar for Chrome, Safari and Opera */
         .page-aside ul.scroll::-webkit-scrollbar {
