@@ -102,3 +102,14 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
     }
 }
 
+//
+// <>---------------------------------------<> DROPDOWN FUNCTIONS CODE END <>------------------------------------------------------------------------------------<>
+//
+
+function shrinkAside() {
+    //let toggle = document.querySelector('.expand-aside');
+    let aside = document.querySelector('.page-aside');
+    let main = document.querySelector('.page-main');
+    aside.classList.toggle('shrink');
+    main.classList.toggle('expand');
+}
