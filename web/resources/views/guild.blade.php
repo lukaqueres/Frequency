@@ -98,21 +98,23 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                 </ul>
-                <button onclick="scrollUp()"><ion-icon name="chevron-up-outline"></ion-icon></button>
-                <ul class="scroll margin">
-                    <?php
-                    foreach($guilds as $g) {
-                        echo '
-                        <li>
-                            <a href="/manage/guild/' . $g->id . '">
-					            <span class="aside-icon"><img class="icon" src="' . $g->icon_url . '"/></span>
-					            <span class="title">' . $g->name . '</span>
-                            </a>
-                        </li>';
-                    }
-                    ?>
-                </ul>
-                <button onclick="scrollDown()"><ion-icon name="chevron-down-outline"></ion-icon></button>
+                <div>
+                    <button onclick="scrollDown()"><ion-icon name="chevron-up-outline"></ion-icon></button>
+                    <ul class="scroll margin">
+                        <?php
+                        foreach($guilds as $g) {
+                            echo '
+                            <li>
+                                <a href="/manage/guild/' . $g->id . '">
+					                <span class="aside-icon"><img class="icon" src="' . $g->icon_url . '"/></span>
+					                <span class="title">' . $g->name . '</span>
+                                </a>
+                            </li>';
+                        }
+                        ?>
+                    </ul>
+                    <button onclick="scrollUp()"><ion-icon name="chevron-down-outline"></ion-icon></button>
+                </div>
             </div>
             <div class="app-main page-main">
                 <div class="card-container">
