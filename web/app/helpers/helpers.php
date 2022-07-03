@@ -146,7 +146,7 @@ function get_icon($guild)
     }
 
 	if ($icon == null) {
-		return "/images/blank-icon.png";
+		return "/assets/images/blank-icon.png";
 	} else {
 		$extension = is_animated($icon);
 		$icon_url = 'https://cdn.discordapp.com/icons/' . $id . '/' . $icon . $extension;
