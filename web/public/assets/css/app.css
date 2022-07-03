@@ -181,6 +181,7 @@ button.none {
             overflow: scroll;
             overflow-x: hidden;
             height: 50%;
+            scroll-behavior: smooth;
         }
 
         /* Hide scrollbar for Chrome, Safari and Opera */
