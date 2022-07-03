@@ -163,6 +163,10 @@ button.none {
         overflow: hidden;
     }
 
+    .page-aside ul.margin {
+        margin-top: 100px;
+    }
+
     .page-aside ul {
         position: absolute;
         top: 0;
@@ -173,19 +177,9 @@ button.none {
         margin-top: 0;
     }
 
-        .page-aside ul.margin {
-            margin-top: 100px;
-        }
-
     .page-aside ul.scroll {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 0;
         overflow: scroll;
         overflow-x: hidden;
-        margin-top: 0;
     }
 
         .page-aside ul li {
