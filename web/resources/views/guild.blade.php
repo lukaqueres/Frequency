@@ -99,6 +99,7 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                 </ul>
                 <ul class="scroll margin">
+                <li><button><ion-icon name="chevron-up-outline"></ion-icon></button></li>
                     <?php
                     foreach($guilds as $g) {
                         echo '
@@ -110,6 +111,7 @@
                         </li>';
                     }
                     ?>
+                    <li><button><ion-icon name="chevron-down-outline"></ion-icon></button></li>
                 </ul>
             </div>
             <div class="app-main page-main">
