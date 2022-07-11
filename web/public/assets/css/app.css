@@ -59,7 +59,7 @@ button.none {
 .container {
     min-height: 100vh;
     width: 100vw;
-    background: #090910;
+    background: black; /*#090910*/
     /*background-image: linear-gradient(135deg,#3F2A88, #3F0A58);*/
 }
 
@@ -496,6 +496,12 @@ button.none {
         .card-container > .card.full {
             width: 100%;
             flex-grow: 1;
+        }
+
+        .card-container > .card.transparent {
+            background: transparent;
+            border: 1px transparent;
+            box-shadow: none;
         }
 
         .card-container > .card.wide {
