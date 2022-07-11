@@ -126,7 +126,7 @@
                         $s= 'Absent';
                     }
                     ?>
-                    <div class="card full">
+                    <div class="card full transparent">
                         <div class="flex x-center">
                             <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
                             <p class="x-title"><?php echo $guild->name; ?></p>
