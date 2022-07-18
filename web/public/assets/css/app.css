@@ -141,15 +141,16 @@ button.none {
     }
 
     .page-aside > .expand-aside {
-        background: #30228D;
-        border: 3px solid #30228D;
+        background: transparent;
+        border: 3px solid transparent;
         position: fixed;
         top: 0px;
         right: -40px;
         border-radius: 0 5px 5px 0;
         width: 40px;
         height: 40px;
-        color: black;
+        color: #30228D;
+        font-size: 25px;
     }
 
     .page-aside > .expand-aside:focus-visible {
