@@ -203,9 +203,12 @@ button.none {
             color: black;
         }
 
-            .page-aside ul li:hover {
+            .page-aside ul li:hover, .page-aside ul li.active {
                 background: black;
                 color: #30228D;
+                transform: scale(0.9);
+                transition: transform 0.2s;
+                border-radius: 5px;
             }
 
             .page-aside ul li a {
