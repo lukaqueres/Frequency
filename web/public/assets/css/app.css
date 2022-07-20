@@ -204,14 +204,14 @@ button.none {
         }
 
 
-            .page-aside.expand-aside ul li:hover, .page-aside ul li.active {
-                transform: scale(0.97);
+            .page-aside.shrink ul li:hover, .page-aside ul li.active {
+                transform: scale(0.9);
             }
 
             .page-aside ul li:hover, .page-aside ul li.active {
                 background: black;
                 color: #30228D;
-                transform: scale(0.9);
+                transform: scale(0.97);
                 transition: transform 0.2s;
                 border-radius: 5px;
             }
