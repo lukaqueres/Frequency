@@ -97,7 +97,7 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
-                    <li class="crossline"></li>
+                    <li class="line-space"></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="grid"></ion-icon></span><span class="title" >Main</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="person-circle"></ion-icon></span><span class="title" >User</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="help-circle"></ion-icon></span><span class="title" >Help</span></a></li>
