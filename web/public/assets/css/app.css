@@ -203,6 +203,11 @@ button.none {
             color: black;
         }
 
+
+            .page-aside.expand-aside ul li:hover, .page-aside ul li.active {
+                transform: scale(0.97);
+            }
+
             .page-aside ul li:hover, .page-aside ul li.active {
                 background: black;
                 color: #30228D;
