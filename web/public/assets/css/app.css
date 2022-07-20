@@ -218,6 +218,7 @@ button.none {
                 display: flex;
                 text-decoration: none;
                 color: inherit;
+                align-items: center;
             }
 
                 .page-aside ul li a .aside-icon {
@@ -261,6 +262,14 @@ button.none {
                 pointer-events: none;
                 font-size: 20px;
             }
+
+                .page-aside ul li.title a .title {
+                    position: relative;
+                    display: block;
+                    padding: 0 10px;
+                    line-height: normal;
+                    white-space: break-spaces;
+                }
 .dotted {
     background: #090910;
     background-position-x: 0%;
