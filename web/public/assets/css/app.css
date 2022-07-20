@@ -243,14 +243,14 @@ button.none {
                     white-space: nowrap;
                 }
 
-            .page-aside ul li.line-space {
+            .page-aside ul li.space {
                 position: relative;
                 width: 100%;
                 list-style: none;
                 color: black;
                 height: 0;
-                margin-block: 10px;
-                border-bottom: solid 1px black;
+                padding-block: 10px;
+                pointer-events: none;
             }
 .dotted {
     background: #090910;
