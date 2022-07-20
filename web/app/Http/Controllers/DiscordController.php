@@ -278,7 +278,7 @@ class DiscordController extends Controller
         return view('user', $data);
     }
 
-    public function Guildview(Request $request)
+    public function showGuild(Request $request)
     {
         if ( !(Session::has('authorized') && Session::get('authorized') == True )) { // Check if user is authorized before returning proper view
             if (env('APP_DEBUG')) {
