@@ -251,6 +251,16 @@ button.none {
                 padding-block: 10px;
                 pointer-events: none;
             }
+
+            .page-aside ul li.title {
+                position: relative;
+                width: 100%;
+                list-style: none;
+                color: black;
+                padding-block: 10px;
+                pointer-events: none;
+                font-size: 20px;
+            }
 .dotted {
     background: #090910;
     background-position-x: 0%;
