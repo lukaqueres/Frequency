@@ -98,7 +98,7 @@
                     <li><a href="/manage/guild/<?php echo $id; ?>/text-settings" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></a></li>
                     <li><a href="/manage/guild/<?php echo $id; ?>/debug" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                     <li class="space"></li>
-                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="grid"></ion-icon></span><span class="title" >Main</span></a></li>
+                    <li title="Main" ><a href="#" ><span class="aside-icon" ><ion-icon name="grid"></ion-icon></span><span class="title" >Main</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="person-circle"></ion-icon></span><span class="title" >User</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="help-circle"></ion-icon></span><span class="title" >Help</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="information-circle"></ion-icon></span><span class="title" >About</span></a></li>
