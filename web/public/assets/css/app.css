@@ -243,6 +243,15 @@ button.none {
                     white-space: nowrap;
                 }
 
+            .page-aside ul li.line-space {
+                position: relative;
+                width: 100%;
+                list-style: none;
+                color: black;
+                height: 0;
+                margin-block: 10px;
+                border-bottom: solid 1px black;
+            }
 .dotted {
     background: #090910;
     background-position-x: 0%;
