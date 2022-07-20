@@ -207,7 +207,7 @@ button.none {
                 background: black;
                 color: #30228D;
                 transform: scale(0.9);
-                transition: transform 0.2s;
+                transition: transform cubic-bezier(0,1.15,0,1.01) 0.2s;
                 border-radius: 5px;
             }
 
