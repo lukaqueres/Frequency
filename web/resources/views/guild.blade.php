@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Wild West Post Office | Manage</title>
+        <title> Plan It | Manage</title>
 	    <link rel="stylesheet" type="text/css" href="/assets/css/app.css" />
         <link rel="stylesheet" type="text/css" href="/assets/css/essential.css" />
 	    <script type="text/javascript" src="/assets/js/app.js"></script>
