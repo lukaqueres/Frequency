@@ -103,6 +103,7 @@
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="help-circle"></ion-icon></span><span class="title" >Help</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="information-circle"></ion-icon></span><span class="title" >About</span></a></li>
                 </ul>
+                <?php /*
                 <div>
                     <button onclick="scrollDown()"><ion-icon name="chevron-up-outline"></ion-icon></button>
                     <ul class="scroll margin">
@@ -120,6 +121,7 @@
                     </ul>
                     <button onclick="scrollUp()"><ion-icon name="chevron-down-outline"></ion-icon></button>
                 </div>
+                */ ?>
             </div>
             <div class="app-main page-main">
                 <div class="card-container">
