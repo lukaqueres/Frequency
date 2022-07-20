@@ -95,8 +95,13 @@
                 <ul>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
-                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Message settings</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
+                    <li class="crossline"></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="grid"></ion-icon></span><span class="title" >Main</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="person-circle"></ion-icon></span><span class="title" >User</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="help-circle"></ion-icon></span><span class="title" >Help</span></a></li>
+                    <li><a href="#" ><span class="aside-icon" ><ion-icon name="information-circle"></ion-icon></span><span class="title" >About</span></a></li>
                 </ul>
                 <div>
                     <button onclick="scrollDown()"><ion-icon name="chevron-up-outline"></ion-icon></button>
