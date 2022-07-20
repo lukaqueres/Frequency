@@ -203,7 +203,7 @@ button.none {
             color: black;
         }
 
-            .page-aside ul li:hover, .page-aside ul li.active {
+            .page-aside ul li:hover, .page-aside ul li.selected {
                 background: black;
                 color: #30228D;
                 transform: scale(0.9);
