@@ -238,7 +238,7 @@ button.none {
                     position: relative;
                     display: block;
                     padding: 0 10px;
-                    height: 60px;
+                    /*height: 60px;*/
                     line-height: 60px;
                     text-align: start;
                     white-space: nowrap;
