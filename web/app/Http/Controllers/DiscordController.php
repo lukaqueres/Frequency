@@ -327,7 +327,7 @@ class DiscordController extends Controller
         } else if ($selected_view == 'settings') {
             return view('guild', $data);
         } else if ($selected_view == 'text-settings') {
-            return view('guild', $data);
+            return view('guild_text_settings', $data);
         } else if ($selected_view == 'debug') {
             return view('guild', $data);
         } else {
