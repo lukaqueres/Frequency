@@ -248,7 +248,6 @@ button.none {
                 width: 100%;
                 list-style: none;
                 color: black;
-                height: 0;
                 padding-block: 10px;
                 pointer-events: none;
             }
