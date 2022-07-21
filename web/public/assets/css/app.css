@@ -263,6 +263,15 @@ button.none {
                 font-size: 20px;
             }
 
+
+                .page-aside.shrink ul li.title a .title {
+                    position: relative;
+                    display: block;
+                    padding: 0 10px;
+                    line-height: 60px;
+                    white-space: nowrap;
+                }
+
                 .page-aside ul li.title a .title {
                     position: relative;
                     display: block;
