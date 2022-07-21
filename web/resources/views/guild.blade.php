@@ -96,8 +96,8 @@
                     <?php echo '<li class="title"><a href="#"><span class="aside-icon"><img class="icon" src="' . $guild->icon_url . '"/></span><span class="title">' . $guild->name . '</span></a></li>'; ?>
                     <li class="selected"><a href="/manage/guild/<?php echo $id; ?>/overview" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
                     <li><a href="/manage/guild/<?php echo $id; ?>/settings" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
-                    <li><a href="/manage/guild/<?php echo $id; ?>/text-settings" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></a></li>
-                    <li><a href="/manage/guild/<?php echo $id; ?>/debug" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
+                    <li <?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/text-settings" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></a></li>
+                    <li <?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/debug" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debugging</span></a></li>
                     <li class="space"></li>
                     <li title="Main" ><a href="#" ><span class="aside-icon" ><ion-icon name="grid"></ion-icon></span><span class="title" >Main</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="person-circle"></ion-icon></span><span class="title" >User</span></a></li>
@@ -124,6 +124,7 @@
                 </div>
                 */ ?>
             </div>
+            <?php // MAIN CONTANT - CAN CHANGE BETWEEN VIEWS
             <div class="app-main page-main">
                 <div class="card-container">
                     <?php
