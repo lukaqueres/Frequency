@@ -124,7 +124,7 @@
                 </div>
                 */ ?>
             </div>
-            <?php // MAIN CONTANT - CAN CHANGE BETWEEN VIEWS
+            <?php // MAIN CONTANT - CAN CHANGE BETWEEN VIEWS ?>
             <div class="app-main page-main">
                 <div class="card-container">
                     <?php
