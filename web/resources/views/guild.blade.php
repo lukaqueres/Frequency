@@ -23,7 +23,7 @@
         //$DBdata = Session::get('DBdata');
         $guilds = Session::get('guilds');
         $guild = $guilds[$id];
-        $view = $data['view'];
+        $view = $view;
         //$guildDB = $DBdata[$id];
     ?>
 
