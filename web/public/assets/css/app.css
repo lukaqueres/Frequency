@@ -258,6 +258,11 @@ button.none {
                 pointer-events: none;
             }
 
+            .page-aside ul li.button {
+                border: solid black 1px;
+                border-radius: 5px;
+                pointer-events: all;
+            }
 
             .page-aside ul li.title {
                 position: relative;
@@ -268,7 +273,6 @@ button.none {
                 pointer-events: none;
                 font-size: 20px;
             }
-
 
                 .page-aside.shrink ul li.title a .title {
                     position: relative;
