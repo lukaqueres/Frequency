@@ -262,6 +262,7 @@ button.none {
                 border: solid black 1px;
                 border-radius: 5px;
                 pointer-events: all;
+                transform: scale( 0.9 );
             }
 
             .page-aside ul li.title {
