@@ -94,7 +94,7 @@
             <div class="page-aside">
                 <button class="expand-aside" onclick="shrinkAside()"><ion-icon name="chevron-back-outline"></ion-icon></button>
                 <ul>
-                    <?php echo '<li class="title"><a href="#"><span class="aside-icon"><img class="icon" src="' . $guild->icon_url . '"/></span><span class="title">' . $guild->name . '</span></a></li>'; ?>
+                    <?php echo '<li class="tbutton title"><a href="#"><span class="aside-icon"><img class="icon" src="' . $guild->icon_url . '"/></span><span class="title">' . $guild->name . '</span></a></li>'; ?>
                     <li <?php if($view == 'overview' || $view == '') { echo 'class="selected"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/overview" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
                     <li <?php if($view == 'settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/settings" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
                     <li <?php if($view == 'text-settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/text-settings" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></a></li>
