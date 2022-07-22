@@ -258,7 +258,7 @@ button.none {
                 pointer-events: none;
             }
 
-            .page-aside ul li.button {
+            .page-aside ul li.tbutton {
                 border: solid black 1px;
                 border-radius: 5px;
                 pointer-events: all;
