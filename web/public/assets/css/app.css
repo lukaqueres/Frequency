@@ -282,7 +282,6 @@ button.none {
                 position: relative;
                 display: block;
                 padding: 0 10px;
-                line-height: normal;
                 /*white-space: break-spaces;*/
             }
 .dotted {
