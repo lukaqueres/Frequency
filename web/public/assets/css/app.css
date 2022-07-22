@@ -270,7 +270,6 @@ button.none {
                 width: 100%;
                 list-style: none;
                 color: black;
-                padding-block: 10px;
                 /*pointer-events: none;*/
                 font-size: 20px;
             }
