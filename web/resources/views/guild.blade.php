@@ -208,6 +208,14 @@
                                 <p class="x-title">Text settings</p>
                             </div>
                         </div>
+                        <div class="card">
+                            <ul class="no-points">
+                                <li><input type="checkbox" id="filter_messages" name="filter_messages"/><span>Filter messages</span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
+                                <li><input type="checkbox" id="notify_flagged" name="notify_flagged"/><span>Notify about flagged messages</span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
+                                <li><input type="checkbox" id="delete_flagged" name="delete_flagged"/><span>Delete flagged messages</span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
+                                <li><input type="checkbox" id="delete_invites" name="delete_invites"/><span>Delete discord invites</span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
+                            </ul>
+                        </div>
                     </div>
                     <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- ?>
                     <div class="card-container">
