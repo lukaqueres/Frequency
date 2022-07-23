@@ -128,6 +128,7 @@
             </div>
             <?php // MAIN CONTANT - CAN CHANGE BETWEEN VIEWS ?>
             <div class="app-main page-main">
+            <?php if ($view == 'overview') {  // OVERVIEW VIEW ------------------------------------------------------------- ?>
                 <div class="card-container">
                     <?php
                     if ($guild->has_bot)
@@ -192,6 +193,31 @@
                         echo 'No guild found';
                     }
                     ?></br></h5>
+                    <?php } else if ($view == 'settings') { // SETTINGS VIEW --------------------------------------------------------------------?>
+                    <div class="card-container">
+                        <div class="card full transparent">
+                            <div class="flex x-center">
+                                <p class="x-title">Settings</p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } else if ($view == 'text-settings') { // TEXT SETTINGS VIEW ---------------------------------------------------------- ?>
+                    <div class="card-container">
+                        <div class="card full transparent">
+                            <div class="flex x-center">
+                                <p class="x-title">Text settings</p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- ?>
+                    <div class="card-container">
+                        <div class="card full transparent">
+                            <div class="flex x-center">
+                                <p class="x-title">Debug data</p>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
             </div>
         </div>
         <?php // Because of shitty way I would have to deal with images in aside, I am using this as test/probably will stay, using https://ionic.io/ionicons ?>
