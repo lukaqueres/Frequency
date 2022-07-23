@@ -552,6 +552,14 @@ button.none {
             flex-grow: 1;
         }
 
+        .card-container > .card.huge-title {
+            text-transform: uppercase;
+            color: #30228D;
+            border-bottom: 1px #30228D solid;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
         .card-container > .card.transparent {
             background: transparent;
             border: 1px transparent;
