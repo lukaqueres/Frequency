@@ -324,6 +324,9 @@ class DiscordController extends Controller
         $data['view']=$request->view;
         $views = array('', 'overview', 'settings', 'text-settings', 'debug');
         $selected_view = $request->view;
+        if ($selected_view == '') {
+            $selected_view = 'overview';
+        }
         if (in_array($selected_view, $views)) {
             return view('guild', $data);
         } else {
