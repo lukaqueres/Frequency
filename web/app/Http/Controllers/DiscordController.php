@@ -322,14 +322,16 @@ class DiscordController extends Controller
         $data = array();
         $data['id']=$request->id;
         $views = array('overview', 'settings', 'text-settings', 'debug');
+        $reqBot = array('settings', 'text-settings');
         $selected_view = $request->view;
         if ($selected_view == '') {
             $selected_view = 'overview';
         }
 
         $data['view']=$selected_view;
-
-        if (in_array($selected_view, $views)) {
+        if (!$guilds[$request->id]->has_bot && in_array($selected_view, $reqBot)) {
+            abort(404);
+        } else if (in_array($selected_view, $views)) {
             return view('guild', $data);
         } else {
             abort(404);
