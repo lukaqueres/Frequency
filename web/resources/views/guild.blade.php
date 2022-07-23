@@ -127,7 +127,7 @@
                 */ ?>
             </div>
             <?php // MAIN CONTANT - CAN CHANGE BETWEEN VIEWS ?>
-            <div class="app-main page-main">
+            <div class="page-main">
             <?php if ($view == 'overview') {  // OVERVIEW VIEW ------------------------------------------------------------- ?>
                 <div class="card-container">
                     <?php
@@ -195,24 +195,24 @@
                     ?></br></h5>
                     <?php } else if ($view == 'settings') { // SETTINGS VIEW --------------------------------------------------------------------?>
                     <div class="card-container">
-                        <div class="card full transparent">
-                            <div class="flex x-center">
+                        <div class="card huge-title full transparent">
+                            <div class="flex">
                                 <p class="x-title">Settings</p>
                             </div>
                         </div>
                     </div>
                     <?php } else if ($view == 'text-settings') { // TEXT SETTINGS VIEW ---------------------------------------------------------- ?>
                     <div class="card-container">
-                        <div class="card full transparent">
-                            <div class="flex x-center">
+                        <div class="card huge-title full transparent">
+                            <div class="flex">
                                 <p class="x-title">Text settings</p>
                             </div>
                         </div>
                     </div>
                     <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- ?>
                     <div class="card-container">
-                        <div class="card full transparent">
-                            <div class="flex x-center">
+                        <div class="card huge-title full transparent">
+                            <div class="flex">
                                 <p class="x-title">Debug data</p>
                             </div>
                         </div>
