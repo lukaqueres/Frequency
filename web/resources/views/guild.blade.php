@@ -227,7 +227,7 @@
                             </ul>
                         </div>
                     </div>
-                    <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- ?>
+                    <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- -7760928402638897752 ?>
                     <div class="card-container">
                         <div class="card huge-title full transparent">
                             <div class="flex">
