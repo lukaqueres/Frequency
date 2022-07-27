@@ -209,10 +209,20 @@
                             </div>
                         </div>
                         <div class="card">
+                            <p class="title">General</p>
                             <ul class="no-points">
-                                <li><input type="checkbox" id="filter_messages" name="filter_messages"/><span>Filter messages</span></li>
-                                <li><input type="checkbox" id="notify_flagged" name="notify_flagged"/><span>Notify about flagged messages</span></li>
-                                <li><input type="checkbox" id="delete_flagged" name="delete_flagged"/><span>Delete flagged messages</span></li>
+                                <li><input type="checkbox" id="filter_messages" name="filter_messages"/><span>Report </span></li>
+                                <li><input type="checkbox" id="notify_flagged" name="notify_flagged"/><span>Delete suspicious links</span></li>
+                                <li><input type="checkbox" id="delete_flagged" name="delete_flagged"/><span>Delete all links</span></li>
+                                <li><input type="checkbox" id="delete_invites" name="delete_invites"/><span>Delete discord invites</span></li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <p class="title">Links</p>
+                            <ul class="no-points">
+                                <li><input type="checkbox" id="filter_messages" name="filter_messages"/><span>Delete links</span></li>
+                                <li><input type="checkbox" id="notify_flagged" name="notify_flagged"/><span>Delete suspicious links</span></li>
+                                <li><input type="checkbox" id="delete_flagged" name="delete_flagged"/><span>Delete all links</span></li>
                                 <li><input type="checkbox" id="delete_invites" name="delete_invites"/><span>Delete discord invites</span></li>
                             </ul>
                         </div>
