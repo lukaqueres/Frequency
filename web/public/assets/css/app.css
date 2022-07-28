@@ -565,6 +565,11 @@ button.none {
             box-shadow: none;
         }
 
+            .card-container > .card.transparent > .title {
+                background: transparent;
+                border-color: transparent;
+            }
+
         .card-container > .card.wide {
             width: 50%;
             flex-grow: 1;
