@@ -218,7 +218,6 @@
                             </ul>
                         </div>
                         <div class="card transparent">
-                            <p class="title">Links</p>
                             <ul class="no-points">
                                 <li><label class="chck-label"><input type="checkbox" id="filter_messages" name="filter_messages"/><span class="label">Delete links</span></label></li>
                                 <li><input type="checkbox" id="notify_flagged" name="notify_flagged"/><span>Delete suspicious links</span></li>
