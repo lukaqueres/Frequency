@@ -19,7 +19,15 @@ input[type="checkbox"] {
         cursor: not-allowed;
     }
 
+.chck-label {
+    display: flex;
+    margin: 0;
+    align-items: center;
+}
 
+    .chck-label .label {
+        margin: 10rem;
+    }
 
 
 
