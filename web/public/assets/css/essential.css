@@ -1,4 +1,10 @@
 
+input[type="checkbox"] {
+    accent-color: #30228D;
+    height: 20px;
+    width: 20px;
+}
+
 a.full-btn, button.full-btn {
     background: #30228D;
     border: solid 1px #30228D;
