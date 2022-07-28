@@ -11,9 +11,27 @@ input[type="checkbox"] {
     color: black;
 }
 
+
+    input[type=checkbox]::before {
+        content: "";
+        color: transparent;
+        display: block;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        border: 0;
+        background-color: transparent;
+        background-size: contain;
+        box-shadow: inset 0 0 0 1px #CCD3D8;
+    }
+
     input[type="checkbox"]:checked {
         background: currentColor;
     }
+
+
+
+
 
 a.full-btn, button.full-btn {
     background: #30228D;
