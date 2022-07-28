@@ -1,46 +1,20 @@
-
-input[type="checkbox"] {
-    accent-color: black;
-    height: 20px;
-    width: 20px;
-    vertical-align: middle;
-    appearance: none;
-    background: #30228D;
-    border-radius: 2px;
-    cursor: pointer;
-    color: black;
+:root {
+    --clr-primary: black;
+    --clr-secondary: #30228D;
 }
 
 
-    input[type=checkbox]::before {
-        content: "";
-        color: transparent;
-        display: block;
-        width: inherit;
-        height: inherit;
-        border-radius: inherit;
-        border: 0;
-        background-color: transparent;
-        background-size: contain;
-        box-shadow: inset 0 0 0 1px #CCD3D8;
-    }
-
-    /* Checked */
-
-    input[type=checkbox]:checked {
-        background-color: currentcolor;
-    }
-
-        input[type=checkbox]:checked::before {
-            box-shadow: none;
-            background-image: url('/img/checkmark-outline.svg');
-        }
-
+input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    accent-color: #30228D;
+}
 
     /* Disabled */
 
-    input[type=checkbox]:disabled {
-        background-color: #CCD3D8;
+    input[type="checkbox"]:disabled {
+        background-color: #30228D;
         opacity: 0.84;
         cursor: not-allowed;
     }
