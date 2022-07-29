@@ -225,7 +225,7 @@
                                     <li><label class="chck-label"><input type="checkbox" id="delete_flagged"/><span class="label">Delete all links</span></label></li>
                                     <li><label class="chck-label"><input type="checkbox" id="delete_invites"/><span class="label">Delete discord invites</span></label></li>
                                 </ul>
-                                </div>
+                            </div>
                         </div>
                     </div>
                     <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- -7760928402638897752 ?>
