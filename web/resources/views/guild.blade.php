@@ -217,7 +217,7 @@
                                 <li><input type="checkbox" id="delete_invites" name="delete_invites"/><span>Delete discord invites</span></li>
                             </ul>
                         </div>
-                        <div class="card full transparent">
+                        <div class="card full">
                             <p class="title">Links</p>
                             <ul class="no-points">
                                 <li><label class="chck-label"><input type="checkbox" id="filter_messages"/><span class="label">Delete links</span></label></li>
