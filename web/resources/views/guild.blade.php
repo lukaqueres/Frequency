@@ -221,9 +221,9 @@
                             <p class="title">Links</p>
                             <ul class="no-points">
                                 <li><label class="chck-label"><input type="checkbox" id="filter_messages"/><span class="label">Delete links</span></label></li>
-                                <li><label class="chck-label"><input type="checkbox" id="notify_flagged"/><span>Enable internal links filter</span></label></li>
-                                <li><label class="chck-label"><input type="checkbox" id="delete_flagged"/><span>Delete all links</span></label></li>
-                                <li><label class="chck-label"><input type="checkbox" id="delete_invites"/><span>Delete discord invites</span></label></li>
+                                <li><label class="chck-label"><input type="checkbox" id="notify_flagged"/><span class="label">Enable internal links filter</span></label></li>
+                                <li><label class="chck-label"><input type="checkbox" id="delete_flagged"/><span class="label">Delete all links</span></label></li>
+                                <li><label class="chck-label"><input type="checkbox" id="delete_invites"/><span class="label">Delete discord invites</span></label></li>
                             </ul>
                         </div>
                     </div>
