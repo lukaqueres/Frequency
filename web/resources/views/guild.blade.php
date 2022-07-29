@@ -218,8 +218,7 @@
                             </ul>
                         </div>
                         <div class="card full card-container">
-                            <p class="title">Links</p>
-                            <div class="card">
+                            <div class="card transparent">
                                 <ul class="no-points">
                                     <li><label class="chck-label"><input type="checkbox" id="filter_messages"/><span class="label">Delete links</span></label></li>
                                     <li><label class="chck-label"><input type="checkbox" id="notify_flagged"/><span class="label">Enable internal links filter</span></label></li>
