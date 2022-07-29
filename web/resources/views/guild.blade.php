@@ -217,14 +217,16 @@
                                 <li><input type="checkbox" id="delete_invites" name="delete_invites"/><span>Delete discord invites</span></li>
                             </ul>
                         </div>
-                        <div class="card full">
+                        <div class="card full card-container">
                             <p class="title">Links</p>
-                            <ul class="no-points">
-                                <li><label class="chck-label"><input type="checkbox" id="filter_messages"/><span class="label">Delete links</span></label></li>
-                                <li><label class="chck-label"><input type="checkbox" id="notify_flagged"/><span class="label">Enable internal links filter</span></label></li>
-                                <li><label class="chck-label"><input type="checkbox" id="delete_flagged"/><span class="label">Delete all links</span></label></li>
-                                <li><label class="chck-label"><input type="checkbox" id="delete_invites"/><span class="label">Delete discord invites</span></label></li>
-                            </ul>
+                            <div class="card">
+                                <ul class="no-points">
+                                    <li><label class="chck-label"><input type="checkbox" id="filter_messages"/><span class="label">Delete links</span></label></li>
+                                    <li><label class="chck-label"><input type="checkbox" id="notify_flagged"/><span class="label">Enable internal links filter</span></label></li>
+                                    <li><label class="chck-label"><input type="checkbox" id="delete_flagged"/><span class="label">Delete all links</span></label></li>
+                                    <li><label class="chck-label"><input type="checkbox" id="delete_invites"/><span class="label">Delete discord invites</span></label></li>
+                                </ul>
+                                </div>
                         </div>
                     </div>
                     <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- -7760928402638897752 ?>
