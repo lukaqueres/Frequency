@@ -390,7 +390,7 @@
         const xhttp = new XMLHttpRequest();
         let test = document.getElementById("test_xyz");
         xhttp.onload = function() {
-            document.getElementById("txtHint").innerHTML = this.responseText;
+            test.innerHTML = this.responseText;
         }
         xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?status='test'");
         xhttp.send();   
