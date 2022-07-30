@@ -279,30 +279,6 @@
         }
     }*/
 
-    function notify(title, content) {
-        var container = document.getElementById('notification-container');
-        var div = document.createElement("div");
-        div.className = "notification";
-
-        let p = document.createElement("p");
-        p.innerText = title;
-
-        let h = document.createElement("h5");
-        h.innerText = content;
-
-        var button = document.createElement("button");
-        button.setAttribute("onclick",'closeParent(event)'); // "key-word-'+(count + 1)+'"
-        button.innerText = "Close notification";
-        button.className = "close";
-        button.type="button";
-
-        div.appendChild(p);
-        div.appendChild(h);
-        div.appendChild(button);
-
-        container.appendChild(div);
-    }
-
     function addInput(e) {
         var keywordEntry = document.getElementById("keyword-entry");
         
