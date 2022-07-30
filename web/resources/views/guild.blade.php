@@ -233,6 +233,8 @@
                         <div class="card huge-title full transparent">
                             <div class="flex">
                                 <p class="x-title">Debug data</p>
+                                <button onclick="AJAXtest()">TEST</button>
+                                <div id="test_xyz">TEST</div>
                             </div>
                         </div>
                     </div>
@@ -382,4 +384,20 @@
             }
         }
     }
+
+
+    function AJAXtest() { //TEST
+        $.ajax({
+            type: "GET",
+            url: '/data/guild/<?php echo $guild->id; ?>',
+            data: 'test="TEST_TEST"', // appears as $_GET['id'] @ your backend side
+            success: function(data) {
+                // data is ur summary
+                $('#test_xyz').html(data);
+            }
+        });
+    }
+
+
+
 </script>
