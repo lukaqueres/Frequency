@@ -387,16 +387,13 @@
 
 
     function AJAXtest() { //TEST
+        const xhttp = new XMLHttpRequest();
         let test = document.getElementById("test_xyz");
-        $.ajax({
-            type: "GET",
-            url: '/data/guild/<?php echo $guild->id; ?>',
-            data: 'test="TEST_TEST"', // appears as $_GET['id'] @ your backend side
-            success: function(data) {
-                // data is ur summary
-                test.innerHTML = data;
-            }
-        });
+        xhttp.onload = function() {
+            document.getElementById("txtHint").innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?status='test'");
+        xhttp.send();   
     }
 
 
