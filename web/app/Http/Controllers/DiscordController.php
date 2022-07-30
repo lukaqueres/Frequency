@@ -340,6 +340,6 @@ class DiscordController extends Controller
 
     public function guildAjax(Request $request)
     {
-        return 'TEST' . Session::get('user')->id;
+        return 'TEST' . Session::get('user')->username;
     }
 }
