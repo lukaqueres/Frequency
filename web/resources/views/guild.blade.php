@@ -362,6 +362,15 @@
         }
     }
 
+    function vGuild(object) {
+        const xhttp = new XMLHttpRequest();
+        let obj = document.getElementById(object);
+        xhttp.onload = function() {
+            obj.innerHTML = this.responseText;
+        }
+        xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?status='test'");
+        xhttp.send();  
+    }
 
     function AJAXtest() { //TEST
         const xhttp = new XMLHttpRequest();
