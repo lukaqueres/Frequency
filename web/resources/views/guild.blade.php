@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/essential.css" />
 	    <script type="text/javascript" src="/assets/js/app.js"></script>
         <script type="text/javascript" src="/assets/js/essential.js"></script>
+        <script type="text/javascript" src="/assets/js/guild_view.js"></script>
 	    <meta name="description" content="Main site featuring Discord multi-task bot Wild West Post Office!" />
 	    <meta name="keywords" content="discord, bot" />
 	    <meta name="author" content="Lukas" />
