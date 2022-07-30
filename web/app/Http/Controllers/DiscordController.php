@@ -188,28 +188,6 @@ class DiscordController extends Controller
                 return redirect('/');
             }
         }
-        /*
-        // Making nice arrays for guilds
-        $data = array();
-        $guilds_snippets = [];
-        //$data['user'] = $user;
-
-        foreach($guilds as $guild) {
-            //var_dump($guild->permissions);
-            //$guild['permissions_names'] = get_permissions($guild->permissions);
-            $guild->p_tag = get_user_permissions_tag(get_permissions($guild->permissions));
-            $guild->tags = get_guild_tags($guild);
-            $this_guild = [];
-            $this_guild['id'] = $guild->id;
-            $this_guild['name'] = $guild->name;
-            $this_guild['icon'] = $guild->icon;
-            $this_guild['tags'] = $guild->tags;
-            //$guilds_preview[] = $this_guild;
-            $guilds_snippets[] = [ "id" => $guild->id, "name" => $guild->name, "icon" => $guild->icon, "tags" => $guild->tags];
-            $data['guilds'][$guild->id] = $guild;
-            $data['snippets'] = $guilds_snippets;
-        }
-        */
         $data = array();
         foreach($guilds as $guild) {
             $data['guilds'][$guild->id] = $guild;
@@ -222,14 +200,6 @@ class DiscordController extends Controller
             $guildsObj[$guild->id]->assign($guild, $DBdata[$guild->id]);
         }
 
-        //$data['guilds']['snippets'] = $guilds_snippets;
-        //return var_dump($data['guilds']);
-        //return response()->json(['guilds' => $data['guilds'] ]); 
-        
-        //Session::put('access_token', $accessToken);
-		//Session::put('user_data', $user);
-        //Session::put('data', $data);
-        /*Session::put('DBdata', $DBdata);*/
         Session::put('guilds', $guildsObj);
 
         Session::put('user', $user);
@@ -340,6 +310,13 @@ class DiscordController extends Controller
 
     public function guildAjax(Request $request)
     {
+        if ($request->missing('operation')) {
+            return response()->json([
+                'error_message' => 'The authorization code is missing.',
+                'code' => 400
+            ]);
+        }
+        $operation = $request->get('operation')
         return 'TEST' . Session::get('user')->username;
     }
 }
