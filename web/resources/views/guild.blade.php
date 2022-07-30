@@ -387,13 +387,14 @@
 
 
     function AJAXtest() { //TEST
+        let test = document.getElementById("test_xyz");
         $.ajax({
             type: "GET",
             url: '/data/guild/<?php echo $guild->id; ?>',
             data: 'test="TEST_TEST"', // appears as $_GET['id'] @ your backend side
             success: function(data) {
                 // data is ur summary
-                $('#test_xyz').html(data);
+                test.innerHTML = data;
             }
         });
     }
