@@ -23,6 +23,7 @@ function getParentElementByClassName(node, className) {
 }
 
 function getParentElementByTag(node, tagName) {
+    console.log(node);
     let nodeParent = node.parentNode;
     while (nodeParent) {
         if (nodeParent.tagName == tagName) {
