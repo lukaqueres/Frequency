@@ -316,7 +316,7 @@ class DiscordController extends Controller
                 'code' => 400
             ]);
         }
-        $operation = $request->get('operation')
+        $operation = $request->get('operation');
         if ($operation = "getview") {
             if ($request->missing('view')) {
                 return response()->json([
@@ -324,7 +324,7 @@ class DiscordController extends Controller
                     'code' => 400
                 ]);
             }
-            $view = $request->get('view')
+            $view = $request->get('view');
 
             if ( $view = 'textSettings') {
                 ob_start();
