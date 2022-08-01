@@ -384,7 +384,8 @@
         if ( e.target.tagName == 'li' ) {
             e.target.classList.add('selected');
         } else {
-            getParentElementByTag(e.target, 'li').classList.add('selected');
+            let button = getParentElementByTag(e.target, 'li');
+            button.classList.add('selected');
         }
         
     }
