@@ -11,6 +11,17 @@ function getParentElementByClassName(node, className) {
     return nodeParent;
 }
 
+function getParentElementByTag(node, tagName) {
+    let nodeParent = node.parentNode;
+    while (nodeParent) {
+        if (!nodeParent.tagName == tagName) {
+            break;
+        }
+        nodeParent = nodeParent.parentNode;
+    }
+    return nodeParent;
+}
+
 function OnStart() { // function to run on page creation
 
     var dropdownmenus = Array(); // Assigning onclick event to dropdown menus buttons

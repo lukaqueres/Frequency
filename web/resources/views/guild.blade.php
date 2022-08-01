@@ -379,8 +379,12 @@
                 link.classList.remove('selected');
             }
         }
-
-        e.target.classList.add('selected');
+        if ( e.target.tagName == 'li' ) {
+            e.target.classList.add('selected');
+        } else {
+            getParentElementByTag(e.target, 'li').classList.add('selected');
+        }
+        
     }
 
     function AJAXtest() { //TEST
