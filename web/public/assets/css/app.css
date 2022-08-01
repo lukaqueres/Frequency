@@ -47,7 +47,6 @@ body {
 
 button {
     cursor: pointer;
-    transition: .25s;
 }
 
 button.none {
