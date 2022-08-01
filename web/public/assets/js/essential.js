@@ -14,7 +14,7 @@ function getParentElementByClassName(node, className) {
 function getParentElementByTag(node, tagName) {
     let nodeParent = node.parentNode;
     while (nodeParent) {
-        if (!nodeParent.tagName == tagName) {
+        if (nodeParent.tagName == tagName) {
             break;
         }
         nodeParent = nodeParent.parentNode;
