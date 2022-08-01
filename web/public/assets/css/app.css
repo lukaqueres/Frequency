@@ -211,7 +211,7 @@ button.none {
                 border-radius: 5px;
             }
 
-            .page-aside ul li a {
+            .page-aside ul li :is(a, button) {
                 position: relative;
                 display: block;
                 width: 100%;
@@ -221,7 +221,7 @@ button.none {
                 align-items: center;
             }
 
-                .page-aside ul li a .aside-icon {
+                .page-aside ul li :is(a, button) .aside-icon {
                     position: relative;
                     display: block;
                     min-width: 60px;
@@ -230,11 +230,11 @@ button.none {
                     text-align: center;
                 }
 
-                    .page-aside ul li a .aside-icon ion-icon {
+                    .page-aside ul li :is(a, button) .aside-icon ion-icon {
                         font-size: 1.75em;
                     }
 
-                .page-aside ul li a .title {
+                .page-aside ul li :is(a, button) .title {
                     position: relative;
                     display: block;
                     padding: 0 10px;
@@ -278,20 +278,20 @@ button.none {
                 font-size: 20px;
             }
 
-                .page-aside.shrink ul li.title a .title {
-                    position: relative;
-                    display: block;
-                    padding: 0 10px;
-                    line-height: 60px;
-                    white-space: nowrap;
-                }
+    .page-aside.shrink ul li.title :is(a, button) .title {
+        position: relative;
+        display: block;
+        padding: 0 10px;
+        line-height: 60px;
+        white-space: nowrap;
+    }
 
-            .page-aside ul li.title a .title {
-                position: relative;
-                display: block;
-                padding: 0 10px;
-                /*white-space: break-spaces;*/
-            }
+    .page-aside ul li.title :is(a, button) .title {
+        position: relative;
+        display: block;
+        padding: 0 10px;
+        /*white-space: break-spaces;*/
+    }
 .dotted {
     background: #090910;
     background-position-x: 0%;
