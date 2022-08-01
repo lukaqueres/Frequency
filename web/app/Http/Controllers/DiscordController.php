@@ -308,15 +308,32 @@ class DiscordController extends Controller
         }
     }
 
-    public function guildAjax(Request $request)
+    public function changeGuildview(Request $request)
     {
         if ($request->missing('operation')) {
             return response()->json([
-                'error_message' => 'The authorization code is missing.',
+                'error_message' => 'No operation specified.',
                 'code' => 400
             ]);
         }
         $operation = $request->get('operation')
-        return 'TEST' . Session::get('user')->username;
+        if ($operation = "getview") {
+            if ($request->missing('view')) {
+                return response()->json([
+                    'error_message' => 'No view specified.',
+                    'code' => 400
+                ]);
+            }
+            $view = $request->get('view')
+
+            if ( $view = 'textSettings') {
+                ob_start();
+                include('/pages/guildView_textSettings_page.php');
+                $page = ob_get_clean();
+                return $page;
+            }
+
+        }
+        //return 'TEST' . Session::get('user')->username;
     }
 }
