@@ -328,7 +328,7 @@ class DiscordController extends Controller
 
             if ( $view = 'textSettings') {
                 ob_start();
-                include('/pages/guildView_textSettings_page.php');
+                include('pages/guildView_textSettings_page.php');
                 $page = ob_get_clean();
                 return $page;
             }
