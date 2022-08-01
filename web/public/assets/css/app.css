@@ -202,6 +202,14 @@ button.none {
             color: black;
         }
 
+            .page-aside ul li.title {
+                position: relative;
+                width: 100%;
+                list-style: none;
+                /*pointer-events: none;*/
+                font-size: 20px;
+            }
+
             .page-aside ul li:hover, .page-aside ul li.selected {
                 background: black;
                 color: #30228D;
@@ -243,6 +251,7 @@ button.none {
                     line-height: 60px;
                     text-align: start;
                     white-space: nowrap;
+                    font-size: initial;
                 }
 
             .page-aside ul li.space {
@@ -270,14 +279,6 @@ button.none {
                 .page-aside ul li.tbutton:hover {
                     background: #090910;
                 }
-
-            .page-aside ul li.title {
-                position: relative;
-                width: 100%;
-                list-style: none;
-                /*pointer-events: none;*/
-                font-size: 20px;
-            }
 
     .page-aside.shrink ul li.title :is(a, button) .title {
         position: relative;
