@@ -32,6 +32,7 @@ function getParentElementByTag(node, tagName) {
             break;
         }
         nodeParent = nodeParent.parentNode;
+        console.log(nodeParent);
         if (nodeParent.tagName == 'body') {
             break;
         }
