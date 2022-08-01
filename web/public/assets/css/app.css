@@ -219,6 +219,8 @@ button.none {
                 text-decoration: none;
                 color: inherit;
                 align-items: center;
+                background: transparent;
+                border: none;
             }
 
                 .page-aside ul li :is(a, button) .aside-icon {
