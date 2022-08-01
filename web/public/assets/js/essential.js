@@ -1,5 +1,16 @@
 const pass = () => {} // create function to let write some nice 'pass()' on if or something
 
+
+function getParentElement(node, requirement) {
+    if (requirement.startsWith('.')) {  // We are looking for parent with class
+        pass();
+    } else if (requirement.startsWith('#')) { // We are looking for parent with id
+        pass();
+    } else { // We are looking for parent with tag
+        pass(); 
+    }
+}
+
 function getParentElementByClassName(node, className) {
     let nodeParent = node.parentNode;
     while (nodeParent) {
