@@ -251,13 +251,15 @@
 <script>
 
     OnStart();
-
-    var keywordEntry = document.getElementById("keyword-entry");
-    keywordEntry.addEventListener("keydown", function (e) {
-        if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
-            addInput();
-        }
-    });
+    const keywordentryexists = document.getElementById('keyword-entry') || false
+    if (keywordentryexists) {
+        var keywordEntry = document.getElementById("keyword-entry");
+        keywordEntry.addEventListener("keydown", function (e) {
+            if (e.code === "Enter") {  //checks whether the pressed key is "Enter"
+                addInput();
+            }
+        });
+    }
     function search_dropdown() {
         var Dropdown = document.getElementById("app-search-dropdown");
         if (!Dropdown.classList.contains('app-show')) {
