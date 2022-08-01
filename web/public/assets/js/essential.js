@@ -52,6 +52,15 @@ function AddOnClick(collection, task) { // Add onclick attribute to array of htm
     }
 }
 
+function goTo(page, title, url) {
+    if ("undefined" !== typeof history.pushState) {
+        history.pushState({ page: page }, title, url);
+    } else {
+        window.location.assign(url);
+    }
+}
+
+
 //
 // <>-------------------------------------------<> DROPDOWN FUNCTIONS <>----------------------------------------------------------------------------------------<>
 //
