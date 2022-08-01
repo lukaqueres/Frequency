@@ -21,7 +21,7 @@ Route::get('/manage/{view?}', 'DiscordController@showManage');
 Route::get('/manage/guild/{id}/{view?}', 'DiscordController@showGuild');
 Route::get('/manage/user/{view?}', 'DiscordController@showUser');
 
-Route::get('/data/guild/{id}', 'DiscordController@guildAjax');
+Route::get('/data/guild/{id}', 'DiscordController@changeGuildview');
 
 Route::match(['get', 'post'], '/discord/authorize', 'DiscordController@authorizeMe');
 Route::get('/discord/logout', 'DiscordController@unAuthorizeMe');
