@@ -325,10 +325,24 @@ class DiscordController extends Controller
                 ]);
             }
             $view = $request->get('view');
-
-            if ( $view = 'textSettings') {
+            if ( $view = 'overview'){
+                ob_start();
+                include('pages/guildView_overview_page.php');
+                $page = ob_get_clean();
+                return $page;
+            } elseif ( $view = 'settings'){
+                ob_start();
+                include('pages/guildView_settings_page.php');
+                $page = ob_get_clean();
+                return $page;
+            } elseif ( $view = 'textSettings') {
                 ob_start();
                 include('pages/guildView_textSettings_page.php');
+                $page = ob_get_clean();
+                return $page;
+            } elseif ( $view = 'debug'){
+                ob_start();
+                include('pages/guildView_debug_page.php');
                 $page = ob_get_clean();
                 return $page;
             }

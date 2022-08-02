@@ -15,17 +15,10 @@
     </head>
 
     <?php
-        // Get variables from Session data
-        //$data = Session::get('data');
         $user = Session::get('user');
-        //$guilds = $data['guilds'];
-        //$snippets = $data['snippets'];
-        //$thisGuild = $guilds[$id];
-        //$DBdata = Session::get('DBdata');
         $guilds = Session::get('guilds');
         $guild = $guilds[$id];
         $view = $view;
-        //$guildDB = $DBdata[$id];
     ?>
 
     <body>
@@ -129,92 +122,15 @@
             </div>
             <?php // MAIN CONTANT - CAN CHANGE BETWEEN VIEWS ?>
             <div id="main-window" class="page-main">
-            <?php if ($view == 'overview') {  // OVERVIEW VIEW ------------------------------------------------------------- ?>
-                <div class="card-container">
-                    <?php
-                    if ($guild->has_bot)
-                    {
-                        $s= 'Current';
-                    } else {
-                        $s= 'Absent';
-                    }
-                    ?>
-                    <div class="card full transparent">
-                        <div class="flex x-center">
-                            <?php echo '<img class="icon" src="' . $guild->icon_url . '">'; ?>
-                            <p class="x-title"><?php echo $guild->name; ?></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <p class="title">Overwiew</p>
-                        <ul class="no-points">
-                            <li><span> Name: </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                            <li><span> Id: </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                            <li><span> Bot: </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                            <li><span> Role: </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                        </ul>
-                    </div>
-                    <div class="card wide">
-                        <p class="title">Features</p>
-                        <div class="tags">
-                        <?php
-                            if (!$guild->features) {
-                                echo '<span class="x-title xy-center"> N/A</span>';
-                            } else {
-                                foreach($guild->features as $feature) {
-                                    echo '<div class="tag"><h4>' . $feature . '</h4></div>';
-                                }
-                            }
-                        ?>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <p class="title">Data</p>
-                        <ul class="no-points">
-                            <li><span> Members: </span> <?php echo '<span class="bg-text">' . $guild->name . '</span>' ; ?> </li>
-                            <li><span> Message service: </span> <?php echo '<span class="bg-text">' . $guild->id . '</span>' ; ?> </li>
-                            <li><span> Bot: </span> <?php echo '<span class="bg-text">' . $s . '</span>' ; ?> </li>
-                            <li><span> Role: </span> <?php echo '<span class="bg-text">' . $guild->role . '</span>' ; ?> </li>
-                        </ul>
-                    </div>
-                    <div class="card wide">
-                        <p class="title">Key-words</p>
-                        <div id="input-container" class="tags">
-                            <div class="tag flex"><input type="text" id="keyword-entry" class="cover" maxlength="20" placeholder="Enter word"/> <button class="text" onclick="addInput()">Add key-word</button></div>
-                        </div>
-                    </div>
-                </div>
-                    <h5>
-                    <?php
-                    if (Arr::exists($guilds, $id))  {
-                        //echo json_encode($thisGuild);
-                        //echo 'guildDB: ' . json_encode($guildDB);
-                        echo'<br> GUILDS: ' . json_encode($guild);
-                    } else {
-                        echo 'No guild found';
-                    }
-                    ?></br></h5>
-                    <?php } else if ($view == 'settings') { // SETTINGS VIEW --------------------------------------------------------------------?>
-                    <div class="card-container">
-                        <div class="card huge-title full transparent">
-                            <div class="flex">
-                                <p class="x-title">Settings</p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } else if ($view == 'text-settings') { // TEXT SETTINGS VIEW ---------------------------------------------------------- ?>
-                        <?php include('pages/guildView_textSettings_page.php'); ?>
-                    <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- -7760928402638897752 ?>
-                    <div class="card-container">
-                        <div class="card huge-title full transparent">
-                            <div class="flex">
-                                <p class="x-title">Debug data</p>
-                                <button onclick="AJAXtest()">TEST</button>
-                                <div id="test_xyz">TEST</div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php } ?>
+                <?php if ($view == 'overview') {  // OVERVIEW VIEW ------------------------------------------------------------- ?>
+                    <?php include('pages/guildView_overview_page.php'); ?>
+                <?php } else if ($view == 'settings') { // SETTINGS VIEW --------------------------------------------------------------------?>
+                    <?php include('pages/guildView_settings_page.php'); ?>
+                <?php } else if ($view == 'text-settings') { // TEXT SETTINGS VIEW ---------------------------------------------------------- ?>
+                    <?php include('pages/guildView_textSettings_page.php'); ?>
+                <?php } else if ($view == 'debug') { // DEBUG VIEW -------------------------------------------------------------------------- -7760928402638897752 ?>
+                    <?php include('pages/guildView_debug_page.php'); ?>
+                <?php } ?>
             </div>
         </div>
         <?php // Because of shitty way I would have to deal with images in aside, I am using this as test/probably will stay, using https://ionic.io/ionicons ?>
