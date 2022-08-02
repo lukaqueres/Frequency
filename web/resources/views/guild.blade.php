@@ -264,7 +264,7 @@
         xhttp.onload = function () {
             obj.innerHTML = this.responseText;
         }
-        xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&view=textSettings");
+        xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=textSettings");
         xhttp.send();
         goTo("Text Settings", "Plan It | Txt settings", '/manage/guild/<?php echo $id; ?>/text-settings');
 
