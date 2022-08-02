@@ -23,19 +23,13 @@ function getParentElementByClassName(node, className) {
 }
 
 function getParentElementByTag(node, tagName) {
-    console.log('Selected node: ' + node);
     let nodeParent = node.parentNode;
     tagName = tagName.toUpperCase();
-    console.log('Wanted tag Name: ' + tagName);
-    console.log('parent node: ' + nodeParent);
     while (nodeParent) {
-        console.log('Parent node tag: ' + nodeParent.tagName);
         if (nodeParent.tagName == tagName) {
             break;
         }
         nodeParent = nodeParent.parentNode;
-        console.log(nodeParent);
-        console.log('parent node on find: ' + nodeParent);
         if (nodeParent.tagName == 'body') {
             break;
         }
