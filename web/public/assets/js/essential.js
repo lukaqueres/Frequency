@@ -141,6 +141,25 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 // <>---------------------------------------<> DROPDOWN FUNCTIONS CODE END <>------------------------------------------------------------------------------------<>
 //
 
+//
+// <>-------------------------------------------<> INPUT FUNCTIONS <>----------------------------------------------------------------------------------------<>
+//
+// With these functions there is ( hopefully ) no need to add any js functions or elements and only css and html to make nice unusual inputs.
+// But classes must be assigned correctly - and it is a little more complicated than menus.
+//
+// main container div = 'menu dropdown'; within previous div add button and div with class 'content'.
+// like this:
+//
+// <div class="menu dropdown">
+//      <button>OPEN DROPDOWN</button>
+//      <div class="content">CONTENT</div>
+// </div>
+//
+// JS will automaticly add onclick attribute to button
+//
+// <>-----------------------------------------<> DROPDOWN FUNCTIONS CODE <>--------------------------------------------------------------------------------------<>
+//
+
 function shrinkAside() {
     //let toggle = document.querySelector('.expand-aside');
     let aside = document.querySelector('.page-aside');
