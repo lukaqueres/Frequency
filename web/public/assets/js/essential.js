@@ -26,6 +26,7 @@ function getParentElementByTag(node, tagName) {
     console.log(node);
     let nodeParent = node.parentNode;
     tagName = tagName.toUpperCase();
+    console.log(tagName);
     console.log(nodeParent);
     while (nodeParent) {
         console.log(nodeParent.tagName);
