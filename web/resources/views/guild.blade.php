@@ -95,8 +95,8 @@
                     <li class="space"></li>
                     <li <?php if($view == 'overview' || $view == '') { echo 'class="selected"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/overview" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
                     <li <?php if($view == 'settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/settings" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
-                    <li <?php if($view == 'text-settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><button onclick="txtSettingsView(event, 'main-window')" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></button></li>
-                    <li <?php if($view == 'debug') { echo 'class="selected"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/debug" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debug</span></a></li>
+                    <li <?php if($view == 'text-settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><button onclick="changeView(event, 'main-window', 'textSettings')" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></button></li>
+                    <li <?php if($view == 'debug') { echo 'class="selected"';} ?> ><button onclick="changeView(event, 'main-window', 'debug')" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debug</span></button></li>
                     <li class="space"></li>
                     <li title="Main" ><a href="#" ><span class="aside-icon" ><ion-icon name="grid"></ion-icon></span><span class="title" >Main</span></a></li>
                     <li><a href="#" ><span class="aside-icon" ><ion-icon name="person-circle"></ion-icon></span><span class="title" >User</span></a></li>
@@ -258,15 +258,21 @@
         }
     }
 
-    function txtSettingsView(e, object) {
+    function changeView(e, object, target) {
         const xhttp = new XMLHttpRequest();
         let obj = document.getElementById(object);
         xhttp.onload = function () {
             obj.innerHTML = this.responseText;
         }
-        xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=textSettings");
-        xhttp.send();
-        goTo("Text Settings", "Plan It | Txt settings", '/manage/guild/<?php echo $id; ?>/text-settings');
+        if (target == 'textSettings') {
+            xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=textSettings");
+            xhttp.send();
+            goTo("Text Settings", "Plan It | Txt settings", '/manage/guild/<?php echo $id; ?>/text-settings');
+        } else if (target == 'debug') {
+            xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=debug");
+            xhttp.send();
+            goTo("Debug", "Plan It | Debug", '/manage/guild/<?php echo $id; ?>/debug');
+        }
 
         var aside = document.querySelector(".page-aside");
         var links = aside.querySelectorAll("li");
@@ -281,7 +287,6 @@
             let button = getParentElementByTag(e.target, 'li');
             button.classList.add('selected');
         }
-        
     }
 
     function AJAXtest() { //TEST
