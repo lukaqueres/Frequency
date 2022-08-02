@@ -59,13 +59,3 @@
                         </div>
                     </div>
                 </div>
-                    <h5>
-                    <?php
-                    if (Arr::exists($guilds, $id))  {
-                        //echo json_encode($thisGuild);
-                        //echo 'guildDB: ' . json_encode($guildDB);
-                        echo'<br> GUILDS: ' . json_encode($guild);
-                    } else {
-                        echo 'No guild found';
-                    }
-                    ?></br></h5>
