@@ -18,6 +18,9 @@
         $user = Session::get('user');
         $guilds = Session::get('guilds');
         $guild = $guilds[$id];
+        $gid = $id;
+        global $id; 
+        $id = $gid; 
         $view = $view;
     ?>
 
