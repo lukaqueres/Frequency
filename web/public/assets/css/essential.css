@@ -38,8 +38,14 @@ input[type="checkbox"] {
 
     }
 
-    .explanation .explanation-content {
+        .explanation .explanation-mark:hover + .explanation-content {
+            opacity: 1;
+        }
 
+    .explanation .explanation-content {
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.2s;
     }
 
 
