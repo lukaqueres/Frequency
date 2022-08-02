@@ -93,8 +93,8 @@
                 <ul>
                     <?php echo '<li class="title tbutton"><a href="#"><span class="aside-icon"><img class="icon" src="' . $guild->icon_url . '"/></span><span class="title">' . $guild->name . '</span></a></li>'; ?>
                     <li class="space"></li>
-                    <li <?php if($view == 'overview' || $view == '') { echo 'class="selected"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/overview" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
-                    <li <?php if($view == 'settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><a href="/manage/guild/<?php echo $id; ?>/settings" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
+                    <li <?php if($view == 'overview' || $view == '') { echo 'class="selected"';} ?> ><button onclick="changeView(event, 'main-window', 'overview')" ><span class="aside-icon" ><ion-icon name="apps-outline"></ion-icon></span><span class="title" >Overview</span></a></li>
+                    <li <?php if($view == 'settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><button onclick="changeView(event, 'main-window', 'settings')" ><span class="aside-icon" ><ion-icon name="build-outline"></ion-icon></span><span class="title" >Main settings</span></a></li>
                     <li <?php if($view == 'text-settings') { echo 'class="selected"';} ?><?php if(!$guild->has_bot) { echo 'class="disabled"';} ?> ><button onclick="changeView(event, 'main-window', 'textSettings')" ><span class="aside-icon" ><ion-icon name="create-outline"></ion-icon></span><span class="title" >Text settings</span></button></li>
                     <li <?php if($view == 'debug') { echo 'class="selected"';} ?> ><button onclick="changeView(event, 'main-window', 'debug')" ><span class="aside-icon" ><ion-icon name="terminal-outline"></ion-icon></span><span class="title" >Debug</span></button></li>
                     <li class="space"></li>
@@ -264,7 +264,15 @@
         xhttp.onload = function () {
             obj.innerHTML = this.responseText;
         }
-        if (target == 'textSettings') {
+        if (target == 'overview') {
+            xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=overview");
+            xhttp.send();
+            goTo("Overview", "Plan It | Overview", '/manage/guild/<?php echo $id; ?>/overview');
+        } else if (target == 'settings') {
+            xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=settings");
+            xhttp.send();
+            goTo("Settings", "Plan It | Settings", '/manage/guild/<?php echo $id; ?>/sebug');
+        } else if (target == 'textSettings') {
             xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=textSettings");
             xhttp.send();
             goTo("Text Settings", "Plan It | Txt settings", '/manage/guild/<?php echo $id; ?>/text-settings');
