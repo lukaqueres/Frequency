@@ -271,7 +271,7 @@
         } else if (target == 'settings') {
             xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=settings");
             xhttp.send();
-            goTo("Settings", "Plan It | Settings", '/manage/guild/<?php echo $id; ?>/sebug');
+            goTo("Settings", "Plan It | Settings", '/manage/guild/<?php echo $id; ?>/settings');
         } else if (target == 'textSettings') {
             xhttp.open("GET", "/data/guild/<?php echo $guild->id; ?>?operation=getview&guildId=<?php echo $guild->id; ?>&view=textSettings");
             xhttp.send();
