@@ -316,6 +316,13 @@ class DiscordController extends Controller
                 'code' => 400
             ]);
         }
+        if ($request->missing('guildId')) {
+            return response()->json([
+                'error_message' => 'No guild id specified.',
+                'code' => 400
+            ]);
+        }
+        $id = $request->get('guildId');
         $operation = $request->get('operation');
         if ($operation = "getview") {
             if ($request->missing('view')) {
@@ -324,6 +331,10 @@ class DiscordController extends Controller
                     'code' => 400
                 ]);
             }
+            $gid = $id;
+            global $id; 
+            $id = $gid; 
+
             $view = $request->get('view');
             if ( $view = 'overview'){
                 ob_start();
