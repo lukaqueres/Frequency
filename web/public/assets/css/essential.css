@@ -40,6 +40,7 @@ input[type="checkbox"] {
 
         .explanation .explanation-mark:hover + .explanation-content, .explanation .explanation-content:hover {
             opacity: 1;
+            pointer-events: all;
         }
 
     .explanation .explanation-content {
@@ -48,19 +49,20 @@ input[type="checkbox"] {
         transition: 1s cubic-bezier(0,1.11,0,1.01);
         position: relative;
         right: 30px;
-        top: -40px;
+        top: -63px;
         background: #30228D;
         color: black;
         border-radius: 5px;
+        padding: 5px 10px;
     }
 
         .explanation .explanation-content:before {
             content: "";
             display: block;
             position: absolute;
-            right: 19px;
-            top: -15px;
-            border-bottom: 15px solid #30228D;
+            left: 23px;
+            bottom: -14px;
+            border-top: 15px solid #30228D;
             border-left: 15px solid transparent;
             border-right: 15px solid transparent;
         }
