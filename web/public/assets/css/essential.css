@@ -32,6 +32,7 @@ input[type="checkbox"] {
 
 .input-holding {
     display: flex;
+    border: solid 1px #30228D;
 }
 
     .input-holding > .input {
