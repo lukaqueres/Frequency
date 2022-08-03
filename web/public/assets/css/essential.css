@@ -51,21 +51,23 @@ input[type="checkbox"] {
         position: relative;
         right: 30px;
         top: -63px;
-        background: #30228D;
+        background: white;
         color: black;
         border-radius: 5px;
         padding: 5px 10px;
+        border: solid 1px black;
+        box-shadow: 2px 2px 0px white, -2px 2px 0px white, -2px -2px 0px white, 2px -2px 0px white;
     }
 
         .explanation .explanation-content:before {
             content: "";
             display: block;
             position: absolute;
-            left: 23px;
-            bottom: -14px;
-            border-top: 15px solid #30228D;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
+            left: 27px;
+            bottom: -13px;
+            border-top: 10px solid white;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
         }
 
 
