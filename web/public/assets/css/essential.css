@@ -38,6 +38,11 @@ input[type="checkbox"] {
         display: flex;
     }
 
+        .input-holding > .input > * {
+            border: 1px solid transparent;
+            background: transparent;
+        }
+
     /*<-------------------------------> LABELS - related classes, defaults and variants <-------------------------------------------------->*/
     .explanation {
         height: 1em;
