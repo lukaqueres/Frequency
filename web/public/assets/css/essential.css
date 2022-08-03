@@ -34,6 +34,7 @@ input[type="checkbox"] {
     display: flex;
     border: solid 1px #30228D;
     border-radius: 5px;
+    padding: 5px;
 }
 
     .input-holding > .input {
@@ -41,6 +42,7 @@ input[type="checkbox"] {
         color: #30228D;
         border: solid 2px;
         border-radius: 5px;
+        padding: 2px;
     }
 
         .input-holding > .input > * {
