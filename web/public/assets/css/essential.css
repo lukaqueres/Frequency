@@ -3,7 +3,8 @@
     --clr-secondary: #30228D;
 }
 
-/* <--------------------------------> INPUTS defaults with variants <-------------------------------------->*/
+/* <--------------------------------> INPUTS defaults with variants <--------------------------------------------------------------->*/
+
 input[type="checkbox"] {
     height: 20px;
     width: 20px;
@@ -29,12 +30,19 @@ input[type="checkbox"] {
         margin-inline: 1rem;
     }
 
-/*<-------------------------------> LABELS - related classes, defaults and variants <-------------------------------------------------->*/
-
-.explanation {
-    height: 1em;
-    display: inline-grid;
+.input-holding {
+    display: flex;
 }
+
+    .input-holding > .input {
+        display: flex;
+    }
+
+    /*<-------------------------------> LABELS - related classes, defaults and variants <-------------------------------------------------->*/
+    .explanation {
+        height: 1em;
+        display: inline-grid;
+    }
     .explanation .explanation-mark {
         display: inline-block;
         width: 1em;
