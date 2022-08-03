@@ -20,7 +20,7 @@ input[type="checkbox"] {
     }
 
 .chck-label {
-    display: flex;
+    display: inline-flex;
     margin: 0;
     align-items: center;
 }
@@ -32,10 +32,13 @@ input[type="checkbox"] {
 /*<-------------------------------> LABELS - related classes, defaults and variants <-------------------------------------------------->*/
 
 .explanation {
-
+    height: 1em;
+    display: inline-grid;
 }
     .explanation .explanation-mark {
-
+        display: inline-block;
+        width: 1em;
+        height: 1em;
     }
 
         .explanation .explanation-mark:hover + .explanation-content, .explanation .explanation-content:hover {
@@ -51,6 +54,7 @@ input[type="checkbox"] {
         position: relative;
         right: 30px;
         top: -63px;
+        font-size: small;
         background: white;
         color: black;
         border-radius: 5px;
