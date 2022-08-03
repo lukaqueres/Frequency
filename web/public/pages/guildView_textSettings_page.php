@@ -31,7 +31,7 @@
                             </div>
                             <div class="card transparent">
                                 <ul class="no-points">
-                                    <li><label class="chck-label"><input type="checkbox" id="blacklist_domains"/><span class="label">Blacklist domains</span></label><span class="explanation"><span class="explanation-mark"><ion-icon name="information-circle"></ion-icon></span><div class="explanation-content">EXPLANATION CONTENT BITCH</div></span></li>
+                                    <li><label class="chck-label"><input type="checkbox" id="blacklist_domains"/><span class="label">Blacklist domains</span></label><span class="explanation"><span class="explanation-mark"><ion-icon name="information-circle"></ion-icon></span><div class="explanation-content">Input domain name to be marked as blacklisted. Read More</div></span></li>
                                     <li><div><input type="text" id="blacklist_domains_input" placeholder="Add blacklisted domain"/></div></li>
                                     <li><label class="chck-label"><input type="checkbox" id="whitelist_domains"/><span class="label">Whitelist domains</span></label></li>
                                     <li><div><input type="text" id="whitelist_domains_input" placeholder="Add whitelisted domain"/></div></li>
