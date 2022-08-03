@@ -36,11 +36,15 @@ input[type="checkbox"] {
 
     .input-holding > .input {
         display: flex;
+        color: #30228D;
+        border: solid 1px;
+        border-radius: 5px;
     }
 
         .input-holding > .input > * {
             border: 1px solid transparent;
             background: transparent;
+            color: inherit;
         }
 
     /*<-------------------------------> LABELS - related classes, defaults and variants <-------------------------------------------------->*/
