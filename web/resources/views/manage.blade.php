@@ -32,7 +32,7 @@
         ?>
     </div>
         <div class="container">
-            <ul class="scroll margin">
+            <ul class="margin">
                 <?php
                 foreach($guilds as $g) {
                     echo '
