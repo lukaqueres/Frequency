@@ -30,54 +30,21 @@
                 echo $notifynode;
             }
         ?>
-        <div class="notification">
-            <p>User not authorized</p>
-            <h5>Authorize to continue</h5>
-            <button class="close" onclick="closeParent(event)">Close notification</button>
-        </div>
-        <div class="notification">
-            <h5>status</h5>
-            <button class="close" onclick="closeParent(event)">Close notification</button>
-        </div>
-        <div class="notification">
-            <h5>status</h5>
-            <button class="close" onclick="closeParent(event)">Close notification</button>
-        </div>
     </div>
-    <?php /* 
-            <?php if (Session::exists('notification')) { ?>
-                <div id="blur" class="app-grid-container active">
-                    <div id="guildPop-up" class="pop-up active">
-                    <?php echo 'status: ' . json_encode(Session::get('notification')); ?>
-                    <button onclick='togglePopUp("statusPop-up")'>Close</button>
-                    </div>;
-            <?php } else { ?>
-                <div id="blur" class="app-grid-container">
-            <?php } ?>
-            <div class="app-left">
-                Back to manage
-                <div class="app-flex-container">
-                    <div class="app-align-right"><img class="app-icon" src= <?php echo '"' . get_avatar($user) . ' " >' ?></div>
-                    <div class="app-align-right"> <?php echo $user->username; ?> </div>
-                </div>
+        <div class="container">
+            <ul class="scroll margin">
                 <?php
-                    $flow = '<div class="grid-container"><div class="grid-x grid-margin-x small-up-2 medium-up-3">';
-                    $count = 0;
-                        foreach($guilds as $guild) {
-                            $flow .= '<div class="cell"><div class="card">
-                              <div class="card-divider"><img class="columns align-self-middle shrink app-icon app-inline-margin" src="' . $guild->icon_url .'"/><h4>' . $guild->name . '</h4></div>
-                                        <div class="card-section">
-                                        <p> TAGS </p>
-                                        </div></div></div>';
-                            $count = $count + 1;
-                        }
-                    echo $flow . '</div></div>';
+                foreach($guilds as $g) {
+                    echo '
+                    <li>
+                        <a href="/manage/guild/' . $g->id . '">
+	                    <span class="aside-icon"><img class="icon" src="' . $g->icon_url . '"/></span>
+	                    <span class="title">' . $g->name . '</span>
+                        </a>
+                    </li>';
+                }
                 ?>
-            </div>
-            <div class="app-main">
-                <h5>DATA: <?php echo json_encode($guilds, JSON_PRETTY_PRINT); ?></br></h5>
-            </div>
+            </ul>
         </div>
-        */?>
     </body>
 </html>
