@@ -1,0 +1,21 @@
+:root {
+    color-scheme: dark light;
+}
+
+@media (prefers-color-scheme: dark ) {
+    :root {
+        --primary-color-one: black;
+        --primary-color-two: #0C0924;
+        --secondary-color-one: #30228D;
+        --secondary-color-two: #30228DA8;
+    }
+}
+
+@media (prefers-color-scheme: light ) {
+    :root {
+        --primary-color-one: white;
+        --primary-color-two: #645AAA;
+        --secondary-color-one: #30228D;
+        --secondary-color-two: #30228DA8;
+    }
+}
