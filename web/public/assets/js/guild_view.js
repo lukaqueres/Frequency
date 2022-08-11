@@ -26,3 +26,4 @@ function setPreferredColorScheme(mode = "dark") {
             break;
         }
     }
+}
