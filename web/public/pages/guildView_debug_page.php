@@ -6,7 +6,8 @@
     ?>
 
 <div class="card-container">
-    <button onclick="setPreferredColorScheme()">COLOR TEST</button>
+    <button onclick="setPreferredColorScheme()">COLOR TEST DARK</button>
+    <button onclick="setPreferredColorScheme('light')">COLOR TEST LIGHT</button>
                         <div class="card huge-title full transparent">
                             <div class="flex">
                                 <p class="x-title">Debug data</p>
