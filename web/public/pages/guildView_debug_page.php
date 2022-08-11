@@ -6,10 +6,11 @@
     ?>
 
 <div class="card-container">
+    <button onclick="setPreferredColorScheme()">COLOR TEST</button>
                         <div class="card huge-title full transparent">
                             <div class="flex">
                                 <p class="x-title">Debug data</p>
-                                <button onclick="AJAXtest()">TEST</button>
+                                <button onclick="AJAXtest()">AJAXTEST</button>
                                 <div id="test_xyz">TEST</div>
                             </div>
                         </div>
