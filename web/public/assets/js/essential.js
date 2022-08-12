@@ -157,7 +157,7 @@ if (modeToggler) {
 }*/
 
 function changeColorScheme(color = 'system') {
-    let body = document.querySelector('body')
+    let body = document.querySelector('body');
     switch (color) {
         case "light":
             if (body.classList.contains('dark')) {
