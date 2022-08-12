@@ -175,7 +175,6 @@ function changeColorScheme(color = 'system') {
             }
             break;
         default:
-            console.log("system")
             if (body.classList.contains('light')) {
                 body.classList.remove('light')
             }
