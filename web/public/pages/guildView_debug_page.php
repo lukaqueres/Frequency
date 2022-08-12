@@ -10,6 +10,7 @@
     <button onclick="setPreferredColorScheme('light')">COLOR TEST LIGHT</button>
     <button onclick="changeColorScheme('dark')">COLOR TEST DARK</button>
     <button onclick="changeColorScheme('light')">COLOR TEST LIGHT</button>
+    <button onclick="changeColorScheme()">COLOR TEST SYSTEM</button>
     <div class="testcolor"></div>
                         <div class="card huge-title full transparent">
                             <div class="flex">
