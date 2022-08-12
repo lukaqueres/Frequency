@@ -40,6 +40,7 @@ function changeColorScheme(color = 'system') {
             if (!body.classList.contains('light')) {
                 body.classList.add('light')
             }
+            break;
         case "dark":
             console.log("dark")
             if (body.classList.contains('light')) {
@@ -48,6 +49,7 @@ function changeColorScheme(color = 'system') {
             if (!body.classList.contains('dark')) {
                 body.classList.add('dark')
             }
+            break;
         default:
             console.log("system")
             if (body.classList.contains('light')) {
@@ -56,5 +58,6 @@ function changeColorScheme(color = 'system') {
             if (body.classList.contains('dark')) {
                 body.classList.remove('dark')
             }
+            break;
     }
 }
