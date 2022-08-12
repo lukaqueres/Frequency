@@ -54,6 +54,12 @@ function OnStart() { // function to run on page creation
     //Set color scheme
     mode = localStorage.getItem('colorScheme');
     changeColorScheme(mode);
+
+    // Set aside shrinked/expanded
+    let asideModifier = localStorage.getItem('asideExpand');
+    if (asideModifier == 'shrink') {
+
+    }
 }
 
 window.onclick = function (event) {
@@ -221,12 +227,31 @@ function toggleColorScheme() {
 // <>-----------------------------------------<> DROPDOWN FUNCTIONS CODE <>--------------------------------------------------------------------------------------<>
 //
 
-function shrinkAside() {
+function shrinkAside(action = 'toggle') {
     //let toggle = document.querySelector('.expand-aside');
     let aside = document.querySelector('.page-aside');
     let main = document.querySelector('.page-main');
-    aside.classList.toggle('shrink');
-    main.classList.toggle('expand');
+    switch (action) {
+        case "shrink":
+            aside.classList.add('shrink');
+            main.classList.add('expand');
+            localStorage.setItem('asideExpand', 'shrink');
+        case "expand":
+            aside.classList.remove('shrink');
+            main.classList.remove('expand');
+            localStorage.setItem('asideExpand', 'expand');
+        default:
+            let mode = localStorage.getItem('asideExpand');
+            if (mode == 'shrink') {
+                aside.classList.remove('shrink');
+                main.classList.remove('expand');
+                localStorage.setItem('asideExpand', 'expand');
+            } else {
+                aside.classList.add('shrink');
+                main.classList.add('expand');
+                localStorage.setItem('asideExpand', 'shrink');
+            }
+    }
 }
 
 function scrollUp() {
