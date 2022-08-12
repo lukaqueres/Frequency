@@ -149,6 +149,7 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 
 let mode = localStorage.getItem('mode');
 const modes = ['system', 'dark', 'light'];
+changeColorScheme(mode);
 /*
 const modeToggler = document.querySelector('#colors-mode-toggler');
 if (modeToggler) {
