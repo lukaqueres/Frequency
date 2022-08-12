@@ -27,3 +27,34 @@ function setPreferredColorScheme(mode = "dark") {
         }
     }
 }
+
+function changeColorScheme(color = 'system') {
+    let body = document.querySelector('body')
+    console.log("changing to: ")
+    switch (color) {
+        case "light":
+            console.log("light")
+            if (body.classList.contains('dark')) {
+                bosy.classList.remove('dark')
+            }
+            if (!body.classList.contains('light')) {
+                bosy.classList.add('light')
+            }
+        case "dark":
+            console.log("dark")
+            if (body.classList.contains('light')) {
+                bosy.classList.remove('light')
+            }
+            if (!body.classList.contains('dark')) {
+                bosy.classList.add('dark')
+            }
+        default:
+            console.log("system")
+            if (body.classList.contains('light')) {
+                bosy.classList.remove('light')
+            }
+            if (body.classList.contains('dark')) {
+                bosy.classList.remove('dark')
+            }
+    }
+}
