@@ -35,26 +35,26 @@ function changeColorScheme(color = 'system') {
         case "light":
             console.log("light")
             if (body.classList.contains('dark')) {
-                bosy.classList.remove('dark')
+                body.classList.remove('dark')
             }
             if (!body.classList.contains('light')) {
-                bosy.classList.add('light')
+                body.classList.add('light')
             }
         case "dark":
             console.log("dark")
             if (body.classList.contains('light')) {
-                bosy.classList.remove('light')
+                body.classList.remove('light')
             }
             if (!body.classList.contains('dark')) {
-                bosy.classList.add('dark')
+                body.classList.add('dark')
             }
         default:
             console.log("system")
             if (body.classList.contains('light')) {
-                bosy.classList.remove('light')
+                body.classList.remove('light')
             }
             if (body.classList.contains('dark')) {
-                bosy.classList.remove('dark')
+                body.classList.remove('dark')
             }
     }
 }
