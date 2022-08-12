@@ -190,7 +190,7 @@ function toggleColorScheme() {
     mode = localStorage.getItem('mode');
     let nextmode = modes.indexOf(mode) + 1;
     console.log('nextmode: ' + nextmode);
-    if (modes.lenght < nextmode) {
+    if ((modes.lenght - 1) < nextmode) {
         nextmode = 0;
     }
     console.log('nextmode: ' + nextmode);
