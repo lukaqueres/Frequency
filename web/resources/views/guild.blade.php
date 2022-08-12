@@ -84,7 +84,7 @@
                     </button>
                     <div class="content">
                         <div class="flex vertical">
-                            <button id="colors-mode-toggler">TOGGLE COLOR</button>
+                            <button onclick="toggleColorScheme()" id="colors-mode-toggler">TOGGLE COLOR</button>
                             <h3><?php echo $user->username; ?></h3>
                             <a class="full-btn" href="/discord/logout">LogOut</a>
                         </div>
