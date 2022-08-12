@@ -6,6 +6,8 @@
     --primary-color-two: #0C0924;
     --secondary-color-one: #30228D;
     --secondary-color-two: #30228DA8;
+    --font-color-one: white;
+    --font-color-two: white;
 }
 
 .light {
@@ -13,6 +15,8 @@
     --primary-color-two: #645AAA;
     --secondary-color-one: #30228D;
     --secondary-color-two: #30228DA8;
+    --font-color-one: white;
+    --font-color-two: white;
 }
 
 @media (prefers-color-scheme: dark ) {
@@ -21,14 +25,18 @@
         --primary-color-two: #0C0924;
         --secondary-color-one: #30228D;
         --secondary-color-two: #30228DA8;
+        --font-color-one: white;
+        --font-color-two: white;
     }
 }
 
 @media (prefers-color-scheme: light ) {
-   :root {
+    :root {
         --primary-color-one: white;
         --primary-color-two: #645AAA;
         --secondary-color-one: #30228D;
         --secondary-color-two: #30228DA8;
+        --font-color-one: white;
+        --font-color-two: white;
     }
 }
