@@ -194,7 +194,7 @@ function toggleColorScheme() {
     let nextmode = modes.indexOf(mode) + 1;
     console.log('nextmode: ' + nextmode);
     console.log('modes.length: ' + modes.length);
-    if (modes.length < nextmode) {
+    if (modes.length <= nextmode) {
         nextmode = 0;
     }
     console.log('nextmode: ' + nextmode);
