@@ -57,6 +57,7 @@ function OnStart() { // function to run on page creation
 
     // Set aside shrinked/expanded
     let asideModifier = localStorage.getItem('asideExpand');
+    console.log('asideModifier: ' + asideModifier)
     if (asideModifier == 'shrink') {
         shrinkAside('shrink');
     } else {
