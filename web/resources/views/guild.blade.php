@@ -25,7 +25,7 @@
         $view = $view;
     ?>
 
-    <body>
+    <body class= "dark">
         <div id="blur" class="container">
             <div id="notification-container" class="flex vertical">
                 <?php
