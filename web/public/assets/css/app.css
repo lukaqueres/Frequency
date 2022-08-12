@@ -123,7 +123,6 @@ button.none {
     height: calc( 100vh + 50px );
     width: 300px;
     box-sizing: border-box;
-    transition: 0.5s;
     background: #30228D;
     top: -40px;
     z-index: 100;
@@ -132,6 +131,7 @@ button.none {
 
     .page-aside.shrink {
         width: 60px;
+        transition: 0.5s;
     }
 
     .page-aside > .buttons {
