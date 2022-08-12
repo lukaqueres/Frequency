@@ -1,6 +1,6 @@
-:root {
+/*:root {
     color-scheme: dark light;
-}
+} */
 
 @media (prefers-color-scheme: dark ) {
     :root {
