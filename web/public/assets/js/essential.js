@@ -52,7 +52,7 @@ function OnStart() { // function to run on page creation
     } // End of assigning onclick event to dropdown menu buttons
 
     //Set color scheme
-    mode = localStorage.getItem('mode');
+    mode = localStorage.getItem('colorScheme');
     changeColorScheme(mode);
 }
 
@@ -150,7 +150,8 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 //  Automate changing color schemes on-site
 //
 
-let mode = localStorage.getItem('mode');
+let mode = localStorage.removeItem('mode');
+let mode = localStorage.getItem('colorScheme');
 const modes = ['system', 'dark', 'light'];
 
 /*
@@ -190,13 +191,13 @@ function changeColorScheme(color = 'system') {
 }
 
 function toggleColorScheme() {
-    mode = localStorage.getItem('mode');
+    mode = localStorage.getItem('colorScheme');
     let nextmode = modes.indexOf(mode) + 1;
     if (modes.length <= nextmode) {
         nextmode = 0;
     }
     mode = modes[nextmode];
-    localStorage.setItem('mode', mode);
+    localStorage.setItem('colorScheme', mode);
     changeColorScheme(mode);
 }
 
