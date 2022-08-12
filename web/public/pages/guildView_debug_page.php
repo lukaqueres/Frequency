@@ -11,6 +11,7 @@
     <button onclick="changeColorScheme('dark')">COLOR TEST DARK</button>
     <button onclick="changeColorScheme('light')">COLOR TEST LIGHT</button>
     <button onclick="changeColorScheme()">COLOR TEST SYSTEM</button>
+    <button id="colors-mode-toggler">TOGGLE COLOR</button>
     <div class="testcolor"></div>
                         <div class="card huge-title full transparent">
                             <div class="flex">
