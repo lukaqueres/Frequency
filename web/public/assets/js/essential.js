@@ -51,6 +51,9 @@ function OnStart() { // function to run on page creation
         AddOnClick(dropdownButtons, 'OpenDropdown(event)');
     } // End of assigning onclick event to dropdown menu buttons
 
+    //Set color scheme
+    mode = localStorage.getItem('mode');
+    changeColorScheme(mode);
 }
 
 window.onclick = function (event) {
@@ -149,7 +152,7 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 
 let mode = localStorage.getItem('mode');
 const modes = ['system', 'dark', 'light'];
-changeColorScheme(mode);
+
 /*
 const modeToggler = document.querySelector('#colors-mode-toggler');
 if (modeToggler) {
