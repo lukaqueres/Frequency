@@ -142,6 +142,64 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 //
 
 //
+//  <>-------------------------------------<> LIGHT/DARK/SYSTEM COLOR MODES <>-----------------------------------------------------------------------------------<>
+//
+//  Automate changing color schemes on-site
+//
+
+let mode = localStorage.getItem('mode');
+const modeToggler = document.querySelector('colors-mode-toggler');
+const modes = ['system', 'dark', 'light'];
+
+if (modeToggler) {
+    modeToggler.addEventListener('click', toggleColorScheme());
+}
+
+function changeColorScheme(color = 'system') {
+    let body = document.querySelector('body')
+    switch (color) {
+        case "light":
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark')
+            }
+            if (!body.classList.contains('light')) {
+                body.classList.add('light')
+            }
+            break;
+        case "dark":
+            if (body.classList.contains('light')) {
+                body.classList.remove('light')
+            }
+            if (!body.classList.contains('dark')) {
+                body.classList.add('dark')
+            }
+            break;
+        default:
+            console.log("system")
+            if (body.classList.contains('light')) {
+                body.classList.remove('light')
+            }
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark')
+            }
+            break;
+    }
+}
+
+function toggleColorScheme() {
+    mode = localStorage.getItem('mode');
+    let nextmode = modes.indexOf(mode) + 1;
+    if (modes.lenght < nextmode) {
+        nextmode = 0;
+    }
+    mode = modes[nextmode];
+    localStorage.setItem('mode', mode);
+    changeColorScheme(mode);
+}
+
+
+
+//
 // <>-------------------------------------------<> INPUT FUNCTIONS <>----------------------------------------------------------------------------------------<>
 //
 // With these functions there is ( hopefully ) no need to add any js functions or elements and only css and html to make nice unusual inputs.
