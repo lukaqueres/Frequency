@@ -150,7 +150,7 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 //  Automate changing color schemes on-site
 //
 
-let mode = localStorage.removeItem('mode');
+localStorage.removeItem('mode');
 let mode = localStorage.getItem('colorScheme');
 const modes = ['system', 'dark', 'light'];
 
