@@ -189,10 +189,13 @@ function changeColorScheme(color = 'system') {
 function toggleColorScheme() {
     mode = localStorage.getItem('mode');
     let nextmode = modes.indexOf(mode) + 1;
+    console.log('nextmode: ' + nextmode);
     if (modes.lenght < nextmode) {
         nextmode = 0;
     }
+    console.log('nextmode: ' + nextmode);
     mode = modes[nextmode];
+    console.log('mode: ' + mode);
     localStorage.setItem('mode', mode);
     changeColorScheme(mode);
 }
