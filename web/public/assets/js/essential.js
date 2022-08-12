@@ -240,11 +240,13 @@ function shrinkAside(action = 'toggle') {
             aside.classList.add('shrink');
             main.classList.add('expand');
             localStorage.setItem('asideExpand', 'shrink');
+            break;
         case "expand":
             console.log('action: expand, ')
             aside.classList.remove('shrink');
             main.classList.remove('expand');
             localStorage.setItem('asideExpand', 'expand');
+            break;
         default:
             let mode = localStorage.getItem('asideExpand');
             if (mode == 'shrink') {
@@ -256,6 +258,7 @@ function shrinkAside(action = 'toggle') {
                 main.classList.add('expand');
                 localStorage.setItem('asideExpand', 'shrink');
             }
+            break;
     }
 }
 
