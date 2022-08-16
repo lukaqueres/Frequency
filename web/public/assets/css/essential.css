@@ -107,6 +107,8 @@ a.full-btn, button.full-btn {
     text-decoration: none;
 }
 
+/* <--------------------------------> MENUS defaults with variants <--------------------------------------------------------------->*/
+
 .menu.dropdown {
     background: transparent;
 }
@@ -152,7 +154,18 @@ a.full-btn, button.full-btn {
         color: #30228D;
     }
 
+/* <--------------------------------> GRIDS & FLEXBOXES <--------------------------------------------------------------->*/
 
+.grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+    .grid > .col-span-two {
+        grid-column: span 2;
+    }
 
 
 .testcolor {
