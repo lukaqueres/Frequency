@@ -171,14 +171,12 @@ if (modeToggler) {
 function changeColorSchemeButton(index = 0) {
     var bObject;
     for (var b of modesButtons) {
-        console.log('index: ' + index);
-        console.log('b: ' + b);
-        console.log('index of b: ' + modesButtons.indexOf(b));
         bObject = document.querySelector(b);
         if (bObject.classList.contains('current')) {
             bObject.classList.remove("current");
         }
         if (modesButtons.indexOf(b) == index) {
+            //console.log('index: ' + index + ', index of b: ' + modesButtons.indexOf(b));
             console.log('index: ' + index + ' == IndexOf(b): ' + modesButtons.indexOf(b));
             if (!bObject.classList.contains('current')) {
                 bObject.classList.add("current");
