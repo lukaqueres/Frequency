@@ -12,6 +12,11 @@
     --font-color-one-contr: black;
 }
 
+    .dark *, .light * {
+        transition-property: color, background, background-color;
+        transition-duration: 0.5s;
+    }
+
 .light {
     --primary-color-one: white;
     --primary-color-two: #645AAA;
