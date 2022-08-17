@@ -170,7 +170,16 @@ if (modeToggler) {
 
 function changeColorSchemeButton(index = 0) {
     for (var b in modesButtons) {
-
+        b = document.querySelector(b);
+        if (b.classList.contains('current')) {
+            content.classList.remove("current");
+        }
+        if (modesButtons.indexOf(b) == index) {
+            if (!b.classList.contains('current')) {
+                content.classList.add("current");
+            }
+            break;
+        }
     }
 }
 
@@ -187,6 +196,7 @@ function changeColorScheme(color = 'system') {
             if (!body.classList.contains('light')) {
                 body.classList.add('light')
             }
+            changeColorSchemeButton(2)
             break;
         case "dark":
             if (body.classList.contains('system-color')) {
@@ -198,6 +208,7 @@ function changeColorScheme(color = 'system') {
             if (!body.classList.contains('dark')) {
                 body.classList.add('dark')
             }
+            changeColorSchemeButton(1)
             break;
         default:
             if (body.classList.contains('light')) {
@@ -209,6 +220,7 @@ function changeColorScheme(color = 'system') {
             if (!body.classList.contains('system-color')) {
                 body.classList.add('system-color')
             }
+            changeColorSchemeButton(0)
             break;
     }
 }
