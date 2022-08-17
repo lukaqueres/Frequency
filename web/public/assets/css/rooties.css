@@ -7,7 +7,7 @@
     --secondary-color-one: #30228D;
     --secondary-color-two: #30228DA8;
     --font-color-one: white;
-    --font-color-two: black;
+    --font-color-one-contr: black;
 }
 
 .light {
@@ -16,7 +16,7 @@
     --secondary-color-one: #30228D;
     --secondary-color-two: #30228DA8;
     --font-color-one: black;
-    --font-color-two: white;
+    --font-color-one-contr: white;
 }
 
 @media (prefers-color-scheme: dark ) {
@@ -26,7 +26,7 @@
         --secondary-color-one: #30228D;
         --secondary-color-two: #30228DA8;
         --font-color-one: white;
-        --font-color-two: black;
+        --font-color-one-contr: black;
     }
 }
 
@@ -37,6 +37,6 @@
         --secondary-color-one: #30228D;
         --secondary-color-two: #30228DA8;
         --font-color-one: black;
-        --font-color-two: white;
+        --font-color-one-contr: white;
     }
 }
