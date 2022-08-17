@@ -198,5 +198,5 @@ a.full-btn, button.full-btn {
             color: var(--primary-color-contr-one);
             background: var(--primary-color-one);
             border-radius: 5px;
-            box-shadow: 0px 0px 5px var(--primary-color-contr-one);
+            box-shadow: 0px 0px 5px var(--primary-color-one);
         }
