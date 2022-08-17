@@ -4,6 +4,8 @@
 .dark {
     --primary-color-one: black;
     --primary-color-two: #0C0924;
+    --primary-color-contr-one: white;
+    --primary-color-contr-two: white;
     --secondary-color-one: #30228D;
     --secondary-color-two: #30228DA8;
     --font-color-one: white;
@@ -13,6 +15,8 @@
 .light {
     --primary-color-one: white;
     --primary-color-two: #645AAA;
+    --primary-color-contr-one: black;
+    --primary-color-contr-two: black;
     --secondary-color-one: #30228D;
     --secondary-color-two: #30228DA8;
     --font-color-one: black;
@@ -23,6 +27,8 @@
     :root {
         --primary-color-one: black;
         --primary-color-two: #0C0924;
+        --primary-color-contr-one: white;
+        --primary-color-contr-two: white;
         --secondary-color-one: #30228D;
         --secondary-color-two: #30228DA8;
         --font-color-one: white;
@@ -34,6 +40,8 @@
     :root {
         --primary-color-one: white;
         --primary-color-two: #645AAA;
+        --primary-color-contr-one: black;
+        --primary-color-contr-two: black;
         --secondary-color-one: #30228D;
         --secondary-color-two: #30228DA8;
         --font-color-one: black;
