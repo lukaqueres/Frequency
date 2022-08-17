@@ -179,6 +179,7 @@ function changeColorSchemeButton(index = 0) {
         }
         if (modesButtons.indexOf(b) == index) {
             console.log('index: ' + index);
+            console.log('index: ' + index);
             console.log('b: ' + b);
             console.log('index of b: ' + modesButtons.indexOf(b));
             if (!b.classList.contains('current')) {
