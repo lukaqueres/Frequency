@@ -191,3 +191,8 @@ a.full-btn, button.full-btn {
         background: var(--primary-color-contr-one);
         color: var(--primary-color-one);
     }
+
+        #colors-mode-toggler > .colors-mode-mode.current {
+            color: var(--primary-color-contr-one);
+            background: var(--primary-color-one);
+        }
