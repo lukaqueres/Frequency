@@ -84,7 +84,7 @@
                     </button>
                     <div class="content">
                         <div class="flex vertical">
-                            <button onclick="toggleColorScheme()" id="colors-mode-toggler"><ion-icon name="desktop-outline"></ion-icon><ion-icon name="moon-outline"></ion-icon><ion-icon name="sunny-outline"></ion-icon></button>
+                            <button onclick="toggleColorScheme()" id="colors-mode-toggler"><span id="colors-mode-system" class="colors-mode-mode"><ion-icon name="desktop-outline"></ion-icon></span><span id="colors-mode-dark" class="colors-mode-mode"><ion-icon name="moon-outline"></ion-icon></span><span id="colors-mode-light" class="colors-mode-mode"><ion-icon name="sunny-outline"></ion-icon></span></button>
                             <h3><?php echo $user->username; ?></h3>
                             <a class="full-btn" href="/discord/logout">LogOut</a>
                         </div>
