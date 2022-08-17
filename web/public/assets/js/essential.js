@@ -169,18 +169,19 @@ if (modeToggler) {
 }*/
 
 function changeColorSchemeButton(index = 0) {
+    var bObject;
     for (var b of modesButtons) {
         console.log('index: ' + index);
         console.log('b: ' + b);
         console.log('index of b: ' + modesButtons.indexOf(b));
-        b = document.querySelector(b);
-        if (b.classList.contains('current')) {
-            content.classList.remove("current");
+        bObject = document.querySelector(b);
+        if (bObject.classList.contains('current')) {
+            bObject.classList.remove("current");
         }
         if (modesButtons.indexOf(b) == index) {
             console.log('index: ' + index + ' == IndexOf(b): ' + modesButtons.indexOf(b));
-            if (!b.classList.contains('current')) {
-                content.classList.add("current");
+            if (!bObjectb.classList.contains('current')) {
+                bObject.classList.add("current");
             }
             break;
         }
