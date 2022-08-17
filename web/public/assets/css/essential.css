@@ -195,5 +195,5 @@ a.full-btn, button.full-btn {
         #colors-mode-toggler > .colors-mode-mode.current {
             color: var(--primary-color-contr-one);
             background: var(--primary-color-one);
-            border-radius: 2px;
+            border-radius: 5px;
         }
