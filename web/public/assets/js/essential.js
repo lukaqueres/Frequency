@@ -160,6 +160,7 @@ function CloseDropdownOnClick(e) { // This will close dropdowns on click in wind
 
 let mode = localStorage.getItem('colorScheme');
 const modes = ['system', 'dark', 'light'];
+const modesButtons = ['#colors-mode-system', '#colors-mode-dark', '#colors-mode-light'];
 
 /*
 const modeToggler = document.querySelector('#colors-mode-toggler');
@@ -167,10 +168,19 @@ if (modeToggler) {
     modeToggler.addEventListener('click', toggleColorScheme());
 }*/
 
+function changeColorSchemeButton(index = 0) {
+    for (var b in modesButtons) {
+
+    }
+}
+
 function changeColorScheme(color = 'system') {
     let body = document.querySelector('body');
     switch (color) {
         case "light":
+            if (body.classList.contains('system-color')) {
+                body.classList.remove('system-color')
+            }
             if (body.classList.contains('dark')) {
                 body.classList.remove('dark')
             }
@@ -179,6 +189,9 @@ function changeColorScheme(color = 'system') {
             }
             break;
         case "dark":
+            if (body.classList.contains('system-color')) {
+                body.classList.remove('system-color')
+            }
             if (body.classList.contains('light')) {
                 body.classList.remove('light')
             }
@@ -192,6 +205,9 @@ function changeColorScheme(color = 'system') {
             }
             if (body.classList.contains('dark')) {
                 body.classList.remove('dark')
+            }
+            if (!body.classList.contains('system-color')) {
+                body.classList.add('system-color')
             }
             break;
     }
