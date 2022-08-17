@@ -181,7 +181,7 @@ function changeColorSchemeButton(index = 0) {
             if (!bObject.classList.contains('current')) {
                 bObject.classList.add("current");
             }
-            break;
+            //break;
         }
     }
 }
