@@ -175,13 +175,13 @@ function changeColorSchemeButton(index = 0) {
         if (bObject.classList.contains('current')) {
             bObject.classList.remove("current");
         }
-        if (modesButtons.indexOf(b) == (index + 1)) {
+        if (modesButtons.indexOf(b) == (index)) {
             //console.log('index: ' + index + ', index of b: ' + modesButtons.indexOf(b));
             console.log('index: ' + index + ' == color: ' + b + ' IndexOf(b): ' + modesButtons.indexOf(b));
             if (!bObject.classList.contains('current')) {
                 bObject.classList.add("current");
             }
-            //break;
+            break;
         }
     }
 }
