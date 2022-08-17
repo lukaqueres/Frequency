@@ -12,7 +12,7 @@
     --font-color-one-contr: black;
 }
 
-    .dark *, .light * {
+    .dark *, .light *, .system-color * {
         transition-property: color, background, background-color;
         transition-duration: 0.5s;
     }
