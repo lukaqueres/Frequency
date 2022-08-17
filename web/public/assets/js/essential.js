@@ -180,7 +180,7 @@ function changeColorSchemeButton(index = 0) {
         }
         if (modesButtons.indexOf(b) == index) {
             console.log('index: ' + index + ' == IndexOf(b): ' + modesButtons.indexOf(b));
-            if (!bObjectb.classList.contains('current')) {
+            if (!bObject.classList.contains('current')) {
                 bObject.classList.add("current");
             }
             break;
