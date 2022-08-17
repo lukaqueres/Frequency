@@ -192,6 +192,7 @@ a.full-btn, button.full-btn {
         color: var(--primary-color-one);
         transition: border-radius 0.2s, box-shadow 0.2s;
         box-shadow: 0px 0px 50px var(--primary-color-contr-one);
+        border: 1px solid var(--primary-color-one);
     }
 
         #colors-mode-toggler > .colors-mode-mode.current {
