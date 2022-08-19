@@ -3,6 +3,12 @@
     --clr-secondary: #30228D;
 }
 
+@media (min-width: 50em) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 /* <--------------------------------> INPUTS defaults with variants <--------------------------------------------------------------->*/
 
 input[type="checkbox"] {
@@ -159,8 +165,6 @@ a.full-btn, button.full-btn {
 .grid {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(3, 1fr);
-
 }
 
 .grid-transparent {
