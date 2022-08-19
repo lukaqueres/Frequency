@@ -167,6 +167,10 @@ a.full-btn, button.full-btn {
         grid-column: span 2;
     }
 
+    .grid > .row-span-two {
+        grid-row-end: span 2;
+    }
+
 
 .testcolor {
     background: var(--primary-color-one);
