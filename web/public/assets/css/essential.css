@@ -163,21 +163,14 @@ a.full-btn, button.full-btn {
 
 }
 
-    .grid > .col-span-two {
-        grid-column: span 2;
-    }
-
-    .grid > .row-span-two {
-        grid-row-end: span 2;
-    }
-
-
-.testcolor {
-    background: var(--primary-color-one);
-    width:100px;
-    height:100px;
+.grid-col-span-two {
+    grid-column: span 2;
+}
+.grid-row-span-two {
+    grid-row: span 2;
 }
 
+/* <--------------------------------> COLORS & SCHEMES <--------------------------------------------------------------->*/
 
 #colors-mode-toggler {
     padding: 0 10px;
