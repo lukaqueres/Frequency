@@ -164,6 +164,7 @@ a.full-btn, button.full-btn {
 
 .grid {
     display: grid;
+    width: 100%;
     gap: 1.5rem;
 }
 
