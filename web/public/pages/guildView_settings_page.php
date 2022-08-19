@@ -10,5 +10,15 @@
                             <div class="flex">
                                 <p class="x-title">Settings</p>
                             </div>
+                            <div class="grid"> 
+                                <div class="">Current members:</div>
+                                <div class="">Itd</div>
+                                <div class="">Itd</div>
+                                <div class="">Itd</div>
+                                <div class=""></div>
+                                <div class="">Itd</div>
+                                <div class="">Itd</div>
+                                <div class="">Itd</div>
+                            </div>
                         </div>
                     </div>

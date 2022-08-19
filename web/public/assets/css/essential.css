@@ -163,6 +163,13 @@ a.full-btn, button.full-btn {
 
 }
 
+.grid-transparent {
+    background: transparent;
+
+}
+
+.grid-box
+
 .grid-col-span-two {
     grid-column: span 2;
 }
