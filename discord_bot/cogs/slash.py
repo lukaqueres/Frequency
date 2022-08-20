@@ -35,7 +35,8 @@ class Slash(Cog):
 	@commands.Cog.listener()
 	async def on_ready(self):
 		print('Slash commands module loaded')
-    	@cog_ext.cog_slash(name="debug", 
+		
+	@cog_ext.cog_slash(name="debug", 
 	                   description="Command related for debugging", 
 	                   guild_ids=guild_ids,
 	                   options=[
