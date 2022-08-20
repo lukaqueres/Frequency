@@ -51,7 +51,7 @@ class Slash(Cog):
 				   	]
                                   )])
 	@commands.has_permissions(administrator=True)
-	async def _clear(self, ctx: SlashContext, action): 
+	async def _debug(self, ctx: SlashContext, action): 
 		match action:
 			case 'sync':
 				embed = Embed(title=f"Synchronize data",
