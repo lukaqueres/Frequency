@@ -35,7 +35,43 @@ class Slash(Cog):
 	@commands.Cog.listener()
 	async def on_ready(self):
 		print('Slash commands module loaded')
-    
+    	@cog_ext.cog_slash(name="debug", 
+	                   description="Command related for debugging", 
+	                   guild_ids=guild_ids,
+	                   options=[
+				   create_option(
+                                   	name = "action",
+                                   	description = "Allows for actions featureing debug data. Choose 'Synchronize' option for refresh",
+                                   	option_type = 3,
+                                   	required = True,
+					choices = [
+						create_choice(name = 'Synchronize', value='sync'), 
+						create_choice(name = 'Show', value='show')
+				   	]
+                                  )])
+	@commands.has_permissions(administrator=True)
+	async def _clear(self, ctx: SlashContext, action): 
+		match action:
+			case 'sync':
+				embed = Embed(title=f"Synchronize data",
+					colour = 0x206694,
+					description = f"Data synchronized"
+					     )
+				return await ctx.send(embed=embed, hidden=True)
+			case 'show':
+            			embed = Embed(title=f"Show debug data",
+					colour = 0x206694,
+					description = f"Data shown"
+					     )
+				return await ctx.send(embed=embed, hidden=True)
+        		# If an exact match is not confirmed, this last case will be used if provided
+        		case _:
+            			embed = Embed(title=f"Something went wrong",
+					colour = 0x206694,
+					description = f"No action specified"
+					     )
+				return await ctx.send(embed=embed, hidden=True)
+		
 	@cog_ext.cog_slash(name="clear", 
 	                   description="Delets messages by number or filter", 
 	                   guild_ids=guild_ids,
