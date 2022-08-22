@@ -69,7 +69,7 @@ class Slash(Cog):
 					colour = 0x206694,
 					description = f"No action specified"
 					     )
-			return await ctx.send(embed=embed, hidden=True)
+		return await ctx.send(embed=embed, hidden=True)
 		
 	@cog_ext.cog_slash(name="clear", 
 	                   description="Delets messages by number or filter", 
