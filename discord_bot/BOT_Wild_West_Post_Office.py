@@ -22,8 +22,10 @@ from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 
 from functions import get_prefix, get_time, get_guilds_ids, check_database
-
 from endpoints import *
+
+from objects import DB_conn
+
 load_dotenv()
 
 try:
@@ -33,7 +35,7 @@ try:
 	print("Bot database opened successfully")
 except:
 	print("Failed to open database")
-
+	
 intents = discord.Intents.all()
 intents.members = True
 fetch_offline_members = True
@@ -150,6 +152,9 @@ bot.help_command = MyHelp()
 client = commands.Bot(command_prefix = get_prefix, intents=intents, help_command=MyHelp())
 bot = client
 slash = SlashCommand(client, sync_commands=True)
+
+properties_conn = DB_conn('servers_properties')
+client.DB_conn_properties = properties_conn
 
 now = datetime.now() + timedelta(hours=2)
 today = date.today()
