@@ -1,4 +1,4 @@
-import os, psycopg2
+import os, psycopg2, json
 
 from psycopg2.extensions import AsIs
 
