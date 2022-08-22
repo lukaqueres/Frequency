@@ -21,8 +21,8 @@ class DB_conn:
 	def add(self, payload):
 		cur = self.cursor
 		table = self.table
-		columns = payload.keys()
-		values = payload.values() 
+		columns = list(payload.keys())
+		values = list(payload.values())
 		cur.execute(
 			"""
 			INSERT INTO %s (%s)
@@ -33,8 +33,8 @@ class DB_conn:
 	def update(self, condition, payload): 
 		cur = self.cursor
 		table = self.table
-		columns = payload.keys()
-		values = payload.values() 
+		columns = list(payload.keys())
+		values = list(payload.values()) 
 		cur.execute(
 			"""
 			UPDATE %s
