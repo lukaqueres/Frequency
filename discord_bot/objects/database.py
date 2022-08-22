@@ -37,7 +37,7 @@ class DB_conn:
 		cur = self.cursor
 		table = self.table
 		columns = list(payload.keys())
-		values = list(payload.values()) 
+		values = [payload[column] for column in columns]
 		cur.execute(
 			"""
 			UPDATE %s
