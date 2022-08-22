@@ -51,7 +51,14 @@ class DB_conn:
 			WHERE %s = %s
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
-		print(cur._last_executed);
+		SQLstring = cur.mogrify(
+			"""
+			UPDATE %s
+			SET %s = %s
+			WHERE %s = %s
+			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
+		);
+		print(SQLstring)
 		
 	def read(self, condition):
 		print("table: " + self.table);
