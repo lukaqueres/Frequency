@@ -46,7 +46,7 @@ class DB_conn:
 		cur.execute(
 			"""
 			UPDATE %s
-			SET (%s) = %s
+			SET %s = %s
 			WHERE %s = %s
 			""", (AsIs(table), tuple(columns), values, cond_key, condition) # AsIs(','.join(columns))
 		)
