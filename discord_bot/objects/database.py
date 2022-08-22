@@ -48,7 +48,7 @@ class DB_conn:
 			UPDATE %s
 			SET %s = %s
 			WHERE %s = %s
-			""", (AsIs(table), AsIs(columns[0] if (sizeof(columns) / sizeof(int)) == 1 else tuple(columns)), values, cond_key, condition) # AsIs(','.join(columns))
+			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, cond_key, condition) # AsIs(','.join(columns))
 		);
 		
 	def read(self, condition):
