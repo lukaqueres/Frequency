@@ -55,11 +55,18 @@ class Slash(Cog):
 	async def _debug(self, ctx: SlashContext, action): 
 		match action:
 			case 'sync':
+				roles = {}
+				for r in ctx.guild.roles:
+					if r != ctx.guild.default_role:
+						roles[r.id] = [r.id, r.name]
 				embed = Embed(title=f"Synchronize data",
 					colour = 0x206694,
 					description = f"Data synchronized"
 					     )
-				self.client.DB_conn_properties.read('test')
+				self.client.DB_conn_properties.update(
+					condition = { 'guild_id' : ctx.guild.id },
+					payload = { 'roles' : roles }
+					)
 			case 'show':
 				roles = {}
 				for r in ctx.guild.roles:
