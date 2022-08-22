@@ -19,6 +19,7 @@ class DB_conn:
 		return False
 	
 	def add(self, payload):
+		cur = self.cursor
 		table = self.table
 		columns = payload.keys()
 		values = payload.values() 
@@ -30,6 +31,7 @@ class DB_conn:
 		)
 		
 	def update(self, condition, payload): 
+		cur = self.cursor
 		table = self.table
 		columns = payload.keys()
 		values = payload.values() 
