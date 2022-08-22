@@ -43,7 +43,7 @@ class DB_conn:
 			UPDATE %s
 			SET (%s) = (%s)
 			WHERE %s = %s
-			""", (table, AsIs(','.join(columns)), tuple(values)), list(condition.keys())[0], list(condition.values())[0])
+			""", (table, AsIs(','.join(columns)), tuple(values), list(condition.keys())[0], list(condition.values())[0]
 		)
 		
 	def read(self, condition):
