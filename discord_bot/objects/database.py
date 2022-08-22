@@ -1,8 +1,11 @@
 import os, psycopg2
 
+from psycopg2.extensions import AsIs
+
 #
 # Database connection handle class
 #
+
 class DB_conn:
 	def __init__(self, table):
 		self.table = table
@@ -27,7 +30,7 @@ class DB_conn:
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (table, columns, values)
+			""", (table, AsIs(','.join(columns)), tuple(values))
 		)
 		
 	def update(self, condition, payload): 
@@ -40,7 +43,7 @@ class DB_conn:
 			UPDATE %s
 			SET (%s) = (%s)
 			WHERE %s = %s
-			""", (table, columns, values, list(condition.keys())[0], list(condition.values())[0])
+			""", (table, AsIs(','.join(columns)), tuple(values)), list(condition.keys())[0], list(condition.values())[0])
 		)
 		
 	def read(self, condition):
