@@ -58,20 +58,18 @@ class Slash(Cog):
 					colour = 0x206694,
 					description = f"Data synchronized"
 					     )
-				return await ctx.send(embed=embed, hidden=True)
 			case 'show':
             			embed = Embed(title=f"Show debug data",
 					colour = 0x206694,
 					description = f"Data shown"
 					     )
-				return await ctx.send(embed=embed, hidden=True)
         		# If an exact match is not confirmed, this last case will be used if provided
         		case _:
             			embed = Embed(title=f"Something went wrong",
 					colour = 0x206694,
 					description = f"No action specified"
 					     )
-				return await ctx.send(embed=embed, hidden=True)
+			return await ctx.send(embed=embed, hidden=True)
 		
 	@cog_ext.cog_slash(name="clear", 
 	                   description="Delets messages by number or filter", 
