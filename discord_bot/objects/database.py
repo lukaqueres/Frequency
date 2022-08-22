@@ -6,7 +6,7 @@ import os
 class DB_conn:
 	def __init__(self, table):
 		self.table = table
-		self.cursor = self.__gen_cursor(self)
+		self.cursor = self.__gen_cursor()
     	
 	def __gen_cursor(self):
 		connection = os.environ.get('DATABASE_URL')
