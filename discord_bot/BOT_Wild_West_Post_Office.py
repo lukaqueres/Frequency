@@ -24,7 +24,7 @@ from discord_slash.utils.manage_commands import create_choice, create_option
 from functions import get_prefix, get_time, get_guilds_ids, check_database
 from endpoints import *
 
-from discord_bot/objects import DB_conn
+from /discord_bot/objects import DB_conn
 
 load_dotenv()
 
