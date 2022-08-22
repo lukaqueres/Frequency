@@ -8,7 +8,7 @@ from discord_slash import cog_ext, SlashContext, SlashCommand
 from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext.commands import has_permissions, MissingPermissions
 
-from /discord_bot/objects import DB_conn
+from discord_bot/objects import DB_conn
 from datetime import datetime, date, timedelta
 from functions import get_prefix, get_time, get_guilds_ids
 
