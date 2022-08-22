@@ -40,7 +40,8 @@ class DB_conn:
 		values = [payload[column] for column in columns];
 		for value in values:
 			if isinstance(value, dict):
-				values[values.index(value)] = json.dumps(value, indent = 4)  ;
+				values[values.index(value)] = json.dumps(value, indent = 4);
+		values = json.dumps(values, indent = 4)
 		cond_key = list(condition.keys())[0];
 		condition = list(condition.values())[0];
 		cur.execute(
