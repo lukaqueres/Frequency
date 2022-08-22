@@ -51,6 +51,7 @@ class DB_conn:
 			WHERE %s = %s
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
+		print cursor._last_executed
 		
 	def read(self, condition):
 		print("table: " + self.table);
