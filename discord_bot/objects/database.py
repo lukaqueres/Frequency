@@ -37,13 +37,13 @@ class DB_conn:
 		cur = self.cursor
 		table = self.table
 		columns = list(payload.keys())
-		values = [payload[column] for column in columns]
+		values = tuple([payload[column] for column in columns])
 		cur.execute(
 			"""
 			UPDATE %s
 			SET (%s) = %s
 			WHERE %s = %s
-			""", (table, AsIs(','.join(columns)), tuple(values), list(condition.keys())[0], list(condition.values())[0])
+			""", (table, AsIs(','.join(columns)), values, list(condition.keys())[0], list(condition.values())[0])
 		)
 		
 	def read(self, condition):
