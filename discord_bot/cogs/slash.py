@@ -59,9 +59,13 @@ class Slash(Cog):
 					description = f"Data synchronized"
 					     )
 			case 'show':
+				roles = {}
+				for r in ctx.guild.roles:
+					if r != ctx.guild.default_role:
+						roles[r.id] = [r.id, r.name, r.color]
             			embed = Embed(title=f"Show debug data",
 					colour = 0x206694,
-					description = f"Data shown"
+					description = f"Data roldes: {roles}"
 					     )
         		# If an exact match is not confirmed, this last case will be used if provided
 			case _:
