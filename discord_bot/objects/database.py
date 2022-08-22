@@ -41,7 +41,7 @@ class DB_conn:
 		cur.execute(
 			"""
 			UPDATE %s
-			SET (%s) = (%s)
+			SET (%s) = %s
 			WHERE %s = %s
 			""", (table, AsIs(','.join(columns)), tuple(values), list(condition.keys())[0], list(condition.values())[0])
 		)
