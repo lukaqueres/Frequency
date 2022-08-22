@@ -38,12 +38,14 @@ class DB_conn:
 		table = self.table
 		columns = list(payload.keys())
 		values = tuple([payload[column] for column in columns])
+		cond_key = list(condition.keys())[0]
+		condition = list(condition.values())[0]
 		cur.execute(
 			"""
 			UPDATE %s
 			SET (%s) = %s
 			WHERE %s = %s
-			""", (table, AsIs(','.join(columns)), values, list(condition.keys())[0], list(condition.values())[0])
+			""", (table, AsIs(','.join(columns)), values, cond_key, condition)
 		)
 		
 	def read(self, condition):
