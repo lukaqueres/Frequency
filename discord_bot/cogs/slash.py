@@ -64,7 +64,7 @@ class Slash(Cog):
 					description = f"Data shown"
 					     )
         		# If an exact match is not confirmed, this last case will be used if provided
-        		case _:
+			case _:
             			embed = Embed(title=f"Something went wrong",
 					colour = 0x206694,
 					description = f"No action specified"
