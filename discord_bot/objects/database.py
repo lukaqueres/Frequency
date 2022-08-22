@@ -37,7 +37,7 @@ class DB_conn:
 		cur = self.cursor
 		table = self.table
 		columns = list(payload.keys())
-		values = tuple([payload[column] for column in columns])
+		values = [payload[column] for column in columns]
 		for value in values:
 			if isinstance(value, dict):
 				values[values.index(value)] = json.dumps(value, indent = 4)  
