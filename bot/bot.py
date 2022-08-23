@@ -1,8 +1,12 @@
-import json, os, random
+import json, os, random, asyncio
+from random import randrange, randint
 
 import discord
 from discord.ext import commands, tasks
+from discord import Intents
 
+intents = discord.Intents.all()
+bot, client = commands.Bot(command_prefix = get_prefix, intents=intents);
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
@@ -99,3 +103,9 @@ if extensions['load']:
 		print(f'Extensions loaded ({len(loaded)}): {', '.join(loaded)}' ); # - Log loaded cogs with it's number and list. -
 	if log['exceptions']:
 		print(f'Failed to load ({len(failed)}): {', '.join(failed)}'); # - Log failed cogs with it's number and list. -
+
+TOKEN = os.environ.get('TOKEN')
+
+if __name__ == "__main__":
+	client.run(TOKEN)
+		
