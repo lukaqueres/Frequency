@@ -9,9 +9,9 @@
 	'developer': {
 		'active': true,
 		'log': {
-			'all': true,
 			'exceptions': true,
-			'errors': true
+			'errors': true,
+			'notices': true
 		},
 		'restrict-commands' : []
 	},
