@@ -58,7 +58,7 @@ class Slash(Cog):
 				roles = {}
 				for r in ctx.guild.roles:
 					if r != ctx.guild.default_role:
-						roles[r.id] = [r.id, r.name]
+						roles[r.id] = r.name
 				embed = Embed(title=f"Synchronize data",
 					colour = 0x206694,
 					description = f"Data synchronized"
@@ -71,7 +71,7 @@ class Slash(Cog):
 				roles = {}
 				for r in ctx.guild.roles:
 					if r != ctx.guild.default_role:
-						roles[r.id] = [r.id, r.name]
+						roles[r.id] = r.name
 				embed = Embed(title=f"Show debug data",
 					colour = 0x206694,
 					description = f"Data roldes: {roles}"
