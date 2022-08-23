@@ -26,6 +26,7 @@
 	},
 	"developer": {
 		"active": true,
+		"active-status": "brb",
 		"log": {
 			"exceptions": true,
 			"errors": true,
