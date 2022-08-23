@@ -8,7 +8,12 @@
 	},
 	'developer': {
 		'active': true,
-		'include-commands' : []
+		'log': {
+			'all': true,
+			'exceptions': true,
+			'errors': true
+		},
+		'restrict-commands' : []
 	},
 	'extensions': {
 		'load': true,
