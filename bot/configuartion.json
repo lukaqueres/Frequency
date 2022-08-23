@@ -8,8 +8,8 @@
 		},
 		"activities": {
 			"set": false, 
-			"switch": false,
-			"switch-interval": "random",
+			"cycle": false,
+			"cycle-interval": "random",
 			"list": "dedicated-pool",
 			"list-pool": {
 				"playing": [],
