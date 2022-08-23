@@ -16,7 +16,7 @@
 		"restrict-commands" : []
 	},
 	"extensions": {
-		"load': true,
+		"load": true,
 		"directory": "cogs",
 		"ignore": []
 	}
