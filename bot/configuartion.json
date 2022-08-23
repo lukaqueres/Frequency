@@ -1,23 +1,23 @@
 {
 	"name": "Plan It",
-	'url': 'https://theplanbot.com',
-	'packets': {
-		'load': true,
-		'directory': 'packets',
-		'ignore': []
+	"url": "https://theplanbot.com",
+	"packets": {
+		"load": true,
+		"directory": "packets",
+		"ignore": []
 	},
-	'developer': {
-		'active': true,
-		'log': {
-			'exceptions': true,
-			'errors': true,
-			'notices': true
+	"developer": {
+		"active": true,
+		"log": {
+			"exceptions": true,
+			"errors": true,
+			"notices": true
 		},
-		'restrict-commands' : []
+		"restrict-commands" : []
 	},
-	'extensions': {
-		'load': true,
-		'directory': 'cogs',
-		'ignore': []
+	"extensions": {
+		"load': true,
+		"directory": "cogs",
+		"ignore": []
 	}
 }
