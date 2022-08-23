@@ -9,11 +9,16 @@ from psycopg2.extensions import AsIs
 class DB_conn:
 	def __init__(self, table):
 		self.table = table;
+		self.connection = self.__connect();
 		self.cursor = self.__gen_cursor();
     	
-	def __gen_cursor(self):
+	def __connect(self):
 		connection = os.environ.get('DATABASE_URL');
 		con = psycopg2.connect(connection);
+		return con;
+	
+	def __gen_cursor(self):
+		con = self.connection;
 		cur = con.cursor();
 		return cur;
 	
@@ -34,6 +39,7 @@ class DB_conn:
 		);
 		
 	def update(self, condition, payload): 
+		con = self.connection;
 		cur = self.cursor;
 		table = self.table;
 		columns = list(payload.keys());
@@ -51,6 +57,7 @@ class DB_conn:
 			WHERE %s = %s
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
+		con.commit();
 		print(cur.rowcount)
 		SQLstring = cur.mogrify(
 			"""
