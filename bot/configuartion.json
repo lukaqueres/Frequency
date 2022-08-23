@@ -2,7 +2,20 @@
 	"name": "Plan It",
 	"url": "https://theplanbot.com",
 	"discord": {
-		"client-id": 875271995644842004
+		"client-id": 875271995644842004,
+		"status": "online",
+		"activities": {
+			"set": false,
+			"switch": false,
+			"switch-interval": "random",
+			"list": "dedicated-pool",
+			"list-pool": {
+				"playing": [],
+				"watching": [],
+				"other": [],
+				"dedicated-pool": []
+			}
+		}
 	},
 	"packets": {
 		"load": true,
