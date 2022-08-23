@@ -1,1 +1,18 @@
-
+{
+	'name': 'Plan It',
+	'url': 'https://theplanbot.com',
+	'packets': {
+		'load': true,
+		'directory': 'packets',
+		'ignore': []
+	},
+	'developer': {
+		'active': true,
+		'include-commands' : []
+	},
+	'extensions': {
+		'load': true,
+		'directory': 'cogs',
+		'ignore': []
+	}
+}
