@@ -3,7 +3,9 @@
 	"url": "https://theplanbot.com",
 	"discord": {
 		"client-id": 875271995644842004,
-		"status": "online",
+		"status": {
+			"set": "online"
+		},
 		"activities": {
 			"set": false, 
 			"switch": false,
