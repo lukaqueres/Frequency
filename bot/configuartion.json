@@ -1,6 +1,6 @@
 {
 	"name": "Plan It",
-	"url": "https://theplanbot.com", // URL for link - generation in bot's messages.
+	"url": "https://theplanbot.com",
 	"discord": {
 		"client-id": 875271995644842004,
 		"status": "online",
