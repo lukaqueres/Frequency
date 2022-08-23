@@ -1,5 +1,5 @@
 {
-	'name': 'Plan It',
+	"name": "Plan It",
 	'url': 'https://theplanbot.com',
 	'packets': {
 		'load': true,
