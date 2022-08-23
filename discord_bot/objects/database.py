@@ -46,15 +46,16 @@ class DB_conn:
 		condition = list(condition.values())[0];
 		cur.execute(
 			"""
-			INSERT INTO %s
-			%s = %s
+			UPDATE %s
+			SET %s = %s
 			WHERE %s = %s
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
+		print(cur.rowcount)
 		SQLstring = cur.mogrify(
 			"""
-			INSERT INTO %s
-			%s = %s
+			UPDATE %s
+			SET %s = %s
 			WHERE %s = %s
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
