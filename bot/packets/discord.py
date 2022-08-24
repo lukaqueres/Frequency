@@ -1,3 +1,5 @@
+import json, os
+
 def prefix(client, message):
 	connection = os.environ.get('DATABASE_URL');
 	con = psycopg2.connect(connection);
