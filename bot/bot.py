@@ -20,10 +20,10 @@ client.database = Database();
 async def on_ready():
 	with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
 		configuration = json.load(c); 
-		status = json.load(c)['discord']['status']; 
-		activities = json.load(c)['discord']['activities']; 
+		status = configuration['discord']['status']; 
+		activities = configuration['discord']['activities']; 
 		activitiesLists = activities['list-pool'];
-		developer = json.load(c)['developer'];
+		developer = configuration['developer'];
 		log = developer['log'];
 	statusPool = { "online": discord.Status.online, "offline": discord.Status.offline, "idle": discord.Status.idle, "dnd": discord.Status.dnd } # - statuses available to be set as bot's status in discord - 
 	if developer['active'] and developer["active-status"] in statusPool:
@@ -111,10 +111,9 @@ if extensions['load']:
 			else:
 				failed.apped([cog[:-3], 'Extension ignored.']);
 	if log['notices']:
-		print(f"Extensions loaded ({len(loaded)}): {', '.join(loaded)}" ); # - Log loaded cogs with it's number and list. -
+		print(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}" ); # - Log loaded cogs with it's number and list. -
 	if log['exceptions']:
-		print(failed);
-		print(f"Failed to load ({len(failed)}): {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
+		print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
 
 TOKEN = os.environ.get('TOKEN')
 
