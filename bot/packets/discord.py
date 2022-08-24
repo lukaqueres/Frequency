@@ -1,5 +1,6 @@
 def prefix(client, message):
-	con = get_connection()
+	connection = os.environ.get('DATABASE_URL');
+	con = psycopg2.connect(connection);
 	cur = con.cursor()
 	cur.execute(
 		"SELECT cmdPrefix FROM SERVERS_PROPERTIES WHERE guild_id=%s",
