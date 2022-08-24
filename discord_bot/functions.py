@@ -18,7 +18,7 @@ def get_prefix(client, message):
 	con = get_connection()
 	cur = con.cursor()
 	cur.execute(
-		"SELECT guild_prefix FROM SERVERS_PROPERTIES WHERE guild_id=%s",
+		"SELECT cmdPrefix FROM SERVERS_PROPERTIES WHERE guild_id=%s",
 		(message.guild.id, )
 	)
 	row = cur.fetchone()
