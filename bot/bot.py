@@ -94,7 +94,7 @@ async def cycleStatus(alist, interval, status):
 		activity = random.choice(alist);
 		await client.change_presence(status=status, activity=discord.Game(name=activity)) # - Changing -
 		if log['notices']:
-			print(f"New activity: {activity}\nNext change in {wait} seconds.")
+			print(f"New activity: {activity}; next change in {wait} seconds.")
 		await asyncio.sleep(wait) # - Wait interval. -
 		
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
