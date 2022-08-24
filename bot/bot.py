@@ -68,7 +68,7 @@ async def on_ready():
 			listOfGuilds.append(guild.id);
 		print(f'----------- APPLICATION ONLINE ----------- \n{len(listOfGuilds)} guilds; status: {status}; activity: {activity}')
 		if activity != 'NaN' and activities['cycle']:
-			print(f"Activity changing from pool: {activites['list']} in interval: {activites['cycle-interval']}");
+			print(f"Activity changing from pool: {activities['list']} in interval: {activities['cycle-interval']}");
 	else:
 		print('----------- APPLICATION ONLINE -----------')
 		
