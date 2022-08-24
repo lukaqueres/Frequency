@@ -63,7 +63,7 @@ async def on_ready():
 		listOfGuilds = [];
 		for guild in client.guilds:
 			listOfGuilds.append(guild.id);
-		print(f'----------- APPLICATION ONLINE ----------- \n{len(listOfGuilds)} guilds; status: {status}; activity: {activity = activity or "NO"}')
+		print(f'----------- APPLICATION ONLINE ----------- \n{len(listOfGuilds)} guilds; status: {status}; {"activity: " + activity if activity}')
 	else:
 		print('----------- APPLICATION ONLINE -----------')
 		
