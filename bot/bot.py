@@ -79,7 +79,7 @@ async def on_ready():
 async def cycleStatus(alist, interval, status):
 	await client.wait_until_ready()
 	while not client.is_closed():
-		if isinstance(interval, numbers.Integral):
+		if isinstance(interval, int):
 			wait = interval;
 		elif interval == 'random': # - Interval draw -
 			wait = random.randint(900,7200);
