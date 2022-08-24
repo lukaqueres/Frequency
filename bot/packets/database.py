@@ -3,7 +3,7 @@ import os, psycopg2, json
 from psycopg2.extensions import AsIs
 
 class Connection:
-	def __init__(self, table):
+	def __init__(self):
 		self.connection = self.__connect();
 		self.cursor = self.__gen_cursor();
 		
@@ -56,3 +56,39 @@ class Database(Connection):
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
 		con.commit();
+		
+	def read(self, table, columns = [], condition):
+		con = self.connection;
+		cur = self.cursor;
+		cond_key = list(condition.keys())[0];
+		condition = list(condition.values())[0];
+		if len(columns) == 0:
+			selector = '*';
+		else:
+			selector = tuple(columns);
+		cur.execute(
+			"""
+			SELECT %s FROM %s
+			WHERE %s = %s
+			""", (AsIs(selector), AsIs(table), AsIs(cond_key), condition)
+		);
+		records = cur.fetchall()
+		con.commit()
+		if len(records) == 1:
+			records = records[0];
+			if len(records) == 1:
+				records = records[0];
+		else:
+			r = [];
+			for record in records:
+				if len(record) == 1:
+					r.append(record);
+				else:
+					r.append(record);
+			records = r;
+		return records;
+	
+	
+	
+	
+	
