@@ -30,7 +30,7 @@ async def on_ready():
 		statusPool[developer["active-status"]];
 	elif developer['active'] and developer["active-status"] not in list(statusPool.keys()):
 		if log['exceptions']:
-			print(f"Inappropriate status for developer mode applied: {status['set']} is not a correct status. Try {', '.join(list(statusPool.keys()))}");
+			print(f"Inappropriate status for developer mode applied: {developer["active-status"]} is not a correct status. Try {', '.join(list(statusPool.keys()))}");
 		status = statusPool["online"];
 	elif status['set'] in statusPool: # - Checking if status given in json file is correct for use, assigning python code if apply, set to online if not. -
 		status = statusPool[status['set']];
