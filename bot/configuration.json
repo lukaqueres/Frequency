@@ -7,10 +7,10 @@
 			"set": "online"
 		},
 		"activities": {
-			"set": true, 
+			"set": false, 
 			"cycle": true,
 			"cycle-interval": 3600,
-			"list": "none",
+			"list": "dedicated-pool",
 			"list-pool": {
 				"playing": [],
 				"watching": [],
