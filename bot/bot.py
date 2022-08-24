@@ -50,9 +50,9 @@ async def on_ready():
 		else:
 			alist = False;
 		activity = random.choice(alist) if alist else None;
-		if activites['list'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something', or just text one. -
+		if activities['list'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something', or just text one. -
 			await client.change_presence(status=status, activity=discord.Game(activity))
-		elif activites['list'] == 'watching':
+		elif activities['list'] == 'watching':
 			await client.change_presence(status=status, activity=discord.Game(activity))
 		else:
 			await client.change_presence(status=status, activity=activity)
@@ -67,7 +67,7 @@ async def on_ready():
 	else:
 		print('----------- APPLICATION ONLINE -----------')
 		
-	if activites['cycle'] and activities['set']: # - If set so create looping task to change activity -
+	if activities['cycle'] and activities['set']: # - If set so create looping task to change activity -
 		client.loop.create_task(cycleStatus(alist = alist, interval = activites['cycle-interval'], status = status))
 
 # - Function to change activity in random time interals -
