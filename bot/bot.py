@@ -39,6 +39,7 @@ async def on_ready():
 		status = statusPool["online"];
 	else:
 		status = statusPool["online"]; # - End of custom status assign. -
+	activity = 'NaN';
 	if activities['set']:
 		if activities['list'] == 'random': # - Random list means random choice of available lists. -
 			alist = activitiesLists[random.choice(activitiesLists.keys())];
@@ -63,7 +64,7 @@ async def on_ready():
 		listOfGuilds = [];
 		for guild in client.guilds:
 			listOfGuilds.append(guild.id);
-		print(f'----------- APPLICATION ONLINE ----------- \n{len(listOfGuilds)} guilds; status: {status}; {"activity: " + activity if activity else "no activity;"}')
+		print(f'----------- APPLICATION ONLINE ----------- \n{len(listOfGuilds)} guilds; status: {status}; activity: {activity}')
 	else:
 		print('----------- APPLICATION ONLINE -----------')
 		
