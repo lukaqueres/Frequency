@@ -1,4 +1,4 @@
-import json, os
+import json, os, psycopg2
 
 def prefix(client, message):
 	connection = os.environ.get('DATABASE_URL');
