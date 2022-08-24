@@ -19,6 +19,7 @@ client.database = Database();
 @client.event
 async def on_ready():
 	with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
+		configuration = json.load(c); 
 		status = json.load(c)['discord']['status']; 
 		activities = json.load(c)['discord']['activities']; 
 		activitiesLists = activities['list-pool'];
@@ -106,7 +107,7 @@ if extensions['load']:
 					client.load_extension(f"{extensions['directory']}.{cog[:-3]}");
 					loaded.append(cog[:-3]);
 				except Exception as e: # - Catch exception in loading, can be extended. -
-					failed.apped([cog[:-3], getattr(e, 'message', repr(e))]);
+					failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
 			else:
 				failed.apped([cog[:-3], 'Extension ignored.']);
 	if log['notices']:
