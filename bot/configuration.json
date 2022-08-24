@@ -7,7 +7,7 @@
 			"set": "online"
 		},
 		"activities": {
-			"set": false, 
+			"set": true, 
 			"cycle": false,
 			"cycle-interval": 30,
 			"list": "dedicated-pool",
@@ -15,12 +15,12 @@
 				"playing": [],
 				"watching": [],
 				"other": [],
-				"dedicated-pool": []
+				"dedicated-pool": ['Developing', 'New site on its way!']
 			}
 		}
 	},
 	"developer": {
-		"active": true,
+		"active": false,
 		"active-status": "dnd",
 		"log": {
 			"exceptions": true,
