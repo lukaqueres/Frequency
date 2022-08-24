@@ -5,8 +5,15 @@ import discord
 from discord.ext import commands, tasks
 from discord import Intents
 
+# - Importing in-project packages -
+from packets.database import Database
+from packets.discord import prefix
+
+database = Database();
+
 intents = discord.Intents.all()
-bot, client = commands.Bot(command_prefix = get_prefix, intents=intents);
+bot = client = commands.Bot(command_prefix = prefix, intents=intents);
+client.database = Database();
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
@@ -66,12 +73,14 @@ async def on_ready():
 async def cycleStatus(alist, interval, status):
 	await client.wait_until_ready()
 	while not client.is_closed():
-		if interval == 'random': # - Interval draw -
-			wait = random.randint(1800,3600);
+		if isinstance(interval, numbers.Integral):
+			wait = interval;
+		elif interval == 'random': # - Interval draw -
+			wait = random.randint(900,7200);
 		elif interval == 'short':
-			wait = random.randint(900,1800);
+			wait = random.randint(900,2700);
 		elif interval == 'long':
-			wait = random.randint(3600,7200);
+			wait = random.randint(2700,7200);
 		else: # - In case of not appropriate interval given ( not short, long, random ). -
 			wait = random.randint(1800,3600);
 			if log['exceptions']:
