@@ -52,11 +52,13 @@ async def on_ready():
 			alist = False;
 		activity = random.choice(alist) if alist else None;
 		if activities['list'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something', or just text one. -
-			await client.change_presence(status=status, activity=discord.Game(activity))
+			await client.change_presence(status=status, activity=discord.Game(activity));
 		elif activities['list'] == 'watching':
-			await client.change_presence(status=status, activity=discord.Game(activity))
+			await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=activity));
+		elif activities['list'] == 'listening':
+			await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=activity));
 		else:
-			await client.change_presence(status=status, activity=activity)
+			await client.change_presence(status=status, activity=discord.Game(activity));
 	else:
 		await client.change_presence(status=status); # - Change only status if activities are not meant to be set -
 		
