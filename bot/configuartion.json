@@ -9,7 +9,7 @@
 		"activities": {
 			"set": false, 
 			"cycle": false,
-			"cycle-interval": "random",
+			"cycle-interval": 30,
 			"list": "dedicated-pool",
 			"list-pool": {
 				"playing": [],
