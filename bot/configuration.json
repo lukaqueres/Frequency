@@ -8,7 +8,7 @@
 		},
 		"activities": {
 			"set": true, 
-			"cycle": false,
+			"cycle": true,
 			"cycle-interval": 30,
 			"list": "dedicated-pool",
 			"list-pool": {
