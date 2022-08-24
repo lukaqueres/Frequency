@@ -73,7 +73,7 @@ async def on_ready():
 		print('----------- APPLICATION ONLINE -----------')
 		
 	if activities['cycle'] and activities['set']: # - If set so create looping task to change activity -
-		client.loop.create_task(cycleStatus(alist = alist, interval = activites['cycle-interval'], status = status))
+		client.loop.create_task(cycleStatus(alist = alist, interval = activities['cycle-interval'], status = status))
 
 # - Function to change activity in random time interals -
 async def cycleStatus(alist, interval, status):
