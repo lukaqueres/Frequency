@@ -28,9 +28,9 @@ async def on_ready():
 	statusPool = { "online": discord.Status.online, "offline": discord.Status.offline, "idle": discord.Status.idle, "dnd": discord.Status.dnd } # - statuses available to be set as bot's status in discord - 
 	if developer['active'] and developer["active-status"] in statusPool:
 		statusPool[developer["active-status"]];
-	elif developer['active'] and developer["active-status"] not in statusPool:
+	elif developer['active'] and developer["active-status"] not in list(statusPool.keys()):
 		if log['exceptions']:
-			print(f"Inappropriate status for developer mode applied: {status['set']} is not correct status. Try {', '.join(list(statusPool.keys()))}");
+			print(f"Inappropriate status for developer mode applied: {status['set']} is not a correct status. Try {', '.join(list(statusPool.keys()))}");
 		status = statusPool["online"];
 	elif status['set'] in statusPool: # - Checking if status given in json file is correct for use, assigning python code if apply, set to online if not. -
 		status = statusPool[status['set']];
