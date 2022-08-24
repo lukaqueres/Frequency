@@ -57,7 +57,7 @@ class Database(Connection):
 		);
 		con.commit();
 		
-	def read(self, table, columns = [], condition):
+	def read(self, table, condition, columns = ] ):
 		con = self.connection;
 		cur = self.cursor;
 		cond_key = list(condition.keys())[0];
