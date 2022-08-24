@@ -94,7 +94,8 @@ async def cycleStatus(alist, interval, status):
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
 with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 	extensions = json.load(c)['extensions']; 
-	log = json.load(c)['developer']['log'];
+	log = json.load(c)['developer'];
+	log = log['log'];
 if extensions['load']:
 	loaded = []; # - Extensions loaded succesfully -
 	failed = []; # - Extensions failed to load -
