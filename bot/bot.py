@@ -114,7 +114,7 @@ if extensions['load']:
 		print(f"Extensions loaded ({len(loaded)}): {', '.join(loaded)}" ); # - Log loaded cogs with it's number and list. -
 	if log['exceptions']:
 		print(failed);
-		print(f"Failed to load ({len(failed)}): {','.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
+		print(f"Failed to load ({len(failed)}): {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
 
 TOKEN = os.environ.get('TOKEN')
 
