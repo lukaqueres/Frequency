@@ -32,6 +32,7 @@
 			"errors": true,
 			"notices": true
 		},
+		"check-db-data-on-startup": false,
 		"restrict-commands" : []
 	},
 	"extensions": {
