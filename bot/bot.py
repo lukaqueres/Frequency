@@ -22,12 +22,12 @@ async def on_ready():
 		statusPool[developer["active-status"]];
 	elif developer['active'] and developer["active-status"] not in statusPool:
 		if log['exceptions']:
-			print(f'Inappropriate status for developer mode applied: {status['set']} is not correct status. Try {', '.join(list(statusPool.keys()))}');
+			print(f"Inappropriate status for developer mode applied: {status['set']} is not correct status. Try {', '.join(list(statusPool.keys()))}");
 		status = statusPool["online"];
 	elif status['set'] in statusPool: # - Checking if status given in json file is correct for use, assigning python code if apply, set to online if not. -
 		status = statusPool[status['set']];
 	elif log['exceptions']:
-		print(f'Inappropriate status applied: {status['set']} is not correct status. Try {', '.join(list(statusPool.keys()))}');
+		print(f"Inappropriate status applied: {status['set']} is not correct status. Try {', '.join(list(statusPool.keys()))}");
 		status = statusPool["online"];
 	else:
 		status = statusPool["online"]; # - End of custom status assign. -
@@ -37,7 +37,7 @@ async def on_ready():
 		elif activites['list'] in activitiesLists:
 			alist = activitiesLists[activites['list']];
 		elif log['exceptions']:
-			print(f'List of activities not found. Try something other than {activites['list']}');
+			print(f"List of activities not found. Try something other than {activites['list']}");
 			alist = False;
 		else:
 			alist = False;
@@ -100,9 +100,9 @@ if extensions['load']:
 			else:
 				failed.apped([cog[:-3], 'Extension ignored.']);
 	if log['notices']:
-		print(f'Extensions loaded ({len(loaded)}): {', '.join(loaded)}' ); # - Log loaded cogs with it's number and list. -
+		print(f"Extensions loaded ({len(loaded)}): {', '.join(loaded)}" ); # - Log loaded cogs with it's number and list. -
 	if log['exceptions']:
-		print(f'Failed to load ({len(failed)}): {', '.join(failed)}'); # - Log failed cogs with it's number and list. -
+		print(f"Failed to load ({len(failed)}): {', '.join(failed)}"); # - Log failed cogs with it's number and list. -
 
 TOKEN = os.environ.get('TOKEN')
 
