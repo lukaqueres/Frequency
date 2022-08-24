@@ -65,6 +65,8 @@ async def on_ready():
 		for guild in client.guilds:
 			listOfGuilds.append(guild.id);
 		print(f'----------- APPLICATION ONLINE ----------- \n{len(listOfGuilds)} guilds; status: {status}; activity: {activity}')
+		if activity != 'NaN' and activities['cycle']:
+			print(f"Activity changing from pool: {activites['list']} in interval: {activites['cycle-interval']}");
 	else:
 		print('----------- APPLICATION ONLINE -----------')
 		
