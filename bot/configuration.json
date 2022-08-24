@@ -10,7 +10,7 @@
 			"set": true, 
 			"cycle": true,
 			"cycle-interval": 3600,
-			"list": "dedicated-pool",
+			"list": "none",
 			"list-pool": {
 				"playing": [],
 				"watching": [],
