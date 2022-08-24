@@ -18,7 +18,7 @@ client.database = Database();
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
 async def on_ready():
-	with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
+	with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
 		status = json.load(c)['discord']['status']; 
 		activities = json.load(c)['discord']['activities']; 
 		activitiesLists = activities['list-pool'];
@@ -92,7 +92,7 @@ async def cycleStatus(alist, interval, status):
 		await asyncio.sleep(wait) # - Wait interval. -
 		
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
-with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
+with open('./configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 	extensions = json.load(c)['extensions']; 
 	log = json.load(c)['developer']['log'];
 if extensions['load']:
