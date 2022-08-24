@@ -19,11 +19,6 @@
 			}
 		}
 	},
-	"packets": {
-		"load": true,
-		"directory": "packets",
-		"ignore": []
-	},
 	"developer": {
 		"active": true,
 		"active-status": "brb",
