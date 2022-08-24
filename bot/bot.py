@@ -43,10 +43,10 @@ async def on_ready():
 	if activities['set']:
 		if activities['list'] == 'random': # - Random list means random choice of available lists. -
 			alist = activitiesLists[random.choice(activitiesLists.keys())];
-		elif activites['list'] in activitiesLists:
+		elif activities['list'] in activitiesLists:
 			alist = activitiesLists[activites['list']];
 		elif log['exceptions']:
-			print(f"List of activities not found. Try something other than {activites['list']}");
+			print(f"List of activities not found. Try something other than {activities['list']}");
 			alist = False;
 		else:
 			alist = False;
