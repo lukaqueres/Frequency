@@ -1,31 +1,37 @@
 import os, psycopg2, json
 
+# - Import database extensions -
 from psycopg2.extensions import AsIs
 
+# - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
 	def __init__(self):
 		self.connection = self.__connect();
 		self.cursor = self.__gen_cursor();
 		
+	# - Create connection based on Enviroment Variable 'DATABASE_URL' and return it to save as connection -
 	def __connect(self):
 		connection = os.environ.get('DATABASE_URL');
 		con = psycopg2.connect(connection);
 		return con;
 	
+	# - Generate cursor for querries generation base on connection generated earlier -
 	def __gen_cursor(self):
 		con = self.connection;
 		cur = con.cursor();
 		return cur;
 	
+	# - In case of long database connection it can expire, code here revokes cursor TODO: Finish code here -
 	def __revoke_cursor(self):
-		# Check somewhere how it was handled by now and GET IT in HERE!
 		return False;
-
+	
+# - Database object, inherit of Connection, handles querries -
 class Database(Connection):
 	def __init__(self):
 		super().__init__()
 	
-	def add(self, table, payload):
+	# - Insert variables to new record in given table -
+	def insert(self, table, payload):
 		con = self.connection;
 		cur = self.cursor;
 		columns = list(payload.keys());
@@ -36,7 +42,8 @@ class Database(Connection):
 			VALUES (%s);
 			""", (table, AsIs(','.join(columns)), tuple(values))
 		);
-		
+	
+	# - Updates records with given payload and on specified condition, querry affecting every record must be given in condition -
 	def update(self, table, payload, condition): 
 		con = self.connection;
 		cur = self.cursor;
@@ -56,13 +63,16 @@ class Database(Connection):
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
 		con.commit();
-		
-	def read(self, table, condition, columns = []):
+	# - Function allowing to fetch rows ( and data they contain ) with condition -
+	def select(self, table, condition = 1, columns = []): 
 		con = self.connection;
 		cur = self.cursor;
-		cond_key = list(condition.keys())[0];
-		condition = list(condition.values())[0];
-		if len(columns) == 0:
+		if condition == 1: # - Preparing condition, if none given use 1=1 for every record -
+			cond_key = condition = 1;
+		else:
+			cond_key = list(condition.keys())[0];
+			condition = list(condition.values())[0];
+		if len(columns) == 0: # - Selector used for columns to return, if none given use * for all columns -
 			selector = '*';
 		else:
 			selector = tuple(columns);
@@ -71,17 +81,17 @@ class Database(Connection):
 			SELECT %s FROM %s
 			WHERE %s = %s
 			""", (AsIs(selector), AsIs(table), AsIs(cond_key), condition)
-		);
-		records = cur.fetchall()
+		); # - Build querry withut any joins -
+		records = cur.fetchall() # - Get every record in return -
 		con.commit()
-		if len(records) == 1:
+		if len(records) == 1: # - Make return records value more easy for later use, get rid of un-needed lists -
 			records = records[0];
 			if len(records) == 1:
-				records = records[0];
+				records = records[0]; # - If in return was only one record with single value make returned value this value -
 		else:
 			r = [];
 			for record in records:
-				if len(record) == 1:
+				if len(record) == 1: # - In case of multiple rows return check if any of them is made out of single value, then shorten -
 					r.append(record);
 				else:
 					r.append(record);
