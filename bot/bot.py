@@ -119,9 +119,9 @@ if extensions['load']:
 					failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
 			else:
 				failed.apped([cog[:-3], 'Extension ignored.']);
-	if log['notices']:
+	if log['notices'] and len(loaded) != 0:
 		print(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}" ); # - Log loaded cogs with it's number and list. -
-	if log['exceptions']:
+	if log['exceptions'] and len(failed) != 0:
 		print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
 
 TOKEN = os.environ.get('TOKEN')
