@@ -51,14 +51,14 @@ class Database(Connection):
 		values = [payload[column] for column in columns];
 		for value in values:
 			if isinstance(value, dict):
-				values[values.index(value)] = json.dumps(value, indent = 4);
+				values[values.index(value)] = json.dumps(value);
 		values = json.dumps(values)
 		#print(values);
 		SQL = cur.mogrify(
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(tuple(values)))
+			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
 		);
 		print(SQL);
 		
@@ -66,7 +66,7 @@ class Database(Connection):
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(tuple(values)))
+			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
 		);
 		con.commit();
 	
