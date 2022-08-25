@@ -30,6 +30,19 @@ class Database(Connection):
 	def __init__(self):
 		super().__init__()
 	
+	def delete(self, table, condition):
+		con = self.connection;
+		cur = self.cursor;
+		cond_key = list(condition.keys())[0];
+		condition = list(condition.values())[0];
+		cur.execute(
+			"""
+			DELETE FROM %s
+			WHERE %s = %s;
+			""", (table, AsIs(cond_key), condition)
+		);
+		con.commit();
+		
 	# - Insert variables to new record in given table -
 	def insert(self, table, payload):
 		con = self.connection;
@@ -42,6 +55,7 @@ class Database(Connection):
 			VALUES (%s);
 			""", (table, AsIs(','.join(columns)), tuple(values))
 		);
+		con.commit();
 	
 	# - Updates records with given payload and on specified condition, querry affecting every record must be given in condition -
 	def update(self, table, payload, condition): 
@@ -59,7 +73,7 @@ class Database(Connection):
 			"""
 			UPDATE %s
 			SET %s = %s
-			WHERE %s = %s
+			WHERE %s = %s;
 			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
 		);
 		con.commit();
