@@ -12,7 +12,7 @@ class Time:
 	def time(self):
 		pass;
 
-	def date(self):
+	def today(self):
 		return time.strftime("%d-%m-%Y");
 	
 	
