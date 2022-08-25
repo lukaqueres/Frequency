@@ -39,7 +39,7 @@ class Database(Connection):
 			"""
 			DELETE FROM %s
 			WHERE %s = %s;
-			""", (table, AsIs(cond_key), condition)
+			""", (AsIs(table), AsIs(cond_key), condition)
 		);
 		con.commit();
 		
@@ -48,12 +48,15 @@ class Database(Connection):
 		con = self.connection;
 		cur = self.cursor;
 		columns = list(payload.keys());
-		values = list(payload.values());
+		for value in values:
+			if isinstance(value, dict):
+				values[values.index(value)] = json.dumps(value, indent = 4);
+		values = json.dumps(values, indent = 4)
 		cur.execute(
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (table, AsIs(','.join(columns)), tuple(values))
+			""", (AsIs(table), AsIs(','.join(columns)), values)
 		);
 		con.commit();
 	
