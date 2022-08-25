@@ -20,19 +20,19 @@ class Events(commands.Cog):
 		members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
 		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
-		roles = {}
+		roles = {};
 		for r in guild.roles:
 			if r != guild.default_role:
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
-			   properties = {
+			   "properties": {
 				   "prefix": defaults['prefix'],
 				   "name": guild.name,
 				   "joined": time.today();
 			   },
-			   channels = {},
-			   roles = roles,
-			   features = {}
+			   "channels": {},
+			   "roles": roles,
+			   "features": {}
 		};
 		self.client.database.insert(table = 'guilds',
 					    payload = payload);
