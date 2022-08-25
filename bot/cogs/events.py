@@ -3,7 +3,7 @@ import discord, json, os
 from datetime import datetime, date, timedelta, timezone
 from discord.ext import commands
 
-from packets import time;
+from packets.time import Time;
 
 class Events(commands.Cog):
 	def __init__(self, client):
