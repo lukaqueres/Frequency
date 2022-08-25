@@ -4,7 +4,7 @@ import json, os
 from packets.database import Database
 
 def prefix(client, message):
-	database = Database; # - TODO: Check hov to get database object from bot.py main file, for now this will do -
+	database = Database(); # - TODO: Check hov to get database object from bot.py main file, for now this will do -
 	properties = database.select(table = 'guilds', 
 			columns = ['properties'],
 			condition = message.guild.id 
