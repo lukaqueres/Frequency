@@ -27,7 +27,7 @@ class Events(commands.Cog):
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
 			   "properties": {
-				   "prefix": defaults['prefix'],
+				   "prefix": defaults['prefix'], # - TODO: Check what to do to input string containing ' or ", then maybe add name field -
 				   "joined": time.today()
 			   },
 			   "channels": {},
