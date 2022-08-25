@@ -1,15 +1,12 @@
-import json, os, psycopg2
+import json, os
 
-def prefix(client, message):
-	connection = os.environ.get('DATABASE_URL');
-	con = psycopg2.connect(connection);
-	cur = con.cursor()
-	cur.execute(
-		"SELECT cmdPrefix FROM SERVERS_PROPERTIES WHERE guild_id=%s",
-		(message.guild.id, )
-	)
-	row = cur.fetchone()
-	prefix = row[0]
-	con.commit()
-	#print("Prefix downloaded succesfully as '{}' on '{}' guild.".format(prefix, message.guild))
+# - Import database in case of error -
+from packets import database
+
+def prefix(client, message, database):
+	properties = database.select(table = 'guilds', 
+			columns = ['properties'],
+			condition = message.guild.id 
+			): 
+	prefix = properties['prefix'];
 	return prefix
