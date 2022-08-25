@@ -53,6 +53,7 @@ class Database(Connection):
 			if isinstance(value, dict):
 				values[values.index(value)] = json.dumps(value, indent = 4);
 		values = json.dumps(values, indent = 4)
+		print(values);
 		cur.execute(
 			"""
 			INSERT INTO %s (%s)
