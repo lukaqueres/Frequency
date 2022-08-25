@@ -1,7 +1,7 @@
 import json, os
 
 # - Import database in case of error -
-from packets import database
+from packets.database import Database
 
 def prefix(client, message):
 	global database;
