@@ -13,6 +13,6 @@ class Time:
 		pass;
 
 	def date(self):
-		pass;
+		return time.strftime("%d-%m-%Y");
 	
 	
