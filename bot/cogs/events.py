@@ -28,7 +28,6 @@ class Events(commands.Cog):
 		payload = { "id": guild.id,
 			   "properties": {
 				   "prefix": defaults['prefix'],
-				   "name": guild.name,
 				   "joined": time.today()
 			   },
 			   "channels": {},
