@@ -28,7 +28,7 @@ class Events(commands.Cog):
 			   "properties": {
 				   "prefix": defaults['prefix'],
 				   "name": guild.name,
-				   "joined": time.today();
+				   "joined": time.today()
 			   },
 			   "channels": {},
 			   "roles": roles,
