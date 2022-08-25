@@ -48,7 +48,7 @@ class Database(Connection):
 		con = self.connection;
 		cur = self.cursor;
 		columns = list(payload.keys());
-		valeues = [payload[column] for column in columns];
+		values = [payload[column] for column in columns];
 		for value in values:
 			if isinstance(value, dict):
 				values[values.index(value)] = json.dumps(value, indent = 4);
