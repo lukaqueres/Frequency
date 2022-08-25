@@ -88,6 +88,8 @@ class Database(Connection):
 			condition = list(condition.values())[0];
 		if len(columns) == 0: # - Selector used for columns to return, if none given use * for all columns -
 			selector = '*';
+		elif len(columns) == 1:
+			selector = columns[0];
 		else:
 			selector = tuple(columns);
 		cur.execute(
