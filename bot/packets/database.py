@@ -59,7 +59,7 @@ class Database(Connection):
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
+			""", (AsIs(table), AsIs(','.join(column for column in columns)), values)
 		);
 		print(SQL);
 		
@@ -67,7 +67,7 @@ class Database(Connection):
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
+			""", (AsIs(table), AsIs(','.join(column for column in columns)), values)
 		);
 		con.commit();
 	
