@@ -14,7 +14,7 @@ from packets.discord import prefix
 database = Database(); # - Create database object to handle all querries -
 
 intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
-bot = client = commands.Bot(command_prefix = prefix, intents=intents);
+bot = client = commands.Bot(command_prefix = prefix(database = database), intents=intents);
 client.database = Database(); # - Assign database object to client for easy fetch from cogs -
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
