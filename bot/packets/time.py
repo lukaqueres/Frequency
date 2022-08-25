@@ -7,7 +7,8 @@ class Time:
 		self.currentUTCTimeStamp = datetime.now(timezone.utc).timestamp() * 1000;
 
 	def __del__(self):
-		print(self.currentUTC)
+		pass;
+		#print(self.currentUTC)
 		
 	def time(self):
 		pass;
