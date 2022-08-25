@@ -7,6 +7,6 @@ def prefix(client, message, database):
 	properties = database.select(table = 'guilds', 
 			columns = ['properties'],
 			condition = message.guild.id 
-			): 
+			);
 	prefix = properties['prefix'];
-	return prefix
+	return prefix;
