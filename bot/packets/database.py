@@ -58,7 +58,7 @@ class Database(Connection):
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(columns)), values)
+			""", (AsIs(table), AsIs(','.join(column for column in columns)), values)
 		);
 		con.commit();
 	
