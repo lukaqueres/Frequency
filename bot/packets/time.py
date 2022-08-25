@@ -1,7 +1,7 @@
 import datetime, os, json
 from datetime import datetime, date, timedelta
 
-class DateTime:
+class Time:
 	def __init__(self):
 		self.currentUTC = datetime.now(timezone.utc);
 		self.currentUTCTimeStamp = datetime.now(timezone.utc).timestamp() * 1000;
