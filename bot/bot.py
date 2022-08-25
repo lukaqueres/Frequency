@@ -1,6 +1,8 @@
+# - Importing required unspecified packages -
 import json, os, random, asyncio
 from random import randrange, randint
 
+# - Importing discord packages -
 import discord
 from discord.ext import commands, tasks
 from discord import Intents
@@ -9,11 +11,11 @@ from discord import Intents
 from packets.database import Database
 from packets.discord import prefix
 
-database = Database();
+database = Database(); # - Create database object to handle all querries -
 
-intents = discord.Intents.all()
+intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
 bot = client = commands.Bot(command_prefix = prefix, intents=intents);
-client.database = Database();
+client.database = Database(); # - Assign database object to client for easy fetch from cogs -
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
