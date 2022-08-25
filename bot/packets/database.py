@@ -52,7 +52,7 @@ class Database(Connection):
 		for value in values:
 			if isinstance(value, dict):
 				values[values.index(value)] = json.dumps(value);
-		values = json.dumps(values)
+		#values = json.dumps(values)
 		#print(values);
 		SQL = cur.mogrify(
 			"""
