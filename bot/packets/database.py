@@ -53,7 +53,23 @@ class Database(Connection):
 		values = [payload[column] for column in columns];
 		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
 			if isinstance(value, dict):
-				values[values.index(value)] = json.dumps(value);
+				toEscapeKeys = list(value.keys());
+				toEscapeValues = list(value.values());
+				escapedKeys = [];
+				escapedValues = [];
+				escapedDict = {};
+				for k in toEscapeKeys:
+					escapedKeys.append(self.adapt.escape(k));
+				for v in toEscapeValues:
+					escapedValues.append(self.adapt.escape(k));
+				for i in range(len(escapedKeys)):
+    					escapedDict[escapedKeys[i]] = escapedValues[i]
+				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
+			elif type(value) is str:
+				values[values.index(value)] = self.adapt.escape(value);
+			else:
+				pass;
+		print(values);
 		#values = self.adapt.values(values);
 		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
 		print(values);
@@ -71,9 +87,23 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys());
 		values = [payload[column] for column in columns];
+		
 		for value in values:
 			if isinstance(value, dict):
-				values[values.index(value)] = json.dumps(value, indent = 4);
+				toEscapeKeys = list(value.keys());
+				toEscapeValues = list(value.values());
+				escapedKeys = [];
+				escapedValues = [];
+				escapedDict = {};
+				for k in toEscapeKeys:
+					escapedKeys.append(self.adapt.escape(k));
+				for v in toEscapeValues:
+					escapedValues.append(self.adapt.escape(k));
+				for i in range(len(escapedKeys)):
+    					escapedDict[escapedKeys[i]] = escapedValues[i]
+				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
+			if type(value) is str:
+				values[values.index(value)] = self.adapt.escape(value);
 		values = json.dumps(values, indent = 4)
 		cond_key = list(condition.keys())[0];
 		condition = list(condition.values())[0];
@@ -134,6 +164,25 @@ class Adapt():
 	def dictionary(self, dictionary):
 		dictionary = json.dumps(dictionary);
 		return dictionary;
+	
+	def escape(self, string):
+		if type(string) is str:
+			indexes = [index for index, character in enumerate(string) if character == "'"];
+			for i in indexes:
+				if string[i-1] == '/':
+					pass;
+				else:
+					string[1] = "/'";
+			indexes = [index for index, character in enumerate(string) if character == '"'];
+			for i in indexes:
+				if string[i-1] == '/':
+					pass;
+				else:
+					string[1] = '/"';
+		return value;
+			
+	def wrap(self, value):
+		
 	
 class Decode():
 	def string(self, string):
