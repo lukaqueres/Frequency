@@ -22,12 +22,9 @@ class Events(commands.Cog):
 		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
 		roles = {};
-		test = "test'with\"manymanyquotations";
-		test =self.client.database.adapt.string(test);
-		print('test: ' + test);
 		for r in guild.roles:
 			if r != guild.default_role:
-				roles[r.id] = r.name;
+				roles[r.id] = self.client.database.adapt.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
 		payload = { "id": guild.id,
 			   "properties": {
 				   "prefix": defaults['prefix'], # - TODO: Check what to do to input string containing ' or ", then maybe add name field -
