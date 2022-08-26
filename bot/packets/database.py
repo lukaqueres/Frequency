@@ -53,7 +53,8 @@ class Database(Connection):
 			if isinstance(value, dict):
 				values[values.index(value)] = json.dumps(value);
 		#values = json.dumps(values)
-		values = tuple(values);
+		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values)
+		#values = tuple(values);
 		print(values);
 		SQL = cur.mogrify(
 			"""
