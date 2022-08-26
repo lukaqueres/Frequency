@@ -47,7 +47,7 @@ class Database(Connection):
 	def insert(self, table, payload):
 		con = self.connection; # - use same cursor and connection from class object. -
 		cur = self.cursor;
-		columns = list(payload.keys()); # Devide payload for columns and values as given. -
+		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
 		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
 			if isinstance(value, dict):
