@@ -56,6 +56,7 @@ class Database(Connection):
 				values[values.index(value)] = json.dumps(value);
 		#values = self.adapt.values(values);
 		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
+		print(values);
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
 			INSERT INTO %s (%s)
