@@ -54,7 +54,7 @@ class Database(Connection):
 				values[values.index(value)] = json.dumps(value);
 		#values = json.dumps(values)
 		values = tuple(values);
-		#print(values);
+		print(values);
 		SQL = cur.mogrify(
 			"""
 			INSERT INTO %s (%s)
