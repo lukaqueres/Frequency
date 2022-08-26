@@ -153,6 +153,20 @@ class Database(Connection):
 		return records;
 	
 class Adapt():
+	def __swap(s, newstring, index, nofail=False):
+		# raise an error if index is outside of the string
+		if not nofail and index not in range(len(s)):
+			raise ValueError("index outside given string")
+
+		# if not erroring, but the index is still not in the correct range..
+		if index < 0:  # add it to the beginning
+			return newstring + s
+		if index > len(s):  # add it to the end
+			return s + newstring
+
+		# insert the new string between "slices" of the original
+		return s[:index] + newstring + s[index + 1:]
+	
 	def values(self, values):
 		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
 		return values;
@@ -172,13 +186,13 @@ class Adapt():
 				if string[i-1] == '/':
 					pass;
 				else:
-					string[1] = "/'";
+					string = self.__swap(string, "\'", i)
 			indexes = [index for index, character in enumerate(string) if character == '"'];
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
 				else:
-					string[1] = '/"';
+					string = self.__swap(string, '\"', i)
 		return string;
 			
 	def wrap(self, value):
