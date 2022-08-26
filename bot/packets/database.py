@@ -179,7 +179,7 @@ class Adapt():
 					pass;
 				else:
 					string[1] = '/"';
-		return value;
+		return string;
 			
 	def wrap(self, value):
 		pass;
