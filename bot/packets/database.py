@@ -53,7 +53,7 @@ class Database(Connection):
 		values = [payload[column] for column in columns];
 		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
 			if isinstance(value, dict):
-				values[values.index(value)] = self.adapt.dictionary(value);
+				values[values.index(value)] = json.dumps(value);
 		#values = self.adapt.values(values);
 		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
