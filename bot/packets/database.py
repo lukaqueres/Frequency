@@ -30,6 +30,16 @@ class Database(Connection):
 	def __init__(self):
 		super().__init__()
 	
+	def adapt.string(self, string):
+		string = string.replace("'", "''");
+		string = string.replace('"', '""');
+		return string;
+		
+	def decode.string(self, string):
+		string = string.replace("''", "'");
+		string = string.replace('""', '"');
+		return string;
+	
 	def delete(self, table, condition):
 		con = self.connection;
 		cur = self.cursor;
@@ -117,6 +127,7 @@ class Database(Connection):
 					r.append(record);
 			records = r;
 		return records;
+	
 	
 	
 	
