@@ -8,7 +8,7 @@ class Connection:
 	def __init__(self):
 		self.connection = self.__connect();
 		self.cursor = self.__gen_cursor();
-		self.adapt = Adapt();
+		self.adapt = Adapt(); # - Assign Adapt and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
 		self.decode = Decode();
 		
 	# - Create connection based on Enviroment Variable 'DATABASE_URL' and return it to save as connection -
@@ -51,9 +51,9 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
-			if isinstance(value, dict):
-				values[values.index(value)] = json.dumps(value);
+		#for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
+		#	if isinstance(value, dict):
+		#		values[values.index(value)] = json.dumps(value);
 		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values)
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
@@ -122,6 +122,10 @@ class Database(Connection):
 	
 class Adapt():
 	def string(self, string):
+		string = string.replace('"', '""');
+		return string;
+	
+	def dictionary(self, dictionary):
 		string = string.replace('"', '""');
 		return string;
 	
