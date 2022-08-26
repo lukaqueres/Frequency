@@ -186,13 +186,13 @@ class Adapt():
 				if string[i-1] == '/':
 					pass;
 				else:
-					string = self.__swap(string, "\'", i)
+					string = self.__swap(string, "\'", int(i))
 			indexes = [index for index, character in enumerate(string) if character == '"'];
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
 				else:
-					string = self.__swap(string, '\"', i)
+					string = self.__swap(string, '\"', int(i))
 		return string;
 			
 	def wrap(self, value):
