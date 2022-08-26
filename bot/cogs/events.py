@@ -29,7 +29,7 @@ class Events(commands.Cog):
 			   "properties": {
 				   "prefix": defaults['prefix'], # - TODO: Check what to do to input string containing ' or ", then maybe add name field -
 				   "joined": time.today(),
-				   "language": defaults['langiage']
+				   "language": defaults['language']
 			   },
 			   "roles": roles,
 		};
