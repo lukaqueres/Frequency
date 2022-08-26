@@ -15,9 +15,9 @@ class Events(commands.Cog):
 		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
 			configuration = json.load(c); 
 			log = configuration['developer']['log'];
+			defaults = configuration['values']['defaults'];
 		if log['notices']:
-			print(f'Joined guild: {guild.name}; {guild.id}')
-		defaults = {'prefix': '$', 'langugage': 'eng'};
+			print(f'Joined guild: {guild.name}; {guild.id}');
 		members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
 		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
@@ -28,7 +28,8 @@ class Events(commands.Cog):
 		payload = { "id": guild.id,
 			   "properties": {
 				   "prefix": defaults['prefix'], # - TODO: Check what to do to input string containing ' or ", then maybe add name field -
-				   "joined": time.today()
+				   "joined": time.today(),
+				   "language": defaults['langiage']
 			   },
 			   "roles": roles,
 		};
