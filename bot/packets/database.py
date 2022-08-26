@@ -53,8 +53,8 @@ class Database(Connection):
 		values = [payload[column] for column in columns];
 		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
 			if isinstance(value, dict):
-				values[values.index(value)] = self.client.database.adapt.dictionary(value);
-		values = self.client.database.adapt.values(values);
+				values[values.index(value)] = self.adapt.dictionary(value);
+		values = self.adapt.values(values);
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
 			INSERT INTO %s (%s)
