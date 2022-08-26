@@ -30,9 +30,7 @@ class Events(commands.Cog):
 				   "prefix": defaults['prefix'], # - TODO: Check what to do to input string containing ' or ", then maybe add name field -
 				   "joined": time.today()
 			   },
-			   "channels": {},
 			   "roles": roles,
-			   "features": {}
 		};
 		self.client.database.insert(table = 'guilds',
 					    payload = payload);
