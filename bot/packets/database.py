@@ -8,8 +8,6 @@ class Connection:
 	def __init__(self):
 		self.connection = self.__connect();
 		self.cursor = self.__gen_cursor();
-		self.adapt = Adapt(); # - Assign Adapt and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
-		self.decode = Decode();
 		
 	# - Create connection based on Enviroment Variable 'DATABASE_URL' and return it to save as connection -
 	def __connect(self):
@@ -30,7 +28,9 @@ class Connection:
 # - Database object, inherit of Connection, handles querries -
 class Database(Connection):
 	def __init__(self):
-		super().__init__()
+		super().__init__();
+		self.adapt = Adapt(); # - Assign Adapt and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
+		self.decode = Decode();
 	
 	def delete(self, table, condition):
 		con = self.connection;
