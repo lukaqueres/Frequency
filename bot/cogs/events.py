@@ -22,6 +22,9 @@ class Events(commands.Cog):
 		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
 		roles = {};
+		test = "test'with\"manymanyquotations";
+		test =self.client.database.adapt.string(test);
+		print('test: ' + test);
 		for r in guild.roles:
 			if r != guild.default_role:
 				roles[r.id] = r.name;
