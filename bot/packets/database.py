@@ -61,7 +61,7 @@ class Database(Connection):
 				for k in toEscapeKeys:
 					escapedKeys.append(self.adapt.escape(k));
 				for v in toEscapeValues:
-					escapedValues.append(self.adapt.escape(k));
+					escapedValues.append(self.adapt.escape(v));
 				for i in range(len(escapedKeys)):
     					escapedDict[escapedKeys[i]] = escapedValues[i]
 				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
