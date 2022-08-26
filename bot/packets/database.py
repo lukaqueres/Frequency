@@ -182,7 +182,7 @@ class Adapt():
 		return value;
 			
 	def wrap(self, value):
-		
+		pass;
 	
 class Decode():
 	def string(self, string):
