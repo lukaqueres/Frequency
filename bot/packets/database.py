@@ -45,32 +45,21 @@ class Database(Connection):
 		
 	# - Insert variables to new record in given table -
 	def insert(self, table, payload):
-		con = self.connection;
+		con = self.connection; # - use same cursor and connection from class object. -
 		cur = self.cursor;
-		columns = list(payload.keys());
+		columns = list(payload.keys()); # Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		for value in values:
+		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
 			if isinstance(value, dict):
 				values[values.index(value)] = json.dumps(value);
-		#values = json.dumps(values)
 		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values)
-		#values = tuple(values);
-		print(values);
-		SQL = cur.mogrify(
+		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
 			INSERT INTO %s (%s)
 			VALUES (%s);
 			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
 		);
-		print(SQL);
-		
-		cur.execute(
-			"""
-			INSERT INTO %s (%s)
-			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
-		);
-		con.commit();
+		con.commit(); # - Commit changes to database. -
 	
 	# - Updates records with given payload and on specified condition, querry affecting every record must be given in condition -
 	def update(self, table, payload, condition): 
