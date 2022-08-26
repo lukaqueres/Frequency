@@ -8,6 +8,8 @@ class Connection:
 	def __init__(self):
 		self.connection = self.__connect();
 		self.cursor = self.__gen_cursor();
+		self.adapt = Adapt();
+		self.decode = Decode();
 		
 	# - Create connection based on Enviroment Variable 'DATABASE_URL' and return it to save as connection -
 	def __connect(self):
@@ -118,13 +120,13 @@ class Database(Connection):
 			records = r;
 		return records;
 	
-class Adapt(Database):
+class Adapt():
 	def string(self, string):
 		string = string.replace("'", "''");
 		string = string.replace('"', '""');
 		return string;
 	
-class Decode(Database):
+class Decode():
 	def string(self, string):
 		string = string.replace("''", "'");
 		string = string.replace('""', '"');
