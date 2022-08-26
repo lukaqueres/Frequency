@@ -51,10 +51,10 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		#for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
-		#	if isinstance(value, dict):
-		#		values[values.index(value)] = json.dumps(value);
-		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values)
+		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
+			if isinstance(value, dict):
+				values[values.index(value)] = self.client.database.adapt.dictionary(value);
+		values = self.client.database.adapt.values(values);
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
 			INSERT INTO %s (%s)
@@ -121,13 +121,17 @@ class Database(Connection):
 		return records;
 	
 class Adapt():
+	def values(self, values):
+		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
+		return values;
+	
 	def string(self, string):
 		string = string.replace('"', '""');
 		return string;
 	
 	def dictionary(self, dictionary):
-		string = string.replace('"', '""');
-		return string;
+		dictionary = json.dumps(dictionary);
+		return dictionary;
 	
 class Decode():
 	def string(self, string):
