@@ -157,7 +157,7 @@ class Adapt():
 		# raise an error if index is outside of the string
 		if not nofail and index not in range(len(s)):
 			raise ValueError("index outside given string")
-
+		print(index);
 		# if not erroring, but the index is still not in the correct range..
 		if index < 0:  # add it to the beginning
 			return newstring + s
