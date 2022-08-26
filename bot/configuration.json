@@ -35,5 +35,11 @@
 		"load": true,
 		"directory": "cogs",
 		"ignore": []
+	},
+	"values": {
+		"defaults": {
+			"prefix": "$",
+			"language": "english"
+		}
 	}
 }
