@@ -122,13 +122,11 @@ class Database(Connection):
 	
 class Adapt():
 	def string(self, string):
-		string = string.replace("'", "''");
 		string = string.replace('"', '""');
 		return string;
 	
 class Decode():
 	def string(self, string):
-		string = string.replace("''", "'");
 		string = string.replace('""', '"');
 		return string;
 	
