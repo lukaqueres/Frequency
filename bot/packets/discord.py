@@ -18,5 +18,5 @@ def prefix(client, message):
 	except Exception as e:
 		if log['exceptions']:
 			prefix = defaults['prefix'];
-			print(f'Error while getting prefix: {getattr(e, 'message', repr(e))}');
+			print(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
 	return prefix;
