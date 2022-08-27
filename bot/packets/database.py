@@ -153,6 +153,14 @@ class Database(Connection):
 		return records;
 	
 class Adapt():
+	def __find(string, tofind):
+		indexes = [];
+		if len(tofind) == 1:
+			for i in range(len(string)):
+    				if string[i] == tofind:
+					indexes.append(i);
+		return indexes;
+	
 	def __swap(s, newstring, index, nofail=False):
 		# raise an error if index is outside of the string
 		if not nofail and index not in range(len(s)):
@@ -181,13 +189,13 @@ class Adapt():
 	
 	def escape(self, string):
 		if type(string) is str:
-			indexes = [_.start() for _ in re.finditer(string, "'")]
+			indexes = adapt.__find(string,"'")
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
 				else:
 					string = self.__swap(string, "\'", int(i))
-			indexes = [_.start() for _ in re.finditer(string, '"')]
+			indexes = adapt.__find(string,'"')
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
