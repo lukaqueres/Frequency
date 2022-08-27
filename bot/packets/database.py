@@ -189,13 +189,13 @@ class Adapt():
 	
 	def escape(self, string):
 		if type(string) is str:
-			indexes = adapt.__find(string,"'")
+			indexes = self.__find(string,"'")
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
 				else:
 					string = self.__swap(string, "\'", int(i))
-			indexes = adapt.__find(string,'"')
+			indexes = self.__find(string,'"')
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
