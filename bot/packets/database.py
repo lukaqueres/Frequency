@@ -164,8 +164,7 @@ class Adapt():
 	def __swap(self, s, newstring, index, nofail=False):
 		# raise an error if index is outside of the string
 		if not nofail and index not in range(len(s)):
-			raise ValueError("index outside given string")
-		print(index);
+			return s;
 		# if not erroring, but the index is still not in the correct range..
 		if index < 0:  # add it to the beginning
 			return newstring + s
@@ -190,14 +189,16 @@ class Adapt():
 	def escape(self, string):
 		if type(string) is str:
 			#indexes = self.__find(string,"'")
-			indexes = [_.start() for _ in re.finditer(string, "'")]
+			indexes = [_.start() for _ in re.finditer(string, "'")];
+			print(indexes);
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
 				else:
 					string = self.__swap(string, "\'", int(i))
 			#indexes = self.__find(string,'"')
-			indexes = [_.start() for _ in re.finditer(string, '"')]
+			indexes = [_.start() for _ in re.finditer(string, '"')];
+			print(indexes);
 			for i in indexes:
 				if string[i-1] == '/':
 					pass;
