@@ -191,8 +191,11 @@ class Adapt():
 			#indexes = self.__find(string,"'")
 			indexes = [_.start() for _ in re.finditer(string, "'")];
 			print(indexes);
+			alreadyEscaped = '\\';
 			for i in indexes:
-				if string[i-1] == '\\':
+				if string[i-1] == alreadyEscaped:
+					print(string[i-1]);
+					print(alreadyEscaped);
 					pass;
 				else:
 					string = self.__swap(string, "\'", int(i))
@@ -200,7 +203,8 @@ class Adapt():
 			indexes = [_.start() for _ in re.finditer(string, '"')];
 			print(indexes);
 			for i in indexes:
-				if string[i-1] == '\\':
+				if string[i-1] == alreadyEscaped:
+					print(string[i-1]);
 					pass;
 				else:
 					string = self.__swap(string, '\"', int(i))
