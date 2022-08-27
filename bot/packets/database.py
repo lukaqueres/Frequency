@@ -157,7 +157,7 @@ class Adapt():
 		indexes = [];
 		if len(tofind) == 1:
 			for i in range(len(string)):
-    				if string[i] == tofind:
+				if string[i] == tofind:
 					indexes.append(i);
 		return indexes;
 	
