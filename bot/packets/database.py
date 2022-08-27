@@ -1,4 +1,4 @@
-import os, psycopg2, json
+import os, psycopg2, json, re
 
 # - Import database extensions -
 from psycopg2.extensions import AsIs
