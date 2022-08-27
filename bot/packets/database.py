@@ -192,6 +192,7 @@ class Adapt():
 			indexes = [_.start() for _ in re.finditer(string, "'")];
 			print(indexes);
 			alreadyEscaped = '\\';
+			print(alreadyEscaped);
 			for i in indexes:
 				if string[i-1] == alreadyEscaped:
 					print(string[i-1]);
