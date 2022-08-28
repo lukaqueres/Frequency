@@ -215,16 +215,58 @@ class Adapt():
 		pass;
 
 class Escape():
+	def __input(self, s, newstring, index, nofail=False):
+		# raise an error if index is outside of the string
+		if not nofail and index not in range(len(s)):
+			return s;
+		# if not erroring, but the index is still not in the correct range..
+		if index < 0:  # add it to the beginning
+			return newstring + s
+		if index > len(s):  # add it to the end
+			return s + newstring
+
+		# insert the new string between "slices" of the original
+		return s[:index] + newstring + s[index + 1:]
+	
 	def __indexes(self, string, lookingFor):
 		indexes = [str(i) for i, x in enumerate(word) if x == to_find];
-		print(", ".join(indexes));
+		return indexes;
 		
 	def all(self, values):
 		pass;
 		
 	def string(self, string):
-		indexes = self.__indexes(string);
-		pass;
+		indexes = self.__indexes(string, '"');
+		print('Indexes of " : ' + ", ".join(indexes));
+		for i in indexes:
+			i = int(i);
+			if i == 0:
+				print(f'For index {i} added \ on start');
+				string = '\\' + string;
+				continue;
+			text = str(string[i-1] + string[i]);
+			if text == '\"':
+				print(f'For index {i} passed because of escaped');
+				pass;
+			else:
+				print(f'For index {i} added \ ');
+				string = self.__input(string, '\"', i);
+		indexes = self.__indexes(string, "'");
+		print('Indexes of " : ' + ", ".join(indexes));
+		for i in indexes:
+			i = int(i);
+			if i == 0:
+				print(f'For index {i} added \ on start');
+				string = '\\' + string;
+				continue;
+			text = str(string[i-1] + string[i]);
+			if text == "\'":
+				print(f'For index {i} passed because of escaped');
+				pass;
+			else:
+				print(f'For index {i} added \ ');
+				string = self.__input(string, "\'", i);
+		return string;
 	
 	def array(self, array):
 		pass;
