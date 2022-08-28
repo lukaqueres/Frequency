@@ -25,6 +25,7 @@ class Events(commands.Cog):
 		test = "will see how it will handle these ' and \" quotes!";
 		testtwo = self.client.database.escape.string(test);
 		print(test);
+		print(testtwo);
 		for r in guild.roles:
 			if r != guild.default_role:
 				roles[r.id] = self.client.database.adapt.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
