@@ -30,6 +30,7 @@ class Database(Connection):
 	def __init__(self):
 		super().__init__();
 		self.adapt = Adapt(); # - Assign Adapt and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
+		self.escape = Escape();
 		self.decode = Decode();
 	
 	def delete(self, table, condition):
@@ -211,6 +212,24 @@ class Adapt():
 		return string;
 			
 	def wrap(self, value):
+		pass;
+
+class Escape():
+	def __indexes(self, string, lookingFor):
+		indexes = [str(i) for i, x in enumerate(word) if x == to_find];
+		print(", ".join(indexes));
+		
+	def all(self, values):
+		pass;
+		
+	def string(self, string):
+		indexes = self.__indexes(string);
+		pass;
+	
+	def array(self, array):
+		pass;
+	
+	def dictionary(self, dictionary):
 		pass;
 	
 class Decode():
