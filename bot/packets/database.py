@@ -254,7 +254,7 @@ class Escape():
 				pass;
 			else:
 				print(f'For index {i} added \ ');
-				string = self.__input(string, '\\' + '"', i);
+				string = self.__input(string, '\\\"', i);
 		indexes = self.__indexes(string, "'");
 		print('Indexes of \' : ' + ", ".join(indexes));
 		for i in indexes:
@@ -269,7 +269,7 @@ class Escape():
 				pass;
 			else:
 				print(f'For index {i} added \ ');
-				string = self.__input(string, '\\' + "'", i);
+				string = self.__input(string, "\\\'", i);
 		return string;
 	
 	def array(self, array):
