@@ -22,6 +22,9 @@ class Events(commands.Cog):
 		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
 		roles = {};
+		test = "will see how it will handle these ' and \" quotes!";
+		testtwo = self.client.database.escape.string(test);
+		print(test);
 		for r in guild.roles:
 			if r != guild.default_role:
 				roles[r.id] = self.client.database.adapt.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
