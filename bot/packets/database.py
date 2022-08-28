@@ -229,7 +229,7 @@ class Escape():
 		return s[:index] + newstring + s[index + 1:]
 	
 	def __indexes(self, string, lookingFor):
-		indexes = [str(i) for i, x in enumerate(word) if x == to_find];
+		indexes = [str(i) for i, x in enumerate(string) if x == lookingFor];
 		return indexes;
 		
 	def all(self, values):
