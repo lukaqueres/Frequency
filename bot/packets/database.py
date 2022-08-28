@@ -218,14 +218,18 @@ class Escape():
 	def __input(self, s, newstring, index, nofail=False):
 		# raise an error if index is outside of the string
 		if not nofail and index not in range(len(s)):
+			print(f'Not added {newstring} to the {s}');
 			return s;
 		# if not erroring, but the index is still not in the correct range..
 		if index < 0:  # add it to the beginning
+			print(f'Added {newstring} to beggining of {s}');
 			return newstring + s
 		if index > len(s):  # add it to the end
+			print(f'Added {newstring} to end of {s}');
 			return s + newstring
 
 		# insert the new string between "slices" of the original
+		print(f'Added {newstring} in the middle of {s}');
 		return s[:index] + newstring + s[index + 1:]
 	
 	def __indexes(self, string, lookingFor):
@@ -252,7 +256,7 @@ class Escape():
 				print(f'For index {i} added \ ');
 				string = self.__input(string, '\"', i);
 		indexes = self.__indexes(string, "'");
-		print('Indexes of " : ' + ", ".join(indexes));
+		print('Indexes of \' : ' + ", ".join(indexes));
 		for i in indexes:
 			i = int(i);
 			if i == 0:
