@@ -67,7 +67,7 @@ class Database(Connection):
     					escapedDict[escapedKeys[i]] = escapedValues[i]
 				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
 			elif type(value) is str:
-				values[values.index(value)] = self.adapt.escape(value);
+				values[values.index(value)] = self.escape.string(value);
 			else:
 				pass;
 		print(values);
