@@ -249,11 +249,12 @@ class Escape():
 				string = '\\' + string;
 				continue;
 			text = str(string[i-1] + string[i]);
-			print(f'{text} is equal to \\\" {text == "\\\""}');
 			if text == '\\\"':
+				print(f'{text} is equal to \\\"');
 				print(f'For index {i} passed because of escaped');
 				pass;
 			else:
+				print(f'{text} is not equal to \\\"');
 				print(f'For index {i} added \ ');
 				string = self.__input(string, '\\\"', i);
 		indexes = self.__indexes(string, "'");
@@ -265,11 +266,12 @@ class Escape():
 				string = '\\' + string;
 				continue;
 			text = str(string[i-1] + string[i]);
-			print(f'{text} is equal to \\\" {text == "\\\'"}');
 			if text == "\\\'":
+				print(f'{text} is equal to \\\"');
 				print(f'For index {i} passed because of escaped');
 				pass;
 			else:
+				print(f'{text} is not equal to \\\"');
 				print(f'For index {i} added \ ');
 				string = self.__input(string, "\\\'", i);
 		return string;
