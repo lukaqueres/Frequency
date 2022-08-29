@@ -243,7 +243,7 @@ class Escape():
 		
 	def string(self, string, passEscaped = False):
 		elements = {'"': '\\\"', '\'': '\\\''};
-		for key, value in elements:
+		for key, value in elements.items():
 			print(f'key: {key}, value: {value}');
 			index = 0;
 			nextIndex = self.__indexes(string, key, index);
