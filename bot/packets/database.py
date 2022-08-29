@@ -240,8 +240,8 @@ class Escape():
 	def all(self, values):
 		pass;
 		
-	def string(self, template):
-		indexes = self.__indexes(template, '"');
+	def string(self, string):
+		indexes = self.__indexes(string, '"');
 		print('Indexes of " : ' + ", ".join(indexes));
 		for i in indexes:
 			i = int(i);
