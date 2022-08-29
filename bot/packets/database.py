@@ -251,7 +251,7 @@ class Escape():
 				continue;
 			nextIndex = nextIndex[0];
 			escapePart = value.replace(key, '');
-			print(f'EscapePart: {escapePart}';
+			print(f'EscapePart: {escapePart}');
 			while index < len(string):
 				index = nextIndex;
 				if index == 0:
