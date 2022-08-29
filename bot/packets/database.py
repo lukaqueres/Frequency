@@ -235,6 +235,7 @@ class Escape():
 	def __indexes(self, string, lookingFor, start = 0):
 		string = string[start:];
 		indexes = [str(i) for i, x in enumerate(string, start) if x == lookingFor];
+		print(list(enumerate(string, start)));
 		return indexes;
 		
 	def all(self, values):
