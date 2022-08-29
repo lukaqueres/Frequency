@@ -252,7 +252,7 @@ class Escape():
 			nextIndex = nextIndex[0];
 			escapePart = value.replace(key, '');
 			print(f'EscapePart: {escapePart}';
-			while index <= len(string):
+			while index < len(string):
 				index = nextIndex;
 				if index == 0:
 					print(f'For index {index} added {escapePart} on start');
