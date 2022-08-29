@@ -270,7 +270,7 @@ class Escape():
 				nextIndex = nextIndex[0];
 				
 		return string;
-				"""	
+		"""	
 		for i in indexes:
 			i = int(i);
 			if i == 0:
