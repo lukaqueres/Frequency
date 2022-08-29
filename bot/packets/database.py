@@ -242,7 +242,7 @@ class Escape():
 		pass;
 		
 	def string(self, string):
-		indexes = self.__indexes(string, '"');
+		indexes = self.__indexes(string, '"', 4);
 		print('Indexes of " : ' + ", ".join(indexes));
 		for i in indexes:
 			i = int(i);
