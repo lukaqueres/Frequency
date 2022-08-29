@@ -241,9 +241,36 @@ class Escape():
 	def all(self, values):
 		pass;
 		
-	def string(self, string):
-		indexes = self.__indexes(string, '"', 4);
-		print('Indexes of " : ' + ", ".join(indexes));
+	def string(self, string, passEscaped = False):
+		elements = {'"': '\\\"', '\'': '\\\''};
+		for key, value in elements:
+			print(f'key: {key}, value: {value}');
+			index = 0;
+			nextIndex = self.__indexes(string, key, index);
+			if len(nextIndex) == 0:
+				continue;
+			nextIndex = nextIndex[0];
+			escapePart = value.replace(key, '');
+			print(f'EscapePart: {escapePart}';
+			while index <= len(string):
+				index = nextIndex;
+				if index == 0:
+					print(f'For index {index} added {escapePart} on start');
+					string = escapePart + string;
+				else:
+					if string[index-1] == escapePart and not passEscaped:
+						string = self.__input(string, value, index);
+					elif string[index-1] == escapePart and passEscaped:
+						pass;
+					else:
+						string = self.__input(string, value, index);
+				nextIndex = self.__indexes(string, key, index);
+				if len(nextIndex) == 0:
+					break;
+				nextIndex = nextIndex[0];
+				
+		return string;
+				"""	
 		for i in indexes:
 			i = int(i);
 			if i == 0:
@@ -260,7 +287,6 @@ class Escape():
 				print(f'For index {i} added \ ');
 				string = self.__input(string, '\\\"', i);
 		indexes = self.__indexes(string, "'");
-		print('Indexes of \' : ' + ", ".join(indexes));
 		for i in indexes:
 			i = int(i);
 			if i == 0:
@@ -278,7 +304,7 @@ class Escape():
 				print(f' {string[i-1]} {string[i]} is not equal to "\\" and "\'"');
 				print(f'For index {i} added \ ');
 				string = self.__input(string, "\\\'", i);
-		return string;
+		return string;"""
 	
 	def array(self, array):
 		pass;
