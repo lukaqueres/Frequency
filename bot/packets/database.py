@@ -249,6 +249,7 @@ class Escape():
 				string = '\\' + string;
 				continue;
 			text = str(string[i-1] + string[i]);
+			print(f'{text} is equal to \\\" {text == '\\\"'}');
 			if text == '\\\"':
 				print(f'For index {i} passed because of escaped');
 				pass;
@@ -264,6 +265,7 @@ class Escape():
 				string = '\\' + string;
 				continue;
 			text = str(string[i-1] + string[i]);
+			print(f'{text} is equal to \\\" {text == '\\\"'}');
 			if text == "\\\'":
 				print(f'For index {i} passed because of escaped');
 				pass;
