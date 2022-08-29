@@ -232,15 +232,16 @@ class Escape():
 		print(f'Added {newstring} in the middle of {s}');
 		return s[:index] + newstring + s[index + 1:]
 	
-	def __indexes(self, string, lookingFor):
-		indexes = [str(i) for i, x in enumerate(string) if x == lookingFor];
+	def __indexes(self, string, lookingFor, start = 0):
+		string = string[start:];
+		indexes = [str(i) for i, x in enumerate(string, start) if x == lookingFor];
 		return indexes;
 		
 	def all(self, values):
 		pass;
 		
-	def string(self, string):
-		indexes = self.__indexes(string, '"');
+	def string(self, template):
+		indexes = self.__indexes(template, '"');
 		print('Indexes of " : ' + ", ".join(indexes));
 		for i in indexes:
 			i = int(i);
