@@ -258,7 +258,7 @@ class Escape():
 					print(f'For index {index} added {escapePart} on start');
 					string = escapePart + string;
 				else:
-					print(f'Index-1: {string[index-1]} and escape part: {escapePart}';
+					print(f'Index-1: {string[index-1]} and escape part: {escapePart}');
 					if string[index-1] == escapePart and not passEscaped:
 						string = self.__input(string, value, index);
 					      index += 1;
