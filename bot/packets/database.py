@@ -218,18 +218,18 @@ class Escape():
 	def __input(self, s, newstring, index, nofail=False):
 		# raise an error if index is outside of the string
 		if not nofail and index not in range(len(s)):
-			print(f'Not added {newstring} to the {s}');
+			#print(f'Not added {newstring} to the {s}');
 			return s;
 		# if not erroring, but the index is still not in the correct range..
 		if index < 0:  # add it to the beginning
-			print(f'Added {newstring} to beggining of {s}');
+			#print(f'Added {newstring} to beggining of {s}');
 			return newstring + s
 		if index > len(s):  # add it to the end
-			print(f'Added {newstring} to end of {s}');
+			#print(f'Added {newstring} to end of {s}');
 			return s + newstring
 
 		# insert the new string between "slices" of the original
-		print(f'Added {newstring} in the middle of {s}');
+		#print(f'Added {newstring} in the middle of {s}');
 		return s[:index] + newstring + s[index + 1:]
 	
 	def __indexes(self, string, lookingFor, start = 0):
@@ -240,7 +240,7 @@ class Escape():
 	def all(self, values):
 		pass;
 		
-	def string(self, string, passEscaped = False):
+	def string(self, string, passEscaped = True):
 		elements = {'"': '\\\"', '\'': '\\\''};
 		for key, value in elements.items():
 			print(f'key: {key}, value: {value}');
@@ -249,6 +249,7 @@ class Escape():
 			if len(nextIndex) == 0:
 				continue;
 			nextIndex = nextIndex[0];
+			print(f'first index: {nextIndex}');
 			escapePart = value.replace(key, '');
 			print(f'EscapePart: {escapePart}');
 			while index < len(string):
@@ -257,12 +258,15 @@ class Escape():
 					print(f'For index {index} added {escapePart} on start');
 					string = escapePart + string;
 				else:
+					print(f'Index-1: {string[index-1]} and escape part: {escapePart}';
 					if string[index-1] == escapePart and not passEscaped:
 						string = self.__input(string, value, index);
+					      index += 1;
 					elif string[index-1] == escapePart and passEscaped:
 						pass;
 					else:
 						string = self.__input(string, value, index);
+						index += 1;
 				nextIndex = self.__indexes(string, key, index);
 				if len(nextIndex) == 0:
 					break;
