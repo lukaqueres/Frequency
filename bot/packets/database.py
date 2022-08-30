@@ -261,12 +261,11 @@ class Escape():
 					print(f'Index-1: {string[index-1]} and escape part: {escapePart}');
 					if string[index-1] == escapePart and not passEscaped:
 						string = self.__input(string, value, index);
-					      index += 1;
+					      index = index + 1;
 					elif string[index-1] == escapePart and passEscaped:
-						pass;
 					else:
 						string = self.__input(string, value, index);
-						index += 1;
+				index = index + 1;
 				nextIndex = self.__indexes(string, key, index);
 				if len(nextIndex) == 0:
 					break;
