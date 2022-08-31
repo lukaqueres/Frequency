@@ -15,11 +15,11 @@ database = Database(); # - Create database object to handle all querries -
 
 intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
 bot = client = commands.Bot(command_prefix = prefix, intents=intents);
-client.database = Database(); # - Assign database object to client for easy fetch from cogs -
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
 async def on_ready():
+	client.database = Database(); # - Assign database object to client for easy fetch from cogs -
 	with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
 		configuration = json.load(c); 
 		status = configuration['discord']['status']; 
