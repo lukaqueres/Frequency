@@ -225,7 +225,7 @@ class Escape():
 						print(f'working on string with index {index} in key {key} passing it');
 						pass;
 					else:
-						print(f'working on string with index {index} in key {key} adding escape {escapePart}');
+						print(f'working on string with index {index} in key {key} adding escape {value}');
 						string = self.__input(string, value, index);
 				index = index + 1;
 				nextIndex = self.__indexes(string, key, index);
