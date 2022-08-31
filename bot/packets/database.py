@@ -28,8 +28,7 @@ class Connection:
 # - Database object, inherit of Connection, handles querries -
 class Database(Connection):
 	def __init__(self):
-		super().__init__();
-		self.adapt = Adapt(); # - Assign Adapt and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
+		super().__init__(); # - Assign Escape and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
 		self.escape = Escape();
 		self.decode = Decode();
 	
@@ -52,6 +51,7 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
+		"""
 		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
 			if isinstance(value, dict):
 				toEscapeKeys = list(value.keys());
@@ -70,9 +70,13 @@ class Database(Connection):
 				values[values.index(value)] = self.escape.string(value);
 			else:
 				pass;
+		"""
 		print(values);
+		self.escape.all(values);
+		print(values);
+		self.escape.wrap(values);
 		#values = self.adapt.values(values);
-		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
+		#values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
 		print(values);
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
@@ -153,79 +157,15 @@ class Database(Connection):
 			records = r;
 		return records;
 	
-class Adapt():
-	def __find(self, string, tofind):
-		indexes = [];
-		if len(tofind) == 1:
-			for i in range(len(string)):
-				if string[i] == tofind:
-					indexes.append(i);
-		return indexes;
-	
-	def __swap(self, s, newstring, index, nofail=False):
-		# raise an error if index is outside of the string
-		if not nofail and index not in range(len(s)):
-			return s;
-		# if not erroring, but the index is still not in the correct range..
-		if index < 0:  # add it to the beginning
-			return newstring + s
-		if index > len(s):  # add it to the end
-			return s + newstring
-
-		# insert the new string between "slices" of the original
-		return s[:index] + newstring + s[index + 1:]
-	
-	def values(self, values):
-		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
-		return values;
-	
-	def string(self, string):
-		string = string.replace('"', '""');
-		return string;
-	
-	def dictionary(self, dictionary):
-		dictionary = json.dumps(dictionary);
-		return dictionary;
-	
-	def escape(self, string):
-		if type(string) is str:
-			#indexes = self.__find(string,"'")
-			indexes = [_.start() for _ in re.finditer(string, "'")];
-			print(indexes);
-			alreadyEscaped = '\\';
-			print(alreadyEscaped);
-			for i in indexes:
-				print(string[i-1] + string[i]);
-				if string[i-1] == alreadyEscaped:
-					pass;
-				else:
-					string = self.__swap(string, "\'", int(i))
-			#indexes = self.__find(string,'"')
-			indexes = [_.start() for _ in re.finditer(string, '"')];
-			print(indexes);
-			for i in indexes:
-				print(string[i-1] + string[i]);
-				if string[i-1] == alreadyEscaped:
-					pass;
-				else:
-					string = self.__swap(string, '\"', int(i))
-		return string;
-			
-	def wrap(self, value):
-		pass;
-
 class Escape():
 	def __input(self, s, newstring, index, nofail=False):
-		# raise an error if index is outside of the string
+		# if index is outside of the string
 		if not nofail and index not in range(len(s)):
-			#print(f'Not added {newstring} to the {s}');
 			return s;
 		# if not erroring, but the index is still not in the correct range..
 		if index < 0:  # add it to the beginning
-			#print(f'Added {newstring} to beggining of {s}');
 			return newstring + s
 		if index > len(s):  # add it to the end
-			#print(f'Added {newstring} to end of {s}');
 			return s + newstring
 
 		# insert the new string between "slices" of the original
@@ -238,8 +178,18 @@ class Escape():
 		return indexes;
 		
 	def all(self, values):
-		pass;
-		
+		if type(values) is int:
+			pass;
+		elif type(values) is str:
+			values= self.string(values);
+		elif isinstance(values, list):
+			values = self.array(values);
+		elif isinstance(item, dict):
+			values = self.dictionary(values);
+		else:
+			pass;
+		return values;
+	
 	def string(self, string, passEscaped = True):
 		elements = {'"': '\\\"', '\'': '\\\''};
 		for key, value in elements.items():
@@ -277,47 +227,49 @@ class Escape():
 				print(f'Next index: {nextIndex}');
 				
 		return string;
-		"""	
-		for i in indexes:
-			i = int(i);
-			if i == 0:
-				print(f'For index {i} added \ on start');
-				string = '\\' + string;
-				continue;
-			text = str(string[i-1] + string[i]);
-			if string[i-1] == "\\" and string[i] == '\"':
-				print(f' {string[i-1]} {string[i]} is equal to "\\" and "\""');
-				print(f'For index {i} passed because of escaped');
-				pass;
-			else:
-				print(f' {string[i-1]} {string[i]} is not equal to "\\" and "\""');
-				print(f'For index {i} added \ ');
-				string = self.__input(string, '\\\"', i);
-		indexes = self.__indexes(string, "'");
-		for i in indexes:
-			i = int(i);
-			if i == 0:
-				print(f'For index {i} added \ on start');
-				string = '\\' + string;
-				continue;
-			#text = str(string[i-1] + string[i]);
-			print('Indexes of string : ' + ", ".join([string[i] for i in range(len(string))]));
-				
-			if string[i-1] == "\\" and string[i] == "\'":
-				print(f' {string[i-1]} {string[i]} is equal to "\\" and "\'"');
-				print(f'For index {i} passed because of escaped');
-				pass;
-			else:
-				print(f' {string[i-1]} {string[i]} is not equal to "\\" and "\'"');
-				print(f'For index {i} added \ ');
-				string = self.__input(string, "\\\'", i);
-		return string;"""
 	
 	def array(self, array):
-		pass;
+		escapedArray = [];
+		for item in array:
+			if type(item) is int:
+				pass;
+			elif type(item) is str:
+				item = self.string(item);
+			elif isinstance(item, list):
+				item = self.array(item);
+			elif isinstance(item, dict):
+				item = self.dictionary(item);
+			else:
+				pass;
+			escapedArray.append(item);
+		return escapedArray;
+		
 	
 	def dictionary(self, dictionary):
-		pass;
+		escapedDictionary = {};
+		for key, value in dictionary.items():
+			if type(key) is int:
+				pass;
+			elif type(key) is str:
+				key = self.string(key);
+			else:
+				pass;
+			if type(value) is int:
+				pass;
+			elif type(value) is str:
+				value = self.string(value);
+			elif isinstance(value, list):
+				value = self.array(value);
+			elif isinstance(value, dict):
+				value = self.dictionary(value);
+			else:
+				pass;
+			escapedDictionary[key] = value;
+		return escapedDictionary;
+	
+	def wrap(self, values):
+		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
+		return values;
 	
 class Decode():
 	def string(self, string):
