@@ -273,7 +273,7 @@ class Escape():
 	
 	def wrap(self, values):
 		#values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
-		values = ",".join("'"+ v + "'" if type(v) is str else "'" + str(v) + "'" for v in values);
+		values = ",".join('"'+ v + '"' if type(v) is str else '"' + str(v) + '"' for v in values);
 		return values;
 	
 class Decode():
