@@ -197,7 +197,7 @@ class Escape():
 	
 	def string(self, string, passEscaped = True):
 		print(f'working on string: {string}');
-		elements = {'"': '\\\"', '\'': '\\\''};
+		elements = {"\"": "\\\"", '\'': '\\\''};
 		for key, value in elements.items():
 			#print(f'key: {key}, value: {value}');
 			index = 0;
