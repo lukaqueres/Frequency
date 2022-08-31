@@ -179,39 +179,44 @@ class Escape():
 		
 	def all(self, values):
 		if type(values) is int:
+			print('int detected')
 			pass;
 		elif type(values) is str:
+			print('string detected')
 			values= self.string(values);
 		elif isinstance(values, list):
+			print('array detected')
 			values = self.array(values);
 		elif isinstance(item, dict):
+			print('dictionary detected')
 			values = self.dictionary(values);
 		else:
+			print('else detected')
 			pass;
 		return values;
 	
 	def string(self, string, passEscaped = True):
 		elements = {'"': '\\\"', '\'': '\\\''};
 		for key, value in elements.items():
-			print(f'key: {key}, value: {value}');
+			#print(f'key: {key}, value: {value}');
 			index = 0;
 			indexes = self.__indexes(string, key, index);
 			if len(indexes) == 0:
 				continue;
 			nextIndex = indexes[0];
-			print(f'first index: {nextIndex}');
+			#print(f'first index: {nextIndex}');
 			escapePart = value.replace(key, '');
-			print(f'EscapePart: {escapePart}');
+			#print(f'EscapePart: {escapePart}');
 			i = 0;
 			while index < len(string) and i in range(len(indexes)):
 				print(f'Podłoga: {i}');
 				i += 1;
 				index = nextIndex;
 				if index == 0:
-					print(f'For index {index} added {escapePart} on start');
+					#print(f'For index {index} added {escapePart} on start');
 					string = escapePart + string;
 				else:
-					print(f'Index-1: {string[index-1]} and escape part: {escapePart}');
+					#print(f'Index-1: {string[index-1]} and escape part: {escapePart}');
 					if string[index-1] == escapePart and not passEscaped:
 						string = self.__input(string, value, index);
 					elif string[index-1] == escapePart and passEscaped:
@@ -220,11 +225,11 @@ class Escape():
 						string = self.__input(string, value, index);
 				index = index + 1;
 				nextIndex = self.__indexes(string, key, index);
-				print(f'Next indexes: {nextIndex} from index {index}');
+				#print(f'Next indexes: {nextIndex} from index {index}');
 				if len(nextIndex) == 0:
 					break;
 				nextIndex = nextIndex[0];
-				print(f'Next index: {nextIndex}');
+				#print(f'Next index: {nextIndex}');
 				
 		return string;
 	
@@ -232,12 +237,16 @@ class Escape():
 		escapedArray = [];
 		for item in array:
 			if type(item) is int:
+				print('int in array detected')
 				pass;
 			elif type(item) is str:
+				print('string in array detected')
 				item = self.string(item);
 			elif isinstance(item, list):
+				print('array in array detected')
 				item = self.array(item);
 			elif isinstance(item, dict):
+				print('dictionary in array detected')
 				item = self.dictionary(item);
 			else:
 				pass;
@@ -249,18 +258,24 @@ class Escape():
 		escapedDictionary = {};
 		for key, value in dictionary.items():
 			if type(key) is int:
+				print('int in dict key detected')
 				pass;
 			elif type(key) is str:
+				print('string in dict key detected')
 				key = self.string(key);
 			else:
 				pass;
 			if type(value) is int:
+				print('int in dict value detected')
 				pass;
 			elif type(value) is str:
+				print('string in dict value detected')
 				value = self.string(value);
 			elif isinstance(value, list):
+				print('list in dict value detected')
 				value = self.array(value);
 			elif isinstance(value, dict):
+				print('dict in dict value detected')
 				value = self.dictionary(value);
 			else:
 				pass;
