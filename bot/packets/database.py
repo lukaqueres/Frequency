@@ -51,30 +51,10 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		"""
-		for value in values: # - Check for types not supported and change to more supported ones. Currently working json as dictionary. TODO: Test for more types. -
-			if isinstance(value, dict):
-				toEscapeKeys = list(value.keys());
-				toEscapeValues = list(value.values());
-				escapedKeys = [];
-				escapedValues = [];
-				escapedDict = {};
-				for k in toEscapeKeys:
-					escapedKeys.append(self.adapt.escape(k));
-				for v in toEscapeValues:
-					escapedValues.append(self.adapt.escape(v));
-				for i in range(len(escapedKeys)):
-    					escapedDict[escapedKeys[i]] = escapedValues[i]
-				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
-			elif type(value) is str:
-				values[values.index(value)] = self.escape.string(value);
-			else:
-				pass;
-		"""
 		print(values);
-		self.escape.all(values);
+		values = self.escape.all(values);
 		print(values);
-		self.escape.wrap(values);
+		values = self.escape.wrap(values);
 		#values = self.adapt.values(values);
 		#values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
 		print(values);
