@@ -252,7 +252,8 @@ class Escape():
 			print(f'first index: {nextIndex}');
 			escapePart = value.replace(key, '');
 			print(f'EscapePart: {escapePart}');
-			while index < len(string):
+			#while index < len(string):
+			for _ in range(5):
 				index = nextIndex;
 				if index == 0:
 					print(f'For index {index} added {escapePart} on start');
@@ -269,9 +270,11 @@ class Escape():
 						string = self.__input(string, value, index);
 						index = index + 1;
 				nextIndex = self.__indexes(string, key, index);
+				print(f'Next indexes: {nextIndex} from index {index}');
 				if len(nextIndex) == 0:
 					break;
 				nextIndex = nextIndex[0];
+				print(f'Next index: {nextIndex}');
 				
 		return string;
 		"""	
