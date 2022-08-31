@@ -219,7 +219,7 @@ class Escape():
 					break;
 				nextIndex = nextIndex[0];
 				#print(f'Next index: {nextIndex}');
-				
+		print(f'worked on string: {string}; as raw');
 		return string;
 	
 	def array(self, array):
