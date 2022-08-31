@@ -156,6 +156,9 @@ class Escape():
 		string = string[start:];
 		indexes = [i for i, x in enumerate(string, start) if x == lookingFor];
 		return indexes;
+	
+	def __raw(self, string):
+		return fr"{string}";
 		
 	def all(self, values):
 		if type(values) is int:
@@ -177,7 +180,9 @@ class Escape():
 	
 	def string(self, string, passEscaped = True):
 		print(f'working on string: {string}');
-		elements = {"\"": "\\\"", '\'': '\\\''};
+		string = self.__raw(string);
+		print(f'working on string: {string}; as raw');
+		elements = {'"': "\"", "'": '\''};
 		for key, value in elements.items():
 			#print(f'key: {key}, value: {value}');
 			index = 0;
