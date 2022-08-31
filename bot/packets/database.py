@@ -182,7 +182,7 @@ class Escape():
 		print(f'working on string: {string}');
 		string = self.__raw(string);
 		print(f'working on string: {string}; as raw');
-		elements = {'"': "\"", "'": '\''};
+		elements = {'"': "\\\"", "'": '\\\''};
 		for key, value in elements.items():
 			#print(f'key: {key}, value: {value}');
 			index = 0;
