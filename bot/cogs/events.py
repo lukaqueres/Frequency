@@ -28,10 +28,11 @@ class Events(commands.Cog):
 		print(testtwo);
 		for r in guild.roles:
 			if r != guild.default_role:
-				roles[r.id] = self.client.database.adapt.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
+				#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
+				roles[r.id] = r.name;
 		payload = { "id": guild.id,
 			   "properties": {
-				   "prefix": defaults['prefix'], # - TODO: Check what to do to input string containing ' or ", then maybe add name field -
+				   "prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
 				   "joined": time.today(),
 				   "language": defaults['language']
 			   },
