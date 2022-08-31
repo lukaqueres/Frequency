@@ -1,7 +1,7 @@
 import os, psycopg2, json, re
 
 # - Import database extensions -
-from psycopg2.extensions import AsIs
+from psycopg2.extensions import AsIs, quote_ident
 
 # - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
@@ -137,7 +137,10 @@ class Database(Connection):
 			records = r;
 		return records;
 	
-class Escape():
+class Escape(Database):
+	def __init__(self):
+		super().__init__();
+		
 	def __input(self, s, newstring, index, nofail=False):
 		# if index is outside of the string
 		if not nofail and index not in range(len(s)):
@@ -179,10 +182,14 @@ class Escape():
 		return values;
 	
 	def string(self, string, passEscaped = True):
+		cur = self.cursor;
 		print(f'working on string: {string}');
 		string = self.__raw(string);
 		print(f'working on string: {string}; as raw');
 		elements = {'"': "\\\"", "'": '\\\''};
+		if True:
+			string = quote_ident(string, cur);
+			return string;
 		for key, value in elements.items():
 			#print(f'key: {key}, value: {value}');
 			index = 0;
