@@ -196,11 +196,13 @@ class Escape():
 		return values;
 	
 	def string(self, string, passEscaped = True):
+		print(f'working on string: {string}');
 		elements = {'"': '\\\"', '\'': '\\\''};
 		for key, value in elements.items():
 			#print(f'key: {key}, value: {value}');
 			index = 0;
 			indexes = self.__indexes(string, key, index);
+			print(f'working on string with indexes {indexes} in key {key}');
 			if len(indexes) == 0:
 				continue;
 			nextIndex = indexes[0];
@@ -209,7 +211,7 @@ class Escape():
 			#print(f'EscapePart: {escapePart}');
 			i = 0;
 			while index < len(string) and i in range(len(indexes)):
-				print(f'Podłoga: {i}');
+				#print(f'Podłoga: {i}');
 				i += 1;
 				index = nextIndex;
 				if index == 0:
