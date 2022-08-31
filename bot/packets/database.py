@@ -245,15 +245,15 @@ class Escape():
 		for key, value in elements.items():
 			print(f'key: {key}, value: {value}');
 			index = 0;
-			nextIndex = self.__indexes(string, key, index);
-			if len(nextIndex) == 0:
+			indexes = self.__indexes(string, key, index);
+			if len(indexes) == 0:
 				continue;
-			nextIndex = nextIndex[0];
+			nextIndex = indexes[0];
 			print(f'first index: {nextIndex}');
 			escapePart = value.replace(key, '');
 			print(f'EscapePart: {escapePart}');
-			#while index < len(string):
-			for _ in range(5):
+			while index < len(string) and _ in range(len(indexes)):
+				print(f'Podłoga: {_}');
 				index = nextIndex;
 				if index == 0:
 					print(f'For index {index} added {escapePart} on start');
