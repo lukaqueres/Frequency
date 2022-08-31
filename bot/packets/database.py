@@ -252,8 +252,10 @@ class Escape():
 			print(f'first index: {nextIndex}');
 			escapePart = value.replace(key, '');
 			print(f'EscapePart: {escapePart}');
-			while index < len(string) and _ in range(len(indexes)):
-				print(f'Podłoga: {_}');
+			i = 0;
+			while index < len(string) and i in range(len(indexes)):
+				print(f'Podłoga: {i}');
+				i += 1;
 				index = nextIndex;
 				if index == 0:
 					print(f'For index {index} added {escapePart} on start');
