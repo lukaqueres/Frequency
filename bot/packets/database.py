@@ -138,7 +138,8 @@ class Database(Connection):
 		return records;
 	
 class Escape(Database):
-		
+	def __init__(self):
+		pass;
 	def __input(self, s, newstring, index, nofail=False):
 		# if index is outside of the string
 		if not nofail and index not in range(len(s)):
