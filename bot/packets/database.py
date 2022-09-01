@@ -54,7 +54,7 @@ class Database(Connection):
 		for i in range(len(values)):
 			if isinstance(values[i], list):
 				values[i] = ",".join(str(v) for v in values[i]);
-			elif isinstance(value, dict):
+			elif isinstance(values[i], dict):
 				values[i] = string(values[i]);
 		#print(values);
 		#values = self.escape.all(values);
