@@ -51,6 +51,11 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
+		for i in range(len(values)):
+			if isinstance(values[i], list):
+				values[i] = ",".join(str(v) for v in values[i]);
+			elif isinstance(value, dict):
+				values[i] = string(values[i]);
 		#print(values);
 		#values = self.escape.all(values);
 		#print(values);
