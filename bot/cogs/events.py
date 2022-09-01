@@ -32,7 +32,7 @@ class Events(commands.Cog):
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
 			"prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
-			"language": defaults['language']
+			"language": defaults['language'],
 			"roles": roles,
 		};
 		self.client.database.insert(table = 'guilds.properties',
