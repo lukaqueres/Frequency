@@ -54,18 +54,58 @@ class Database(Connection):
 		#print(values);
 		#values = self.escape.all(values);
 		#print(values);
-		values = self.escape.wrap(values);
+		#values = self.escape.wrap(values);
 		#values = self.adapt.values(values);
 		#values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
-		print(values);
-		values = self.escape.string(values);
-		print(values);
+		#print(values);
+		#values = self.escape.string(values);
+		#print(values);
+		match len(values):
+			case 1:
+				cur.execute( # - Build and execute SQL querry with table, columns, values. -
+					"""
+					INSERT INTO %s (%s)
+					VALUES (%s);
+					""", (AsIs(table), columns[0], values[0])
+				);
+			case 2:
+				cur.execute( # - Build and execute SQL querry with table, columns, values. -
+					"""
+					INSERT INTO %s (%s, %s)
+					VALUES (%s, %s);
+					""", (AsIs(table), columns[0], columns[1], values[0], values[1])
+				);
+			case 3:
+				cur.execute( # - Build and execute SQL querry with table, columns, values. -
+					"""
+					INSERT INTO %s (%s, %s, %s)
+					VALUES (%s, %s, %s);
+					""", (AsIs(table), columns[0], columns[1], columns[2], values[0], values[1], values[2])
+				);
+			case 4:
+				cur.execute( # - Build and execute SQL querry with table, columns, values. -
+					"""
+					INSERT INTO %s (%s, %s, %s, %s)
+					VALUES (%s, %s, %s, %s);
+					""", (AsIs(table), columns[0], columns[1], columns[2], columns[3], values[0], values[1], values[2], values[3])
+				);
+			case 5:
+				cur.execute( # - Build and execute SQL querry with table, columns, values. -
+					"""
+					INSERT INTO %s (%s, %s, %s, %s, %s)
+					VALUES (%s, %s, %s, %s, %s);
+					""", (AsIs(table), columns[0], columns[1], columns[2], columns[3], columns[4], values[0], values[1], values[2], values[3], values[4])
+				);
+			case _:
+				return 0   # 0 is the default case if x is not found
+		"""
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
-			"""
-			INSERT INTO %s (%s)
-			VALUES (%s);
-			""", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
+			"#""
+			#INSERT INTO %s (%s)
+			#VALUES (%s);
+			"#"", (AsIs(table), AsIs(','.join(column for column in columns)), AsIs(values))
 		);
+		"""
 		con.commit(); # - Commit changes to database. -
 	
 	# - Updates records with given payload and on specified condition, querry affecting every record must be given in condition -
