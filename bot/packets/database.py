@@ -2,6 +2,7 @@ import os, psycopg2, json, re
 
 # - Import database extensions -
 from psycopg2.extensions import AsIs, quote_ident
+from psycopg2.extras import Json
 
 # - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
@@ -55,7 +56,7 @@ class Database(Connection):
 			if isinstance(values[i], list):
 				values[i] = ",".join(str(v) for v in values[i]);
 			elif isinstance(values[i], dict):
-				values[i] = str(values[i]);
+				values[i] = Json(values[i]);
 		#print(values);
 		#values = self.escape.all(values);
 		#print(values);
