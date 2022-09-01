@@ -187,8 +187,9 @@ class Escape():
 		print(f'working on string: {string}');
 		string = self.__raw(string);
 		print(f'working on string: {string}; as raw');
-		elements = {'"': "\\\"", "'": '\\\''};
-		if True:
+		#elements = {'"': "\\\"", "'": '\\\''};
+		elements = {'"': "\"\"", "'": '\'\''};
+		if False:
 			string = quote_ident(string, cur);
 			return string;
 		for key, value in elements.items():
@@ -280,8 +281,8 @@ class Escape():
 		return escapedDictionary;
 	
 	def wrap(self, values):
-		values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
-		#values = ",".join('"'+ v + '"' if type(v) is str else '"' + str(v) + '"' for v in values);
+		#values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
+		values = ",".join('"'+ v + '"' if type(v) is str else '"' + str(v) + '"' for v in values);
 		return values;
 	
 class Decode():
