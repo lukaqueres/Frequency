@@ -182,14 +182,14 @@ class Escape():
 			pass;
 		return values;
 	
-	def string(self, string, passEscaped = False):
+	def string(self, string, passEscaped = True):
 		cur = self.cur;
 		print(f'working on string: {string}');
 		string = self.__raw(string);
 		print(f'working on string: {string}; as raw');
-		#elements = {'"': "\\\"", "'": '\\\''};
-		elements = {'"': "\"\"", "'": '\'\''};
-		if False:
+		elements = {'"': "\\\"", "'": '\\\''};
+		#elements = {'"': "\"\"", "'": '\'\''};
+		if True:
 			string = quote_ident(string, cur);
 			return string;
 		for key, value in elements.items():
