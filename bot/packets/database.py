@@ -51,12 +51,14 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		print(values);
-		values = self.escape.all(values);
-		print(values);
+		#print(values);
+		#values = self.escape.all(values);
+		#print(values);
 		values = self.escape.wrap(values);
 		#values = self.adapt.values(values);
 		#values = ",".join("'"+ v + "'" if type(v) is str else str(v) for v in values);
+		print(values);
+		values = self.escape.string(values);
 		print(values);
 		cur.execute( # - Build and execute SQL querry with table, columns, values. -
 			"""
