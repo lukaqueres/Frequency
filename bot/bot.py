@@ -15,7 +15,7 @@ intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messag
 bot = client = commands.Bot(command_prefix = prefix, intents=intents);
 
 database = Database(); # - Create database object to handle all querries -
-client.database = Database(); # - Assign database object to client for easy fetch from cogs -
+client.database = database; # - Assign database object to client for easy fetch from cogs -
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
