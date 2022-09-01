@@ -71,35 +71,35 @@ class Database(Connection):
 					"""
 					INSERT INTO %s (%s)
 					VALUES (%s);
-					""", (AsIs(table), columns[0], values[0])
+					""", (AsIs(table), AsIs(columns[0]), values[0])
 				);
 			case 2:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s)
 					VALUES (%s, %s);
-					""", (AsIs(table), columns[0], columns[1], values[0], values[1])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), values[0], values[1])
 				);
 			case 3:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s, %s)
 					VALUES (%s, %s, %s);
-					""", (AsIs(table), columns[0], columns[1], columns[2], values[0], values[1], values[2])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), AsIs(columns[2]), values[0], values[1], values[2])
 				);
 			case 4:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s, %s, %s)
 					VALUES (%s, %s, %s, %s);
-					""", (AsIs(table), columns[0], columns[1], columns[2], columns[3], values[0], values[1], values[2], values[3])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), AsIs(columns[2]), AsIs(columns[3]), values[0], values[1], values[2], values[3])
 				);
 			case 5:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s, %s, %s, %s)
 					VALUES (%s, %s, %s, %s, %s);
-					""", (AsIs(table), columns[0], columns[1], columns[2], columns[3], columns[4], values[0], values[1], values[2], values[3], values[4])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), AsIs(columns[2]), AsIs(columns[3]), AsIs(columns[4]), values[0], values[1], values[2], values[3], values[4])
 				);
 			case _:
 				return 0   # 0 is the default case if x is not found
