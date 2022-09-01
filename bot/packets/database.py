@@ -182,7 +182,7 @@ class Escape():
 			pass;
 		return values;
 	
-	def string(self, string, passEscaped = True):
+	def string(self, string, passEscaped = False):
 		cur = self.cur;
 		print(f'working on string: {string}');
 		string = self.__raw(string);
