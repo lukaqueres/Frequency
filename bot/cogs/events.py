@@ -31,14 +31,11 @@ class Events(commands.Cog):
 				#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
-			   "properties": {
-				   "prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
-				   "joined": time.today(),
-				   "language": defaults['language']
-			   },
-			   "roles": roles,
+			"prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
+			"language": defaults['language']
+			"roles": roles,
 		};
-		self.client.database.insert(table = 'guilds',
+		self.client.database.insert(table = 'guilds.properties',
 					    payload = payload);
 	@commands.Cog.listener()
 	async def on_guild_remove(self, guild):
