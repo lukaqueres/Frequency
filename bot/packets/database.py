@@ -1,8 +1,7 @@
 import os, psycopg2, json, re
 
 # - Import database extensions -
-from psycopg2.extensions import AsIs
-#quote_ident
+from psycopg2.extensions import AsIs, quote_ident
 
 # - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
@@ -139,9 +138,6 @@ class Database(Connection):
 		return records;
 	
 class Escape(Database):
-	def __init__(self):
-		pass;
-		#super().__init__();
 		
 	def __input(self, s, newstring, index, nofail=False):
 		# if index is outside of the string
@@ -184,7 +180,6 @@ class Escape(Database):
 		return values;
 	
 	def string(self, string, passEscaped = True):
-		cur = self.cursor;
 		print(f'working on string: {string}');
 		string = self.__raw(string);
 		print(f'working on string: {string}; as raw');
