@@ -140,7 +140,8 @@ class Database(Connection):
 	
 class Escape(Database):
 	def __init__(self):
-		super().__init__();
+		pass;
+		#super().__init__();
 		
 	def __input(self, s, newstring, index, nofail=False):
 		# if index is outside of the string
