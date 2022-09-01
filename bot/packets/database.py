@@ -11,8 +11,8 @@ class Connection:
 		
 	# - Create connection based on Enviroment Variable 'DATABASE_URL' and return it to save as connection -
 	def __connect(self):
-		connection = os.environ.get('DATABASE_URL');
-		con = psycopg2.connect(connection);
+		url = os.environ.get('DATABASE_URL');
+		con = psycopg2.connect(url, sslmode='require');
 		return con;
 	
 	# - Generate cursor for querries generation base on connection generated earlier -
