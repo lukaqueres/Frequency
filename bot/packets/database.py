@@ -29,7 +29,7 @@ class Connection:
 class Database(Connection):
 	def __init__(self):
 		super().__init__(); # - Assign Escape and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
-		self.escape = Escape();
+		self.escape = Escape(self.connection, self.cursor);
 		self.decode = Decode();
 	
 	def delete(self, table, condition):
@@ -137,9 +137,11 @@ class Database(Connection):
 			records = r;
 		return records;
 	
-class Escape(Database):
-	def __init__(self):
-		pass;
+class Escape():
+	def __init__(self, connection, cursor):
+		self.con = connection;
+		self.cur = cursor;	
+		
 	def __input(self, s, newstring, index, nofail=False):
 		# if index is outside of the string
 		if not nofail and index not in range(len(s)):
@@ -181,6 +183,7 @@ class Escape(Database):
 		return values;
 	
 	def string(self, string, passEscaped = True):
+		cur = self.cur;
 		print(f'working on string: {string}');
 		string = self.__raw(string);
 		print(f'working on string: {string}; as raw');
