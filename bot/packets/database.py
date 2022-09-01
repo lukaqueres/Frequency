@@ -55,7 +55,7 @@ class Database(Connection):
 			if isinstance(values[i], list):
 				values[i] = ",".join(str(v) for v in values[i]);
 			elif isinstance(values[i], dict):
-				values[i] = string(values[i]);
+				values[i] = str(values[i]);
 		#print(values);
 		#values = self.escape.all(values);
 		#print(values);
