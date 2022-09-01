@@ -1,7 +1,7 @@
 import os, psycopg2, json, re
 
 # - Import database extensions -
-from psycopg2.extensions import AsIs, quote_ident
+from psycopg2.extensions import AsIs, #quote_ident
 
 # - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
