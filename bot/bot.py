@@ -124,6 +124,10 @@ if extensions['load']:
 	if log['exceptions'] and len(failed) != 0:
 		print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
 
+# - TODO: Check if it will actually sync global commands -
+guild = ctx.guild # or discord.Object(id=...)  # you can use a full discord.Guild as the method accepts a Snowflake
+Bot.tree.copy_global_to(guild=guild)
+
 TOKEN = os.environ.get('TOKEN')
 
 if __name__ == "__main__":
