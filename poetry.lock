@@ -190,7 +190,7 @@ optional = false
 python-versions = ">=3.6.2,<4.0.0"
 
 [package.dependencies]
-"discord.py" = ">=1.7.0,<1.8.0"
+"discord.py" = ">=1.7.0,<2.0.0"
 mypy = ">=0.800"
 typing-extensions = ">=3.7.4,<4.0.0"
 
