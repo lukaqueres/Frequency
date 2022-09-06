@@ -113,7 +113,7 @@ if extensions['load']:
 		if cog.endswith('.py'):	 # - Every file from directory path with .py extension is threated as cog. -
 			if not cog[:-3] in extensions['ignore']:
 				try:
-					client.load_extension(f"{extensions['directory']}.{cog[:-3]}");
+					await client.load_extension(f"{extensions['directory']}.{cog[:-3]}");
 					loaded.append(cog[:-3]);
 				except Exception as e: # - Catch exception in loading, can be extended. -
 					failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
