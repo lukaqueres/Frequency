@@ -28,7 +28,7 @@ class PIBot(commands.Bot): # discord.Client
 	# In this basic example, we just synchronize the app commands to one guild.
 	# Instead of specifying a guild to every command, we copy over our global commands instead.
 	# By doing so, we don't have to wait up to an hour until they are shown to the end-user.
-	async def setup_hook(self):
+	async def setup_hook(self): # - Guilds restrict is not working for now -
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
 			configuration = json.load(c);
 			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
