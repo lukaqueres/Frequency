@@ -29,7 +29,11 @@
 			"notices": true
 		},
 		"check-db-data-on-startup": false,
-		"restrict-commands" : []
+		"restrict-commands" : {
+			"enable": true,
+			"to-guild": 930559672715464764,
+			"commands": "all"
+		}
 	},
 	"extensions": {
 		"load": true,
