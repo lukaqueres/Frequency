@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-class Configuration(commands.GroupCog, name="configuration", description="Bots basic configuration commands."):
+class Configuration(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
 	def __init__(self, bot: commands.Bot) -> None:
 		self.bot = bot
 		super().__init__()
