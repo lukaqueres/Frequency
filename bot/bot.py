@@ -12,9 +12,9 @@ from discord import Intents, app_commands
 from packets.database import Database
 from packets.discord import prefix
 
-class PIBot(discord.Client):
-	def __init__(self, *, intents: discord.Intents):
-		super().__init__(intents=intents)
+class PIBot(commands.Bot): # discord.Client
+	def __init__(self, *, prefix, intents: discord.Intents):
+		super().__init__(command_prefix = prefix, intents=intents)
 		# A CommandTree is a special type that holds all the application command
 		# state required to make it work. This is a separate class because it
 		# allows all the extra state to be opt-in.
@@ -39,7 +39,7 @@ class PIBot(discord.Client):
 
 intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
 # bot = client = commands.Bot(command_prefix = prefix, intents=intents); # - Old client setup, moved to custom class instead -
-client = PIBot(intents=intents)
+client = PIBot(prefix = prefix, intents=intents)
 
 #database = Database(); # - Create database object to handle all querries - MOWED TO CUSTOM CLASS ^ INSTEAD -
 #client.database = database; # - Assign database object to client for easy fetch from cogs -
