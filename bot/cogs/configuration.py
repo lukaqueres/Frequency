@@ -8,13 +8,13 @@ class Configuration(commands.GroupCog, name="configuration", description="Bots b
 		super().__init__()
     
 	@app_commands.command(name="refresh")
-	@app_commands.check.has_permissions(administrator = True)
+	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction, data: str) -> None:
 		""" /parent sub-1 """
 		await interaction.response.send_message(f"Hello from refresh {data}", ephemeral=True)
 		
 	@app_commands.command(name="show")
-	@app_commands.check.has_permissions(administrator = True)
+	@commands.has_permissions(administrator = True)
 	async def conf_sub_show(self, interaction: discord.Interaction, data: str) -> None:
 		""" /parent sub-2 """
 		await interaction.response.send_message(f"Hello from show {data}", ephemeral=True)
