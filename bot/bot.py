@@ -37,7 +37,7 @@ class PIBot(commands.Bot): # discord.Client
 		self.tree.copy_global_to(guild=self.restrictGuild)
 		await self.tree.sync(guild=self.restrictGuild)
 		
-	async def restrict_Guild(self):
+	def restrict_Guild(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
 			configuration = json.load(c);
 			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
@@ -144,7 +144,7 @@ async def ping(interaction: discord.Interaction):
     """Displays ping!"""
     await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 	
-client.tree.add_command(Configuration(bot), guild=client.restrictGuild) # - Part of slash not-sync work-around -
+client.tree.add_command(Configuration(client), guild=client.restrictGuild) # - Part of slash not-sync work-around -
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
 with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 	configuration = json.load(c); 
