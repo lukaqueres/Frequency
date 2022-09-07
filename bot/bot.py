@@ -5,7 +5,8 @@ from random import randrange, randint
 # - Importing discord packages -
 import discord
 from discord.ext import commands, tasks
-from discord import Intents
+from discord import Intents, app_commands
+
 
 # - Importing in-project packages -
 from packets.database import Database
