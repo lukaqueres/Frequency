@@ -11,11 +11,37 @@ from discord import Intents
 from packets.database import Database
 from packets.discord import prefix
 
-intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
-bot = client = commands.Bot(command_prefix = prefix, intents=intents);
+class PIBot(discord.Client):
+	def __init__(self, *, intents: discord.Intents):
+		super().__init__(intents=intents)
+		# A CommandTree is a special type that holds all the application command
+		# state required to make it work. This is a separate class because it
+		# allows all the extra state to be opt-in.
+		# Whenever you want to work with application commands, your tree is used
+		# to store and work with them.
+		# Note: When using commands.Bot instead of discord.Client, the bot will
+		# maintain its own tree instead.
+		self.tree = app_commands.CommandTree(self)
+		self.database = Database(); # - Assign database object to client for easy SQL querries -
 
-database = Database(); # - Create database object to handle all querries -
-client.database = database; # - Assign database object to client for easy fetch from cogs -
+	# In this basic example, we just synchronize the app commands to one guild.
+	# Instead of specifying a guild to every command, we copy over our global commands instead.
+	# By doing so, we don't have to wait up to an hour until they are shown to the end-user.
+	async def setup_hook(self):
+		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
+			configuration = json.load(c);
+			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
+		restrictGuild = discord.Object(id=restrictGuild)
+		# This copies the global commands over to your guild.
+		self.tree.copy_global_to(guild=restrictGuild)
+		await self.tree.sync(guild=restrictGuild)
+
+intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
+# bot = client = commands.Bot(command_prefix = prefix, intents=intents); # - Old client setup, moved to custom class instead -
+client = PIBot(intents=intents)
+
+#database = Database(); # - Create database object to handle all querries - MOWED TO CUSTOM CLASS ^ INSTEAD -
+#client.database = database; # - Assign database object to client for easy fetch from cogs -
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
@@ -103,7 +129,12 @@ async def cycleStatus(alist, interval, status):
 		if log['notices']:
 			print(f"New activity: {activity}; next change in {wait} seconds.")
 		await asyncio.sleep(wait) # - Wait interval. -
-		
+
+@client.tree.command()
+async def ping(interaction: discord.Interaction):
+    """Displays ping!"""
+    await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
+	
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
 with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 	configuration = json.load(c); 
