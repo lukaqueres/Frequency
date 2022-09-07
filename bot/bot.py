@@ -27,7 +27,7 @@ class PIBot(commands.Bot): # discord.Client
 		# maintain its own tree instead.
 		#self.tree = app_commands.CommandTree(self)
 		self.database = Database(); # - Assign database object to client for easy SQL querries -
-		self.restrictGuild = restrict_Guild();
+		self.restrictGuild = self.restrict_Guild();
 
 	# In this basic example, we just synchronize the app commands to one guild.
 	# Instead of specifying a guild to every command, we copy over our global commands instead.
