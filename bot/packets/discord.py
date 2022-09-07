@@ -10,7 +10,7 @@ def prefix(client, message):
 		defaults = configuration['values']['defaults'];
 	try:
 		database = Database(); # - TODO: Check how to get database object from bot.py main file, for now this will do -
-		properties = database.select(table = 'guilds.properties', 
+		prefix = database.select(table = 'guilds.properties', 
 			columns = ['prefix'],
 			condition = {"id": message.guild.id}
 			);
