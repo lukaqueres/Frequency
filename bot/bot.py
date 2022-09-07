@@ -13,7 +13,7 @@ from packets.database import Database
 from packets.discord import prefix
 
 # - Import cog as a part of slash not-sync work-around -
-from cogs.configuration import configuration
+from cogs.configuration import Configuration
 
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, *, prefix, intents: discord.Intents):
