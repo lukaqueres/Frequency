@@ -22,7 +22,7 @@ class PIBot(commands.Bot): # discord.Client
 		# to store and work with them.
 		# Note: When using commands.Bot instead of discord.Client, the bot will
 		# maintain its own tree instead.
-		self.tree = app_commands.CommandTree(self)
+		#self.tree = app_commands.CommandTree(self)
 		self.database = Database(); # - Assign database object to client for easy SQL querries -
 
 	# In this basic example, we just synchronize the app commands to one guild.
