@@ -78,6 +78,9 @@ async def on_ready():
 		
 	if activities['cycle'] and activities['set']: # - If set so create looping task to change activity -
 		client.loop.create_task(cycleStatus(alist = alist, interval = activities['cycle-interval'], status = status))
+	
+	# - Sync slash commands tree to global -
+	await self.tree.sync()
 
 # - Function to change activity in random time interals -
 async def cycleStatus(alist, interval, status):
