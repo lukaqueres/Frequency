@@ -19,13 +19,8 @@ class Events(commands.Cog):
 		if log['notices']:
 			print(f'Joined guild: {guild.name}; {guild.id}');
 		members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
-		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
 		roles = {};
-		#test = "will see how it will handle these ' and \" quotes, also if it will modify these \\\' and \\\" ! ";
-		#testtwo = self.client.database.escape.string(test);
-		#print(test);
-		#print(testtwo);
 		for r in guild.roles:
 			if r != guild.default_role:
 				#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
