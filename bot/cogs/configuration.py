@@ -10,13 +10,13 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 	@app_commands.command(name="refresh")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction, data: str) -> None:
-		""" /parent sub-1 """
+		""" Refresh guild data for service configuration """
 		await interaction.response.send_message(f"Hello from refresh {data}", ephemeral=True)
 		
 	@app_commands.command(name="show")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_show(self, interaction: discord.Interaction, data: str) -> None:
-		""" /parent sub-2 """
+		""" Show configuration data """
 		await interaction.response.send_message(f"Hello from show {data}", ephemeral=True)
 		
 async def setup(bot: commands.Bot) -> None:
