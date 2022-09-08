@@ -1,5 +1,5 @@
 import discord
-from discord import app_commands
+from discord import app_commands, Embed
 from discord.ext import commands
 
 class Configuration(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
@@ -11,6 +11,13 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction, data: str) -> None:
 		""" Refresh guild data for service configuration """
+		embed = Embed(title="User information",
+				colour = ctx.author.colour,
+				#timestamp=get_time()
+				)
+			embed.set_thumbnail(url=self.client.avatar_url)
+			embed.add_field( name=chr(173), value="Provided by [lukaqueres](https://github.com/lukaqueres)", inline=True),
+			embed.set_footer(text="Provided by [lukaqueres](https://github.com/lukaqueres)")
 		await interaction.response.send_message(f"Hello from refresh {data}", ephemeral=True)
 		
 	@app_commands.command(name="show")
