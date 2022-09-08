@@ -3,8 +3,8 @@ from discord import app_commands, Embed
 from discord.ext import commands
 
 class Configuration(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
-	def __init__(self, bot: commands.Bot) -> None:
-		self.bot = bot
+	def __init__(self, client: commands.Bot) -> None:
+		self.client = client
 		super().__init__()
     
 	@app_commands.command(name="refresh")
@@ -26,5 +26,5 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 		""" Show configuration data """
 		await interaction.response.send_message(f"Hello from show {data}", ephemeral=True)
 		
-async def setup(bot: commands.Bot) -> None:
-	await bot.add_cog(Configuration(bot))
+async def setup(client: commands.Bot) -> None:
+	await client.add_cog(Configuration(client))
