@@ -10,38 +10,11 @@ from discord import Intents, app_commands
 
 # - Importing in-project packages -
 from packets.database import Database
-from packets.discord import prefix
+from packets.discord import prefix, PIBot
 
 # - Import cog as a part of slash not-sync work-around -
 from cogs.configuration import Configuration
 
-class PIBot(commands.Bot): # discord.Client
-	def __init__(self, *, prefix, intents: discord.Intents):
-		super().__init__(command_prefix = prefix, intents=intents)
-		# A CommandTree is a special type that holds all the application command
-		# state required to make it work. This is a separate class because it
-		# allows all the extra state to be opt-in.
-		# Whenever you want to work with application commands, your tree is used
-		# to store and work with them.
-		# Note: When using commands.Bot instead of discord.Client, the bot will
-		# maintain its own tree instead.
-		#self.tree = app_commands.CommandTree(self)
-		self.database = Database(); # - Assign database object to client for easy SQL querries -
-		self.restrictGuild = self.restrict_Guild();
-
-	# In this basic example, we just synchronize the app commands to one guild.
-	# Instead of specifying a guild to every command, we copy over our global commands instead.
-	# By doing so, we don't have to wait up to an hour until they are shown to the end-user.
-	async def setup_hook(self): # - Guilds restrict is not working for now -
-		# This copies the global commands over to your guild.
-		self.tree.copy_global_to(guild=self.restrictGuild)
-		await self.tree.sync(guild=self.restrictGuild)
-		
-	def restrict_Guild(self):
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
-			configuration = json.load(c);
-			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
-		return discord.Object(id=restrictGuild)
 
 intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
 # bot = client = commands.Bot(command_prefix = prefix, intents=intents); # - Old client setup, moved to custom class instead -
