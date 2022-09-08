@@ -1,5 +1,6 @@
 import json, os, discord
 
+from discord.ext import commands, tasks
 # - Import database in case of error -
 from packets.database import Database
 
