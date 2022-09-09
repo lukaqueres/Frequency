@@ -24,7 +24,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 		embed.set_thumbnail(url=self.client.user.avatar)
 		
 		DBRoles = self.client.database.select(
-			table='guilds.properties', 
+			table = 'guilds.properties', 
 			condition = {"id": interaction.guild_id}, 
 			columns = ["roles"]);
 		if DBValues:
@@ -38,6 +38,12 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 			if DBRoles == guildRoles:
 				embed.add_field( name="Roles", value="*Accurate*", inline=False);
 			else:
+				payload = {"roles": roles};
+				self.client.database.update(
+					table = 'guilds.properties', 
+					payload = payload, 
+					condition = {"id": interaction.guild_id}
+				);
 				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
