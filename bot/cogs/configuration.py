@@ -38,7 +38,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 			if DBRoles == guildRoles:
 				embed.add_field( name="Roles", value="*Accurate*", inline=False);
 			else:
-				payload = {"roles": roles};
+				payload = {"roles": guildRoles};
 				self.client.database.update(
 					table = 'guilds.properties', 
 					payload = payload, 
