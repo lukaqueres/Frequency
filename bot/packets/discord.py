@@ -17,7 +17,8 @@ class PIEmbed(discord.Embed): # Our embed with some preset attributes to avoid s
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
-			return f'Provided by {appName}';
+		text = f'Provided by {appName}';
+		return text;
 
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, *, prefix, intents: discord.Intents):
