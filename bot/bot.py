@@ -47,25 +47,26 @@ async def on_ready():
 		status = statusPool["online"];
 	else:
 		status = statusPool["online"]; # - End of custom status assign. -
-	activity = 'NaN';
+		
+	activity = 'NaN'; # - Assingning custom activity status to bot -
 	if activities['set']:
 		if activities['list'] == 'random': # - Random list means random choice of available lists. -
 			alist = activitiesLists[random.choice(activitiesLists.keys())];
-		elif activities['list'] in activitiesLists:
-			alist = activitiesLists[activities['list']];
+		elif activities['list'] in activitiesLists.keys():
+			alist = activitiesLists[activities['list']]['list'];
 		elif log['exceptions']:
 			print(f"List of activities not found. Try something other than {activities['list']}");
 			alist = False;
 		else:
 			alist = False;
 		activity = random.choice(alist) if alist else None;
-		if activities['list'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something', or just text one. -
+		if activitiesLists[activities['list']]['activity'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something', or just text one. -
 			await client.change_presence(status=status, activity=discord.Game(activity));
-		elif activities['list'] == 'watching':
+		elif activitiesLists[activities['list']]['activity'] == 'watching':
 			await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=activity));
-		elif activities['list'] == 'listening':
+		elif activitiesLists[activities['list']]['activity'] == 'listening':
 			await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=activity));
-		elif activities['list'] == 'none':
+		elif activitiesLists[activities['list']]['activity'] == 'none':
 			await bot.change_presence(activity=None);
 		else:
 			await client.change_presence(status=status, activity=discord.Game(activity));
