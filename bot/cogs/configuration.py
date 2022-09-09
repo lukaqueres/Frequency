@@ -9,7 +9,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
     
 	@app_commands.command(name="refresh")
 	@commands.has_permissions(administrator = True)
-	async def conf_sub_refresh(self, interaction: discord.Interaction, data: str) -> None:
+	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		""" Refresh guild data for service configuration """
 		embed = Embed(title="User information",
 				colour = interaction.user.colour,
@@ -18,13 +18,13 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 		embed.set_thumbnail(url=self.client.user.avatar)
 		embed.add_field( name=chr(173), value="Provided by [lukaqueres](https://github.com/lukaqueres)", inline=True),
 		embed.set_footer(text="Provided by [lukaqueres](https://github.com/lukaqueres)")
-		await interaction.response.send_message(f"Hello from refresh {data}", ephemeral=True)
+		await interaction.response.send(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show")
 	@commands.has_permissions(administrator = True)
-	async def conf_sub_show(self, interaction: discord.Interaction, data: str) -> None:
+	async def conf_sub_show(self, interaction: discord.Interaction) -> None:
 		""" Show configuration data """
-		await interaction.response.send_message(f"Hello from show {data}", ephemeral=True)
+		await interaction.response.send_message("Hello from show", ephemeral=True)
 		
 async def setup(client: commands.Bot) -> None:
 	await client.add_cog(Configuration(client))
