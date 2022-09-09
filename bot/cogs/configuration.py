@@ -22,8 +22,20 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 			description="Guild data synchronize check will be performed before refreshing records."
 		);
 		embed.set_thumbnail(url=self.client.user.avatar)
-		embed.add_field( name="ID", value="", inline=True),
-		embed.add_field( name=chr(173), value="Made by [lukaqueres](https://github.com/lukaqueres)", inline=True),
+		
+		DBValues = self.client.database.select(
+			table='guild.properties', 
+			condition = {"id": interaction.guild_id}, 
+			columns = ["roles"]);
+		if DBValues:
+			guildRoles = {};
+			for r in interaction.guild.roles:
+				if r != interaction.guild.default_role:
+					guildRoles[r.id] = r.name;
+			if DBValues == guildRoles:
+				embed.add_field( name="Roles", value="**Accurate**", inline=False);
+			else:
+				embed.add_field( name="Roles", value="**Synchronized**", inline=False);
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show")
