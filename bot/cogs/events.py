@@ -39,7 +39,7 @@ class Events(commands.Cog):
 			log = configuration['developer']['log'];
 		if log['notices']:
 			print(f'Left guild: {guild.name}; {guild.id}')
-		self.client.database.delete(table = 'guilds',
+		self.client.database.delete(table = 'guilds.properties',
 					    condition = {"id": guild.id});
     
 async def setup(client):
