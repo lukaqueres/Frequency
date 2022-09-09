@@ -10,7 +10,7 @@ class PIEmbed(discord.Embed): # Our embed with some preset attributes to avoid s
 		super().__init__(**kwargs)
 		self.time = Time();
 		self.timestamp = self.time.UTCNow()
-		self.set_footer(text=self.__footerText)
+		self.set_footer(text=self.__footerText())
 		self.color = discord.Color.blurple()
 		
 	async def __footerText():
