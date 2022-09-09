@@ -15,7 +15,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 				colour = interaction.user.colour,
 				#timestamp=get_time()
 				)
-		embed.set_thumbnail(url=self.client.user.avatar_url)
+		embed.set_thumbnail(url=self.client.user.avatar)
 		embed.add_field( name=chr(173), value="Provided by [lukaqueres](https://github.com/lukaqueres)", inline=True),
 		embed.set_footer(text="Provided by [lukaqueres](https://github.com/lukaqueres)")
 		await interaction.response.send_message(f"Hello from refresh {data}", ephemeral=True)
