@@ -32,6 +32,8 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 			for r in interaction.guild.roles:
 				if r != interaction.guild.default_role:
 					guildRoles[r.id] = r.name;
+			print(f'DBVALUES: {DBValues}');
+			print(f'guildRoles: {guildRoles}');
 			if DBValues == guildRoles:
 				embed.add_field( name="Roles", value="**Accurate**", inline=False);
 			else:
