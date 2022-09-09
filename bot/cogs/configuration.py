@@ -18,7 +18,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 			appName = configuration['name'];
 		embed = Embed(title="User information",
 				colour = interaction.user.colour,
-				timestamp=Time.UTCNow()
+				timestamp= self.client.time.UTCNow()
 				)
 		embed.set_thumbnail(url=self.client.user.avatar)
 		embed.add_field( name=chr(173), value="Made by [lukaqueres](https://github.com/lukaqueres)", inline=True),
