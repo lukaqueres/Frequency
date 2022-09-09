@@ -17,8 +17,12 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
-		embed = PIEmbed(title="Configuration")
+		embed = PIEmbed(
+			title="Configuration",
+			description="Guild data synchronize check will be performed before refreshing records."
+		);
 		embed.set_thumbnail(url=self.client.user.avatar)
+		embed.add_field( name="ID", value="", inline=True),
 		embed.add_field( name=chr(173), value="Made by [lukaqueres](https://github.com/lukaqueres)", inline=True),
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
