@@ -120,7 +120,7 @@ async def ping(interaction: discord.Interaction):
 	
 client.tree.add_command(Configuration(client), guild=client.restrictGuild) # - Part of slash not-sync work-around -
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
-async def loadExtensions():
+async def startup():
 	with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 		configuration = json.load(c); 
 		extensions = configuration['extensions'];
@@ -142,10 +142,13 @@ async def loadExtensions():
 			print(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}" ); # - Log loaded cogs with it's number and list. -
 		if log['exceptions'] and len(failed) != 0:
 			print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
-loadExtensions();
+		
+		async with client:
+			TOKEN = os.environ.get('TOKEN')
+			await client.start(TOKEN)
+			
+asyncio.run(startup());
 
-TOKEN = os.environ.get('TOKEN')
-
-if __name__ == "__main__":
-	client.run(TOKEN)
+#if __name__ == "__main__":
+#	client.run(TOKEN)
 		
