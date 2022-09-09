@@ -7,7 +7,7 @@ from packets.time import Time
 from packets.database import Database
 
 class Events(commands.Cog):
-	def __init__(self, client):
+	def __init__(self, client: commands.Bot) -> None
 		self.client = client
 
 	@commands.Cog.listener()
@@ -42,5 +42,5 @@ class Events(commands.Cog):
 		self.client.database.delete(table = 'guilds',
 					    condition = {"id": guild.id});
     
-def setup(client):
-	client.add_cog(Events(client))
+async def setup(client):
+	await client.add_cog(Events(client))
