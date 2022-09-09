@@ -7,7 +7,7 @@ from packets.time import Time
 from packets.database import Database
 
 class Events(commands.Cog):
-	def __init__(self, client: commands.Bot) -> None
+	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 
 	@commands.Cog.listener()
