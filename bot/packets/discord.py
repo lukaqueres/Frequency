@@ -5,6 +5,20 @@ from discord.ext import commands, tasks
 from packets.database import Database
 from packets.time import Time
 
+class PIEmbed(discord.Embed): # Our embed with some preset attributes to avoid setting it multiple times
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+		self.time = Time();
+		self.timestamp = self.time.UTCNow()
+		self.set_footer(text=self.__footerText)
+		self.color = discord.Color.blurple()
+		
+	async def __footerText():
+		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
+			configuration = json.load(c); 
+			appName = configuration['name'];
+			return f'Provided by {appName}';
+
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, *, prefix, intents: discord.Intents):
 		super().__init__(command_prefix = prefix, intents=intents)
