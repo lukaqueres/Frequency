@@ -142,7 +142,7 @@ async def loadExtensions():
 			print(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}" ); # - Log loaded cogs with it's number and list. -
 		if log['exceptions'] and len(failed) != 0:
 			print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
-await loadExtensions();
+loadExtensions();
 
 TOKEN = os.environ.get('TOKEN')
 
