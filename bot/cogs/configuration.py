@@ -24,7 +24,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 		embed.set_thumbnail(url=self.client.user.avatar)
 		
 		DBValues = self.client.database.select(
-			table='guild.properties', 
+			table='guilds.properties', 
 			condition = {"id": interaction.guild_id}, 
 			columns = ["roles"]);
 		if DBValues:
