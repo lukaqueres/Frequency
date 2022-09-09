@@ -27,7 +27,7 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 			table = 'guilds.properties', 
 			condition = {"id": interaction.guild_id}, 
 			columns = ["roles"]);
-		if DBValues:
+		if DBRoles:
 			guildRoles = {};
 			for r in interaction.guild.roles:
 				if r != interaction.guild.default_role:
