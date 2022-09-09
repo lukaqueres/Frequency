@@ -13,7 +13,7 @@ class PIEmbed(discord.Embed): # Our embed with some preset attributes to avoid s
 		self.set_footer(text=self.__footerText())
 		self.color = discord.Color.blurple()
 		
-	async def __footerText():
+	async def __footerText(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
