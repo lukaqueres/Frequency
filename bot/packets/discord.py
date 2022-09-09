@@ -5,6 +5,16 @@ from discord.ext import commands, tasks
 from packets.database import Database
 from packets.time import Time
 
+"""
+
+TIPS IN TOPIC OF EMBEDS:
+
+1. Use `chr(173)` as an ampty field, f. ex. `name=chr(173)`;
+
+2. Syntax `"Made by [lukaqueres](https://github.com/lukaqueres)"` will display text 'lukaqueres' as a hyperlink leading to url ( in this case to: https://github.com/lukaqueres );
+
+"""
+
 class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed to pre-set attributes and add functions -
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
