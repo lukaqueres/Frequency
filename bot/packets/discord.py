@@ -3,6 +3,7 @@ import json, os, discord
 from discord.ext import commands, tasks
 # - Import database in case of error -
 from packets.database import Database
+from packets.time import Time
 
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, *, prefix, intents: discord.Intents):
@@ -16,6 +17,7 @@ class PIBot(commands.Bot): # discord.Client
 		# maintain its own tree instead.
 		#self.tree = app_commands.CommandTree(self)
 		self.database = Database(); # - Assign database object to client for easy SQL querries -
+		self.time = Time();
 		self.restrictGuild = self.restrict_Guild();
 
 	# In this basic example, we just synchronize the app commands to one guild.
