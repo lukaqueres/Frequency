@@ -5,21 +5,30 @@ from discord.ext import commands, tasks
 from packets.database import Database
 from packets.time import Time
 
-class PIEmbed(discord.Embed): # Our embed with some preset attributes to avoid setting it multiple times
+class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed to pre-set attributes and add functions -
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		self.time = Time();
-		self.timestamp = self.time.UTCNow()
+		self.timestamp = self.time.UTCNow() # - Assign timestamp !NOTE: Timestamp will show embed object construct time; Use function `revokeTimestamp` to re-set -
 		text = self.__footerText();
-		self.set_footer(text=text)
-		self.color = discord.Color.blurple()
+		self.set_footer(text=text) # - Create custom footer as it will be pretty much the same for all (PI)Embeds -
+		self.color = discord.Color.blurple() # - Assign color `blurple` as an (PI)Embed color. Pretty nice I think  -
 		
-	def __footerText(self):
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
+	def __footerText(self): # - Create footer text from app name from JSON -
+		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file and fetch app name. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
-		text = f'Provided by {appName}';
+		text = f'Provided by {appName}'; # - Make nice text, so apart from nick name, everything will SCREAM `PLAN IT`, `PLAN IT`... khem, just make footer text, can be changed -
 		return text;
+	
+	def revokeTimestamp(self): # - Simple function to re-setting timestamp, use in case of long time span between `construct -> send` -
+		self.timestamp = self.time.UTCNow()
+		
+	def lenCheck(self): # - As embeds have 6000 caracters limit, it is important to keep them below that value. Will be expanded in future -
+		if len(self) > 6000:
+			return False;
+		else:
+			return True;
 
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, *, prefix, intents: discord.Intents):
