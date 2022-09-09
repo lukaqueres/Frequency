@@ -120,31 +120,29 @@ async def ping(interaction: discord.Interaction):
 	
 client.tree.add_command(Configuration(client), guild=client.restrictGuild) # - Part of slash not-sync work-around -
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
-with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
-	configuration = json.load(c); 
-	extensions = configuration['extensions'];
-	log = configuration['developer']['log'];
-if extensions['load']:
-	loaded = []; # - Extensions loaded succesfully -
-	failed = []; # - Extensions failed to load -
-	for cog in os.listdir(extensions['directory']):
-		if cog.endswith('.py'):	 # - Every file from directory path with .py extension is threated as cog. -
-			if not cog[:-3] in extensions['ignore']:
-				try:
-					client.load_extension(f"{extensions['directory']}.{cog[:-3]}");
-					loaded.append(cog[:-3]);
-				except Exception as e: # - Catch exception in loading, can be extended. -
-					failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
-			else:
-				failed.apped([cog[:-3], 'Extension ignored.']);
-	if log['notices'] and len(loaded) != 0:
-		print(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}" ); # - Log loaded cogs with it's number and list. -
-	if log['exceptions'] and len(failed) != 0:
-		print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
-
-# - TODO: Check if it will actually sync global commands -
-#guild = guild;#ctx.guild # or discord.Object(id=...)  # you can use a full discord.Guild as the method accepts a Snowflake
-#Bot.tree.copy_global_to(guild=guild)
+async def loadExtensions():
+	with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
+		configuration = json.load(c); 
+		extensions = configuration['extensions'];
+		log = configuration['developer']['log'];
+	if extensions['load']:
+		loaded = []; # - Extensions loaded succesfully -
+		failed = []; # - Extensions failed to load -
+		for cog in os.listdir(extensions['directory']):
+			if cog.endswith('.py'):	 # - Every file from directory path with .py extension is threated as cog. -
+				if not cog[:-3] in extensions['ignore']:
+					try:
+						await client.load_extension(f"{extensions['directory']}.{cog[:-3]}");
+						loaded.append(cog[:-3]);
+					except Exception as e: # - Catch exception in loading, can be extended. -
+						failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
+				else:
+					failed.apped([cog[:-3], 'Extension ignored.']);
+		if log['notices'] and len(loaded) != 0:
+			print(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}" ); # - Log loaded cogs with it's number and list. -
+		if log['exceptions'] and len(failed) != 0:
+			print(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
+loadExtensions();
 
 TOKEN = os.environ.get('TOKEN')
 
