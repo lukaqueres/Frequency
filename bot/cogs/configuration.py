@@ -1,4 +1,4 @@
-import discord
+import discord, json
 from discord import app_commands, Embed
 from discord.ext import commands
 
