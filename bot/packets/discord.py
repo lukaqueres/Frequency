@@ -10,10 +10,11 @@ class PIEmbed(discord.Embed): # Our embed with some preset attributes to avoid s
 		super().__init__(**kwargs)
 		self.time = Time();
 		self.timestamp = self.time.UTCNow()
-		self.set_footer(text=self.__footerText())
+		text = self.__footerText();
+		self.set_footer(text=text)
 		self.color = discord.Color.blurple()
 		
-	async def __footerText(self):
+	def __footerText(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
