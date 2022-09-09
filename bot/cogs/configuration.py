@@ -5,7 +5,16 @@ from discord.ext import commands
 from packets.time import Time
 from packets.discord import PIEmbed
 
-class Configuration(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
+class Configuration(commands.Cog):
+	def __init__(self, client: commands.Bot) -> None:
+		self.client = client
+		
+	@client.tree.command()
+	async def pingConf(interaction: discord.Interaction):
+		"""Displays ping!"""
+		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
+
+class ConfigurationGroup(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		super().__init__()
