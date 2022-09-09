@@ -3,6 +3,7 @@ from discord import app_commands, Embed
 from discord.ext import commands
 
 from packets.time import Time
+from packets.discord import PIEmbed
 
 class Configuration(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
 	def __init__(self, client: commands.Bot) -> None:
@@ -16,13 +17,9 @@ class Configuration(app_commands.Group, name="configuration", description="Bots 
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
-		embed = Embed(title="User information",
-				colour = interaction.user.colour,
-				timestamp= self.client.time.UTCNow()
-				)
+		embed = PIEmbed(title="Configuration")
 		embed.set_thumbnail(url=self.client.user.avatar)
 		embed.add_field( name=chr(173), value="Made by [lukaqueres](https://github.com/lukaqueres)", inline=True),
-		embed.set_footer(text=f"Provided by {appName}")
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show")
