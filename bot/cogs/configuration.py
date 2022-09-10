@@ -45,7 +45,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			print(f'DBRoles: {DBRoles}');
 			print(f'guildRoles: {guildRoles}');
 			DBrefresh = False;
-			if len(DBRoles == guildRoles):
+			if len(DBRoles) == len(guildRoles):
 				for k, v in DBRoles.items():
 					if guildRoles[k] == v:
 						embed.add_field( name="Roles", value="*Accurate*", inline=False);
