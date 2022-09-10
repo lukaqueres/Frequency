@@ -9,7 +9,7 @@ class Configuration(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		
-	@app_commands.command(name="PINGI")
+	@app_commands.command(name="debugping")
 	async def pingConf(interaction: discord.Interaction):
 		"""Displays ping!"""
 		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
