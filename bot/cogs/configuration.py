@@ -1,9 +1,10 @@
 import discord, json
-from discord import app_commands, Embed
+from discord import app_commands
 from discord.ext import commands
 
 from packets.time import Time
 from packets.discord import PIEmbed
+from packets.error import CommandOnCooldown
 
 class Configuration(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
@@ -17,10 +18,17 @@ class Configuration(commands.Cog):
 class ConfigurationGroup(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
+		self.cooldown = commands.CoolDownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		super().__init__()
+		
+	async def __commands_check(self, **kwargs):
+		retry = self.cooldown.get_bucket(interaction.message).update_rate_limit();
+		if retry:
+			return await raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
     
 	@app_commands.command(name="refresh")
 	@commands.has_permissions(administrator = True)
+	@commands.before_invoke(self.__commands_check(interaction: discord.Interaction))
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		""" Check for accurate & refresh guild data for service configuration """
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
@@ -69,6 +77,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		
 	@app_commands.command(name="show")
 	@commands.has_permissions(administrator = True)
+	@commands.before_invoke(self.__commands_check(interaction: discord.Interaction))
 	async def conf_sub_show(self, interaction: discord.Interaction) -> None:
 		""" Show configuration data """
 		await interaction.response.send_message("Hello from show", ephemeral=True)
