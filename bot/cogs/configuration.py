@@ -29,9 +29,10 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	async def cog_command_error(self, ctx, error):
 		if isinstance(error, CommandOnCooldown):
 			if error.interaction:
-				await interaction.response.send_message(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
+				return await interaction.response.send_message(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 			if error.ctx:
-				await ctx.send(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
+				return await ctx.send(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
+			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 	
 	@app_commands.command(name="refresh")
 	@commands.has_permissions(administrator = True)
