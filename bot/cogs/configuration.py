@@ -24,7 +24,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	async def __commands_check(self, **kwargs):
 		retry = self.cooldown.get_bucket(interaction.message).update_rate_limit();
 		if retry:
-			return await raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
+			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
     
 	async def cog_command_error(self, ctx, error):
 		if isinstance(error, CommandOnCooldown):
