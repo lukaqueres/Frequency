@@ -44,9 +44,19 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			DBRoles = {int(k): v for k, v in DBRoles.items()} # - After SELECT keys are string instead of int, failing `==` -
 			print(f'DBRoles: {DBRoles}');
 			print(f'guildRoles: {guildRoles}');
-			if DBRoles == guildRoles:
-				embed.add_field( name="Roles", value="*Accurate*", inline=False);
+			DBrefresh = False;
+			if len(DBRoles == guildRoles):
+				for k, v in DBRoles.items():
+					if guildRoles[k] == v:
+						embed.add_field( name="Roles", value="*Accurate*", inline=False);
+					else:
+						DBrefresh = True;
+						break;
+				
 			else:
+				DBrefresh = True;
+			print(f'DBrefresh: {DBrefresh}');
+			if DBrefresh:
 				payload = {"roles": guildRoles};
 				self.client.database.update(
 					table = 'guilds.properties', 
