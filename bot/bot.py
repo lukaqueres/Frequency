@@ -118,7 +118,7 @@ async def ping(interaction: discord.Interaction):
     """Displays ping!"""
     await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 	
-client.tree.add_command(Configuration(client), guild=client.restrictGuild) # - Part of slash not-sync work-around -
+client.tree.add_command(ConfigurationGroup(client), guild=client.restrictGuild) # - Part of slash not-sync work-around -
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
 async def startup():
 	with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
