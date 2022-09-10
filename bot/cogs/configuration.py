@@ -41,7 +41,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			for r in interaction.guild.roles:
 				if r != interaction.guild.default_role:
 					guildRoles[r.id] = r.name;
-			DBRoles = {k: int(v) if v.isnumeric() else v for k, v in DBRoles.items()} # - After SELECT keys are string instead of int, failing `==` -
+			DBRoles = {int(k): v for k, v in DBRoles.items()} # - After SELECT keys are string instead of int, failing `==` -
 			print(f'DBRoles: {DBRoles}');
 			print(f'guildRoles: {guildRoles}');
 			if DBRoles == guildRoles:
@@ -54,7 +54,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 					condition = {"id": interaction.guild_id}
 				);
 				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
-		await interaction.response.send_message(embed=embed, ephemeral=True)
+			await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show")
 	@commands.has_permissions(administrator = True)
