@@ -86,6 +86,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
 			else:
 				embed.add_field( name="Roles", value="*Accurate*", inline=False);
+			print('Interaction respond')
 			await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show", description="Show configuration data")
