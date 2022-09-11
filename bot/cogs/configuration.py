@@ -81,7 +81,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 				self.client.database.update(
 					table = 'guilds.properties', 
 					payload = payload, 
-					condition = {"id": interaction.guild_id}
+					condition = {"id": interaction.guild.id}
 				);
 				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
 			else:
