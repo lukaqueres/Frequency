@@ -55,7 +55,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		if DBRoles:
 			guildRoles = {};
 			for r in interaction.guild.roles:
-				if r != interaction.guild.default_role:
+				if r != interaction.guild.default_role and not r.managed:
 					guildRoles[r.id] = r.name;
 			DBRoles = {int(k): v for k, v in DBRoles.items()} # - After SELECT keys are string instead of int, failing `==` -
 			print(f'DBRoles: {DBRoles}');
