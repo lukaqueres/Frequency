@@ -129,6 +129,8 @@ class Database(Connection):
 		#values = json.dumps(values, indent = 4)
 		cond_key = list(condition.keys())[0];
 		condition = list(condition.values())[0];
+		print(f"condition IN UPDATE: {cond_key} == {condition}")
+		print(f"columns IN UPDATE: {columns}")
 		cur.execute(
 			"""
 			UPDATE %s
