@@ -130,7 +130,7 @@ class Database(Connection):
 		cond_key = list(condition.keys())[0];
 		condition = list(condition.values())[0];
 		print(f"condition IN UPDATE: {cond_key} == {condition}")
-		print(f"columns IN UPDATE: {columns}")
+		print(f"columns IN UPDATE: {columns} inputting value: {values}")
 		cur.execute(
 			"""
 			UPDATE %s
