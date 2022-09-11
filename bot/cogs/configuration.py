@@ -26,8 +26,8 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		if retry:
 			interaction.response.send_message(message=f">>> ommand`{interaction.command}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
-    
-	async def cog_xd_command_error(self, interaction, error):
+	"""
+	async def cog_command_error(self, interaction, error):
 		if isinstance(error, CommandOnCooldown):
 			if error.interaction:
 				return await interaction.response.send_message(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
@@ -38,7 +38,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			# All other Errors not returned come here. And we can just print the default TraceBack.
 			print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-	
+	"""
 	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
