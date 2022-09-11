@@ -26,7 +26,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		if retry:
 			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
     
-	async def cog_command_error(self, ctx, error):
+	async def cog_command_error(self, interaction, error):
 		if isinstance(error, CommandOnCooldown):
 			if error.interaction:
 				return await interaction.response.send_message(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
