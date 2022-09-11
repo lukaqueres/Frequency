@@ -33,8 +33,12 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			if error.ctx:
 				return await ctx.send(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
+		else:
+			# All other Errors not returned come here. And we can just print the default TraceBack.
+			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 	
-	@app_commands.command(name="refresh")
+	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		self.__commands_check(interaction);
@@ -84,7 +88,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 				embed.add_field( name="Roles", value="*Accurate*", inline=False);
 			await interaction.response.send_message(embed=embed, ephemeral=True)
 		
-	@app_commands.command(name="show")
+	@app_commands.command(name="show", description="Show configuration data")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_show(self, interaction: discord.Interaction) -> None:
 		self.__commands_check(interaction);
