@@ -18,7 +18,7 @@ class Configuration(commands.Cog):
 class ConfigurationGroup(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
-		self.cooldown = commands.CoolDownMapping.from_cooldown(1, 600, commands.BucketType.guild)
+		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		super().__init__()
 		
 	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
