@@ -136,7 +136,7 @@ class Database(Connection):
 			UPDATE %s
 			SET %s = %s
 			WHERE %s = %s;
-			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
+			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), AsIs(values[0] if len(values) == 1 else tuple(values)), AsIs(cond_key), AsIs(condition)) # AsIs(','.join(columns))
 		);
 		con.commit();
 	# - Function allowing to fetch rows ( and data they contain ) with condition -
