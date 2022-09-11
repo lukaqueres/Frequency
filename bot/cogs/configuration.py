@@ -65,7 +65,6 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 				for k, v in DBRoles.items():
 					if guildRoles[k] == v:
 						print(f'k: {k}');
-						embed.add_field( name="Roles", value="*Accurate*", inline=False);
 					else:
 						DBrefresh = True;
 						break;
@@ -81,6 +80,8 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 					condition = {"id": interaction.guild_id}
 				);
 				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
+			else:
+				embed.add_field( name="Roles", value="*Accurate*", inline=False);
 			await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show")
