@@ -120,6 +120,7 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
+		print(f"LEN VALUES IN UPDATE: {len(values)}")
 		for i in range(len(values)):
 			if isinstance(values[i], list):
 				values[i] = ",".join(str(v) for v in values[i]);
