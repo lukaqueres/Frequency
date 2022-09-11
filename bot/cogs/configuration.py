@@ -24,7 +24,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction.message).update_rate_limit();
 		if retry:
-			interaction.response.send_message(message=f">>> ommand`{interaction.command}` is now on cooldown, try again in `{round(retry, 1)}s`.")
+			interaction.response.send_message(message=f">>> Command`{interaction.command}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
 	"""
 	async def cog_command_error(self, interaction, error):
