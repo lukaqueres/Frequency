@@ -22,7 +22,7 @@ class Events(commands.Cog):
 		time = Time();
 		roles = {};
 		for r in guild.roles:
-			if r != guild.default_role:
+			if r != guild.default_role and not r.managed:
 				#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
