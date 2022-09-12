@@ -161,5 +161,5 @@ class Errors(commands.Cog, name="errors"):
 		except Exception as e:
 			self.trace_error("get_modal_error", e)
 
-async def setup(bot: PiBot):
+async def setup(bot: PIBot):
 	await bot.add_cog(Errors(bot))
