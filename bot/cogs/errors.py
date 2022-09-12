@@ -11,7 +11,7 @@ class Errors(commands.Cog, name="errors"):
 		self.bot = bot
 		bot.tree.error(coro = self.__dispatch_to_app_command_handler)
 
-		self.default_error_message = "🕳️ There is an error."
+		self.default_error_message = "There is an error."
 
 	"""def help_custom(self):
 		emoji = "<a:crossmark:842800737221607474>"
@@ -129,7 +129,7 @@ class Errors(commands.Cog, name="errors"):
 			else:
 				await edit(content=f"🕳️ `{type(d_error).__name__}` : {d_error}")
 		except app_commands.CommandNotFound:
-			await edit(content=f"🕳️ Command was not found.. Seems to be a discord bug, probably due to desynchronization.\nMaybe there is multiple commands with the same name, you should try the other one.")
+			await edit(content=f"Command was not found.. Seems to be a discord bug, probably due to desynchronization.\nMaybe there is multiple commands with the same name, you should try the other one.")
 		except Exception as e: 
 			"""
 			Caught here:
@@ -138,7 +138,8 @@ class Errors(commands.Cog, name="errors"):
 			app_commands.CommandAlreadyRegistered
 			app_commands.CommandSignatureMismatch
 			"""
-
+			print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			self.trace_error("get_app_command_error", e)
 
 	@commands.Cog.listener("on_view_error")
