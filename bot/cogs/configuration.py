@@ -26,7 +26,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		if retry:
 			print('on cooldown')
 			interaction.response.send_message(content=f">>> Command`{interaction.command}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
-			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
+			#raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
 		else:
 			print('no cooldown')
 			return True;
