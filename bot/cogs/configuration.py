@@ -111,6 +111,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			};
 			self.client.database.insert(table = 'guilds.properties',
 					    payload = payload);
+		embed.add.field(title="xxxxxxxxxxxfvjufbjnufbsijobunbfjnbfjnbfjnfb", content="nubjhisvbhiubvibvdibuvbiudviubiubiunjdsvuidviuvdiudvubbuiviubviubvubuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show", description="Show configuration data")
