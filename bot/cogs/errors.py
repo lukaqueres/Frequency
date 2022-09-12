@@ -11,7 +11,7 @@ class Errors(commands.Cog, name="errors"):
 		self.bot = bot
 		bot.tree.error(coro = self.__dispatch_to_app_command_handler)
 
-		self.default_error_message = "There is an error."
+		self.default_error_message = "There was an error while executing command."
 
 	"""def help_custom(self):
 		emoji = "<a:crossmark:842800737221607474>"
