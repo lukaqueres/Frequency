@@ -49,6 +49,7 @@ class AddEmbedFields(PIEmbed):
 		self.default_inline = False # - default value for if field should be inline or not -
 		
 	def field(index: Optional[int] = None, title: Optional[str] = None, content: Optional[str] = None, inline: Optional[bool] = False):
+		print(f'title: {len(title)}, content: {len(content)}')
 		if len(title) > self.title_limit:
 			title = title[0:self.title_limit];
 		if len(content) > self.content_limit:
