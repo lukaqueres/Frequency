@@ -1,4 +1,4 @@
-import discord
+import discord, traceback, sys
 
 from discord.ext import commands
 from discord import app_commands
@@ -12,6 +12,8 @@ class Errors(commands.Cog, name="errors"):
 		bot.tree.error(coro = self.__dispatch_to_app_command_handler)
 
 		self.default_error_message = "There is an error."
+		print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
+		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
 	"""def help_custom(self):
 		emoji = "<a:crossmark:842800737221607474>"
