@@ -53,7 +53,7 @@ class AddEmbedFields(PIEmbed):
 		if len(title) > self.title_limit:
 			title = title[0:self.title_limit];
 		if len(content) > self.content_limit:
-			dividings = ;
+			dividings = [];
 			dividepoints = []
 			for i in range((self.content_limit // len(content)) + 1):
 				if len(dividepoints) == 0:
