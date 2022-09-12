@@ -49,7 +49,7 @@ class AddEmbedFields(PIEmbed):
 		self.empty_value = "chr(173)" # - empty value, will show box in embed as empty, without rasing any exceptions -
 		self.default_inline = False # - default value for if field should be inline or not -
 		
-	def field(index: Optional[int] = None, title: Optional[str] = None, content: Optional[str] = None, inline: Optional[bool] = False):
+	def field(self, index: Optional[int] = None, title: Optional[str] = None, content: Optional[str] = None, inline: Optional[bool] = False):
 		print(f'title: {len(title)}, content: {len(content)}')
 		if len(title) > self.title_limit:
 			title = title[0:self.title_limit];
@@ -64,7 +64,7 @@ class AddEmbedFields(PIEmbed):
 			print(f'dividepoints: {dividepoints}')
 		self.embed.add_field(name="TEST", value="*PASSED*", inline=False);
 		
-	def emptyField(index: Optional[int] = None):
+	def emptyField(self, index: Optional[int] = None):
 		if index >= 0:
 			self.embed.insert_field_at(index=index, name=self.empty_value, value=self.empty_value, inline=self.default_inline)
 		else:
