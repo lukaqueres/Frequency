@@ -24,8 +24,12 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction.message).update_rate_limit();
 		if retry:
+			print('on cooldown')
 			interaction.response.send_message(message=f">>> Command`{interaction.command}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
+		else:
+			print('no cooldown')
+			return True;
 	"""
 	async def cog_command_error(self, interaction, error):
 		if isinstance(error, CommandOnCooldown):
@@ -42,11 +46,14 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
-		self.__commands_check(interaction);
+		if not self.__commands_check(interaction):
+			return print('stopping')
 		""" Check for accurate & refresh guild data for service configuration """
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
+			log = configuration['developer']['log'];
+			defaults = configuration['values']['defaults'];
 		embed = PIEmbed(
 			title="Configuration",
 			description="Guild data synchronize check will be performed before refreshing records."
@@ -88,6 +95,23 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			else:
 				embed.add_field( name="Roles", value="*Accurate*", inline=False);
 			print('Interaction respond')
+		else:
+			if log['notices']:
+				print(f'By configuration joined guild: {guild.name}; {guild.id}');
+			members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
+			time = Time();
+			roles = {};
+			for r in guild.roles:
+				if r != guild.default_role and not r.managed:
+					#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
+					roles[r.id] = r.name;
+			payload = { "id": guild.id,
+				"prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
+				"language": defaults['language'],
+				"roles": roles,
+			};
+			self.client.database.insert(table = 'guilds.properties',
+					    payload = payload);
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show", description="Show configuration data")
