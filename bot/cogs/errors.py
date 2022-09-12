@@ -12,8 +12,6 @@ class Errors(commands.Cog, name="errors"):
 		bot.tree.error(coro = self.__dispatch_to_app_command_handler)
 
 		self.default_error_message = "There is an error."
-		print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
-		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
 	"""def help_custom(self):
 		emoji = "<a:crossmark:842800737221607474>"
@@ -106,6 +104,8 @@ class Errors(commands.Cog, name="errors"):
 		except commands.HybridCommandError as d_error:
 			await self.get_app_command_error(ctx.interaction, error)
 		except Exception as e:
+			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			self.trace_error("get_command_error", e)
 
 	@commands.Cog.listener("on_app_command_error")
