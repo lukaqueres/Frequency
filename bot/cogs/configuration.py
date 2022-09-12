@@ -4,7 +4,7 @@ from discord.ext import commands
 
 from packets.time import Time
 from packets.discord import PIEmbed
-from packets.error import CommandOnCooldown
+#from packets.error import CommandOnCooldown
 
 class Configuration(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
@@ -20,7 +20,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		self.client = client
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		super().__init__()
-		
+	"""
 	def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction.message).update_rate_limit();
 		if retry:
@@ -30,7 +30,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		else:
 			print('no cooldown')
 			return True;
-	"""
+	
 	async def cog_command_error(self, interaction, error):
 		if isinstance(error, CommandOnCooldown):
 			if error.interaction:
