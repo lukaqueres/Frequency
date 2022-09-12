@@ -46,6 +46,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
+		dfhhdfff[][sddadsd90sdad';
 		if not self.__commands_check(interaction):
 			return print('stopping')
 		""" Check for accurate & refresh guild data for service configuration """
@@ -59,7 +60,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			description="Guild data synchronize check will be performed before refreshing records."
 		);
 		embed.set_thumbnail(url=self.client.user.avatar)
-		
+		dfhhdfff[][sddadsd90sdad';
 		DBRoles = self.client.database.select(
 			table = 'guilds.properties', 
 			condition = {"id": interaction.guild_id}, 
