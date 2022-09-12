@@ -4,7 +4,7 @@ from discord.ext import commands
 
 from packets.time import Time
 from packets.discord import PIEmbed
-#from packets.error import CommandOnCooldown
+from packets.error import CommandOnCooldown
 
 class Configuration(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
