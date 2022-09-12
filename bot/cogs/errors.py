@@ -3,11 +3,9 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 
-from classes.discordbot import DiscordBot
-
 class Errors(commands.Cog, name="errors"):
 	"""Errors handler."""
-	def __init__(self, bot: DiscordBot) -> None:
+	def __init__(self, bot: PIBot) -> None:
 		self.bot = bot
 		bot.tree.error(coro = self.__dispatch_to_app_command_handler)
 
