@@ -4,7 +4,6 @@ from discord.ext import commands, tasks
 # - Import database in case of error -
 from packets.database import Database
 from packets.time import Time
-
 """
 
 TIPS IN TOPIC OF EMBEDS:
@@ -19,6 +18,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		self.time = Time();
+		self.add = AddEmbedFields(self)
 		self.timestamp = self.time.UTCNow() # - Assign timestamp !NOTE: Timestamp will show embed object construct time; Use function `revokeTimestamp` to re-set -
 		text = self.__footerText();
 		self.set_footer(text=text) # - Create custom footer as it will be pretty much the same for all (PI)Embeds -
@@ -39,7 +39,35 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 			return False;
 		else:
 			return True;
-
+		
+class AddEmbedFields(PIEmbed):
+	def __init__(self, embed):
+		self.embed = embed;
+		self.content_limit = 1024 # - content/value limit is exacly 1024 caracters, when more, error will be raised -
+		self.title_limit = 256 # - title/name limit is 256 caracters, when more, error will trigger -
+		self.empty_value = "chr(173)" # - empty value, will show box in embed as empty, without rasing any exceptions -
+		self.default_inline = False # - default value for if field should be inline or not -
+		
+	def field(index: Optional[int] = None, title: Optional[str] = None, content: Optional[str] = None, inline: Optional[bool] = False):
+		if len(title) > self.title_limit:
+			title = title[0:self.title_limit];
+		if len(content) > self.content_limit:
+			dividings = ;
+			dividepoints = []
+			for i in range((self.content_limit // len(content)) + 1):
+				if len(dividepoints) == 0:
+					dividepoints.push(len(content) / ((self.content_limit // len(content)) + 1));
+				else:
+					dividepoints.push(dividepoints * len(dividepoints))
+			print(f'dividepoints: {dividepoints}')
+		self.embed.add_field(name="TEST", value="*PASSED*", inline=False);
+		
+	def emptyField(index: Optional[int] = None):
+		if index >= 0:
+			self.embed.insert_field_at(index=index, name=self.empty_value, value=self.empty_value, inline=self.default_inline)
+		else:
+			self.embed.add_field(name=self.empty_value, value=self.empty_value, inline=self.default_inline);
+		
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, *, prefix, intents: discord.Intents):
 		super().__init__(command_prefix = prefix, intents=intents)
