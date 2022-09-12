@@ -3,6 +3,8 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 
+from packets.discord import PIBot
+
 class Errors(commands.Cog, name="errors"):
 	"""Errors handler."""
 	def __init__(self, bot: PIBot) -> None:
