@@ -21,7 +21,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		super().__init__()
 		
-	def __commands_check(self, interaction: discord.Interaction, **kwargs):
+	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
 		if retry:
 			print('on cooldown')
