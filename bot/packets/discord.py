@@ -46,8 +46,16 @@ class AddEmbedFields(PIEmbed):
 		self.embed = embed;
 		self.content_limit = 1024 # - content/value limit is exacly 1024 caracters, when more, error will be raised -
 		self.title_limit = 256 # - title/name limit is 256 caracters, when more, error will trigger -
-		self.empty_value = "chr(173)" # - empty value, will show box in embed as empty, without rasing any exceptions -
+		self.empty_value = 'chr(173)' # - empty value, will show box in embed as empty, without rasing any exceptions -
 		self.default_inline = False # - default value for if field should be inline or not -
+		
+	def __divideString(self, string, index):
+		if index >= len(string):
+			return string, None;
+		elif index <= 0:
+			return None, string;
+		else:
+			return string[:index], string[index:]
 		
 	def field(self, index: Optional[int] = None, title: Optional[str] = None, content: Optional[str] = None, inline: Optional[bool] = False):
 		print(f'title: {len(title)}, content: {len(content)}')
@@ -55,19 +63,29 @@ class AddEmbedFields(PIEmbed):
 			title = title[0:self.title_limit];
 		contents = [];
 		if len(content) > self.content_limit:
-			contentSplit = content.split();
+			#contentSplit = content.split();
 			print(f'timesx: {(len(content) // self.content_limit) + 1}');
 			for x in range((len(content) // self.content_limit) + 1):
+				divide = len(content) // ((len(content) // self.content_limit) + 1)
+				print(f'divide in: {divide}');
+				cut, content = self.__divideString(content, divide);
+				contents.append(cut);
+				"""
+				if len(contents[x]) + 1 + len(content) > self.content_limit:
+					contents[x] += content[:(self.content_limit - len(contents[x]))]
+					restOfContent = content[(self.content_limit - len(contents[x])):]
+				
 				contents.append('');
 				for content in contentSplit:
 					print(f"content: {content}")
-					if len(contents[x]) + 1 + len(contentSplit[0]) > self.content_limit:
-						contents[x] += contentSplit[0][:(self.content_limit - len(contents[x]))]
-						contentSplit.insert(0, content[(self.content_limit - len(contents[x])):])
+					if len(contents[x]) + 1 + len(content) > self.content_limit:
+						contents[x] += content[:(self.content_limit - len(contents[x]))]
+						restOfContent = content[(self.content_limit - len(contents[x])):]
 					else:
-						contents[x] += (' ' + contentSplit[0])
+						contents[x] += (' ' + content)
 					contentSplit.remove(content);
-		if len(contents) == 0:
+				"""
+		else:
 			contents.append(content);
 		for content in contents:
 			if contents.index(content) != 0:
