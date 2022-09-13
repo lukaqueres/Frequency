@@ -25,7 +25,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
 		if retry:
 			print('on cooldown')
-			await interaction.response.send_message(content=f">>> Command`{interaction.command}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
+			await interaction.response.send_message(content=f">>> Command`{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
 			#raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
 		else:
 			print('no cooldown')
