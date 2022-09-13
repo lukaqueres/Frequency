@@ -69,20 +69,16 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 				if r != interaction.guild.default_role and not r.managed:
 					guildRoles[r.id] = r.name;
 			DBRoles = {int(k): v for k, v in DBRoles.items()} # - After SELECT keys are string instead of int, failing `==` -
-			print(f'DBRoles: {DBRoles}');
-			print(f'guildRoles: {guildRoles}');
 			DBrefresh = False;
 			if len(DBRoles) == len(guildRoles):
 				for k, v in DBRoles.items():
 					if guildRoles[k] == v:
-						print(f'k: {k}');
 					else:
 						DBrefresh = True;
 						break;
 				
 			else:
 				DBrefresh = True;
-			print(f'DBrefresh: {DBrefresh}');
 			if DBrefresh:
 				payload = {"roles": guildRoles};
 				self.client.database.update(
@@ -93,7 +89,6 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
 			else:
 				embed.add_field( name="Roles", value="*Accurate*", inline=False);
-			print('Interaction respond')
 		else:
 			if log['notices']:
 				print(f'By configuration joined guild: {guild.name}; {guild.id}');
@@ -111,7 +106,16 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			};
 			self.client.database.insert(table = 'guilds.properties',
 					    payload = payload);
-		embed.add.field(title="xxxxxxxxxxxfvjufbjnufbsijobunbfjnbfjnbfjnfb", content="nubjhisvbhiubvibvdibuvbiudviubiubiunjdsvuidviuvdiudvubbuiviubviubvubuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+			
+		title = ''
+		content = ''
+		for i in range(200):
+			content += 'l'
+		for i in range(2000):
+			content += 'x'
+		len(title)
+		len(content)
+		embed.add.field(title="xxxxxxxxxxxfvjufbjnufbsijobunbfjnbfjnbfjnfb", content=content);
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
 	@app_commands.command(name="show", description="Show configuration data")
