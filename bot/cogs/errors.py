@@ -125,6 +125,7 @@ class Errors(commands.Cog, name="errors"):
 			elif isinstance(d_error.original, discord.errors.Forbidden):
 				await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original.text}")
 			else:
+				self.trace_error("get_view_error", d_error)
 				await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original}")
 		except app_commands.CheckFailure as d_error:
 			if isinstance(d_error, app_commands.errors.CommandOnCooldown):
