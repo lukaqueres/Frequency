@@ -57,6 +57,7 @@ class AddEmbedFields(PIEmbed):
 		if len(content) > self.content_limit:
 			contentSplit = content.split();
 			for x in range((len(content) // self.content_limit) + 1):
+				contents[x] = '';
 				for content in contentSplit:
 					if len(contents[x]) + len(content) > self.content_limit:
 						contents[x] += content[:(self.content_limit - len(contents[x]))]
