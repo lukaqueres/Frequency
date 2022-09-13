@@ -59,7 +59,7 @@ class AddEmbedFields(PIEmbed):
 			print(f'timesx: {(len(content) // self.content_limit) + 1}');
 			for x in range((len(content) // self.content_limit) + 1):
 				contents.append('');
-				for content in contentSplit):
+				for content in contentSplit:
 					if len(contents[x]) + 1 + len(contentSplit[0]) > self.content_limit:
 						contents[x] += contentSplit[0][:(self.content_limit - len(contents[x]))]
 						contentSplit.insert(0, content[(self.content_limit - len(contents[x])):])
