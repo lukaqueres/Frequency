@@ -65,7 +65,7 @@ class AddEmbedFields(PIEmbed):
 						contents[x] += contentSplit[0]
 					contentSplit.remove(content);
 		if not contents:
-			contents.push(content);
+			contents.append(content);
 		for content in contents:
 			if contents.index(content) != 0:
 				title = self.empty_value;
