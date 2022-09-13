@@ -116,7 +116,7 @@ class Errors(commands.Cog, name="errors"):
 		"""
 		try:
 			await self.__respond_to_interaction(interaction)
-			edit = interaction.edit_original_message
+			edit = interaction.edit_original_response #interaction.edit_original_message
 
 			raise error
 		except app_commands.CommandInvokeError as d_error:
