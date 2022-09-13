@@ -20,8 +20,9 @@ class Errors(commands.Cog, name="errors"):
 		return emoji, label, description"""
 
 	def trace_error(self, level: str, error: Exception):
-		self.bot.logger.name = f"discord.{level}"
-		self.bot.logger.error(msg=type(error).__name__, exc_info=error)
+		traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+		#self.bot.logger.name = f"discord.{level}"
+		#self.bot.logger.error(msg=type(error).__name__, exc_info=error)
 		
 		raise error
 
@@ -59,47 +60,47 @@ class Errors(commands.Cog, name="errors"):
 
 		# ConversionError
 		except commands.ConversionError as d_error:
-			await edit(content=f"🕳️ {d_error}")
+			await edit(content=f"{d_error}")
 		# UserInputError
 		except commands.MissingRequiredArgument as d_error:
-			await edit(content=f"🕳️ Something is missing. `{ctx.clean_prefix}{ctx.command.name} <{'> <'.join(ctx.command.clean_params)}>`")
+			await edit(content=f"Something is missing. `{ctx.clean_prefix}{ctx.command.name} <{'> <'.join(ctx.command.clean_params)}>`")
 		# UserInputError -> BadArgument
 		except commands.MemberNotFound or commands.UserNotFound as d_error:
-			await edit(content=f"🕳️ Member `{str(d_error).split(' ')[1]}` not found ! Don't hesitate to ping the requested member.")
+			await edit(content=f"Member `{str(d_error).split(' ')[1]}` not found ! Don't hesitate to ping the requested member.")
 		# UserInputError -> BadUnionArgument | BadLiteralArgument | ArgumentParsingError
 		except commands.BadArgument or commands.BadUnionArgument or commands.BadLiteralArgument or commands.ArgumentParsingError as d_error:
-			await edit(content=f"🕳️ {d_error}")
+			await edit(content=f"{d_error}")
 		# CommandNotFound
 		except commands.CommandNotFound as d_error:
-			await edit(content=f"🕳️ Command `{str(d_error).split(' ')[1]}` not found !")
+			await edit(content=f"Command `{str(d_error).split(' ')[1]}` not found !")
 		# CheckFailure
 		except commands.PrivateMessageOnly:
-			await edit(content="🕳️ This command canno't be used in a guild, try in direct message.")
+			await edit(content="This command canno't be used in a guild, try in direct message.")
 		except commands.NoPrivateMessage:
-			await edit(content="🕳️ This is not working as excpected.")
+			await edit(content="This is not working as excpected.")
 		except commands.NotOwner:
-			await edit(content="🕳️ You must own this bot to run this command.")
+			await edit(content="You must own this bot to run this command.")
 		except commands.MissingPermissions as d_error:
-			await edit(content=f"🕳️ Your account require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
+			await edit(content=f"Your account require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
 		except commands.BotMissingPermissions as d_error:
 			if not "send_messages" in d_error.missing_permissions:
-				await edit(content=f"🕳️ The bot require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
+				await edit(content=f"The bot require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
 		except commands.CheckAnyFailure or commands.MissingRole or commands.BotMissingRole or commands.MissingAnyRole or commands.BotMissingAnyRole as d_error:
-			await edit(content=f"🕳️ {d_error}")
+			await edit(content=f"{d_error}")
 		except commands.NSFWChannelRequired:
-			await edit(content="🕳️ This command require an NSFW channel.")
+			await edit(content="This command require an NSFW channel.")
 		# DisabledCommand
 		except commands.DisabledCommand:
-			await edit(content="🕳️ Sorry this command is disabled.")
+			await edit(content="Sorry this command is disabled.")
 		# CommandInvokeError
 		except commands.CommandInvokeError as d_error:
-			await edit(content=f"🕳️ {d_error.original}")
+			await edit(content=f"{d_error.original}")
 		# CommandOnCooldown
 		except commands.CommandOnCooldown as d_error:
-			await edit(content=f"🕳️ Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
+			await edit(content=f"Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
 		# MaxConcurrencyReached
 		except commands.MaxConcurrencyReached as d_error:
-			await edit(content=f"🕳️ Max concurrency reached. Maximum number of concurrent invokers allowed: `{d_error.number}`, per `{d_error.per}`.")
+			await edit(content=f"Max concurrency reached. Maximum number of concurrent invokers allowed: `{d_error.number}`, per `{d_error.per}`.")
 		# HybridCommandError
 		except commands.HybridCommandError as d_error:
 			await self.get_app_command_error(ctx.interaction, error)
@@ -120,16 +121,16 @@ class Errors(commands.Cog, name="errors"):
 			raise error
 		except app_commands.CommandInvokeError as d_error:
 			if isinstance(d_error.original, discord.errors.InteractionResponded):
-				await edit(content=f"🕳️ {d_error.original}")
+				await edit(content=f"{d_error.original}")
 			elif isinstance(d_error.original, discord.errors.Forbidden):
-				await edit(content=f"🕳️ `{type(d_error.original).__name__}` : {d_error.original.text}")
+				await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original.text}")
 			else:
-				await edit(content=f"🕳️ `{type(d_error.original).__name__}` : {d_error.original}")
+				await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original}")
 		except app_commands.CheckFailure as d_error:
 			if isinstance(d_error, app_commands.errors.CommandOnCooldown):
-				await edit(content=f"🕳️ Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
+				await edit(content=f"Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
 			else:
-				await edit(content=f"🕳️ `{type(d_error).__name__}` : {d_error}")
+				await edit(content=f"`{type(d_error).__name__}` : {d_error}")
 		except app_commands.CommandNotFound:
 			await edit(content=f"Command was not found.. Seems to be a discord bug, probably due to desynchronization.\nMaybe there is multiple commands with the same name, you should try the other one.")
 		except Exception as e: 
@@ -140,8 +141,8 @@ class Errors(commands.Cog, name="errors"):
 			app_commands.CommandAlreadyRegistered
 			app_commands.CommandSignatureMismatch
 			"""
-			print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
-			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			#print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
+			#traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			self.trace_error("get_app_command_error", e)
 
 	@commands.Cog.listener("on_view_error")
