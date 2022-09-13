@@ -46,7 +46,7 @@ class AddEmbedFields(PIEmbed):
 		self.embed = embed;
 		self.content_limit = 1024 # - content/value limit is exacly 1024 caracters, when more, error will be raised -
 		self.title_limit = 256 # - title/name limit is 256 caracters, when more, error will trigger -
-		self.empty_value = 'chr(173)' # - empty value, will show box in embed as empty, without rasing any exceptions -
+		self.empty_value = "\u200b" #'chr(173)' # - empty value, will show box in embed as empty, without rasing any exceptions -
 		self.default_inline = False # - default value for if field should be inline or not -
 		
 	def __divideString(self, string, index):
