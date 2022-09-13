@@ -73,6 +73,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			if len(DBRoles) == len(guildRoles):
 				for k, v in DBRoles.items():
 					if guildRoles[k] == v:
+						pass;
 					else:
 						DBrefresh = True;
 						break;
