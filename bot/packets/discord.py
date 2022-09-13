@@ -68,6 +68,9 @@ class AddEmbedFields(PIEmbed):
 			for x in range((len(content) // self.content_limit) + 1):
 				divide = len(content) // ((len(content) // self.content_limit) + 1)
 				print(f'divide in: {divide}');
+				divideInSpace = content.rindex(' ', beg=0 end=divide);
+				if ((divide-divideInSpace) < 10):
+					divide = divideInSpace
 				cut, content = self.__divideString(content, divide);
 				contents.append(cut);
 				"""
