@@ -64,7 +64,7 @@ class AddEmbedFields(PIEmbed):
 					else:
 						contents[x] += contentSplit[0]
 					contentSplit.remove(content);
-		if not contents:
+		if len(contents) == 0:
 			contents.append(content);
 		for content in contents:
 			if contents.index(content) != 0:
