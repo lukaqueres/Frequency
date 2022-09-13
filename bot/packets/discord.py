@@ -54,15 +54,25 @@ class AddEmbedFields(PIEmbed):
 		if len(title) > self.title_limit:
 			title = title[0:self.title_limit];
 		if len(content) > self.content_limit:
-			dividings = [];
-			dividepoints = []
-			for i in range((self.content_limit // len(content)) + 1):
-				if len(dividepoints) == 0:
-					dividepoints.push(len(content) / ((self.content_limit // len(content)) + 1));
+			contents = [];
+			contentSplit = content.split();
+			for x in range((len(content) // self.content_limit) + 1):
+				for content in contentSplit:
+					if len(contents[x]) + len(content) > self.content_limit:
+						contents[x] += content[:(self.content_limit - len(contents[x]))]
+						contentSplit.insert(0, content[(self.content_limit - len(contents[x])):])
+					else:
+						contents[x] += contentSplit[0]
+					contentSplit.remove(content)
+			for content in contents:
+				if contents.index(content) != 0:
+					title = self.empty_value;
+					inline = False;
+				if not index:
+					self.embed.add_field(name=title, value=content, inline=inline);	
 				else:
-					dividepoints.push(dividepoints * len(dividepoints))
-			print(f'dividepoints: {dividepoints}')
-		self.embed.add_field(name="TEST", value="*PASSED*", inline=False);
+					self.embed.insert_field_at(index=index, name=title, value=content, inline=inline)
+					index += 1
 		
 	def emptyField(self, index: Optional[int] = None):
 		if index >= 0:
