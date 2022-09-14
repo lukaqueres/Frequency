@@ -73,14 +73,14 @@ class AddEmbedFields(PIEmbed):
 			return False # - Return False if fileld limit reached TODO: Raise exception `fields limit reached` -
 		if not name and not value:
 			self.emptyField(index);
-		print(f'title: {len(name)}, content: {len(content)}')
+		print(f'title: {len(name)}, content: {len(value)}')
 		if len(name) > self.name_limit:
 			name = name[0:self.title_limit]; # - Cut field name to fit limit. TODO: Add error for such cases -
 		values = [];
 		if len(value) > self.value_limit:
 			print(f'timesx: {(len(value) // self.value_limit) + 1}');
 			for x in range((len(value) // self.value_limit) + 1):
-				divide = len(value) // ((len(value) // self.content_limit) + 1)
+				divide = len(value) // ((len(value) // self.value_limit) + 1)
 				print(f'divide in: {divide}');
 				divideInSpace = value.rindex(' ', 0, divide);
 				if ((divide-divideInSpace) < 10):
