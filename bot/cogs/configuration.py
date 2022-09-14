@@ -84,7 +84,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			embed.add.field(name = "Roles", value = rolesStatus, inline = False)
 		else:
 			if log['notices']:
-				print(f'By configuration joined guild: {guild.name}; {guild.id}');
+				print(f'By configuration joined guild: {interaction.guild.name}; {interaction.guild.id}');
 			members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
 			time = Time();
 			roles = {};
