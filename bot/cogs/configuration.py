@@ -118,5 +118,5 @@ class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
 		""" Show configuration data """
 		await interaction.response.send_message("Hello from show", ephemeral=True)
 		
-async def setup(client: commands.Bot) -> None:
-	await client.add_cog(Configuration(client))
+#async def setup(client: commands.Bot) -> None:
+	#await client.add_cog(Configuration(client))
