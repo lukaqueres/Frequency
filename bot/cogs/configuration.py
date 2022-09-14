@@ -87,9 +87,10 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 					payload = payload, 
 					condition = {"id": interaction.guild.id}
 				);
-				embed.add_field( name="Roles", value="*Synchronized*", inline=False);
+				rolesStatus = "*Synchronized*"
 			else:
-				embed.add_field( name="Roles", value="*Accurate*", inline=False);
+				rolesStatus = "*Accurate*"
+			embed.add.field(name = "Roles", value = rolesStatus, inline = False)
 		else:
 			if log['notices']:
 				print(f'By configuration joined guild: {guild.name}; {guild.id}');
@@ -107,6 +108,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			};
 			self.client.database.insert(table = 'guilds.properties',
 					    payload = payload);
+			embed.add.field(name = "Record", value = "Updated", inline = False)
 			
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
