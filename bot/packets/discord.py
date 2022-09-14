@@ -24,7 +24,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 		self.timestamp = self.time.UTCNow() # - Assign timestamp !NOTE: Timestamp will show embed object construct time; Use function `revokeTimestamp` to re-set -
 		text = self.__footerText();
 		self.set_footer(text=text) # - Create custom footer as it will be pretty much the same for all (PI)Embeds -
-		self.set_author(name=self.__appName())
+		#self.set_author(name=self.__appName())
 		self.color = discord.Color.blurple() # - Assign color `blurple` as an (PI)Embed color. Pretty nice I think  -
 		
 	def __footerText(self): # - Create footer text from app name from JSON -
