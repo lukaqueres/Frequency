@@ -5,7 +5,7 @@ from typing import Optional
 
 from packets.discord import PIEmbed
 
-class CommandOnCooldown(app_commands.CommandError):
+class CommandOnCooldown(app_commands.AppCommandError):
 	def __init__(self, command, cooldown,interaction: Optional[discord.Interaction] = None,ctx = None, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.command = command
@@ -13,14 +13,14 @@ class CommandOnCooldown(app_commands.CommandError):
 		self.interaction = interaction or None
 		self.ctx = ctx or None
 
-class NotEnoughBotPermissions(app_commands.CommandError):
+class NotEnoughBotPermissions(app_commands.AppCommandError):
 	def __init__(self, permission,interaction: Optional[discord.Interaction] = None,ctx = None, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.permission = permission
 		self.interaction = interaction or None
 		self.ctx = ctx or None
 
-class NotEnoughUserPermissions(app_commands.CommandError):
+class NotEnoughUserPermissions(app_commands.AppCommandError):
 	def __init__(self, user, permission,interaction: Optional[discord.Interaction] = None,ctx = None, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.user = user
