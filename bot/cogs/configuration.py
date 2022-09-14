@@ -6,7 +6,7 @@ from packets.time import Time
 from packets.discord import PIEmbed
 from packets.error import CommandOnCooldown
 
-class Configuration(commands.Cog):
+class ConfigurationGroup(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		
@@ -15,7 +15,7 @@ class Configuration(commands.Cog):
 		"""Displays ping!"""
 		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 
-class ConfigurationGroup(app_commands.Group, name="configuration", description="Bots basic configuration commands."): # commands.GroupCog
+class Configuration(app_commands.Group, name="configuration"): # commands.GroupCog
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
