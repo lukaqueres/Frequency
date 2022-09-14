@@ -85,14 +85,14 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 		else:
 			if log['notices']:
 				print(f'By configuration joined guild: {interaction.guild.name}; {interaction.guild.id}');
-			members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
+			members = len([m for m in interaction.guild.members if not m.bot]); # - Get members count excluding bots. -
 			time = Time();
 			roles = {};
-			for r in guild.roles:
-				if r != guild.default_role and not r.managed:
+			for r in interaction.guild.roles:
+				if r != interaction.guild.default_role and not r.managed:
 					#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
 					roles[r.id] = r.name;
-			payload = { "id": guild.id,
+			payload = { "id": interaction.guild.id,
 				"prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
 				"language": defaults['language'],
 				"roles": roles,
