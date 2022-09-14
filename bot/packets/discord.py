@@ -26,6 +26,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 		self.set_footer(text=text) # - Create custom footer as it will be pretty much the same for all (PI)Embeds -
 		#self.set_author(name=self.__appName())
 		self.color = discord.Color.blurple() # - Assign color `blurple` as an (PI)Embed color. Pretty nice I think  -
+		self.set_thumbnail(None);
 		
 	def __footerText(self): # - Create footer text from app name from JSON -
 		text = f'Provided by {self.__appName()}'; # - Make nice text, so apart from nick name, everything will SCREAM `PLAN IT`, `PLAN IT`... khem, just make footer text, can be changed -
