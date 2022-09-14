@@ -24,14 +24,18 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 		self.timestamp = self.time.UTCNow() # - Assign timestamp !NOTE: Timestamp will show embed object construct time; Use function `revokeTimestamp` to re-set -
 		text = self.__footerText();
 		self.set_footer(text=text) # - Create custom footer as it will be pretty much the same for all (PI)Embeds -
+		self.set_author(name=self.__appName())
 		self.color = discord.Color.blurple() # - Assign color `blurple` as an (PI)Embed color. Pretty nice I think  -
 		
 	def __footerText(self): # - Create footer text from app name from JSON -
+		text = f'Provided by {self.__appName()}'; # - Make nice text, so apart from nick name, everything will SCREAM `PLAN IT`, `PLAN IT`... khem, just make footer text, can be changed -
+		return text;
+	def __appName(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file and fetch app name. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
-		text = f'Provided by {appName}'; # - Make nice text, so apart from nick name, everything will SCREAM `PLAN IT`, `PLAN IT`... khem, just make footer text, can be changed -
-		return text;
+			return appName
+				
 	
 	def revokeTimestamp(self): # - Simple function to re-setting timestamp, use in case of long time span between `construct -> send` -
 		self.timestamp = self.time.UTCNow()
@@ -64,6 +68,8 @@ class AddEmbedFields(PIEmbed):
 			return string[:index], string[index:]
 		
 	def field(self, index: Optional[int] = None, name: Optional[str] = None, value: Optional[str] = None, inline: Optional[bool] = False):
+		if len(self.embed.fields) == self.field_limit:
+			return False # - Return False if fileld limit reached TODO: Raise exception `fields limit reached` -
 		if not name and not value:
 			self.emptyField(index);
 		print(f'title: {len(name)}, content: {len(content)}')
@@ -87,6 +93,8 @@ class AddEmbedFields(PIEmbed):
 		for value in values:
 			if values.index(value) != 0:
 				name = self.empty_value;
+			if len(self.embed.fields) == self.field_limit:
+				return False # - Return False if fileld limit reached TODO: Raise exception `fields limit reached` -
 			if not index:
 				self.embed.add_field(name=name, value=value, inline=inline);	
 			else:
@@ -94,6 +102,8 @@ class AddEmbedFields(PIEmbed):
 				index += 1
 		
 	def emptyField(self, index: Optional[int] = None, inline: Optional[bool] = False):
+		if len(self.embed.fields) == self.field_limit:
+			return False # - Return False if fileld limit reached TODO: Raise exception `fields limit reached` -
 		if index >= 0:
 			self.embed.insert_field_at(index=index, name=self.empty_value, value=self.empty_value, inline=inline or self.default_inline)
 		else:
