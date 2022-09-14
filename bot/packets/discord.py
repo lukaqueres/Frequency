@@ -45,12 +45,12 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 class AddEmbedFields(PIEmbed):
 	def __init__(self, embed):
 		self.embed = embed;
-		self.embed_limit = 6000
-		self.title_limit = 256 # - title/name limit is 256 caracters, when more, error will trigger -
-		self.description_limit = 4096
-		self.field_limit = 25
-		self.name_limit = 256
-		self.value_limit = 1024 # - content/value limit is exacly 1024 caracters, when more, error will be raised -
+		self.embed_limit = 6000 # - There is a limit of 6000 caracters in one embed -
+		self.title_limit = 256 # - title/name limit is 256 caracters, when more, error will trigger. Title applies for Embed title -
+		self.description_limit = 4096 # - Embed description can be 4096 caracters long. Can be used for short info without names whitespaces - 
+		self.name_limit = 256 # - name applies for field names, they can be 256 caracters long each -
+		self.field_limit = 25 # - There can be only 25 fields per embed -
+		self.value_limit = 1024 # - content/value limit is exacly 1024 caracters, when more, error will be raised, applu for fields value ( content ) -
 		self.footer_limit = 2048
 		self.empty_value = "\u200b" #'chr(173)' # - empty value, will show box in embed as empty, without rasing any exceptions -
 		self.default_inline = False # - default value for if field should be inline or not -
@@ -63,52 +63,39 @@ class AddEmbedFields(PIEmbed):
 		else:
 			return string[:index], string[index:]
 		
-	def field(self, index: Optional[int] = None, title: Optional[str] = None, content: Optional[str] = None, inline: Optional[bool] = False):
-		print(f'title: {len(title)}, content: {len(content)}')
-		if len(title) > self.title_limit:
-			title = title[0:self.title_limit];
-		contents = [];
-		if len(content) > self.content_limit:
-			#contentSplit = content.split();
-			print(f'timesx: {(len(content) // self.content_limit) + 1}');
-			for x in range((len(content) // self.content_limit) + 1):
-				divide = len(content) // ((len(content) // self.content_limit) + 1)
+	def field(self, index: Optional[int] = None, name: Optional[str] = None, value: Optional[str] = None, inline: Optional[bool] = False):
+		if not name and not value:
+			self.emptyField(index);
+		print(f'title: {len(name)}, content: {len(content)}')
+		if len(name) > self.name_limit:
+			name = name[0:self.title_limit]; # - Cut field name to fit limit. TODO: Add error for such cases -
+		values = [];
+		if len(value) > self.value_limit:
+			print(f'timesx: {(len(value) // self.value_limit) + 1}');
+			for x in range((len(value) // self.value_limit) + 1):
+				divide = len(value) // ((len(value) // self.content_limit) + 1)
 				print(f'divide in: {divide}');
-				divideInSpace = content.rindex(' ', 0, divide);
+				divideInSpace = value.rindex(' ', 0, divide);
 				if ((divide-divideInSpace) < 10):
 					divide = divideInSpace
-				cut, content = self.__divideString(content, divide);
-				contents.append(cut);
-				"""
-				if len(contents[x]) + 1 + len(content) > self.content_limit:
-					contents[x] += content[:(self.content_limit - len(contents[x]))]
-					restOfContent = content[(self.content_limit - len(contents[x])):]
-				
-				contents.append('');
-				for content in contentSplit:
-					print(f"content: {content}")
-					if len(contents[x]) + 1 + len(content) > self.content_limit:
-						contents[x] += content[:(self.content_limit - len(contents[x]))]
-						restOfContent = content[(self.content_limit - len(contents[x])):]
-					else:
-						contents[x] += (' ' + content)
-					contentSplit.remove(content);
-				"""
+				cut, value = self.__divideString(value, divide);
+				values.append(cut);
 		else:
-			contents.append(content);
-		for content in contents:
-			if contents.index(content) != 0:
-				title = self.empty_value;
-				inline = False;
+			values.append(value);
+		if len(values) > 1:
+			inline = False;
+		for value in values:
+			if values.index(value) != 0:
+				name = self.empty_value;
 			if not index:
-				self.embed.add_field(name=title, value=content, inline=inline);	
+				self.embed.add_field(name=name, value=value, inline=inline);	
 			else:
-				self.embed.insert_field_at(index=index, name=title, value=content, inline=inline)
+				self.embed.insert_field_at(index=index, name=name, value=value, inline=inline)
 				index += 1
 		
-	def emptyField(self, index: Optional[int] = None):
+	def emptyField(self, index: Optional[int] = None, inline: Optional[bool] = False):
 		if index >= 0:
-			self.embed.insert_field_at(index=index, name=self.empty_value, value=self.empty_value, inline=self.default_inline)
+			self.embed.insert_field_at(index=index, name=self.empty_value, value=self.empty_value, inline=inline or self.default_inline)
 		else:
 			self.embed.add_field(name=self.empty_value, value=self.empty_value, inline=self.default_inline);
 
