@@ -4,6 +4,7 @@ from discord.ext import commands
 from discord import app_commands
 
 from packets.discord import PIBot
+from packets.error import *
 
 class Errors(commands.Cog, name="errors"):
 	"""Errors handler."""
@@ -104,6 +105,9 @@ class Errors(commands.Cog, name="errors"):
 		# HybridCommandError
 		except commands.HybridCommandError as d_error:
 			await self.get_app_command_error(ctx.interaction, error)
+		# - CUSTOM ERRORS -
+		except CommandOnCooldown as d_error:
+			return await d_error.interaction.response.send_message(content=f">>> Command `{d_error.command}` is now on cooldown, try again in `{round(d_error.retry, 1)}s`.", ephemeral=True)
 		except Exception as e:
 			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
