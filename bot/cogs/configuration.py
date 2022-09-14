@@ -111,7 +111,7 @@ class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
 			
 		await interaction.response.send_message(embed=embed, ephemeral=True)
 		
-	@app_commands.command(name="show", description="Show configuration data")
+	@configuration.command(name="show", description="Show configuration data")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_show(self, interaction: discord.Interaction) -> None:
 		self.__commands_check(interaction);
