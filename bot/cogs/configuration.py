@@ -38,7 +38,8 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
-		await self.__commands_check(interaction):
+		await self.__commands_check(interaction)
+		xd.lol
 		""" Check for accurate & refresh guild data for service configuration """
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
