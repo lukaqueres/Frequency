@@ -24,8 +24,8 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
 		if retry:
-			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
-			
+			raise CommandOnCooldown(command = interaction.command.name, cooldown = round(retry, 1), interaction = interaction);
+	"""	
 	async def cog_command_error(self, interaction, error):
 		if isinstance(error, CommandOnCooldown):
 			if error.interaction:
@@ -34,7 +34,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			if error.ctx:
 				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
-			
+	"""		
 	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
