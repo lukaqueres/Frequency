@@ -58,7 +58,7 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 			title="Configuration",
 			description="Guild data synchronize check will be performed before refreshing records."
 		);
-		embed.set_thumbnail(url=self.client.user.avatar)
+		#embed.set_thumbnail(url=self.client.user.avatar)
 		DBRoles = self.client.database.select(
 			table = 'guilds.properties', 
 			condition = {"id": interaction.guild_id}, 
