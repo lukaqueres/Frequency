@@ -15,11 +15,14 @@ class ConfigurationGroup(commands.Cog):
 		"""Displays ping!"""
 		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 
-class Configuration(app_commands.Group, name="configuration"): # commands.GroupCog
+		
+class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		super().__init__()
+		
+	configuration = app_commands.Group(name="configuration", description="Configuration - specified commands.")
 		
 	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
@@ -39,7 +42,7 @@ class Configuration(app_commands.Group, name="configuration"): # commands.GroupC
 				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 	"""		
-	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
+	@configuration.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		if not await self.__commands_check(interaction):
