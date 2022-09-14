@@ -24,28 +24,21 @@ class ConfigurationGroup(app_commands.Group, name="configuration", description="
 	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
 		if retry:
-			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
-			return False;
-			#raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
-		else:
-			return True;
-	"""
+			raise CommandOnCooldown(command = interaction.command, cooldown = round(retry, 1), interaction = interaction);
+			
 	async def cog_command_error(self, interaction, error):
 		if isinstance(error, CommandOnCooldown):
 			if error.interaction:
-				return await interaction.response.send_message(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
+				return await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
+			
 			if error.ctx:
-				return await ctx.send(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
+				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
-		else:
-			# All other Errors not returned come here. And we can just print the default TraceBack.
-			print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
-			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-	"""
+			
 	@app_commands.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
-		if not await self.__commands_check(interaction):
+		await self.__commands_check(interaction):
 		""" Check for accurate & refresh guild data for service configuration """
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
