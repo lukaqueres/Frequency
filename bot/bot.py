@@ -18,7 +18,7 @@ from cogs.configuration import ConfigurationGroup
 
 intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
 # bot = client = commands.Bot(command_prefix = prefix, intents=intents); # - Old client setup, moved to custom class instead -
-client = PIBot(prefix = prefix, intents=intents)
+client = PIBot(prefix = self.get_prefix, intents=intents)
 
 #database = Database(); # - Create database object to handle all querries - MOWED TO CUSTOM CLASS ^ INSTEAD -
 #client.database = database; # - Assign database object to client for easy fetch from cogs -
