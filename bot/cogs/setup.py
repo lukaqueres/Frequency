@@ -16,7 +16,7 @@ class ConfigurationGroup(commands.Cog):
 		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 
 		
-class Setip(commands.Cog): # commands.GroupCog / app_commands.Group
+class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
