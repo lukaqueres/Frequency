@@ -42,7 +42,7 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 	"""		
-	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
+	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service setup")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		if not await self.__commands_check(interaction):
