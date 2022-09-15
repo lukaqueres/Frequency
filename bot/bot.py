@@ -10,7 +10,7 @@ from discord import Intents, app_commands
 
 # - Importing in-project packages -
 from packets.database import Database
-from packets.discord import prefix, PIBot
+from packets.discord import PIBot
 
 # - Import cog as a part of slash not-sync work-around -
 from cogs.configuration import ConfigurationGroup
