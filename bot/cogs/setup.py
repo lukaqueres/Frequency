@@ -16,13 +16,13 @@ class ConfigurationGroup(commands.Cog):
 		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 
 		
-class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
+class Setip(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		super().__init__()
 		
-	configuration = app_commands.Group(name="configuration", description="Configuration - specified commands.")
+	setup = app_commands.Group(name="setup", description="Setup - specified commands.")
 		
 	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
@@ -42,7 +42,7 @@ class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
 				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 	"""		
-	@configuration.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
+	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service configuration")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		if not await self.__commands_check(interaction):
@@ -54,8 +54,8 @@ class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
 			log = configuration['developer']['log'];
 			defaults = configuration['values']['defaults'];
 		embed = PIEmbed(
-			title="Configuration",
-			description="Guild data synchronize check will be performed before refreshing records."
+			title="Setup",
+			description="Refresh"
 		);
 		#embed.set_thumbnail(url=self.client.user.avatar)
 		DBRoles = self.client.database.select(
@@ -110,13 +110,12 @@ class Configuration(commands.Cog): # commands.GroupCog / app_commands.Group
 			embed.add.field(name = "Record", value = "Updated", inline = False)
 			
 		await interaction.response.send_message(embed=embed, ephemeral=True)
-		
-	@configuration.command(name="show", description="Show configuration data")
+	"""
+	@setup.command(name="show", description="Show configuration data")
 	@commands.has_permissions(administrator = True)
 	async def conf_sub_show(self, interaction: discord.Interaction) -> None:
 		self.__commands_check(interaction);
-		""" Show configuration data """
 		await interaction.response.send_message("Hello from show", ephemeral=True)
-		
+	"""
 async def setup(client: commands.Bot) -> None:
-	await client.add_cog(Configuration(client))
+	await client.add_cog(Setup(client))
