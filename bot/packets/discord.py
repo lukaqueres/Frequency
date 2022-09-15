@@ -170,7 +170,7 @@ class PIBot(commands.Bot): # discord.Client
 			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
 		return discord.Object(id=restrictGuild)
 
-	def get_prefix(self, client: PIBot, message: discord.Message):
+	def get_prefix(self, client, message: discord.Message):
 		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
 			configuration = json.load(c); 
 			log = configuration['developer']['log'];
