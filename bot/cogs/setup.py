@@ -30,6 +30,9 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
 			return False;
 			#raise CommandOnCooldown(command = interaction.command.name, cooldown = round(retry, 1), interaction = interaction);
+		elif interaction.user.guild_permissions.administrator
+			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` requires user to have administrator privilege.", ephemeral=True)
+			return False;
 		else:
 			return True;
 	"""	
@@ -42,8 +45,8 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 	"""		
+	#@commands.has_permissions(administrator = True)
 	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service setup")
-	@commands.has_permissions(administrator = True)
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		if not await self.__commands_check(interaction):
 			return;
