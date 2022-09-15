@@ -142,8 +142,8 @@ class PIEmbedTest(Test):
 		embed.add.field(title=self.testName, content=self.testValue); # - TODO: Finish test -
 			
 class PIBot(commands.Bot): # discord.Client
-	def __init__(self, *, prefix, intents: discord.Intents):
-		super().__init__(command_prefix = prefix, intents=intents)
+	def __init__(self, **kwargs):
+		super().__init__(command_prefix = self.get_prefix, intents=discord.Intents.all())
 		# A CommandTree is a special type that holds all the application command
 		# state required to make it work. This is a separate class because it
 		# allows all the extra state to be opt-in.
@@ -170,7 +170,7 @@ class PIBot(commands.Bot): # discord.Client
 			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
 		return discord.Object(id=restrictGuild)
 
-	def get_prefix(self, client, message):
+	def get_prefix(self, client: PIBot, message: discord.Message):
 		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
 			configuration = json.load(c); 
 			log = configuration['developer']['log'];
