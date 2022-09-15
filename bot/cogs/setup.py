@@ -30,7 +30,7 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
 			return False;
 			#raise CommandOnCooldown(command = interaction.command.name, cooldown = round(retry, 1), interaction = interaction);
-		elif interaction.user.guild_permissions.administrator
+		elif interaction.user.guild_permissions.administrator:
 			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` requires user to have administrator privilege.", ephemeral=True)
 			return False;
 		else:
