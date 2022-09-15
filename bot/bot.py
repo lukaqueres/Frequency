@@ -13,7 +13,7 @@ from packets.database import Database
 from packets.discord import PIBot
 
 # - Import cog as a part of slash not-sync work-around -
-from cogs.configuration import ConfigurationGroup
+#from cogs.configuration import ConfigurationGroup
 
 
 intents = discord.Intents.all() # - Get all Intents TODO: Remember to get messages and other permissions that require discord approval after verification -
