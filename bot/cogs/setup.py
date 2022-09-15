@@ -25,14 +25,14 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	setup = app_commands.Group(name="setup", description="Setup - specified commands.")
 		
 	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
+		if not interaction.user.guild_permissions.administrator:
+			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` requires user to have administrator privilege.", ephemeral=True)
+			return False;
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
 		if retry:
 			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
 			return False;
 			#raise CommandOnCooldown(command = interaction.command.name, cooldown = round(retry, 1), interaction = interaction);
-		elif not interaction.user.guild_permissions.administrator:
-			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` requires user to have administrator privilege.", ephemeral=True)
-			return False;
 		else:
 			return True;
 	"""	
