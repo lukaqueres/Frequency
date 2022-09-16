@@ -15,3 +15,14 @@ class Checks:
 			else:
 				return interaction.user.guild_permissions.administrator
 		return commands.check(predicate)
+	
+class CheckCooldown(Checks):
+	def __init__(self, client: PIBot, check) -> None:
+		super().__init__(client)
+		self.cooldown = self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
+		
+	def update()
+		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
+		if retry:
+			return False;
+		return True
