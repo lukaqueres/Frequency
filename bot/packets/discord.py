@@ -68,7 +68,7 @@ class AddEmbedFields(PIEmbed):
 		else:
 			return string[:index], string[index:]
 		
-	def field(self, index: Optional[int] = None, name: Optional[str] = None, value: Optional[str] = None, inline: Optional[bool] = False):
+	def field(self, index: Optional[int] = None, name: Optional[str] = None, value: Optional[str] = None, inline: Optional[bool] = False) -> None:
 		if len(self.embed.fields) == self.field_limit:
 			return False # - Return False if fileld limit reached TODO: Raise exception `fields limit reached` -
 		if not name and not value:
