@@ -1,4 +1,6 @@
 import discord
+from typing import Optional
+
 from discord import app_commands
 from discord.ext import commands
 
@@ -8,6 +10,24 @@ class Checks:
 	def __init__(self, client: PIBot) -> None:
 		self.client = client
 
+	def __has_permission(self, permission):
+		
+	def has_privileges(self, **perms) -> commands.check: 
+		if ctx:
+			async def predicate(ctx):
+				# Add the perms to a variable, you can format this any way you'd want
+				ctx.command.required_perms = [p.replace('_', ' ').title() for p in perms.keys()]
+				# Just use the normal check
+				return await commands.has_permissions(**perms).predicate(ctx)
+		else:
+			async def predicate(ctx):
+				# Add the perms to a variable, you can format this any way you'd want
+				interaction.command.required_perms = [p.replace('_', ' ').title() for p in perms.keys()]
+				# Just use the normal check
+				return await commands.has_permissions(**perms).predicate(ctx)
+			
+		return commands.check(predicate)
+			   
 	def is_admin(self):
 		def predicate(interaction: discord.Interaction = Null, ctx: commands.Context = Null):
 			if ctx:
