@@ -21,7 +21,7 @@ class CheckCooldown(Checks):
 		super().__init__(client)
 		self.cooldown = self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		
-	def update()
+	def update(self):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
 		if retry:
 			return False;
