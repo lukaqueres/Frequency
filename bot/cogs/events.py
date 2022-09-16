@@ -10,6 +10,8 @@ class Events(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 
+# - Guilds - - - - - - - - - - Guilds related events - - - - - - - - - -
+
 	@commands.Cog.listener()
 	async def on_guild_join(self, guild):
 		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
@@ -41,6 +43,48 @@ class Events(commands.Cog):
 			print(f'Left guild: {guild.name}; {guild.id}')
 		self.client.database.delete(table = 'guilds.properties',
 					    condition = {"id": guild.id});
+
+# - Roles - - - - - - - - - - Roles related events - - - - - - - - - -
+
+	@commands.Cog.listener()
+	async def on_guild_role_create(self, role):
+		guildRoles = {};
+			for r in role.guild.roles:
+				if r != role.guild.default_role and not r.managed:
+					guildRoles[r.id] = r.name;
+		payload = {"roles": guildRoles};
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = payload, 
+			condition = {"id": role.guild.id}
+		);
+		
+	@commands.Cog.listener()
+	async def on_guild_role_delete(self, role):
+		guildRoles = {};
+			for r in role.guild.roles:
+				if r != role.guild.default_role and not r.managed:
+					guildRoles[r.id] = r.name;
+		payload = {"roles": guildRoles};
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = payload, 
+			condition = {"id": role.guild.id}
+		);
+		
+	@commands.Cog.listener()
+	async def on_guild_role_update(self, before, after):
+		role = after;
+		guildRoles = {};
+			for r in role.guild.roles:
+				if r != role.guild.default_role and not r.managed:
+					guildRoles[r.id] = r.name;
+		payload = {"roles": guildRoles};
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = payload, 
+			condition = {"id": role.guild.id}
+		);
     
 async def setup(client):
 	await client.add_cog(Events(client))
