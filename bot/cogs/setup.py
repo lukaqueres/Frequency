@@ -7,17 +7,6 @@ from packets.time import Time
 from packets.discord import PIEmbed
 from packets.error import CommandOnCooldown
 
-#from packets.utilities import Checks
-"""
-class ConfigurationGroup(commands.Cog):
-	def __init__(self, client: commands.Bot) -> None:
-		self.client = client
-		
-	@app_commands.command(name="debugping", description="Displays ping!")
-	async def pingConf(self, interaction: discord.Interaction) -> None:
-		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
-
-"""	
 class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
@@ -26,36 +15,11 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 		super().__init__()
 		
 	setup = app_commands.Group(name="setup", description="Setup - specified commands.")
-		
-	async def __commands_check(self, interaction: discord.Interaction, **kwargs):
-		if not interaction.user.guild_permissions.administrator:
-			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` requires user to have administrator privilege.", ephemeral=True)
-			return False;
-		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
-		if retry:
-			await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
-			return False;
-			#raise CommandOnCooldown(command = interaction.command.name, cooldown = round(retry, 1), interaction = interaction);
-		else:
-			return True;
-	"""	
-	async def cog_command_error(self, interaction, error):
-		if isinstance(error, CommandOnCooldown):
-			if error.interaction:
-				return await interaction.response.send_message(content=f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.", ephemeral=True)
-			
-			if error.ctx:
-				return await ctx.send(f">>> Command `{interaction.command.name}` is now on cooldown, try again in `{round(retry, 1)}s`.")
-			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
-	"""		
-	#@commands.has_permissions(administrator = True)
+
 	@has_permissions(administrator=True)
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service setup")
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
-		if not await self.__commands_check(interaction):
-			return;
-		""" Check for accurate & refresh guild data for service configuration """
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 			configuration = json.load(c); 
 			appName = configuration['name'];
