@@ -5,17 +5,16 @@ from discord.ext import commands
 from packets.time import Time
 from packets.discord import PIEmbed
 from packets.error import CommandOnCooldown
-
+"""
 class ConfigurationGroup(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		
-	@app_commands.command(name="debugping")
+	@app_commands.command(name="debugping", description="Displays ping!")
 	async def pingConf(self, interaction: discord.Interaction) -> None:
-		"""Displays ping!"""
 		await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
 
-		
+"""	
 class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
@@ -113,12 +112,6 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 			embed.add.field(name = "Record", value = "Updated", inline = False)
 			
 		await interaction.response.send_message(embed=embed, ephemeral=True)
-	"""
-	@setup.command(name="show", description="Show configuration data")
-	@commands.has_permissions(administrator = True)
-	async def conf_sub_show(self, interaction: discord.Interaction) -> None:
-		self.__commands_check(interaction);
-		await interaction.response.send_message("Hello from show", ephemeral=True)
-	"""
+		
 async def setup(client: commands.Bot) -> None:
 	await client.add_cog(Setup(client))
