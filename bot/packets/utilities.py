@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from packages.discord import PIBot 
+from packets.discord import PIBot 
 
 class Checks:
 	def __init__(self, client: PIBot) -> None:
