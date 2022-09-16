@@ -1,7 +1,7 @@
 import discord, json
 from discord import app_commands
 from discord.ext import commands
-from app_commands.checks import has_permissions, cooldown
+from discord.app_commands.checks import has_permissions, cooldown
 
 from packets.time import Time
 from packets.discord import PIEmbed
