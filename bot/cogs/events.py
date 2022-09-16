@@ -48,9 +48,9 @@ class Events(commands.Cog):
 	
 	def fetch_roles(self, role) -> dict:
 		roles = {};
-			for r in role.guild.roles:
-				if r != role.guild.default_role and not r.managed:
-					roles[r.id] = r.name;
+		for r in role.guild.roles:
+			if r != role.guild.default_role and not r.managed:
+				roles[r.id] = r.name;
 		return roles;
 
 	@commands.Cog.listener()
