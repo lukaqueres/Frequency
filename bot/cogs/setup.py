@@ -92,7 +92,7 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 				rolesStatus = "*Synchronized*"
 			else:
 				rolesStatus = "*Accurate*"
-			embed.add.field(name = "Roles", value = rolesStatus, inline = False)
+			embed.add.field(name = "Record", value = rolesStatus, inline = False)
 		else:
 			if log['notices']:
 				print(f'By configuration joined guild: {interaction.guild.name}; {interaction.guild.id}');
