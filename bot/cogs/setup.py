@@ -1,12 +1,13 @@
 import discord, json
 from discord import app_commands
 from discord.ext import commands
+from app_commands.checks import has_permissions, cooldown
 
 from packets.time import Time
 from packets.discord import PIEmbed
 from packets.error import CommandOnCooldown
 
-from packets.utilities import Checks
+#from packets.utilities import Checks
 """
 class ConfigurationGroup(commands.Cog):
 	def __init__(self, client: commands.Bot) -> None:
@@ -48,7 +49,8 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 			print(f"Command `{error.command}` is on cooldown, try again in `{error.cooldown}`s.")
 	"""		
 	#@commands.has_permissions(administrator = True)
-	@self.check.is_admin()
+	@has_permissions(administrator=True)
+	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service setup")
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
 		if not await self.__commands_check(interaction):
