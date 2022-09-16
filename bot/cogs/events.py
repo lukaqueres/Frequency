@@ -45,14 +45,17 @@ class Events(commands.Cog):
 					    condition = {"id": guild.id});
 
 # - Roles - - - - - - - - - - Roles related events - - - - - - - - - -
+	
+	def fetch_roles(self, role) -> dict:
+		roles = {};
+			for r in role.guild.roles:
+				if r != role.guild.default_role and not r.managed:
+					roles[r.id] = r.name;
+		return roles;
 
 	@commands.Cog.listener()
 	async def on_guild_role_create(self, role):
-		guildRoles = {};
-			for r in role.guild.roles:
-				if r != role.guild.default_role and not r.managed:
-					guildRoles[r.id] = r.name;
-		payload = {"roles": guildRoles};
+		payload = {"roles": self.fetch_roles(role)};
 		self.client.database.update(
 			table = 'guilds.properties', 
 			payload = payload, 
@@ -61,11 +64,7 @@ class Events(commands.Cog):
 		
 	@commands.Cog.listener()
 	async def on_guild_role_delete(self, role):
-		guildRoles = {};
-			for r in role.guild.roles:
-				if r != role.guild.default_role and not r.managed:
-					guildRoles[r.id] = r.name;
-		payload = {"roles": guildRoles};
+		payload = {"roles": self.fetch_roles(role)};
 		self.client.database.update(
 			table = 'guilds.properties', 
 			payload = payload, 
@@ -75,11 +74,7 @@ class Events(commands.Cog):
 	@commands.Cog.listener()
 	async def on_guild_role_update(self, before, after):
 		role = after;
-		guildRoles = {};
-			for r in role.guild.roles:
-				if r != role.guild.default_role and not r.managed:
-					guildRoles[r.id] = r.name;
-		payload = {"roles": guildRoles};
+		payload = {"roles": self.fetch_roles(role)};
 		self.client.database.update(
 			table = 'guilds.properties', 
 			payload = payload, 
