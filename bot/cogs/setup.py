@@ -22,7 +22,7 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
 		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
-		self.check = Checks
+		#self.check = Checks
 		super().__init__()
 		
 	setup = app_commands.Group(name="setup", description="Setup - specified commands.")
