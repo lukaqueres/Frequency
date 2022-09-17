@@ -27,8 +27,10 @@ class Configuration:
 				configuration = json.load(c); 
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-			
-		request = configuration[key]
+		keys = key.split('.')
+		for key in keys
+			configuration = configuration[key]
+		request = configuration
 		return request;
 	
 class Logger:
