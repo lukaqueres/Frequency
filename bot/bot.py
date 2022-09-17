@@ -34,10 +34,10 @@ async def on_ready():
 	if self.configuration.read(category="overview", key="developer.active"):
 		status = self.configuration.read(category="overview", key="developer.discord-status")
 		if status not in list(statuses.keys()):
-			raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys())));	
+			raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys()))));	
 		status = statuses[status]
 	elif self.configuration.read(category="overview", key="discord.status.set") not in list(statuses.keys()): # - Checking if status given in json file is correct for use, assigning python code if apply, set to online if not. -
-		raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys())));
+		raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys()))));
 	else:	 
 		status = statuses[self.configuration.read(category="overview", key="discord.status.set")];
 		# - End of custom status assign. -
@@ -53,7 +53,7 @@ async def on_ready():
 		elif activities in list(pool.keys()):
 			activities = pool[activities];
 		else:
-			raise ValueError("`{}` activities list not found".format(activities);
+			raise ValueError("`{}` activities list not found".format(activities));
 		if len(activities['list']) == 0:
 			raise ValueError("List of custom statuses can not be empty, set activity to false in such case";	 
 		activity = random.choice(activities['list'])
@@ -62,7 +62,7 @@ async def on_ready():
 		elif activities['type'] in list(activitiesList.keys()):
 			await bot.change_presence(activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
 		else:
-			raise ValueError("{} is not a valid activity type".format(activities['type']);
+			raise ValueError("{} is not a valid activity type".format(activities['type']));
 	else:
 		await client.change_presence(status=status); # - Change only status if activities are not meant to be set -
 	
@@ -92,7 +92,7 @@ async def cycleStatus(activities, interval, status):
 		elif interval == 'long':
 			time = random.randint(2700,7200);
 		else: # - In case of not appropriate interval given ( not: short, long, random ). -
-			raise ValueError("{} is not a valid interval".format(interval);
+			raise ValueError("{} is not a valid interval".format(interval));
 		activity = random.choice(activities[list]);
 		if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 			await client.change_presence(status=status, activity=discord.Game(activity));
