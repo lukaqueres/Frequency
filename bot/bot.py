@@ -116,7 +116,7 @@ async def cycleStatus(alist, interval, status):
 @client.tree.command()
 async def ping(interaction: discord.Interaction):
     """Displays ping!"""
-    await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}') # interaction.user.mention
+    await interaction.response.send_message(f'Ping: {round(client.latency * 1000)}', ephemeral = True) # interaction.user.mention
 	
 #client.tree.add_command(ConfigurationGroup(client)) #, guild=client.restrictGuild - Part of slash not-sync work-around -
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
