@@ -12,7 +12,7 @@ class File:
 		#self.file = 'configuration/{}.json'
 		
 	def write(file, text:str, mode:str = 'a'):
-		with open(file, mode) as w; 
+		with open(file, mode) as w:
 				w.seek(0, os.SEEK_END); 
 				w.write(text);
 	
