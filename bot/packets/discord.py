@@ -1,4 +1,6 @@
-import json, os, discord
+import json, os, random, asyncio, traceback, sys
+
+import discord
 
 from typing import Optional
 from discord.ext import commands, tasks
@@ -168,7 +170,54 @@ class PIBot(commands.Bot): # discord.Client
 		await self.tree.sync(guild=self.restrictGuild)
 		
 	async def on_ready(self):
-		print('working!');
+		statuses = { "online": discord.Status.online, "offline": discord.Status.offline, "idle": discord.Status.idle, "dnd": discord.Status.dnd } # - statuses available to be set as bot's status in discord - 
+		activitiesList = { "watching": discord.ActivityType.watching, "listening": discord.ActivityType.listening} # - Available activities types, `playing` not included due to diffrent setup procedure -
+		if self.configuration.read(category="overview", key="developer.active"):
+			status = self.configuration.read(category="overview", key="developer.discord-status")
+			if status not in list(statuses.keys()):
+				raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys()))));	
+			status = statuses[status]
+		elif self.configuration.read(category="overview", key="discord.status.set") not in list(statuses.keys()): # - Checking if status given in json file is correct for use, assigning python code if apply, set to online if not. -
+			raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys()))));
+		else:	 
+			status = statuses[self.configuration.read(category="overview", key="discord.status.set")];
+			# - End of custom status assign. -
+
+		# - Assingning custom activity status to bot -
+		if self.configuration.read(category="overview", key="discord.activity.set"):
+			activities = self.configuration.read(category="overview", key="discord.activity.list");
+			pool = self.configuration.read(category="overview", key="discord.activity.pool");
+			if self.configuration.read(category="overview", key="developer.active"):
+				activities = self.configuration.read(category="overview", key="developer.discord-custom-sctivity");
+			elif activities == 'random': # - Random list means random choice of available lists. -
+				activities = pool[random.choice(list(pool.keys()))];
+			elif activities in list(pool.keys()):
+				activities = pool[activities];
+			else:
+				raise ValueError("`{}` activities list not found".format(activities));
+			if len(activities['list']) == 0:
+				raise ValueError("List of custom statuses can not be empty, set activity to false in such case");	 
+			activity = random.choice(activities['list'])
+			if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
+				await client.change_presence(status=status, activity=discord.Game(activity));
+			elif activities['type'] in list(activitiesList.keys()):
+				await bot.change_presence(activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
+			else:
+				raise ValueError("{} is not a valid activity type".format(activities['type']));
+		else:
+			await client.change_presence(status=status); # - Change only status if activities are not meant to be set -
+
+		clientGuildsIds = [];
+		for guild in client.guilds:
+			clientGuildsIds.append(guild.id);
+		client.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
+		client.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity or 'None'))
+		if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
+			client.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.configuration.read(category="overview", key="discord.activity.cycle-interval")));
+			client.loop.create_task(cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
+
+		# - Sync slash commands tree to global -
+		await client.tree.sync()
 		
 	def restrict_Guild(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
