@@ -17,7 +17,8 @@
 		}	
 	"developer": {
 		"active": true,
-		"discord-status": "dnd"
+		"discord-status": "dnd",
+		"discord-custom-sctivity": { "activity": "playing", "list": ["WIP"] }
 		}	
 	}
 }
