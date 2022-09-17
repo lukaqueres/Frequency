@@ -70,7 +70,7 @@ async def on_ready():
 	for guild in client.guilds:
 		clientGuildsIds.append(guild.id);
 	client.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
-	client.log.notify('{} guilds; status: {}; activity: {}').format(len(clientGuildsIds), status, activity or 'None'))
+	client.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity or 'None'))
 	if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
 		client.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.configuration.read(category="overview", key="discord.activity.cycle-interval")));
 		client.loop.create_task(cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
