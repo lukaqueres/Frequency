@@ -167,6 +167,9 @@ class PIBot(commands.Bot): # discord.Client
 		self.tree.copy_global_to(guild=self.restrictGuild)
 		await self.tree.sync(guild=self.restrictGuild)
 		
+	async def on_ready():
+		print('working!');
+		
 	def restrict_Guild(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
 			configuration = json.load(c);
