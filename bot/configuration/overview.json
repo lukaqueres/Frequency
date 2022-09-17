@@ -14,6 +14,10 @@
 			"pool": {
 				"default": { "activity": "playing", "list": ["Developing"] }
 			}
+		"developer": {
+			"active": true,
+			"status": "dnd"
+			}	
 		}
 	}
 }
