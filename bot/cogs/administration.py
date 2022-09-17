@@ -3,8 +3,8 @@ import discord, json, os
 from discord.ext import commands
 
 class Administration(commands.Cog):
-	def __init__(self, client):
+	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
   
-def setup(client):
-	client.add_cog(Administration(client))
+async def setup(client: commands.Bot) -> None:
+	await client.add_cog(Administration(client))

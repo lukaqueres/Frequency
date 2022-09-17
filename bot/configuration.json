@@ -12,6 +12,7 @@
 			"cycle-interval": 3600,
 			"list": "dedicated-pool",
 			"list-pool": {
+				"pool-one": { "activity": "playing", "list": [] },
 				"playing": [],
 				"watching": [],
 				"listening": [],
@@ -29,7 +30,11 @@
 			"notices": true
 		},
 		"check-db-data-on-startup": false,
-		"restrict-commands" : []
+		"restrict-commands" : {
+			"enable": true,
+			"to-guild": 930559672715464764,
+			"commands": "all"
+		}
 	},
 	"extensions": {
 		"load": true,

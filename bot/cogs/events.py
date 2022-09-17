@@ -7,8 +7,10 @@ from packets.time import Time
 from packets.database import Database
 
 class Events(commands.Cog):
-	def __init__(self, client):
+	def __init__(self, client: commands.Bot) -> None:
 		self.client = client
+
+# - Guilds - - - - - - - - - - Guilds related events - - - - - - - - - -
 
 	@commands.Cog.listener()
 	async def on_guild_join(self, guild):
@@ -19,15 +21,10 @@ class Events(commands.Cog):
 		if log['notices']:
 			print(f'Joined guild: {guild.name}; {guild.id}');
 		members = len([m for m in guild.members if not m.bot]); # - Get members count excluding bots. -
-		#date_of_join = str("{") + get_time("DD") + str("}")
 		time = Time();
 		roles = {};
-		#test = "will see how it will handle these ' and \" quotes, also if it will modify these \\\' and \\\" ! ";
-		#testtwo = self.client.database.escape.string(test);
-		#print(test);
-		#print(testtwo);
 		for r in guild.roles:
-			if r != guild.default_role:
+			if r != guild.default_role and not r.managed:
 				#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
@@ -44,8 +41,45 @@ class Events(commands.Cog):
 			log = configuration['developer']['log'];
 		if log['notices']:
 			print(f'Left guild: {guild.name}; {guild.id}')
-		self.client.database.delete(table = 'guilds',
+		self.client.database.delete(table = 'guilds.properties',
 					    condition = {"id": guild.id});
+
+# - Roles - - - - - - - - - - Roles related events - - - - - - - - - -
+	
+	def fetch_roles(self, role) -> dict:
+		roles = {};
+		for r in role.guild.roles:
+			if r != role.guild.default_role and not r.managed:
+				roles[r.id] = r.name;
+		return roles;
+
+	@commands.Cog.listener()
+	async def on_guild_role_create(self, role):
+		payload = {"roles": self.fetch_roles(role)};
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = payload, 
+			condition = {"id": role.guild.id}
+		);
+		
+	@commands.Cog.listener()
+	async def on_guild_role_delete(self, role):
+		payload = {"roles": self.fetch_roles(role)};
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = payload, 
+			condition = {"id": role.guild.id}
+		);
+		
+	@commands.Cog.listener()
+	async def on_guild_role_update(self, before, after):
+		role = after;
+		payload = {"roles": self.fetch_roles(role)};
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = payload, 
+			condition = {"id": role.guild.id}
+		);
     
-def setup(client):
-	client.add_cog(Events(client))
+async def setup(client):
+	await client.add_cog(Events(client))
