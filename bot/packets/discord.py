@@ -6,6 +6,7 @@ from discord.ext import commands, tasks
 from packets.database import Database
 from packets.time import Time
 from packets.test import Test
+from packets.utilities import Configuration, Logger
 """
 
 TIPS IN TOPIC OF EMBEDS:
@@ -154,6 +155,8 @@ class PIBot(commands.Bot): # discord.Client
 		#self.tree = app_commands.CommandTree(self)
 		self.database = Database(); # - Assign database object to client for easy SQL querries -
 		self.time = Time();
+		self.configuration = Configuration();
+		self.log = Logger(self, "logs.txt");
 		self.restrictGuild = self.restrict_Guild();
 
 	# In this basic example, we just synchronize the app commands to one guild.
