@@ -1,5 +1,5 @@
 # - Importing required unspecified packages -
-import json, os, random, asyncio
+import json, os, random, asyncio, traceback, sys
 from random import randrange, randint
 
 # - Importing discord packages -
@@ -78,6 +78,11 @@ async def on_ready():
 	# - Sync slash commands tree to global -
 	await client.tree.sync()
 
+@on_ready.error
+async def on_ready_error(error):
+	print('Error ' + str(type(error)) + str(error))
+	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+	
 # - Function to change activity in random time interals -
 async def cycleStatus(activities, interval, status):
 	activitiesList = { "watching": discord.ActivityType.watching, "listening": discord.ActivityType.listening} # - Available activities types, `playing` not included due to diffrent setup procedure -
