@@ -5,7 +5,7 @@
 		"client_id": 875271995644842004,
 		"status": {
 			"set": "online" 
-		}
+		},
 		"activity": {
 			"set": true, 
 			"cycle": false,
@@ -14,7 +14,7 @@
 			"pool": {
 				"default": { "type": "playing", "list": ["Developing"] }
 			}
-		}	
+		},
 	"developer": {
 		"active": true,
 		"discord-status": "dnd",
