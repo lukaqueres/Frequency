@@ -43,6 +43,13 @@ class Logger:
 		self.save = self.configuration.read(category="utilities", key="log.save_to_file")
 		self.addTimestamp = self.configuration.read(category="utilities", key="log.add_timestamp")
 		
+	def hard(self, text) -> None:	
+		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> EXCEPTION: ' + text
+		if self.print:
+			print(text);
+		if self.save: 
+			self.file.write(file = self.logFile, text = text)
+			
 	def exception(self, text) -> None:
 		log = self.configuration.read(category="utilities", key="log.exceptions")
 		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> EXCEPTION: ' + text
