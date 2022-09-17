@@ -56,10 +56,8 @@ asyncio.run(startup());
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
 async def on_ready():
+	print('redi');
 	try:
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
-			configuration = json.load(c); 
-			status = configuration['discord']['status']; 
 		statuses = { "online": discord.Status.online, "offline": discord.Status.offline, "idle": discord.Status.idle, "dnd": discord.Status.dnd } # - statuses available to be set as bot's status in discord - 
 		activitiesList = { "watching": discord.ActivityType.watching, "listening": discord.ActivityType.listening} # - Available activities types, `playing` not included due to diffrent setup procedure -
 		if self.configuration.read(category="overview", key="developer.active"):
