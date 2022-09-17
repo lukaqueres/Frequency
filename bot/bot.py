@@ -23,6 +23,8 @@ client = PIBot()
 #database = Database(); # - Create database object to handle all querries - MOWED TO CUSTOM CLASS ^ INSTEAD -
 #client.database = database; # - Assign database object to client for easy fetch from cogs -
 
+asyncio.run(startup());
+
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
 @client.event
 async def on_ready():
@@ -80,7 +82,7 @@ async def on_ready():
 
 @on_ready.error
 async def on_ready_error(error):
-	print('Error ' + str(type(error)) + str(error))
+	print('Error ' + str(type(error)) + ', '.join(list(inst.args)))
 	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 	
 # - Function to change activity in random time interals -
@@ -142,8 +144,6 @@ async def startup():
 		async with client:
 			TOKEN = os.environ.get('TOKEN')
 			await client.start(TOKEN)
-			
-asyncio.run(startup());
 
 #if __name__ == "__main__":
 #	client.run(TOKEN)
