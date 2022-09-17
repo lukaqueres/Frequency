@@ -1,4 +1,4 @@
-import discord, traceback, sys, os
+import discord, traceback, sys, os, json
 from typing import Optional
 
 from discord import app_commands
