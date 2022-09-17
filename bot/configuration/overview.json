@@ -12,13 +12,13 @@
 			"cycle-interval": 3600,
 			"list": "default",
 			"pool": {
-				"default": { "activity": "playing", "list": ["Developing"] }
+				"default": { "type": "playing", "list": ["Developing"] }
 			}
 		}	
 	"developer": {
 		"active": true,
 		"discord-status": "dnd",
-		"discord-custom-sctivity": { "activity": "playing", "list": ["WIP"] }
+		"discord-custom-sctivity": { "type": "playing", "list": ["WIP"] }
 		}	
 	}
 }
