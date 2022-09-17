@@ -25,7 +25,7 @@ class Configuration:
 		try:
 			with open(file, 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 				configuration = json.load(c); 
-		except error:
+		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
 		request = configuration[key]
