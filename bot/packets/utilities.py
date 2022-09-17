@@ -28,7 +28,7 @@ class Configuration:
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 		keys = key.split('.')
-		for key in keys
+		for key in keys:
 			configuration = configuration[key]
 		request = configuration
 		return request;
