@@ -45,7 +45,7 @@ class Logger:
 		
 	def exception(self, text) -> None:
 		log = self.configuration.read(category="utilities", key="log.exceptions")
-		text = str(self.time.UTCNow()) + ' ' if self.addTimestamp else '' + '>>> EXCEPTION: ' + text
+		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> EXCEPTION: ' + text
 		if not log:
 			return;
 		if log and self.print:
@@ -55,7 +55,7 @@ class Logger:
 		
 	def notify(self, text) -> None:
 		log = self.configuration.read(category="utilities", key="log.notices")
-		text = str(self.time.UTCNow()) + ' ' if self.addTimestamp else '' + '>>> NOTICE: ' + text
+		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> NOTICE: ' + text
 		if not log:
 			return;
 		if log and self.print:
@@ -65,7 +65,7 @@ class Logger:
 				
 	def error(self, text) -> None:
 		log = self.configuration.read(category="utilities", key="log.errors")
-		text = str(self.time.UTCNow()) + ' ' if self.addTimestamp else '' + '>>> ERROR: ' + text
+		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> ERROR: ' + text
 		if not log:
 			return;
 		if log and self.print:
@@ -75,7 +75,7 @@ class Logger:
 				
 	def debug(self, text) -> None:
 		log = self.configuration.read(category="utilities", key="log.debug")
-		text = str(self.time.UTCNow()) + ' ' if self.addTimestamp else '' + '>>> DEBUG: ' + text
+		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> DEBUG: ' + text
 		if not log:
 			return;
 		if log and self.print:
