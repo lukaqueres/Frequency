@@ -14,10 +14,10 @@
 			"pool": {
 				"default": { "activity": "playing", "list": ["Developing"] }
 			}
-		"developer": {
-			"active": true,
-			"status": "dnd"
-			}	
-		}
+		}	
+	"developer": {
+		"active": true,
+		"discord-status": "dnd"
+		}	
 	}
 }
