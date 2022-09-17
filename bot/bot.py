@@ -80,10 +80,10 @@ async def on_ready():
 	# - Sync slash commands tree to global -
 	await client.tree.sync()
 
-@on_ready.error
-async def on_ready_error(error):
-	print('Error ' + str(type(error)) + ', '.join(list(inst.args)))
-	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+#@on_ready.error
+#async def on_ready_error(error):
+#	print('Error ' + str(type(error)) + ', '.join(list(inst.args)))
+#	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 	
 # - Function to change activity in random time interals -
 async def cycleStatus(activities, interval, status):
