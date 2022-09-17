@@ -23,6 +23,34 @@ client = PIBot()
 #database = Database(); # - Create database object to handle all querries - MOWED TO CUSTOM CLASS ^ INSTEAD -
 #client.database = database; # - Assign database object to client for easy fetch from cogs -
 
+# >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
+async def startup():
+	with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
+		configuration = json.load(c); 
+		extensions = configuration['extensions'];
+		log = configuration['developer']['log'];
+	if extensions['load']:
+		loaded = []; # - Extensions loaded succesfully -
+		failed = []; # - Extensions failed to load -
+		for cog in os.listdir(extensions['directory']):
+			if cog.endswith('.py'):	 # - Every file from directory path with .py extension is threated as cog. -
+				if not cog[:-3] in extensions['ignore']:
+					try:
+						await client.load_extension(f"{extensions['directory']}.{cog[:-3]}");
+						loaded.append(cog[:-3]);
+					except Exception as e: # - Catch exception in loading, can be extended. -
+						failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
+				else:
+					failed.apped([cog[:-3], 'Extension ignored.']);
+		if len(loaded) != 0:
+			client.log.notify(f"Extensions loaded ({len(loaded)}): {', '.join(str(l) for l in loaded)}"); # - Log loaded cogs with it's number and list. -
+		if log['exceptions'] and len(failed) != 0:
+			client.log.notify(f"Failed to load ({len(failed)}) extensions: {', '.join(str(f[0] + ': ' + f[1]) for f in failed)}"); # - Log failed cogs with it's number and list. -
+		
+		async with client:
+			TOKEN = os.environ.get('TOKEN')
+			await client.start(TOKEN)
+
 asyncio.run(startup());
 
 # >---------------------------------------< ON application ACTIVE >---------------------------------------< # 
