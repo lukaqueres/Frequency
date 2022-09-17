@@ -44,7 +44,7 @@ class Logger:
 		self.addTimestamp = self.configuration.read(category="utilities", key="log.add_timestamp")
 		
 	def hard(self, text) -> None:	
-		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> EXCEPTION: ' + text
+		text = (self.time.str_todaytime() + ' ' if self.addTimestamp else '') + '>>> ' + text
 		if self.print:
 			print(text);
 		if self.save: 
