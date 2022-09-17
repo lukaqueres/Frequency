@@ -137,7 +137,6 @@ async def cycleStatus(activities, interval, status):
 				client.log.notify("Changed activity: {}; Waiting {} seconds.".format(activity, time))
 			await asyncio.sleep(time) # - Wait interval. -
 	except Exception as error:
-		except Exception as error:
 		print('Error ' + str(type(error)) + ', '.join(list(inst.args)))
 
 # >---------------------------------------< COMMANDS >---------------------------------------< # 
