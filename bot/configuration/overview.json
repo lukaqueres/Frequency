@@ -1,0 +1,19 @@
+{
+	"name": "Plan It",
+	"version": "0.0.1",
+	"discord": {
+		"client_id": 875271995644842004,
+		"status": {
+			"set": "online" 
+		}
+		"activity": {
+			"set": false, 
+			"cycle": true,
+			"cycle-interval": 3600,
+			"list": "default",
+			"pool": {
+				"default": { "activity": "playing", "list": ["Developing"] }
+			}
+		}
+	}
+}
