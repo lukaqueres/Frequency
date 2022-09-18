@@ -24,7 +24,7 @@
 		"discord-status": "dnd",
 		"discord-custom-sctivity": { 
 			"type": "playinfg", 
-			"list": [] 
+			"list": ["Testing"] 
 		}
 	}
 }
