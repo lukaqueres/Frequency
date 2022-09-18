@@ -21,9 +21,9 @@
 	},
 	"developer": {
 		"active": true,
-		"discord-status": "dndx",
+		"discord-status": "dnd",
 		"discord-custom-sctivity": { 
-			"type": "playing", 
+			"type": "playinfg", 
 			"list": [] 
 		}
 	}
