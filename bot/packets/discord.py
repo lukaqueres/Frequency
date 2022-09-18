@@ -170,7 +170,6 @@ class PIBot(commands.Bot): # discord.Client
 		await self.tree.sync(guild=self.restrictGuild)
 		
 	async def on_ready(self):
-		print('Breakpointredy')
 		try:
 			statuses = { "online": discord.Status.online, "offline": discord.Status.offline, "idle": discord.Status.idle, "dnd": discord.Status.dnd } # - statuses available to be set as bot's status in discord - 
 			activitiesList = { "watching": discord.ActivityType.watching, "listening": discord.ActivityType.listening} # - Available activities types, `playing` not included due to diffrent setup procedure -
@@ -221,7 +220,6 @@ class PIBot(commands.Bot): # discord.Client
 			# - Sync slash commands tree to global -
 			await client.tree.sync()
 		except Exception as e:
-			print('Breakpointexcept')
 			print('Error ' + str(type(e)) + getattr(e, 'message', repr(e)))
 			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 			
