@@ -25,13 +25,13 @@ class Configuration:
 		try:
 			with open(file, 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
 				configuration = json.load(c); 
+			keys = key.split('.')
+			for key in keys:
+				configuration = configuration[key]
+			request = configuration
+			return request;
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-		keys = key.split('.')
-		for key in keys:
-			configuration = configuration[key]
-		request = configuration
-		return request;
 	
 class Logger:
 	def __init__(self, client, file:str = None):
