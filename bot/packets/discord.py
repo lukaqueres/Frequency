@@ -221,7 +221,7 @@ class PIBot(commands.Bot): # discord.Client
 			await self.tree.sync()
 		except Exception as e:
 			print(getattr(e, 'message', repr(e)))
-			#traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
+			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 			
 	async def cycleStatus(self, activities, interval, status):
 		try:
