@@ -209,7 +209,7 @@ class PIBot(commands.Bot): # discord.Client
 				await self.change_presence(status=status); # - Change only status if activities are not meant to be set -
 
 			clientGuildsIds = [];
-			for guild in client.guilds:
+			for guild in self.guilds:
 				clientGuildsIds.append(guild.id);
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
 			self.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity or 'None'))
@@ -221,7 +221,7 @@ class PIBot(commands.Bot): # discord.Client
 			await client.tree.sync()
 		except Exception as e:
 			print('Error ' + str(type(e)) + getattr(e, 'message', repr(e)))
-			#traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
+			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 			
 	async def cycleStatus(self, activities, interval, status):
 		try:
