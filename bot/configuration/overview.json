@@ -12,7 +12,10 @@
 			"cycle-interval": 3600,
 			"list": "default_xd",
 			"pool": {
-				"default": { "type": "playing", "list": ["Developing"] }
+				"default": { 
+					"type": "playing", 
+					"list": ["Developing"] 
+				}
 			}
 		}
 	},
