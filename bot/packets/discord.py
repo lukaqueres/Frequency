@@ -179,7 +179,7 @@ class PIBot(commands.Bot): # discord.Client
 					raise ValueError("`{}` status is not supported, try instead: {}".format(status, ', '.join(list(statusPool.keys()))));	
 				status = statuses[status]
 			elif self.configuration.read(category="overview", key="discord.status.set") not in list(statuses.keys()): # - Checking if status given in json file is correct for use, assigning python code if apply, set to online if not. -
-				raise ValueError("`{}` status is not supported, try instead: {}".format(self.configuration.read(category="overview", key="discord.status.set"), ', '.join(list(statusPool.keys()))));
+				raise ValueError("`{}` status is not supported, try instead: {}".format(self.configuration.read(category="overview", key="discord.status.set"), ', '.join(list(statuses.keys()))));
 			else:	 
 				status = statuses[self.configuration.read(category="overview", key="discord.status.set")];
 				# - End of custom status assign. -
