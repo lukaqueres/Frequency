@@ -21,10 +21,10 @@
 	},
 	"developer": {
 		"active": true,
-		"discord-status": "dnd",
+		"discord-status": "dndx",
 		"discord-custom-sctivity": { 
 			"type": "playing", 
-			"list": ["WIP"] 
+			"list": [] 
 		}
 	}
 }
