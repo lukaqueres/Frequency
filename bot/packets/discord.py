@@ -218,7 +218,7 @@ class PIBot(commands.Bot): # discord.Client
 				self.loop.create_task(self.cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
 
 			# - Sync slash commands tree to global -
-			await client.tree.sync()
+			await self.tree.sync()
 		except Exception as e:
 			print('Error ' + str(type(e)) + getattr(e, 'message', repr(e)))
 			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
