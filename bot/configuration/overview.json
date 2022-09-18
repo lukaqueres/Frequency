@@ -13,8 +13,8 @@
 			"list": "default",
 			"pool": {
 				"default": { 
-					"type": "playing", 
-					"list": [] 
+					"type": "playings", 
+					"list": ["Now 2.0!"] 
 				}
 			}
 		}
