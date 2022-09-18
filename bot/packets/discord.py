@@ -220,7 +220,7 @@ class PIBot(commands.Bot): # discord.Client
 			# - Sync slash commands tree to global -
 			await self.tree.sync()
 		except Exception as e:
-			print('Error ' + str(type(e)) + getattr(e, 'message', repr(e)))
+			print(getattr(e, 'message', repr(e)))
 			#traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 			
 	async def cycleStatus(self, activities, interval, status):
@@ -239,12 +239,12 @@ class PIBot(commands.Bot): # discord.Client
 				else: # - In case of not appropriate interval given ( not: short, long, random ). -
 					raise ValueError("{} is not a valid interval".format(interval));
 				activity = random.choice(activities[list]);
+				self.log.notify("Changing activity to: {}; Waiting {} seconds before.".format(activity, time))
+				await asyncio.sleep(time) # - Wait interval. -
 				if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 					await self.change_presence(status=status, activity=discord.Game(activity));
 				elif activities['type'] in list(activitiesList.keys()):
 					await self.change_presence(activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
-				self.log.notify("Changed activity: {}; Waiting {} seconds.".format(activity, time))
-				await asyncio.sleep(time) # - Wait interval. -
 		except Exception as error:
 			print('Error ' + str(type(error)) + ', '.join(list(inst.args)))
 		
