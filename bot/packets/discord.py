@@ -185,7 +185,7 @@ class PIBot(commands.Bot): # discord.Client
 				# - End of custom status assign. -
 
 			# - Assingning custom activity status to bot -
-			if self.client.configuration.read(category="overview", key="discord.activity.set"):
+			if self.configuration.read(category="overview", key="discord.activity.set"):
 				activities = self.configuration.read(category="overview", key="discord.activity.list");
 				pool = self.configuration.read(category="overview", key="discord.activity.pool");
 				if self.configuration.read(category="overview", key="developer.active"):
@@ -214,14 +214,14 @@ class PIBot(commands.Bot): # discord.Client
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
 			self.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity or 'None'))
 			if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
-				self.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.client.configuration.read(category="overview", key="discord.activity.cycle-interval")));
+				self.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.configuration.read(category="overview", key="discord.activity.cycle-interval")));
 				self.loop.create_task(self.cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
 
 			# - Sync slash commands tree to global -
 			await client.tree.sync()
 		except Exception as e:
 			print('Error ' + str(type(e)) + getattr(e, 'message', repr(e)))
-			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
+			#traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 			
 	async def cycleStatus(self, activities, interval, status):
 		try:
