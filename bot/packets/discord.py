@@ -212,7 +212,7 @@ class PIBot(commands.Bot): # discord.Client
 			for guild in self.guilds:
 				clientGuildsIds.append(guild.id);
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
-			self.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity or 'None'))
+			self.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity if activity else 'None'))
 			if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
 				self.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.configuration.read(category="overview", key="discord.activity.cycle-interval")));
 				self.loop.create_task(self.cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
