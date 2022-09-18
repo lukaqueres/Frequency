@@ -13,8 +13,8 @@
 			"list": "default",
 			"pool": {
 				"default": { 
-					"type": "playings", 
-					"list": ["Now 2.0!"] 
+					"type": "playing", 
+					"list": ["Now 2.0! | On {guildsCount} guilds!"] 
 				}
 			}
 		}
