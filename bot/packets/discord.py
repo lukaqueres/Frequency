@@ -185,6 +185,7 @@ class PIBot(commands.Bot): # discord.Client
 				# - End of custom status assign. -
 
 			# - Assingning custom activity status to bot -
+			activity = ''
 			if self.configuration.read(category="overview", key="discord.activity.set"):
 				activities = self.configuration.read(category="overview", key="discord.activity.list");
 				pool = self.configuration.read(category="overview", key="discord.activity.pool");
