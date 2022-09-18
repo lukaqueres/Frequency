@@ -7,14 +7,14 @@
 			"set": "online" 
 		},
 		"activity": {
-			"set": false, 
+			"set": true, 
 			"cycle": false,
 			"cycle-interval": 3600,
 			"list": "default_xd",
 			"pool": {
 				"default": { 
 					"type": "playing", 
-					"list": ["Developing"] 
+					"list": [] 
 				}
 			}
 		}
