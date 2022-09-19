@@ -19,13 +19,8 @@ class Events(commands.Cog):
 		
 	@commands.Cog.listener()
 	async def on_guild_remove(self, guild):
-		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
-			configuration = json.load(c); 
-			log = configuration['developer']['log'];
-		if log['notices']:
-			print(f'Left guild: {guild.name}; {guild.id}')
-		self.client.database.delete(table = 'guilds.properties',
-					    condition = {"id": guild.id});
+		self.client.log.notify(f'Left guild: {guild.name}; {guild.id}');
+		self.client.database.predefined.remove_guild(guild);
 
 # - Roles - - - - - - - - - - Roles related events - - - - - - - - - -
 	
@@ -38,31 +33,16 @@ class Events(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_guild_role_create(self, role):
-		payload = {"roles": self.fetch_roles(role)};
-		self.client.database.update(
-			table = 'guilds.properties', 
-			payload = payload, 
-			condition = {"id": role.guild.id}
-		);
+		self.client.database.predefined.update_roles(guild, self.fetch_roles(role));
 		
 	@commands.Cog.listener()
 	async def on_guild_role_delete(self, role):
-		payload = {"roles": self.fetch_roles(role)};
-		self.client.database.update(
-			table = 'guilds.properties', 
-			payload = payload, 
-			condition = {"id": role.guild.id}
-		);
+		self.client.database.predefined.update_roles(guild, self.fetch_roles(role));
 		
 	@commands.Cog.listener()
 	async def on_guild_role_update(self, before, after):
 		role = after;
-		payload = {"roles": self.fetch_roles(role)};
-		self.client.database.update(
-			table = 'guilds.properties', 
-			payload = payload, 
-			condition = {"id": role.guild.id}
-		);
+		self.client.database.predefined.update_roles(guild, self.fetch_roles(role));
     
 async def setup(client):
 	await client.add_cog(Events(client))
