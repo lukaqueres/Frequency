@@ -195,3 +195,10 @@ class PreDefined(Database):
 	def remove_guild(self, guild):
 		self.database.delete(table = 'guilds.properties',
 					    condition = {"id": guild.id});
+
+	def update_roles(self, guild, roles):
+		self.client.database.update(
+			table = 'guilds.properties', 
+			payload = roles, 
+			condition = {"id": guild.id}
+		);
