@@ -73,47 +73,47 @@ class Errors(commands.Cog, name="errors"):
 
 		# ConversionError
 		except commands.ConversionError as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"{d_error}")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> {d_error}")
 		# UserInputError
 		except commands.MissingRequiredArgument as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"Something is missing. `{ctx.clean_prefix}{ctx.command.name} <{'> <'.join(ctx.command.clean_params)}>`")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> Something is missing. `{ctx.clean_prefix}{ctx.command.name} <{'> <'.join(ctx.command.clean_params)}>`")
 		# UserInputError -> BadArgument
 		except commands.MemberNotFound or commands.UserNotFound as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"Member `{str(d_error).split(' ')[1]}` not found ! Don't hesitate to ping the requested member.")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> Member `{str(d_error).split(' ')[1]}` not found ! Don't hesitate to ping the requested member.")
 		# UserInputError -> BadUnionArgument | BadLiteralArgument | ArgumentParsingError
 		except commands.BadArgument or commands.BadUnionArgument or commands.BadLiteralArgument or commands.ArgumentParsingError as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"{d_error}")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> {d_error}")
 		# CommandNotFound
 		except commands.CommandNotFound as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"Command `{str(d_error).split(' ')[1]}` not found !")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> Command `{str(d_error).split(' ')[1]}` not found!")
 		# CheckFailure
 		except commands.PrivateMessageOnly:
-			await self.__reply_to_ctx(ctx = ctx, content = "This command canno't be used in a guild, try in direct message.")
+			await self.__reply_to_ctx(ctx = ctx, content = ">>> This command canno't be used in a guild, try in direct message.")
 		except commands.NoPrivateMessage:
-			await self.__reply_to_ctx(ctx = ctx, content = "This is not working as excpected.")
+			await self.__reply_to_ctx(ctx = ctx, content = ">>> This is not working as excpected.")
 		except commands.NotOwner:
-			await self.__reply_to_ctx(ctx = ctx, content = "You must own this bot to run this command.")
+			await self.__reply_to_ctx(ctx = ctx, content = ">>> You must own this bot to run this command.")
 		except commands.MissingPermissions as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"Your account require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> You are lacking `{'` `'.join(d_error.missing_permissions)}` permission{ 's' if len(d_error.missing_permissions) > 0 else ''} to run this command.")
 		except commands.BotMissingPermissions as d_error:
 			if not "send_messages" in d_error.missing_permissions:
-				await self.__reply_to_ctx(ctx = ctx, content = f"The bot require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
+				await self.__reply_to_ctx(ctx = ctx, content = f">>> This command require bot to have `{'` `'.join(d_error.missing_permissions)}` permissions.")
 		except commands.CheckAnyFailure or commands.MissingRole or commands.BotMissingRole or commands.MissingAnyRole or commands.BotMissingAnyRole as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"{d_error}")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> {d_error}")
 		except commands.NSFWChannelRequired:
-			await self.__reply_to_ctx(ctx = ctx, content = "This command require an NSFW channel.")
+			await self.__reply_to_ctx(ctx = ctx, content = ">>> This command can be only used in NSFW channel.")
 		# DisabledCommand
 		except commands.DisabledCommand:
-			await self.__reply_to_ctx(ctx = ctx, content = "Sorry this command is disabled.")
+			await self.__reply_to_ctx(ctx = ctx, content = ">>> Sorry, this command is currently disabled.")
 		# CommandInvokeError
 		except commands.CommandInvokeError as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"{d_error.original}")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> {d_error.original}")
 		# CommandOnCooldown
 		except commands.CommandOnCooldown as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> Command is on cooldown, please wait `{str(d_error).split(' ')[7]}` !")
 		# MaxConcurrencyReached
 		except commands.MaxConcurrencyReached as d_error:
-			await self.__reply_to_ctx(ctx = ctx, content = f"Max concurrency reached. Maximum number of concurrent invokers allowed: `{d_error.number}`, per `{d_error.per}`.")
+			await self.__reply_to_ctx(ctx = ctx, content = f">>> Max concurrency reached. Maximum number of concurrent invokers allowed: `{d_error.number}`, per `{d_error.per}`.")
 		# HybridCommandError
 		except commands.HybridCommandError as d_error:
 			await self.get_app_command_error(ctx.interaction, error)
@@ -137,20 +137,20 @@ class Errors(commands.Cog, name="errors"):
 			raise error
 		except app_commands.CommandInvokeError as d_error:
 			if isinstance(d_error.original, discord.errors.InteractionResponded):
-				await self.__reply_to_interaction( interaction = interaction, content = f"{d_error.original}")
+				await self.__reply_to_interaction( interaction = interaction, content = f">>> {d_error.original}")
 			elif isinstance(d_error.original, discord.errors.Forbidden):
-				await self.__reply_to_interaction( interaction = interaction, content = f"`{type(d_error.original).__name__}` : {d_error.original.text}")
+				await self.__reply_to_interaction( interaction = interaction, content = f">>> `{type(d_error.original).__name__}` : {d_error.original.text}")
 				#await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original.text}")
 			else:
 				self.trace_error("get_view_error", d_error)
-				await self.__reply_to_interaction( interaction = interaction, content = f"`{type(d_error.original).__name__}` : {d_error.original}")
+				#await self.__reply_to_interaction( interaction = interaction, content = f"`{type(d_error.original).__name__}` : {d_error.original}")
 		except app_commands.CheckFailure as d_error:
 			if isinstance(d_error, app_commands.errors.CommandOnCooldown):
-				await self.__reply_to_interaction( interaction = interaction, content = f"Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
+				await self.__reply_to_interaction( interaction = interaction, content = f">>> Command is on cooldown, wait `{str(d_error).split(' ')[7]}` !")
 			else:
-				await self.__reply_to_interaction( interaction = interaction, content = f"`{type(d_error).__name__}` : {d_error}")
+				await self.__reply_to_interaction( interaction = interaction, content = f">>> `{type(d_error).__name__}` : {d_error}")
 		except app_commands.CommandNotFound:
-			await self.__reply_to_interaction( interaction = interaction, content = f"Command was not found.. Seems to be a discord bug, probably due to desynchronization.\nMaybe there is multiple commands with the same name, you should try the other one.")
+			await self.__reply_to_interaction( interaction = interaction, content = f">>> Command was not found.. Seems to be a discord bug, probably due to desynchronization.\nMaybe there is multiple commands with the same name, you should try the other one.")
 		except Exception as e: 
 			"""
 			Caught here:
