@@ -8,7 +8,7 @@
 		"notices": true,
 		"debug": true
 	},
-	"databasesa" {
+	"database" {
 		"defaults": {
 			"prefix": "$",
 			"language": "english"
