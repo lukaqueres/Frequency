@@ -116,36 +116,27 @@ class Database(Connection):
 	
 	# - Updates records with given payload and on specified condition, querry affecting every record must be given in condition -
 	def update(self, table, payload, condition): 
-		con = self.connection;
+		con = self.connection; # - use same cursor and connection from class object. -
 		cur = self.cursor;
-		columns = list(payload.keys());
+		columns = list(payload.keys()); # - Divide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		
-		for value in values:
-			if isinstance(value, dict):
-				toEscapeKeys = list(value.keys());
-				toEscapeValues = list(value.values());
-				escapedKeys = [];
-				escapedValues = [];
-				escapedDict = {};
-				for k in toEscapeKeys:
-					escapedKeys.append(self.adapt.escape(k));
-				for v in toEscapeValues:
-					escapedValues.append(self.adapt.escape(k));
-				for i in range(len(escapedKeys)):
-    					escapedDict[escapedKeys[i]] = escapedValues[i]
-				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
-			if type(value) is str:
-				values[values.index(value)] = self.adapt.escape(value);
-		values = json.dumps(values, indent = 4)
+		#print(f"LEN VALUES IN UPDATE: {len(values)}")
+		for i in range(len(values)):
+			if isinstance(values[i], list):
+				values[i] = ",".join(str(v) for v in values[i]);
+			elif isinstance(values[i], dict):
+				values[i] = Json(values[i]);
+		#values = json.dumps(values, indent = 4)
 		cond_key = list(condition.keys())[0];
 		condition = list(condition.values())[0];
+		#print(f"condition IN UPDATE: {cond_key} == {condition}")
+		#print(f"columns IN UPDATE: {columns} inputting value: {values}")
 		cur.execute(
 			"""
 			UPDATE %s
 			SET %s = %s
 			WHERE %s = %s;
-			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
+			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), AsIs(values[0] if len(values) == 1 else tuple(values)), AsIs(cond_key), AsIs(condition)) # AsIs(','.join(columns))
 		);
 		con.commit();
 	# - Function allowing to fetch rows ( and data they contain ) with condition -

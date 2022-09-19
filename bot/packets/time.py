@@ -12,6 +12,9 @@ class Time:
 		
 	def time(self):
 		pass;
+	
+	def UTCNow(self):
+		return datetime.now(timezone.utc);
 
 	def today(self):
 		return time.strftime("%d-%m-%Y");
