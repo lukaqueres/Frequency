@@ -151,8 +151,7 @@ class PIBot(commands.Bot): # discord.Client
 			log = configuration['developer']['log'];
 			defaults = configuration['values']['defaults'];
 		try:
-			database = Database(); # - TODO: Check how to get database object from bot.py main file, for now this will do -
-			prefix = database.select(table = 'guilds.properties', 
+			prefix = self.database.select(table = 'guilds.properties', 
 				columns = ['prefix'],
 				condition = {"id": message.guild.id}
 				);
