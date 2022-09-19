@@ -199,6 +199,6 @@ class PreDefined(Database):
 	def update_roles(self, guild, roles):
 		self.client.database.update(
 			table = 'guilds.properties', 
-			payload = roles, 
+			payload = {"roles": roles}, 
 			condition = {"id": guild.id}
 		);
