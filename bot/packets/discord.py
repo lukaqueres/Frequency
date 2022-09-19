@@ -218,14 +218,14 @@ class PIBot(commands.Bot): # discord.Client
 			# - Sync slash commands tree to global -
 			await self.tree.sync()
 		except Exception as e:
-			print(getattr(e, 'message', repr(e)))
+			self.log.error(getattr(e, 'message', repr(e)))
 			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 			
 	async def cycleStatus(self, activities, interval, status):
 		try:
 			activitiesList = { "watching": discord.ActivityType.watching, "listening": discord.ActivityType.listening} # - Available activities types, `playing` not included due to diffrent setup procedure -
-			await client.wait_until_ready()
-			while not client.is_closed():
+			await self.wait_until_ready()
+			while not self.is_closed():
 				if isinstance(interval, int):
 					time = interval;
 				elif interval == 'random': # - Interval draw -
@@ -244,7 +244,7 @@ class PIBot(commands.Bot): # discord.Client
 				elif activities['type'] in list(activitiesList.keys()):
 					await self.change_presence(activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
 		except Exception as error:
-			print('Error ' + str(type(error)) + ', '.join(list(inst.args)))
+			self.log.error(getattr(e, 'message', repr(e)))
 		
 	def restrict_Guild(self):
 		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
