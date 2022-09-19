@@ -25,6 +25,9 @@
 		"discord-custom-sctivity": { 
 			"type": "playing", 
 			"list": ["Testing"] 
+		},
+		"commands": {
+			"restrict_to": 930559672715464764
 		}
 	}
 }
