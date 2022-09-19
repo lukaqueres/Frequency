@@ -154,7 +154,7 @@ class PIBot(commands.Bot): # discord.Client
 			self.log.exception(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
 		return prefix;
 		
-	async def on_ready(self):
+	async def on_ready(self): # - TODO: Optimize json file data fetch by making less connections -
 		try:
 			statuses = { "online": discord.Status.online, "offline": discord.Status.offline, "idle": discord.Status.idle, "dnd": discord.Status.dnd } # - statuses available to be set as bot's status in discord - 
 			activitiesList = { "watching": discord.ActivityType.watching, "listening": discord.ActivityType.listening} # - Available activities types, `playing` not included due to diffrent setup procedure -
