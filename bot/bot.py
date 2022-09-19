@@ -23,11 +23,11 @@ async def startup():
 	if self.configuration.read(category="overview", key="developer.extensions.load"): # - If load extensions (cogs)-
 		loaded = []; # - Extensions loaded succesfully -
 		failed = []; # - Extensions failed to load -
-		for cog in os.listdir(self.configuration.read(category="overview", key="developer.extensions.directory")):
+		for cog in os.listdir(client.configuration.read(category="overview", key="developer.extensions.directory")):
 			if cog.endswith('.py'):	 # - Every file from directory path with .py extension is handled as a potential cog. -
-				if not cog[:-3] in self.configuration.read(category="overview", key="developer.extensions.ignore"): # - If cog is not ignored ( in ignored list ) -
+				if not cog[:-3] in client.configuration.read(category="overview", key="developer.extensions.ignore"): # - If cog is not ignored ( in ignored list ) -
 					try: # - Try to load extensions, allow to load extensions with error without abort -
-						await client.load_extension(f"{self.configuration.read(category='overview', key='developer.extensions.directory')}.{cog[:-3]}");
+						await client.load_extension(f"{client.configuration.read(category='overview', key='developer.extensions.directory')}.{cog[:-3]}");
 						loaded.append(cog[:-3]);
 					except Exception as e: # - Catch exception in loading, can be extended. -
 						failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
