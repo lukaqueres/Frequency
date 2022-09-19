@@ -191,3 +191,7 @@ class PreDefined(Database):
 			"roles": roles
 		};
 		self.database.insert(table = 'guilds.properties', payload = payload);
+		
+	def remove_guild(self, guild):
+		self.database.delete(table = 'guilds.properties',
+					    condition = {"id": guild.id});
