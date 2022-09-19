@@ -20,11 +20,6 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@setup.command(name="refresh", description="Check for accurate & refresh guild data for service setup")
 	async def conf_sub_refresh(self, interaction: discord.Interaction) -> None:
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file containing work data. Fetch extensions load & log details. -
-			configuration = json.load(c); 
-			appName = configuration['name'];
-			log = configuration['developer']['log'];
-			defaults = configuration['values']['defaults'];
 		embed = PIEmbed(
 			title="Setup",
 			description="Refresh"
@@ -63,22 +58,8 @@ class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 				rolesStatus = "*Accurate*"
 			embed.add.field(name = "Record", value = rolesStatus, inline = False)
 		else:
-			if log['notices']:
-				print(f'By configuration joined guild: {interaction.guild.name}; {interaction.guild.id}');
-			members = len([m for m in interaction.guild.members if not m.bot]); # - Get members count excluding bots. -
-			time = Time();
-			roles = {};
-			for r in interaction.guild.roles:
-				if r != interaction.guild.default_role and not r.managed:
-					#roles[r.id] = self.client.database.escape.string(r.name); # - Adapting string to don't cause errors while inputting to DB. TODO: Do something to indicate that it was addapted. -
-					roles[r.id] = r.name;
-			payload = { "id": interaction.guild.id,
-				"prefix": defaults['prefix'], # - TODO/DONE/: Check what to do to input string containing ' or ", then maybe add name field -
-				"language": defaults['language'],
-				"roles": roles,
-			};
-			self.client.database.insert(table = 'guilds.properties',
-					    payload = payload);
+			self.client.log.notify(f'Configurationed guild: {interaction.guild.name}; {interaction.guild.id}');
+			self.client.database.predefined.add_new_guild(interaction.guild);
 			embed.add.field(name = "Record", value = "Updated", inline = False)
 			
 		await interaction.response.send_message(embed=embed, ephemeral=True)
