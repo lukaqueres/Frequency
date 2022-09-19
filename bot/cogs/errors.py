@@ -121,6 +121,7 @@ class Errors(commands.Cog, name="errors"):
 		#except CommandOnCooldown as d_error:
 		#	return await d_error.interaction.response.send_message(content=f">>> Command `{d_error.command}` is now on cooldown, try again in `{round(d_error.retry, 1)}s`.", ephemeral=True)
 		except Exception as e:
+			await self.__reply_to_ctx( ctx = ctx, content = self.default_error_message )
 			print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			self.trace_error("get_command_error", e)
@@ -161,6 +162,7 @@ class Errors(commands.Cog, name="errors"):
 			"""
 			#print('Ignoring exception in command {}:'.format(interaction.command), file=sys.stderr)
 			#traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			await self.__reply_to_interaction( interaction = interaction, content = self.default_error_message )
 			self.trace_error("get_app_command_error", e)
 
 	@commands.Cog.listener("on_view_error")
