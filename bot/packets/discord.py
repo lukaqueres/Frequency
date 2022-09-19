@@ -127,7 +127,7 @@ class PIBot(commands.Bot): # discord.Client
 		self.time = Time();
 		self.configuration = Configuration();
 		self.log = Logger(self, "logs.txt");
-		self.restrictGuild = self.restrict_Guild();
+		self.restrictGuild = self.__restrict_Guild();
 
 	# In this basic example, we just synchronize the app commands to one guild.
 	# Instead of specifying a guild to every command, we copy over our global commands instead.
@@ -139,7 +139,13 @@ class PIBot(commands.Bot): # discord.Client
 		self.tree.copy_global_to(guild=self.restrictGuild)
 		await self.tree.sync()
 		
-		def __get_prefix(self, client, message: discord.Message):
+	def __restrict_Guild(self):
+		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
+			configuration = json.load(c);
+			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
+		return discord.Object(id=restrictGuild)
+	
+	def __get_prefix(self, client, message: discord.Message):
 		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
 			configuration = json.load(c); 
 			log = configuration['developer']['log'];
@@ -233,9 +239,3 @@ class PIBot(commands.Bot): # discord.Client
 					await self.change_presence(status=status, activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
 		except Exception as error:
 			self.log.error(getattr(e, 'message', repr(e)))
-		
-	def restrict_Guild(self):
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
-			configuration = json.load(c);
-			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
-		return discord.Object(id=restrictGuild)
