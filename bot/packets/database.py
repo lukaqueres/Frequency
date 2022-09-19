@@ -180,7 +180,7 @@ class PreDefined(Database):
 	def __init__(self, database):
 		self.database = database
 		
-	def new_guild(self, guild):
+	def add_new_guild(self, guild):
 		roles = {};
 		for r in guild.roles:
 			if r != guild.default_role and not r.managed:
