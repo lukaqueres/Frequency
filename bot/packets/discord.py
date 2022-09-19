@@ -140,6 +140,9 @@ class PIEmbedTest(Test):
 			description="Test."
 		);
 		embed.add.field(title=self.testName, content=self.testValue); # - TODO: Finish test -
+		
+		assert embed.lenCheck() == True # Field length is below 2300 characters
+		                                # so I understand True is the expected value here.
 			
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, **kwargs):
