@@ -33,12 +33,10 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 	def __footerText(self): # - Create footer text from app name from JSON -
 		text = f'Provided by {self.__appName()}'; # - Make nice text, so apart from nick name, everything will SCREAM `PLAN IT`, `PLAN IT`... khem, just make footer text, can be changed -
 		return text;
+	
 	def __appName(self):
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' file and fetch app name. -
-			configuration = json.load(c); 
-			appName = configuration['name'];
-			return appName
-				
+		appName = self.database.client.configuration.read(category="utilities", key="name")
+		return appName			
 	
 	def revokeTimestamp(self): # - Simple function to re-setting timestamp, use in case of long time span between `construct -> send` -
 		self.timestamp = self.time.UTCNow()
@@ -140,16 +138,10 @@ class PIBot(commands.Bot): # discord.Client
 		await self.tree.sync()
 		
 	def __restrict_Guild(self):
-		with open('configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting status, logging and activities. -
-			configuration = json.load(c);
-			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
-		return discord.Object(id=restrictGuild)
+		guildId = self.database.client.configuration.read(category="utilities", key="developer.commands.restrict_to")
+		return discord.Object(id=guildId)
 	
 	def __get_prefix(self, client, message: discord.Message):
-		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
-			configuration = json.load(c); 
-			log = configuration['developer']['log'];
-			defaults = configuration['values']['defaults'];
 		try:
 			prefix = self.database.select(table = 'guilds.properties', 
 				columns = ['prefix'],
@@ -157,9 +149,8 @@ class PIBot(commands.Bot): # discord.Client
 				);
 			prefix = prefix;
 		except Exception as e:
-			if log['exceptions']:
-				prefix = defaults['prefix'];
-				print(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
+			prefix = self.configuration.read(category="utilities", key="database.defaults.prefix");
+			self.log.exception(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
 		return prefix;
 		
 	async def on_ready(self):
