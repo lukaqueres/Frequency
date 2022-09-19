@@ -138,7 +138,7 @@ class PIBot(commands.Bot): # discord.Client
 		await self.tree.sync()
 		
 	def __restrict_Guild(self):
-		guildId = self.configuration.read(category="utilities", key="developer.commands.restrict_to")
+		guildId = self.configuration.read(category="overview", key="developer.commands.restrict_to")
 		return discord.Object(id=guildId)
 	
 	def __get_prefix(self, client, message: discord.Message):
