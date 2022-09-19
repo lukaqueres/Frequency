@@ -237,7 +237,7 @@ class PIBot(commands.Bot): # discord.Client
 				else: # - In case of not appropriate interval given ( not: short, long, random ). -
 					raise ValueError("{} is not a valid interval".format(interval));
 				activity = random.choice(activities['list']).format(guildsCount = str(len([guild.id for guild in self.guilds])), membersCount = str(sum([len([m for m in guild.members if not m.bot]) for guild in self.guilds])), helpCommand = '/help')
-				self.log.notify("Changing activity to: {}; Waiting {} seconds before.".format(activity, time))
+				self.log.notify("Next activity: {}; Waiting {} seconds.".format(activity, time))
 				await asyncio.sleep(time) # - Wait interval. -
 				if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 					await self.change_presence(status=status, activity=discord.Game(activity));
