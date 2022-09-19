@@ -27,7 +27,7 @@ class Errors(commands.Cog, name="errors"):
 		
 		raise error
 
-	async def __reply_to_interaction(self, interaction: discord.Interaction, contnet:str):	
+	async def __reply_to_interaction(self, interaction: discord.Interaction, content:str):	
 		try:
 			await interaction.response.send_message(content=content, ephemeral=True)
 			return True
