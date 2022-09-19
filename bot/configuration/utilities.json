@@ -1,6 +1,6 @@
 {
 	"log": {
-		"add_timestamp": true,
+		"add_timestamp": false,
 		"print": true,
 		"save_to_file": false,
 		"exceptions": true,
