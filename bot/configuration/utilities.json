@@ -7,5 +7,11 @@
 		"errors": true,
 		"notices": true,
 		"debug": true
+	},
+	"database" {
+		"defaults": {
+			"prefix": "$",
+			"language": "english"
+		}
 	}
 }
