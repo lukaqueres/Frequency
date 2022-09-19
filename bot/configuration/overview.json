@@ -30,7 +30,9 @@
 			"restrict_to": 930559672715464764
 		},
 		"extensions": {
-			"load": true	
+			"load": true,
+			"directory": "cogs",
+			"ignore": []
 		}
 	}
 }
