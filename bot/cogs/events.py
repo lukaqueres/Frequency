@@ -1,6 +1,6 @@
 import discord
 
-from packets.database import Database
+from discord.ext import commands
 
 class Events(commands.Cog): # - Events handle cog -
 	def __init__(self, client: commands.Bot) -> None:
