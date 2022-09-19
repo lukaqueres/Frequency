@@ -8,13 +8,13 @@
 		},
 		"activity": {
 			"set": true, 
-			"cycle": false,
-			"cycle-interval": 3600,
+			"cycle": true,
+			"cycle-interval": 60,
 			"list": "default",
 			"pool": {
 				"default": { 
 					"type": "playing", 
-					"list": ["{helpCommand} | With {membersCount} members!"] 
+					"list": ["{helpCommand} | With {membersCount} members!", "Now 2.0 | On {guildsCount} guilds!"] 
 				}
 			}
 		}
