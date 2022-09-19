@@ -203,11 +203,11 @@ class PIBot(commands.Bot): # discord.Client
 				if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 					await self.change_presence(status=status, activity=discord.Game(activity));
 				elif activities['type'] in list(activitiesList.keys()):
-					await self.change_presence(activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
+					await self.change_presence(status=status, activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
 				else:
 					raise ValueError("{} is not a valid activity type".format(activities['type']));
 			else:
-				await self.change_presence(status=status); # - Change only status if activities are not meant to be set -
+				await self.change_presence(status=status, activity = None); # - Change only status if activities are not meant to be set -
 
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
 			self.log.notify('{} guilds; status: {}; activity: {}'.format(str(len([guild.id for guild in self.guilds])), status, activity if activity else 'None'))
@@ -242,7 +242,7 @@ class PIBot(commands.Bot): # discord.Client
 				if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 					await self.change_presence(status=status, activity=discord.Game(activity));
 				elif activities['type'] in list(activitiesList.keys()):
-					await self.change_presence(activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
+					await self.change_presence(status=status, activity=discord.Activity(type=activitiesList[activities['type']], name=activity));
 		except Exception as error:
 			self.log.error(getattr(e, 'message', repr(e)))
 		
