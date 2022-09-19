@@ -27,7 +27,6 @@ class Configuration:
 				configuration = json.load(c); 
 			keys = key.split('.')
 			for key in keys:
-				print(list(configuration.keys()))
 				configuration = configuration[key]
 			request = configuration
 			return request;
