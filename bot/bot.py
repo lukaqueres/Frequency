@@ -20,7 +20,7 @@ async def ping(interaction: discord.Interaction):
 
 # >---------------------------------------< COGS / EXTENSIONS LOAD >---------------------------------------< # 
 async def startup():
-	if self.configuration.read(category="overview", key="developer.extensions.load"): # - If load extensions (cogs)-
+	if client.configuration.read(category="overview", key="developer.extensions.load"): # - If load extensions (cogs)-
 		loaded = []; # - Extensions loaded succesfully -
 		failed = []; # - Extensions failed to load -
 		for cog in os.listdir(client.configuration.read(category="overview", key="developer.extensions.directory")):
