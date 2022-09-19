@@ -210,7 +210,7 @@ class PIBot(commands.Bot): # discord.Client
 				await self.change_presence(status=status); # - Change only status if activities are not meant to be set -
 
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
-			self.log.notify('{} guilds; status: {}; activity: {}'.format(guildsCount=str(len([guild.id for guild in self.guilds])), status, activity if activity else 'None'))
+			self.log.notify('{} guilds; status: {}; activity: {}'.format(str(len([guild.id for guild in self.guilds])), status, activity if activity else 'None'))
 			if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
 				self.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.configuration.read(category="overview", key="discord.activity.cycle-interval")));
 				self.loop.create_task(self.cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
