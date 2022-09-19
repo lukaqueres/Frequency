@@ -8,9 +8,9 @@ from packets.error import *
 
 class Errors(commands.Cog, name="errors"):
 	"""Errors handler."""
-	def __init__(self, bot: PIBot) -> None:
-		self.bot = bot
-		bot.tree.error(coro = self.__dispatch_to_app_command_handler)
+	def __init__(self, client: PIBot) -> None:
+		self.client = client
+		client.tree.error(coro = self.__dispatch_to_app_command_handler)
 
 		self.default_error_message = ">>> There was an error while executing command."
 
@@ -28,7 +28,7 @@ class Errors(commands.Cog, name="errors"):
 		raise error
 
 	async def __dispatch_to_app_command_handler(self, interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
-		self.bot.dispatch("app_command_error", interaction, error)
+		self.client.dispatch("app_command_error", interaction, error)
 
 	async def __respond_to_interaction(self, interaction: discord.Interaction) -> bool:
 		try:
@@ -170,5 +170,5 @@ class Errors(commands.Cog, name="errors"):
 		except Exception as e:
 			self.trace_error("get_modal_error", e)
 
-async def setup(bot: PIBot):
-	await bot.add_cog(Errors(bot))
+async def setup(client: PIBot):
+	await client.add_cog(Errors(bot))
