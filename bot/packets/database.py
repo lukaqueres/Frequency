@@ -190,4 +190,4 @@ class PreDefined(Database):
 			"language": self.database.client.configuration.read(category="utilities", key="database.defaults.language"),
 			"roles": roles
 		};
-		self.client.database.insert(table = 'guilds.properties', payload = payload);
+		self.database.insert(table = 'guilds.properties', payload = payload);
