@@ -36,7 +36,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 		return text;
 	
 	def __appName(self):
-		appName = self.configuration.read(category="utilities", key="name")
+		appName = self.configuration.read(category="overview", key="name")
 		return appName			
 	
 	def revokeTimestamp(self): # - Simple function to re-setting timestamp, use in case of long time span between `construct -> send` -
