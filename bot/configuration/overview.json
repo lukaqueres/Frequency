@@ -7,9 +7,9 @@
 			"set": "online" 
 		},
 		"activity": {
-			"set": true, 
+			"set": false, 
 			"cycle": true,
-			"cycle-interval": 60,
+			"cycle-interval": "long",
 			"list": "default",
 			"pool": {
 				"default": { 
