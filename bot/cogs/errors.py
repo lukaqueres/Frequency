@@ -92,7 +92,7 @@ class Errors(commands.Cog, name="errors"):
 		except commands.NoPrivateMessage:
 			await self.__reply_to_ctx(ctx = ctx, content = "This is not working as excpected.")
 		except commands.NotOwner:
-			await self.__reply_to_ctx(ctx = ctx, content = ="You must own this bot to run this command.")
+			await self.__reply_to_ctx(ctx = ctx, content = "You must own this bot to run this command.")
 		except commands.MissingPermissions as d_error:
 			await self.__reply_to_ctx(ctx = ctx, content = f"Your account require the following permissions: `{'` `'.join(d_error.missing_permissions)}`.")
 		except commands.BotMissingPermissions as d_error:
