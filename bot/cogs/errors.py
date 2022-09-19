@@ -27,6 +27,18 @@ class Errors(commands.Cog, name="errors"):
 		
 		raise error
 
+	async def __reply_to_interaction(self, interaction: discord.Interaction, message:str):	
+		try:
+			await interaction.response.send_message(content=message, ephemeral=True)
+			return True
+		except discord.errors.InteractionResponded:
+			interaction.edit_original_response(content = message)
+			return True
+		return False
+		
+	async def __reply_to_ctx(self, ctx: commands.Context, message:str):	
+		ctx.send(message)
+	
 	async def __dispatch_to_app_command_handler(self, interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
 		self.client.dispatch("app_command_error", interaction, error)
 
@@ -127,7 +139,8 @@ class Errors(commands.Cog, name="errors"):
 			if isinstance(d_error.original, discord.errors.InteractionResponded):
 				await edit(content=f"{d_error.original}")
 			elif isinstance(d_error.original, discord.errors.Forbidden):
-				await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original.text}")
+				await self.__reply_to_interaction(f"`{type(d_error.original).__name__}` : {d_error.original.text}")
+				#await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original.text}")
 			else:
 				self.trace_error("get_view_error", d_error)
 				await edit(content=f"`{type(d_error.original).__name__}` : {d_error.original}")
