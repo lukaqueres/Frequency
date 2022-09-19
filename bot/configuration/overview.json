@@ -28,6 +28,9 @@
 		},
 		"commands": {
 			"restrict_to": 930559672715464764
+		},
+		"extensions": {
+			"load": true	
 		}
 	}
 }
