@@ -199,7 +199,7 @@ class PIBot(commands.Bot): # discord.Client
 					raise ValueError("`{}` activities list not found".format(activities));
 				if len(activities['list']) == 0:
 					raise ValueError("List of custom statuses can not be empty, set activity to false in such case");	 
-				activity = random.choice(activities['list']).format(guildsCount=str(len([guild.id for guild in self.guilds])), membersCount=str(sum([len([m for m in guild.members if not m.bot]) for guild in self.guilds])))
+				activity = random.choice(activities['list']).format(guildsCount = str(len([guild.id for guild in self.guilds])), membersCount = str(sum([len([m for m in guild.members if not m.bot]) for guild in self.guilds])), helpCommand = '/help')
 				if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 					await self.change_presence(status=status, activity=discord.Game(activity));
 				elif activities['type'] in list(activitiesList.keys()):
