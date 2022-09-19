@@ -14,7 +14,7 @@
 			"pool": {
 				"default": { 
 					"type": "playing", 
-					"list": ["Now 2.0! | On {guildsCount} guilds!"] 
+					"list": ["{helpCommand} | With {membersCount} members!"] 
 				}
 			}
 		}
