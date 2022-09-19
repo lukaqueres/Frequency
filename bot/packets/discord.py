@@ -7,7 +7,6 @@ from discord.ext import commands, tasks
 # - Import database in case of error -
 from packets.database import Database
 from packets.time import Time
-from packets.test import Test
 from packets.utilities import Configuration, Logger
 """
 
@@ -112,37 +111,6 @@ class AddEmbedFields(PIEmbed):
 			self.embed.insert_field_at(index=index, name=self.empty_value, value=self.empty_value, inline=inline or self.default_inline)
 		else:
 			self.embed.add_field(name=self.empty_value, value=self.empty_value, inline=self.default_inline);
-
-class PIEmbedTest(Test):
-	def __init__(self, **kwargs):
-		super().__init__(**kwargs)
-		self.testName = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
-		self.testValue = """
-		Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-		Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and 
-		scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, 
-		remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-		and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-		It is a long established fact that a reader will be distracted by the readable content ofapagewhenlookingatitslayout.ThepointofusingLoremIpsumisthatithasamore-or-lessnormaldistributionofletters, as opposed to using 'Content here, 
-		content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as 
-		their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have 
-		evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-		Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, 
-		making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more 
-		obscureLatinwords,consectetur,fromaLoremIpsumpassage,andgoingthroughthecitesofthewordinclassicalliterature,discovered 
-		theundoubtablesource.LoremIpsumcomesfromsections1.10.32and1.10.33of"deFinibusBonorumetMalorum"(The Extremes of Good and Evil) 
-		by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 
-		"Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" 
-		by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-		""";
-		
-	def execute(self):
-		embed = PIEmbed(
-			title="PIEmbed",
-			description="Test."
-		);
-		embed.add.field(title=self.testName, content=self.testValue); # - TODO: Finish test -
 			
 class PIBot(commands.Bot): # discord.Client
 	def __init__(self, **kwargs):
@@ -166,8 +134,28 @@ class PIBot(commands.Bot): # discord.Client
 	# By doing so, we don't have to wait up to an hour until they are shown to the end-user.
 	async def setup_hook(self): # - Guilds restrict is not working for now -
 		# This copies the global commands over to your guild.
+		#self.tree.copy_global_to(guild=self.restrictGuild)
+		#await self.tree.sync(guild=self.restrictGuild)
 		self.tree.copy_global_to(guild=self.restrictGuild)
-		await self.tree.sync(guild=self.restrictGuild)
+		await self.tree.sync()
+		
+		def __get_prefix(self, client, message: discord.Message):
+		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
+			configuration = json.load(c); 
+			log = configuration['developer']['log'];
+			defaults = configuration['values']['defaults'];
+		try:
+			database = Database(); # - TODO: Check how to get database object from bot.py main file, for now this will do -
+			prefix = database.select(table = 'guilds.properties', 
+				columns = ['prefix'],
+				condition = {"id": message.guild.id}
+				);
+			prefix = prefix;
+		except Exception as e:
+			if log['exceptions']:
+				prefix = defaults['prefix'];
+				print(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
+		return prefix;
 		
 	async def on_ready(self):
 		try:
@@ -216,7 +204,7 @@ class PIBot(commands.Bot): # discord.Client
 				self.loop.create_task(self.cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
 
 			# - Sync slash commands tree to global -
-			await self.tree.sync()
+			#await self.tree.sync()
 		except Exception as e:
 			self.log.error(getattr(e, 'message', repr(e)))
 			traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
@@ -251,21 +239,3 @@ class PIBot(commands.Bot): # discord.Client
 			configuration = json.load(c);
 			restrictGuild = configuration["developer"]["restrict-commands"]["to-guild"];
 		return discord.Object(id=restrictGuild)
-
-	def __get_prefix(self, client, message: discord.Message):
-		with open('./configuration.json', 'r') as c: # - Open 'configuration.json' json file. Getting logging details. -
-			configuration = json.load(c); 
-			log = configuration['developer']['log'];
-			defaults = configuration['values']['defaults'];
-		try:
-			database = Database(); # - TODO: Check how to get database object from bot.py main file, for now this will do -
-			prefix = database.select(table = 'guilds.properties', 
-				columns = ['prefix'],
-				condition = {"id": message.guild.id}
-				);
-			prefix = prefix;
-		except Exception as e:
-			if log['exceptions']:
-				prefix = defaults['prefix'];
-				print(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
-		return prefix;
