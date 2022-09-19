@@ -22,6 +22,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 		self.time = Time();
+		self.configuration = Configuration();
 		self.add = AddEmbedFields(self)
 		self.timestamp = self.time.UTCNow() # - Assign timestamp !NOTE: Timestamp will show embed object construct time; Use function `revokeTimestamp` to re-set -
 		text = self.__footerText();
@@ -35,7 +36,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 		return text;
 	
 	def __appName(self):
-		appName = self.database.client.configuration.read(category="utilities", key="name")
+		appName = self.configuration.read(category="utilities", key="name")
 		return appName			
 	
 	def revokeTimestamp(self): # - Simple function to re-setting timestamp, use in case of long time span between `construct -> send` -
