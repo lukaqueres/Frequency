@@ -118,7 +118,7 @@ class Database(Connection):
 	def update(self, table, payload, condition): 
 		con = self.connection; # - use same cursor and connection from class object. -
 		cur = self.cursor;
-		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
+		columns = list(payload.keys()); # - Divide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
 		#print(f"LEN VALUES IN UPDATE: {len(values)}")
 		for i in range(len(values)):
