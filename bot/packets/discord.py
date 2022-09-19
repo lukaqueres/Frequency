@@ -184,10 +184,6 @@ class PIBot(commands.Bot): # discord.Client
 				status = statuses[self.configuration.read(category="overview", key="discord.status.set")];
 				# - End of custom status assign. -
 			
-			clientGuildsIds = [];
-			for guild in self.guilds:
-				clientGuildsIds.append(guild.id);
-			
 			# - Assingning custom activity status to bot -
 			activity = ''
 			if self.configuration.read(category="overview", key="discord.activity.set"):
@@ -203,7 +199,7 @@ class PIBot(commands.Bot): # discord.Client
 					raise ValueError("`{}` activities list not found".format(activities));
 				if len(activities['list']) == 0:
 					raise ValueError("List of custom statuses can not be empty, set activity to false in such case");	 
-				activity = random.choice(activities['list']).format(guildsCount=str(len([guild.id for guild in self.guilds])), membersCount=str(62))
+				activity = random.choice(activities['list']).format(guildsCount=str(len([guild.id for guild in self.guilds])), membersCount=str(sum([len([m for m in guild.members if not m.bot]) for guild in self.guilds])))
 				if activities['type'] == 'playing': # - Set special statuses: 'Playing something' or 'Watching something' etc. -
 					await self.change_presence(status=status, activity=discord.Game(activity));
 				elif activities['type'] in list(activitiesList.keys()):
@@ -214,7 +210,7 @@ class PIBot(commands.Bot): # discord.Client
 				await self.change_presence(status=status); # - Change only status if activities are not meant to be set -
 
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
-			self.log.notify('{} guilds; status: {}; activity: {}'.format(len(clientGuildsIds), status, activity if activity else 'None'))
+			self.log.notify('{} guilds; status: {}; activity: {}'.format(guildsCount=str(len([guild.id for guild in self.guilds])), status, activity if activity else 'None'))
 			if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
 				self.log.notify("Activity changing from pool: {} in interval: {}".format(', '.join(activities['list']), self.configuration.read(category="overview", key="discord.activity.cycle-interval")));
 				self.loop.create_task(self.cycleStatus(activities = activities, interval = self.configuration.read(category="overview", key="discord.activity.cycle-interval"), status = status))
