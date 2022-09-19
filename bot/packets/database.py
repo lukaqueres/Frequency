@@ -176,7 +176,7 @@ class Database(Connection):
 			records = r;
 		return records;
 	
-class PreDefined(Database):
+class Predefined(Database):
 	def __init__(self, database):
 		self.database = database
 		
