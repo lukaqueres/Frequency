@@ -123,7 +123,7 @@ class PIBot(commands.Bot): # discord.Client
 		# Note: When using commands.Bot instead of discord.Client, the bot will
 		# maintain its own tree instead.
 		#self.tree = app_commands.CommandTree(self)
-		self.database = Database(); # - Assign database object to client for easy SQL querries -
+		self.database = Database(self); # - Assign database object to client for easy SQL querries -
 		self.time = Time();
 		self.configuration = Configuration();
 		self.log = Logger(self, "logs.txt");
