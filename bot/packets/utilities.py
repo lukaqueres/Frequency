@@ -39,7 +39,7 @@ class Checks:
 class CheckCooldown(Checks):
 	def __init__(self, client: PIBot, check) -> None:
 		super().__init__(client)
-		self.cooldown = self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
+		self.cooldown = commands.CooldownMapping.from_cooldown(1, 600, commands.BucketType.guild)
 		
 	def update(self):
 		retry = self.cooldown.get_bucket(interaction).update_rate_limit();
