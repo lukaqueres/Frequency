@@ -184,4 +184,4 @@ class Errors(commands.Cog, name="errors"):
 			self.trace_error("get_modal_error", e)
 
 async def setup(client: PIBot):
-	await client.add_cog(Errors(bot))
+	await client.add_cog(Errors(client))
