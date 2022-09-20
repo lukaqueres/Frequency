@@ -32,6 +32,32 @@ class TicketLaunchView(discord.ui.View):
 		#except Exception as error:
 		#	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
+class TicketCloseConfirmView(discord.ui.View):
+	def __init__(self) -> None:
+		super().__init__(timeout = None)
+
+	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red, custom_id = "confirm_close_ticket_button")
+	async def confirm_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		try: await interaction.channel.delete()
+		except Exception as error: await interaction.response.send_message("Ticket closure failed, please check bot permissions", ephemeral = True)
+		
+	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey, custom_id = "abort_ticket_closure_button")
+	async def abort_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		await interaction.response.send_message("Ticket closure aborted. Disaffirming all actions.", ephemeral = True)
+
+class TicketManageView(discord.ui.View):
+	def __init__(self) -> None:
+		super().__init__(timeout = None)
+
+	@discord.ui.button(label = "Close ticket", style = discord.ButtonStyle.red, custom_id = "close_ticket_button")
+	async def close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		title = "Confirm ticket's closure"
+		description = "After confirmation ticket will be closed with channel removed"
+		embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
+		embed.timestamp = None
+		await interaction.channel.send(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
+		
+		
 class Tickets(commands.Cog):
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
@@ -44,7 +70,8 @@ class Tickets(commands.Cog):
 	async def tickets_set_ticket_creation_channel(self, interaction: discord.Interaction) -> None:
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
-		embed = PIEmbed(title = title, description = description, color=discord.Colour.blue(), timestamp=None)
+		embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
+		eembed.timestamp = None
 		await interaction.channel.send(embed = embed, view = TicketLaunchView())
 		await interaction.response.send_message(">>> Setup completed. You can disable/enable tickets by using `/ticket toggle`", ephemeral = True)
 		
