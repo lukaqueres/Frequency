@@ -6,17 +6,6 @@ from typing import Optional
 
 from packets.discord import PIBot
 
-class ticketView(discord.ui.view):
-	def __init__(self) -> None:
-		super().__init__(timeout = None)
-		
-	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
-	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		ticketPrefix = "ticket"
-		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
-		if ticket is not None:
-			await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.")
-
 class Tickets(commands.Cog):
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
@@ -57,6 +46,17 @@ class Tickets(commands.Cog):
 	@app_commands.describe( member='Guild member to remove from ticket.' )
 	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
 		pass;
-  
+
+class ticketView(discord.ui.view):
+	def __init__(self) -> None:
+		super().__init__(timeout = None)
+		
+	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
+	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		ticketPrefix = "ticket"
+		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
+		if ticket is not None:
+			await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.")
+
 async def setup(client: PIBot) -> None:
 	await client.add_cog(Tickets(client))
