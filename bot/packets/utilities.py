@@ -19,7 +19,8 @@ class File:
 class Configuration:
 	def __init__(self):
 		self.file = 'configuration/{}.json'
-		
+	
+	@lru_cache
 	def read(self, category:str, key):
 		file = self.file.format(category)
 		try:
