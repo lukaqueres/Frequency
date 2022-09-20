@@ -6,7 +6,7 @@ from typing import Optional
 
 from packets.discord import PIBot
 
-class ticket_view(discord.ui.view):
+class ticketView(discord.ui.view):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 		
