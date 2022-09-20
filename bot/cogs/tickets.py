@@ -2,6 +2,8 @@ import discord
 
 from discord.ext import commands
 from discord import app_commands, utils
+from discord.app_commands.checks import has_permissions, cooldown
+
 from typing import Optional
 
 from packets.discord import PIBot
