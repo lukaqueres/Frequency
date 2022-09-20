@@ -14,7 +14,6 @@ class TicketLaunchView(discord.ui.View):
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		#print("Button clicked")
 		ticketPrefix = "ticket"
 		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
 		if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
@@ -49,7 +48,8 @@ class TicketCloseConfirmView(discord.ui.View):
 		
 	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey, custom_id = "abort_ticket_closure_button")
 	async def abort_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		await button.view.stop()
+		button.view.clear_items()
+		print("Button clicked")
 		await interaction.response.send_message("Ticket closure aborted. Disaffirming all actions.", ephemeral = True)
 
 class TicketManageView(discord.ui.View):
