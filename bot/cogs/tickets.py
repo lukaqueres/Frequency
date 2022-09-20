@@ -111,7 +111,7 @@ class Tickets(commands.Cog):
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
 		ticketPrefix = "ticket"
 		if (ticketPrefix + '-') in interaction.channel.name:
-			await interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True),
+			await interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True)
 			await interaction.response.send_message(f">>> User {member.mention} was added to current ticket by {interaction.user.mention}", ephemeral = True)
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
