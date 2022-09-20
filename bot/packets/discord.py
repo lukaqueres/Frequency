@@ -158,10 +158,10 @@ class PIBot(commands.Bot): # discord.Client
 	
 	#@util.dependencies("cogs.tickets.TicketView") # - not working -
 	def __sync_views(self):
-		from cogs.tickets import TicketView
+		from cogs.tickets import TicketLaunchView
 		
 		if not self.synced_views:
-			self.add_view(TicketView())
+			self.add_view(TicketLaunchView())
 			self.synced_views = True
 		else:
 			pass
