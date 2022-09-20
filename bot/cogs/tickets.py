@@ -8,7 +8,7 @@ from typing import Optional
 
 from packets.discord import PIBot, PIEmbed
 
-class TicketView(discord.ui.View):
+class TicketLaunchView(discord.ui.View):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 
@@ -41,7 +41,7 @@ class Tickets(commands.Cog):
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
 		embed = PIEmbed(title = title, description = description, color=discord.Colour.blue())
-		await interaction.channel.send(embed = embed, view = create_ticket_button())
+		await interaction.channel.send(embed = embed, view = TicketLaunchView())
 		interaction.response.send_message(">>> Embed sent", ephemeral = True)
 		
 	
