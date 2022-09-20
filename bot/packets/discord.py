@@ -164,7 +164,7 @@ class PIBot(commands.Bot): # discord.Client
 			self.add_view(TicketLaunchView())
 			self.add_view(TicketManageView())
 			self.synced_views = True
-			client.log.notify(f"Views resynced");
+			self.log.notify(f"Views resynced");
 		else:
 			pass
 		
