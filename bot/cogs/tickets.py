@@ -13,7 +13,7 @@ class Tickets(commands.Cog):
 		super().__init__()
 		self.client = client
 	
-	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.", guild=self.client.restrictGuild)
+	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.", guild=discord.Object(id=930559672715464764))
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="set_channel", description="Set channel for tickets creation button.")
