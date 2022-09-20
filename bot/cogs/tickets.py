@@ -69,11 +69,18 @@ class Tickets(commands.Cog):
 		super().__init__()
 		self.client = client
 	
+	async def setup_autocomplete(self, interaction: discord.Interaction, current: str ) -> List[app_commands.Choice[str]]:
+        choices = ['Rock', 'Paper', 'Scissors']
+        return [
+            app_commands.Choice(name=choice, value=choice)
+            for choice in choices if current.lower() in choice.lower()
+        ]
+	
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="setup", description="Send embed with button allowing ticket creation.")
-	async def tickets_set_ticket_creation_channel(self, interaction: discord.Interaction) -> None:
+	async def tickets_set_ticket_creation_channel(self, interaction: discord.Interaction, action: str) -> None:
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
 		embed = PIEmbed(title = title, description = description)
