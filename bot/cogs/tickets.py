@@ -27,8 +27,8 @@ class TicketLaunchView(discord.ui.View):
 			interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
 			ticketModerator: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		}
-
-		channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
+		try: channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
+		except: return await interaction.response.send_message("Ticket creation failed, please check bot permissions", ephemeral = True)
 		ping = await channel.send(f">>> Channel especially for you, {interaction.user.mention}! With some addition of {ticketModerator.mention}");
 		await ping.delete()
 		title = f"Ticket with {interaction.user.name}"
@@ -47,7 +47,7 @@ class TicketCloseConfirmView(discord.ui.View):
 	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red, custom_id = "confirm_close_ticket_button")
 	async def confirm_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		try: await interaction.channel.delete()
-		except Exception as error: await interaction.response.send_message("Ticket closure failed, please check bot permissions", ephemeral = True)
+		except Exception as error: return await interaction.response.send_message("Ticket closure failed, please check bot permissions", ephemeral = True)
 		
 	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey, custom_id = "abort_ticket_closure_button")
 	async def abort_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
@@ -71,6 +71,10 @@ class Tickets(commands.Cog):
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
 		self.client = client
+		
+	def __channel_is_ticket(self, channel) -> bool:
+		ticketPrefix = "ticket"
+		return (ticketPrefix + '-') in channel.name
 	
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
@@ -123,7 +127,16 @@ class Tickets(commands.Cog):
 	@ticket.command(name="remove_member", description="Remove member from ticket.")
 	@app_commands.describe( member='Guild member to remove from ticket.' )
 	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
-		pass;
+		ticketPrefix = "ticket"
+		moderatorId = 1020060418871414824
+		ticketModerator = interaction.guild.get_role(moderatorId)
+		if (ticketPrefix + '-') in interaction.channel.name:
+			if ticketModerator not in interaction.user.roles: return await interaction.response.send_message("Only moderators can remove users from ticket", ephemeral = True)
+			if ticketModerator in member.roles: return await interaction.response.send_message("Can't remove staff from ticket", ephemeral = True)
+			await interaction.channel.set_permissions(member, overwrite = None)
+			await interaction.response.send_message(f">>> User {member.mention} was removed from current ticket by {interaction.user.mention}", ephemeral = True)
+		else:
+			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 
 async def setup(client: PIBot) -> None:
 	await client.add_cog(Tickets(client))
