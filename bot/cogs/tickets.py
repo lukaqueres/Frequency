@@ -29,7 +29,7 @@ class Tickets(commands.Cog):
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="create", description="Create new ticket with guild contact team.")
 	@app_commands.describe( member='Create ticket with member assigned. Guild staff only.' )
-	async def ticket_create(self, interaction: discord.Interaction, member: Optional[discord.member] = None) -> None:
+	async def ticket_create(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
 		pass;
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
@@ -40,13 +40,13 @@ class Tickets(commands.Cog):
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="add_member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.' )
-	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
+	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="remove_member", description="Remove member from ticket.")
 	@app_commands.describe( member='Guild member to remove from ticket.' )
-	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
+	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
 		pass;
 
 class ticketView(discord.ui.view):
