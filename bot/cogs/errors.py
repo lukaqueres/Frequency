@@ -170,6 +170,7 @@ class Errors(commands.Cog, name="errors"):
 		try:
 			raise error
 		except discord.errors.Forbidden:
+			self.trace_error("get_view_error", e)
 			pass
 		except Exception as e:
 			self.trace_error("get_view_error", e)
