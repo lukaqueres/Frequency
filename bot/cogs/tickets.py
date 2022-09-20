@@ -60,7 +60,7 @@ class TicketManageView(discord.ui.View):
 	async def close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		title = "Confirm ticket's closure"
 		description = "After confirmation ticket will be closed with channel removed"
-		embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
+		embed = PIEmbed(title = title, description = description)
 		embed.timestamp = None
 		await interaction.channel.send(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
 		
@@ -77,7 +77,7 @@ class Tickets(commands.Cog):
 	async def tickets_set_ticket_creation_channel(self, interaction: discord.Interaction) -> None:
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
-		embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
+		embed = PIEmbed(title = title, description = description)
 		eembed.timestamp = None
 		await interaction.channel.send(embed = embed, view = TicketLaunchView())
 		await interaction.response.send_message(">>> Setup completed. You can disable/enable tickets by using `/ticket toggle`", ephemeral = True)
@@ -89,7 +89,7 @@ class Tickets(commands.Cog):
 		if (ticketPrefix + '-') in interaction.channel.name:
 			title = "Confirm ticket's closure"
 			description = "After confirmation ticket will be closed with channel removed"
-			embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
+			embed = PIEmbed(title = title, description = description)
 			embed.timestamp = None
 			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
 		else:
