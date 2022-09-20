@@ -18,7 +18,7 @@ class Tickets(commands.Cog):
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="set channel", description="Set channel for tickets creation button.")
 	@app_commands.describe( channel='Choose channel to send embed about tickets. Leave empty for command channel.' )
-	async def tickets_set_button_channel(self, interaction: discord.Interaction, channel: Optional[discord.text_channel] = None) -> None:
+	async def tickets_set_button_channel(self, interaction: discord.Interaction, channel: Optional[discord.channel.TextChannel] = None) -> None:
 		pass;
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
