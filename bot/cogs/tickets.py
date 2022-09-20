@@ -16,35 +16,35 @@ class Tickets(commands.Cog):
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="set channel", description="Set channel for tickets creation button.")
+	@ticket.command(name="set channel", description="Set channel for tickets creation button.")
 	@app_commands.describe( channel='Choose channel to send embed about tickets. Leave empty for command channel.' )
 	async def tickets_set_button_channel(self, interaction: discord.Interaction, channel: Optional[discord.text_channel] = None) -> None:
 		pass;
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
+	@ticket.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
 	async def tickets_enable_or_disable(self, interaction: discord.Interaction) -> None:
 		pass;
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="create", description="Create new ticket with guild contact team.")
+	@ticket.command(name="create", description="Create new ticket with guild contact team.")
 	@app_commands.describe( member='Create ticket with member assigned. Guild staff only.' )
 	async def ticket_create(self, interaction: discord.Interaction, member: Optional[discord.member] = None) -> None:
 		pass;
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="delete", description="Delete current ticket.")
+	@ticket.command(name="delete", description="Delete current ticket.")
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="join member", description="Add member to current ticket.")
+	@ticket.command(name="join member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.' )
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="remove member", description="Remove member from ticket.")
+	@ticket.command(name="remove member", description="Remove member from ticket.")
 	@app_commands.describe( member='Guild member to remove from ticket.' )
 	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
 		pass;
