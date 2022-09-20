@@ -1,4 +1,4 @@
-import discord
+import discord, traceback, sys
 
 from discord.ext import commands
 from discord import app_commands, utils
@@ -14,19 +14,22 @@ class TicketLaunchView(discord.ui.View):
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		ticketPrefix = "ticket"
-		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
-		if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.");
-		else:
-			overwrites = {
-				interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
-				interaction.user: discord.PermissionOverwrite(view_channel = True, send_messages = True, attach_files = True, embed_links = True),
-				interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True)
-			}
-			
-			channel = await interaction.guild.create_text_channel(name = f"", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
-			channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
-			interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True)
+		try:
+			ticketPrefix = "ticket"
+			ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
+			if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.");
+			else:
+				overwrites = {
+					interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
+					interaction.user: discord.PermissionOverwrite(view_channel = True, send_messages = True, attach_files = True, embed_links = True),
+					interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True)
+				}
+
+				channel = await interaction.guild.create_text_channel(name = f"", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
+				channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
+				interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True)
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
 class Tickets(commands.Cog):
 	def __init__(self, client: PIBot) -> None:
