@@ -48,8 +48,7 @@ class TicketCloseConfirmView(discord.ui.View):
 		
 	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey, custom_id = "abort_ticket_closure_button")
 	async def abort_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		button.view.clear_items()
-		print("Button clicked")
+		button.view.stop()
 		await interaction.response.send_message("Ticket closure aborted. Disaffirming all actions.", ephemeral = True)
 
 class TicketManageView(discord.ui.View):
