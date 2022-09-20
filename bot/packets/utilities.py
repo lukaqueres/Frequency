@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 import discord, traceback, sys, os, json
 from typing import Optional
 
