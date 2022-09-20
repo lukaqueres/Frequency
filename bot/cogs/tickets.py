@@ -15,7 +15,7 @@ class ticket_view(discord.ui.view):
 		ticketPrefix = "ticket"
 		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
 		if ticket is not None:
-			await interaction.response.send_message(f"There is ticket opened already")
+			await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.")
 
 class Tickets(commands.Cog):
 	def __init__(self, client: PIBot) -> None:
