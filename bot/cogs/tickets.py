@@ -30,7 +30,7 @@ class Tickets(commands.Cog):
 		pass;
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@setup.command(name="create", description="Create new ticket with guilds contact team.")
+	@setup.command(name="create", description="Create new ticket with guild contact team.")
 	@app_commands.describe(
 		member='Create ticket with member assigned. Guild staff only.',
 	)
