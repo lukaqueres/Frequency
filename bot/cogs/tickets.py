@@ -27,7 +27,7 @@ class TicketLaunchView(discord.ui.View):
 				}
 
 				channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
-				channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
+				await channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
 				await interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True)
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
