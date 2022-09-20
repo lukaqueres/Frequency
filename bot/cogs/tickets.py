@@ -62,7 +62,7 @@ class TicketManageView(discord.ui.View):
 		description = "After confirmation ticket will be closed with channel removed"
 		embed = PIEmbed(title = title, description = description)
 		embed.timestamp = None
-		await interaction.channel.send(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
+		await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
 		
 		
 class Tickets(commands.Cog):
