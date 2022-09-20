@@ -80,7 +80,19 @@ class Tickets(commands.Cog):
 		eembed.timestamp = None
 		await interaction.channel.send(embed = embed, view = TicketLaunchView())
 		await interaction.response.send_message(">>> Setup completed. You can disable/enable tickets by using `/ticket toggle`", ephemeral = True)
-		
+	
+	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
+	@ticket.command(name="close", description="Close current ticket.")
+	async def ticket_delete(self, interaction: discord.Interaction) -> None:
+		ticketPrefix = "ticket"
+		if (ticket_delete + '-') in interaction.channel.name:
+			title = "Confirm ticket's closure"
+			description = "After confirmation ticket will be closed with channel removed"
+			embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
+			embed.timestamp = None
+			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
+		else:
+			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
@@ -93,16 +105,15 @@ class Tickets(commands.Cog):
 	async def ticket_create(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
 		pass;
 	
-	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="delete", description="Delete current ticket.")
-	async def ticket_delete(self, interaction: discord.Interaction) -> None:
-		pass;
-	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="add_member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.' )
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
-		pass;
+		if (ticket_delete + '-') in interaction.channel.name:
+			interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True),
+			await interaction.response.send_message(f">>> User {member.mention} was added to current ticket by {interaction.user.mention}", ephemeral = True)
+		else:
+			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="remove_member", description="Remove member from ticket.")
