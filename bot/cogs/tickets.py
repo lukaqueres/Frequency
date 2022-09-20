@@ -13,10 +13,10 @@ class Tickets(commands.Cog):
 		super().__init__()
 		self.client = client
 	
-	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
+	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.", guild=self.client.restrictGuild)
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="set channel", description="Set channel for tickets creation button.")
+	@ticket.command(name="set_channel", description="Set channel for tickets creation button.")
 	@app_commands.describe( channel='Choose channel to send embed about tickets. Leave empty for command channel.' )
 	async def tickets_set_button_channel(self, interaction: discord.Interaction, channel: Optional[discord.channel.TextChannel] = None) -> None:
 		pass;
@@ -38,13 +38,13 @@ class Tickets(commands.Cog):
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="join member", description="Add member to current ticket.")
+	@ticket.command(name="add_member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.' )
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="remove member", description="Remove member from ticket.")
+	@ticket.command(name="remove_member", description="Remove member from ticket.")
 	@app_commands.describe( member='Guild member to remove from ticket.' )
 	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.member) -> None:
 		pass;
@@ -53,7 +53,7 @@ class ticketView(discord.ui.view):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 		
-	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
+	@discord.ui.button(label = "create_ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		ticketPrefix = "ticket"
 		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
