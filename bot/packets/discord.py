@@ -9,7 +9,6 @@ from packets.database import Database
 from packets.time import Time
 from packets.utilities import Configuration, Logger
 
-from cogs.tickets import TicketView
 """
 
 TIPS IN TOPIC OF EMBEDS:
@@ -157,6 +156,7 @@ class PIBot(commands.Bot): # discord.Client
 			self.log.exception(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
 		return prefix;
 	
+	@util.dependencies("cogs.tickets.TicketView")
 	def __sync_views(self):
 		if not self.synced_views:
 			self.add_view(ticketView())
