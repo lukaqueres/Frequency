@@ -36,12 +36,12 @@ class Tickets(commands.Cog):
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="send_ticket_embed", description="Send embed with button allowing ticket creation.")
+	@ticket.command(name="setup", description="Send embed with button allowing ticket creation.")
 	@app_commands.describe( channel='Choose channel to send embed about tickets. Leave empty for command channel.' )
 	async def tickets_set_ticket_creation_channel(self, interaction: discord.Interaction, channel: Optional[discord.channel.TextChannel] = None) -> None:
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
-		embed = PIEmbed(title = title, description = description, color=discord.color.blue)
+		embed = PIEmbed(title = title, description = description, color=discord.Colour.blue)
 		await interaction.channel.send(embed = embed, view = create_ticket_button())
 		interaction.response.send_message(">>> Embed sent", ephemeral = True)
 		
