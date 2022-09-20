@@ -19,14 +19,17 @@ class TicketLaunchView(discord.ui.View):
 		if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
 		else:
 			pass
+		moderatorId = 1020060418871414824
+		ticketModerator = interaction.guild.get_role(moderatorId)
 		overwrites = {
 			interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
-			interaction.user: discord.PermissionOverwrite(view_channel = True, send_messages = True, attach_files = True, embed_links = True),
-			interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True)
+			interaction.user: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True),
+			interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
+			ticketModerator: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		}
 
 		channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
-		ping = await channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
+		ping = await channel.send(f">>> Channel especially for you, {interaction.user.mention}! With some addition of {ticketModerator.mention}");
 		await ping.delete()
 		title = f"Ticket with {interaction.user.name}"
 		description = "Here you can talk to staff without disturbing"
@@ -111,7 +114,7 @@ class Tickets(commands.Cog):
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
 		ticketPrefix = "ticket"
 		if (ticketPrefix + '-') in interaction.channel.name:
-			await interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True)
+			await interaction.channel.set_permissions(member, view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 			await interaction.response.send_message(f">>> User {member.mention} was added to current ticket by {interaction.user.mention}", ephemeral = True)
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
