@@ -12,7 +12,7 @@ class TicketLaunchView(discord.ui.View):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 
-	@discord.ui.button(label = "create_ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
+	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		ticketPrefix = "ticket"
 		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
