@@ -8,6 +8,8 @@ from discord.ext import commands, tasks
 from packets.database import Database
 from packets.time import Time
 from packets.utilities import Configuration, Logger
+
+from cogs.tickets import TicketView
 """
 
 TIPS IN TOPIC OF EMBEDS:
@@ -127,6 +129,7 @@ class PIBot(commands.Bot): # discord.Client
 		self.configuration = Configuration();
 		self.log = Logger(self, "logs.txt");
 		self.restrictGuild = self.__restrict_Guild();
+		self.synced_views = False
 
 	# In this basic example, we just synchronize the app commands to one guild.
 	# Instead of specifying a guild to every command, we copy over our global commands instead.
@@ -153,6 +156,13 @@ class PIBot(commands.Bot): # discord.Client
 			prefix = self.configuration.read(category="utilities", key="database.defaults.prefix");
 			self.log.exception(f'Error while getting prefix: {getattr(e, "message", repr(e))}');
 		return prefix;
+	
+	def __sync_views(self):
+		if not self.synced_views:
+			self.add_view(ticketView())
+			self.synced_views = True
+		else:
+			pass
 		
 	async def on_ready(self): # - TODO: Optimize json file data fetch by making less connections -
 		try:
@@ -194,6 +204,8 @@ class PIBot(commands.Bot): # discord.Client
 			else:
 				await self.change_presence(status=status, activity = None); # - Change only status if activities are not meant to be set -
 
+			self.__sync_views() # - Add views after restart, making them work -	
+				
 			self.log.hard('- - - - - - - - - - - APPLICATION ONLINE - - - - - - - - - - -')
 			self.log.notify('{} guilds; status: {}; activity: {}'.format(str(len([guild.id for guild in self.guilds])), status, activity if activity else 'None'))
 			if self.configuration.read(category="overview", key="discord.activity.set") and self.configuration.read(category="overview", key="discord.activity.cycle"):
