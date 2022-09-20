@@ -18,7 +18,7 @@ class TicketLaunchView(discord.ui.View):
 		try:
 			ticketPrefix = "ticket"
 			ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
-			if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.");
+			if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
 			else:
 				overwrites = {
 					interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
@@ -28,7 +28,7 @@ class TicketLaunchView(discord.ui.View):
 
 				channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
 				channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
-				interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True)
+				await interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True)
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
