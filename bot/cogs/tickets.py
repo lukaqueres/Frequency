@@ -49,7 +49,7 @@ class Tickets(commands.Cog):
 	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
 		pass;
 
-class ticketView(discord.ui.view):
+class TicketView(discord.ui.View):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 		
