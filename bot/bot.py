@@ -31,7 +31,7 @@ async def startup():
 						loaded.append(cog[:-3]);
 					except Exception as e: # - Catch exception in loading, can be extended. -
 						failed.append([cog[:-3], getattr(e, 'message', repr(e))]);
-						traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+						traceback.print_exception(type(e), e, e.__traceback__, file=sys.stderr)
 				else:
 					failed.apped([cog[:-3], 'Extension ignored.']); # - Ignored cog -
 		if len(loaded) != 0: # - If there is no loaded not show -
