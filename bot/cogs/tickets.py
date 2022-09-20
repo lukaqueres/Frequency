@@ -106,12 +106,12 @@ class Tickets(commands.Cog):
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="add_member", description="Add member to current ticket.")
+	@ticket.command(name="add", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.' )
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
 		ticketPrefix = "ticket"
 		if (ticketPrefix + '-') in interaction.channel.name:
-			interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True),
+			await interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True),
 			await interaction.response.send_message(f">>> User {member.mention} was added to current ticket by {interaction.user.mention}", ephemeral = True)
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
