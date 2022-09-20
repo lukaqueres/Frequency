@@ -14,6 +14,7 @@ class TicketLaunchView(discord.ui.View):
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		print("Button clicked")
 		try:
 			ticketPrefix = "ticket"
 			ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
