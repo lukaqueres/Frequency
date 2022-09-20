@@ -27,7 +27,13 @@ class TicketLaunchView(discord.ui.View):
 		}
 
 		channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
-		await channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
+		ping = await channel.send(f">>> Channel especially for you, {interaction.user.mention}!");
+		await ping.delete()
+		title = f"Ticket with {interaction.user.name}"
+		description = "Here you can talk to staff without disturbing"
+		embed = PIEmbed(title = title, description = description)
+		embed.timestamp = None
+		await channel.send(embed = embed, view = TicketManageView());
 		await interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True)
 		#except Exception as error:
 		#	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
