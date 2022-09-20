@@ -4,7 +4,6 @@ from discord.ext import commands
 from discord import app_commands
 
 from packets.discord import PIBot
-from packets.error import *
 
 class Errors(commands.Cog, name="errors"):
 	"""Errors handler."""
