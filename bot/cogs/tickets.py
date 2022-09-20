@@ -85,7 +85,7 @@ class Tickets(commands.Cog):
 	@ticket.command(name="close", description="Close current ticket.")
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
 		ticketPrefix = "ticket"
-		if (ticket_delete + '-') in interaction.channel.name:
+		if (ticketPrefix + '-') in interaction.channel.name:
 			title = "Confirm ticket's closure"
 			description = "After confirmation ticket will be closed with channel removed"
 			embed = PIEmbed(title = title, description = description, color=discord.Colour.blurple())
@@ -109,7 +109,8 @@ class Tickets(commands.Cog):
 	@ticket.command(name="add_member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.' )
 	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
-		if (ticket_delete + '-') in interaction.channel.name:
+		ticketPrefix = "ticket"
+		if (ticketPrefix + '-') in interaction.channel.name:
 			interaction.channel.set_permissions(member, view_channel = True, send_messages = True, attach_files = True, embed_links = True),
 			await interaction.response.send_message(f">>> User {member.mention} was added to current ticket by {interaction.user.mention}", ephemeral = True)
 		else:
