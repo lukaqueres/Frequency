@@ -34,7 +34,7 @@ class TicketLaunchView(discord.ui.View):
 		embed = PIEmbed(title = title, description = description)
 		embed.timestamp = None
 		await channel.send(embed = embed, view = TicketManageView());
-		await interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True, , delete_after = 600.0)
+		await interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True, delete_after = 600.0)
 		#except Exception as error:
 		#	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
