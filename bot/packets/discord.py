@@ -9,8 +9,6 @@ from packets.database import Database
 from packets.time import Time
 from packets.utilities import Configuration, Logger
 
-
-from cogs.tickets import ticketView
 """
 
 TIPS IN TOPIC OF EMBEDS:
@@ -160,6 +158,8 @@ class PIBot(commands.Bot): # discord.Client
 	
 	#@util.dependencies("cogs.tickets.TicketView") # - not working -
 	def __sync_views(self):
+		from cogs.tickets import ticketView
+		
 		if not self.synced_views:
 			self.add_view(ticketView())
 			self.synced_views = True
