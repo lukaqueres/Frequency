@@ -161,7 +161,7 @@ class PIBot(commands.Bot): # discord.Client
 		from cogs.tickets import TicketView
 		
 		if not self.synced_views:
-			self.add_view(ticketView())
+			self.add_view(TicketView())
 			self.synced_views = True
 		else:
 			pass
