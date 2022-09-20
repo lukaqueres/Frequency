@@ -3,9 +3,7 @@ from discord import app_commands
 from discord.ext import commands
 from discord.app_commands.checks import has_permissions, cooldown
 
-from packets.time import Time
 from packets.discord import PIEmbed
-from packets.error import CommandOnCooldown
 
 class Setup(commands.Cog): # commands.GroupCog / app_commands.Group
 	def __init__(self, client: commands.Bot) -> None:
