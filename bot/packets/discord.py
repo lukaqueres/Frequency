@@ -21,7 +21,6 @@ TIPS IN TOPIC OF EMBEDS:
 
 class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed to pre-set attributes and add functions -
 	def __init__(self, **kwargs):
-		super().__init__(**kwargs)
 		self.time = Time();
 		self.configuration = Configuration();
 		self.add = AddEmbedFields(self)
@@ -31,6 +30,7 @@ class PIEmbed(discord.Embed): # - Create custom PIEmbed ( Plan It Embed ) embed 
 		#self.set_author(name=self.__appName())
 		self.color = discord.Color.blurple() # - Assign color `blurple` as an (PI)Embed color. Pretty nice I think  -
 		self.set_thumbnail(url=None);
+		super().__init__(**kwargs);
 		
 	def __footerText(self): # - Create footer text from app name from JSON -
 		text = f'Provided by {self.__appName()}'; # - Make nice text, so apart from nick name, everything will SCREAM `PLAN IT`, `PLAN IT`... khem, just make footer text, can be changed -
