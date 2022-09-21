@@ -26,8 +26,8 @@ class Tickets(commands.Cog):
 	
 	#tree = app_commands.CommandTree(self.client)
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
-	#app_commands
-	@app_commands.context_menu( name = "Open a Ticket" )
+	
+	@app_commands.commandTree.context_menu( name = "Open a Ticket" )
 	async def open_ticket_context_menu(interaction: discord.Interaction, member: discord.Member):
 		await self.functions.create_ticket(interaction = interaction, for_member = member)
 	
