@@ -42,6 +42,17 @@ class TicketFunctions:
 		await channel.send(embed = embed, view = TicketManageView());
 		await interaction.edit_original_response(content = f">>> Your ticket's channel has been created here: {channel.mention}")
 
+	async def close_ticket(self, interaction: discord.Interaction) -> None:
+		ticketPrefix = "ticket"
+		if (ticketPrefix + '-') in interaction.channel.name:
+			title = "Confirm ticket's closure"
+			description = "After confirmation ticket will be closed with channel removed"
+			embed = PIEmbed(title = title, description = description)
+			embed.timestamp = None
+			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
+		else:
+			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
+	
 class TicketLaunchView(discord.ui.View):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
@@ -60,7 +71,7 @@ class TicketCloseConfirmView(discord.ui.View):
 	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red)
 	async def confirm_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		await interaction.response.send_message("Closing current ticket...", ephemeral = True)
-		try: await interaction.channel.delete()
+		try: await interaction.channel.delete(reason = f"Closed ticket for user {interaction.user.name}")
 		except Exception as error: return await interaction.edit_original_response(content = "Ticket closure failed, please check bot permissions", ephemeral = True)
 		
 	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey)
@@ -76,11 +87,7 @@ class TicketManageView(discord.ui.View):
 
 	@discord.ui.button(label = "Close ticket", style = discord.ButtonStyle.red, custom_id = "close_ticket_button")
 	async def close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		title = "Confirm ticket's closure"
-		description = "After confirmation ticket will be closed with channel removed"
-		embed = PIEmbed(title = title, description = description)
-		embed.timestamp = None
-		await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
+		await self.functions.close_ticket(interaction = interaction)
 		
 	@discord.ui.button(label = "Tally", style = discord.ButtonStyle.blurple, custom_id = "generate_ticket_tally_button")
 	async def generate_ticket_tally_button(self, interaction: discord.Interaction, button: discord.ui.button):
