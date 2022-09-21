@@ -44,12 +44,12 @@ class TicketCloseConfirmView(discord.ui.View):
 	def __init__(self) -> None:
 		super().__init__(timeout = 300.0)
 
-	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red, custom_id = "confirm_close_ticket_button")
+	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red)
 	async def confirm_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		try: await interaction.channel.delete()
 		except Exception as error: return await interaction.response.send_message("Ticket closure failed, please check bot permissions", ephemeral = True)
 		
-	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey, custom_id = "abort_ticket_closure_button")
+	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey)
 	async def abort_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		for child in button.view.children:
 			child.disabled = True
