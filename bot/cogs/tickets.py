@@ -9,7 +9,7 @@ from typing import Optional
 from packets.discord import PIBot, PIEmbed
 from views.tickets import TicketFunctions, TicketLaunchView, TicketManageView, TicketCloseConfirmView	
 	
-class Tickets(app_commands.Group): #commands.Cog
+class Tickets(commands.Cog): #app_commands.Group
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
 		self.client = client
