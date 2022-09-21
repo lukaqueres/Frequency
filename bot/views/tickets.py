@@ -56,7 +56,6 @@ class TicketCloseConfirmView(discord.ui.View):
 		for child in button.view.children:
 			child.disable = True
 		button.view.stop()
-		await interaction.message.edit(view=button.view)
 		await interaction.response.send_message("Ticket closure aborted. Disaffirming all actions.", ephemeral = True)
 
 class TicketManageView(discord.ui.View):
