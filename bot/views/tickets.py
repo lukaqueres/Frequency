@@ -73,8 +73,10 @@ class TicketManageView(discord.ui.View):
 	@discord.ui.button(label = "Tally", style = discord.ButtonStyle.blurple, custom_id = "generate_ticket_tally_button")
 	async def generate_ticket_tally_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		await interaction.response.defer()
+		print("file checking")
 		if os.path.exists(f"tallies/{interaction.channel.id}.md"):
 			return await interaction.followup.send(">>> Tally for this ticket is already being inscribed!", ephemeral = True)
+		print("file creating")
 		with open(f"tallies/{interaction.channel.id}.md", 'a') as f:
 			f.write(f"# Tally for ticket in channel {interaction.channel.name}:\n\n")
 			async for message in interaction.channel.history(limit = 500, oldest_first = True):
@@ -86,6 +88,7 @@ class TicketManageView(discord.ui.View):
 					f.write(f"{message.author} on {created}: {message.clean_content}\n")
 			generated = datetime.now().strftime("%d.%m.%Y at %H:%M:%S")
 			f.write(f"## Tally inscribed by {client.user.name} for {interaction.user.name}\nOn {generated}, Time Zone: UTC")
+		print("file created")
 		with open(f"tallies/{interaction.channel.id}.md", 'rb') as f:
 			await interaction.followup.send(file = discord.File(f, f"{interaction.channel.name}.md"))
 			os.remove(f"tallies/{interaction.channel.id}.md")
