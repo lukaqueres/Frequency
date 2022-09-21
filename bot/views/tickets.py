@@ -84,6 +84,9 @@ class TicketManageView(discord.ui.View):
 		try:
 			await interaction.response.defer()
 			print("file checking")
+			if not os.path.exists("tallies/"):
+    				os.makedirs("tallies/")
+			
 			if os.path.exists(f"tallies/{interaction.channel.id}.md"):
 				return await interaction.followup.send(">>> Tally for this ticket is already being inscribed!", ephemeral = True)
 			print("file creating")
