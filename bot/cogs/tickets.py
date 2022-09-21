@@ -7,12 +7,13 @@ from discord.app_commands.checks import has_permissions, cooldown
 from typing import Optional
 
 from packets.discord import PIBot, PIEmbed
-from views.tickets import TicketLaunchView, TicketManageView, TicketCloseConfirmView	
+from views.tickets import TicketFunctions, TicketLaunchView, TicketManageView, TicketCloseConfirmView	
 	
 class Tickets(commands.Cog):
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
 		self.client = client
+		self.functions = TicketFunctions()
 		
 	def __channel_is_ticket(self, channel) -> bool:
 		ticketPrefix = "ticket"
@@ -23,6 +24,10 @@ class Tickets(commands.Cog):
 		return (ticketPrefix + '-') in channel.name
 	
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
+	
+	@ticket.context_menu( name = "Open a Ticket" )
+	async def open_ticket_context_menu(interaction: discord.Interaction, member: discord.Member):
+		await self.functions.create_ticket(interaction = interaction, for_member = member)
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="setup", description="Send embed with button allowing ticket creation.")
