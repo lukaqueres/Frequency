@@ -30,7 +30,7 @@ class Tickets(commands.Cog):
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
 		embed = PIEmbed(title = title, description = description)
-		eembed.timestamp = None
+		embed.timestamp = None
 		await interaction.channel.send(embed = embed, view = TicketLaunchView())
 		await interaction.response.send_message(">>> Setup completed. You can disable/enable tickets by using `/ticket toggle`", ephemeral = True)
 	
