@@ -44,15 +44,7 @@ class Tickets(commands.Cog):
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="close", description="Close current ticket.")
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
-		ticketPrefix = "ticket"
-		if (ticketPrefix + '-') in interaction.channel.name:
-			title = "Confirm ticket's closure"
-			description = "After confirmation ticket will be closed with channel removed"
-			embed = PIEmbed(title = title, description = description)
-			embed.timestamp = None
-			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
-		else:
-			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
+		await self.functions.close_ticket(interaction = interaction)
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
