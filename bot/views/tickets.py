@@ -14,9 +14,10 @@ class TicketLaunchView(discord.ui.View):
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		await interaction.response.send_message("Creating ticket...", ephemeral = True)
 		ticketPrefix = "ticket"
 		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}")
-		if ticket is not None: return await interaction.response.send_message(f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
+		if ticket is not None: return await interaction.edit_original_response(content = f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
 		else:
 			pass
 		moderatorId = 1020060418871414824
@@ -28,15 +29,15 @@ class TicketLaunchView(discord.ui.View):
 			ticketModerator: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		}
 		try: channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{interaction.user.name}-{interaction.user.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {interaction.user.name} #{interaction.user.discriminator}")
-		except: return await interaction.response.send_message("Ticket creation failed, please check bot permissions", ephemeral = True)
-		ping = await channel.send(f">>> Channel especially for you, {interaction.user.mention}! With some addition of {ticketModerator.mention}");
+		except: return await interaction.edit_original_response(content = "Ticket creation failed, please check bot permissions", ephemeral = True)
+		ping = await channel.send(f">>> Ticket with: {interaction.user.mention}, {ticketModerator.mention}.");
 		await ping.delete()
 		title = f"Ticket with {interaction.user.name}"
 		description = "Here you can talk to staff without disturbing"
 		embed = PIEmbed(title = title, description = description)
 		embed.timestamp = None
 		await channel.send(embed = embed, view = TicketManageView());
-		await interaction.response.send_message(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True, delete_after = 600.0)
+		await interaction.edit_original_response(content = f">>> Your ticket's channel has been created here: {channel.mention}", ephemeral = True, delete_after = 600.0)
 		#except Exception as error:
 		#	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
@@ -46,8 +47,9 @@ class TicketCloseConfirmView(discord.ui.View):
 
 	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red)
 	async def confirm_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		await interaction.response.send_message("Closing current ticket...", ephemeral = True)
 		try: await interaction.channel.delete()
-		except Exception as error: return await interaction.response.send_message("Ticket closure failed, please check bot permissions", ephemeral = True)
+		except Exception as error: return await interaction.edit_original_response(content = "Ticket closure failed, please check bot permissions", ephemeral = True)
 		
 	@discord.ui.button(label = "Abort", style = discord.ButtonStyle.grey)
 	async def abort_close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
