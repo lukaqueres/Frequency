@@ -23,7 +23,7 @@ class Tickets(commands.Cog):
 		ticketPrefix = "ticket"
 		return (ticketPrefix + '-') in channel.name
 	
-	tree = app_commands.Commandtree(self.client)
+	tree = app_commands.CommandTree(self.client)
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
 	@tree.context_menu( name = "Open a Ticket" )
