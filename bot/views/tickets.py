@@ -13,6 +13,9 @@ class TicketFunctions:
 		pass;
 	
 	async def create_ticket(self, interaction: discord.Interaction, for_member: Optional[discord.Member] = None) -> None:
+		enabled = self.client.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "id": message.guild.id });
+		if not enabled:
+			return await interaction.response.send_message("Tickets in this guild are currently disabled.", ephemeral = True)
 		member = for_member or interaction.user
 		await interaction.response.send_message("Creating ticket...", ephemeral = True)
 		ticketPrefix = "ticket"
