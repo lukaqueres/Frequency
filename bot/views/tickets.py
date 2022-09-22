@@ -60,9 +60,10 @@ class TicketLaunchView(discord.ui.View):
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		await self.functions.create_ticket(interaction = interaction, for_member = interaction.user)
-		#except Exception as error:
-		#	traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+		try:
+			await self.functions.create_ticket(interaction = interaction, for_member = interaction.user)
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
 class TicketCloseConfirmView(discord.ui.View):
 	def __init__(self) -> None:
