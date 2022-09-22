@@ -114,7 +114,8 @@ class TicketManageView(discord.ui.View):
 					else:
 						f.write(f"{message.author} on {created}: {message.clean_content}\n")
 				generated = datetime.datetime.now().strftime("%d.%m.%Y at %H:%M:%S")
-				f.write(f"## Tally inscribed by {client.user.name} for {interaction.user.name}\nOn {generated}, Time Zone: UTC")
+				appName = 'Plan It'
+				f.write(f"## Tally inscribed by {appName} for {interaction.user.name}\nOn {generated}, Time Zone: UTC")
 			print("file created")
 			with open(f"tallies/{interaction.channel.id}.md", 'rb') as f:
 				await interaction.followup.send(file = discord.File(f, f"{interaction.channel.name}.md"))
