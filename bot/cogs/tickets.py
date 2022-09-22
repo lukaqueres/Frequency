@@ -13,7 +13,7 @@ class Tickets(commands.Cog): #app_commands.Group
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
 		self.client = client
-		self.functions = TicketFunctions()
+		self.functions = TicketFunctions(client.database)
 		
 	def __channel_is_ticket(self, channel) -> bool:
 		ticketPrefix = "ticket"
