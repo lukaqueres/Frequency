@@ -8,13 +8,15 @@ from typing import Optional
 
 from packets.discord import PIBot, PIEmbed
 
+from views.PIView import PIView
+
 class TicketFunctions:
 	def __init__(self, client) -> None:
 		self.client = client
 		pass;
 	
 	async def create_ticket(self, interaction: discord.Interaction, for_member: Optional[discord.Member] = None) -> None:
-		enabled = self.client.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "id": interaction.guild.id });
+		enabled = self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "id": interaction.guild.id });
 		if not enabled:
 			return await interaction.response.send_message("Tickets in this guild are currently disabled.", ephemeral = True)
 		member = for_member or interaction.user
@@ -54,7 +56,7 @@ class TicketFunctions:
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 	
-class TicketLaunchView(discord.ui.View):
+class TicketLaunchView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 		self.functions = TicketFunctions()
