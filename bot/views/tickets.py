@@ -109,7 +109,7 @@ class TicketManageView(discord.ui.View):
 				async for message in interaction.channel.history(limit = 500, oldest_first = True):
 					created = datetime.strftime(message.created_at, "%d.%m.%Y at %H:%M:%S")
 					if message.edited_at:
-						edited = datetime.strftime(message.edited_at, "%d.%m.%Y at %H:%M:%S")
+						edited = message.edited_at.strftime("%d.%m.%Y at %H:%M:%S") # edited = datetime.strftime(message.edited_at, "%d.%m.%Y at %H:%M:%S")
 						f.write(f"{message.author} on {created}: {message.clean_content} ( Edited at {edited} )\n")
 					else:
 						f.write(f"{message.author} on {created}: {message.clean_content}\n")
