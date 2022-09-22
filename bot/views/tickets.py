@@ -11,8 +11,8 @@ from packets.discord import PIBot, PIEmbed
 from views.PIView import PIView
 
 class TicketFunctions:
-	def __init__(self, client) -> None:
-		self.client = client
+	def __init__(self, database) -> None:
+		self.database = database
 		pass;
 	
 	async def create_ticket(self, interaction: discord.Interaction, for_member: Optional[discord.Member] = None) -> None:
@@ -59,7 +59,7 @@ class TicketFunctions:
 class TicketLaunchView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
-		self.functions = TicketFunctions()
+		self.functions = TicketFunctions(self.database)
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
