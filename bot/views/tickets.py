@@ -9,7 +9,8 @@ from typing import Optional
 from packets.discord import PIBot, PIEmbed
 
 class TicketFunctions:
-	def __init__(self) -> None:
+	def __init__(self, client) -> None:
+		self.client = client
 		pass;
 	
 	async def create_ticket(self, interaction: discord.Interaction, for_member: Optional[discord.Member] = None) -> None:
