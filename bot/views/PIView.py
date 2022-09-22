@@ -11,5 +11,6 @@ from packets.database import Database
 
 class PIView(discord.ui.View):
 	def __init__(self, timeout : Optional[float] = None) -> None:# : Optional[float] 
-		super().__init__(timeout = None)
+		print(timeout)
+		super().__init__(timeout)
 		self.database = Database()
