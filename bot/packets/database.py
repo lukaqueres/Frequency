@@ -4,6 +4,8 @@ import os, psycopg2, json, re
 from psycopg2.extensions import AsIs, quote_ident
 from psycopg2.extras import Json
 
+from packets.utilities import Configuration
+
 # - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
 	def __init__(self):
@@ -28,9 +30,9 @@ class Connection:
 	
 # - Database object, inherit of Connection, handles querries -
 class Database(Connection):
-	def __init__(self, client):
+	def __init__(self):
 		super().__init__(); # - Assign Escape and Decode class to handle adapting/decoding of strings, dictionaries etc. to use with dots and better readibility -
-		self.client = client
+		self.configuration = Configuration()
 		self.predefined = Predefined(self)
 	
 	def delete(self, table, condition):
@@ -186,8 +188,8 @@ class Predefined(Database):
 			if r != guild.default_role and not r.managed:
 				roles[r.id] = r.name;
 		payload = { "id": guild.id,
-			"prefix": self.database.client.configuration.read(category="utilities", key="database.defaults.prefix"),
-			"language": self.database.client.configuration.read(category="utilities", key="database.defaults.language"),
+			"prefix": self.database.configuration.read(category="utilities", key="database.defaults.prefix"),
+			"language": self.database.configuration.read(category="utilities", key="database.defaults.language"),
 			"roles": roles
 		};
 		self.database.insert(table = 'guilds.properties', payload = payload);
