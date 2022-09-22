@@ -107,7 +107,7 @@ class TicketManageView(discord.ui.View):
 			with open(f"tallies/{interaction.channel.id}.md", 'a') as f:
 				f.write(f"# Tally for ticket in channel {interaction.channel.name}:\n\n")
 				async for message in interaction.channel.history(limit = 500, oldest_first = True):
-					created = datetime.strftime(message.created_at, "%d.%m.%Y at %H:%M:%S")
+					created = message.created_at.strftime("%d.%m.%Y at %H:%M:%S")# created = datetime.strftime(message.created_at, "%d.%m.%Y at %H:%M:%S")
 					if message.edited_at:
 						edited = message.edited_at.strftime("%d.%m.%Y at %H:%M:%S") # edited = datetime.strftime(message.edited_at, "%d.%m.%Y at %H:%M:%S")
 						f.write(f"{message.author} on {created}: {message.clean_content} ( Edited at {edited} )\n")
