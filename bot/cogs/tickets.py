@@ -44,7 +44,10 @@ class Tickets(commands.Cog): #app_commands.Group
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="close", description="Close current ticket.")
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
-		await self.functions.close_ticket(interaction = interaction)
+		try:
+			await self.functions.close_ticket(interaction = interaction)
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
