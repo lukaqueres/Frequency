@@ -10,6 +10,6 @@ from packets.discord import PIEmbed
 from packets.database import Database
 
 class PIView(discord.ui.View):
-	def __init__(self, timeout: Optional[float] = None) -> None:
-		super().__init__(self, timeout)
+	def __init__(self, timeout = None) -> None:# : Optional[float] 
+		super().__init__(timeout)
 		self.database = Database()
