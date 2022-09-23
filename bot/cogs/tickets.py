@@ -69,7 +69,7 @@ class Ticket:
 		if not self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }):
 			return await self.__respond_to_interaction(content = self.__message("error_disabled"), ephemeral = True)
 		
-		await (content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
+		await self.__respond_to_interaction(content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		ticket = self.__already_exists()
 		if ticket: return await self.__respond_to_interaction(content = self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
 		overwrites = self.__create_overwrites();
