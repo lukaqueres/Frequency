@@ -13,40 +13,70 @@ from packets.utilities import Configuration
 from views.tickets import TicketFunctions, TicketLaunchView, TicketManageView, TicketCloseConfirmView	
 	
 class Ticket:
-	def __init__(self) -> None:
+	def __init__(self, interaction: discord.Interaction, user: Optional[discord.Member] = None) -> None:
 		self.database = Database()
 		self.configuration = Configuration()
+		self.interaction = interaction
+		self.user = user or interaction.user
+		self.name = self.__ticketName(self.user)
+		self.channel_category = interaction.channel.category
 		
-	def __create_overwrites(self, interaction) -> dict:
-		moderatorRoles = []
+	async def __respond_to_interaction(self, content:str, ephemeral: bool = True):	
+		try:
+			await self.interaction.response.send_message(content = content, ephemeral = ephemeral)
+			return True
+		except discord.errors.InteractionResponded:
+			interaction.edit_original_response(content = content)
+			return True
+		return False
+	
+	def __message(self, message:str) -> str:
+		messages = {
+			"error_disabled": ">>> Tickets creation in this guild is currently disabled",
+			"error_already_exists": ">>> Ticket already exists in {ticket_mention}",
+			"creating_ticket": ">>> Creating ticket {ticket_name}",
+			"error_creating_ticket": ">>> Ticket creation failed, please check bot permissions",
+			"ticket_mention_users": ">>> Ticket with: @here"
+		}
+		return messages[message];
+	
+	def __ticketName(self, user: discord.Member) -> str:
+		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id }) # TODO: Change column to correct one
+		syntax.format(userName = user.name.lower().replace(' ', '-'), userDiscriminator = user.discriminator)
+		return syntax
+		
+	def __create_overwrites(self) -> dict:
+		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }) # TODO: Change column to correct one
 		moderatorRights = discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		overwrites = {
-			interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
-			interaction.user: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True),
-			interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
+			self.interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
+			self.user: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True),
+			self.interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
 		}
-		for moderator in moderatorRoles:
-			overwrites[moderator] = moderatorRights
-		return overwrites
-		
-	async def create(self, interaction: discord.Interaction, for_member: Optional[discord.Member] = None) -> None:
-		enabled = self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id });
-		if not enabled:
-			return await interaction.response.send_message("Tickets in this guild are currently disabled.", ephemeral = True)
-		member = for_member or interaction.user
-		await interaction.response.send_message("Creating ticket...", ephemeral = True)
-		ticketPrefix = "ticket"
-		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{member.name.lower().replace(' ', '-')}-{member.discriminator}")
-		if ticket is not None: return await interaction.edit_original_response(content = f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
+		for roleId in ticketRoles:
+			role = interaction.guild.get_role(roleId)
+			overwrites[role] = moderatorRights
+		return overwrites;
+	
+	def __already_exists(self) -> bool:
+		ticket = utils.get(self.interaction.guild.text_channels, name=self.name)
+		if ticket is not None:
+			return ticket
 		else:
-			pass
-		moderatorId = 1020060418871414824
-		ticketModerator = interaction.guild.get_role(moderatorId)
+			return False 
 		
-		try: channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{member.name}-{member.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
-		except: return await interaction.edit_original_response(content = "Ticket creation failed, please check bot permissions", ephemeral = True)
-		ping = await channel.send(f">>> Ticket with: {member.mention}, {ticketModerator.mention}.");
-		await ping.delete()
+	async def create(self) -> None:
+		if not self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }):
+			return await self.__respond_to_interaction(self.__message("error_disabled"), ephemeral = True)
+		
+		await (self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
+		ticket = self.__already_exists()
+		if ticket: return await self.__respond_to_interaction(self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
+		overwrites = self.__create_overwrites();
+		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
+		except: return await self.__respond_to_interaction(self.__message("error_creating_ticket"), ephemeral = True)
+		ping = await channel.send(self.__message("ticket_mention_users"));
+		await ping.delete() # CD FROM HERE
 		title = f"Ticket with {member.name}"
 		description = "Here you can talk to staff without disturbing"
 		embed = PIEmbed(title = title, description = description)
