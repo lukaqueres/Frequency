@@ -67,22 +67,22 @@ class Ticket:
 		
 	async def create(self) -> None:
 		if not self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }):
-			return await self.__respond_to_interaction(self.__message("error_disabled"), ephemeral = True)
+			return await self.__respond_to_interaction(content = self.__message("error_disabled"), ephemeral = True)
 		
-		await (self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
+		await (content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		ticket = self.__already_exists()
-		if ticket: return await self.__respond_to_interaction(self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
+		if ticket: return await self.__respond_to_interaction(content = self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
 		overwrites = self.__create_overwrites();
 		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
-		except: return await self.__respond_to_interaction(self.__message("error_creating_ticket"), ephemeral = True)
-		ping = await channel.send(self.__message("ticket_mention_users"));
+		except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
+		ping = await channel.send(content = self.__message("ticket_mention_users"));
 		await ping.delete() # CD FROM HERE
 		title = f"Ticket with {self.user.name}"
 		description = "Here you can talk to staff without disturbing"
 		embed = PIEmbed(title = title, description = description)
 		embed.timestamp = None
 		await channel.send(embed = embed, view = TicketManageView());
-		await self.__respond_to_interaction(f">>> Your ticket's channel has been created here: {channel.mention}")
+		await self.__respond_to_interaction(content = f">>> Your ticket's channel has been created here: {channel.mention}")
 	
 	async def close(self, interaction: discord.Interaction) -> None:
 		ticketPrefix = "ticket"
