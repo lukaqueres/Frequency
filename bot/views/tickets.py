@@ -8,8 +8,6 @@ from typing import Optional
 
 from packets.discord import PIBot, PIEmbed
 
-from cogs.tickets import Ticket
-
 from views.PIView import PIView
 
 class TicketFunctions:
@@ -65,6 +63,7 @@ class TicketLaunchView(PIView):
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		from cogs.tickets import Ticket
 		try:
 			ticket = Ticket( interaction = interaction, user = interaction.user)
 			await ticket.create()
