@@ -77,12 +77,12 @@ class Ticket:
 		except: return await self.__respond_to_interaction(self.__message("error_creating_ticket"), ephemeral = True)
 		ping = await channel.send(self.__message("ticket_mention_users"));
 		await ping.delete() # CD FROM HERE
-		title = f"Ticket with {member.name}"
+		title = f"Ticket with {self.user.name}"
 		description = "Here you can talk to staff without disturbing"
 		embed = PIEmbed(title = title, description = description)
 		embed.timestamp = None
 		await channel.send(embed = embed, view = TicketManageView());
-		await interaction.edit_original_response(content = f">>> Your ticket's channel has been created here: {channel.mention}")
+		await self.__respond_to_interaction(f">>> Your ticket's channel has been created here: {channel.mention}")
 	
 	async def close(self, interaction: discord.Interaction) -> None:
 		ticketPrefix = "ticket"
