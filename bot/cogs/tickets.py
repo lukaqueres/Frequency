@@ -66,7 +66,7 @@ class Ticket:
 			if self.interaction.channel.id in list(channels.keys()):
 				return True
 		else:
-			if self.interaction.channel.name is not None:
+			if self.interaction.channel.name is not None: # TODO: End this
 				return ticket
 			else:
 				return False 
