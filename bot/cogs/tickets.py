@@ -41,12 +41,13 @@ class Ticket:
 		return messages[message];
 	
 	def __ticketName(self, user: discord.Member) -> str:
-		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id }) # TODO: Change column to correct one
+		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id })
 		syntax.format(userName = user.name.lower().replace(' ', '-'), userDiscriminator = user.discriminator)
 		return syntax
 		
 	def __create_overwrites(self) -> dict:
-		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }) # TODO: Change column to correct one
+		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_add_roles' ], condition = { "guild_id": interaction.guild.id })
+		ticketRoles = [int(r) for r in ticketRoles]
 		moderatorRights = discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		overwrites = {
 			self.interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
@@ -58,12 +59,35 @@ class Ticket:
 			overwrites[role] = moderatorRights
 		return overwrites;
 	
-	def __already_exists(self) -> bool:
-		ticket = utils.get(self.interaction.guild.text_channels, name=self.name)
-		if ticket is not None:
-			return ticket
+	def __is_ticket_channel(self) -> bool:
+		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": interaction.guild.id }):
+			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": interaction.guild.id });
+			channels = {int(k): v for k, v in channels.items()}
+			if self.interaction.channel.id in list(channels.keys()):
+				return True
 		else:
-			return False 
+			if self.interaction.channel.name is not None:
+				return ticket
+			else:
+				return False 
+		return False
+	
+	def __already_exists(self):
+		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": interaction.guild.id }):
+			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": interaction.guild.id });
+			channels = {int(k): v for k, v in channels.items()}
+			for channelId, userId in channels.items()
+				if self.user.id == userId:
+					ticket = discord.utils.get(self.interaction.guild.text_channels, id=channelId )
+					return ticket
+				return False
+		else:
+			ticket = utils.get(self.interaction.guild.text_channels, name=self.name)
+			if ticket is not None:
+				return ticket
+			else:
+				return False 
+		return False
 		
 	async def create(self) -> None:
 		if not self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }):
