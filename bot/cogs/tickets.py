@@ -30,6 +30,15 @@ class Ticket:
 			return True
 		return False
 	
+	def __default_text(self, text:str) -> str:
+		texts = {
+			"new_ticket_embed_title": f"Ticket with {self.user.name}",
+			"new_ticket_embed_description": "Here you can talk to staff without disturbing",
+			"close_ticket_embed_title": "Confirm ticket's closure"
+			"close_ticket_embed_description": "After confirmation ticket will be closed with channel removed"
+		}
+		return texts[text]
+	
 	def __message(self, message:str) -> str:
 		messages = {
 			"error_disabled": ">>> Tickets creation in this guild is currently disabled",
@@ -42,8 +51,8 @@ class Ticket:
 	
 	def __ticketName(self, user: discord.Member) -> str:
 		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id })
-		syntax.format(userName = user.name.lower().replace(' ', '-'), userDiscriminator = user.discriminator)
-		return syntax
+		name = syntax.format(userName = user.name.lower().replace(' ', '-'), userDiscriminator = user.discriminator)
+		return name
 		
 	def __create_overwrites(self) -> dict:
 		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_add_roles' ], condition = { "guild_id": interaction.guild.id })
@@ -66,10 +75,13 @@ class Ticket:
 			if self.interaction.channel.id in list(channels.keys()):
 				return True
 		else:
-			if self.interaction.channel.name is not None: # TODO: End this
-				return ticket
-			else:
-				return False 
+			syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id })
+			syntax.format(userName = ' ', userDiscriminator = ' ')
+			syntax = syntax.split(' ')
+			for part in syntax:
+				if part in self.interaction.channel.name:
+					return True
+			return False 
 		return False
 	
 	def __already_exists(self):
@@ -88,11 +100,12 @@ class Ticket:
 			else:
 				return False 
 		return False
-		
+	
+	def __are_tickets_enabled(self):
+		return self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id })
+	
 	async def create(self) -> None:
-		if not self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id }):
-			return await self.__respond_to_interaction(content = self.__message("error_disabled"), ephemeral = True)
-		
+		if not self.__are_tickets_enabled(): return await self.__respond_to_interaction(content = self.__message("error_disabled"), ephemeral = True)
 		await self.__respond_to_interaction(content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		ticket = self.__already_exists()
 		if ticket: return await self.__respond_to_interaction(content = self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
@@ -100,49 +113,61 @@ class Ticket:
 		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
 		except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
 		ping = await channel.send(content = self.__message("ticket_mention_users"));
-		await ping.delete() # CD FROM HERE
-		title = f"Ticket with {self.user.name}"
-		description = "Here you can talk to staff without disturbing"
-		embed = PIEmbed(title = title, description = description)
+		await ping.delete()
+		embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_create_embed' ], condition = { "guild_id": interaction.guild.id }) # - TODO: Check column name -
+		embed = PIEmbed(title = embedContents["title"] or self.__default_text("new_ticket_embed_title"), description = embedContents["description"] or self.__default_text("new_ticket_embed_description"))
 		embed.timestamp = None
 		await channel.send(embed = embed, view = TicketManageView());
 		await self.__respond_to_interaction(content = f">>> Your ticket's channel has been created here: {channel.mention}")
 	
-	async def close(self, interaction: discord.Interaction) -> None:
+	async def close(self) -> None:
 		ticketPrefix = "ticket"
-		if (ticketPrefix + '-') in interaction.channel.name:
-			title = "Confirm ticket's closure"
-			description = "After confirmation ticket will be closed with channel removed"
-			embed = PIEmbed(title = title, description = description)
+		if self.__is_ticket_channel():
+			embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_create_embed' ], condition = { "guild_id": interaction.guild.id }) # - TODO: Check column name -
+			embed = PIEmbed(title = embedContents["title"] or self.__default_text("close_ticket_embed_title"), description = embedContents["description"] or self.__default_text("close_ticket_embed_description"))
 			embed.timestamp = None
 			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
+			
+	async def send_ticket_button_embed(self)
+			
+	async def generate_tally(self) -> None:
+		await self.interaction.response.defer()
+		if os.path.exists(f"tallies/{self.interaction.channel.id}.md"):
+			return await self.interaction.followup.send(">>> Tally for this ticket is already being inscribed!", ephemeral = True)
+		with open(f"tallies/{self.interaction.channel.id}.md", 'a') as f:
+			f.write(f"# Tally for ticket in channel {self.interaction.channel.name}:\n\n")
+			async for message in self.interaction.channel.history(limit = 500, oldest_first = True):
+				created = message.created_at.strftime("%d.%m.%Y at %H:%M:%S")# created = datetime.strftime(message.created_at, "%d.%m.%Y at %H:%M:%S")
+				if message.edited_at:
+					edited = message.edited_at.strftime("%d.%m.%Y at %H:%M:%S") # edited = datetime.strftime(message.edited_at, "%d.%m.%Y at %H:%M:%S")
+					f.write(f"{message.author} on {created}: {message.clean_content} ( Edited at {edited} )\n")
+				else:
+					f.write(f"{message.author} on {created}: {message.clean_content}\n")
+			generated = datetime.datetime.now().strftime("%d.%m.%Y at %H:%M:%S")
+			appName = 'Plan It'
+			f.write(f"## Tally inscribed by {appName} for {interaction.user.name}\nOn {generated}, Time Zone: UTC")
+		with open(f"tallies/{interaction.channel.id}.md", 'rb') as f:
+			await interaction.followup.send(file = discord.File(f, f"{self.interaction.channel.name}.md"))
+			os.remove(f"tallies/{self.interaction.channel.id}.md")
+			
 class Tickets(commands.Cog): #app_commands.Group
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
 		self.client = client
 		self.functions = TicketFunctions(client.database)
-		
-	def __channel_is_ticket(self, channel) -> bool:
-		ticketPrefix = "ticket"
-		return (ticketPrefix + '-') in channel.name
 	
-	def __user_can_throw_out(self, action_member, target_membed) -> bool:
-		ticketPrefix = "ticket"
-		return (ticketPrefix + '-') in channel.name
-	
-	
-	#tree = app_commands.CommandTree(self.client)
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
 	@app_commands.context_menu( name = "Open a Ticket" )
 	async def open_ticket_context_menu(interaction: discord.Interaction, member: discord.Member):
-		await self.functions.create_ticket(interaction = interaction, for_member = member)
+		ticket = Ticket(interaction = interaction, user = member)
+		await ticket.create()
 	
 	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="setup", description="Send embed with button allowing ticket creation.")
-	async def tickets_set_ticket_creation_channel(self, interaction: discord.Interaction) -> None:
+	@ticket.command(name="console", description="Console for tickets configuration.")
+	async def send_tickets_console(self, interaction: discord.Interaction) -> None:
 		title = "Use button below to create a ticket"
 		description = "Clicking button will create channel with you and guild staff for conversation"
 		embed = PIEmbed(title = title, description = description)
@@ -154,7 +179,8 @@ class Tickets(commands.Cog): #app_commands.Group
 	@ticket.command(name="close", description="Close current ticket.")
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
 		try:
-			await self.functions.close_ticket(interaction = interaction)
+			ticket = Ticket(interaction = interaction, user = member)
+			await ticket.close()
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 	
