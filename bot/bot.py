@@ -11,6 +11,11 @@ from packets.discord import PIBot
 
 client = PIBot()
 
+# - Prepare file system -
+
+if not os.path.exists("tallies/"):
+	os.makedirs("tallies/")
+
 # >---------------------------------------< COMMANDS >---------------------------------------< # 
 		
 @client.tree.command()
