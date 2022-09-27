@@ -10,6 +10,20 @@ from packets.discord import PIBot, PIEmbed
 
 from views.PIView import PIView
 	
+class TicketConsoleView(PIView):
+	def __init__(self) -> None:
+		super().__init__(timeout = 600.0)
+		
+	@discord.ui.button(label = "Send ticket embed", style = discord.ButtonStyle.blurple, custom_id = "send_ticket_embed_button")
+	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		from cogs.tickets import Ticket
+		try:
+			ticket = Ticket( interaction = interaction, user = interaction.user)
+			await ticket.create()
+			#await self.functions.create_ticket(interaction = interaction, for_member = interaction.user)
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+	
 class TicketLaunchView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
