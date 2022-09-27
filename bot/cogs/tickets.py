@@ -88,7 +88,7 @@ class Ticket:
 		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": interaction.guild.id }):
 			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": interaction.guild.id });
 			channels = {int(k): v for k, v in channels.items()}
-			for channelId, userId in channels.items()
+			for channelId, userId in channels.items():
 				if self.user.id == userId:
 					ticket = discord.utils.get(self.interaction.guild.text_channels, id=channelId )
 					return ticket
