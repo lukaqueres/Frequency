@@ -56,7 +56,6 @@ class Ticket:
 		
 	def __create_overwrites(self) -> dict:
 		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_add_roles' ], condition = { "guild_id": self.interaction.guild.id })
-		ticketRoles = [int(r) for r in ticketRoles]
 		moderatorRights = discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		overwrites = {
 			self.interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
@@ -64,6 +63,7 @@ class Ticket:
 			self.interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
 		}
 		if ticketRoles:
+			ticketRoles = [int(r) for r in ticketRoles]
 			for roleId in ticketRoles:
 				role = self.interaction.guild.get_role(roleId)
 				overwrites[role] = moderatorRights
