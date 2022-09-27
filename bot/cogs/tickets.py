@@ -26,7 +26,7 @@ class Ticket:
 			await self.interaction.response.send_message(content = content, ephemeral = ephemeral)
 			return True
 		except discord.errors.InteractionResponded:
-			interaction.edit_original_response(content = content)
+			self.interaction.edit_original_response(content = content, ephemeral = ephemeral)
 			return True
 		return False
 	
