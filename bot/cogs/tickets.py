@@ -217,10 +217,10 @@ class Tickets(commands.Cog): #app_commands.Group
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.',
-			      action = 'Action to perform with given member')
+			      action = 'Add / Remove member to / from ticket')
 	@app_commands.choices(action=[
-		app_commands.Choice(name="add", description="Add member to this ticket", value="add"),
-		app_commands.Choice(name="remove", description="Remove member from this ticket", value="remove")
+		app_commands.Choice(name="add", value="add"),
+		app_commands.Choice(name="remove", value="remove")
 	])
 	async def member_in_ticket(self, interaction: discord.Interaction, action: app_commands.Choice[str], member: discord.Member) -> None:
 		ticketPrefix = "ticket"
