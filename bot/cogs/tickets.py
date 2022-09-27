@@ -10,7 +10,7 @@ from packets.discord import PIBot, PIEmbed
 from packets.database import Database
 from packets.utilities import Configuration
 
-from views.tickets import TicketFunctions, TicketLaunchView, TicketManageView, TicketCloseConfirmView	
+from views.tickets import TicketLaunchView, TicketManageView, TicketCloseConfirmView	
 	
 class Ticket:
 	def __init__(self, interaction: discord.Interaction, user: Optional[discord.Member] = None) -> None:
@@ -120,8 +120,7 @@ class Ticket:
 		await channel.send(embed = embed, view = TicketManageView());
 		await self.__respond_to_interaction(content = f">>> Your ticket's channel has been created here: {channel.mention}")
 	
-	async def close(self) -> None:
-		ticketPrefix = "ticket"
+	async def confirm_close(self) -> None:
 		if self.__is_ticket_channel():
 			embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_create_embed' ], condition = { "guild_id": interaction.guild.id }) # - TODO: Check column name -
 			embed = PIEmbed(title = embedContents["title"] or self.__default_text("close_ticket_embed_title"), description = embedContents["description"] or self.__default_text("close_ticket_embed_description"))
@@ -130,7 +129,8 @@ class Ticket:
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 			
-	async def send_ticket_button_embed(self)
+	async def send_ticket_console(self):
+		pass
 			
 	async def generate_tally(self) -> None:
 		await self.interaction.response.defer()
@@ -156,7 +156,6 @@ class Tickets(commands.Cog): #app_commands.Group
 	def __init__(self, client: PIBot) -> None:
 		super().__init__()
 		self.client = client
-		self.functions = TicketFunctions(client.database)
 	
 	ticket = app_commands.Group(name="ticket", description="Tickets for guild users and admin contact.")
 	
@@ -180,7 +179,7 @@ class Tickets(commands.Cog): #app_commands.Group
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
 		try:
 			ticket = Ticket(interaction = interaction, user = member)
-			await ticket.close()
+			await ticket.confirm_close()
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 	
