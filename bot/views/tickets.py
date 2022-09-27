@@ -45,7 +45,7 @@ class TicketLaunchView(PIView):
 class TicketCloseConfirmView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = 300.0)
-		self.add_item(PITextInput(label = "Reason", style=discord.TextStyle.short, custom_id = "ticket_reason_of_close_input", placeholder="Input reason for ticket close", default=None, required=False, min_length=0, max_length=100, row=2))
+		self.add_item(PITextInput())
 		
 
 	@discord.ui.button(label = "Confirm", style = discord.ButtonStyle.red)
