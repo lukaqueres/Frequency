@@ -9,52 +9,6 @@ from typing import Optional
 from packets.discord import PIBot, PIEmbed
 
 from views.PIView import PIView
-
-class TicketFunctions:
-	def __init__(self, database) -> None:
-		self.database = database
-		pass;
-	
-	async def create_ticket(self, interaction: discord.Interaction, for_member: Optional[discord.Member] = None) -> None:
-		enabled = self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id });
-		if not enabled:
-			return await interaction.response.send_message("Tickets in this guild are currently disabled.", ephemeral = True)
-		member = for_member or interaction.user
-		await interaction.response.send_message("Creating ticket...", ephemeral = True)
-		ticketPrefix = "ticket"
-		ticket = utils.get(interaction.guild.text_channels, name=f"{ticketPrefix}-{member.name.lower().replace(' ', '-')}-{member.discriminator}")
-		if ticket is not None: return await interaction.edit_original_response(content = f"There is a ticket opened already for you in {ticket.mention} channel. Write your message there.", ephemeral = True);
-		else:
-			pass
-		moderatorId = 1020060418871414824
-		ticketModerator = interaction.guild.get_role(moderatorId)
-		overwrites = {
-			interaction.guild.default_role: discord.PermissionOverwrite(view_channel = False),
-			member: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True),
-			interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
-			ticketModerator: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
-		}
-		try: channel = await interaction.guild.create_text_channel(name = f"{ticketPrefix}-{member.name}-{member.discriminator}", overwrites = overwrites, category = interaction.channel.category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
-		except: return await interaction.edit_original_response(content = "Ticket creation failed, please check bot permissions", ephemeral = True)
-		ping = await channel.send(f">>> Ticket with: {member.mention}, {ticketModerator.mention}.");
-		await ping.delete()
-		title = f"Ticket with {member.name}"
-		description = "Here you can talk to staff without disturbing"
-		embed = PIEmbed(title = title, description = description)
-		embed.timestamp = None
-		await channel.send(embed = embed, view = TicketManageView());
-		await interaction.edit_original_response(content = f">>> Your ticket's channel has been created here: {channel.mention}")
-
-	async def close_ticket(self, interaction: discord.Interaction) -> None:
-		ticketPrefix = "ticket"
-		if (ticketPrefix + '-') in interaction.channel.name:
-			title = "Confirm ticket's closure"
-			description = "After confirmation ticket will be closed with channel removed"
-			embed = PIEmbed(title = title, description = description)
-			embed.timestamp = None
-			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
-		else:
-			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 	
 class TicketLaunchView(PIView):
 	def __init__(self) -> None:
@@ -94,7 +48,8 @@ class TicketManageView(discord.ui.View):
 
 	@discord.ui.button(label = "Close ticket", style = discord.ButtonStyle.red, custom_id = "close_ticket_button")
 	async def close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		await self.functions.close_ticket(interaction = interaction)
+		ticket = Ticket(interaction = interaction)
+		await ticket.confirm_close()
 		
 	@discord.ui.button(label = "Tally", style = discord.ButtonStyle.blurple, custom_id = "generate_ticket_tally_button")
 	async def generate_ticket_tally_button(self, interaction: discord.Interaction, button: discord.ui.button):
