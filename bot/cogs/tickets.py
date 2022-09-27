@@ -221,4 +221,4 @@ class Tickets(commands.Cog): #app_commands.Group
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 
 async def setup(client: PIBot) -> None:
-	await client.add_cog(Tickets(client))
+	await client.add_cog(Tickets(client)) 
