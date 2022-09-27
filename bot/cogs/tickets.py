@@ -63,9 +63,10 @@ class Ticket:
 			self.user: discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True),
 			self.interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
 		}
-		for roleId in ticketRoles:
-			role = self.interaction.guild.get_role(roleId)
-			overwrites[role] = moderatorRights
+		if ticketRoles:
+			for roleId in ticketRoles:
+				role = self.interaction.guild.get_role(roleId)
+				overwrites[role] = moderatorRights
 		return overwrites;
 	
 	def __is_ticket_channel(self) -> bool:
