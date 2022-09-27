@@ -134,7 +134,7 @@ class Ticket:
 	
 	async def confirm_close(self) -> None:
 		if self.__is_ticket_channel():
-			embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'confirm_ticket_close_embed' ], condition = { "guild_id": interaction.guild.id }) # - TODO: Check column name -
+			embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'confirm_ticket_close_embed' ], condition = { "guild_id": self.interaction.guild.id }) # - TODO: Check column name -
 			embed = PIEmbed(title = embedContents["title"] or self.__default_text("close_ticket_embed_title"), description = embedContents["description"] or self.__default_text("close_ticket_embed_description"))
 			embed.timestamp = None
 			await self.interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
