@@ -50,8 +50,8 @@ class Ticket:
 		return messages[message];
 	
 	def __ticketName(self, user: discord.Member) -> str:
-		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id })
-		name = syntax.format(userName = user.name.lower().replace(' ', '-'), userDiscriminator = user.discriminator)
+		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": self.interaction.guild.id })
+		name = syntax.format(userName = self.user.name.lower().replace(' ', '-'), userDiscriminator = self.user.discriminator)
 		return name
 		
 	def __create_overwrites(self) -> dict:
