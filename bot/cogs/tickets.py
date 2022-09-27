@@ -86,12 +86,18 @@ class Ticket:
 		else:
 			syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": self.interaction.guild.id })
 			syntax = syntax.format(userName = ' ', userDiscriminator = ' ')
-			syntax = syntax.split(' ')
+			syntax.split(' ')
+			matches = 0
+			channelName = self.intaraction.channel.name
 			for part in syntax:
 				print(f'part: {part} is: {part in self.interaction.channel.name}')
-				if part in self.interaction.channel.name:
-					return True
-			return False 
+				if part in channelName:
+					matches += 1
+					channelName.replace(part, '', 1)
+			if matches == len(syntax):
+				return True
+			else:
+				return False 
 		return False
 	
 	def __already_exists(self):
