@@ -65,9 +65,12 @@ class TicketManageView(discord.ui.View):
 
 	@discord.ui.button(label = "Close ticket", style = discord.ButtonStyle.red, custom_id = "close_ticket_button")
 	async def close_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		ticket = Ticket(interaction = interaction)
-		await ticket.confirm_close()
-		
+		try:
+			ticket = Ticket(interaction = interaction)
+			await ticket.confirm_close()
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			
 	@discord.ui.button(label = "Tally", style = discord.ButtonStyle.blurple, custom_id = "generate_ticket_tally_button")
 	async def generate_ticket_tally_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		try:
