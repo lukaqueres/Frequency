@@ -8,7 +8,7 @@ from typing import Optional
 
 from packets.discord import PIBot, PIEmbed
 
-from views.PIView import PIView
+from views.PIView import PIView, PITextInput
 	
 class TicketConsoleView(PIView):
 	def __init__(self) -> None:
@@ -42,7 +42,7 @@ class TicketLaunchView(PIView):
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 			
-class TicketCloseConfirmView(discord.ui.View):
+class TicketCloseConfirmView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = 300.0)
 
@@ -58,13 +58,11 @@ class TicketCloseConfirmView(discord.ui.View):
 			child.disable = True
 		button.view.stop()
 		await interaction.response.send_message("Ticket closure aborted. Disaffirming all actions.", ephemeral = True)
-		
-	@discord.ui.TextInput(label = "Reason", style=discord.TextStyle.short, custom_id = "ticket_reason_of_close_input", placeholder="Input reason for ticket close", default=None, required=False, min_length=0, max_length=100, row=2)
-	async def closure_reason(self, interaction: discord.Interaction, TxtInput: discord.ui.TextInput):
-		await interaction.response.send_message(f'Value: {TxtInput.value}', ephemeral = True)
+	
+	self.add_item(PITextInput(label = "Reason", style=discord.TextStyle.short, custom_id = "ticket_reason_of_close_input", placeholder="Input reason for ticket close", default=None, required=False, min_length=0, max_length=100, row=2))
 		
 
-class TicketManageView(discord.ui.View):
+class TicketManageView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
 
