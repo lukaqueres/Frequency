@@ -58,6 +58,11 @@ class TicketCloseConfirmView(discord.ui.View):
 			child.disable = True
 		button.view.stop()
 		await interaction.response.send_message("Ticket closure aborted. Disaffirming all actions.", ephemeral = True)
+		
+	@discord.ui.TextInput(label = "Reason", style=<TextStyle.short: 1>, custom_id = ticket_reason_of_close_input, placeholder="Input reason for ticket close", default=None, required=False, min_length=10, max_length=100, row=2)
+	async def add_reason_of_close_to_ticket(self, interaction, TextInput: discord.ui.TextInput):
+		await interaction.response.send_message(TextInput.value, ephemeral = True)
+		
 
 class TicketManageView(discord.ui.View):
 	def __init__(self) -> None:
