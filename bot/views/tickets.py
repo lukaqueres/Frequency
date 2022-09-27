@@ -13,7 +13,6 @@ from views.PIView import PIView
 class TicketLaunchView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = None)
-		self.functions = TicketFunctions(self.database)
 
 	@discord.ui.button(label = "Create ticket", style = discord.ButtonStyle.blurple, custom_id = "create_ticket_button")
 	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
