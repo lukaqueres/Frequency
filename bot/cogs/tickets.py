@@ -85,7 +85,7 @@ class Ticket:
 				return True
 		else:
 			syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": self.interaction.guild.id })
-			syntax = syntax.format(userName = ' ', userDiscriminator = ' ')
+			syntax = syntax.format(userName = '', userDiscriminator = '')
 			syntax.split(' ')
 			matches = 0
 			channelName = self.interaction.channel.name
