@@ -112,7 +112,9 @@ class Ticket:
 		await self.__respond_to_interaction(content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		overwrites = self.__create_overwrites();
 		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
-		except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+		#except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
 		ping = await channel.send(content = self.__message("ticket_mention_users"));
 		await ping.delete()
 		embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'manage_ticket_embed' ], condition = { "guild_id": interaction.guild.id })
