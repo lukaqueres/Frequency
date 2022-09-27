@@ -125,7 +125,7 @@ class Ticket:
 		#except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
 		ping = await channel.send(content = self.__message("ticket_mention_users"));
 		await ping.delete()
-		embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'manage_ticket_embed' ], condition = { "guild_id": interaction.guild.id })
+		embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'manage_ticket_embed' ], condition = { "guild_id": self.interaction.guild.id })
 		embed = PIEmbed(title = embedContents["title"] or self.__default_text("new_ticket_embed_title"), description = embedContents["description"] or self.__default_text("new_ticket_embed_description"))
 		embed.timestamp = None
 		await channel.send(embed = embed, view = TicketManageView());
