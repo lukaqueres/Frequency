@@ -78,13 +78,13 @@ class Ticket:
 		return overwrites;
 	
 	def __is_ticket_channel(self) -> bool:
-		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": interaction.guild.id }):
-			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": interaction.guild.id });
+		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": self.interaction.guild.id }):
+			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": self.interaction.guild.id });
 			channels = {int(k): v for k, v in channels.items()}
 			if self.interaction.channel.id in list(channels.keys()):
 				return True
 		else:
-			syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": interaction.guild.id })
+			syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": self.interaction.guild.id })
 			syntax.format(userName = ' ', userDiscriminator = ' ')
 			syntax = syntax.split(' ')
 			for part in syntax:
@@ -95,7 +95,7 @@ class Ticket:
 	
 	def __already_exists(self):
 		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": self.interaction.guild.id }):
-			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": interaction.guild.id });
+			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": self.interaction.guild.id });
 			channels = {int(k): v for k, v in channels.items()}
 			for channelId, userId in channels.items():
 				if self.user.id == userId:
