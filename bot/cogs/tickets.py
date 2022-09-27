@@ -194,6 +194,17 @@ class Tickets(commands.Cog): #app_commands.Group
 		await interaction.channel.send(embed = embed, view = TicketLaunchView())
 		await interaction.response.send_message(">>> Setup completed. You can disable/enable tickets by using `/ticket toggle`", ephemeral = True)
 	
+	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
+	@ticket.command(name="create", description="Create new ticket with guild contact team.")
+	@app_commands.describe( member='Create ticket with member assigned. Guild staff only.' )
+	async def ticket_create(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
+		try:
+			ticket = Ticket( interaction = interaction, user = interaction.user)
+			await ticket.create()
+			#await self.functions.create_ticket(interaction = interaction, for_member = interaction.user)
+		except Exception as error:
+			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+	
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="close", description="Close current ticket.")
 	async def ticket_delete(self, interaction: discord.Interaction) -> None:
@@ -206,12 +217,6 @@ class Tickets(commands.Cog): #app_commands.Group
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
 	async def tickets_enable_or_disable(self, interaction: discord.Interaction) -> None:
-		pass;
-	
-	@cooldown(1, 600, key=lambda i: (i.guild_id, i.user.id))
-	@ticket.command(name="create", description="Create new ticket with guild contact team.")
-	@app_commands.describe( member='Create ticket with member assigned. Guild staff only.' )
-	async def ticket_create(self, interaction: discord.Interaction, member: Optional[discord.Member] = None) -> None:
 		pass;
 	
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
