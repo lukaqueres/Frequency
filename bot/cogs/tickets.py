@@ -89,8 +89,8 @@ class Ticket:
 			syntax.split(' ')
 			matches = 0
 			channelName = self.interaction.channel.name
-			for part in syntax:
-				print(f'part: {part} is: {part in self.interaction.channel.name}')
+			for part in syntax: # - This there may be quite tricky, but works for now -
+				#print(f'part: {part} is: {part in self.interaction.channel.name}')
 				if part in channelName:
 					matches += 1
 					channelName.replace(part, '', 1)
