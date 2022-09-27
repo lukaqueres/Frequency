@@ -88,6 +88,7 @@ class Ticket:
 			syntax.format(userName = ' ', userDiscriminator = ' ')
 			syntax = syntax.split(' ')
 			for part in syntax:
+				print(f'part: {part} is: {part in self.interaction.channel.name}')
 				if part in self.interaction.channel.name:
 					return True
 			return False 
@@ -136,9 +137,9 @@ class Ticket:
 			embedContents = self.database.select(table = 'guilds.tickets', columns = [ 'confirm_ticket_close_embed' ], condition = { "guild_id": interaction.guild.id }) # - TODO: Check column name -
 			embed = PIEmbed(title = embedContents["title"] or self.__default_text("close_ticket_embed_title"), description = embedContents["description"] or self.__default_text("close_ticket_embed_description"))
 			embed.timestamp = None
-			await interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
+			await self.interaction.response.send_message(embed = embed, view = TicketCloseConfirmView(), ephemeral = True)
 		else:
-			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
+			await self.interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
 			
 	async def send_ticket_console(self):
 		pass
