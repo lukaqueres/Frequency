@@ -34,7 +34,7 @@ class Ticket:
 		texts = {
 			"new_ticket_embed_title": f"Ticket with {self.user.name}",
 			"new_ticket_embed_description": "Here you can talk to staff without disturbing",
-			"close_ticket_embed_title": "Confirm ticket's closure"
+			"close_ticket_embed_title": "Confirm ticket's closure",
 			"close_ticket_embed_description": "After confirmation ticket will be closed with channel removed"
 		}
 		return texts[text]
