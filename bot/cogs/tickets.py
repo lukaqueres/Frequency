@@ -213,10 +213,10 @@ class Tickets(commands.Cog): #app_commands.Group
 	@app_commands.describe( member='Guild member to add to ticket.',
 			      action = 'Action to perform with given member')
 	@app_commands.choices(action=[
-		app_commands.Choice(name="Rock", value="rock"),
-		app_commands.Choice(name="Paper", value="paper")
-    ])
-	async def ticket_add_member_to_ticket(self, interaction: discord.Interaction, action: app_commands.Choice[str], member: discord.Member) -> None:
+		app_commands.Choice(name="add", description="Add member to this ticket", value="add"),
+		app_commands.Choice(name="remove", description="Remove member from this ticket", value="remove")
+	])
+	async def member_in_ticket(self, interaction: discord.Interaction, action: app_commands.Choice[str], member: discord.Member) -> None:
 		ticketPrefix = "ticket"
 		if (ticketPrefix + '-') in interaction.channel.name:
 			await interaction.channel.set_permissions(member, view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
