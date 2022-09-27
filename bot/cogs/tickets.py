@@ -85,7 +85,7 @@ class Ticket:
 		return False
 	
 	def __already_exists(self):
-		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": interaction.guild.id }):
+		if self.database.select(table = 'guilds.tickets', columns = [ 'store_ticket_channels' ], condition = { "guild_id": self.interaction.guild.id }):
 			channels = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_channels_names_and_users_storage' ], condition = { "guild_id": interaction.guild.id });
 			channels = {int(k): v for k, v in channels.items()}
 			for channelId, userId in channels.items():
@@ -106,9 +106,9 @@ class Ticket:
 	
 	async def create(self) -> None:
 		if not self.__are_tickets_enabled(): return await self.__respond_to_interaction(content = self.__message("error_disabled"), ephemeral = True)
-		await self.__respond_to_interaction(content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		ticket = self.__already_exists()
 		if ticket: return await self.__respond_to_interaction(content = self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
+		await self.__respond_to_interaction(content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		overwrites = self.__create_overwrites();
 		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
 		except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
