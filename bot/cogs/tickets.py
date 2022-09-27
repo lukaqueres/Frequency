@@ -19,7 +19,7 @@ class Ticket:
 		self.interaction = interaction
 		self.user = user or interaction.user
 		self.name = self.__ticketName(self.user)
-		self.channel_category = interaction.channel.category
+		self.channel_category = self.__channel_category()
 		
 	async def __respond_to_interaction(self, content:str, ephemeral: bool = True):	
 		try:
@@ -48,6 +48,14 @@ class Ticket:
 			"ticket_mention_users": ">>> Ticket with: @here"
 		}
 		return messages[message];
+	
+	def __channel_category(self):
+		categoryId = self.database.select(table = 'guilds.tickets', columns = [ 'tickets_category_id' ], condition = { "guild_id": self.interaction.guild.id })
+		if categoryId:
+			category = discord.utils.get(self.interaction.guild.categories, id=categoryId)
+		else:
+			category = self.interaction.channel.category
+		return category
 	
 	def __ticketName(self, user: discord.Member) -> str:
 		syntax = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_name_syntax' ], condition = { "guild_id": self.interaction.guild.id })
@@ -111,7 +119,7 @@ class Ticket:
 		if ticket: return await self.__respond_to_interaction(content = self.__message("error_already_exists").format(ticket_mention = ticket.mention), ephemeral = True);
 		await self.__respond_to_interaction(content = self.__message("creating_ticket").format(ticket_name = self.name), ephemeral = True)
 		overwrites = self.__create_overwrites();
-		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {member.name} #{member.discriminator}")
+		try: channel = await self.interaction.guild.create_text_channel(name = self.name, overwrites = overwrites, category = self.channel_category, reason = f"As a ticket for user {self.user.name} #{self.user.discriminator}")
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 		#except: return await self.__respond_to_interaction(content = self.__message("error_creating_ticket"), ephemeral = True)
