@@ -88,7 +88,7 @@ class Ticket:
 			syntax = syntax.format(userName = ' ', userDiscriminator = ' ')
 			syntax.split(' ')
 			matches = 0
-			channelName = self.intaraction.channel.name
+			channelName = self.interaction.channel.name
 			for part in syntax:
 				print(f'part: {part} is: {part in self.interaction.channel.name}')
 				if part in channelName:
