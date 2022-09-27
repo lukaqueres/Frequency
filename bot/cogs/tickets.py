@@ -102,7 +102,7 @@ class Ticket:
 		return False
 	
 	def __are_tickets_enabled(self):
-		return self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": interaction.guild.id })
+		return self.database.select(table = 'guilds.tickets', columns = [ 'enabled' ], condition = { "guild_id": self.interaction.guild.id })
 	
 	async def create(self) -> None:
 		if not self.__are_tickets_enabled(): return await self.__respond_to_interaction(content = self.__message("error_disabled"), ephemeral = True)
