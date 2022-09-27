@@ -32,7 +32,7 @@ class Ticket:
 	
 	def __default_text(self, text:str) -> str:
 		texts = {
-			"new_ticket_embed_title": f"Ticket with {self.user.name}",
+			"new_ticket_embed_title": f"Ticket with `{self.user.name}`",
 			"new_ticket_embed_description": "Here you can talk to staff without disturbing",
 			"close_ticket_embed_title": "Confirm ticket's closure",
 			"close_ticket_embed_description": "After confirmation ticket will be closed with channel removed"
@@ -43,7 +43,7 @@ class Ticket:
 		messages = {
 			"error_disabled": ">>> Tickets creation in this guild is currently disabled",
 			"error_already_exists": ">>> Ticket already exists in {ticket_mention}",
-			"creating_ticket": ">>> Creating ticket {ticket_name}",
+			"creating_ticket": ">>> Creating ticket `{ticket_name}`",
 			"error_creating_ticket": ">>> Ticket creation failed, please check bot permissions",
 			"ticket_mention_users": ">>> Ticket with: @here"
 		}
@@ -55,7 +55,7 @@ class Ticket:
 		return name
 		
 	def __create_overwrites(self) -> dict:
-		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_add_roles' ], condition = { "guild_id": interaction.guild.id })
+		ticketRoles = self.database.select(table = 'guilds.tickets', columns = [ 'ticket_add_roles' ], condition = { "guild_id": self.interaction.guild.id })
 		ticketRoles = [int(r) for r in ticketRoles]
 		moderatorRights = discord.PermissionOverwrite(view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 		overwrites = {
@@ -64,7 +64,7 @@ class Ticket:
 			self.interaction.guild.me: discord.PermissionOverwrite(view_channel = True, send_messages = True, read_message_history = True),
 		}
 		for roleId in ticketRoles:
-			role = interaction.guild.get_role(roleId)
+			role = self.interaction.guild.get_role(roleId)
 			overwrites[role] = moderatorRights
 		return overwrites;
 	
