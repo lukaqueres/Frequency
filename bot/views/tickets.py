@@ -15,7 +15,7 @@ class TicketConsoleView(PIView):
 		super().__init__(timeout = 600.0)
 		
 	@discord.ui.button(label = "Send ticket embed", style = discord.ButtonStyle.blurple, custom_id = "send_ticket_embed_button")
-	async def create_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+	async def send_ticket_embed_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		from cogs.tickets import Ticket
 		try:
 			ticket = Ticket( interaction = interaction, user = interaction.user)
@@ -23,6 +23,10 @@ class TicketConsoleView(PIView):
 			#await self.functions.create_ticket(interaction = interaction, for_member = interaction.user)
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
+			
+	@discord.ui.button(label = "Add member", style = discord.ButtonStyle.blurple, custom_id = "add_member_embed_button")
+	async def add_member_to_ticket_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		pass
 	
 class TicketLaunchView(PIView):
 	def __init__(self) -> None:
