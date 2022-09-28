@@ -45,7 +45,8 @@ class Ticket:
 			"error_already_exists": ">>> Ticket already exists in {ticket_mention}",
 			"creating_ticket": ">>> Creating ticket `{ticket_name}`",
 			"error_creating_ticket": ">>> Ticket creation failed, please check bot permissions",
-			"ticket_mention_users": ">>> Ticket with: @here"
+			"ticket_mention_users": ">>> Ticket with: @here",
+			"error_not_a_ticket": ">>> Current channel is not a valid ticket chanel."
 		}
 		return messages[message];
 	
@@ -213,33 +214,36 @@ class Tickets(commands.Cog): #app_commands.Group
 			await ticket.confirm_close()
 		except Exception as error:
 			traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-	
+	"""
 	@cooldown(1, 60, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="toggle", description="Toggle creation of new tickets, can be enabled/disabled.")
 	async def tickets_enable_or_disable(self, interaction: discord.Interaction) -> None:
 		pass;
-	
+	"""
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="member", description="Add member to current ticket.")
 	@app_commands.describe( member='Guild member to add to ticket.',
 			      action = 'Add / Remove member to / from ticket')
 	@app_commands.choices(action=[
-		app_commands.Choice(name="add", value="add"),
-		app_commands.Choice(name="remove", value="remove")
+		app_commands.Choice(name="add", value="a"),
+		app_commands.Choice(name="remove", value="r")
 	])
 	async def member_in_ticket(self, interaction: discord.Interaction, action: app_commands.Choice[str], member: discord.Member) -> None:
-		ticketPrefix = "ticket"
-		if (ticketPrefix + '-') in interaction.channel.name:
+		ticket = Ticket(interaction = interaction)
+		if not ticket.__is_ticket_channel(): await ticket.__respond_to_interaction(content = ticket.__message("error_not_a_ticket"), ephemeral = True)
+		if action == "a":
 			await interaction.channel.set_permissions(member, view_channel = True, read_message_history = True, send_messages = True, attach_files = True, embed_links = True)
 			await interaction.response.send_message(f">>> User {member.mention} was added to current ticket by {interaction.user.mention}", ephemeral = True)
+		elif action == "r":
+			await interaction.channel.set_permissions(member, overwrite = None)
+			await interaction.response.send_message(f">>> User {member.mention} was removed from current ticket by {interaction.user.mention}", ephemeral = True)
 		else:
-			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
-	
+			pass
+	"""
 	@cooldown(1, 10, key=lambda i: (i.guild_id, i.user.id))
 	@ticket.command(name="remove_member", description="Remove member from ticket.")
 	@app_commands.describe( member='Guild member to remove from ticket.' )
 	async def ticket_remove_member_from_ticket(self, interaction: discord.Interaction, member: discord.Member) -> None:
-		ticketPrefix = "ticket"
 		moderatorId = 1020060418871414824
 		ticketModerator = interaction.guild.get_role(moderatorId)
 		if (ticketPrefix + '-') in interaction.channel.name:
@@ -249,6 +253,7 @@ class Tickets(commands.Cog): #app_commands.Group
 			await interaction.response.send_message(f">>> User {member.mention} was removed from current ticket by {interaction.user.mention}", ephemeral = True)
 		else:
 			await interaction.response.send_message("Current channel is not a ticket", ephemeral = True)
-
+	"""
+	
 async def setup(client: PIBot) -> None:
 	await client.add_cog(Tickets(client)) 
