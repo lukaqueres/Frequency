@@ -1,6 +1,9 @@
 import discord
 
+from discord.ext import commands
 from discord import app_commands
+
+from packets.discord import PIBot
 
 class Information(commands.Cog): #app_commands.Group
 	def __init__(self, client: PIBot) -> None:
