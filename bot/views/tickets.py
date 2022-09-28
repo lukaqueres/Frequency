@@ -14,6 +14,10 @@ class TicketConsoleView(PIView):
 	def __init__(self) -> None:
 		super().__init__(timeout = 600.0)
 		
+	@discord.ui.button(label = "Toggle tickets", style = discord.ButtonStyle.blurple, custom_id = "toggle_tickets_button")
+	async def toggle_ticket_creation_button(self, interaction: discord.Interaction, button: discord.ui.button):
+		pass	
+	
 	@discord.ui.button(label = "Send ticket embed", style = discord.ButtonStyle.blurple, custom_id = "send_ticket_embed_button")
 	async def send_ticket_embed_button(self, interaction: discord.Interaction, button: discord.ui.button):
 		from cogs.tickets import Ticket
