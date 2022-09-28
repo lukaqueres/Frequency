@@ -146,7 +146,7 @@ readthedocs = ["sphinx", "karma-sphinx-theme"]
 
 [[package]]
 name = "discord.py"
-version = "2.0.0"
+version = "2.0.1"
 description = "A Python wrapper for the Discord API"
 category = "main"
 optional = false
