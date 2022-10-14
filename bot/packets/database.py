@@ -2,6 +2,7 @@ import os, psycopg2, json, re
 
 # - Import database extensions -
 from psycopg2.extensions import AsIs, quote_ident
+from psycopg2.extras import Json
 
 # - Class connection used for creating multiple connections ( now not supported TODO ) -
 class Connection:
@@ -51,6 +52,11 @@ class Database(Connection):
 		cur = self.cursor;
 		columns = list(payload.keys()); # - Devide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
+		for i in range(len(values)):
+			if isinstance(values[i], list):
+				values[i] = ",".join(str(v) for v in values[i]);
+			elif isinstance(values[i], dict):
+				values[i] = Json(values[i]);
 		#print(values);
 		#values = self.escape.all(values);
 		#print(values);
@@ -66,35 +72,35 @@ class Database(Connection):
 					"""
 					INSERT INTO %s (%s)
 					VALUES (%s);
-					""", (AsIs(table), columns[0], values[0])
+					""", (AsIs(table), AsIs(columns[0]), values[0])
 				);
 			case 2:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s)
 					VALUES (%s, %s);
-					""", (AsIs(table), columns[0], columns[1], values[0], values[1])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), values[0], values[1])
 				);
 			case 3:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s, %s)
 					VALUES (%s, %s, %s);
-					""", (AsIs(table), columns[0], columns[1], columns[2], values[0], values[1], values[2])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), AsIs(columns[2]), values[0], values[1], values[2])
 				);
 			case 4:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s, %s, %s)
 					VALUES (%s, %s, %s, %s);
-					""", (AsIs(table), columns[0], columns[1], columns[2], columns[3], values[0], values[1], values[2], values[3])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), AsIs(columns[2]), AsIs(columns[3]), values[0], values[1], values[2], values[3])
 				);
 			case 5:
 				cur.execute( # - Build and execute SQL querry with table, columns, values. -
 					"""
 					INSERT INTO %s (%s, %s, %s, %s, %s)
 					VALUES (%s, %s, %s, %s, %s);
-					""", (AsIs(table), columns[0], columns[1], columns[2], columns[3], columns[4], values[0], values[1], values[2], values[3], values[4])
+					""", (AsIs(table), AsIs(columns[0]), AsIs(columns[1]), AsIs(columns[2]), AsIs(columns[3]), AsIs(columns[4]), values[0], values[1], values[2], values[3], values[4])
 				);
 			case _:
 				return 0   # 0 is the default case if x is not found
@@ -110,36 +116,27 @@ class Database(Connection):
 	
 	# - Updates records with given payload and on specified condition, querry affecting every record must be given in condition -
 	def update(self, table, payload, condition): 
-		con = self.connection;
+		con = self.connection; # - use same cursor and connection from class object. -
 		cur = self.cursor;
-		columns = list(payload.keys());
+		columns = list(payload.keys()); # - Divide payload for columns and values as given. -
 		values = [payload[column] for column in columns];
-		
-		for value in values:
-			if isinstance(value, dict):
-				toEscapeKeys = list(value.keys());
-				toEscapeValues = list(value.values());
-				escapedKeys = [];
-				escapedValues = [];
-				escapedDict = {};
-				for k in toEscapeKeys:
-					escapedKeys.append(self.adapt.escape(k));
-				for v in toEscapeValues:
-					escapedValues.append(self.adapt.escape(k));
-				for i in range(len(escapedKeys)):
-    					escapedDict[escapedKeys[i]] = escapedValues[i]
-				values[values.index(value)] = json.dumps(escapedDict, indent = 4);
-			if type(value) is str:
-				values[values.index(value)] = self.adapt.escape(value);
-		values = json.dumps(values, indent = 4)
+		#print(f"LEN VALUES IN UPDATE: {len(values)}")
+		for i in range(len(values)):
+			if isinstance(values[i], list):
+				values[i] = ",".join(str(v) for v in values[i]);
+			elif isinstance(values[i], dict):
+				values[i] = Json(values[i]);
+		#values = json.dumps(values, indent = 4)
 		cond_key = list(condition.keys())[0];
 		condition = list(condition.values())[0];
+		#print(f"condition IN UPDATE: {cond_key} == {condition}")
+		#print(f"columns IN UPDATE: {columns} inputting value: {values}")
 		cur.execute(
 			"""
 			UPDATE %s
 			SET %s = %s
 			WHERE %s = %s;
-			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), values, AsIs(cond_key), condition) # AsIs(','.join(columns))
+			""", (AsIs(table), AsIs(columns[0] if len(columns) == 1 else tuple(columns)), AsIs(values[0] if len(values) == 1 else tuple(values)), AsIs(cond_key), AsIs(condition)) # AsIs(','.join(columns))
 		);
 		con.commit();
 	# - Function allowing to fetch rows ( and data they contain ) with condition -
