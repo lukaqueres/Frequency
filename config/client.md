@@ -6,10 +6,10 @@
 {
 	"id": 875271995644842004,
 	"status": "online", 
-	"activity-preset": false, // Select activity preset, `false` for none and clear activity
+	"activity-preset": false,
 	"activities": {
 		"preset-1": { "type": "playing", "cycle-interval": 3600, "list": [  ] },
-		"preset-2": { "type": "watching", "cycle-interval": 600, "list": [ "New of Pink Panther", "Merry Melodies" ] },
+		"preset-2": { "type": "watching", "cycle-interval": 600, "list": [ "Pink Panther", "Merry Melodies" ] },
 		"preset-3": { "type": "listening", "cycle-interval": false, "list": [ "Some Rock", "Phonk'n mood" ] },
 		"preset-4": { "type": "playing", "cycle-interval": 3600, "list": [  ] }
 	}
