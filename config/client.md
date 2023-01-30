@@ -33,6 +33,13 @@
 > 
 > Possible: `online`, `offline`, `idle`, `dnd` ( aka do not disturb )
 
+### activity-preset
+> _type: str_
+> 
+> Select preset name ( key ) from `activities` tab to be used on load
+> 
+> Use `false` to not use any preset and thus not setting any activity
+
 
 ### activities
 > _type: dict_
