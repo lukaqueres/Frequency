@@ -21,59 +21,59 @@
 
 ---
 
-### id
-> _type: int_
-> 
-> Id of discord client representation of bot
+* ### id
+    > _type: int_
+    > 
+    > Id of discord client representation of bot
 
-### status
-> _type: str_
-> 
-> Status displayed in discord just like normal account's
-> 
-> Possible: `online`, `offline`, `idle`, `dnd` ( aka do not disturb )
+* ### status
+    > _type: str_
+    > 
+    > Status displayed in discord just like normal account's
+    > 
+    > Possible: `online`, `offline`, `idle`, `dnd` ( aka do not disturb )
 
-### activity-preset
-> _type: str_
-> 
-> Select preset name ( key ) from `activities` tab to be used on load
-> 
-> Use `false` to not use any preset and thus not setting any activity
+* ### activity-preset
+    > _type: str_
+    > 
+    > Select preset name ( key ) from `activities` tab to be used on load
+    > 
+    > Use `false` to not use any preset and thus not setting any activity
 
 
-### activities
-> _type: dict_
-> 
-> Presets of activities containing info about activities
-> 
-> #### In order:
-> 
-> ---
-> 
-> * ### _type_
-> 
->  Type of activities, specifies message about activity ( `Playing game...`, `Watching ...` )
-> 
->  #### supported: 
->  * `playing` ( default ), 
->  * `watching`, 
->  * `listening`
->  
-> ---
-> 
-> * ###  _cycle-interval_ 
-> 
->  Cycle interval ( in seconds ) between change of activity 
->  #### supported:
->  * `false` / `0` - No interval means no cycle of activities names
->  * `fast` - random number between 1,800 and 7,200 ( 0.5 to 2h )
->  * `slow` - random number between 25,200 and 36,000 ( 7 to 10h )
->  * `int` - number of seconds between change
->  
-> ---
-> 
-> * ### _list_ 
-> 
->  List of custom activities from which one will be drawn each time ( if cycle is active )
->  #### supported:
->   * list of strings with at least one record
+* ### activities
+    > _type: dict_
+    > 
+    > Presets of activities containing info about activities
+    > 
+    > #### In order:
+    > 
+    > ---
+    > 
+    > * ### _type_
+    > 
+    >  Type of activities, specifies message about activity ( `Playing game...`, `Watching ...` )
+    > 
+    >  #### supported: 
+    >  * `playing` ( default ), 
+    >  * `watching`, 
+    >  * `listening`
+    >  
+    > ---
+    > 
+    > * ###  _cycle-interval_ 
+    > 
+    >  Cycle interval ( in seconds ) between change of activity 
+    >  #### supported:
+    >  * `false` / `0` - No interval means no cycle of activities names
+    >  * `fast` - random number between 1,800 and 7,200 ( 0.5 to 2h )
+    >  * `slow` - random number between 25,200 and 36,000 ( 7 to 10h )
+    >  * `int` - number of seconds between change
+    >  
+    > ---
+    > 
+    > * ### _list_ 
+    > 
+    >  List of custom activities from which one will be drawn each time ( if cycle is active )
+    >  #### supported:
+    >   * list of strings with at least one record
