@@ -1,10 +1,26 @@
 import json
+import doctest
 
 
 class Configuration:
+    """
+    Example of usage:
+
+    >>> configuration = Configuration("config")
+
+    >>> configuration.get("config", "developer.log")
+    {'exceptions': True, 'errors': True, 'notices': True}
+    >>> print("Name: ", configuration.get("config", "name"))
+    Name:  Plan It
+    """
     def __init__(self, *files):
-        self.file_template = "/config/{}.json"
-        self.saved = []
+        """
+        Class for storing config data usage
+
+        @param *files: Names of JSON files with configuration
+        """
+        self.file_template = "{}.json"
+        self.saved = {}
         for name in files:
             self.__fetch(name)
 
@@ -22,13 +38,13 @@ class Configuration:
                 content = json.load(c)
         except Exception as error:
             raise error
-        self.saved[name] = []
+        self.saved[name] = {}
         for key, value in content.items():
             self.saved[name][key] = value
 
     # noinspection PyTypeChecker
     def get(self, category: str, key: str):
-        """
+        """ Get provided key from selected category
 
         @type category: str
         @param category: Name of category
@@ -45,5 +61,4 @@ class Configuration:
         return config
 
 
-configuration = Configuration("config")
-print(configuration.get("config", "name"))
+doctest.run_docstring_examples(Configuration, globals())

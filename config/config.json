@@ -1,26 +1,6 @@
 {
 	"name": "Plan It",
-	"url": "https://theplanbot.com",
-	"discord": {
-		"client-id": 875271995644842004,
-		"status": {
-			"set": "online"
-		},
-		"activities": {
-			"set": false, 
-			"cycle": true,
-			"cycle-interval": 3600,
-			"list": "dedicated-pool",
-			"list-pool": {
-				"pool-one": { "activity": "playing", "list": [] },
-				"playing": [],
-				"watching": [],
-				"listening": [],
-				"other": [],
-				"dedicated-pool": ["Developing", "New site on its way!"]
-			}
-		}
-	},
+	"site": "http://theplanbot.com",
 	"developer": {
 		"active": false,
 		"active-status": "dnd",
