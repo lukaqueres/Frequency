@@ -7,12 +7,12 @@ class Configuration:
     """
     Example of usage:
 
-    >>> configuration = Configuration("general")
+    >>> configuration = Configuration("example")
 
-    >>> configuration.get("general", "developer.log")
-    {'exceptions': True, 'errors': True, 'notices': True}
-    >>> print("Name: ", configuration.get("general", "name"))
-    Name:  Plan It
+    >>> configuration.get("example", "my.statement")
+    'I like games'
+    >>> print("About: ", configuration.get("example", "about_this_file"))
+    About:  This is a test file for testing config.py file ( Specifically loading JSON values part )
     """
     def __init__(self, *files):
         """
