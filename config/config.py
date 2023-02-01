@@ -50,6 +50,8 @@ class Configuration:
         @param category: Name of category
         @type key: str
         @param key: Key of specified value
+
+        @return value: Returns value under provided key
         """
         config = self.saved[category]
         keys = key.split('.')

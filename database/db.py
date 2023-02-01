@@ -7,6 +7,16 @@ from typing import Any
 
 
 class Database:
+    """
+        Example of usage:
+
+        >>> db = Database("example")
+
+        >>> db.get("example", "my.statement")
+        'I like games'
+        >>> print("About: ", db.get("example", "about_this_file"))
+        About:  This is a test file for testing config.py file ( Specifically loading JSON values part )
+        """
     def __init__(self):
         self.con = psycopg2.connect(os.environ.get('DATABASE_URL'), sslmode='require')
         self.cur = self.con.cursor()
@@ -28,3 +38,6 @@ class Database:
 
     def delete(self):
         pass
+
+
+doctest.run_docstring_examples(Database, globals())
