@@ -1,6 +1,8 @@
 import doctest
 import psycopg2
 import os
+
+from psycopg2 import sql
 from typing import Any
 
 
@@ -13,44 +15,56 @@ class Database:
 
 		>>> db = Database(os.environ.get('DATABASE_URL'))
 
-		//>>> db.select("example", "my.statement")
-		'I like games'
-		//>>> print("About: ", db.get("example", "about_this_file"))
-		About:  This is a test file for testing config.py file ( Specifically loading JSON values part )
+		>>> db.select("guilds",["id", "name"],**{"prefix": "//", "name": "Wierd_'name-test\\""})
+		{'id': 2, 'name': 'Wierd_\\'name-test"'}
+		>>> db.select("guilds",["name", ],**{"id": 1,})
+		{'name': 'Sample_name'}
+		>>> db.select("guilds",["name", ], limit = None)
+		[{'name': 'Sample_name'}, {'name': 'Wierd_\\'name-test"'}]
+
+		>>> db.insert("guilds", **{"id": 10, "name": "Delete'\\"ted", "prefix": "/"})
+		{'id': 10, 'name': 'Delete\\'"ted', 'prefix': '/'}
 		"""
 
 	def __init__(self, url: str):
 		self.con = psycopg2.connect(url)
 		self.cur = self.con.cursor()
 
-	def select(self, table: str, columns: str | list, *constraints) -> Any:
-		query = "SELECT %(columns)s"
-		query +=  "FROM %(table)s WHERE %(constraints)s"
+	def select(self, table: str, columns: list, limit: None | int = 1, **constraints: dict) -> Any:
+		query = "SELECT {columns} FROM {table} {where} {constraints} {limit}"
 		data = {}
-		data.update(table=table)
-		if isinstance(columns, list):
-			for column in columns:
-				column = {f"column{len(data)}": column}
-				data.update(column)
-			if len(list) > 1:
-				for column in columns:
+		cols = [sql.Identifier(c) for c in columns]
+		formats = {"columns": sql.SQL(',').join(cols)}
+		formats.update(table=sql.Identifier(table))
 
-		if constraints and not isinstance(constraints, dict):
-			raise TypeError("Constraints must be made of dictionaries or none")
-		elif isinstance(constraints, dict):
+		if constraints:
+			formats.update(where=sql.SQL("WHERE"))
+			i = 1
+			conditions = {}
 			for name, value in constraints.items():
-				constraint = {f"constraint{name}n": name, f"constraint{name}v": value}
-				data.update(constraint)
+				conditions.update({name: sql.Placeholder(f"constraint{i}{name}v")})
+				data.update({f"constraint{i}{name}v": value})
+				i += 1
+			requisites = sql.SQL(" AND ").join(sql.SQL(" = ").join([sql.Identifier(n), v]) for n, v in conditions.items())
+			formats.update(constraints=requisites)
 		else:
+			formats.update(where=sql.SQL(""), constraints=sql.SQL(""))
 			pass
-		self.cur(query, data)
-		return self.cur.fetchall()
+		formats.update(limit=sql.SQL("LIMIT 1" if limit else ""))
+		self.cur.execute(sql.SQL(query).format(**formats), data)
+		if limit:
+			return dict(zip(columns, self.cur.fetchone()))
+		else:
+			return list(dict(zip(columns, r)) for r in self.cur.fetchall())
 
-	def exists(self):
-		pass
-
-	def insert(self, table: str, values: dict) -> dict | bool:
-		pass
+	def insert(self, table: str, **values: dict) -> dict:
+		query = "INSERT INTO {table} ( {columns} ) VALUES ( {values} )"
+		formats = {"table": sql.Identifier(table)}
+		formats.update(columns=sql.SQL(", ").join(sql.Identifier(c) for c in values.keys()))
+		formats.update(values=sql.SQL(", ").join(sql.Placeholder(f"value{list(values).index(c)}{c}v") for c in values.keys()))
+		data = {f"value{list(values).index(n)}{n}v": v for n, v in values.items()}
+		self.cur.execute(sql.SQL(query).format(**formats), data)
+		return values
 
 	def update(self):
 		pass

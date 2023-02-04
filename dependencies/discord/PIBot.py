@@ -41,10 +41,8 @@ class PIBot(commands.Bot):  # discord.Client
 
     def __get_prefix(self, client, message: discord.Message):
         try:
-            prefix = self.database.select(table='guilds.properties',
-                                          columns=['prefix'],
-                                          condition={"id": message.guild.id}
-                                          );
+            prefix = self.database.selectone(table='guilds.properties', columns=['prefix'],
+                                             condition={"id": message.guild.id});
             prefix = prefix
         except Exception as e:
             prefix = self.configuration.read(category="utilities", key="database.defaults.prefix");
