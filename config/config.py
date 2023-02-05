@@ -5,6 +5,9 @@ from typing import Any
 
 class Configuration:
 	"""
+	@version 0.1.0
+	@author lukaqueres
+
 	Example of usage:
 
 	>>> configuration = Configuration("example")
