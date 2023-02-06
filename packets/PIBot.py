@@ -1,12 +1,9 @@
-import os, random, asyncio, traceback, sys
+import random, asyncio, traceback, sys
 
-from typing import Optional
-from platform import commands, tasks
+from platform import commands
 
-import platform
-
-from config.config import Configuration
-from database.db import Database
+from dependencies.config import Configuration
+from dependencies.database import Database
 
 
 class PIBot(commands.Bot):  # discord.Client
