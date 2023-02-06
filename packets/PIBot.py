@@ -1,9 +1,9 @@
 import os, random, asyncio, traceback, sys
 
 from typing import Optional
-from discord import commands, tasks
+from platform import commands, tasks
 
-import discord
+import platform
 
 from config.config import Configuration
 from database.db import Database

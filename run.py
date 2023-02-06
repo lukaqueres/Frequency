@@ -8,7 +8,7 @@ import discord
 from discord import app_commands
 
 # - Importing in-project packages -
-from packets.discord import PIBot
+from packets.platform import PIBot
 
 client = PIBot()
 
