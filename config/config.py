@@ -17,6 +17,9 @@ class Configuration:
 	>>> print("About: ", configuration.get("example", "about_this_file"))
 	About:  This is a test file for testing config.py file ( Specifically loading JSON values part )
 	"""
+
+	instances = []
+
 	def __init__(self, *files):
 		"""
 		Class for storing config data usage
@@ -25,6 +28,7 @@ class Configuration:
 		"""
 		self.file_template = "{}.json"
 		self.saved = {}
+
 		for name in files:
 			self.__fetch(name)
 

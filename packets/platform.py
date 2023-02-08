@@ -2,6 +2,7 @@ import discord
 import os
 import doctest
 import random
+import logging
 
 from config.config import Configuration
 from dependencies.database.database import Database
@@ -14,8 +15,10 @@ class PIBot(commands.Bot):
 	def __init__(self, **kwargs):
 		super().__init__(command_prefix=self.__get_prefix, intents=discord.Intents.all(), **kwargs)
 
-		self.db = Database(os.environ.get('DATABASE_URL'))
+		self.database = Database(os.environ.get('DATABASE_URL'))
 		self.config = Configuration("client", "config")
+
+		self.synced_views = False
 
 	def __get_prefix(self, client, message: discord.Message):
 		record = self.database.select(table='guilds', columns=['prefix', ], condition={"id": message.guild.id})
@@ -59,5 +62,6 @@ class PIBot(commands.Bot):
 
 	async def cyclestatus(self):
 		pass
+
 
 doctest.run_docstring_examples(PIBot, globals())

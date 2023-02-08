@@ -108,9 +108,13 @@ class Database:
 		query = "UPDATE {table} SET {values} WHERE {constraints}"
 		formats = {"table": sql.Identifier(table)}
 		formats.update(
-			values=sql.SQL(", ").join(sql.SQL(" = ").join([sql.Identifier(n), sql.Placeholder(f"value{list(values).index(n)}{n}v")]) for n, v in values.items()))
+			values=sql.SQL(", ").join(sql.SQL(" = ").join(
+					[sql.Identifier(n), sql.Placeholder(f"value{list(values).index(n)}{n}v")]
+				) for n, v in values.items()))
 		formats.update(
-			constraints=sql.SQL(", ").join(sql.SQL(" = ").join([sql.Identifier(n), sql.Placeholder(f"constraint{list(constraints).index(n)}{n}v")]) for n, v in constraints.items()))
+			constraints=sql.SQL(", ").join(sql.SQL(" = ").join(
+					[sql.Identifier(n), sql.Placeholder(f"constraint{list(constraints).index(n)}{n}v")]
+				) for n, v in constraints.items()))
 		data = {f"value{list(values).index(n)}{n}v": v for n, v in values.items()}
 		data.update({f"constraint{list(constraints).index(n)}{n}v": v for n, v in constraints.items()})
 		with self.con.cursor() as curs:
