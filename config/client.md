@@ -52,12 +52,13 @@
     > 
     > * ### _type_
     > 
-    >  Type of activities, specifies message about activity ( `Playing game...`, `Watching ...` )
+    >  Type of activities, specifies message about activity ( `Playing game...`, `Watching ...` ), false for none
     > 
     >  #### supported: 
     >  * `playing` ( default ), 
     >  * `watching`, 
-    >  * `listening`
+    >  * `listening`,
+    >  * `false`
     >  
     > ---
     > 
@@ -66,8 +67,8 @@
     >  Cycle interval ( in seconds ) between change of activity 
     >  #### supported:
     >  * `false` / `0` - No interval means no cycle of activities names
-    >  * `fast` - random number between 1,800 and 7,200 ( 0.5 to 2h )
-    >  * `slow` - random number between 25,200 and 36,000 ( 7 to 10h )
+    >  * `short` - random number between 1,800 and 7,200 ( 0.5 to 2h )
+    >  * `long` - random number between 25,200 and 36,000 ( 7 to 10h )
     >  * `int` - number of seconds between change
     >  
     > ---

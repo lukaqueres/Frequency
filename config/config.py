@@ -16,6 +16,9 @@ class Configuration:
 	'I like games'
 	>>> print("About: ", configuration.get("example", "about_this_file"))
 	About:  This is a test file for testing config.py file ( Specifically loading JSON values part )
+
+	>>> Configuration.reload()
+	2
 	"""
 
 	instances = []
@@ -32,7 +35,8 @@ class Configuration:
 		for name in files:
 			self.__fetch(name)
 
-	# noinspection PyTypeChecker
+		Configuration.instances.append(self)
+
 	def __fetch(self, name: str) -> None:
 		"""Fetches content of JSON file and load in to parameter
 
@@ -69,6 +73,25 @@ class Configuration:
 			raise error
 		else:
 			return config
+
+	def __this_reload(self):
+		"""Reloads values
+
+		Simply fetches data again, overwriting previous fetch
+
+		"""
+		for name, values in self.saved.items():
+			self.__fetch(name)
+
+	@staticmethod
+	def reload():
+		"""Reloads every instance of Configuration class
+
+		Reloads every instance of class from prepared list, calling `__this_reload()` function
+		"""
+		print(len(Configuration.instances))
+		for instance in Configuration.instances:
+			instance.__this_reload()
 
 
 doctest.run_docstring_examples(Configuration, globals())
