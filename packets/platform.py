@@ -3,7 +3,7 @@ import os
 import doctest
 import random
 
-from dependencies.config.config import Configuration
+from config.config import Configuration
 from dependencies.database.database import Database
 
 from discord.ext import commands
