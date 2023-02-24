@@ -1,6 +1,12 @@
 import json
+import os
 import doctest
+import logging.config
+
 from typing import Any
+
+logging.config.fileConfig(fname=os.environ.get("LOG_CONFIG"), disable_existing_loggers=False)
+logger = logging.getLogger("logger")
 
 
 class Configuration:
@@ -16,12 +22,10 @@ class Configuration:
 	'I like games'
 	>>> print("About: ", configuration.get("example", "about_this_file"))
 	About:  This is a test file for testing config.py file ( Specifically loading JSON values part )
-
-	>>> Configuration.reload()
-	2
 	"""
 
 	instances = []
+	location = dir_path = os.path.dirname(os.path.realpath(__file__))
 
 	def __init__(self, *files):
 		"""
@@ -29,7 +33,7 @@ class Configuration:
 
 		@param *files: Names of JSON files with configuration
 		"""
-		self.file_template = "{}.json"
+		self.file_template = f"{Configuration.location}\\{{}}.json"
 		self.saved = {}
 
 		for name in files:

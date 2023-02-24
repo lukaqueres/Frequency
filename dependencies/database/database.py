@@ -15,23 +15,23 @@ class Database:
 
 	>>> db = Database(os.environ.get('DATABASE_URL'))
 
-	>>> db.select("guilds",["id", "name"],**{"prefix": "//", "name": "Wierd_'name-test\\""})
+	>>> db.select("testing.guilds",["id", "name"], **{"prefix": "//", "name": "Wierd_'name-test\\""})
 	{'id': 2, 'name': 'Wierd_\\'name-test"'}
-	>>> db.select("guilds",["name", ], limit = None)
+	>>> db.select("testing.guilds",["name", ], limit = None)
 	[{'name': 'Sample_name'}, {'name': 'Wierd_\\'name-test"'}]
 
-	>>> db.insert("guilds", **{"id": 10, "name": "Delete'\\"ted", "prefix": "/"})
+	>>> db.insert("testing.guilds", **{"id": 10, "name": "Delete'\\"ted", "prefix": "/"})
 	{'id': 10, 'name': 'Delete\\'"ted', 'prefix': '/'}
-	>>> db.update("guilds", {"name": "Changed\\"me", "prefix": "xd"}, **{"id": 10})
+	>>> db.update("testing.guilds", {"name": "Changed\\"me", "prefix": "xd"}, **{"id": 10})
 	1
-	>>> db.select("guilds",["name", "prefix"],**{"id": 10,})
+	>>> db.select("testing.guilds",["name", "prefix"],**{"id": 10,})
 	{'name': 'Changed"me', 'prefix': 'xd'}
-	>>> db.delete("guilds", **{"id": 10})
+	>>> db.delete("testing.guilds", **{"id": 10})
 	1
 
 	@note psycopg2 documentation can be found here U{https://www.psycopg.org/docs/index.html}
 
-	@note In case of transaction error call `con.rollback()`, use of `with` should automatically take care of this
+	@note In case of transaction error call `con.rollback()`, use of `with` should (not) automatically take care of this
 
 	"""
 
@@ -42,10 +42,10 @@ class Database:
 		"""
 		self.con = psycopg2.connect(url)
 
-	def select(self, table: str, columns: list, limit: None | int = 1, **constraints: dict) -> list | dict:
+	def select(self, table: str, columns: list, limit: None | int = 1, **constraints: dict) -> list | dict | None:
 		"""Selects columns from specified table based on constraints
 
-		@param table: Name of table
+		@param table: Name of table, supports schemas
 		@param columns: Tally of columns to be returned
 		@param limit: limit selected rows to number, default 1
 		@param constraints: Constraints limiting selection
@@ -56,7 +56,7 @@ class Database:
 		data = {}
 		cols = [sql.Identifier(c) for c in columns]
 		formats = {"columns": sql.SQL(',').join(cols)}
-		formats.update(table=sql.Identifier(table))
+		formats.update(table=sql.Identifier(*table.split(".", 2)))
 		if constraints:
 			formats.update(where=sql.SQL("WHERE"))
 			i = 1
@@ -73,6 +73,8 @@ class Database:
 		formats.update(limit=sql.SQL("LIMIT 1" if limit else ""))
 		with self.con.cursor() as curs:
 			curs.execute(sql.SQL(query).format(**formats), data)
+			if not curs.rowcount:
+				return None
 			if limit == 1:
 				return dict(zip(columns, curs.fetchone()))
 			else:
@@ -81,12 +83,12 @@ class Database:
 	def insert(self, table: str, **values: dict) -> dict:
 		"""Insert row of values to given table
 
-		@param table: Name of table
+		@param table: Name of table, supports schemas
 		@param values: Content of new row
 		@return: Passed values
 		"""
 		query = "INSERT INTO {table} ( {columns} ) VALUES ( {values} )"
-		formats = {"table": sql.Identifier(table)}
+		formats = {"table": sql.Identifier(*table.split(".", 2))}
 		formats.update(
 			columns=sql.SQL(", ").join(sql.Identifier(c) for c in values.keys()))
 		formats.update(
@@ -100,13 +102,13 @@ class Database:
 	def update(self, table: str, values: dict, **constraints: dict) -> int:
 		"""Update row(s) values based on constraints
 
-		@param table: Table name
+		@param table: Name of table, supports schemas
 		@param values: New values
 		@param constraints: Limit number of affected rows
 		@return: Number of affected rows
 		"""
 		query = "UPDATE {table} SET {values} WHERE {constraints}"
-		formats = {"table": sql.Identifier(table)}
+		formats = {"table": sql.Identifier(*table.split(".", 2))}
 		formats.update(
 			values=sql.SQL(", ").join(sql.SQL(" = ").join(
 					[sql.Identifier(n), sql.Placeholder(f"value{list(values).index(n)}{n}v")]
@@ -125,13 +127,13 @@ class Database:
 	def delete(self, table: str, **constraints: dict) -> int:
 		"""Remove specified records from database
 
-		@param table: Table name
+		@param table: Name of table, supports schemas
 		@param constraints: Limits of deleted rows
 		@return: Number of deleted rows
 		"""
 		query = "DELETE FROM {table} WHERE {constraints}"
 		data = {}
-		formats = {"table": sql.Identifier(table)}
+		formats = {"table": sql.Identifier(*table.split(".", 2))}
 		if not constraints:
 			raise TypeError("Constraints can not be empty")
 		i = 1
