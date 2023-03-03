@@ -11,6 +11,8 @@ from dependencies.database.database import Database
 from discord import Colour
 from discord.ext import commands
 
+from views.VCConsole import VCConsoleView
+
 logging.config.fileConfig(fname=os.environ.get("LOG_CONFIG"), disable_existing_loggers=False)
 logger = logging.getLogger("logger")
 
@@ -47,8 +49,7 @@ class PIBot(commands.Bot):
 	def __sync_views(self):
 
 		if not self.synced_views:
-			# self.add_view(TicketLaunchView())
-			# self.add_view(TicketManageView())
+			self.add_view(VCConsoleView())
 			self.synced_views = True
 		else:
 			pass

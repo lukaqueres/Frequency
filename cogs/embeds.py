@@ -3,12 +3,12 @@ import logging
 import os
 import json
 
-from packets.platform import PIBot
 from discord.ext import commands
 from discord import app_commands
 from typing import Optional
 
 from config.config import Configuration
+from packets.platform import PIBot
 from packets.platform import PIEmbed
 
 logging.config.fileConfig(fname=os.environ.get("LOG_CONFIG"), disable_existing_loggers=False)
