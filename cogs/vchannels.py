@@ -1,6 +1,7 @@
 import discord
 import logging
 import os
+import json
 
 from discord.ext import commands
 from discord import app_commands
@@ -21,23 +22,45 @@ class VChannels(commands.Cog):
 
 	vChannels = app_commands.Group(name="voice", description="Voice channels management")
 
+	async def __on_voice_channel_join(self, member, after):
+		f_channels = self.client.database.select(table="vchannels_manage",
+		                                           columns=["function_channels", ],
+		                                           **{"guild_id": member.guild.id})
+		f_channels = {int(guild_id): settings for guild_id, settings in f_channels["function_channels"].items()}
+		if after.channel.id in list(f_channels.keys()):  # - Voice channel is saved as function -
+			new_channel = await member.guild.create_voice_channel(name=f"{member.name}'s",
+			                                                      category=after.channel.category,
+			                                                      reason=f"Voice channel especially for user {member.name}")
+			await member.move_to(new_channel, reason=f"Created {member.name}'s channel")
+			self.client.database.insert(table="vchannels",
+			                            **{
+				                            "id": new_channel.id,
+				                            "guild_id": member.guild.id,
+			                                "owner_id": member.id
+			                            })
+		else:
+			print("not for create")  # - Channel is not for channel creation -
+
+	async def __on_voice_channel_leave(self, member, before):
+		data = self.client.database.select(table="vchannels",
+		                                   columns=["id", ],
+		                                   **{"id": before.channel.id})
+		if data is not None:
+			if len(before.channel.members) == 0:
+				self.client.database.delete(table="vchannels",
+				                            **{"id": before.channel.id})
+				await before.channel.delete(reason="Channel is empty")
+
 	@commands.Cog.listener()
 	async def on_voice_state_update(self, member, before, after):
-		if not self.client.database.select(table="vchannels_manage", columns=["enable", ]):
+		if not self.client.database.select(table="vchannels_manage", columns=["enable", ], **{"guild_id": member.guild.id}):
 			return  # - Voice channels management is disabled -
-		if not before.channel or not after.channel or before.channel.id == after.channel.id:  # - Channel was not changed -
-			pass
+		if before.channel is None and after.channel is not None:  # - Joined to channel -
+			await self.__on_voice_channel_join(member, after)
+		elif before.channel is not None and after.channel is None:  # - Left the channel -
+			await self.__on_voice_channel_leave(member, before)
 		else:  # - Channel WAS changed -
-			channel_a_id = self.client.database.select(table="vchannels_manage",
-			                                           columns=["create_channel_a_id", ],
-			                                           **{"guild_id": member.guild.id})
-			if after.channel.id == channel_a_id:
-				new_channel = await member.guild.create_voice_channel(name=f"{member.name}'s",
-				                                       category=after.channel.category,
-				                                       reason=f"Voice channel especially for user {member.name}")
-				await member.move_to(new_channel, reason="Created new channel")
-			else:
-				pass  # - Channel is not for channel creation -
+			pass
 
 	@app_commands.guild_only()
 	@app_commands.checks.has_permissions(manage_channels=True)
