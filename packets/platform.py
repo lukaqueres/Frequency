@@ -158,7 +158,7 @@ class PIEmbed(discord.Embed):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
-	def validate(self) -> bool: # TODO: Make it nicer
+	def validate(self) -> bool:  # TODO: Make it nicer
 		if len(self) > self.limits.get("total"):
 			return False
 		if self.title:
@@ -183,5 +183,11 @@ class PIEmbed(discord.Embed):
 				return False
 		return True
 
-
-doctest.run_docstring_examples(PIBot, globals())
+	@staticmethod
+	def confirm(**kwargs):
+		arguments = {"color": Colour.red(),
+		             "title": "Confirm"
+		             }
+		arguments.update(kwargs)
+		embed = PIEmbed(**arguments)
+		return embed
