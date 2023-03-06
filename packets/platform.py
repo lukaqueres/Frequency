@@ -191,3 +191,18 @@ class PIEmbed(discord.Embed):
 		arguments.update(kwargs)
 		embed = PIEmbed(**arguments)
 		return embed
+
+	@staticmethod
+	def vc_console(**kwargs):
+		embed = PIEmbed(title="Voice channel control panel",
+		                description="Simple way to manage your current voice channel")
+		embed.add_field(name="`🖊️` Rename", value=chr(173))
+		embed.add_field(name="`👥` Limit", value=chr(173))
+		embed.add_field(name="`✔️` Allow", value=chr(173))
+		embed.add_field(name="`🔉` Mute / Unmute", value=chr(173))
+		embed.add_field(name="`🔒` Lock / Unlock", value=chr(173))
+		embed.add_field(name="`🔄` Transfer", value=chr(173))
+		embed.add_field(name="`📤` Kick", value=chr(173))
+		embed.add_field(name="`✖️` Disallow", value=chr(173))
+		embed.add_field(name="`🗑️` Close", value=chr(173))
+		return embed
