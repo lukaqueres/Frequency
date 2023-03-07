@@ -196,13 +196,24 @@ class PIEmbed(discord.Embed):
 	def vc_console(**kwargs):
 		embed = PIEmbed(title="Voice channel control panel",
 		                description="Simple way to manage your current voice channel")
-		embed.add_field(name="`🖊️` Rename", value=chr(173))
-		embed.add_field(name="`👥` Limit", value=chr(173))
-		embed.add_field(name="`✔️` Allow", value=chr(173))
-		embed.add_field(name="`🔉` Mute / Unmute", value=chr(173))
-		embed.add_field(name="`🔒` Lock / Unlock", value=chr(173))
-		embed.add_field(name="`🔄` Transfer", value=chr(173))
-		embed.add_field(name="`📤` Kick", value=chr(173))
-		embed.add_field(name="`✖️` Disallow", value=chr(173))
-		embed.add_field(name="`🗑️` Close", value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('pencil:1082733750573604864')}  | Rename",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('people:1082733793602981908')}  | Limit",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('checkmarkcircle:1082740747897425961')}  | Allow",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('volumemute:1082733813089714196')}  | Mute / Unmute",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('lockclosed:1082733831079067780')}  | Lock / Unlock",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('sync:1082733869586993182')}  | Transfer",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('personremove:1082733730147340328')}  | Kick",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('removecircle:1082740766499152004')}  | Disallow",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('personadd:1082733699570880604')}  | Invite",
+		                value=chr(173))
+		embed.add_field(name=f"{discord.PartialEmoji.from_str('closecircle:1082733909592260708')}  | Close",
+		                value=chr(173))
 		return embed

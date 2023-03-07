@@ -85,7 +85,8 @@ class VChannels(commands.Cog):
 	@app_commands.guild_only()
 	@app_commands.checks.has_permissions(manage_channels=True)
 	@vChannels.command(name="functional", description=f"Sets functional voice channel with various functions")
-	async def functional(self, interaction: discord.Interaction, channel: discord.VoiceChannel, console: Optional[bool] = False) -> None:
+	async def functional(self, interaction: discord.Interaction,
+	                     channel: discord.VoiceChannel, console: Optional[bool] = False) -> None:
 		f_channels = self.client.database.select(table="vchannels_manage",
 		                                         columns=["function_channels", ],
 		                                         **{"guild_id": interaction.guild.id})
