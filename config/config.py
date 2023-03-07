@@ -33,7 +33,7 @@ class Configuration:
 
 		@param *files: Names of JSON files with configuration
 		"""
-		self.file_template = f"{Configuration.location}\\{{}}.json"
+		self.file_template = f"{Configuration.location}/{{}}.json"
 		self.saved = {}
 
 		for name in files:
