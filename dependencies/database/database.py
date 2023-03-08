@@ -2,6 +2,7 @@ import doctest
 import psycopg2
 import os
 
+from typing import Optional
 from psycopg2 import sql
 
 
@@ -34,13 +35,14 @@ class Database:
 	@note In case of transaction error call `con.rollback()`, use of `with` should (not) automatically take care of this
 
 	"""
+	url = os.environ.get('DATABASE_URL')
 
-	def __init__(self, url: str) -> None:
+	def __init__(self, url: Optional[str] = None) -> None:
 		"""
 
-		@param url: Url used to connect to database in format: `postgresql://username:password@host:5432/table`
+		@param url: Url used to connect to database in format: `postgresql://username:password@host:5432/database`
 		"""
-		self.con = psycopg2.connect(url)
+		self.con = psycopg2.connect(url or Database.url)
 
 	def select(self, table: str, columns: list, limit: None | int = 1, **constraints: dict) -> list | dict | None:
 		"""Selects columns from specified table based on constraints

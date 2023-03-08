@@ -1,14 +1,29 @@
 import discord
 
+
+class UserNotInVoice(discord.app_commands.AppCommandError):
+	pass
+
+
 class VCConsoleView(discord.ui.View):
 	def __init__(self) -> None:
 		super().__init__(timeout=None)
+
+	async def interaction_check(self, interaction: discord.Interaction) -> bool:
+		if interaction.user.voice.channel is not None:
+			raise UserNotInVoice
+		channel = self.client.database.select(table="vchannels",
+		                                         columns=["owner_id", ],
+		                                         **{"id": interaction.user.voice.channel.id})
+		if
+		return True
+
 
 	@discord.ui.button(emoji=discord.PartialEmoji.from_str("pencil:1082733750573604864"),
 	                   style=discord.ButtonStyle.blurple,
 	                   custom_id="rename_vc_button")
 	async def rename_channel_button(self, interaction: discord.Interaction, button: discord.ui.button):
-		pass
+		await interaction.response.send_message("edit")
 
 	@discord.ui.button(emoji=discord.PartialEmoji.from_str("people:1082733793602981908"),
 	                   style=discord.ButtonStyle.blurple,
