@@ -1,9 +1,36 @@
 import doctest
 import psycopg2
 import os
+import functools
 
 from typing import Optional
 from psycopg2 import sql
+
+
+class Result:
+	def __init__(self, query: str, rows: Optional[list] = None, row: Optional[dict] = None):
+		self.__record = rows or row
+		self.type = "dict" if rows else "list"
+		self.query = query
+		self.index = 0
+		self.limit = True if row else False
+
+	@property
+	def num_rows(self):
+		return len(self.__record)
+
+	@property
+	def dump(self):
+		return self.__record
+
+	def __iter__(self):
+		return self
+
+	def __next__(self):
+		if self.index == self.num_rows:
+			raise StopIteration
+		self.index += 1
+		return self.__record[self.index]
 
 
 class Database:
@@ -16,16 +43,19 @@ class Database:
 
 	>>> db = Database(os.environ.get('DATABASE_URL'))
 
-	>>> db.select("testing.guilds",["id", "name"], **{"prefix": "//", "name": "Wierd_'name-test\\""})
+	>>> result = db.select("testing.guilds",["id", "name"], **{"prefix": "//", "name": "Wierd_'name-test\\""})
+	>>> result.dump
 	{'id': 2, 'name': 'Wierd_\\'name-test"'}
-	>>> db.select("testing.guilds",["name", ], limit = None)
+	>>> result = db.select("testing.guilds",["name", ], limit = None)
+	>>> result.dump
 	[{'name': 'Sample_name'}, {'name': 'Wierd_\\'name-test"'}]
 
 	>>> db.insert("testing.guilds", **{"id": 10, "name": "Delete'\\"ted", "prefix": "/"})
 	{'id': 10, 'name': 'Delete\\'"ted', 'prefix': '/'}
 	>>> db.update("testing.guilds", {"name": "Changed\\"me", "prefix": "xd"}, **{"id": 10})
 	1
-	>>> db.select("testing.guilds",["name", "prefix"],**{"id": 10,})
+	>>> result = db.select("testing.guilds",["name", "prefix"],**{"id": 10,})
+	>>> result.dump
 	{'name': 'Changed"me', 'prefix': 'xd'}
 	>>> db.delete("testing.guilds", **{"id": 10})
 	1
@@ -36,6 +66,16 @@ class Database:
 
 	"""
 	url = os.environ.get('DATABASE_URL')
+	con = None
+
+	@staticmethod
+	def with_connection(func):
+		@functools.wraps(func)
+		def wrapper_with_connection(*args, **kwargs):
+			Database.__connect()
+			return func(*args, **kwargs)
+
+		return wrapper_with_connection
 
 	def __init__(self, url: Optional[str] = None) -> None:
 		"""
@@ -43,8 +83,23 @@ class Database:
 		@param url: Url used to connect to database in format: `postgresql://username:password@host:5432/database`
 		"""
 		self.con = psycopg2.connect(url or Database.url)
+		self.url = url or Database.url
 
-	def select(self, table: str, columns: list, limit: None | int = 1, **constraints: dict) -> list | dict | None:
+	def __del__(self):
+		self.con.close()
+
+	@staticmethod
+	def __connect(url: Optional[str] = None):
+		Database.con = psycopg2.connect(url or Database.url)
+
+	@staticmethod
+	def __disconnect():
+		if Database.con:
+			Database.con.close()
+
+	@staticmethod
+	@with_connection
+	def select(table: str, columns: list, limit: None | int = 1, **constraints: dict) -> Result | None:
 		"""Selects columns from specified table based on constraints
 
 		@param table: Name of table, supports schemas
@@ -73,16 +128,18 @@ class Database:
 			formats.update(where=sql.SQL(""), constraints=sql.SQL(""))
 			pass
 		formats.update(limit=sql.SQL("LIMIT 1" if limit else ""))
-		with self.con.cursor() as curs:
+		with Database.con.cursor() as curs:
 			curs.execute(sql.SQL(query).format(**formats), data)
 			if not curs.rowcount:
 				return None
 			if limit == 1:
-				return dict(zip(columns, curs.fetchone()))
+				return Result(query=curs.query, row=dict(zip(columns, curs.fetchone())))
 			else:
-				return list(dict(zip(columns, r)) for r in curs.fetchall())
+				return Result(query=curs.query, rows=list(dict(zip(columns, r)) for r in curs.fetchall()))
 
-	def insert(self, table: str, **values: dict) -> dict:
+	@staticmethod
+	@with_connection
+	def insert(table: str, **values: dict) -> dict:
 		"""Insert row of values to given table
 
 		@param table: Name of table, supports schemas
@@ -96,12 +153,14 @@ class Database:
 		formats.update(
 			values=sql.SQL(", ").join(sql.Placeholder(f"value{list(values).index(c)}{c}v") for c in values.keys()))
 		data = {f"value{list(values).index(n)}{n}v": v for n, v in values.items()}
-		with self.con.cursor() as curs:
+		with Database.con.cursor() as curs:
 			curs.execute(sql.SQL(query).format(**formats), data)
-			self.con.commit()
+			Database.con.commit()
 		return values
 
-	def update(self, table: str, values: dict, **constraints: dict) -> int:
+	@staticmethod
+	@with_connection
+	def update(table: str, values: dict, **constraints: dict) -> int:
 		"""Update row(s) values based on constraints
 
 		@param table: Name of table, supports schemas
@@ -121,12 +180,14 @@ class Database:
 				) for n, v in constraints.items()))
 		data = {f"value{list(values).index(n)}{n}v": v for n, v in values.items()}
 		data.update({f"constraint{list(constraints).index(n)}{n}v": v for n, v in constraints.items()})
-		with self.con.cursor() as curs:
+		with Database.con.cursor() as curs:
 			curs.execute(sql.SQL(query).format(**formats), data)
-			self.con.commit()
+			Database.con.commit()
 			return curs.rowcount
 
-	def delete(self, table: str, **constraints: dict) -> int:
+	@staticmethod
+	@with_connection
+	def delete(table: str, **constraints: dict) -> int:
 		"""Remove specified records from database
 
 		@param table: Name of table, supports schemas
@@ -146,9 +207,9 @@ class Database:
 			i += 1
 		requisites = sql.SQL(" AND ").join(sql.SQL(" = ").join([sql.Identifier(n), v]) for n, v in conditions.items())
 		formats.update(constraints=requisites)
-		with self.con.cursor() as curs:
+		with Database.con.cursor() as curs:
 			curs.execute(sql.SQL(query).format(**formats), data)
-			self.con.commit()
+			Database.con.commit()
 			return curs.rowcount
 
 
