@@ -22,4 +22,3 @@ class Where:
 
 	def where_not_between(self):
 		pass
-	
