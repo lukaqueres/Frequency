@@ -87,7 +87,9 @@ class Database:
 		@functools.wraps(func)
 		def wrapper_with_connection(*args, **kwargs):
 			Database.__connect()
-			return func(*args, **kwargs)
+			result = func(*args, **kwargs)
+			Database.con.close()
+			return result
 
 		return wrapper_with_connection
 
