@@ -7,21 +7,22 @@ from typing import Optional
 from psycopg2 import sql
 
 
-class Result:
-	def __init__(self, query: str, rows: Optional[list] = None, row: Optional[dict] = None):
-		self.__record = rows or row
-		self.type = "dict" if rows else "list"
+class ResultSet:
+	def __init__(self, query: str, rows: list):
+		self.__record = rows
 		self.query = query
 		self.index = 0
-		self.limit = True if row else False
+
+	@property
+	def dump(self):
+		dump = []
+		for row in self.__record:
+			dump.append(row.dump)
+		return dump
 
 	@property
 	def num_rows(self):
 		return len(self.__record)
-
-	@property
-	def dump(self):
-		return self.__record
 
 	def __iter__(self):
 		return self
@@ -31,6 +32,19 @@ class Result:
 			raise StopIteration
 		self.index += 1
 		return self.__record[self.index]
+
+
+class Row:
+	def __init__(self, row: dict, query: Optional[str] = None):
+		self.__record = row
+		self.query = query
+
+	@property
+	def dump(self):
+		return self.__record
+
+	def get(self, key):
+		return self.__record[key]
 
 
 class Database:
@@ -99,7 +113,7 @@ class Database:
 
 	@staticmethod
 	@with_connection
-	def select(table: str, columns: list, limit: None | int = 1, **constraints: dict) -> Result | None:
+	def select(table: str, columns: list, limit: None | int = 1, **constraints: dict) -> Row | ResultSet | None:
 		"""Selects columns from specified table based on constraints
 
 		@param table: Name of table, supports schemas
@@ -133,9 +147,10 @@ class Database:
 			if not curs.rowcount:
 				return None
 			if limit == 1:
-				return Result(query=curs.query, row=dict(zip(columns, curs.fetchone())))
+				return Row(query=curs.query, row=dict(zip(columns, curs.fetchone())))
 			else:
-				return Result(query=curs.query, rows=list(dict(zip(columns, r)) for r in curs.fetchall()))
+				rows = list(dict(zip(columns, r)) for r in curs.fetchall())
+				return ResultSet(query=curs.query, rows=[Row(row=row) for row in rows])
 
 	@staticmethod
 	@with_connection
