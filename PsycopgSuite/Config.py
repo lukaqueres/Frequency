@@ -17,3 +17,12 @@ class Identification:
 		Identification.password = password
 		Identification.host = host
 		Identification.port = port
+
+
+class Connection:
+	connect_url = "postgresql://postgres:postgres@localhost/postgres"
+	dbname = "postgres"
+	user = "postgres"
+	password = "postgres"
+	host = "localhost"
+	port = 5432
