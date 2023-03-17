@@ -1,0 +1,13 @@
+{
+	"about_this_file" : "This is a test file for testing config.py file ( Specifically loading JSON values part )",
+	"example_key" : "This a example value",
+	"nesting-example-1" : {
+		"nesting-nesting-example-2" : [ "Just", "a", "list" ],
+		"something-something" : "nothing-nothing"
+	},
+	"some-numbers" : 293283783289292892,
+	"even-more-numbers" : 1000000000000,
+	"my" : {
+		"statement": "I like games"
+	}
+}

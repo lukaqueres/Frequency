@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "discord-bot-post-office"
+name = "plan-it"
 version = "0.1.0"
 description = ""
 authors = ["Łukasz Kocielnik <lkocieln@gmail.com>"]

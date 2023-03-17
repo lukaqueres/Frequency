@@ -8,6 +8,7 @@
 .docker
 Dockerfile
 httpd.conf
+.idea
 
 # User-specific files
 *.rsuser
