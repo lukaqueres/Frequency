@@ -57,6 +57,8 @@ class PIBot(commands.Bot):
 	async def on_ready(self):
 		self.__sync_views()
 
+		# await discord.app_commands.CommandTree.set_translator() TODO: Finish Translator
+
 		logger.info(f"Instance of {self.user.name} loaded")
 		logger.info(f"Active {len(self.guilds)} guilds")
 

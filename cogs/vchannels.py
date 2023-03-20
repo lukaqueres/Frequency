@@ -24,7 +24,7 @@ class VChannels(commands.Cog):
 		self.client = client
 		self.functional_channels_limit = 2
 
-	vChannels = app_commands.Group(name="voice", description="Voice channels management")
+	vChannels = app_commands.Group(name="vchannels", description="Voice channels management")
 
 	async def __on_voice_channel_join(self, member, after):
 		f_channels = self.client.database.select(table="vchannels_manage",

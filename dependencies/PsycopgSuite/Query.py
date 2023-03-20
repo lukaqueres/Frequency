@@ -5,8 +5,13 @@ from Errors.PsycopgSuiteErrors import PsycopgSuiteValueError  # raise PsycopgSui
 
 
 class Table:
+	def __init__(self):
+		return Query()
+
+
+class Query:
 	"""
-	>>> Table("test_guild").get()
+	>>> Query("test_guild").get()
 	"""
 	def __init__(self, name):
 		self.name = name

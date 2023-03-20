@@ -15,7 +15,6 @@ class VCConsoleView(discord.ui.View):
 		channel = self.client.database.select(table="vchannels",
 		                                         columns=["owner_id", ],
 		                                         **{"id": interaction.user.voice.channel.id})
-		if
 		return True
 
 

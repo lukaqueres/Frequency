@@ -1,0 +1,8 @@
+>>> from dependencies import localisation
+
+>>> localisation.Local.load()
+
+>>> localisation.locale("ex").get("Channel {voice_channel} has been deleted")
+'Channel {voice_channel} has been deleted'
+
+>> > localisation.interaction(interaction).get("Channel {voice_channel} has been deleted")

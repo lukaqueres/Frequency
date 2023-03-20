@@ -1,0 +1,8 @@
+{
+	"name": "Example",
+	"code": "ex",
+	"compilation": {
+		"Channel {voice_channel} has been deleted": "Channel {voice_channel} has been deleted",
+		"Channel {voice_channel} has been created": "Channel {voice_channel} has been created"
+	}
+}
