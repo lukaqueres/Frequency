@@ -1,0 +1,14 @@
+>>> from packages import config
+>>> import logging
+
+>>> logging.getLogger('config').setLevel(logging.DEBUG)
+>>> config.save(config.File.json("doctest/doctests.json"))
+>>> config.raw()
+{'key': 'Value', 'nest': {'nested': True}, 'list': ['listed', 'element']}
+>>> config.save(config.File.yaml("doctest/doctests.yaml"))
+>>> config.raw()
+{'key': 'Value', 'nest': {'nested': True}, 'list': ['listed', 'element'], 'yaml': 'Yes', 'can_nest': {'nested': True}, 'example_list': ['listed', 'element']}
+>>> config.get("key")
+'Value'
+>>> config.get("nest").get("nested")
+True

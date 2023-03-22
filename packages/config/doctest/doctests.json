@@ -1,0 +1,10 @@
+{
+	"key": "Value",
+	"nest": {
+		"nested": true
+	},
+	"list": [
+		"listed",
+		"element"
+	]
+}

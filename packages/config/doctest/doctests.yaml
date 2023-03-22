@@ -1,0 +1,6 @@
+%YAML 1.2
+---
+yaml: "Yes" # Comments!
+can_nest:
+  nested: true
+example_list: ["listed", "element"]
