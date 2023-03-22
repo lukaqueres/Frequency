@@ -1,0 +1,29 @@
+>>> from packages import database as db
+
+>>> db.table("example").get()
+
+>>> # example = Table("example").where('name', 'example').value("isExample")
+
+>>> # example = Table("example").find(102)
+
+>>> # count = Table('users').count()
+
+>>> # exists = Table('guilds').where('name', 'example').exists()
+
+>>> # records = Table('records').select('column', 'another_column').get()
+
+>>> # distinct = Table('records').distinct().get()
+
+>>> # query = Table('records').select('column')
+>>> # query.get()
+
+>>> # Table('table').where('column', '=', 100).get()
+
+>>> # Table('table').where('name', 'like', 'T%').get()
+
+>>> # Table('table').where([
+    ['status', '=', '1'],
+    ['subscribed', '<>', '1'],
+]).get()
+
+>>> # Table('table').orWhere(Query.where('column', '>', 100))
