@@ -23,9 +23,16 @@ logger.addHandler(database_handler)
 
 
 def table(name: str) -> Query:
-	query = Query()
-	query.table(name)
+	query = Query(name)
 	return query
+
+
+class Connection:
+	__url = "postgresql://postgres:postgres@localhost/postgres"
+
+	@staticmethod
+	def url(url: str):
+		Connection.__url = url
 
 
 if __name__ == "__main__":
