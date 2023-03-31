@@ -1,6 +1,10 @@
 >>> from packages import database as db
 
->>> db.table("example").get()
+>>> query = db.table('records').select('column', 'another_column')
+
+>>> query.select.cache
+
+>>> # db.table("example").get()
 
 >>> # example = Table("example").where('name', 'example').value("isExample")
 

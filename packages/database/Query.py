@@ -1,6 +1,8 @@
 import re
 import functools
+import inspect
 
+from dataclasses import dataclass
 
 from typing import TypeVar
 from typing import Optional
@@ -11,6 +13,25 @@ from psycopg2 import sql
 from Errors import InvalidColumnGiven
 
 TQuery = TypeVar("TQuery", bound="Query")
+
+
+@dataclass
+class Cache:
+	args: tuple
+	kwargs: dict
+
+
+def cache(func):
+	@functools.wraps(func)
+	def wrapper_return_self(*args, **kwargs):
+		values = func(*args, **kwargs)
+		if "self" in inspect.signature(func).parameters:
+			args = tuple(list(args)[1:])
+		wrapper_return_self.cache = Cache(args, kwargs)
+		return values
+
+	wrapper_return_self.cache = None
+	return wrapper_return_self
 
 
 class Pattern:
@@ -41,12 +62,6 @@ class Query:
 
 		self.__where = []
 
-	def __construct(self, pattern: str) -> (sql.SQL, dict):
-		query = pattern
-		formats = {}
-		values = {}
-		return sql.SQL(query).format(formats), values
-
 	def where(self, *args) -> TQuery:
 		self.__where.append(list(args))
 		return self
@@ -55,15 +70,9 @@ class Query:
 		self.__distinct = True
 		return self
 
+	@cache
 	def select(self, *columns) -> TQuery:
-		for column in columns:
-			if not re.search("^(\S+|\S+\sas\s\S+)$", column):
-				raise InvalidColumnGiven(f"Column {column} is invalid")
-			if " as " in column:
-				column = column.split()
-				self.__columns.update({column[0]: column[-1]})
-			else:
-				self.__columns.update({column: column})
+		print(f"self: {self}")
 		return self
 
 	def ordered_by(self, column: str, method: Optional[str] = "desc") -> TQuery:
