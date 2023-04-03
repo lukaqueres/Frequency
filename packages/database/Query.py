@@ -1,8 +1,7 @@
 import re
 import functools
-import inspect
 
-from dataclasses import dataclass
+from __decors import param, Converter, convert
 
 from typing import TypeVar
 from typing import Optional
@@ -15,25 +14,6 @@ from Errors import InvalidColumnGiven
 TQuery = TypeVar("TQuery", bound="Query")
 
 
-@dataclass
-class Cache:
-	args: tuple
-	kwargs: dict
-
-
-def cache(func):
-	@functools.wraps(func)
-	def wrapper_return_self(*args, **kwargs):
-		values = func(*args, **kwargs)
-		if "self" in inspect.signature(func).parameters:
-			args = tuple(list(args)[1:])
-		wrapper_return_self.cache = Cache(args, kwargs)
-		return values
-
-	wrapper_return_self.cache = None
-	return wrapper_return_self
-
-
 class Pattern:
 	"""
 		SELECT documentation: https://www.postgresql.org/docs/current/sql-select.html
@@ -44,6 +24,11 @@ class Pattern:
 
 
 class Result:
+	pass
+
+
+@Converter
+def select_converter(self):
 	pass
 
 
@@ -70,9 +55,8 @@ class Query:
 		self.__distinct = True
 		return self
 
-	@cache
+	@param(default="*", converter=select_converter)
 	def select(self, *columns) -> TQuery:
-		print(f"self: {self}")
 		return self
 
 	def ordered_by(self, column: str, method: Optional[str] = "desc") -> TQuery:
@@ -106,4 +90,3 @@ class Query:
 
 	def sum(self, column: str):
 		pass
-
