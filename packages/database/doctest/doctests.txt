@@ -1,6 +1,6 @@
 >>> from packages import database as db
 
->>> query = db.table('records').select('column', 'another_column')
+>>> query = db.table('records').distinct().select('column', 'another_column')
 
 >>> query.select.cache
 
