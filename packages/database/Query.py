@@ -2,7 +2,7 @@ import re
 import functools
 import logging
 
-# from __decors import param
+from __decors import Parameter
 from __decors import Converter
 from __decors import SubQuery
 
@@ -32,14 +32,23 @@ class Result:
 	pass
 
 
-@Converter
-def select_converter(*columns):
-	return columns
+@Converter.set("select")
+def select_converter(*args, **kwargs):
+	kwargs["columns"] = {}
+	for column in args:
+		if not isinstance(column, str):
+			continue
+		if " as " in column:
+			column = column.split()
+			kwargs["columns"].update({column[0]: column[-1]})
+		else:
+			kwargs["columns"].update({column: column})
+	return args, kwargs
 
 
-@Converter
-def distinct_converter():
-	return True
+@Converter.set("distinct")
+def distinct_converter(*args, **kwargs):
+	return args, kwargs
 
 
 class Query:
@@ -56,13 +65,12 @@ class Query:
 		self.__where.append(list(args))
 		return self
 
-	# @param(converter=distinct_converter)
 	def distinct(self) -> TQuery:
 		return self
 
-	# @param(default="*", converter=select_converter)
-
-	@__select.parameter.set(default="*", converter=select_converter)
+	@Parameter.method
+	@Converter.use("select")
+	@Parameter.set(default={"columns": "*"})
 	def select(self, *columns) -> TQuery:
 		print(f"Columns: {columns}")
 		return self

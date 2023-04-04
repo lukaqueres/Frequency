@@ -2,11 +2,14 @@
 
 >>> query = db.table('records').select('column', 'another_column')
 
->>> # query_two = db.table('records').distinct().select('interfering_column', 'another_interfering_column')
+>>> query
+
+>>> query_two = db.table('records').select('interfering_column', 'another_interfering_column')
 
 >>> print( query )
 
->>> query.select.cache
+>>> query.select.__wrapped__.__wrapped__.cache
+>>> # print(dir(query.select))
 
 >>> # db.table("example").get()
 
