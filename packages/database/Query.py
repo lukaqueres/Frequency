@@ -2,7 +2,9 @@ import re
 import functools
 import logging
 
-from __decors import param, Converter
+# from __decors import param
+from __decors import Converter
+from __decors import SubQuery
 
 from typing import TypeVar
 from typing import Optional
@@ -42,9 +44,10 @@ def distinct_converter():
 
 class Query:
 
-	pattern = Pattern
+	__select = SubQuery("select")
 
 	def __init__(self, table: str):
+
 		self.__table = table
 
 		self.__where = []
@@ -53,18 +56,21 @@ class Query:
 		self.__where.append(list(args))
 		return self
 
-	@param(converter=distinct_converter)
+	# @param(converter=distinct_converter)
 	def distinct(self) -> TQuery:
 		return self
 
-	@param(default="*", converter=select_converter)
+	# @param(default="*", converter=select_converter)
+
+	@__select.parameter.set(default="*", converter=select_converter)
 	def select(self, *columns) -> TQuery:
+		print(f"Columns: {columns}")
 		return self
 
 	def ordered_by(self, column: str, method: Optional[str] = "desc") -> TQuery:
 		pass
 
-	@param
+	# @param
 	def take(self, limit: int) -> TQuery:
 		return self
 

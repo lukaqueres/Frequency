@@ -1,6 +1,10 @@
 >>> from packages import database as db
 
->>> query = db.table('records').distinct().select('column', 'another_column')
+>>> query = db.table('records').select('column', 'another_column')
+
+>>> # query_two = db.table('records').distinct().select('interfering_column', 'another_interfering_column')
+
+>>> print( query )
 
 >>> query.select.cache
 
