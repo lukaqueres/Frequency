@@ -13,9 +13,7 @@ TConverter = TypeVar("TConverter", bound="Converter")
 
 
 @dataclass
-class ConverterResult:
-	default_args: tuple
-	default_kwargs: dict
+class Converted:
 	args: tuple = dataclasses.field(default_factory=tuple)
 	kwargs: dict = dataclasses.field(default_factory=dict)
 
@@ -37,9 +35,13 @@ class Converter:
 			return conv
 		return _conv
 
-	def __call__(self, *args, **kwargs) -> ConverterResult:
+	def __call__(self, *args, **kwargs) -> Converted:
 		converted_args, converted_kwargs = self.func(*args, **kwargs)
-		return ConverterResult(args, kwargs, converted_args, converted_kwargs)
+		return Converted(converted_args, converted_kwargs)
+
+	@staticmethod
+	def get(name: str) -> TConverter:
+		return Converter.__converters[name]
 
 	@staticmethod
 	def use(name: str):
@@ -60,6 +62,7 @@ class Converter:
 class Cache:
 	default: bool
 	cache: dict[Any: Any] = dataclasses.field(default_factory=dict)
+	called: dict[Any: Any] = dataclasses.field(default_factory=dict)
 
 	def update(self, **kwargs):
 		for attribute, value in kwargs.items():
@@ -71,16 +74,18 @@ class Cache:
 
 
 class Parameter:
-	__parameters = []
+	__parameters = {}
 
-	def __init__(self, func, default: Optional[dict], converter: Optional[Converter] = None):
+	def __init__(self, func, default: Optional[dict], name: Optional[str] = None, converter: Optional[Converter] = None):
 		functools.update_wrapper(self, func)
+		self.__name = name or func.__name__
+
 		self.__function = func
 		self.__default = default
 		self.__converter = converter
 		self.__cache = Cache(default=True, cache=self.__default)
 
-		Parameter.__parameters.append(self)
+		Parameter.__parameters.update({name: self})
 
 	@staticmethod
 	def reset():
@@ -91,18 +96,27 @@ class Parameter:
 		self.__cache = Cache(default=True, cache=self.__default)
 
 	@staticmethod
-	def set(default: Optional[Any] = None, converter: Optional[Converter] = None):
+	def set(name: str, default: Optional[Any] = None):
 		def _param(function):
-			param = Parameter(function, default=default, converter=converter)
+			param = Parameter(function,name=name, default=default)
 			return param
 		return _param
 
+	@staticmethod
+	def converter(name: str):
+		def _conv(function):
+			instance = function if isinstance(function, Parameter) else function.__wraps__
+			instance.__converter = Converter.get(name)
+
+			@functools.wraps(function)
+			def wrapper(*args, **kwargs):
+				return function(*args, **kwargs)
+			return wrapper
+		return _conv
+
 	def __call__(self, *args, **kwargs):
 		print(f"In __call__: self: {self}, args: {args}, kwargs: {kwargs}")
-		converted = None
-		if isinstance(args[-1], ConverterResult):
-			converted = args[-1]
-			args = tuple(list(args)[:-2])
+		converted = self.__converter(*args, **kwargs) or None
 		value = self.__function(*args, **kwargs)
 		if "self" in inspect.signature(self.__function).parameters:
 			args = tuple(list(args)[1:])

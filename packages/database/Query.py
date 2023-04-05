@@ -2,9 +2,9 @@ import re
 import functools
 import logging
 
-from __decors import Parameter
-from __decors import Converter
-from __decors import SubQuery
+from __parameters import Parameter
+from __parameters import Converter
+from __parameters import SubQuery
 
 from typing import TypeVar
 from typing import Optional
@@ -68,9 +68,8 @@ class Query:
 	def distinct(self) -> TQuery:
 		return self
 
-	@Parameter.method
-	@Converter.use("select")
-	@Parameter.set(default={"columns": "*"})
+	@Parameter.converter("select")
+	@Parameter.set(name="select", default={"columns": "*"})
 	def select(self, *columns) -> TQuery:
 		print(f"Columns: {columns}")
 		return self
