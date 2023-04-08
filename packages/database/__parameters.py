@@ -4,73 +4,14 @@ import functools
 import dataclasses
 from dataclasses import dataclass
 
-from typing import Optional
+from typing import Optional, Callable
 from typing import Any
-from typing import TypeVar
 from typing import Callable
+from typing import TypeVar
 
-TConverter = TypeVar("TConverter", bound="Converter")
+from Elements.__converters import Converter
 
-
-@dataclass
-class Converted:
-	args: tuple = dataclasses.field(default_factory=tuple)
-	kwargs: dict = dataclasses.field(default_factory=dict)
-
-
-class Converter:
-	__converters = {}
-
-	def __init__(self, func, name):
-		functools.update_wrapper(self, func)
-		self.name = name
-		self.func = func
-
-		Converter.__converters.update({name: self})
-
-	@staticmethod
-	def set(name: str) -> Callable:
-		def _conv(function) -> TConverter:
-			conv = Converter(function, name)
-			return conv
-		return _conv
-
-	def __call__(self, *args, **kwargs) -> Converted:
-		converted_args, converted_kwargs = self.func(*args, **kwargs)
-		return Converted(converted_args, converted_kwargs)
-
-	@staticmethod
-	def get(name: str) -> TConverter:
-		return Converter.__converters[name]
-
-	@staticmethod
-	def use(name: str):
-		def _use(func):
-			@functools.wraps(func)
-			def wrapper(*args, **kwargs):
-				conv = Converter.__converters[name]
-				args = list(args)
-				args.append(conv(*args, **kwargs))
-				args = tuple(args)
-				value = func(*args, **kwargs)
-				return value
-			return wrapper
-		return _use
-
-
-@dataclass
-class Cache:
-	default: bool
-	cache: dict[Any: Any] = dataclasses.field(default_factory=dict)
-	called: dict[Any: Any] = dataclasses.field(default_factory=dict)
-
-	def update(self, **kwargs):
-		for attribute, value in kwargs.items():
-			self.cache.update({attribute: value})
-		self.default = False
-
-	def get(self, key: str) -> Any:
-		return self.cache[key]
+TParameter = TypeVar("TParameter", bound="Parameter")
 
 
 class Parameter:
@@ -82,23 +23,14 @@ class Parameter:
 
 		self.__function = func
 		self.__default = default
-		self.__converter = converter
-		self.__cache = Cache(default=True, cache=self.__default)
+		self.__converter: Converter = converter
 
 		Parameter.__parameters.update({name: self})
 
 	@staticmethod
-	def reset():
-		for parameter in Parameter.__parameters:
-			parameter.reload()
-
-	def reload(self):
-		self.__cache = Cache(default=True, cache=self.__default)
-
-	@staticmethod
-	def set(name: str, default: Optional[Any] = None):
-		def _param(function):
-			param = Parameter(function,name=name, default=default)
+	def set(name: str, default: Optional[Any] = None) -> Callable[[{__name__}], TParameter]:
+		def _param(function) -> Parameter:
+			param: Parameter = Parameter(function, name=name, default=default)
 			return param
 		return _param
 
@@ -115,17 +47,15 @@ class Parameter:
 		return _conv
 
 	def __call__(self, *args, **kwargs):
+		from Query import Query  # TODO: Fix circular import error, and make this better
 		print(f"In __call__: self: {self}, args: {args}, kwargs: {kwargs}")
+		query: Query = args[0] if isinstance(args[0], Query) else None
 		converted = self.__converter(*args, **kwargs) or None
 		value = self.__function(*args, **kwargs)
 		if "self" in inspect.signature(self.__function).parameters:
 			args = tuple(list(args)[1:])
-		if converted:
-			self.__cache.update(args=converted.args)
-			self.__cache.update(**converted.kwargs)
-		else:
-			self.__cache.update(args=args)
-			self.__cache.update(**kwargs)
+		if query:
+			query.parameters.update(**converted or kwargs)
 		print(f"Value: {value}")
 		return value
 
@@ -140,17 +70,3 @@ class Parameter:
 			return func(*args, **kwargs)
 
 		return wrapper
-
-	@property
-	def cache(self):
-		return self.__cache
-
-
-class SubQuery:
-	def __init__(self, name):
-		self.name = name
-
-		self.__parameters = []
-		self.__finishers = []
-
-		self.parameter = Parameter

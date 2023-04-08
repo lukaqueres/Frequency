@@ -9,7 +9,7 @@
 >>> print( query )
 
 >>> # dir(query.select.__wrapped__)
->>> query.select.__wrapped__.cache
+>>> query.parameters
 
 >>> # db.table("example").get()
 

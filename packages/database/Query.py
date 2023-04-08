@@ -3,8 +3,6 @@ import functools
 import logging
 
 from __parameters import Parameter
-from __parameters import Converter
-from __parameters import SubQuery
 
 from typing import TypeVar
 from typing import Optional
@@ -32,31 +30,10 @@ class Result:
 	pass
 
 
-@Converter.set("select")
-def select_converter(*args, **kwargs):
-	kwargs["columns"] = {}
-	for column in args:
-		if not isinstance(column, str):
-			continue
-		if " as " in column:
-			column = column.split()
-			kwargs["columns"].update({column[0]: column[-1]})
-		else:
-			kwargs["columns"].update({column: column})
-	return args, kwargs
-
-
-@Converter.set("distinct")
-def distinct_converter(*args, **kwargs):
-	return args, kwargs
-
-
 class Query:
 
-	__select = SubQuery("select")
-
 	def __init__(self, table: str):
-
+		self.parameters = {}
 		self.__table = table
 
 		self.__where = []
