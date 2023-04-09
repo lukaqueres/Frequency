@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import inspect
 import functools
 
@@ -10,8 +12,6 @@ from typing import Callable
 from typing import TypeVar
 
 from Elements.__converters import Converter
-
-TParameter = TypeVar("TParameter", bound="Parameter")
 
 
 class Parameter:
@@ -28,16 +28,16 @@ class Parameter:
 		Parameter.__parameters.update({name: self})
 
 	@staticmethod
-	def set(name: str, default: Optional[Any] = None) -> Callable[[{__name__}], TParameter]:
+	def set(name: str, default: Optional[Any] = None) -> Callable[[{__name__}], Parameter]:
 		def _param(function) -> Parameter:
 			param: Parameter = Parameter(function, name=name, default=default)
 			return param
 		return _param
 
 	@staticmethod
-	def converter(name: str):
-		def _conv(function):
-			instance = function if isinstance(function, Parameter) else function.__wraps__
+	def converter(name: str) -> Callable:
+		def _conv(function: Callable[[Any], Any]):
+			instance: Parameter = function if isinstance(function, Parameter) else function.__wraps__
 			instance.__converter = Converter.get(name)
 
 			@functools.wraps(function)
@@ -47,7 +47,7 @@ class Parameter:
 		return _conv
 
 	def __call__(self, *args, **kwargs):
-		from Query import Query  # TODO: Fix circular import error, and make this better
+		from __query import Query  # TODO: Fix circular import error, and make this better
 		print(f"In __call__: self: {self}, args: {args}, kwargs: {kwargs}")
 		query: Query = args[0] if isinstance(args[0], Query) else None
 		converted = self.__converter(*args, **kwargs) or None

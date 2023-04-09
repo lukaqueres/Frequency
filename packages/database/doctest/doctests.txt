@@ -1,4 +1,5 @@
->>> from packages import database as db
+>>> from packages import database
+>>> db = database.get("example")
 
 >>> query = db.table('records').select('column as lol_column', 'another_column')
 

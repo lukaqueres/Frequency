@@ -32,8 +32,9 @@ class Result:
 
 class Query:
 
-	def __init__(self, table: str):
+	def __init__(self, database, table: str):
 		self.parameters = {}
+		self.__database = database
 		self.__table = table
 
 		self.__where = []
