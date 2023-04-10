@@ -10,8 +10,6 @@ from typing import Any
 
 from psycopg2 import sql
 
-from Errors import InvalidColumnGiven
-
 logger = logging.getLogger('database')
 
 TQuery = TypeVar("TQuery", bound="Query")

@@ -1,13 +1,15 @@
 import logging
 import doctest
+import typing
 
 try:
 	import psycopg2
 except ImportError:
-	from Errors import Psycopg2NotInstalledError
+	from __errors import Psycopg2NotInstalledError
 	raise Psycopg2NotInstalledError("psycopg2 required")
 
 from __query import Query
+from __errors import NotConnectedError
 
 from Elements.__connections import Connection
 
@@ -21,9 +23,16 @@ logger.addHandler(database_handler)
 
 class Database:
 	def __init__(self):
-		self.__connection: Connection
+		self.__connection: typing.Optional[Connection] = None
+		self.connection: typing.Optional[psycopg2.connection] = None
+
+	def connect(self, url: typing.Optional[str]) -> None:
+		self.__connection = Connection()
+		self.connection = self.__connection.url(url).connect()
 
 	def table(self, name: str) -> Query:
+		if not self.__connection:
+			raise NotConnectedError("Connection must be set up before queries")
 		query = Query(self, name)
 		return query
 
