@@ -2,7 +2,7 @@ import re
 import functools
 import logging
 
-from __parameters import Parameter
+from _parameters import Parameter
 
 from typing import TypeVar
 from typing import Optional
@@ -58,7 +58,6 @@ class Query:
 		return self
 
 	def get(self) -> Result:
-		self.__construct("SELECT")
 		pass
 
 	def find(self, id_num: int) -> Result:

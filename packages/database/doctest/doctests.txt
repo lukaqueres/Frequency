@@ -1,5 +1,7 @@
+>>> import os
 >>> from packages import database
 >>> db = database.get("example")
+>>> db.connect(url=os.environ.get("DATABASE_URL"))
 
 >>> query = db.table('records').select('column as lol_column', 'another_column')
 

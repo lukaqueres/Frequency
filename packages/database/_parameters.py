@@ -3,15 +3,11 @@ from __future__ import annotations
 import inspect
 import functools
 
-import dataclasses
-from dataclasses import dataclass
-
-from typing import Optional, Callable
+from typing import Optional
 from typing import Any
 from typing import Callable
-from typing import TypeVar
 
-from Elements.__converters import Converter
+from _elements.converters import Converter
 
 
 class Parameter:
@@ -36,8 +32,9 @@ class Parameter:
 
 	@staticmethod
 	def converter(name: str) -> Callable:
-		def _conv(function: Callable[[Any], Any]):
-			instance: Parameter = function if isinstance(function, Parameter) else function.__wraps__
+		def _conv(function: Parameter):
+			instance: Parameter = function
+			assert isinstance(function, Parameter)
 			instance.__converter = Converter.get(name)
 
 			@functools.wraps(function)
@@ -47,7 +44,7 @@ class Parameter:
 		return _conv
 
 	def __call__(self, *args, **kwargs):
-		from __query import Query  # TODO: Fix circular import error, and make this better
+		from _query import Query  # TODO: Fix circular import error, and make this better
 		print(f"In __call__: self: {self}, args: {args}, kwargs: {kwargs}")
 		query: Query = args[0] if isinstance(args[0], Query) else None
 		converted = self.__converter(*args, **kwargs) or None
